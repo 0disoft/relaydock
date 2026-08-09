@@ -753,8 +753,8 @@
     },
     {
       "path": "tests/hygiene/public_identity_test.go",
-      "size": 10715,
-      "sha256": "13ed90886c829a23f4d776596b5753ac0f4285216ac94cbaca0a27f25fc41148",
+      "size": 11824,
+      "sha256": "cdb6b7aec58b15f806adbfb3cc0d1e622f7e26e84b50f49c8e188e5469d65e6a",
       "mode": "0644"
     },
     {
@@ -850,7 +850,7 @@
     {
       "path": "web/control-console/package.json",
       "size": 629,
-      "sha256": "710451250deaab29cdc71e2c6daae5e79d2e2500ed2d1286249d32014cade745",
+      "sha256": "af3dc097fe59c909ee387995b27deede24a167f38648caef53b6603a995f4418",
       "mode": "0644"
     },
     {

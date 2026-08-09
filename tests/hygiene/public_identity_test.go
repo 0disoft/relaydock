@@ -1,11 +1,44 @@
 package hygiene
 
 import (
+	"encoding/json"
+	"fmt"
 	"os"
 	"path/filepath"
 	"strings"
 	"testing"
 )
+
+func TestControlConsoleUsesPatchedSvelteKit(t *testing.T) {
+	t.Parallel()
+	root := filepath.Join("..", "..")
+	packagePath := filepath.Join(root, "web", "control-console", "package.json")
+	raw, err := os.ReadFile(packagePath)
+	if err != nil {
+		t.Fatal(err)
+	}
+	var manifest struct {
+		DevDependencies map[string]string `json:"devDependencies"`
+	}
+	if err := json.Unmarshal(raw, &manifest); err != nil {
+		t.Fatal(err)
+	}
+	version := manifest.DevDependencies["@sveltejs/kit"]
+	var major, minor, patch int
+	if count, err := fmt.Sscanf(version, "%d.%d.%d", &major, &minor, &patch); err != nil || count != 3 {
+		t.Fatalf("invalid exact @sveltejs/kit version %q", version)
+	}
+	if major < 2 || major == 2 && (minor < 70 || minor == 70 && patch < 2) {
+		t.Fatalf("@sveltejs/kit %s is vulnerable to GHSA-29g2-3rmr-qm68; require 2.70.2 or later", version)
+	}
+	lock, err := os.ReadFile(filepath.Join(root, "bun.lock"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !strings.Contains(string(lock), "@sveltejs/kit@"+version) {
+		t.Fatalf("bun.lock does not pin declared @sveltejs/kit %s", version)
+	}
+}
 
 func TestPublicIdentityUsesRelayDock(t *testing.T) {
 	t.Parallel()
