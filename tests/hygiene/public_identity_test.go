@@ -147,6 +147,35 @@ func TestReleaseContainerCandidatesStayUnpublished(t *testing.T) {
 	}
 }
 
+func TestReleaseSigningKeyIsIsolatedToFinalJob(t *testing.T) {
+	t.Parallel()
+	workflowPath := filepath.Join("..", "..", ".github", "workflows", "release.yml")
+	raw, err := os.ReadFile(workflowPath)
+	if err != nil {
+		t.Fatal(err)
+	}
+	workflow := string(raw)
+
+	for _, required := range []string{
+		"sign-release-checksums:",
+		"needs: [validate, contracts, source-archive, server-binaries, web-assets, container-images, windows-desktop]",
+		`pattern: "!*.dockerbuild"`,
+		"RELAYDOCK_RELEASE_SIGNING_PUBLIC_KEY: ${{ vars.RELAYDOCK_RELEASE_SIGNING_PUBLIC_KEY }}",
+		`if [[ "${#checksum_files[@]}" -ne 14 ]]`,
+		"releasepack sign-checksums --input",
+		"releasepack verify-checksums --input",
+		"name: release-signatures",
+	} {
+		if !strings.Contains(workflow, required) {
+			t.Errorf("release workflow does not contain %q", required)
+		}
+	}
+	secretReference := "RELAYDOCK_RELEASE_SIGNING_PRIVATE_KEY: ${{ secrets.RELAYDOCK_RELEASE_SIGNING_PRIVATE_KEY }}"
+	if count := strings.Count(workflow, secretReference); count != 1 {
+		t.Errorf("release signing private key is exposed to %d workflow locations, want 1", count)
+	}
+}
+
 func TestCIUsesFrozenDependencyResolution(t *testing.T) {
 	t.Parallel()
 	root := filepath.Join("..", "..")

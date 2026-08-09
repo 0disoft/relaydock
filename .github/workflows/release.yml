@@ -484,3 +484,44 @@ jobs:
             dist/windows-desktop-SBOM.spdx.json
           if-no-files-found: error
           retention-days: 14
+
+  sign-release-checksums:
+    needs: [validate, contracts, source-archive, server-binaries, web-assets, container-images, windows-desktop]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v6
+        with:
+          go-version: '1.26.x'
+          cache: true
+      - name: Download release-candidate artifacts only
+        uses: actions/download-artifact@v4
+        with:
+          pattern: "!*.dockerbuild"
+          path: dist/release-inputs
+      - name: Sign and verify every release checksum file
+        shell: bash
+        env:
+          RELAYDOCK_RELEASE_SIGNING_PRIVATE_KEY: ${{ secrets.RELAYDOCK_RELEASE_SIGNING_PRIVATE_KEY }}
+          RELAYDOCK_RELEASE_SIGNING_PUBLIC_KEY: ${{ vars.RELAYDOCK_RELEASE_SIGNING_PUBLIC_KEY }}
+        run: |
+          mapfile -t checksum_files < <(find dist/release-inputs -type f -name '*SHA256SUMS*' -print | sort)
+          if [[ "${#checksum_files[@]}" -ne 14 ]]; then
+            echo "expected 14 release checksum files, found ${#checksum_files[@]}" >&2
+            exit 1
+          fi
+          for checksum_file in "${checksum_files[@]}"; do
+            relative="${checksum_file#dist/release-inputs/}"
+            artifact_name="${relative%%/*}"
+            signature="dist/release-signatures/$artifact_name/$(basename "$checksum_file").sig.json"
+            go run ./cmd/releasepack sign-checksums --input "$checksum_file" --output "$signature"
+            go run ./cmd/releasepack verify-checksums --input "$checksum_file" --signature "$signature"
+          done
+      - uses: actions/upload-artifact@v4
+        with:
+          name: release-signatures
+          path: dist/release-signatures/
+          if-no-files-found: error
+          retention-days: 14

@@ -117,8 +117,8 @@
     },
     {
       "path": ".github/workflows/release.yml",
-      "size": 17868,
-      "sha256": "5dc2dd7d02b7472333ec0ff0132432cb89186894068c7dd3e2c9ad5c3561f61a",
+      "size": 19670,
+      "sha256": "a6f2cfb5dc476c5c4094c14578a02957de722c44a040904e66e6e5fd4ae8e88c",
       "mode": "0644"
     },
     {
@@ -141,8 +141,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "size": 14917,
-      "sha256": "909394f71b3751df2b7bed3b5321586ef7cc98bead9d82dd9b5d65e081b803e6",
+      "size": 15081,
+      "sha256": "5fdea34e1a55f5f1caf4a9eafa309f24d9743656fd3010f2244dbf3b7d08eff6",
       "mode": "0644"
     },
     {
@@ -195,8 +195,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "size": 11176,
-      "sha256": "78cbdafa7fa3bf325d99087a0cf7a4e6b553331f778ee8a3c6877f44eeca5242",
+      "size": 11221,
+      "sha256": "1c52701f45d0589745bb57c67495808e3aaf17a8f2c708d3038e36a20eb1640e",
       "mode": "0644"
     },
     {
@@ -621,8 +621,8 @@
     },
     {
       "path": "docs/15-build-and-release.md",
-      "size": 7665,
-      "sha256": "c09db6dbd8eef31b982f63bc040a7310b54d35e78b2f378452ea119c4f8f0e45",
+      "size": 8313,
+      "sha256": "807ddd3ff493eb9c90d4beeaa67b0a17005a65e2105029a197b1453024146519",
       "mode": "0644"
     },
     {
