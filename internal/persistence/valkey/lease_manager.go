@@ -5,7 +5,7 @@ import (
 	"fmt"
 
 	valkeygo "github.com/valkey-io/valkey-go"
-	"github.com/your-org/ai-runtime-gateway/internal/routing/distributedlease"
+	"github.com/0disoft/relaydock/internal/routing/distributedlease"
 )
 
 type scriptExecutor struct {

@@ -3,7 +3,7 @@ package mcpbridge
 import (
 	"context"
 
-	"github.com/your-org/ai-runtime-gateway/internal/mcpcontract"
+	"github.com/0disoft/relaydock/internal/mcpcontract"
 )
 
 type ConsultationCreateInput = mcpcontract.ConsultationCreateInput

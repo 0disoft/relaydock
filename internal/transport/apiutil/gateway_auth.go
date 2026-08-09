@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/your-org/ai-runtime-gateway/internal/auth/authorization"
-	"github.com/your-org/ai-runtime-gateway/internal/auth/virtualkey"
+	"github.com/0disoft/relaydock/internal/auth/authorization"
+	"github.com/0disoft/relaydock/internal/auth/virtualkey"
 )
 
 // RequireGatewayAuthentication accepts either the private operator bearer or

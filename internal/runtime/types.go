@@ -4,10 +4,10 @@ import (
 	"context"
 	"time"
 
-	"github.com/your-org/ai-runtime-gateway/internal/protocol/compiler"
-	"github.com/your-org/ai-runtime-gateway/internal/protocol/stream"
-	"github.com/your-org/ai-runtime-gateway/internal/provider"
-	"github.com/your-org/ai-runtime-gateway/internal/routing"
+	"github.com/0disoft/relaydock/internal/protocol/compiler"
+	"github.com/0disoft/relaydock/internal/protocol/stream"
+	"github.com/0disoft/relaydock/internal/provider"
+	"github.com/0disoft/relaydock/internal/routing"
 )
 
 type CandidateSource interface {

@@ -1,11 +1,11 @@
 package defaults
 
 import (
-	anthropic "github.com/your-org/ai-runtime-gateway/internal/protocol/anthropic/messages"
-	"github.com/your-org/ai-runtime-gateway/internal/protocol/compiler"
-	gemini "github.com/your-org/ai-runtime-gateway/internal/protocol/gemini/generate"
-	chat "github.com/your-org/ai-runtime-gateway/internal/protocol/openai/chat"
-	responses "github.com/your-org/ai-runtime-gateway/internal/protocol/openai/responses"
+	anthropic "github.com/0disoft/relaydock/internal/protocol/anthropic/messages"
+	"github.com/0disoft/relaydock/internal/protocol/compiler"
+	gemini "github.com/0disoft/relaydock/internal/protocol/gemini/generate"
+	chat "github.com/0disoft/relaydock/internal/protocol/openai/chat"
+	responses "github.com/0disoft/relaydock/internal/protocol/openai/responses"
 )
 
 func Registry() *compiler.Registry {

@@ -13,17 +13,17 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/your-org/ai-runtime-gateway/internal/auth/virtualkey"
-	"github.com/your-org/ai-runtime-gateway/internal/buildinfo"
-	gatewaycomposition "github.com/your-org/ai-runtime-gateway/internal/composition/gateway"
-	"github.com/your-org/ai-runtime-gateway/internal/identifier"
-	"github.com/your-org/ai-runtime-gateway/internal/observability"
-	"github.com/your-org/ai-runtime-gateway/internal/persistence/postgres"
-	valkeystore "github.com/your-org/ai-runtime-gateway/internal/persistence/valkey"
-	runtimegateway "github.com/your-org/ai-runtime-gateway/internal/runtime"
-	"github.com/your-org/ai-runtime-gateway/internal/serverutil"
-	"github.com/your-org/ai-runtime-gateway/internal/transport/apiutil"
-	"github.com/your-org/ai-runtime-gateway/internal/transport/httpgateway"
+	"github.com/0disoft/relaydock/internal/auth/virtualkey"
+	"github.com/0disoft/relaydock/internal/buildinfo"
+	gatewaycomposition "github.com/0disoft/relaydock/internal/composition/gateway"
+	"github.com/0disoft/relaydock/internal/identifier"
+	"github.com/0disoft/relaydock/internal/observability"
+	"github.com/0disoft/relaydock/internal/persistence/postgres"
+	valkeystore "github.com/0disoft/relaydock/internal/persistence/valkey"
+	runtimegateway "github.com/0disoft/relaydock/internal/runtime"
+	"github.com/0disoft/relaydock/internal/serverutil"
+	"github.com/0disoft/relaydock/internal/transport/apiutil"
+	"github.com/0disoft/relaydock/internal/transport/httpgateway"
 )
 
 func main() {

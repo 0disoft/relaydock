@@ -9,8 +9,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/your-org/ai-runtime-gateway/internal/auth/mcpscope"
-	"github.com/your-org/ai-runtime-gateway/internal/auth/scopedtoken"
+	"github.com/0disoft/relaydock/internal/auth/mcpscope"
+	"github.com/0disoft/relaydock/internal/auth/scopedtoken"
 )
 
 type output struct {

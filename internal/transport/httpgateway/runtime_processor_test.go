@@ -5,13 +5,13 @@ import (
 	"testing"
 	"time"
 
-	"github.com/your-org/ai-runtime-gateway/internal/auth/virtualkey"
-	"github.com/your-org/ai-runtime-gateway/internal/protocol/canonical"
-	"github.com/your-org/ai-runtime-gateway/internal/protocol/defaults"
-	"github.com/your-org/ai-runtime-gateway/internal/provider"
-	"github.com/your-org/ai-runtime-gateway/internal/provider/mock"
-	"github.com/your-org/ai-runtime-gateway/internal/routing"
-	runtimegateway "github.com/your-org/ai-runtime-gateway/internal/runtime"
+	"github.com/0disoft/relaydock/internal/auth/virtualkey"
+	"github.com/0disoft/relaydock/internal/protocol/canonical"
+	"github.com/0disoft/relaydock/internal/protocol/defaults"
+	"github.com/0disoft/relaydock/internal/provider"
+	"github.com/0disoft/relaydock/internal/provider/mock"
+	"github.com/0disoft/relaydock/internal/routing"
+	runtimegateway "github.com/0disoft/relaydock/internal/runtime"
 )
 
 func TestRuntimeProcessorPersistsCompleteJournalLifecycle(t *testing.T) {

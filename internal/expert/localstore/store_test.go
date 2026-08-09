@@ -12,10 +12,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/your-org/ai-runtime-gateway/internal/core"
-	"github.com/your-org/ai-runtime-gateway/internal/expert/consultation"
-	"github.com/your-org/ai-runtime-gateway/internal/expert/contextpack"
-	"github.com/your-org/ai-runtime-gateway/internal/expert/resultcontract"
+	"github.com/0disoft/relaydock/internal/core"
+	"github.com/0disoft/relaydock/internal/expert/consultation"
+	"github.com/0disoft/relaydock/internal/expert/contextpack"
+	"github.com/0disoft/relaydock/internal/expert/resultcontract"
 )
 
 func TestContextPackContentUsesBoundedContentAddressedChunks(t *testing.T) {

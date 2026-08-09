@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/your-org/ai-runtime-gateway/internal/provider"
+	"github.com/0disoft/relaydock/internal/provider"
 )
 
 func TestProviderHTTPErrorClassificationAndRetryAfter(t *testing.T) {

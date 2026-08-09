@@ -4,7 +4,7 @@ package airuntime.control.v1;
 
 import "google/protobuf/timestamp.proto";
 
-option go_package = "github.com/your-org/ai-runtime-gateway/gen/go/control/v1;controlv1";
+option go_package = "github.com/0disoft/relaydock/gen/go/control/v1;controlv1";
 
 service ControlPlaneService {
   rpc GetRuntimeSnapshot(GetRuntimeSnapshotRequest) returns (GetRuntimeSnapshotResponse);

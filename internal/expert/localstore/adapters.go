@@ -3,8 +3,8 @@ package localstore
 import (
 	"context"
 
-	"github.com/your-org/ai-runtime-gateway/internal/expert/contextpack"
-	"github.com/your-org/ai-runtime-gateway/internal/expert/resultcontract"
+	"github.com/0disoft/relaydock/internal/expert/contextpack"
+	"github.com/0disoft/relaydock/internal/expert/resultcontract"
 )
 
 // ContextPackStore and ResultStore avoid method-name collisions while all

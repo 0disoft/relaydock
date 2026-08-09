@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/your-org/ai-runtime-gateway/internal/core"
+	"github.com/0disoft/relaydock/internal/core"
 )
 
 func validateClaimsShape(claims Claims) error {

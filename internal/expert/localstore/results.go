@@ -5,10 +5,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/your-org/ai-runtime-gateway/internal/core"
-	"github.com/your-org/ai-runtime-gateway/internal/expert/consultation"
-	"github.com/your-org/ai-runtime-gateway/internal/expert/resultcontract"
-	"github.com/your-org/ai-runtime-gateway/internal/idgen"
+	"github.com/0disoft/relaydock/internal/core"
+	"github.com/0disoft/relaydock/internal/expert/consultation"
+	"github.com/0disoft/relaydock/internal/expert/resultcontract"
+	"github.com/0disoft/relaydock/internal/idgen"
 )
 
 func (s *Store) CommitClaimResult(ctx context.Context, consultationID, workerID string, result resultcontract.Result) (consultation.Consultation, string, error) {

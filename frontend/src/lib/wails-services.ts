@@ -9,7 +9,7 @@ import type {
   WebHandoff
 } from './types';
 
-const prefix = 'github.com/your-org/ai-runtime-gateway/internal/desktopwails';
+const prefix = 'github.com/0disoft/relaydock/internal/desktopwails';
 
 export const RuntimeService = {
   status: () => $Call.ByName<RuntimeStatus>(`${prefix}.RuntimeService.Status`),

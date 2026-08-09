@@ -8,14 +8,14 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/your-org/ai-runtime-gateway/internal/appdirs"
-	"github.com/your-org/ai-runtime-gateway/internal/core"
-	expertapp "github.com/your-org/ai-runtime-gateway/internal/expert/app"
-	"github.com/your-org/ai-runtime-gateway/internal/expert/consultation"
-	"github.com/your-org/ai-runtime-gateway/internal/expert/contextpack"
-	expertpolicy "github.com/your-org/ai-runtime-gateway/internal/expert/policy"
-	"github.com/your-org/ai-runtime-gateway/internal/localipc"
-	"github.com/your-org/ai-runtime-gateway/internal/mcpcontract"
+	"github.com/0disoft/relaydock/internal/appdirs"
+	"github.com/0disoft/relaydock/internal/core"
+	expertapp "github.com/0disoft/relaydock/internal/expert/app"
+	"github.com/0disoft/relaydock/internal/expert/consultation"
+	"github.com/0disoft/relaydock/internal/expert/contextpack"
+	expertpolicy "github.com/0disoft/relaydock/internal/expert/policy"
+	"github.com/0disoft/relaydock/internal/localipc"
+	"github.com/0disoft/relaydock/internal/mcpcontract"
 )
 
 type Runtime struct {

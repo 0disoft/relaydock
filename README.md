@@ -178,13 +178,9 @@ Wails v3는 alpha이므로 exact version을 유지한다. 도구 갱신은 proto
 
 ## 빠른 시작: 외부 인프라 없이
 
-### 1. module path 변경
+공개 Go module path는 `github.com/0disoft/relaydock`로 고정돼 있다. 저장소를 fork해 다른 module path로 배포할 때만 `scripts/rename-module.ps1`을 사용한다.
 
-```powershell
-./scripts/rename-module.ps1 -NewModule "github.com/<owner>/<repo>"
-```
-
-### 2. 의존성과 생성 코드 준비
+### 1. 의존성과 생성 코드 준비
 
 ```powershell
 ./scripts/bootstrap.ps1
@@ -193,7 +189,7 @@ bun install
 ./scripts/generate.ps1
 ```
 
-### 3. 로컬 Gateway 실행
+### 2. 로컬 Gateway 실행
 
 공급자 key나 route를 설정하지 않으면 `local/echo`만 활성화된다.
 
@@ -209,7 +205,7 @@ Invoke-RestMethod `
   -Body '{"model":"local/echo","input":"Review the ledger","stream":false}'
 ```
 
-### 4. 로컬 Expert Broker 실행
+### 3. 로컬 Expert Broker 실행
 
 PostgreSQL URL이 없으면 `data/expert-broker/state.json`을 원자 저장소로 사용한다.
 

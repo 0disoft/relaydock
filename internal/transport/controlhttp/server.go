@@ -14,10 +14,10 @@ import (
 	"sync"
 	"time"
 
-	"github.com/your-org/ai-runtime-gateway/internal/control/snapshot"
-	"github.com/your-org/ai-runtime-gateway/internal/core"
-	"github.com/your-org/ai-runtime-gateway/internal/transport/apiutil"
-	"github.com/your-org/ai-runtime-gateway/internal/transport/health"
+	"github.com/0disoft/relaydock/internal/control/snapshot"
+	"github.com/0disoft/relaydock/internal/core"
+	"github.com/0disoft/relaydock/internal/transport/apiutil"
+	"github.com/0disoft/relaydock/internal/transport/health"
 )
 
 type PublishRequest struct {

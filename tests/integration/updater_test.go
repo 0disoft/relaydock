@@ -17,7 +17,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/your-org/ai-runtime-gateway/internal/updater"
+	"github.com/0disoft/relaydock/internal/updater"
 )
 
 func TestUpdaterStagesOnlySignedAndHashedArtifact(t *testing.T) {

@@ -1,6 +1,6 @@
 package modelregistry
 
-import "github.com/your-org/ai-runtime-gateway/internal/protocol/canonical"
+import "github.com/0disoft/relaydock/internal/protocol/canonical"
 
 type Model struct {
 	Provider               string

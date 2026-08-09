@@ -7,8 +7,8 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/your-org/ai-runtime-gateway/internal/core"
-	"github.com/your-org/ai-runtime-gateway/internal/persistence/atomicfile"
+	"github.com/0disoft/relaydock/internal/core"
+	"github.com/0disoft/relaydock/internal/persistence/atomicfile"
 )
 
 // LocalStore persists the latest signed snapshot for a single controld

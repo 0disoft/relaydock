@@ -5,7 +5,7 @@ import (
 	"log/slog"
 	"os"
 
-	"github.com/your-org/ai-runtime-gateway/internal/desktopwails"
+	"github.com/0disoft/relaydock/internal/desktopwails"
 )
 
 // frontendAssets contains the production Svelte bundle.

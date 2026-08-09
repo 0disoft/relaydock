@@ -9,7 +9,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/your-org/ai-runtime-gateway/internal/core"
+	"github.com/0disoft/relaydock/internal/core"
 )
 
 func loadRouteConfig(path, inline string) (map[string][]RouteConfig, error) {

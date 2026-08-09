@@ -6,8 +6,8 @@ import (
 	"fmt"
 
 	"github.com/wailsapp/wails/v3/pkg/application"
-	"github.com/your-org/ai-runtime-gateway/internal/autostart"
-	"github.com/your-org/ai-runtime-gateway/internal/core"
+	"github.com/0disoft/relaydock/internal/autostart"
+	"github.com/0disoft/relaydock/internal/core"
 )
 
 const desktopAutostartIdentifier = "dev.zerodi.ai-runtime-gateway"

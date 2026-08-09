@@ -13,7 +13,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/your-org/ai-runtime-gateway/internal/outbox"
+	"github.com/0disoft/relaydock/internal/outbox"
 )
 
 func TestHandlerAcceptsAndDeduplicatesSignedEvent(t *testing.T) {

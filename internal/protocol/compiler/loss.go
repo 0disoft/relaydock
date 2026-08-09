@@ -1,6 +1,6 @@
 package compiler
 
-import "github.com/your-org/ai-runtime-gateway/internal/protocol/canonical"
+import "github.com/0disoft/relaydock/internal/protocol/canonical"
 
 type LossMode string
 

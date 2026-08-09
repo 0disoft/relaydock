@@ -1,7 +1,7 @@
 package routing
 
 import (
-	"github.com/your-org/ai-runtime-gateway/internal/protocol/canonical"
+	"github.com/0disoft/relaydock/internal/protocol/canonical"
 	"time"
 )
 

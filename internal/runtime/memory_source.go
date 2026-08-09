@@ -2,7 +2,7 @@ package runtime
 
 import (
 	"context"
-	"github.com/your-org/ai-runtime-gateway/internal/routing"
+	"github.com/0disoft/relaydock/internal/routing"
 	"sync"
 )
 

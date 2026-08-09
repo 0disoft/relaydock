@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/your-org/ai-runtime-gateway/internal/accounting"
+	"github.com/0disoft/relaydock/internal/accounting"
 )
 
 func TestDuplicateUsageCaptureIsIdempotent(t *testing.T) {

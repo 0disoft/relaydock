@@ -7,8 +7,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/your-org/ai-runtime-gateway/internal/expert/contextpack"
-	"github.com/your-org/ai-runtime-gateway/internal/expert/redaction"
+	"github.com/0disoft/relaydock/internal/expert/contextpack"
+	"github.com/0disoft/relaydock/internal/expert/redaction"
 )
 
 func newContextCompiler(t *testing.T) *contextpack.Compiler {

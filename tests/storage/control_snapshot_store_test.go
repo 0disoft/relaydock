@@ -7,8 +7,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/your-org/ai-runtime-gateway/internal/control/snapshot"
-	"github.com/your-org/ai-runtime-gateway/internal/transport/controlhttp"
+	"github.com/0disoft/relaydock/internal/control/snapshot"
+	"github.com/0disoft/relaydock/internal/transport/controlhttp"
 )
 
 func TestControlSigningKeyAndSnapshotPersistAcrossRestart(t *testing.T) {

@@ -9,9 +9,9 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/your-org/ai-runtime-gateway/internal/core"
-	"github.com/your-org/ai-runtime-gateway/internal/protocol/canonical"
-	"github.com/your-org/ai-runtime-gateway/internal/protocol/stream"
+	"github.com/0disoft/relaydock/internal/core"
+	"github.com/0disoft/relaydock/internal/protocol/canonical"
+	"github.com/0disoft/relaydock/internal/protocol/stream"
 )
 
 type responseStream struct {

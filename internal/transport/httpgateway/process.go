@@ -5,11 +5,11 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/your-org/ai-runtime-gateway/internal/auth/authorization"
-	"github.com/your-org/ai-runtime-gateway/internal/auth/virtualkey"
-	"github.com/your-org/ai-runtime-gateway/internal/protocol/canonical"
-	"github.com/your-org/ai-runtime-gateway/internal/protocol/stream"
-	"github.com/your-org/ai-runtime-gateway/internal/transport/apiutil"
+	"github.com/0disoft/relaydock/internal/auth/authorization"
+	"github.com/0disoft/relaydock/internal/auth/virtualkey"
+	"github.com/0disoft/relaydock/internal/protocol/canonical"
+	"github.com/0disoft/relaydock/internal/protocol/stream"
+	"github.com/0disoft/relaydock/internal/transport/apiutil"
 )
 
 func (a *api) process(w http.ResponseWriter, r *http.Request, protocol canonical.Protocol, model string, forceStream bool) {

@@ -8,9 +8,9 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/your-org/ai-runtime-gateway/internal/core"
-	"github.com/your-org/ai-runtime-gateway/internal/expert/contextpack"
-	"github.com/your-org/ai-runtime-gateway/internal/expert/routes/openaiapi"
+	"github.com/0disoft/relaydock/internal/core"
+	"github.com/0disoft/relaydock/internal/expert/contextpack"
+	"github.com/0disoft/relaydock/internal/expert/routes/openaiapi"
 )
 
 func TestOpenAIExpertRequiresPricingForNonZeroCostCeiling(t *testing.T) {

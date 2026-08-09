@@ -9,10 +9,10 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/your-org/ai-runtime-gateway/internal/appdirs"
-	"github.com/your-org/ai-runtime-gateway/internal/autostart"
-	"github.com/your-org/ai-runtime-gateway/internal/core"
-	"github.com/your-org/ai-runtime-gateway/internal/persistence/atomicfile"
+	"github.com/0disoft/relaydock/internal/appdirs"
+	"github.com/0disoft/relaydock/internal/autostart"
+	"github.com/0disoft/relaydock/internal/core"
+	"github.com/0disoft/relaydock/internal/persistence/atomicfile"
 )
 
 type Settings struct {

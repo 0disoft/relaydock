@@ -4,7 +4,7 @@ import (
 	"database/sql"
 	"fmt"
 
-	"github.com/your-org/ai-runtime-gateway/internal/expert/consultation"
+	"github.com/0disoft/relaydock/internal/expert/consultation"
 )
 
 type rowScanner interface {

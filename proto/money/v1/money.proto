@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package airuntime.money.v1;
 
-option go_package = "github.com/your-org/ai-runtime-gateway/gen/go/money/v1;moneyv1";
+option go_package = "github.com/0disoft/relaydock/gen/go/money/v1;moneyv1";
 
 service MoneyService {
   rpc CreateQuote(CreateQuoteRequest) returns (CreateQuoteResponse);

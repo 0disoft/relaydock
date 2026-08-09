@@ -4,9 +4,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/your-org/ai-runtime-gateway/internal/protocol/canonical"
-	"github.com/your-org/ai-runtime-gateway/internal/provider"
-	"github.com/your-org/ai-runtime-gateway/internal/routing"
+	"github.com/0disoft/relaydock/internal/protocol/canonical"
+	"github.com/0disoft/relaydock/internal/provider"
+	"github.com/0disoft/relaydock/internal/routing"
 )
 
 type RouteConfig struct {

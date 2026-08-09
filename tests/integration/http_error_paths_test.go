@@ -8,8 +8,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/your-org/ai-runtime-gateway/internal/transport/apiutil"
-	"github.com/your-org/ai-runtime-gateway/internal/transport/httpgateway"
+	"github.com/0disoft/relaydock/internal/transport/apiutil"
+	"github.com/0disoft/relaydock/internal/transport/httpgateway"
 )
 
 func TestGatewayRejectsOversizedRequestWith413(t *testing.T) {

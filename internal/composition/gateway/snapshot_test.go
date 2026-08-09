@@ -5,9 +5,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/your-org/ai-runtime-gateway/internal/control/snapshot"
-	"github.com/your-org/ai-runtime-gateway/internal/protocol/canonical"
-	"github.com/your-org/ai-runtime-gateway/internal/provider/mock"
+	"github.com/0disoft/relaydock/internal/control/snapshot"
+	"github.com/0disoft/relaydock/internal/protocol/canonical"
+	"github.com/0disoft/relaydock/internal/provider/mock"
 )
 
 func TestCandidateSourceAppliesSignedSnapshotRoutesAtomically(t *testing.T) {

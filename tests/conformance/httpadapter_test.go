@@ -8,11 +8,11 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/your-org/ai-runtime-gateway/internal/core"
-	"github.com/your-org/ai-runtime-gateway/internal/protocol/canonical"
-	"github.com/your-org/ai-runtime-gateway/internal/protocol/compiler"
-	"github.com/your-org/ai-runtime-gateway/internal/provider"
-	"github.com/your-org/ai-runtime-gateway/internal/provider/httpadapter"
+	"github.com/0disoft/relaydock/internal/core"
+	"github.com/0disoft/relaydock/internal/protocol/canonical"
+	"github.com/0disoft/relaydock/internal/protocol/compiler"
+	"github.com/0disoft/relaydock/internal/provider"
+	"github.com/0disoft/relaydock/internal/provider/httpadapter"
 )
 
 func TestOversizedProviderResponseIsRejectedWithoutTruncation(t *testing.T) {

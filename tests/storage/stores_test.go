@@ -9,11 +9,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/your-org/ai-runtime-gateway/internal/core"
-	"github.com/your-org/ai-runtime-gateway/internal/credentials"
-	"github.com/your-org/ai-runtime-gateway/internal/outbox"
-	"github.com/your-org/ai-runtime-gateway/internal/persistence/objectstore"
-	"github.com/your-org/ai-runtime-gateway/internal/security/secrets"
+	"github.com/0disoft/relaydock/internal/core"
+	"github.com/0disoft/relaydock/internal/credentials"
+	"github.com/0disoft/relaydock/internal/outbox"
+	"github.com/0disoft/relaydock/internal/persistence/objectstore"
+	"github.com/0disoft/relaydock/internal/security/secrets"
 )
 
 func TestCredentialAndSecretStoresIsolateCallerMemory(t *testing.T) {

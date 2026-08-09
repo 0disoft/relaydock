@@ -11,8 +11,8 @@ import (
 	"io"
 	"time"
 
-	"github.com/your-org/ai-runtime-gateway/internal/control/snapshot"
-	"github.com/your-org/ai-runtime-gateway/internal/core"
+	"github.com/0disoft/relaydock/internal/control/snapshot"
+	"github.com/0disoft/relaydock/internal/core"
 )
 
 const runtimeSnapshotAdvisoryLockID int64 = 0x415247534e4150 // "ARGSNAP"

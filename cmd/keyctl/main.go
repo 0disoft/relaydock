@@ -10,8 +10,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/your-org/ai-runtime-gateway/internal/auth/virtualkey"
-	"github.com/your-org/ai-runtime-gateway/internal/persistence/postgres"
+	"github.com/0disoft/relaydock/internal/auth/virtualkey"
+	"github.com/0disoft/relaydock/internal/persistence/postgres"
 )
 
 func main() {

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/your-org/ai-runtime-gateway/internal/core"
+	"github.com/0disoft/relaydock/internal/core"
 )
 
 const legacySecretLength = 43 // 32 random bytes encoded with base64.RawURLEncoding

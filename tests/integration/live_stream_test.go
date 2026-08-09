@@ -10,9 +10,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/your-org/ai-runtime-gateway/internal/protocol/canonical"
-	"github.com/your-org/ai-runtime-gateway/internal/protocol/stream"
-	"github.com/your-org/ai-runtime-gateway/internal/transport/httpgateway"
+	"github.com/0disoft/relaydock/internal/protocol/canonical"
+	"github.com/0disoft/relaydock/internal/protocol/stream"
+	"github.com/0disoft/relaydock/internal/transport/httpgateway"
 )
 
 type stagedStreamingProcessor struct {

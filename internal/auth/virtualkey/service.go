@@ -4,8 +4,8 @@ import (
 	"context"
 	"strings"
 
-	"github.com/your-org/ai-runtime-gateway/internal/auth/authorization"
-	"github.com/your-org/ai-runtime-gateway/internal/core"
+	"github.com/0disoft/relaydock/internal/auth/authorization"
+	"github.com/0disoft/relaydock/internal/core"
 )
 
 type Principal struct {

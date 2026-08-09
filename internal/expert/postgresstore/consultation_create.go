@@ -10,10 +10,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/your-org/ai-runtime-gateway/internal/core"
-	"github.com/your-org/ai-runtime-gateway/internal/expert/consultation"
-	"github.com/your-org/ai-runtime-gateway/internal/expert/contextpack"
-	"github.com/your-org/ai-runtime-gateway/internal/idgen"
+	"github.com/0disoft/relaydock/internal/core"
+	"github.com/0disoft/relaydock/internal/expert/consultation"
+	"github.com/0disoft/relaydock/internal/expert/contextpack"
+	"github.com/0disoft/relaydock/internal/idgen"
 )
 
 func (s *Store) Create(ctx context.Context, command consultation.CreateCommand) (consultation.Consultation, error) {

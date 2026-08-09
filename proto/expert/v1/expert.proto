@@ -4,7 +4,7 @@ package airuntime.expert.v1;
 
 import "google/protobuf/timestamp.proto";
 
-option go_package = "github.com/your-org/ai-runtime-gateway/gen/go/expert/v1;expertv1";
+option go_package = "github.com/0disoft/relaydock/gen/go/expert/v1;expertv1";
 
 service ExpertService {
   rpc CreateConsultation(CreateConsultationRequest) returns (CreateConsultationResponse);

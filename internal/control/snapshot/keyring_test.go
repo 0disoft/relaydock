@@ -9,7 +9,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/your-org/ai-runtime-gateway/internal/core"
+	"github.com/0disoft/relaydock/internal/core"
 )
 
 func TestEd25519KeyRingAcceptsOverlappingRotationKeys(t *testing.T) {

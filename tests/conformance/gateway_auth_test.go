@@ -8,10 +8,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/your-org/ai-runtime-gateway/internal/auth/authorization"
-	"github.com/your-org/ai-runtime-gateway/internal/auth/virtualkey"
-	"github.com/your-org/ai-runtime-gateway/internal/transport/apiutil"
-	"github.com/your-org/ai-runtime-gateway/internal/transport/httpgateway"
+	"github.com/0disoft/relaydock/internal/auth/authorization"
+	"github.com/0disoft/relaydock/internal/auth/virtualkey"
+	"github.com/0disoft/relaydock/internal/transport/apiutil"
+	"github.com/0disoft/relaydock/internal/transport/httpgateway"
 )
 
 func TestGatewayVirtualKeyFiltersModelsAndRejectsDisallowedInvocation(t *testing.T) {

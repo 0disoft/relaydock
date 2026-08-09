@@ -9,8 +9,8 @@ import (
 	"strings"
 	"time"
 
-	gatewaycomposition "github.com/your-org/ai-runtime-gateway/internal/composition/gateway"
-	"github.com/your-org/ai-runtime-gateway/internal/control/snapshot"
+	gatewaycomposition "github.com/0disoft/relaydock/internal/composition/gateway"
+	"github.com/0disoft/relaydock/internal/control/snapshot"
 )
 
 const defaultGatewaySnapshotPath = "state/gateway-runtime-snapshot.json"

@@ -3,9 +3,9 @@ package desktopwails
 import (
 	"os"
 
-	"github.com/your-org/ai-runtime-gateway/internal/appdirs"
-	expertapp "github.com/your-org/ai-runtime-gateway/internal/expert/app"
-	"github.com/your-org/ai-runtime-gateway/internal/localruntime"
+	"github.com/0disoft/relaydock/internal/appdirs"
+	expertapp "github.com/0disoft/relaydock/internal/expert/app"
+	"github.com/0disoft/relaydock/internal/localruntime"
 )
 
 type Container struct {

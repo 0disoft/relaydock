@@ -6,8 +6,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/your-org/ai-runtime-gateway/internal/provider"
-	"github.com/your-org/ai-runtime-gateway/internal/routing"
+	"github.com/0disoft/relaydock/internal/provider"
+	"github.com/0disoft/relaydock/internal/routing"
 )
 
 func (s *CandidateSource) RecordOutcome(ctx context.Context, outcome routing.Outcome) error {

@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/your-org/ai-runtime-gateway/internal/core"
-	"github.com/your-org/ai-runtime-gateway/internal/persistence/atomicfile"
+	"github.com/0disoft/relaydock/internal/core"
+	"github.com/0disoft/relaydock/internal/persistence/atomicfile"
 )
 
 // LoadOrCreateSigningKey keeps the control-plane trust root stable across

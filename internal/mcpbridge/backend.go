@@ -3,7 +3,7 @@ package mcpbridge
 import (
 	"context"
 
-	"github.com/your-org/ai-runtime-gateway/internal/localipc"
+	"github.com/0disoft/relaydock/internal/localipc"
 )
 
 type IPCBackend struct {

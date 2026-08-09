@@ -9,10 +9,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/your-org/ai-runtime-gateway/internal/core"
-	"github.com/your-org/ai-runtime-gateway/internal/protocol/canonical"
-	"github.com/your-org/ai-runtime-gateway/internal/protocol/stream"
-	"github.com/your-org/ai-runtime-gateway/internal/provider"
+	"github.com/0disoft/relaydock/internal/core"
+	"github.com/0disoft/relaydock/internal/protocol/canonical"
+	"github.com/0disoft/relaydock/internal/protocol/stream"
+	"github.com/0disoft/relaydock/internal/provider"
 )
 
 // StreamMetadata is known at the moment the runtime commits to an upstream

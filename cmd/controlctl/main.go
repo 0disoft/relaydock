@@ -14,7 +14,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/your-org/ai-runtime-gateway/internal/persistence/atomicfile"
+	"github.com/0disoft/relaydock/internal/persistence/atomicfile"
 )
 
 const maximumControlResponseBytes int64 = 32 << 20

@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/your-org/ai-runtime-gateway/internal/protocol/stream"
+	"github.com/0disoft/relaydock/internal/protocol/stream"
 )
 
 const (

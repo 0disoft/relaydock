@@ -4,7 +4,7 @@ package airuntime.runtime.v1;
 
 import "google/protobuf/timestamp.proto";
 
-option go_package = "github.com/your-org/ai-runtime-gateway/gen/go/runtime/v1;runtimev1";
+option go_package = "github.com/0disoft/relaydock/gen/go/runtime/v1;runtimev1";
 
 service RuntimeEventService {
   rpc RecordUsage(RecordUsageRequest) returns (RecordUsageResponse);

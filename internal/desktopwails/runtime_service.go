@@ -12,11 +12,11 @@ import (
 	"sync"
 	"time"
 
-	"github.com/your-org/ai-runtime-gateway/internal/buildinfo"
-	gatewaycomposition "github.com/your-org/ai-runtime-gateway/internal/composition/gateway"
-	"github.com/your-org/ai-runtime-gateway/internal/core"
-	"github.com/your-org/ai-runtime-gateway/internal/localipc"
-	"github.com/your-org/ai-runtime-gateway/internal/transport/httpgateway"
+	"github.com/0disoft/relaydock/internal/buildinfo"
+	gatewaycomposition "github.com/0disoft/relaydock/internal/composition/gateway"
+	"github.com/0disoft/relaydock/internal/core"
+	"github.com/0disoft/relaydock/internal/localipc"
+	"github.com/0disoft/relaydock/internal/transport/httpgateway"
 )
 
 type RuntimeStatus struct {

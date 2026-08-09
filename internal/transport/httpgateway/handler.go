@@ -5,13 +5,13 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/your-org/ai-runtime-gateway/internal/auth/authorization"
-	"github.com/your-org/ai-runtime-gateway/internal/auth/virtualkey"
-	"github.com/your-org/ai-runtime-gateway/internal/core"
-	"github.com/your-org/ai-runtime-gateway/internal/protocol/canonical"
-	"github.com/your-org/ai-runtime-gateway/internal/protocol/defaults"
-	"github.com/your-org/ai-runtime-gateway/internal/transport/apiutil"
-	"github.com/your-org/ai-runtime-gateway/internal/transport/health"
+	"github.com/0disoft/relaydock/internal/auth/authorization"
+	"github.com/0disoft/relaydock/internal/auth/virtualkey"
+	"github.com/0disoft/relaydock/internal/core"
+	"github.com/0disoft/relaydock/internal/protocol/canonical"
+	"github.com/0disoft/relaydock/internal/protocol/defaults"
+	"github.com/0disoft/relaydock/internal/transport/apiutil"
+	"github.com/0disoft/relaydock/internal/transport/health"
 )
 
 func NewHandler() http.Handler {

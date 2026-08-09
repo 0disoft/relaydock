@@ -10,9 +10,9 @@ import (
 
 	"github.com/modelcontextprotocol/go-sdk/mcp"
 
-	"github.com/your-org/ai-runtime-gateway/internal/auth/mcpscope"
-	"github.com/your-org/ai-runtime-gateway/internal/auth/scopedtoken"
-	"github.com/your-org/ai-runtime-gateway/internal/core"
+	"github.com/0disoft/relaydock/internal/auth/mcpscope"
+	"github.com/0disoft/relaydock/internal/auth/scopedtoken"
+	"github.com/0disoft/relaydock/internal/core"
 )
 
 func NewHandler(backend Backend, version string) http.Handler {

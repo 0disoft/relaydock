@@ -4,7 +4,6 @@
 
 ## 제품과 라이선스
 
-- 공개 제품명과 최종 Go module path
 - Apache-2.0 또는 다른 OSS 라이선스 범위
 - managed Control Plane·money-platform·enterprise self-host의 상용 경계
 - 개인 무료판의 provider·route·Expert 호출 상한

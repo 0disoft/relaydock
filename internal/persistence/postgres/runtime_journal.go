@@ -9,10 +9,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/your-org/ai-runtime-gateway/internal/core"
-	"github.com/your-org/ai-runtime-gateway/internal/identifier"
-	"github.com/your-org/ai-runtime-gateway/internal/protocol/stream"
-	runtimegateway "github.com/your-org/ai-runtime-gateway/internal/runtime"
+	"github.com/0disoft/relaydock/internal/core"
+	"github.com/0disoft/relaydock/internal/identifier"
+	"github.com/0disoft/relaydock/internal/protocol/stream"
+	runtimegateway "github.com/0disoft/relaydock/internal/runtime"
 )
 
 type RuntimeJournal struct {

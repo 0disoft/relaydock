@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/your-org/ai-runtime-gateway/internal/core"
-	"github.com/your-org/ai-runtime-gateway/internal/expert/contextpack"
+	"github.com/0disoft/relaydock/internal/core"
+	"github.com/0disoft/relaydock/internal/expert/contextpack"
 )
 
 func (s *Store) Put(ctx context.Context, pack contextpack.Pack) error {

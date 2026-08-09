@@ -8,9 +8,9 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/your-org/ai-runtime-gateway/internal/core"
-	"github.com/your-org/ai-runtime-gateway/internal/idgen"
-	"github.com/your-org/ai-runtime-gateway/internal/transport/apiutil"
+	"github.com/0disoft/relaydock/internal/core"
+	"github.com/0disoft/relaydock/internal/idgen"
+	"github.com/0disoft/relaydock/internal/transport/apiutil"
 )
 
 func readBody(w http.ResponseWriter, r *http.Request, limit int64) ([]byte, error) {

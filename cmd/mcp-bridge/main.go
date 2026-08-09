@@ -5,9 +5,9 @@ import (
 	"log/slog"
 	"os"
 
-	"github.com/your-org/ai-runtime-gateway/internal/buildinfo"
-	"github.com/your-org/ai-runtime-gateway/internal/localipc"
-	"github.com/your-org/ai-runtime-gateway/internal/mcpbridge"
+	"github.com/0disoft/relaydock/internal/buildinfo"
+	"github.com/0disoft/relaydock/internal/localipc"
+	"github.com/0disoft/relaydock/internal/mcpbridge"
 )
 
 func main() {

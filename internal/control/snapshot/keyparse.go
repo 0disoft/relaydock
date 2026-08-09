@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/your-org/ai-runtime-gateway/internal/core"
+	"github.com/0disoft/relaydock/internal/core"
 )
 
 // ParseSigningPrivateKey accepts an Ed25519 seed or private key encoded with

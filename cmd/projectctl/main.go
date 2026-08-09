@@ -11,7 +11,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/your-org/ai-runtime-gateway/internal/persistence/postgres"
+	"github.com/0disoft/relaydock/internal/persistence/postgres"
 )
 
 var slugPattern = regexp.MustCompile(`^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?$`)

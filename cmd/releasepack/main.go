@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/your-org/ai-runtime-gateway/internal/releasepack"
+	"github.com/0disoft/relaydock/internal/releasepack"
 )
 
 func main() {

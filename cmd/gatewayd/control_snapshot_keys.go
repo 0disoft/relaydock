@@ -5,7 +5,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/your-org/ai-runtime-gateway/internal/control/snapshot"
+	"github.com/0disoft/relaydock/internal/control/snapshot"
 )
 
 func loadControlVerifier() (snapshot.Verifier, []string, error) {

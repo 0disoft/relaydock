@@ -8,9 +8,9 @@ import (
 	"strings"
 	"time"
 
-	dbassets "github.com/your-org/ai-runtime-gateway/db"
-	"github.com/your-org/ai-runtime-gateway/internal/persistence/migrate"
-	"github.com/your-org/ai-runtime-gateway/internal/persistence/postgres"
+	dbassets "github.com/0disoft/relaydock/db"
+	"github.com/0disoft/relaydock/internal/persistence/migrate"
+	"github.com/0disoft/relaydock/internal/persistence/postgres"
 )
 
 func main() {

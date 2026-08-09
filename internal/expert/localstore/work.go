@@ -6,8 +6,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/your-org/ai-runtime-gateway/internal/core"
-	"github.com/your-org/ai-runtime-gateway/internal/expert/consultation"
+	"github.com/0disoft/relaydock/internal/core"
+	"github.com/0disoft/relaydock/internal/expert/consultation"
 )
 
 func (s *Store) ClaimNext(ctx context.Context, route string) (consultation.Consultation, error) {

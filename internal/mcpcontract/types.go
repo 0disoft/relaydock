@@ -1,6 +1,6 @@
 package mcpcontract
 
-import "github.com/your-org/ai-runtime-gateway/internal/expert/resultcontract"
+import "github.com/0disoft/relaydock/internal/expert/resultcontract"
 
 type ConsultationCreateInput struct {
 	RepositoryRoot   string   `json:"repositoryRoot,omitempty" jsonschema:"absolute repository root; defaults to the desktop runtime workspace"`

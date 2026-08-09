@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/your-org/ai-runtime-gateway/internal/persistence/atomicfile"
+	"github.com/0disoft/relaydock/internal/persistence/atomicfile"
 )
 
 func (s *Store) update(ctx context.Context, mutate func(*state) error) error {

@@ -6,9 +6,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/your-org/ai-runtime-gateway/internal/core"
-	"github.com/your-org/ai-runtime-gateway/internal/protocol/canonical"
-	"github.com/your-org/ai-runtime-gateway/internal/routing"
+	"github.com/0disoft/relaydock/internal/core"
+	"github.com/0disoft/relaydock/internal/protocol/canonical"
+	"github.com/0disoft/relaydock/internal/routing"
 )
 
 func newCandidateSource(definitions map[string]providerDefinition, routes map[string][]RouteConfig, defaultProvider string) (*CandidateSource, error) {

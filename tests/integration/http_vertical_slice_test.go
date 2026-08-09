@@ -15,11 +15,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/your-org/ai-runtime-gateway/internal/control/snapshot"
-	"github.com/your-org/ai-runtime-gateway/internal/expert/consultation"
-	"github.com/your-org/ai-runtime-gateway/internal/transport/controlhttp"
-	"github.com/your-org/ai-runtime-gateway/internal/transport/experthttp"
-	"github.com/your-org/ai-runtime-gateway/internal/transport/httpgateway"
+	"github.com/0disoft/relaydock/internal/control/snapshot"
+	"github.com/0disoft/relaydock/internal/expert/consultation"
+	"github.com/0disoft/relaydock/internal/transport/controlhttp"
+	"github.com/0disoft/relaydock/internal/transport/experthttp"
+	"github.com/0disoft/relaydock/internal/transport/httpgateway"
 )
 
 func TestGatewayServesOpenAIAnthropicAndGeminiShapes(t *testing.T) {

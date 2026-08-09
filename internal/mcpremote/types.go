@@ -4,9 +4,9 @@ import (
 	"context"
 	"log/slog"
 
-	"github.com/your-org/ai-runtime-gateway/internal/auth/mcpscope"
-	"github.com/your-org/ai-runtime-gateway/internal/auth/scopedtoken"
-	"github.com/your-org/ai-runtime-gateway/internal/expert/contextpack"
+	"github.com/0disoft/relaydock/internal/auth/mcpscope"
+	"github.com/0disoft/relaydock/internal/auth/scopedtoken"
+	"github.com/0disoft/relaydock/internal/expert/contextpack"
 )
 
 const (

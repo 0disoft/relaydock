@@ -10,7 +10,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/your-org/ai-runtime-gateway/internal/expert/localstore"
+	"github.com/0disoft/relaydock/internal/expert/localstore"
 )
 
 func main() {

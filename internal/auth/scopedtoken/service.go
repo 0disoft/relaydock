@@ -13,7 +13,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/your-org/ai-runtime-gateway/internal/core"
+	"github.com/0disoft/relaydock/internal/core"
 )
 
 func (s *Service) Issue(ctx context.Context, claims Claims, lifetime time.Duration) (string, Claims, error) {

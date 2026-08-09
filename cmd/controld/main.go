@@ -9,12 +9,12 @@ import (
 	"strings"
 	"time"
 
-	"github.com/your-org/ai-runtime-gateway/internal/control/snapshot"
-	"github.com/your-org/ai-runtime-gateway/internal/observability"
-	persistencepostgres "github.com/your-org/ai-runtime-gateway/internal/persistence/postgres"
-	"github.com/your-org/ai-runtime-gateway/internal/serverutil"
-	"github.com/your-org/ai-runtime-gateway/internal/transport/apiutil"
-	"github.com/your-org/ai-runtime-gateway/internal/transport/controlhttp"
+	"github.com/0disoft/relaydock/internal/control/snapshot"
+	"github.com/0disoft/relaydock/internal/observability"
+	persistencepostgres "github.com/0disoft/relaydock/internal/persistence/postgres"
+	"github.com/0disoft/relaydock/internal/serverutil"
+	"github.com/0disoft/relaydock/internal/transport/apiutil"
+	"github.com/0disoft/relaydock/internal/transport/controlhttp"
 )
 
 func main() {

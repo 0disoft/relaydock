@@ -8,11 +8,11 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/your-org/ai-runtime-gateway/internal/buildinfo"
-	"github.com/your-org/ai-runtime-gateway/internal/observability"
-	"github.com/your-org/ai-runtime-gateway/internal/outbox/webhooksink"
-	"github.com/your-org/ai-runtime-gateway/internal/serverutil"
-	"github.com/your-org/ai-runtime-gateway/internal/transport/apiutil"
+	"github.com/0disoft/relaydock/internal/buildinfo"
+	"github.com/0disoft/relaydock/internal/observability"
+	"github.com/0disoft/relaydock/internal/outbox/webhooksink"
+	"github.com/0disoft/relaydock/internal/serverutil"
+	"github.com/0disoft/relaydock/internal/transport/apiutil"
 )
 
 func main() {

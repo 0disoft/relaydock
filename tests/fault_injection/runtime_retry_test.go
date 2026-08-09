@@ -8,12 +8,12 @@ import (
 	"testing"
 	"time"
 
-	"github.com/your-org/ai-runtime-gateway/internal/protocol/canonical"
-	"github.com/your-org/ai-runtime-gateway/internal/protocol/defaults"
-	"github.com/your-org/ai-runtime-gateway/internal/protocol/stream"
-	"github.com/your-org/ai-runtime-gateway/internal/provider"
-	"github.com/your-org/ai-runtime-gateway/internal/routing"
-	gatewayruntime "github.com/your-org/ai-runtime-gateway/internal/runtime"
+	"github.com/0disoft/relaydock/internal/protocol/canonical"
+	"github.com/0disoft/relaydock/internal/protocol/defaults"
+	"github.com/0disoft/relaydock/internal/protocol/stream"
+	"github.com/0disoft/relaydock/internal/provider"
+	"github.com/0disoft/relaydock/internal/routing"
+	gatewayruntime "github.com/0disoft/relaydock/internal/runtime"
 )
 
 func TestPreSemanticFailureDoesNotLeakAttemptEvents(t *testing.T) {

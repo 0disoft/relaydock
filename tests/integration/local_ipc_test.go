@@ -8,11 +8,11 @@ import (
 	"testing"
 	"time"
 
-	expertapp "github.com/your-org/ai-runtime-gateway/internal/expert/app"
-	"github.com/your-org/ai-runtime-gateway/internal/idgen"
-	"github.com/your-org/ai-runtime-gateway/internal/localipc"
-	"github.com/your-org/ai-runtime-gateway/internal/localruntime"
-	"github.com/your-org/ai-runtime-gateway/internal/mcpcontract"
+	expertapp "github.com/0disoft/relaydock/internal/expert/app"
+	"github.com/0disoft/relaydock/internal/idgen"
+	"github.com/0disoft/relaydock/internal/localipc"
+	"github.com/0disoft/relaydock/internal/localruntime"
+	"github.com/0disoft/relaydock/internal/mcpcontract"
 )
 
 func TestLocalIPCRoundTrip(t *testing.T) {

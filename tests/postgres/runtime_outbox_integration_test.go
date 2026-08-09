@@ -14,14 +14,14 @@ import (
 	"testing"
 	"time"
 
-	dbassets "github.com/your-org/ai-runtime-gateway/db"
-	"github.com/your-org/ai-runtime-gateway/internal/control/snapshot"
-	"github.com/your-org/ai-runtime-gateway/internal/core"
-	"github.com/your-org/ai-runtime-gateway/internal/outbox"
-	"github.com/your-org/ai-runtime-gateway/internal/persistence/migrate"
-	persistencepostgres "github.com/your-org/ai-runtime-gateway/internal/persistence/postgres"
-	"github.com/your-org/ai-runtime-gateway/internal/protocol/stream"
-	runtimegateway "github.com/your-org/ai-runtime-gateway/internal/runtime"
+	dbassets "github.com/0disoft/relaydock/db"
+	"github.com/0disoft/relaydock/internal/control/snapshot"
+	"github.com/0disoft/relaydock/internal/core"
+	"github.com/0disoft/relaydock/internal/outbox"
+	"github.com/0disoft/relaydock/internal/persistence/migrate"
+	persistencepostgres "github.com/0disoft/relaydock/internal/persistence/postgres"
+	"github.com/0disoft/relaydock/internal/protocol/stream"
+	runtimegateway "github.com/0disoft/relaydock/internal/runtime"
 )
 
 const disposableDatabaseAcknowledgement = "I_UNDERSTAND_THIS_DATABASE_WILL_BE_TRUNCATED"

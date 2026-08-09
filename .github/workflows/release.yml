@@ -175,7 +175,7 @@ jobs:
           mkdir -p dist
           commit="${GITHUB_SHA}"
           built_at="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
-          ldflags="-s -w -X github.com/your-org/ai-runtime-gateway/internal/buildinfo.Version=${VERSION} -X github.com/your-org/ai-runtime-gateway/internal/buildinfo.Commit=${commit} -X github.com/your-org/ai-runtime-gateway/internal/buildinfo.BuildTime=${built_at}"
+          ldflags="-s -w -X github.com/0disoft/relaydock/internal/buildinfo.Version=${VERSION} -X github.com/0disoft/relaydock/internal/buildinfo.Commit=${commit} -X github.com/0disoft/relaydock/internal/buildinfo.BuildTime=${built_at}"
           for command in gatewayd controld expert-brokerd outboxd headless mcp-bridge dbmigrate projectctl keyctl controlctl mcptokenctl outboxctl webhook-sink expertstorectl releasepack; do
             extension=""
             if [[ "$GOOS" == windows ]]; then extension=".exe"; fi
@@ -242,9 +242,9 @@ jobs:
           bun --cwd frontend run build
           New-Item -ItemType Directory -Force -Path bin,dist | Out-Null
           $builtAt = [DateTime]::UtcNow.ToString('yyyy-MM-ddTHH:mm:ssZ')
-          $ldflags = "-s -w -H windowsgui -X github.com/your-org/ai-runtime-gateway/internal/buildinfo.Version=$env:VERSION -X github.com/your-org/ai-runtime-gateway/internal/buildinfo.Commit=$env:GITHUB_SHA -X github.com/your-org/ai-runtime-gateway/internal/buildinfo.BuildTime=$builtAt"
+          $ldflags = "-s -w -H windowsgui -X github.com/0disoft/relaydock/internal/buildinfo.Version=$env:VERSION -X github.com/0disoft/relaydock/internal/buildinfo.Commit=$env:GITHUB_SHA -X github.com/0disoft/relaydock/internal/buildinfo.BuildTime=$builtAt"
           go build -trimpath -tags production -ldflags $ldflags -o bin/ai-runtime-gateway.exe .
-          $bridgeFlags = "-s -w -X github.com/your-org/ai-runtime-gateway/internal/buildinfo.Version=$env:VERSION -X github.com/your-org/ai-runtime-gateway/internal/buildinfo.Commit=$env:GITHUB_SHA -X github.com/your-org/ai-runtime-gateway/internal/buildinfo.BuildTime=$builtAt"
+          $bridgeFlags = "-s -w -X github.com/0disoft/relaydock/internal/buildinfo.Version=$env:VERSION -X github.com/0disoft/relaydock/internal/buildinfo.Commit=$env:GITHUB_SHA -X github.com/0disoft/relaydock/internal/buildinfo.BuildTime=$builtAt"
           go build -trimpath -ldflags $bridgeFlags -o bin/mcp-bridge.exe ./cmd/mcp-bridge
           $stage = "dist/ai-runtime-gateway-$env:VERSION-windows-amd64"
           New-Item -ItemType Directory -Force -Path $stage | Out-Null

@@ -10,7 +10,7 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/your-org/ai-runtime-gateway/internal/core"
+	"github.com/0disoft/relaydock/internal/core"
 )
 
 type encryptedValue struct {

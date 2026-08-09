@@ -8,13 +8,13 @@ import (
 	"sync"
 	"time"
 
-	"github.com/your-org/ai-runtime-gateway/internal/core"
-	expertapp "github.com/your-org/ai-runtime-gateway/internal/expert/app"
-	"github.com/your-org/ai-runtime-gateway/internal/expert/consultation"
-	"github.com/your-org/ai-runtime-gateway/internal/expert/contextpack"
-	"github.com/your-org/ai-runtime-gateway/internal/expert/resultcontract"
-	"github.com/your-org/ai-runtime-gateway/internal/idgen"
-	"github.com/your-org/ai-runtime-gateway/internal/provider"
+	"github.com/0disoft/relaydock/internal/core"
+	expertapp "github.com/0disoft/relaydock/internal/expert/app"
+	"github.com/0disoft/relaydock/internal/expert/consultation"
+	"github.com/0disoft/relaydock/internal/expert/contextpack"
+	"github.com/0disoft/relaydock/internal/expert/resultcontract"
+	"github.com/0disoft/relaydock/internal/idgen"
+	"github.com/0disoft/relaydock/internal/provider"
 )
 
 type Executor interface {

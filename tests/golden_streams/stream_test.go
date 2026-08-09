@@ -3,7 +3,7 @@ package goldenstreams_test
 import (
 	"testing"
 
-	"github.com/your-org/ai-runtime-gateway/internal/protocol/stream"
+	"github.com/0disoft/relaydock/internal/protocol/stream"
 )
 
 func TestParallelToolCallDeltas(t *testing.T) {

@@ -5,11 +5,11 @@ param(
 )
 
 $ErrorActionPreference = "Stop"
-$OldModule = "github.com/your-org/ai-runtime-gateway"
+$OldModule = "github.com/0disoft/relaydock"
 $TextExtensions = @(
     ".go", ".mod", ".work", ".sum", ".proto", ".sql", ".ts", ".js", ".svelte",
     ".json", ".yaml", ".yml", ".toml", ".md", ".html", ".css", ".ps1", ".sh",
-    ".example", ".gateway", ".control", ".expert"
+    ".example", ".gateway", ".control", ".expert", ".outbox", ".webhook-sink"
 )
 $TextNames = @("Dockerfile", "Caddyfile", "Taskfile.yml", ".env.example", ".gitignore", ".gitattributes")
 

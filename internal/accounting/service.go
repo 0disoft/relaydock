@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/your-org/ai-runtime-gateway/internal/core"
-	"github.com/your-org/ai-runtime-gateway/internal/idgen"
+	"github.com/0disoft/relaydock/internal/core"
+	"github.com/0disoft/relaydock/internal/idgen"
 )
 
 type PriceCatalog interface {

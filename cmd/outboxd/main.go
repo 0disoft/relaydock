@@ -15,14 +15,14 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/your-org/ai-runtime-gateway/internal/buildinfo"
-	"github.com/your-org/ai-runtime-gateway/internal/core"
-	"github.com/your-org/ai-runtime-gateway/internal/idgen"
-	"github.com/your-org/ai-runtime-gateway/internal/observability"
-	"github.com/your-org/ai-runtime-gateway/internal/outbox"
-	"github.com/your-org/ai-runtime-gateway/internal/persistence/postgres"
-	"github.com/your-org/ai-runtime-gateway/internal/serverutil"
-	"github.com/your-org/ai-runtime-gateway/internal/transport/apiutil"
+	"github.com/0disoft/relaydock/internal/buildinfo"
+	"github.com/0disoft/relaydock/internal/core"
+	"github.com/0disoft/relaydock/internal/idgen"
+	"github.com/0disoft/relaydock/internal/observability"
+	"github.com/0disoft/relaydock/internal/outbox"
+	"github.com/0disoft/relaydock/internal/persistence/postgres"
+	"github.com/0disoft/relaydock/internal/serverutil"
+	"github.com/0disoft/relaydock/internal/transport/apiutil"
 )
 
 func main() {

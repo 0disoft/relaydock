@@ -17,7 +17,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/your-org/ai-runtime-gateway/internal/core"
+	"github.com/0disoft/relaydock/internal/core"
 )
 
 type Manifest struct {

@@ -8,7 +8,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/your-org/ai-runtime-gateway/internal/core"
+	"github.com/0disoft/relaydock/internal/core"
 )
 
 func New(secret []byte, audience string) (*Service, error) {

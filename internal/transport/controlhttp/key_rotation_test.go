@@ -7,7 +7,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/your-org/ai-runtime-gateway/internal/control/snapshot"
+	"github.com/0disoft/relaydock/internal/control/snapshot"
 )
 
 func TestControlStartupResignsUsableSnapshotWhenActiveKeyRotates(t *testing.T) {

@@ -1,4 +1,4 @@
-module github.com/your-org/ai-runtime-gateway
+module github.com/0disoft/relaydock
 
 go 1.26
 

@@ -7,8 +7,8 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/your-org/ai-runtime-gateway/internal/localipc"
-	"github.com/your-org/ai-runtime-gateway/internal/localruntime"
+	"github.com/0disoft/relaydock/internal/localipc"
+	"github.com/0disoft/relaydock/internal/localruntime"
 )
 
 func main() {

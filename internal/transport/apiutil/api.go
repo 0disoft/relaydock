@@ -7,7 +7,7 @@ import (
 	"io"
 	"net/http"
 
-	"github.com/your-org/ai-runtime-gateway/internal/core"
+	"github.com/0disoft/relaydock/internal/core"
 )
 
 const DefaultMaximumBodyBytes int64 = 8 << 20
