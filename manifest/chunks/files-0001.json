@@ -117,8 +117,8 @@
     },
     {
       "path": ".github/workflows/release.yml",
-      "size": 10040,
-      "sha256": "33af1ef9bf3471c176afd1b204e06d242c1ed554a572af301687c6161cf27fb8",
+      "size": 10262,
+      "sha256": "1f5b54fa2d8b74ec12e9405dd344d465b616491c96596bf93100ef5ffde3b6fd",
       "mode": "0644"
     },
     {
@@ -141,8 +141,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "size": 13812,
-      "sha256": "e0127d146703162f8e603a155bf15dc2395b6e33a6f5f6e5208562039c2482e1",
+      "size": 13937,
+      "sha256": "781b7a41f8e66d048c06dffd106eafccd404a6c226c6139801aceb0dec66458f",
       "mode": "0644"
     },
     {
@@ -183,8 +183,8 @@
     },
     {
       "path": "TREE.md",
-      "size": 22374,
-      "sha256": "9ba350b4b907101069b335985418a052c6d64e6eec0293fd898bc555092de5d6",
+      "size": 22409,
+      "sha256": "8003f8a3aa661868cd32865101e3d6157d095b2fa1213506e65575915ceb8c60",
       "mode": "0644"
     },
     {
@@ -345,8 +345,8 @@
     },
     {
       "path": "cmd/releasepack/main.go",
-      "size": 3263,
-      "sha256": "f7f3298cef270d7622a11a917ebc06a30dc2452c6daede9d23905a6dbc1fd18e",
+      "size": 3841,
+      "sha256": "28100abfcf49979ecdb75690ec56ab693bd25849f0aabad137b56895fed83487",
       "mode": "0644"
     },
     {
@@ -621,8 +621,8 @@
     },
     {
       "path": "docs/15-build-and-release.md",
-      "size": 4826,
-      "sha256": "423fc994d101dde63e3fa7aed07d36362293a0660db9b05463febb1d0054a809",
+      "size": 5050,
+      "sha256": "523b95a49041ddd19a04b73e90a586ec5eaf5116be75e93b220ccf908a2973f6",
       "mode": "0644"
     },
     {

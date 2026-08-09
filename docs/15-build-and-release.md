@@ -16,6 +16,8 @@
 
 `go.sum`과 Bun lockfile은 네트워크가 연결된 기준 toolchain에서 생성하고 release commit에 포함한다. lockfile이 없거나 generated code가 dirty인 상태에서는 정식 release를 만들지 않는다.
 
+`releasepack readiness --root . --version <version>`은 version, public Go module, `go.sum`, `bun.lock`, `LICENSE`, pending-license 제거와 source manifest 일치를 expensive release job 전에 fail-closed 검사한다.
+
 ## Toolchain pins
 
 - Go: `go.mod` 기준선

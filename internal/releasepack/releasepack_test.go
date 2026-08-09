@@ -55,6 +55,30 @@ func TestDefaultArchivePrefixUsesRelayDockIdentity(t *testing.T) {
 	}
 }
 
+func TestReleaseReadinessFailsClosedAndAcceptsCompleteInputs(t *testing.T) {
+	t.Parallel()
+	root := t.TempDir()
+	mustWrite(t, filepath.Join(root, "VERSION"), "0.5.1-dev\n")
+	mustWrite(t, filepath.Join(root, "go.mod"), "module github.com/0disoft/relaydock\n\ngo 1.26\n")
+	mustWrite(t, filepath.Join(root, fileSizeExceptionConfig), `{"version":1,"maxBytes":40960,"exceptions":[]}`)
+	if _, err := CheckReleaseReadiness(root, "0.5.1-dev"); err == nil || !strings.Contains(err.Error(), "go.sum") || !strings.Contains(err.Error(), "bun.lock") || !strings.Contains(err.Error(), "LICENSE") {
+		t.Fatalf("expected missing release input blockers, got %v", err)
+	}
+	mustWrite(t, filepath.Join(root, "go.sum"), "example.invalid/module v1.0.0 h1:test\n")
+	mustWrite(t, filepath.Join(root, "bun.lock"), "{\n  \"lockfileVersion\": 1\n}\n")
+	mustWrite(t, filepath.Join(root, "LICENSE"), "test license\n")
+	if _, err := Build(BuildOptions{Root: root, OutputZIP: filepath.Join(t.TempDir(), "repo.zip"), GeneratedAt: time.Unix(0, 0).UTC()}); err != nil {
+		t.Fatal(err)
+	}
+	report, err := CheckReleaseReadiness(root, "0.5.1-dev")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if report.Version != "0.5.1-dev" || report.Module != publicModulePath || report.Files == 0 {
+		t.Fatalf("unexpected readiness report: %+v", report)
+	}
+}
+
 func TestCanonicalFileModeForOS(t *testing.T) {
 	t.Parallel()
 	tests := []struct {

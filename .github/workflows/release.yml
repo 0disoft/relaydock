@@ -35,6 +35,11 @@ jobs:
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: 1.3.14
+      - name: Fail closed on incomplete release inputs
+        shell: bash
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: go run ./cmd/releasepack readiness --root . --version "$VERSION"
       - name: Enforce repository file-size policy
         run: go run ./cmd/releasepack audit --root .
       - name: Test non-desktop core

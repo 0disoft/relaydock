@@ -23,6 +23,8 @@ func main() {
 		err = runVerify(os.Args[2:])
 	case "build":
 		err = runBuild(os.Args[2:])
+	case "readiness":
+		err = runReadiness(os.Args[2:])
 	default:
 		usage()
 		os.Exit(2)
@@ -31,6 +33,21 @@ func main() {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
+}
+
+func runReadiness(arguments []string) error {
+	flags := flag.NewFlagSet("readiness", flag.ContinueOnError)
+	root := flags.String("root", ".", "repository root")
+	version := flags.String("version", "", "expected release version")
+	if err := flags.Parse(arguments); err != nil {
+		return err
+	}
+	report, err := releasepack.CheckReleaseReadiness(*root, *version)
+	if err != nil {
+		return err
+	}
+	fmt.Printf("release ready: version=%s module=%s files=%d\n", report.Version, report.Module, report.Files)
+	return nil
 }
 
 func runAudit(arguments []string) error {
@@ -97,7 +114,7 @@ func runBuild(arguments []string) error {
 }
 
 func usage() {
-	fmt.Fprintln(os.Stderr, "usage: releasepack <audit|verify|build> [flags]")
+	fmt.Fprintln(os.Stderr, "usage: releasepack <audit|verify|build|readiness> [flags]")
 }
 
 func stringTrimSpace(value []byte) string {

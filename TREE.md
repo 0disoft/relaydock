@@ -471,6 +471,7 @@ relaydock
 │   │   ├── json.go
 │   │   ├── manifest.go
 │   │   ├── policy.go
+│   │   ├── readiness.go
 │   │   ├── releasepack_test.go
 │   │   ├── replace_unix.go
 │   │   ├── replace_windows.go

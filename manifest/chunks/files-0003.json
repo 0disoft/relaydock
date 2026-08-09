@@ -218,9 +218,15 @@
       "mode": "0644"
     },
     {
+      "path": "internal/releasepack/readiness.go",
+      "size": 2211,
+      "sha256": "5dabb991029be384e9487cad553505e0a6b0361d2cb93673c1544979d1bc9d13",
+      "mode": "0644"
+    },
+    {
       "path": "internal/releasepack/releasepack_test.go",
-      "size": 7938,
-      "sha256": "4fb16cc575de99914fada65d74ad04267554c83a23d5150d70ee5c4b3e6ab54a",
+      "size": 9239,
+      "sha256": "2341d400287fef68585b05c20048b8bf7b51f1f77c394a2690c338aae0650317",
       "mode": "0644"
     },
     {
