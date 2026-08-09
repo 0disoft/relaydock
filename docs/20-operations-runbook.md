@@ -293,4 +293,4 @@ go run ./cmd/releasepack build --root . --output ../relaydock-source.zip
 go run ./cmd/releasepack verify --root .
 ```
 
-40 KiB를 넘는 파일을 발견했다고 무조건 예외에 넣지 않는다. 수작업 코드와 문서는 책임별로 분리한다. 외부 conformance binary처럼 byte identity가 계약인 파일만 `config/file-size-exceptions.json`에 이유와 함께 등록한다.
+40 KiB를 넘는 파일을 발견했다고 무조건 예외에 넣지 않는다. 수작업 코드와 문서는 책임별로 분리한다. 외부 conformance binary나 package-manager가 단일 파일로 소유하는 canonical lock처럼 분할할 수 없는 파일만 `config/file-size-exceptions.json`에 이유와 함께 등록한다.

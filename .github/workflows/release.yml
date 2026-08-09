@@ -51,8 +51,8 @@ jobs:
           go list ./internal/... ./tests/... | grep -v '/internal/desktopwails$' > /tmp/test-packages.txt
           xargs go test -race < /tmp/test-packages.txt
       - run: bun install --frozen-lockfile
-      - run: bun --cwd frontend run test && bun --cwd frontend run check
-      - run: bun --cwd web/control-console run check
+      - run: bun run --cwd frontend test && bun run --cwd frontend check
+      - run: bun run --cwd web/control-console check
 
   contracts:
     needs: validate
@@ -283,8 +283,8 @@ jobs:
         with:
           bun-version: 1.3.14
       - run: bun install --frozen-lockfile
-      - run: bun --cwd frontend run build
-      - run: bun --cwd web/control-console run build
+      - run: bun run --cwd frontend build
+      - run: bun run --cwd web/control-console build
       - name: Archive web assets
         shell: bash
         run: |
@@ -441,9 +441,9 @@ jobs:
         run: |
           bun install --frozen-lockfile
           wails3 generate bindings
-          bun --cwd frontend run test
-          bun --cwd frontend run check
-          bun --cwd frontend run build
+          bun run --cwd frontend test
+          bun run --cwd frontend check
+          bun run --cwd frontend build
           New-Item -ItemType Directory -Force -Path bin,dist | Out-Null
           $builtAt = [DateTime]::UtcNow.ToString('yyyy-MM-ddTHH:mm:ssZ')
           $ldflags = "-s -w -H windowsgui -X github.com/0disoft/relaydock/internal/buildinfo.Version=$env:VERSION -X github.com/0disoft/relaydock/internal/buildinfo.Commit=$env:GITHUB_SHA -X github.com/0disoft/relaydock/internal/buildinfo.BuildTime=$builtAt"

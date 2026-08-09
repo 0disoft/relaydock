@@ -142,7 +142,7 @@ cmd/expert-brokerd
 
 ## 저장소 크기와 로컬 상태 운영
 
-수작업 코드, 문서, 설정, 생성된 manifest 조각을 포함한 저장소 파일은 기본적으로 **40 KiB 이하**여야 한다. 예외가 정말 필요한 바이너리 fixture만 `config/file-size-exceptions.json`에 경로와 이유를 기록한다. 예외가 사라졌는데 설정만 남으면 감사도 실패한다.
+수작업 코드, 문서, 설정, 생성된 manifest 조각을 포함한 저장소 파일은 기본적으로 **40 KiB 이하**여야 한다. 분할할 수 없는 upstream byte fixture나 package-manager lockfile만 `config/file-size-exceptions.json`에 경로와 이유를 기록한다. 예외가 사라졌는데 설정만 남으면 감사도 실패한다.
 
 ```powershell
 go run ./cmd/releasepack audit --root .

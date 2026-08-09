@@ -15,6 +15,13 @@
 - updater signer와 runtime verifier가 하나의 canonical payload를 공유하고 strict JSON·no-overwrite manifest 발행을 사용하도록 연결했다.
 - platform bundle과 Windows release workflow가 pending 문서 대신 최종 `LICENSE`만 package하도록 fail-closed 경계를 맞췄다.
 - 저장소 전체와 배포 산출물을 Apache-2.0으로 확정하고 비공개 managed service 코드는 별도 저장소 경계로 분리했다.
+- Go·Bun dependency lock을 생성하고 Bun lifecycle script trust를 빈 allowlist로 고정했다.
+- 실제 Bun workspace script 문법을 사용하고 frontend build의 거짓 양성을 회귀 검사로 차단했다.
+- desktop bridge를 Wails asset-server 전용 virtual import에서 bundler-compatible `@wailsio/runtime`으로 전환했다.
+- Windows local Expert state와 atomic files에 상속을 끊은 user·SYSTEM·administrator 전용 DACL을 적용했다.
+- outbox status failure가 내부 storage error를 노출하지 않는 안정된 503 envelope를 반환하도록 수정했다.
+- Bun 1.3.14 package-manager identity와 TypeScript 7 native compiler를 고정하고 `svelte-check` 기반 실제 frontend type gate를 추가했다.
+- source packer가 루트 packaging source는 보존하면서 nested frontend build·typecheck output을 제외하도록 수정했다.
 - CI와 release의 Go module resolution을 read-only로, Bun 설치를 루트 workspace `bun.lock` 기반 frozen install로 통일했다.
 - 모든 service Dockerfile이 `go.sum`을 필수 입력으로 사용하고 read-only module resolution과 non-root runtime을 유지하도록 고정했다.
 - service image의 Go buildinfo와 OCI labels에 동일한 version·commit·build time release envelope를 강제했다.

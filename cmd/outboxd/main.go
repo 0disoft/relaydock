@@ -233,7 +233,10 @@ func healthHandler(repository outbox.AdminRepository, configuration configuratio
 		defer cancel()
 		status, err := repository.Status(ctx, time.Now().UTC())
 		if err != nil {
-			apiutil.WriteError(w, http.StatusServiceUnavailable, "outbox_status_unavailable", err.Error())
+			apiutil.WriteJSON(w, http.StatusServiceUnavailable, apiutil.ErrorBody{Error: apiutil.ErrorDetail{
+				Code:    "outbox_status_unavailable",
+				Message: "outbox status is unavailable",
+			}})
 			return
 		}
 		apiutil.WriteJSON(w, http.StatusOK, map[string]any{

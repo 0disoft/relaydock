@@ -14,6 +14,6 @@ go test -count=1 ./cmd/... ./db ./internal/... ./tests/...
 go test -race -count=1 ./internal/... ./tests/...
 go vet ./cmd/... ./db ./internal/... ./tests/...
 
-bun --cwd frontend run test
-bun --cwd frontend run check
-bun --cwd web/control-console run check
+bun run --cwd frontend test
+bun run --cwd frontend check
+bun run --cwd web/control-console check

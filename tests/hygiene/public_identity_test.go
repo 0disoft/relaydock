@@ -244,6 +244,47 @@ func TestCIUsesFrozenDependencyResolution(t *testing.T) {
 	}
 }
 
+func TestBunWorkspaceCommandsDoNotExitThroughHelp(t *testing.T) {
+	t.Parallel()
+	root := filepath.Join("..", "..")
+	for _, relative := range []string{
+		"package.json",
+		"Taskfile.yml",
+		"scripts/check.ps1",
+		"scripts/check.sh",
+		".github/workflows/ci.yml",
+		".github/workflows/release.yml",
+	} {
+		relative := relative
+		t.Run(relative, func(t *testing.T) {
+			t.Parallel()
+			raw, err := os.ReadFile(filepath.Join(root, filepath.FromSlash(relative)))
+			if err != nil {
+				t.Fatal(err)
+			}
+			if strings.Contains(string(raw), "bun --cwd") {
+				t.Error("legacy Bun workspace syntax prints help and can exit successfully without running the script")
+			}
+		})
+	}
+}
+
+func TestDesktopUsesBundlerCompatibleWailsRuntime(t *testing.T) {
+	t.Parallel()
+	root := filepath.Join("..", "..")
+	raw, err := os.ReadFile(filepath.Join(root, "frontend", "src", "lib", "wails-services.ts"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	content := string(raw)
+	if strings.Contains(content, "/wails/runtime.js") {
+		t.Error("desktop source imports the Wails asset-server virtual module instead of the bundler runtime")
+	}
+	if !strings.Contains(content, "from '@wailsio/runtime'") {
+		t.Error("desktop source does not use the Wails npm runtime required by standalone Vite builds")
+	}
+}
+
 func TestContainerBuildsRequireGoChecksums(t *testing.T) {
 	t.Parallel()
 	root := filepath.Join("..", "..")

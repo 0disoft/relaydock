@@ -1,4 +1,4 @@
-import { Call as $Call } from '/wails/runtime.js';
+import { Call as $Call } from '@wailsio/runtime';
 import type {
   ConsultationCreateInput,
   ConsultationSummary,
@@ -11,13 +11,17 @@ import type {
 
 const prefix = 'github.com/0disoft/relaydock/internal/desktopwails';
 
+function call<T>(methodName: string, ...args: unknown[]): Promise<T> {
+  return $Call.ByName(methodName, ...args);
+}
+
 export const RuntimeService = {
-  status: () => $Call.ByName<RuntimeStatus>(`${prefix}.RuntimeService.Status`),
-  listProviders: () => $Call.ByName<ProviderSummary[]>(`${prefix}.RuntimeService.ListProviders`),
-  startGateway: (port: number) => $Call.ByName<void>(`${prefix}.RuntimeService.StartLocalGateway`, port),
-  stopGateway: () => $Call.ByName<void>(`${prefix}.RuntimeService.StopLocalGateway`),
+  status: () => call<RuntimeStatus>(`${prefix}.RuntimeService.Status`),
+  listProviders: () => call<ProviderSummary[]>(`${prefix}.RuntimeService.ListProviders`),
+  startGateway: (port: number) => call<void>(`${prefix}.RuntimeService.StartLocalGateway`, port),
+  stopGateway: () => call<void>(`${prefix}.RuntimeService.StopLocalGateway`),
   mcpConfigSnippet: (bridgePath: string) =>
-    $Call.ByName<string>(`${prefix}.RuntimeService.MCPConfigSnippet`, bridgePath)
+    call<string>(`${prefix}.RuntimeService.MCPConfigSnippet`, bridgePath)
 };
 
 export const ConsultationService = {
@@ -29,32 +33,32 @@ export const ConsultationService = {
     maximumBytes: number;
     attempts: unknown[];
     openQuestions: string[];
-  }) => $Call.ByName<ContextPackRaw>(`${prefix}.ConsultationService.PreviewContext`, request),
+  }) => call<ContextPackRaw>(`${prefix}.ConsultationService.PreviewContext`, request),
   create: (input: ConsultationCreateInput) =>
-    $Call.ByName<{ consultation: ConsultationSummary; contextPack: ContextPackRaw }>(
+    call<{ consultation: ConsultationSummary; contextPack: ContextPackRaw }>(
       `${prefix}.ConsultationService.Create`,
       input
     ),
   list: (limit: number) =>
-    $Call.ByName<ConsultationSummary[]>(`${prefix}.ConsultationService.List`, limit),
+    call<ConsultationSummary[]>(`${prefix}.ConsultationService.List`, limit),
   approve: (id: string) =>
-    $Call.ByName<ConsultationSummary>(`${prefix}.ConsultationService.Approve`, id),
+    call<ConsultationSummary>(`${prefix}.ConsultationService.Approve`, id),
   cancel: (id: string) =>
-    $Call.ByName<ConsultationSummary>(`${prefix}.ConsultationService.Cancel`, id),
+    call<ConsultationSummary>(`${prefix}.ConsultationService.Cancel`, id),
   runAPIExpert: (consultationId: string, model = '', reasoningMode = 'pro', reasoningEffort = 'max') =>
-    $Call.ByName<ConsultationSummary>(`${prefix}.ConsultationService.RunAPIExpert`, {
+    call<ConsultationSummary>(`${prefix}.ConsultationService.RunAPIExpert`, {
       consultationId,
       model,
       reasoningMode,
       reasoningEffort
     }),
   createWebHandoff: (consultationId: string) =>
-    $Call.ByName<WebHandoff>(`${prefix}.ConsultationService.CreateWebHandoff`, consultationId),
+    call<WebHandoff>(`${prefix}.ConsultationService.CreateWebHandoff`, consultationId),
   importWebResult: (consultationId: string, payload: string) =>
-    $Call.ByName<ConsultationSummary>(`${prefix}.ConsultationService.ImportWebResult`, consultationId, payload)
+    call<ConsultationSummary>(`${prefix}.ConsultationService.ImportWebResult`, consultationId, payload)
 };
 
 export const SettingsService = {
-  get: () => $Call.ByName<Settings>(`${prefix}.SettingsService.Get`),
-  save: (settings: Settings) => $Call.ByName<void>(`${prefix}.SettingsService.Save`, settings)
+  get: () => call<Settings>(`${prefix}.SettingsService.Get`),
+  save: (settings: Settings) => call<void>(`${prefix}.SettingsService.Save`, settings)
 };

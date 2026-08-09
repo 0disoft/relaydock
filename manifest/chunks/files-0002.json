@@ -3,8 +3,14 @@
   "files": [
     {
       "path": "go.mod",
-      "size": 296,
-      "sha256": "d73fd8e1065acf9613350af1e9773860d00e513d9ec4d5794962c8d3bc3867a7",
+      "size": 1153,
+      "sha256": "86c03980dc7deb7b9c4237d6f1dcea1c276ab7dc9a068024185966ed5b4c77af",
+      "mode": "0644"
+    },
+    {
+      "path": "go.sum",
+      "size": 6965,
+      "sha256": "12a8bdb7db89b3a25160debe064b680954e6b3df20c2d868c446c0650196864d",
       "mode": "0644"
     },
     {
@@ -915,8 +921,20 @@
     },
     {
       "path": "internal/persistence/atomicfile/file.go",
-      "size": 3498,
-      "sha256": "1d9af4da3bb2edbb8c6930605a1221cb3ce587befe8cc7c218473e0919799d1e",
+      "size": 3650,
+      "sha256": "5384eb83d3030f2cc9cd6a8895ae67fb336f1166a0a7cc8349a057be76ae7b5d",
+      "mode": "0644"
+    },
+    {
+      "path": "internal/persistence/atomicfile/permissions_unix.go",
+      "size": 114,
+      "sha256": "8e98cf1098f31a8ac5b1ce7b330c1cedf72f87211a54779ffa6e4c72e71a169a",
+      "mode": "0644"
+    },
+    {
+      "path": "internal/persistence/atomicfile/permissions_windows.go",
+      "size": 996,
+      "sha256": "a3d6f7384d5c877a7c15acbd27de50a60c792e310679f557f996e2d60c3784b8",
       "mode": "0644"
     },
     {
@@ -941,24 +959,6 @@
       "path": "internal/persistence/migrate/migration_test.go",
       "size": 1358,
       "sha256": "96ec4f88d6b4cd2a4245ece7c15b342137626c2e159b5466582c5d04d16d74dc",
-      "mode": "0644"
-    },
-    {
-      "path": "internal/persistence/migrate/runner.go",
-      "size": 7845,
-      "sha256": "1d6aa75a2ada5f4b7df68e99d9cc3aac8b541ff6bee1f6da7c2e73a8df72faf6",
-      "mode": "0644"
-    },
-    {
-      "path": "internal/persistence/objectstore/memory.go",
-      "size": 2422,
-      "sha256": "96c63d2ceeb2aa7ecf8c1c045736699b9ff563a5a7600cf3ca0cbcb5a3a8fbea",
-      "mode": "0644"
-    },
-    {
-      "path": "internal/persistence/objectstore/store.go",
-      "size": 336,
-      "sha256": "860ca6fbf12c3ec44b7120373b231193afac62d210f66f799b72727b0297721f",
       "mode": "0644"
     }
   ]

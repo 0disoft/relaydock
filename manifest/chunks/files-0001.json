@@ -106,7 +106,7 @@
     {
       "path": ".github/workflows/ci.yml",
       "size": 4404,
-      "sha256": "5cd6afc9f38e96fbe3456773eeb00d4d564f7320d6a49670fe43caf3811ae127",
+      "sha256": "6f0b91c0e2a79c4bdfd680504cdbc0579d28df04bf6a9aaaa337758bde6ae250",
       "mode": "0644"
     },
     {
@@ -118,19 +118,19 @@
     {
       "path": ".github/workflows/release.yml",
       "size": 19666,
-      "sha256": "4f6dda303839c429cad552bf1f24a37fec330aebb6253d435f0bc9e2a0379115",
+      "sha256": "53483d85b7067988d9879b1c13ff7a3b19ef6a78f616818487a9b222cdc59534",
       "mode": "0644"
     },
     {
       "path": ".gitignore",
-      "size": 764,
-      "sha256": "79e5f00fced7de6527350530435fd8e2a250acce908fb3afdafa913dea283f65",
+      "size": 782,
+      "sha256": "9ae888d5235ddc5848dde09055babfe7e78138b5f0a62bfd6946d981661af41a",
       "mode": "0644"
     },
     {
       "path": ".ssealed/manifest.json",
       "size": 18269,
-      "sha256": "2775fd0c1733a6025d2ac4f207d26688ae52b6031aa402b1c53e594ec84ada73",
+      "sha256": "05759cd14d0b5289bc617068bc6d5b0439a93c141f9224276ffe60d6db3632c8",
       "mode": "0644"
     },
     {
@@ -141,8 +141,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "size": 15530,
-      "sha256": "87820ef756543cb10caf04022ce7cff0bc46e7bdb35ac00528c81755217a1697",
+      "size": 16412,
+      "sha256": "c4c9b24f60a307da62197adea8f4d0eb3ab60efb930504d14ab18477f18b2895",
       "mode": "0644"
     },
     {
@@ -177,8 +177,8 @@
     },
     {
       "path": "README.md",
-      "size": 18781,
-      "sha256": "8ec6d5048cfc0e7d65e02de3a155e9660f09889a61b1e020e6ff161ad181ce9a",
+      "size": 18804,
+      "sha256": "2f4e888a3d10f9c58818b766d5bbac149c3cbe5ed9da14516c9660fff9726baf",
       "mode": "0644"
     },
     {
@@ -189,20 +189,20 @@
     },
     {
       "path": "TREE.md",
-      "size": 22415,
-      "sha256": "7c7ee3479463101b0c866efd6f6d8d13c1e000d8590630ada9814952fa6d8660",
+      "size": 22616,
+      "sha256": "2a233b9677673f6f18b8708ef10365e1776f1565fb9844bfeec49b0913079046",
       "mode": "0644"
     },
     {
       "path": "Taskfile.yml",
       "size": 4461,
-      "sha256": "e1667deeb989f5de0885af0282b9334c5ed52f312e4c3fc1c889839608349d44",
+      "sha256": "1ec64542182981dde9788fd92dae759c1e9d27ed633b12c4871aac61fac91c11",
       "mode": "0644"
     },
     {
       "path": "VALIDATION.md",
-      "size": 11239,
-      "sha256": "433a7bfdf5dd4fc258569d7d395b75153633c78c43e2f47456ff5157565a32d4",
+      "size": 10785,
+      "sha256": "edd86c6fc42a264d1353dda992217d85e29d711f42d13abdec0182b5ce233a85",
       "mode": "0644"
     },
     {
@@ -257,6 +257,12 @@
       "path": "build/windows/Taskfile.yml",
       "size": 1295,
       "sha256": "41b52644c862c6ac619b068d2f359003b9185d0a7dabc5ef2252cb3d1631daf3",
+      "mode": "0644"
+    },
+    {
+      "path": "bun.lock",
+      "size": 60860,
+      "sha256": "28b576c6314cbda00bd09b41bb3917601a5f7fc22547600ec9f17015c89a39fb",
       "mode": "0644"
     },
     {
@@ -339,8 +345,8 @@
     },
     {
       "path": "cmd/outboxd/main.go",
-      "size": 11749,
-      "sha256": "46cc1b3571528ad2f0ba737422f1275d5856b52eef448cf1cc1a0fedc49a243e",
+      "size": 11846,
+      "sha256": "9f438239c29fb621112ec28a673a50ce41ad5d08dd52a023ad2c59c1247333cb",
       "mode": "0644"
     },
     {
@@ -369,8 +375,8 @@
     },
     {
       "path": "config/file-size-exceptions.json",
-      "size": 60,
-      "sha256": "e17a320222692098464e89a3ed3bfdf2d12600a57173a8724a65f3aaf5ada207",
+      "size": 239,
+      "sha256": "1addbe496cea60b4dab4c9bb3cb51a7270e39161f173fcdc70a6a37acff13e03",
       "mode": "0644"
     },
     {
@@ -657,8 +663,8 @@
     },
     {
       "path": "docs/20-operations-runbook.md",
-      "size": 12278,
-      "sha256": "d4149f56868eae9e83574f99013d167fceef7e9c74c6c7d56eb86575156b74d9",
+      "size": 12339,
+      "sha256": "f3f94d8b2780d155d1182c9168a26fafa155ad5613b35c227e4b3920bf2de75a",
       "mode": "0644"
     },
     {
@@ -699,8 +705,8 @@
     },
     {
       "path": "docs/27-repository-size-and-source-release.md",
-      "size": 3212,
-      "sha256": "78c1c6d49578d9414b15dd4a1f56183121c6be646c611b600027b33f416eb2cb",
+      "size": 3591,
+      "sha256": "60b76c5e987bc6a4eb399f5c22c828bfb26ac6a3ca71b6a41ff30cf7a827c12e",
       "mode": "0644"
     },
     {
@@ -855,8 +861,8 @@
     },
     {
       "path": "frontend/package.json",
-      "size": 480,
-      "sha256": "cc42f4fbe548be50908e26969ecac59b381fd5d1dbd6b79e71de81409f91edeb",
+      "size": 680,
+      "sha256": "93e5f284de583b696cce8ca2e087737b4812de3eade9dea8a309dd6902f2f919",
       "mode": "0644"
     },
     {
@@ -927,8 +933,8 @@
     },
     {
       "path": "frontend/src/lib/wails-services.ts",
-      "size": 2493,
-      "sha256": "1ac71a4c8d7302c592211c41a8ba2b7fa6e11d44378c43c5fee428c61416b613",
+      "size": 2490,
+      "sha256": "3893b6ed4cff91409f2a08eaf854332c03a2d57ff0d3d2ad7ecdf7344d3bccdf",
       "mode": "0644"
     },
     {
@@ -939,8 +945,8 @@
     },
     {
       "path": "frontend/src/pages/Architect.svelte",
-      "size": 6828,
-      "sha256": "e0330d80526094de41889a37fde8a0340dbfb63f419e439ae3f7f4c781cc7ce4",
+      "size": 6830,
+      "sha256": "20428ede88d4375d18c0c6718158ab9c41c330ef709c8d4d0504ff3641f1c66c",
       "mode": "0644"
     },
     {
@@ -980,15 +986,9 @@
       "mode": "0644"
     },
     {
-      "path": "frontend/src/wails-runtime.d.ts",
-      "size": 138,
-      "sha256": "681b72a5a6ed48e1383eba165598ea5574984245c164e0a6b30522b2ad4fe705",
-      "mode": "0644"
-    },
-    {
       "path": "frontend/tsconfig.json",
-      "size": 500,
-      "sha256": "5d317359917137c0a13b1f4a66be3f5f8ec59f0fb653e3f2f7a687458959d8f9",
+      "size": 641,
+      "sha256": "4555afbf2b8b716fbb2dfc9a18a79377ff62215a8999fc63dad31c091b1efc2d",
       "mode": "0644"
     },
     {

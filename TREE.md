@@ -194,8 +194,7 @@ relaydock
 │   │   ├── App.svelte
 │   │   ├── main.ts
 │   │   ├── styles.css
-│   │   ├── vite-env.d.ts
-│   │   └── wails-runtime.d.ts
+│   │   └── vite-env.d.ts
 │   ├── index.html
 │   ├── package.json
 │   ├── README.md
@@ -402,6 +401,8 @@ relaydock
 │   ├── persistence/
 │   │   ├── atomicfile/
 │   │   │   ├── file.go
+│   │   │   ├── permissions_unix.go
+│   │   │   ├── permissions_windows.go
 │   │   │   ├── replace_unix.go
 │   │   │   └── replace_windows.go
 │   │   ├── migrate/
@@ -597,6 +598,8 @@ relaydock
 │   │   └── runtime_outbox_integration_test.go
 │   ├── storage/
 │   │   ├── control_snapshot_store_test.go
+│   │   ├── file_permissions_unix_test.go
+│   │   ├── file_permissions_windows_test.go
 │   │   ├── local_expert_store_test.go
 │   │   └── stores_test.go
 │   ├── testdata/
@@ -626,11 +629,13 @@ relaydock
 ├── AGENTS.md
 ├── buf.gen.yaml
 ├── buf.yaml
+├── bun.lock
 ├── CHANGELOG.md
 ├── CHECKLIST.md
 ├── config.example.yaml
 ├── CONTRIBUTING.md
 ├── go.mod
+├── go.sum
 ├── go.work
 ├── IMPLEMENTATION_STATUS.md
 ├── LICENSE

@@ -4,14 +4,11 @@
 
 ## 배포 준비 판정
 
-**현재 판정은 release blocked다.** source review와 내부 개발을 계속할 수는 있지만 public source release, 바이너리 배포, container publication, desktop update channel 개방을 시작하지 않는다.
+**현재 판정은 repository release readiness 통과, external release blocked다.** source·license·dependency·local build gate는 통과했지만 hosted CI, signing key custody, registry와 실제 배포 환경 증거가 없으므로 public source release, binary/container publication, desktop update channel 개방은 아직 시작하지 않는다.
 
 라이선스 경계는 2026-08-09에 저장소 전체 Apache-2.0으로 확정했다. 루트 `LICENSE`와 `NOTICE`를 추가하고 `LICENSE-PENDING.md`를 제거했으며, 모든 휴대용 bundle이 두 파일을 함께 포함하도록 회귀 검사를 통과했다.
 
-현재 남은 repository-owned release readiness blocker는 다음 두 가지다.
-
-- `go.sum` 없음
-- 루트 Bun workspace의 `bun.lock` 없음
+`releasepack readiness --root . --version 0.5.1-dev`는 Go 1.26.4, `go.sum`, Bun 1.3.14 `bun.lock`, `LICENSE`, `NOTICE`, public module identity와 477개 source record의 현재 manifest를 확인하고 통과했다.
 
 이번 준비도 보강에서 다음 항목은 로컬 검증을 통과했다.
 
@@ -20,11 +17,12 @@
 - 여섯 service Dockerfile의 `go.sum` 필수 입력, read-only module resolution, non-root runtime 계약
 - release readiness·workflow·container hygiene 회귀 테스트
 - source manifest 재생성·검증과 ssealed strict doctor
+- Go 1.26.4 전체 package `go test -mod=readonly ./...`와 `go vet -mod=readonly ./...`
+- Bun 1.3.14 lock-only resolution과 frozen install
+- desktop·control-console `svelte-check` 0 errors·0 warnings, production build와 frontend test 3개
 
 다음 항목은 workflow에 구성됐거나 문서 계약만 존재할 뿐 실제 성공 근거가 없다.
 
-- 네트워크가 연결된 Go 1.26 환경의 `go.sum` 생성과 전체 dependency build
-- Bun 1.3.14의 `bun.lock` 생성, frozen install, frontend production build
 - hosted GitHub Actions 전체 실행과 artifact attestation 발급·검증
 - hosted runner의 pinned Syft SPDX SBOM 생성·내용 검토·attestation 검증과 전용 Ed25519 key checksum signature 발급·외부 trust-root 검증
 - hosted runner의 OCI release-candidate build·SBOM·attestation 검증과 registry push·immutable manifest digest promotion
@@ -37,14 +35,14 @@
 
 최종 manifest 생성 직전의 수작업 소스와 생성된 manifest 조각을 합친 기준은 다음과 같다.
 
-- 전체 regular file 446개
-- Go 파일 288개, 약 31,173줄
-- Go test 파일 49개, 명명된 `Test...` 함수 164개
-- Markdown 문서 58개
+- 전체 source record 477개
+- Go 파일 295개
+- Go test 파일 53개, 명명된 `Test...` 함수 182개
+- Markdown 문서 82개
 - SQL 파일 13개
 - Svelte 파일 13개
-- TypeScript 파일 12개
-- JSON 파일 12개
+- TypeScript 파일 11개
+- JSON 파일 9개
 - YAML 파일 14개
 - Proto 파일 4개
 - 기준선: Go 1.26, Wails v3 `v3.0.0-alpha2.119`
@@ -53,33 +51,11 @@
 
 ## 실제로 통과한 검사
 
-### Dependency-free Go 범위
+### 전체 Go dependency 범위
 
-현재 실행 환경은 Go 1.23.2이며 네트워크가 차단되어 Go 1.26 toolchain과 외부 module을 내려받을 수 없다. 따라서 검사 중에만 `go.mod`의 language directive를 1.23으로 낮추고 `GOWORK=off GOTOOLCHAIN=local GOPROXY=off`를 사용했다. 검사 직후 원본을 복구했으며 artifact의 `go.mod`와 `go.work`는 모두 `go 1.26`이다.
+Go 1.26.4가 `go.mod`의 toolchain 기준을 선택했고, 격리된 module cache에서 `go mod tidy`로 `go.sum`을 생성했다. 이후 `GOPROXY=off`, `GOWORK=off`, `-mod=readonly`로 Wails, MCP, pgx, Valkey와 모든 command를 포함한 전체 package test를 통과했다. 같은 locked graph에서 전체 `go vet`도 통과했다.
 
-`go list -e` 결과 중 외부 module 없이 완전하게 해석되는 **83개 package**를 자동 선별해 다음을 실행했다.
-
-```text
-go test -json -count=1   통과
-test/subtest pass event  170개
-fail event               0개
-go test -race -count=1   통과
-go vet                   통과
-```
-
-검증 범위에는 canonical protocol, provider HTTP adapter core, 실시간 stream state machine, retry 경계, deterministic routing, signed Control snapshot과 key ring, local Expert store v3, ContextPack chunk integrity, concurrent compaction, runtime domain, outbox, webhook, migration loader, local IPC, updater, file-size policy와 deterministic source packager가 포함된다.
-
-다음 package는 외부 module이 없어 불완전하게 해석됐으므로 위 결과에 포함하지 않았다.
-
-```text
-Wails desktop root와 internal/desktopwails
-MCP bridge·remote MCP 및 이를 포함한 command
-pgx 기반 PostgreSQL package와 command
-valkey-go 기반 Valkey package와 Gateway command
-Connect·Wails·MCP·pgx 의존성을 전이적으로 포함하는 server command
-```
-
-이 제외 범위는 정식 Go 1.26 CI에서 전체 compile·test 대상으로 유지한다.
+Windows local runner에는 gcc·clang·zig가 없어 `CGO_ENABLED=1` race detector는 실행하지 못했다. GitHub Linux runner의 `go test -race` job을 실제 hosted release gate로 유지하며, workflow 존재만으로 통과했다고 기록하지 않는다.
 
 ### 이번 변경에서 직접 검증한 경계
 
@@ -87,7 +63,7 @@ Connect·Wails·MCP·pgx 의존성을 전이적으로 포함하는 server comman
 - RelayDock public identity hygiene와 source archive prefix 회귀 테스트 통과
 - 40 KiB를 넘는 수작업 source·문서·설정 파일이 없음
 - root manifest와 3개 manifest chunk가 모두 40 KiB 이하
-- file-size exception 0개, stale exception 0개
+- 분할할 수 없는 canonical `bun.lock` file-size exception 1개, stale exception 0개
 - symlink·socket·device 같은 비정규 파일을 archive에서 조용히 누락하지 않고 거절
 - manifest와 size-policy JSON의 unknown field·trailing JSON 거절
 - source ZIP entry 정렬, timestamp 정규화, archive 중 mode·size·SHA-256 재검증
@@ -109,11 +85,15 @@ Connect·Wails·MCP·pgx 의존성을 전이적으로 포함하는 server comman
 
 ### 프론트엔드와 저장소 정적 검사
 
-Node 22의 built-in TypeScript stripping으로 의존성 설치가 필요 없는 입력 검증 테스트를 실행했다.
+Node 22의 built-in TypeScript stripping으로 입력 검증 테스트를 실행했다. 추가로 TypeScript 7 native compiler와 TypeScript 6 compatibility API를 사용하는 `svelte-check`를 두 workspace에 적용했다.
 
 ```text
 frontend consultation validation tests  3개 통과
 fail                                  0개
+desktop svelte-check errors/warnings  0/0
+control svelte-check errors/warnings  0/0
+desktop Vite production build         통과
+control adapter-node production build 통과
 ```
 
 다음 정적 검사도 실제로 통과했다.
@@ -154,7 +134,7 @@ ZIP 내부 MANIFEST index와 chunk hash 대조
 
 다음은 workflow에 구성돼 있으나 이번 로컬 결과를 통과로 기록하지 않는다.
 
-- Go 1.26 전체 non-desktop test·race·vet
+- Go 1.26 hosted Linux race detector
 - Buf lint·generate 후 generated Go compile
 - sqlc generate 후 generated repository compile
 - PostgreSQL 18 migration, runtime journal, outbox lease integration
@@ -166,10 +146,8 @@ ZIP 내부 MANIFEST index와 chunk hash 대조
 
 다음 항목은 성공한 것으로 취급하지 않는다.
 
-- Go 1.26 toolchain의 실제 `go test ./...`, `go test -race ./...`, `go vet ./...`
-- Wails v3, MCP Go SDK, go-winio, pgx, valkey-go, Connect를 포함한 전체 module compile
-- 네트워크 연결 환경의 `go mod tidy`, `go.sum` 생성과 dependency review
-- Bun workspace install, lockfile 생성, Svelte/Vite production build
+- Windows local runner의 `go test -race ./...`와 hosted Linux race 결과
+- Wails v3 native desktop 실행과 Windows Named Pipe transport의 실제 OS 통합
 - `buf lint`, `buf breaking`, `buf generate`, `sqlc generate`
 - 실제 PostgreSQL 18 migration·rollback·multi-replica contention·backup restore
 - 실제 Valkey standalone·Sentinel·cluster Lua lease와 network partition
@@ -182,13 +160,13 @@ ZIP 내부 MANIFEST index와 chunk hash 대조
 - money-platform quote–hold–capture–release의 signed outbox end-to-end 정산
 - 24시간 이상 soak test와 process kill 이후 stream·lease·worker recovery
 
-## Lockfile 주의
+## Lockfile 계약
 
-현재 artifact에는 `go.sum`과 Bun lockfile이 없다. 정식 개발 환경에서는 다음을 먼저 실행하고 생성 결과를 리뷰해 커밋해야 한다.
+현재 artifact는 Go 1.26.4에서 생성한 `go.sum`과 Bun 1.3.14에서 생성한 root workspace `bun.lock`을 포함한다. CI와 release에서는 선언을 수정하지 않는 다음 frozen/read-only 동작만 허용한다.
 
 ```powershell
-go mod tidy
-bun install
+go test -mod=readonly ./...
+bun install --frozen-lockfile
 ```
 
 ## 개발 PC의 첫 검증 순서

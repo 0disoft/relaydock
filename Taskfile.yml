@@ -57,7 +57,7 @@ tasks:
     cmds:
       - go test -count=1 ./cmd/... ./db ./internal/... ./tests/...
       - go test -race -count=1 ./internal/... ./tests/...
-      - bun --cwd frontend run test
+      - bun run --cwd frontend test
 
   dev:
     desc: Run Wails v3 development mode

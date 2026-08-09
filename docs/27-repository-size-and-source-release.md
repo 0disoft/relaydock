@@ -9,7 +9,9 @@
 - prompt와 code-review context를 불필요하게 점유하는 문서
 - 저장소 안에 실수로 들어온 build artifact와 binary fixture
 
-`config/file-size-exceptions.json`은 실제로 분할할 수 없는 파일만 허용한다.
+`config/file-size-exceptions.json`은 실제로 분할할 수 없는 파일만 허용한다. 여기에는 byte identity가 계약인 upstream fixture와 package manager가 단일 파일로 생성하는 canonical lockfile이 포함될 수 있다.
+
+source scan은 루트 `build/`의 packaging source는 보존하지만 nested `dist/`, nested `build/`, `.svelte-kit/`, `.svelte-check/`과 `node_modules/` 같은 재생성 가능한 frontend output은 포함하지 않는다.
 
 ```json
 {

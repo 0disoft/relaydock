@@ -1,5 +1,10 @@
 {
   "version": 1,
   "maxBytes": 40960,
-  "exceptions": []
+  "exceptions": [
+    {
+      "path": "bun.lock",
+      "reason": "Bun's canonical workspace dependency lock is generated as one file and cannot be split without breaking frozen installs"
+    }
+  ]
 }

@@ -15,7 +15,7 @@ import (
 
 var excludedDirectoryNames = map[string]struct{}{
 	".git": {}, ".idea": {}, ".vscode": {}, "node_modules": {}, ".svelte-kit": {},
-	"coverage": {}, ".cache": {}, "__pycache__": {},
+	".svelte-check": {}, "coverage": {}, ".cache": {}, "__pycache__": {},
 }
 
 var excludedFileNames = map[string]struct{}{
@@ -147,5 +147,8 @@ func shouldExcludeDirectory(relative, name string) bool {
 	if _, excluded := excludedDirectoryNames[name]; excluded {
 		return true
 	}
-	return relative == "bin" || relative == "dist"
+	if name == "dist" || name == "bin" {
+		return true
+	}
+	return name == "build" && relative != "build"
 }

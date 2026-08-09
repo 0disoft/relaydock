@@ -2,6 +2,24 @@
   "version": 2,
   "files": [
     {
+      "path": "internal/persistence/migrate/runner.go",
+      "size": 7845,
+      "sha256": "1d6aa75a2ada5f4b7df68e99d9cc3aac8b541ff6bee1f6da7c2e73a8df72faf6",
+      "mode": "0644"
+    },
+    {
+      "path": "internal/persistence/objectstore/memory.go",
+      "size": 2422,
+      "sha256": "96c63d2ceeb2aa7ecf8c1c045736699b9ff563a5a7600cf3ca0cbcb5a3a8fbea",
+      "mode": "0644"
+    },
+    {
+      "path": "internal/persistence/objectstore/store.go",
+      "size": 336,
+      "sha256": "860ca6fbf12c3ec44b7120373b231193afac62d210f66f799b72727b0297721f",
+      "mode": "0644"
+    },
+    {
       "path": "internal/persistence/postgres/db.go",
       "size": 1273,
       "sha256": "b7cc2be9d128aab82de9d35716d628f4c1069293aaae7d6120c7c8b70ee31b15",
@@ -225,8 +243,8 @@
     },
     {
       "path": "internal/releasepack/releasepack_test.go",
-      "size": 13726,
-      "sha256": "b15b4e824d8e8e62e59a1af6831e202571d4bf64c43e72c16529af57902e78ec",
+      "size": 14903,
+      "sha256": "0375918ddf216211991c2f766ced79cbcde5f40fc97142abcd884ba5caccff7a",
       "mode": "0644"
     },
     {
@@ -243,8 +261,8 @@
     },
     {
       "path": "internal/releasepack/scan.go",
-      "size": 4105,
-      "sha256": "5f5f793ae24b3137795dcfe6e76b1187c21d8e63fc3be4ebf72181c4f34d128e",
+      "size": 4180,
+      "sha256": "3de26785313b3c7c0c76c0d0de49b21bb5ec75fc38bb9f346dbda0c82766790a",
       "mode": "0644"
     },
     {
@@ -543,8 +561,8 @@
     },
     {
       "path": "package.json",
-      "size": 408,
-      "sha256": "ac03b9858cf481ee392f93df52ddd713ee125ee9fd4ffcd1217dfe27e9eb29f1",
+      "size": 471,
+      "sha256": "883770744f3f5c19c478a5ebbb1ed31223ecdc48b98e4ecd29965771afc950fd",
       "mode": "0644"
     },
     {
@@ -586,13 +604,13 @@
     {
       "path": "scripts/check.ps1",
       "size": 656,
-      "sha256": "ba2aa3939f87235ee78e2c96856688549e0bce856c51da3a8bea80dd614b5d31",
+      "sha256": "841b5e1a0d11f64e72d45ddab98271c69a1504f25d5acebb815bc9499765b68f",
       "mode": "0644"
     },
     {
       "path": "scripts/check.sh",
       "size": 552,
-      "sha256": "a98cadd85ff580e88b264ac5aa51237eacbbf93e3f75cfff847a965425408668",
+      "sha256": "6b5248d3196c71ac11f0133a7fc6e5720ca0bcf8d81958a092cff6be82cf5cb1",
       "mode": "0755"
     },
     {
@@ -735,8 +753,8 @@
     },
     {
       "path": "tests/hygiene/public_identity_test.go",
-      "size": 9449,
-      "sha256": "81c8043bb45f2ef45ebae8eaf1add5ad54a51470e5261ad87dd55edb0527ada2",
+      "size": 10715,
+      "sha256": "13ed90886c829a23f4d776596b5753ac0f4285216ac94cbaca0a27f25fc41148",
       "mode": "0644"
     },
     {
@@ -788,9 +806,21 @@
       "mode": "0644"
     },
     {
+      "path": "tests/storage/file_permissions_unix_test.go",
+      "size": 322,
+      "sha256": "e2dceac2b22c87c6d9f9e5e8dbe4e63589cbb0c5dbdb7957a11483a97ec87130",
+      "mode": "0644"
+    },
+    {
+      "path": "tests/storage/file_permissions_windows_test.go",
+      "size": 1116,
+      "sha256": "83a27d9dc28c4a9414178d7d6c9d289f7a51eae9851484d2d0442e79b29854f6",
+      "mode": "0644"
+    },
+    {
       "path": "tests/storage/local_expert_store_test.go",
-      "size": 5594,
-      "sha256": "e765fc37784a3310bc5ac992df9e1f82f5d89a814a8a5bf95889faa4ab641e79",
+      "size": 5448,
+      "sha256": "9a29e178aa12271f61ef0879ebee0f38301aea2287716f0465be2c55a6d25fcc",
       "mode": "0644"
     },
     {
@@ -819,8 +849,8 @@
     },
     {
       "path": "web/control-console/package.json",
-      "size": 485,
-      "sha256": "9eca69ef2525a81d3c26f22383e4750962209372fb24979473e44f3537172103",
+      "size": 629,
+      "sha256": "33dfb4e6422aa9bfd3b27295003b2b646640d33a0a3a1b7b2a045679989e31ea",
       "mode": "0644"
     },
     {
@@ -849,8 +879,8 @@
     },
     {
       "path": "web/control-console/tsconfig.json",
-      "size": 122,
-      "sha256": "6bb316f635d9c70a60fb48768b69a3c2424d85a40aa35000911010225bd6ffe4",
+      "size": 181,
+      "sha256": "eb9c803e8489d658461e34822ed77643c4812dca87dd4794e81cacd78bfef75d",
       "mode": "0644"
     },
     {

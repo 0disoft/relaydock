@@ -38,6 +38,10 @@ func Write(path string, data []byte, mode fs.FileMode) error {
 		_ = temporary.Close()
 		return fmt.Errorf("atomicfile: set permissions: %w", err)
 	}
+	if err := restrictFilePermissions(temporary); err != nil {
+		_ = temporary.Close()
+		return fmt.Errorf("atomicfile: restrict permissions: %w", err)
+	}
 	if _, err := temporary.Write(data); err != nil {
 		_ = temporary.Close()
 		return fmt.Errorf("atomicfile: write: %w", err)

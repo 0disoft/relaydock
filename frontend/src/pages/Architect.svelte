@@ -171,7 +171,7 @@
       bind:value={webResultPayload}
       rows="10"
       spellcheck="false"
-      placeholder='{"decision":"...","confidence":0.8,"assumptions":[],"criticalFindings":[],"recommendedArchitecture":{},"rejectedAlternatives":[],"failureScenarios":[],"migrationOrder":[],"verificationPlan":[],"unresolvedQuestions":[],"evidenceReferences":[]}'
+      placeholder={'{"decision":"...","confidence":0.8,"assumptions":[],"criticalFindings":[],"recommendedArchitecture":{},"rejectedAlternatives":[],"failureScenarios":[],"migrationOrder":[],"verificationPlan":[],"unresolvedQuestions":[],"evidenceReferences":[]}'}
     ></textarea>
     <div class="composer-actions">
       <button class="button-primary" type="button" disabled={busy || webResultPayload.trim().length === 0} on:click={importResult}>결과 가져오기</button>

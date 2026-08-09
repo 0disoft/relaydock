@@ -93,13 +93,7 @@ func TestLocalExpertStorePersistsCompleteLifecycle(t *testing.T) {
 	if record.ModelAttestation != "user_declared:chatgpt_web_handoff" {
 		t.Fatalf("unexpected persisted attestation: %q", record.ModelAttestation)
 	}
-	info, err := os.Stat(path)
-	if err != nil {
-		t.Fatal(err)
-	}
-	if info.Mode().Perm()&0o077 != 0 {
-		t.Fatalf("state file is accessible outside owner: %o", info.Mode().Perm())
-	}
+	assertPrivateStateFile(t, path)
 }
 
 func TestLocalExpertStoreRejectsIdempotencyKeyReuseWithDifferentPayload(t *testing.T) {

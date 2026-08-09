@@ -7,13 +7,19 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "check": "vite build --mode check",
+    "check": "svelte-check --tsgo --tsconfig ./tsconfig.json",
     "test": "node --experimental-strip-types --test src/lib/*.test.ts"
   },
+  "dependencies": {
+    "@wailsio/runtime": "3.0.0-alpha2.117"
+  },
   "devDependencies": {
+    "@typescript/native": "npm:typescript@7.0.2",
+    "@types/node": "22.20.1",
     "@sveltejs/vite-plugin-svelte": "7.2.0",
+    "svelte-check": "4.7.4",
     "svelte": "5.56.4",
-    "typescript": "7.0.2",
+    "typescript": "6.0.3",
     "unocss": "66.7.5",
     "vite": "8.1.5"
   }

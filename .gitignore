@@ -17,6 +17,7 @@ coverage*.txt
 # Frontend
 **/node_modules/
 **/.svelte-kit/
+**/.svelte-check/
 **/.vite/
 **/build/
 !build/
