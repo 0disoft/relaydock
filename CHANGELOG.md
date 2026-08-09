@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.5.8-dev -- Linux Secret Service Credential Store
+
+- Added a native Secret Service backend over the per-user D-Bus session bus without invoking `secret-tool` or another shell command.
+- Implemented plain-session negotiation, opaque attribute search, default-collection writes, locked item and collection prompts, replacement, read, and idempotent delete behavior.
+- Propagated operation contexts through the native-store backend contract and failed closed when D-Bus, Secret Service, or the default collection is unavailable.
+- Rejected missing, duplicate, malformed, or invalid-path results and omitted remote D-Bus error bodies from returned errors.
+- Promoted the already locked `github.com/godbus/dbus/v5` module to a direct dependency without changing its version or downloading a new package.
+- Added deterministic fake-transport tests for prompt, denial, buffer-zeroing, opaque attributes, and secret-nondisclosure boundaries.
+- Kept disposable-user physical Secret Service validation and server KMS integration explicitly open.
+
 ## 0.5.7-dev -- macOS Keychain Credential Store
 
 - Added a native macOS Keychain backend through Security.framework `SecItem` APIs with no shell-command or process-argument secret transport.

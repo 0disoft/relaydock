@@ -21,8 +21,8 @@
     },
     {
       "path": "go.mod",
-      "size": 1310,
-      "sha256": "4d0d7507f0b138dcedbe5a2bacf4d6e2599169c89f03160c608fe8deffb0c00e",
+      "size": 1298,
+      "sha256": "70b8283f22d166ae0f241c1dae3a8f242d41e82fad9d71208c3524e51dcce8e5",
       "mode": "0644"
     },
     {
@@ -250,7 +250,7 @@
     {
       "path": "internal/buildinfo/info.go",
       "size": 320,
-      "sha256": "3df456d1498765b2f6c2e804b186de4476968588845861fbc8885638d3066979",
+      "sha256": "d15d0de7fc790fdd68a3ad58cc4a9f22e98391d0955e9346e7b9af002c8e3e22",
       "mode": "0644"
     },
     {
@@ -452,6 +452,18 @@
       "mode": "0644"
     },
     {
+      "path": "internal/credentials/secret_service.go",
+      "size": 13888,
+      "sha256": "0838913eb9694e3443a9b1f14eb07c29e9c90a0284130a3fed4eef3184f59fc7",
+      "mode": "0644"
+    },
+    {
+      "path": "internal/credentials/secret_service_test.go",
+      "size": 8103,
+      "sha256": "2268206365b2f8675399c8d0d98029ad1f812ed5d3585275aa445b9085ce634c",
+      "mode": "0644"
+    },
+    {
       "path": "internal/credentials/store.go",
       "size": 280,
       "sha256": "3fc4317938419d8021b7f6732e10666ddf09f0dacc7ba3cc57920a47663fbbe4",
@@ -459,32 +471,38 @@
     },
     {
       "path": "internal/credentials/system_store.go",
-      "size": 3987,
-      "sha256": "6e7259d0b7b74b08c9df1153130da5abe95fd70e567d32707aeebb27524d9677",
+      "size": 4065,
+      "sha256": "4385ea431c765fb7058f4fc380300a9c1881cc2e2252d9768e9a063cc388f708",
       "mode": "0644"
     },
     {
       "path": "internal/credentials/system_store_darwin.go",
-      "size": 5959,
-      "sha256": "d9d9c1429991acab676026f9b1f105afa0792af5fabf3d74471874030df7b579",
+      "size": 6027,
+      "sha256": "086e0e924f1d32be5ce35a63d5159207fb1e4d91d73f34c63c12be44960125c3",
+      "mode": "0644"
+    },
+    {
+      "path": "internal/credentials/system_store_linux.go",
+      "size": 179,
+      "sha256": "287fd87c789d1920a5cc8ff8036da4eed1083e8a4b626ba8e5ef251f936b5d8c",
       "mode": "0644"
     },
     {
       "path": "internal/credentials/system_store_test.go",
-      "size": 4190,
-      "sha256": "204a28b513d5fa935292f399a54640b1dd8ba31db174707c00d86e232947d812",
+      "size": 4247,
+      "sha256": "29cd392520083ded93e1acb9c616ac4d952c4f16df12a1e109dfe27d314f4f8c",
       "mode": "0644"
     },
     {
       "path": "internal/credentials/system_store_unsupported.go",
-      "size": 249,
-      "sha256": "f78b7815e0e12444f9c044237716aec3cf86e92284f858275340b8070713461a",
+      "size": 259,
+      "sha256": "9755009459edaced0618e5c84d5920515b62683d88d4a9f2b845aff7948f545e",
       "mode": "0644"
     },
     {
       "path": "internal/credentials/system_store_windows.go",
-      "size": 4199,
-      "sha256": "0adb43352b0250afc385ec74a1b2f5b65e7c046c49aec2b1df538075cf4446ec",
+      "size": 4267,
+      "sha256": "2b8c5b1c6e85ea2814cff46e7390048c24203077918fec2234632e2c9d0810ad",
       "mode": "0644"
     },
     {
@@ -935,24 +953,6 @@
       "path": "internal/mcpremote/backend_test.go",
       "size": 5602,
       "sha256": "71d16ab59bd25b5f800c107b74ab600da7d10f00532e96f0d31cef44fe8c5bdf",
-      "mode": "0644"
-    },
-    {
-      "path": "internal/mcpremote/server.go",
-      "size": 5132,
-      "sha256": "3cf08027f94d8b186412d991f4dc1c94055973ed78d0acf1c49e9205fb54d60f",
-      "mode": "0644"
-    },
-    {
-      "path": "internal/mcpremote/types.go",
-      "size": 1852,
-      "sha256": "4c2e18bf4452d9d7e8cc4bfa2246bb6fc642d19b3afdc4b801107b57621e2c82",
-      "mode": "0644"
-    },
-    {
-      "path": "internal/observability/logger.go",
-      "size": 203,
-      "sha256": "ecde8b4c2b6ec06885c679600712819235a9d9f2e0cb1c3222340706a6d6b43f",
       "mode": "0644"
     }
   ]

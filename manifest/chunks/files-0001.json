@@ -130,7 +130,7 @@
     {
       "path": ".ssealed/manifest.json",
       "size": 18269,
-      "sha256": "aa2fdc024c0738a7d8a0ba7cda1402f035f3274051798fa8ea5615fb260f28df",
+      "sha256": "c87be85288c6130e931d50bad83f7f8e731e547d1911f3b5423581395f89e145",
       "mode": "0644"
     },
     {
@@ -141,8 +141,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "size": 12529,
-      "sha256": "6c2554ca645906b3bb2e2129ee0216c72cdf3275f5fc9e8b52c0427c87868ae8",
+      "size": 13570,
+      "sha256": "bc10ff1ea510e1b86fbca042dd70338c484db0281e5c183437ea7998442094f6",
       "mode": "0644"
     },
     {
@@ -159,8 +159,8 @@
     },
     {
       "path": "IMPLEMENTATION_STATUS.md",
-      "size": 9521,
-      "sha256": "b4fea6abda76d440d37d0ef1b99cb7ff14f0dfd199235ad89622a31ca0e28d01",
+      "size": 9530,
+      "sha256": "437ae229ab2baa1772acff3c0795f6d78cddc18da723edf1bf9046a42ec4f5d6",
       "mode": "0644"
     },
     {
@@ -177,8 +177,8 @@
     },
     {
       "path": "README.md",
-      "size": 10456,
-      "sha256": "682ff7f1a6bac9c4e91d00d01b8308359e8881fd75620e5ac5fd89e5fec7f10a",
+      "size": 10467,
+      "sha256": "29eb71289a7cb720e90807c9779d8f90db97e02532eeea3f2065a69c9a341b73",
       "mode": "0644"
     },
     {
@@ -189,8 +189,8 @@
     },
     {
       "path": "TREE.md",
-      "size": 24992,
-      "sha256": "850c0bb7377353631be2199e2470b25f9320b2272ef8d051ec25ae904d0b7e61",
+      "size": 25121,
+      "sha256": "70669ae00b39e9ef22d7e4e9362748b7576661d9fdc2a8155fa3e45bd49165a9",
       "mode": "0644"
     },
     {
@@ -201,14 +201,14 @@
     },
     {
       "path": "VALIDATION.md",
-      "size": 11121,
-      "sha256": "0454403cff5b1d97016f9b31caec714db3520b68aba45801843aee21bb319da2",
+      "size": 11332,
+      "sha256": "e82a898c29d80eaf95075d07b6c18df581fc51716f034153aebd7e960bccba78",
       "mode": "0644"
     },
     {
       "path": "VERSION",
       "size": 10,
-      "sha256": "6b5ae57358d3bca69d96c28c5c11a7144b93356ad0f31fd95b2ac74bb4e0858d",
+      "sha256": "bb83d752d25d96948973b0db6f0f08c93caa15d33005e117081769d5ce41757e",
       "mode": "0644"
     },
     {
@@ -262,7 +262,7 @@
     {
       "path": "bun.lock",
       "size": 60860,
-      "sha256": "972986b181eede58a5700dd7a75d578f3f2e7284570e827d16b4f6ce407ab754",
+      "sha256": "1a2b82c1910a6366a8c8e45e55b85f334ffeb205a00492212dc8fd7e75f8e8eb",
       "mode": "0644"
     },
     {
@@ -712,7 +712,7 @@
     {
       "path": "docs/27-repository-size-and-source-release.md",
       "size": 2655,
-      "sha256": "a3da9051490f119260b1537c6e3b3db5e67b4e9688e855c92f0cbb3b9e2722e3",
+      "sha256": "a0c127bc0d8a2789725c4da93f8c91e5b1e2db36094ff996cf8f015eb5090387",
       "mode": "0644"
     },
     {
@@ -723,8 +723,8 @@
     },
     {
       "path": "docs/29-system-credential-storage.md",
-      "size": 4251,
-      "sha256": "962c1ffd25690e62291d594f229e58c6c2ca8d98779086f6f250475b5ce9ca33",
+      "size": 5533,
+      "sha256": "7a00c6e911c0ec590a181a68398207a39a1fd146fda87971664aab9b6b95f837",
       "mode": "0644"
     },
     {
@@ -880,7 +880,7 @@
     {
       "path": "frontend/package.json",
       "size": 680,
-      "sha256": "e87e156c43d853d16fdd4ec9b93770d24f8c3adf1a63432637ec3f9501977045",
+      "sha256": "2fd474dc5a29738944c3b69cdd7c80196c96e807b711425a1696b1674ea74d97",
       "mode": "0644"
     },
     {

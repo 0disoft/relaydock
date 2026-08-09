@@ -1,6 +1,6 @@
 # Validation Report
 
-Validation date: **2026-08-09**. Target version: **`0.5.7-dev`**. This report separates checks actually executed in the current sandbox or hosted CI from checks that could not run without external tools, services, operating systems, or provider credentials. A check defined in a workflow is not treated as a passing result.
+Validation date: **2026-08-09**. Target version: **`0.5.8-dev`**. This report separates checks actually executed in the current sandbox or hosted CI from checks that could not run without external tools, services, operating systems, or provider credentials. A check defined in a workflow is not treated as a passing result.
 
 ## Release-Readiness Decision
 
@@ -16,6 +16,7 @@ The following readiness additions passed locally:
 
 - Windows Credential Manager adapter compilation plus opaque-target, copy-isolation, size, cancellation, missing-value, idempotent-delete, and secret-free-error tests
 - macOS Keychain `SecItem` adapter source review and isolated build boundary without shell or process-argument secret transport; the dedicated hosted macOS job is the compilation gate
+- Linux Secret Service session negotiation, opaque search attributes, locked-item prompt handling, create/read/delete behavior, duplicate rejection, transient-buffer zeroing, context propagation, and D-Bus error-body omission tests
 - Desktop provider credential status, save, replace, delete, environment precedence, gateway-stop conflict, unavailable-store denial, secret non-disclosure, and gateway Authorization-header tests
 - OIDC discovery, exact issuer/audience/authorized-party/time/signature verification, explicit claim-to-role mapping, JWKS rotation, and static-bootstrap coexistence tests
 - SSRF denial for private/mixed DNS results and validated-address dialing for issuer, redirect, and JWKS requests
@@ -38,15 +39,15 @@ The following are configured or documented but do not yet have successful execut
 - Windows native installers, code signing, updater-manifest signing, and rollback
 - Live PostgreSQL, Valkey, provider, money-platform, and 24-hour soak operational gates
 - Real external IdP conformance and the separate Control Console authorization-code/session flow
-- Disposable-user physical Windows Credential Manager and macOS Keychain smoke tests, Linux Secret Service, and server KMS integration
+- Disposable-user physical Windows Credential Manager, macOS Keychain, and Linux Secret Service smoke tests, plus server KMS integration
 
 Do not label the product production-ready or deployed before those release-owner inputs and target-environment gates are complete.
 
 ## Validated Source Baseline
 
-- 497 source records
-- 313 Go files
-- 61 Go test files with 215 named `Test...` functions
+- 500 source records
+- 316 Go files
+- 62 Go test files with 221 named `Test...` functions
 - 84 Markdown documents
 - 13 SQL files
 - 13 Svelte files
@@ -157,7 +158,7 @@ Do not treat any of these as passing:
 - Real OpenAI, Anthropic, Google, DeepSeek, or OpenRouter stream/tool/reasoning conformance
 - Provider-reported usage and invoice reconciliation
 - Remote MCP OIDC/OAuth and real ChatGPT/Codex connector conformance
-- Physical OS credential-store smoke, Linux Secret Service, or KMS adapters
+- Physical OS credential-store smoke or KMS adapters
 - End-to-end money-platform quote/hold/capture/release through signed outbox events
 - A 24-hour soak and stream/lease/worker recovery after process termination
 

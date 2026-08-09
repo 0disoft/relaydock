@@ -2,6 +2,24 @@
   "version": 2,
   "files": [
     {
+      "path": "internal/mcpremote/server.go",
+      "size": 5132,
+      "sha256": "3cf08027f94d8b186412d991f4dc1c94055973ed78d0acf1c49e9205fb54d60f",
+      "mode": "0644"
+    },
+    {
+      "path": "internal/mcpremote/types.go",
+      "size": 1852,
+      "sha256": "4c2e18bf4452d9d7e8cc4bfa2246bb6fc642d19b3afdc4b801107b57621e2c82",
+      "mode": "0644"
+    },
+    {
+      "path": "internal/observability/logger.go",
+      "size": 203,
+      "sha256": "ecde8b4c2b6ec06885c679600712819235a9d9f2e0cb1c3222340706a6d6b43f",
+      "mode": "0644"
+    },
+    {
       "path": "internal/observability/metrics.go",
       "size": 372,
       "sha256": "f76f3959faa97863327a0d7186c55d5c88092c3a36344e64ca0fdb6317d460b4",
@@ -688,7 +706,7 @@
     {
       "path": "package.json",
       "size": 471,
-      "sha256": "34b715d0fcbf83d9f221805f08a7f3d4f589c2119b344ff432236476fe8b12be",
+      "sha256": "bb481bad0f7e304b39b3064dae464e0fed4c3a0c3b02a6f0d25e210316e1b614",
       "mode": "0644"
     },
     {
@@ -947,24 +965,6 @@
       "path": "tests/storage/local_expert_store_test.go",
       "size": 5448,
       "sha256": "9a29e178aa12271f61ef0879ebee0f38301aea2287716f0465be2c55a6d25fcc",
-      "mode": "0644"
-    },
-    {
-      "path": "tests/storage/stores_test.go",
-      "size": 4423,
-      "sha256": "1ffbfb3fd9d7eed048b54ac164a423ec69c9afa43add2d7d4377f1357f2cede0",
-      "mode": "0644"
-    },
-    {
-      "path": "tests/testdata/streams/anthropic_tool_delta.jsonl",
-      "size": 412,
-      "sha256": "2f02801fca145473bfbdc4569888ad740eb1ab6446b4ce544016e87905fcc1ff",
-      "mode": "0644"
-    },
-    {
-      "path": "tests/testdata/streams/openai_responses_text.jsonl",
-      "size": 223,
-      "sha256": "3e8165b48ca61aef7e4201337a48047e809ad892f93f7afdb1a93d25486b8c49",
       "mode": "0644"
     }
   ]

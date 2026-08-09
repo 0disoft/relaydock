@@ -17,9 +17,9 @@ const MaximumSystemCredentialBytes = 2048
 var ErrSystemStoreUnavailable = errors.New("system credential store unavailable")
 
 type systemCredentialBackend interface {
-	Write(target string, value []byte) error
-	Read(target string) ([]byte, error)
-	Delete(target string) error
+	Write(ctx context.Context, target string, value []byte) error
+	Read(ctx context.Context, target string) ([]byte, error)
+	Delete(ctx context.Context, target string) error
 }
 
 // SystemStore persists credentials in the current user's native operating
@@ -70,7 +70,7 @@ func (s *SystemStore) Put(ctx context.Context, ref Reference, value []byte) erro
 	}
 	copyValue := append([]byte(nil), value...)
 	defer zeroCredential(copyValue)
-	if err := s.backend.Write(target, copyValue); err != nil {
+	if err := s.backend.Write(ctx, target, copyValue); err != nil {
 		return fmt.Errorf("write system credential: %w", err)
 	}
 	return nil
@@ -84,7 +84,7 @@ func (s *SystemStore) Get(ctx context.Context, ref Reference) ([]byte, error) {
 	if err != nil {
 		return nil, err
 	}
-	value, err := s.backend.Read(target)
+	value, err := s.backend.Read(ctx, target)
 	if err != nil {
 		if errors.Is(err, core.ErrNotFound) {
 			return nil, core.ErrNotFound
@@ -108,7 +108,7 @@ func (s *SystemStore) Delete(ctx context.Context, ref Reference) error {
 	if err != nil {
 		return err
 	}
-	if err := s.backend.Delete(target); err != nil && !errors.Is(err, core.ErrNotFound) {
+	if err := s.backend.Delete(ctx, target); err != nil && !errors.Is(err, core.ErrNotFound) {
 		return fmt.Errorf("delete system credential: %w", err)
 	}
 	return nil

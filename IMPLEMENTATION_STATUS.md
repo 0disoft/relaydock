@@ -2,7 +2,7 @@
 
 ## Current Stage
 
-`0.5.7-dev` is a reference implementation with operational paths, bounded-file contracts, a deny-by-default Control Plane access policy with static and OIDC identity sources, and Windows Credential Manager or macOS Keychain-backed desktop provider keys. Without external infrastructure it runs with `local/echo`, an atomic JSON store, and memory leases. PostgreSQL and Valkey enable durable consultations, virtual keys, signed Control snapshots, the runtime journal, transactional outbox, and distributed provider leases.
+`0.5.8-dev` is a reference implementation with operational paths, bounded-file contracts, a deny-by-default Control Plane access policy with static and OIDC identity sources, and operating-system-backed desktop provider keys on Windows, macOS, and Linux. Without external infrastructure it runs with `local/echo`, an atomic JSON store, and memory leases. PostgreSQL and Valkey enable durable consultations, virtual keys, signed Control snapshots, the runtime journal, transactional outbox, and distributed provider leases.
 
 This is not a claim of full production readiness. Real provider accounts, the money-platform, a complete Go 1.26 dependency build, live PostgreSQL and Valkey, Wails installers and updates, and code signing still require validation in target environments.
 
@@ -30,11 +30,11 @@ This is not a claim of full production readiness. Real provider accounts, the mo
 | Web handoff | Implemented | Scoped reads, expiry, result import, user-declared attestation | ChatGPT connector UX and organization policy |
 | Remote MCP | Partially tested | Host/origin/body guards, bounded argt2 tokens, retiring keys, tenant/project isolation | OIDC/OAuth and live SDK conformance |
 | MCP bridge and local IPC | Implemented and tested | STDIO-to-IPC tools, Unix sockets, Windows Named Pipes, frame limits, reconnect | Real Codex/Claude Code/OpenCode conformance and Windows multi-user ACLs |
-| Wails desktop | Implemented | Tray, single instance, close-to-tray, autostart, settings, provider runtime, Windows and macOS provider-key status/save/replace/delete | Physical credential-store smoke, installers, signing, sleep/resume, updater rollback |
+| Wails desktop | Implemented | Tray, single instance, close-to-tray, autostart, settings, provider runtime, Windows/macOS/Linux provider-key status/save/replace/delete | Physical credential-store smoke, installers, signing, sleep/resume, updater rollback |
 | Virtual keys | Implemented and tested | PostgreSQL HMAC keys, scopes/models, revoke, v2 and legacy parsing | Pepper rotation, audit, high-volume cache |
 | Migrations and bootstrap | Implemented and tested | Embedded SQL, checksums, advisory locks, transactions, organization/project/key CLIs | Real upgrade matrix, PITR, and persisted membership management |
 | Accounting domain | Development contract | Quote, hold, capture, release, adjustment, idempotency | Mandarin money-platform client and reconciliation |
-| Storage primitives | Partial | Encrypted in-memory secrets, Windows Credential Manager and macOS Keychain adapters with desktop provider wiring, opaque credential targets, expiring objects, durable outbox | Physical-device smoke, Linux Secret Service, KMS, R2/S3 |
+| Storage primitives | Partial | Encrypted in-memory secrets, Windows Credential Manager, macOS Keychain, and Linux Secret Service adapters with desktop provider wiring, opaque credential targets, expiring objects, durable outbox | Physical-device smoke, KMS, R2/S3 |
 | Updater | Staging implemented | Manifest signature, SHA-256, size, pending artifact | Platform replacement and rollback |
 | Control Console | Read-only UI | Health, snapshot, and model routes | Login, organizations, keys, routes, audit, usage |
 | Packaging | Implemented and tested | Desktop/MCP bundle, server/ops list, 40 KiB audit, strict chunked manifest, deterministic source ZIP | Native installers, artifact signing, cross-version reproducibility |
@@ -79,5 +79,5 @@ This is not a claim of full production readiness. Real provider accounts, the mo
 6. Connect money-platform quote, hold, capture, and release end to end through signed outbox events.
 7. Pass physical-device tests for Wails lifecycle, Named Pipe ACLs, installer replacement, and updater rollback.
 8. Add OIDC/OAuth or workload identity and key rotation to Remote MCP.
-9. Add a native Linux Secret Service desktop adapter; use KMS or workload identity for servers.
+9. Complete physical desktop credential-store smoke tests; use KMS or workload identity for servers.
 10. Verify stream, lease, and worker recovery during a 24-hour soak and graceful shutdown.

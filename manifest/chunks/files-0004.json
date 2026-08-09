@@ -2,6 +2,24 @@
   "version": 2,
   "files": [
     {
+      "path": "tests/storage/stores_test.go",
+      "size": 4423,
+      "sha256": "1ffbfb3fd9d7eed048b54ac164a423ec69c9afa43add2d7d4377f1357f2cede0",
+      "mode": "0644"
+    },
+    {
+      "path": "tests/testdata/streams/anthropic_tool_delta.jsonl",
+      "size": 412,
+      "sha256": "2f02801fca145473bfbdc4569888ad740eb1ab6446b4ce544016e87905fcc1ff",
+      "mode": "0644"
+    },
+    {
+      "path": "tests/testdata/streams/openai_responses_text.jsonl",
+      "size": 223,
+      "sha256": "3e8165b48ca61aef7e4201337a48047e809ad892f93f7afdb1a93d25486b8c49",
+      "mode": "0644"
+    },
+    {
       "path": "web/control-console/README.md",
       "size": 770,
       "sha256": "074e427ae80fbe8eda3c2b318ba03fb3f80814a1767353ae52167a467b20f1b8",
@@ -10,7 +28,7 @@
     {
       "path": "web/control-console/package.json",
       "size": 629,
-      "sha256": "59ee4e1b0d73290a6f9082ef1109c8ad5e69403eb1b1324f9b0fed7bddfaa9b7",
+      "sha256": "2c25850029dfa4df5e9c42a7abb581aa279bb26acf0d254e710df6a678ecee78",
       "mode": "0644"
     },
     {

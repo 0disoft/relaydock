@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "generatedAt": "2026-08-09T13:40:52Z",
+  "generatedAt": "2026-08-09T14:26:35Z",
   "hashAlgorithm": "sha256",
-  "fileCount": 497,
-  "totalBytes": 1576928,
+  "fileCount": 500,
+  "totalBytes": 1602050,
   "maximumFileBytes": 40960,
-  "aggregateSha256": "c58cd9d3373ae0d2d45bee614c35c8c458b083040f7827cd31fcd279b5f4168b",
+  "aggregateSha256": "42354f94f48f14c39935cd3ec0d3136e23beb1e8fb2d9df242e8d95b2d7f4761",
   "chunks": [
     {
       "path": "manifest/chunks/files-0001.json",
@@ -13,31 +13,31 @@
       "firstPath": ".agents/README.md",
       "lastPath": "frontend/tsconfig.json",
       "size": 30657,
-      "sha256": "0a04df767755566b506f84dbd96745943db710872cd4ca81752c2f0e0fed2f6d"
+      "sha256": "aa2e42432eb7499e4b70f1d349eee721efc6a84a16686a4fda0e50dd744471a3"
     },
     {
       "path": "manifest/chunks/files-0002.json",
       "fileCount": 159,
       "firstPath": "frontend/uno.config.ts",
-      "lastPath": "internal/observability/logger.go",
-      "size": 30539,
-      "sha256": "b3da8f9f33982bc8736d24035d620305ad29915a90e9eb4cbf359d1615ffb9a8"
+      "lastPath": "internal/mcpremote/backend_test.go",
+      "size": 30576,
+      "sha256": "82ea65fb7c8e0872035d08e250a8b4b2ee5bd445fba738a624d9e43ee39d031c"
     },
     {
       "path": "manifest/chunks/files-0003.json",
       "fileCount": 161,
-      "firstPath": "internal/observability/metrics.go",
-      "lastPath": "tests/testdata/streams/openai_responses_text.jsonl",
-      "size": 30698,
-      "sha256": "918da8bc9e9d6872e2df15ea02ab70e5ea4787eec397eeeacaaac469dcdb5e18"
+      "firstPath": "internal/mcpremote/server.go",
+      "lastPath": "tests/storage/local_expert_store_test.go",
+      "size": 30659,
+      "sha256": "0efb192b961a6be2ef9318c825ecd7f0231259a89deedd6ed4ba646d0e2d5162"
     },
     {
       "path": "manifest/chunks/files-0004.json",
-      "fileCount": 9,
-      "firstPath": "web/control-console/README.md",
+      "fileCount": 12,
+      "firstPath": "tests/storage/stores_test.go",
       "lastPath": "web/shared/README.md",
-      "size": 1738,
-      "sha256": "842ed2a6721b060b4914721b522b88345d62798bf95b6f6009a2c2ecc544ada3"
+      "size": 2331,
+      "sha256": "79415625afeb755eece81895d4496893274cab8218c862808c117a2b3c2b1580"
     }
   ],
   "excluded": [

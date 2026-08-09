@@ -3,6 +3,7 @@
 package credentials
 
 import (
+	"context"
 	"errors"
 	"fmt"
 	"runtime"
@@ -56,7 +57,7 @@ func newPlatformCredentialBackend() (systemCredentialBackend, error) {
 	return windowsCredentialBackend{}, nil
 }
 
-func (windowsCredentialBackend) Write(target string, value []byte) error {
+func (windowsCredentialBackend) Write(_ context.Context, target string, value []byte) error {
 	targetName, err := windows.UTF16PtrFromString(target)
 	if err != nil {
 		return fmt.Errorf("encode credential target: %w", err)
@@ -83,7 +84,7 @@ func (windowsCredentialBackend) Write(target string, value []byte) error {
 	return nil
 }
 
-func (windowsCredentialBackend) Read(target string) ([]byte, error) {
+func (windowsCredentialBackend) Read(_ context.Context, target string) ([]byte, error) {
 	targetName, err := windows.UTF16PtrFromString(target)
 	if err != nil {
 		return nil, fmt.Errorf("encode credential target: %w", err)
@@ -108,7 +109,7 @@ func (windowsCredentialBackend) Read(target string) ([]byte, error) {
 	return append([]byte(nil), value...), nil
 }
 
-func (windowsCredentialBackend) Delete(target string) error {
+func (windowsCredentialBackend) Delete(_ context.Context, target string) error {
 	targetName, err := windows.UTF16PtrFromString(target)
 	if err != nil {
 		return fmt.Errorf("encode credential target: %w", err)

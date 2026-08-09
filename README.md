@@ -2,7 +2,7 @@
 
 RelayDock is a Go-first AI Runtime Gateway that connects coding agents such as Codex, Claude Code, and OpenCode with official AI APIs, self-hosted models, and an Expert Escalation MCP path for difficult architecture reviews.
 
-`0.5.7-dev` is a reference implementation that connects a Wails v3 local runtime, compatible API gateway, multi-provider router, OIDC-capable role-scoped Control Plane, signed Control snapshots, Windows Credential Manager and macOS Keychain-backed desktop provider keys, a durable request journal, transactional outbox, and scoped Remote MCP. The `local/echo` vertical slice runs without external infrastructure; PostgreSQL and Valkey enable managed paths.
+`0.5.8-dev` is a reference implementation that connects a Wails v3 local runtime, compatible API gateway, multi-provider router, OIDC-capable role-scoped Control Plane, signed Control snapshots, operating-system-backed desktop provider keys, a durable request journal, transactional outbox, and scoped Remote MCP. The `local/echo` vertical slice runs without external infrastructure; PostgreSQL and Valkey enable managed paths.
 
 This is not full production certification. Real provider accounts, a complete Go 1.26 module build, live PostgreSQL and Valkey, native Wails packaging and code signing, and money-platform settlement still require target-environment validation. [`VALIDATION.md`](VALIDATION.md) is the source of truth for executed checks.
 
@@ -99,7 +99,7 @@ cmd/expert-brokerd
 - Wails v3 tray, single instance, close-to-tray, and background autostart
 - Separate Expert metadata and immutable 32 KiB ContextPack chunks
 - Shared provider composition in desktop and headless runtimes
-- Desktop provider-key status, save, replace, delete, and runtime resolution through Windows Credential Manager or macOS Keychain
+- Desktop provider-key status, save, replace, delete, and runtime resolution through Windows Credential Manager, macOS Keychain, or Linux Secret Service
 - Windows Named Pipe and Unix Domain Socket IPC
 - PostgreSQL migrations with versions, checksums, advisory locks, and transactions
 - Organization/project bootstrap and virtual-key issue/revoke CLIs
@@ -204,7 +204,7 @@ go test -tags=integration -count=1 ./tests/postgres
 
 - Money-platform quote, hold, capture, and usage reconciliation
 - Distributed provider health based on real TTFT and TPS probes
-- Add a native Linux Secret Service adapter for desktop provider credentials
+- Complete disposable-user physical credential-store smoke tests on Windows, macOS, and Linux
 - Remote MCP OIDC/OAuth and workload identity
 - Control Console authorization-code login, secure sessions, memberships, mutations, and usage views
 - Physical-device Wails lifecycle, installers, signing, and rollback

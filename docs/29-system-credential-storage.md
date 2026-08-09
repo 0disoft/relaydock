@@ -4,9 +4,13 @@
 
 Provider API credentials belong in a per-user operating-system credential store, not in RelayDock settings, local state JSON, logs, or browser storage. `credentials.Store` remains the application port. `SystemStore` is the native desktop adapter and `MemoryStore` remains test/ephemeral-only.
 
-Windows uses Credential Manager through `CredWriteW`, `CredReadW`, `CredDeleteW`, and `CredFree`. macOS uses Security.framework generic-password items through `SecItemAdd`, `SecItemUpdate`, `SecItemCopyMatching`, and `SecItemDelete`. Both backends use the current user's operating-system credential boundary, and neither has a plaintext-file fallback. Linux currently returns `ErrSystemStoreUnavailable` until a native Secret Service adapter is implemented.
+Windows uses Credential Manager through `CredWriteW`, `CredReadW`, `CredDeleteW`, and `CredFree`. macOS uses Security.framework generic-password items through `SecItemAdd`, `SecItemUpdate`, `SecItemCopyMatching`, and `SecItemDelete`. Linux uses the freedesktop Secret Service API over the current user's D-Bus session bus. All three backends use the current user's operating-system credential boundary, and none has a plaintext-file fallback.
 
 The macOS backend links Security.framework only in Darwin builds. It does not invoke `/usr/bin/security`, because its password option would place credential material in process arguments. Go-owned write values are copied into C-owned buffers, and returned C buffers are bounded and explicitly zeroed before release. Keychain errors expose only the operation and numeric `OSStatus`, never item data.
+
+The Linux backend opens a Secret Service `plain` session, searches by a fixed RelayDock application attribute plus the opaque target, and writes to the user's `default` collection with replacement enabled. It follows `Unlock` and `Prompt` results for locked collections and items. Missing services or collections fail closed. Duplicate matching items, malformed object paths, unexpected session data, and dismissed prompts never select or expose an arbitrary credential. Remote D-Bus error bodies are omitted from RelayDock errors.
+
+The `plain` Secret Service algorithm does not add application-layer encryption. Its trust boundary is the authenticated per-user D-Bus session and the Secret Service implementation. RelayDock does not place secret material in process arguments, environment variables, labels, attributes, or logs. Deployments that permit untrusted same-user processes must evaluate the desktop session boundary separately.
 
 The desktop provider page now exposes status, save, replace, and delete operations through the Wails runtime service. The frontend never receives a stored credential value. Submitted values use password inputs and are cleared after every success or failure. Credential changes are denied while the local Gateway is starting or running so a displayed state cannot diverge from the active runtime.
 
@@ -22,18 +26,18 @@ Each credential reference contains a provider, account, and logical ID. The oper
 
 The target does not expose provider, account, or logical ID in the Credential Manager list. This is metadata minimization, not an authorization boundary: another process running as the same user can still access a known target through the same operating-system API.
 
-Credential values must contain between 1 and 2,048 bytes. This stays below the Windows generic-credential blob limit and covers ordinary provider API keys. Callers and backends exchange copies; transient adapter copies are zeroed after writes and reads. Errors never include credential bytes. The opaque target is stored as the macOS generic-password service, with `RelayDock` as its fixed account label.
+Credential values must contain between 1 and 2,048 bytes. This stays below the Windows generic-credential blob limit and covers ordinary provider API keys. Callers and backends exchange copies; transient adapter copies are zeroed after writes and reads. Errors never include credential bytes. The opaque target is stored as the macOS generic-password service and as a Linux Secret Service attribute; neither reveals provider, account, or logical credential identity.
 
 ## Failure Contract
 
 - Missing reads return `core.ErrNotFound`.
 - Deleting a missing credential succeeds, matching the in-memory store contract.
 - Invalid references, namespaces, empty values, and oversized values fail before an operating-system call.
-- A missing native backend returns `ErrSystemStoreUnavailable`; RelayDock must not silently downgrade to a plaintext file.
-- Context cancellation is honored before entering a synchronous operating-system call. Windows Credential Manager and macOS Keychain operations are not cancellable once entered, so callers must not report a timed-out write as definitely absent.
+- A missing D-Bus session, Secret Service, default collection, or native backend returns `ErrSystemStoreUnavailable`; RelayDock must not silently downgrade to a plaintext file.
+- Context cancellation is propagated through Linux D-Bus calls and prompt waits. Windows Credential Manager and macOS Keychain operations are not cancellable once entered, so callers must not report a timed-out write as definitely absent.
 
 ## Verification Boundary
 
-The common adapter tests cover opaque targets, caller-memory isolation, size and namespace bounds, cancellation, idempotent deletion, missing values, and secret-free errors. Windows CI compiles the complete desktop path. A dedicated macOS job compiles Security.framework integration and runs the common credential tests. Automated suites intentionally do not write real credentials into developer or hosted-runner accounts; disposable-user physical-device smoke tests remain required before production certification.
+The common adapter tests cover opaque targets, caller-memory isolation, size and namespace bounds, cancellation, idempotent deletion, missing values, and secret-free errors. Secret Service tests additionally cover session negotiation, default-collection replacement, opaque attributes, locked-item prompts, duplicate rejection, invalid paths, buffer zeroing, and remote error-body omission. Windows CI compiles the complete desktop path, Linux CI runs the D-Bus protocol tests, and a dedicated macOS job compiles Security.framework integration. Automated suites intentionally do not write real credentials into developer or hosted-runner accounts; disposable-user physical-device smoke tests remain required before production certification.
 
-Server processes require a separate KMS or workload-identity adapter. Windows Credential Manager and macOS Keychain are desktop-user boundaries and must not be presented as clustered server secret-management solutions.
+Server processes require a separate KMS or workload-identity adapter. Windows Credential Manager, macOS Keychain, and Linux Secret Service are desktop-user boundaries and must not be presented as clustered server secret-management solutions.

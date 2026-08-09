@@ -317,9 +317,12 @@ relaydock
 │   │   └── errors.go
 │   ├── credentials/
 │   │   ├── memory.go
+│   │   ├── secret_service.go
+│   │   ├── secret_service_test.go
 │   │   ├── store.go
 │   │   ├── system_store.go
 │   │   ├── system_store_darwin.go
+│   │   ├── system_store_linux.go
 │   │   ├── system_store_test.go
 │   │   ├── system_store_unsupported.go
 │   │   └── system_store_windows.go

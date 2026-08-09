@@ -164,6 +164,7 @@ static void relaydockFreeSecret(void *bytes, size_t length) {
 import "C"
 
 import (
+	"context"
 	"fmt"
 	"unsafe"
 
@@ -176,7 +177,7 @@ func newPlatformCredentialBackend() (systemCredentialBackend, error) {
 	return darwinCredentialBackend{}, nil
 }
 
-func (darwinCredentialBackend) Write(target string, value []byte) error {
+func (darwinCredentialBackend) Write(_ context.Context, target string, value []byte) error {
 	targetBytes := C.CBytes([]byte(target))
 	defer C.free(targetBytes)
 	secret := C.CBytes(value)
@@ -188,7 +189,7 @@ func (darwinCredentialBackend) Write(target string, value []byte) error {
 	return darwinCredentialStatus("write", status)
 }
 
-func (darwinCredentialBackend) Read(target string) ([]byte, error) {
+func (darwinCredentialBackend) Read(_ context.Context, target string) ([]byte, error) {
 	targetBytes := C.CBytes([]byte(target))
 	defer C.free(targetBytes)
 	var secret unsafe.Pointer
@@ -204,7 +205,7 @@ func (darwinCredentialBackend) Read(target string) ([]byte, error) {
 	return C.GoBytes(secret, C.int(length)), nil
 }
 
-func (darwinCredentialBackend) Delete(target string) error {
+func (darwinCredentialBackend) Delete(_ context.Context, target string) error {
 	targetBytes := C.CBytes([]byte(target))
 	defer C.free(targetBytes)
 	status := C.relaydockKeychainDelete(targetBytes, C.size_t(len(target)))

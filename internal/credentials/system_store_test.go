@@ -19,7 +19,7 @@ func newMemorySystemBackend() *memorySystemBackend {
 	return &memorySystemBackend{values: make(map[string][]byte)}
 }
 
-func (b *memorySystemBackend) Write(target string, value []byte) error {
+func (b *memorySystemBackend) Write(_ context.Context, target string, value []byte) error {
 	if b.err != nil {
 		return b.err
 	}
@@ -27,7 +27,7 @@ func (b *memorySystemBackend) Write(target string, value []byte) error {
 	return nil
 }
 
-func (b *memorySystemBackend) Read(target string) ([]byte, error) {
+func (b *memorySystemBackend) Read(_ context.Context, target string) ([]byte, error) {
 	if b.err != nil {
 		return nil, b.err
 	}
@@ -38,7 +38,7 @@ func (b *memorySystemBackend) Read(target string) ([]byte, error) {
 	return append([]byte(nil), value...), nil
 }
 
-func (b *memorySystemBackend) Delete(target string) error {
+func (b *memorySystemBackend) Delete(_ context.Context, target string) error {
 	if b.err != nil {
 		return b.err
 	}
