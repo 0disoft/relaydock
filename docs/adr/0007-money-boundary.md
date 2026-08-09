@@ -1,4 +1,4 @@
-# ADR-0007: Money platform boundary
+# ADR-0007: Money-Platform Boundary
 
 - Status: Accepted
 - Date: 2026-08-06
@@ -6,18 +6,18 @@
 
 ## Context
 
-Gateway는 provider token usage와 attempt를 가장 잘 알지만 고객 잔액, 충전, 환불, 만료, 세금과 결제 원장을 소유하면 안 된다. 모델 공급자를 교체할 수 있는 data plane과 금전 원장을 한 DB에 묶으면 장애와 마이그레이션 영향이 확대된다.
+The Gateway has the best view of provider token usage and attempts, but it must not own customer balances, top-ups, refunds, expiration, taxes, or the payment ledger. Combining the replaceable model-provider data plane and the money ledger in one database expands failure and migration impact.
 
 ## Decision
 
-Gateway는 request, provider attempt, measured usage, price revision reference를 소유한다. money-platform은 balance, authorization hold, capture, release, adjustment, refund를 소유한다. Gateway DB에 고객 잔액을 복제하지 않는다.
+The Gateway owns requests, provider attempts, measured usage, and price-revision references. The money-platform owns balances, authorization holds, captures, releases, adjustments, and refunds. Do not replicate customer balances into the Gateway database.
 
-정산 계약은 `quote → hold → provisional usage → capture/release → adjustment` 순서를 사용한다. 모든 변경 명령은 idempotency key를 요구하고 원본 원장 행을 수정하지 않는다.
+The settlement contract follows `quote -> hold -> provisional usage -> capture/release -> adjustment`. Every mutation requires an idempotency key and never modifies original ledger rows.
 
-## Failure policy
+## Failure Policy
 
-money-platform이 불가용하면 상품 정책에 따라 신규 유료 요청을 fail-closed하거나 제한된 사전 승인 lease만 사용한다. Valkey 잔액을 진실로 사용하거나 실패한 capture를 성공으로 표시하지 않는다.
+When the money-platform is unavailable, either fail closed for new paid requests or use only a bounded preauthorized lease, according to product policy. Never treat a Valkey balance as truth or report a failed capture as successful.
 
 ## Validation
 
-중복 delivery, timeout 후 재시도, provider usage 수정, 부분 스트림 비용, 환불과 reconciliation contract test를 통과해야 한다.
+Pass contract tests for duplicate delivery, retry after timeout, provider-usage corrections, partial-stream cost, refunds, and reconciliation.

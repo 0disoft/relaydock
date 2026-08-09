@@ -4,13 +4,13 @@
 - Current target: Windows-first per-user installation
 - Authority: [`../15-build-and-release.md`](../15-build-and-release.md)
 
-현재 installer, signing, sleep/resume, updater rollback은 production 검증이 남아 있다. 구현 완료로 오인하지 않는다.
+Production validation is still pending for installers, signing, sleep/resume, and updater rollback. Do not mistake these surfaces for completed production work.
 
 ## Required Sources
 
-- desktop release와 Wails upgrade gate: [`../15-build-and-release.md`](../15-build-and-release.md)
-- desktop trust boundary: [`../02-system-context.md`](../02-system-context.md)
-- 현재 구현 상태와 미검증 범위: [`../../IMPLEMENTATION_STATUS.md`](../../IMPLEMENTATION_STATUS.md)
-- 실제 검증 결과: [`../../VALIDATION.md`](../../VALIDATION.md)
+- Desktop release and Wails upgrade gates: [`../15-build-and-release.md`](../15-build-and-release.md)
+- Desktop trust boundary: [`../02-system-context.md`](../02-system-context.md)
+- Current implementation and unverified scope: [`../../IMPLEMENTATION_STATUS.md`](../../IMPLEMENTATION_STATUS.md)
+- Actual validation results: [`../../VALIDATION.md`](../../VALIDATION.md)
 
-installer 또는 updater 변경은 app·MCP bridge 버전 일치, 서명 실패, 중단 복구, 사용자 데이터 보존, Named Pipe ACL과 rollback을 함께 검증해야 한다.
+Installer or updater changes must verify app/MCP bridge version parity, signature failures, interrupted recovery, user-data preservation, Named Pipe ACLs, and rollback together.
