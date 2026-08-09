@@ -54,6 +54,11 @@ jobs:
     needs: validate
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    permissions:
+      contents: read
+      id-token: write
+      attestations: write
+      artifact-metadata: write
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v6
@@ -74,6 +79,10 @@ jobs:
           cp -R internal/persistence/postgres/sqlcgen dist/contracts/sqlc-go
           tar -czf dist/generated-contracts-${{ needs.validate.outputs.version }}.tar.gz -C dist/contracts .
           sha256sum dist/generated-contracts-*.tar.gz > dist/generated-contracts-SHA256SUMS
+      - name: Attest generated contracts
+        uses: actions/attest@v4
+        with:
+          subject-checksums: dist/generated-contracts-SHA256SUMS
       - uses: actions/upload-artifact@v4
         with:
           name: generated-contracts
@@ -116,6 +125,11 @@ jobs:
   source-archive:
     needs: [validate, contracts, postgres-integration]
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+      attestations: write
+      artifact-metadata: write
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v6
@@ -133,6 +147,10 @@ jobs:
           go run ./cmd/releasepack verify --root .
           cp "$RUNNER_TEMP/relaydock-$VERSION-source.zip" dist/
           (cd dist && sha256sum *.zip > SHA256SUMS-source)
+      - name: Attest source archive
+        uses: actions/attest@v4
+        with:
+          subject-checksums: dist/SHA256SUMS-source
       - uses: actions/upload-artifact@v4
         with:
           name: source-archive
@@ -162,6 +180,11 @@ jobs:
             goarch: arm64
             suffix: darwin-arm64
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+      attestations: write
+      artifact-metadata: write
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v6
@@ -187,6 +210,10 @@ jobs:
             go build -trimpath -ldflags "$ldflags" -o "dist/${command}-${SUFFIX%.*}${extension}" "./cmd/${command}"
           done
           (cd dist && sha256sum * > SHA256SUMS)
+      - name: Attest server binaries
+        uses: actions/attest@v4
+        with:
+          subject-checksums: dist/SHA256SUMS
       - uses: actions/upload-artifact@v4
         with:
           name: server-${{ matrix.suffix }}
@@ -197,6 +224,11 @@ jobs:
   web-assets:
     needs: [validate, contracts, postgres-integration]
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+      attestations: write
+      artifact-metadata: write
     steps:
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v2
@@ -211,6 +243,10 @@ jobs:
           tar -czf dist/desktop-frontend-${{ needs.validate.outputs.version }}.tar.gz -C frontend dist
           tar -czf dist/control-console-${{ needs.validate.outputs.version }}.tar.gz -C web/control-console build
           (cd dist && sha256sum * > SHA256SUMS)
+      - name: Attest web assets
+        uses: actions/attest@v4
+        with:
+          subject-checksums: dist/SHA256SUMS
       - uses: actions/upload-artifact@v4
         with:
           name: web-assets
@@ -223,6 +259,11 @@ jobs:
     needs: [validate, contracts, postgres-integration]
     runs-on: windows-latest
     timeout-minutes: 30
+    permissions:
+      contents: read
+      id-token: write
+      attestations: write
+      artifact-metadata: write
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v6
@@ -258,6 +299,10 @@ jobs:
           Compress-Archive -Path "$stage/*" -DestinationPath $archive -CompressionLevel Optimal
           $hash = (Get-FileHash -Algorithm SHA256 $archive).Hash.ToLowerInvariant()
           "$hash  $([IO.Path]::GetFileName($archive))" | Set-Content -NoNewline -Encoding ascii "dist/SHA256SUMS-windows-desktop"
+      - name: Attest Windows desktop bundle
+        uses: actions/attest@v4
+        with:
+          subject-checksums: dist/SHA256SUMS-windows-desktop
       - uses: actions/upload-artifact@v4
         with:
           name: desktop-windows-amd64

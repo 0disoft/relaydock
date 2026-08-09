@@ -18,6 +18,10 @@
 
 `releasepack readiness --root . --version <version>`은 version, public Go module, `go.sum`, `bun.lock`, `LICENSE`, pending-license 제거와 source manifest 일치를 expensive release job 전에 fail-closed 검사한다.
 
+generated contracts, source archive, server binaries, web assets, Windows desktop bundle은 각 build job이 만든 SHA-256 목록을 `actions/attest@v4`에 전달해 같은 job identity와 commit에 묶인 SLSA build provenance를 발급한다. 공개 저장소에서는 `gh attestation verify <artifact> --repo 0disoft/relaydock`로 검증한다. 비공개 저장소는 GitHub Enterprise Cloud가 아니면 artifact attestation을 사용할 수 없으므로 정식 공개 release 전에 저장소 visibility와 plan을 확인한다.
+
+provenance attestation은 SBOM이나 독립 release signing key를 대체하지 않는다. SPDX/CycloneDX SBOM 생성·attestation, release artifact 서명, desktop updater manifest 서명은 각각 별도 gate로 통과해야 한다.
+
 ## Toolchain pins
 
 - Go: `go.mod` 기준선
@@ -42,7 +46,8 @@
 11. server·ops binary build
 12. Windows runner에서 Wails frontend·bindings·desktop·MCP bridge compile
 13. container non-root smoke test
-14. artifact checksum, SBOM, provenance와 signature
+14. artifact checksum과 job-scoped provenance attestation
+15. SBOM과 독립 artifact·updater-manifest signature
 
 PostgreSQL integration test는 전용 일회성 DB만 사용한다. reset opt-in 환경 변수가 없으면 실행을 거절한다.
 

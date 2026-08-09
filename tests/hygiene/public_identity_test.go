@@ -41,3 +41,30 @@ func TestPublicIdentityUsesRelayDock(t *testing.T) {
 		})
 	}
 }
+
+func TestReleaseArtifactsRequireBuildProvenance(t *testing.T) {
+	t.Parallel()
+	workflowPath := filepath.Join("..", "..", ".github", "workflows", "release.yml")
+	raw, err := os.ReadFile(workflowPath)
+	if err != nil {
+		t.Fatal(err)
+	}
+	workflow := string(raw)
+
+	if count := strings.Count(workflow, "uses: actions/attest@v4"); count != 5 {
+		t.Fatalf("release workflow has %d provenance steps, want 5", count)
+	}
+	for _, required := range []string{
+		"id-token: write",
+		"attestations: write",
+		"artifact-metadata: write",
+		"subject-checksums: dist/generated-contracts-SHA256SUMS",
+		"subject-checksums: dist/SHA256SUMS-source",
+		"subject-checksums: dist/SHA256SUMS",
+		"subject-checksums: dist/SHA256SUMS-windows-desktop",
+	} {
+		if !strings.Contains(workflow, required) {
+			t.Errorf("release workflow does not contain %q", required)
+		}
+	}
+}
