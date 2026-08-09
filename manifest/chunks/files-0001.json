@@ -105,8 +105,8 @@
     },
     {
       "path": ".github/workflows/ci.yml",
-      "size": 4428,
-      "sha256": "3f5984301d34d98d6f079035b34f6a0ea2151e694629eba330b0ef5e223c3d22",
+      "size": 4765,
+      "sha256": "db9fdc08b6d49a02317c16029a454f5c480dc73d4a1e1e9a34b2e92479a9ec38",
       "mode": "0644"
     },
     {
@@ -130,7 +130,7 @@
     {
       "path": ".ssealed/manifest.json",
       "size": 18269,
-      "sha256": "d1db04ae9df5a99f078eb3ecfa7ebc84f19288546d0a0cddbda54fe9c24081fa",
+      "sha256": "aa2fdc024c0738a7d8a0ba7cda1402f035f3274051798fa8ea5615fb260f28df",
       "mode": "0644"
     },
     {
@@ -141,8 +141,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "size": 11779,
-      "sha256": "81bcd985126c4dbcd67f7cbbb5cfdad599a18350e7dafbb5fb959e78df398fc6",
+      "size": 12529,
+      "sha256": "6c2554ca645906b3bb2e2129ee0216c72cdf3275f5fc9e8b52c0427c87868ae8",
       "mode": "0644"
     },
     {
@@ -159,8 +159,8 @@
     },
     {
       "path": "IMPLEMENTATION_STATUS.md",
-      "size": 9506,
-      "sha256": "f0743680e46656f0fd69a3f88892354333b07f87da4cb71d81c752290cb79508",
+      "size": 9521,
+      "sha256": "b4fea6abda76d440d37d0ef1b99cb7ff14f0dfd199235ad89622a31ca0e28d01",
       "mode": "0644"
     },
     {
@@ -177,8 +177,8 @@
     },
     {
       "path": "README.md",
-      "size": 10437,
-      "sha256": "f2a06fd9d9ee4753644b09076cf7dc47d546e4c34f814c934c05f702be13c62b",
+      "size": 10456,
+      "sha256": "682ff7f1a6bac9c4e91d00d01b8308359e8881fd75620e5ac5fd89e5fec7f10a",
       "mode": "0644"
     },
     {
@@ -189,8 +189,8 @@
     },
     {
       "path": "TREE.md",
-      "size": 24947,
-      "sha256": "94c316a1ba2be81b2d7734475de4f26c97ebf8ea64a585616d94a86bc1b8620b",
+      "size": 24992,
+      "sha256": "850c0bb7377353631be2199e2470b25f9320b2272ef8d051ec25ae904d0b7e61",
       "mode": "0644"
     },
     {
@@ -201,14 +201,14 @@
     },
     {
       "path": "VALIDATION.md",
-      "size": 10946,
-      "sha256": "c2a6f60ec5474ed9a0b7880c80447df56e04aa37d03e8f642db3f4d81bb1a92d",
+      "size": 11121,
+      "sha256": "0454403cff5b1d97016f9b31caec714db3520b68aba45801843aee21bb319da2",
       "mode": "0644"
     },
     {
       "path": "VERSION",
       "size": 10,
-      "sha256": "e74e22bbf2007b2c0f1a044edb72ca24c48b4fb7e2d9049033bf46a1d30f5897",
+      "sha256": "6b5ae57358d3bca69d96c28c5c11a7144b93356ad0f31fd95b2ac74bb4e0858d",
       "mode": "0644"
     },
     {
@@ -262,7 +262,7 @@
     {
       "path": "bun.lock",
       "size": 60860,
-      "sha256": "fa5205390bc5da9ab4482ede1306052a2502c93dde9fb892f8f789f1e626df59",
+      "sha256": "972986b181eede58a5700dd7a75d578f3f2e7284570e827d16b4f6ce407ab754",
       "mode": "0644"
     },
     {
@@ -712,7 +712,7 @@
     {
       "path": "docs/27-repository-size-and-source-release.md",
       "size": 2655,
-      "sha256": "ed821400048cc957ed809ebd521f0a56e005e7e2d3fbb65bfbce8918495533af",
+      "sha256": "a3da9051490f119260b1537c6e3b3db5e67b4e9688e855c92f0cbb3b9e2722e3",
       "mode": "0644"
     },
     {
@@ -723,8 +723,8 @@
     },
     {
       "path": "docs/29-system-credential-storage.md",
-      "size": 3541,
-      "sha256": "0bbcf0d83e556e0ee6314b8b8ac92d53df14c5bf377bbed63b6fbe8e38d3d75f",
+      "size": 4251,
+      "sha256": "962c1ffd25690e62291d594f229e58c6c2ca8d98779086f6f250475b5ce9ca33",
       "mode": "0644"
     },
     {
@@ -880,7 +880,7 @@
     {
       "path": "frontend/package.json",
       "size": 680,
-      "sha256": "16d445d0c19c9d87c84a457d340bb338f4980fd5812b261becf48238ce48d9ad",
+      "sha256": "e87e156c43d853d16fdd4ec9b93770d24f8c3adf1a63432637ec3f9501977045",
       "mode": "0644"
     },
     {
@@ -909,8 +909,8 @@
     },
     {
       "path": "frontend/src/components/ProviderCard.svelte",
-      "size": 3501,
-      "sha256": "11919043e06eceac3b7f041aff32c44de664576295fb7321bff33aa3700e5e3c",
+      "size": 3508,
+      "sha256": "60d4f35e3277b29c01139e3e72899a3fbe5ec9e0f1f298565115b2b76583847c",
       "mode": "0644"
     },
     {

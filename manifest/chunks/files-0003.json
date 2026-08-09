@@ -2,6 +2,18 @@
   "version": 2,
   "files": [
     {
+      "path": "internal/observability/metrics.go",
+      "size": 372,
+      "sha256": "f76f3959faa97863327a0d7186c55d5c88092c3a36344e64ca0fdb6317d460b4",
+      "mode": "0644"
+    },
+    {
+      "path": "internal/observability/tracing.go",
+      "size": 3469,
+      "sha256": "27d5a096f33f637f4746343bb4390f8331a0f23f798f4f633218700f9101b48f",
+      "mode": "0644"
+    },
+    {
       "path": "internal/outbox/admin.go",
       "size": 952,
       "sha256": "a5ed5a02f86aeb7a065c1f08c305c678b3dd6b8eaca965ca7fcfab1029b8e942",
@@ -676,7 +688,7 @@
     {
       "path": "package.json",
       "size": 471,
-      "sha256": "c22482d5dae9214e0460a3fd9b20ffe27a4c657f015844f61b996a86af804708",
+      "sha256": "34b715d0fcbf83d9f221805f08a7f3d4f589c2119b344ff432236476fe8b12be",
       "mode": "0644"
     },
     {
@@ -953,18 +965,6 @@
       "path": "tests/testdata/streams/openai_responses_text.jsonl",
       "size": 223,
       "sha256": "3e8165b48ca61aef7e4201337a48047e809ad892f93f7afdb1a93d25486b8c49",
-      "mode": "0644"
-    },
-    {
-      "path": "web/control-console/README.md",
-      "size": 770,
-      "sha256": "074e427ae80fbe8eda3c2b318ba03fb3f80814a1767353ae52167a467b20f1b8",
-      "mode": "0644"
-    },
-    {
-      "path": "web/control-console/package.json",
-      "size": 629,
-      "sha256": "7ba47a7aacfa7eac2a530412cc6e33fd67c28149b0657d01bb8c77bb014a2784",
       "mode": "0644"
     }
   ]

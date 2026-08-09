@@ -17,7 +17,7 @@
   const sourceLabels: Record<ProviderSummary['credentialSource'], string> = {
     embedded: '내장 공급자',
     environment: '환경 변수에서 불러옴',
-    system: 'Windows Credential Manager에 저장됨',
+    system: '시스템 자격 증명 저장소에 저장됨',
     none: '저장된 자격 증명 없음',
     anonymous: '자격 증명 없이 사용자 지정 엔드포인트 사용',
     unavailable: '이 플랫폼에서 시스템 자격 증명 저장소를 사용할 수 없음'

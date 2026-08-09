@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.5.7-dev -- macOS Keychain Credential Store
+
+- Added a native macOS Keychain backend through Security.framework `SecItem` APIs with no shell-command or process-argument secret transport.
+- Preserved opaque service identifiers, the 2,048-byte value bound, idempotent deletion, missing-item semantics, and the no-plaintext-fallback contract.
+- Kept temporary C buffers bounded and explicitly zeroed before release, while returning only numeric Keychain status codes on failure.
+- Added a hosted macOS compile-and-test gate that does not mutate the runner's Keychain.
+- Made the desktop credential-source label platform-neutral.
+- Kept disposable-user physical Keychain validation, Linux Secret Service, and server KMS integration explicitly open.
+
 ## 0.5.6-dev -- Desktop Provider Credential Wiring
 
 - Connected Windows Credential Manager values to desktop provider discovery and local Gateway construction.

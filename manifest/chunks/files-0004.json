@@ -2,6 +2,18 @@
   "version": 2,
   "files": [
     {
+      "path": "web/control-console/README.md",
+      "size": 770,
+      "sha256": "074e427ae80fbe8eda3c2b318ba03fb3f80814a1767353ae52167a467b20f1b8",
+      "mode": "0644"
+    },
+    {
+      "path": "web/control-console/package.json",
+      "size": 629,
+      "sha256": "59ee4e1b0d73290a6f9082ef1109c8ad5e69403eb1b1324f9b0fed7bddfaa9b7",
+      "mode": "0644"
+    },
+    {
       "path": "web/control-console/src/app.html",
       "size": 240,
       "sha256": "5c20b37cda73e33d61ac36f9cedbd1f0568518e0a8e72851523e8b8f8595158d",

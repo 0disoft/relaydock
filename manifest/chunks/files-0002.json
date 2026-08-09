@@ -250,7 +250,7 @@
     {
       "path": "internal/buildinfo/info.go",
       "size": 320,
-      "sha256": "8eed596059ddd299123848e348fae80c26405a6ee7218971c7d00d11b06a3b10",
+      "sha256": "3df456d1498765b2f6c2e804b186de4476968588845861fbc8885638d3066979",
       "mode": "0644"
     },
     {
@@ -464,6 +464,12 @@
       "mode": "0644"
     },
     {
+      "path": "internal/credentials/system_store_darwin.go",
+      "size": 5870,
+      "sha256": "7f766a313e050b61612d4f6a87981b114f312fdc0d0018a704ed54d97c2422e6",
+      "mode": "0644"
+    },
+    {
       "path": "internal/credentials/system_store_test.go",
       "size": 4190,
       "sha256": "204a28b513d5fa935292f399a54640b1dd8ba31db174707c00d86e232947d812",
@@ -471,8 +477,8 @@
     },
     {
       "path": "internal/credentials/system_store_unsupported.go",
-      "size": 238,
-      "sha256": "be7eead5d084476744173c7e0ed1e71d5125567eb65f3b7233f6c4f55b8921a5",
+      "size": 249,
+      "sha256": "f78b7815e0e12444f9c044237716aec3cf86e92284f858275340b8070713461a",
       "mode": "0644"
     },
     {
@@ -947,18 +953,6 @@
       "path": "internal/observability/logger.go",
       "size": 203,
       "sha256": "ecde8b4c2b6ec06885c679600712819235a9d9f2e0cb1c3222340706a6d6b43f",
-      "mode": "0644"
-    },
-    {
-      "path": "internal/observability/metrics.go",
-      "size": 372,
-      "sha256": "f76f3959faa97863327a0d7186c55d5c88092c3a36344e64ca0fdb6317d460b4",
-      "mode": "0644"
-    },
-    {
-      "path": "internal/observability/tracing.go",
-      "size": 3469,
-      "sha256": "27d5a096f33f637f4746343bb4390f8331a0f23f798f4f633218700f9101b48f",
       "mode": "0644"
     }
   ]

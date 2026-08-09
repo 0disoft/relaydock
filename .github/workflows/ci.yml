@@ -138,3 +138,15 @@ jobs:
           New-Item -ItemType Directory -Force -Path bin | Out-Null
           go build -trimpath -tags production -ldflags "-s -w -H windowsgui" -o bin/relaydock.exe .
           go build -trimpath -ldflags "-s -w" -o bin/mcp-bridge.exe ./cmd/mcp-bridge
+
+  macos-keychain-smoke:
+    runs-on: macos-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-go@v6
+        with:
+          go-version: '1.26.x'
+          cache: true
+      - name: Compile and test the macOS Keychain boundary
+        run: go test -count=1 ./internal/credentials
