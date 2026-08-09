@@ -1,176 +1,167 @@
 # Validation Report
 
-검증 시점은 **2026-08-09**이며 대상 버전은 **`0.5.2-dev`**다. 이 문서는 현재 샌드박스에서 실제로 실행한 검사와, 외부 도구·서비스·운영체제·공급자 자격 증명이 없어 실행하지 못한 검사를 분리한다. CI workflow에 정의돼 있다는 사실을 실제 통과 결과로 간주하지 않는다.
+Validation date: **2026-08-09**. Target version: **`0.5.2-dev`**. This report separates checks actually executed in the current sandbox or hosted CI from checks that could not run without external tools, services, operating systems, or provider credentials. A check defined in a workflow is not treated as a passing result.
 
-## 배포 준비 판정
+## Release-Readiness Decision
 
-**현재 판정은 repository release readiness 통과, external release blocked다.** source·license·dependency·local build gate는 통과했지만 hosted CI, signing key custody, registry와 실제 배포 환경 증거가 없으므로 public source release, binary/container publication, desktop update channel 개방은 아직 시작하지 않는다.
+**Repository release readiness passes; external release remains blocked.** Source, licensing, dependency, local build, and hosted CI gates pass, but public source or binary publication, container promotion, and a desktop update channel still require release-owner decisions for signing-key custody, registry, and deployment environments.
 
-라이선스 경계는 2026-08-09에 저장소 전체 Apache-2.0으로 확정했다. 루트 `LICENSE`와 `NOTICE`를 추가하고 `LICENSE-PENDING.md`를 제거했으며, 모든 휴대용 bundle이 두 파일을 함께 포함하도록 회귀 검사를 통과했다.
+The repository-wide license boundary was finalized as Apache-2.0 on 2026-08-09. Root `LICENSE` and `NOTICE` are present, `LICENSE-PENDING.md` is removed, and portable-bundle regression checks require both files.
 
-`releasepack readiness --root . --version 0.5.2-dev`는 Go 1.26.4, `go.sum`, Bun 1.3.14 `bun.lock`, `LICENSE`, `NOTICE`, public module identity와 478개 source record의 현재 manifest를 확인하고 통과했다.
+`releasepack readiness --root . --version 0.5.2-dev` passed with Go 1.26.4, `go.sum`, Bun 1.3.14 `bun.lock`, `LICENSE`, `NOTICE`, the public module identity, and the current 478-record source manifest.
 
-commit `0905d93`의 [GitHub Actions CI run 31301723465](https://github.com/0disoft/relaydock/actions/runs/31301723465)은 여섯 job을 모두 통과했다. 이 결과는 Linux race test, PostgreSQL 18 integration, Buf·SQLC generation과 generated package compile, Bun/Svelte 검사, Windows Wails desktop·MCP bridge compile을 실제 hosted runner에서 검증한 근거다.
+[GitHub Actions CI run 31301723465](https://github.com/0disoft/relaydock/actions/runs/31301723465) for commit `0905d93` passed all six jobs. It provides hosted-runner evidence for Linux race tests and vet, PostgreSQL 18 integration, Buf and SQLC generation plus generated-package compilation, Bun/Svelte checks, and Windows Wails desktop/MCP bridge compilation.
 
-이번 준비도 보강에서 다음 항목은 로컬 검증을 통과했다.
+The following readiness additions passed locally:
 
-- CI·release workflow의 Go read-only module resolution과 Bun frozen root-workspace install 계약
-- generated contracts, source, server, web, Windows desktop 산출물별 GitHub build provenance 단계 존재
-- 여섯 service Dockerfile의 `go.sum` 필수 입력, read-only module resolution, non-root runtime 계약
-- release readiness·workflow·container hygiene 회귀 테스트
-- source manifest 재생성·검증과 ssealed strict doctor
-- Go 1.26.4 전체 package `go test -mod=readonly ./...`와 `go vet -mod=readonly ./...`
-- Bun 1.3.14 lock-only resolution과 frozen install
-- desktop·control-console `svelte-check` 0 errors·0 warnings, production build와 frontend test 3개
+- Read-only Go module resolution and frozen root-workspace Bun installation in CI and release workflows
+- GitHub build-provenance steps for generated contracts, source, server, web, and Windows desktop artifacts
+- Required `go.sum`, read-only modules, and non-root runtime contracts in six service Dockerfiles
+- Release-readiness, workflow, and container-hygiene regression tests
+- Source-manifest regeneration/verification and strict ssealed doctor
+- Full `go test -mod=readonly ./...` and `go vet -mod=readonly ./...` on Go 1.26.4
+- Bun 1.3.14 lock-only resolution and frozen installation
+- Zero errors and warnings from desktop and Control Console `svelte-check`, successful production builds, and three frontend tests
 
-다음 항목은 workflow에 구성됐거나 문서 계약만 존재할 뿐 실제 성공 근거가 없다.
+The following are configured or documented but do not yet have successful execution evidence:
 
-- release workflow의 artifact attestation 발급·외부 검증
-- hosted runner의 pinned Syft SPDX SBOM 생성·내용 검토·attestation 검증과 전용 Ed25519 key checksum signature 발급·외부 trust-root 검증
-- hosted runner의 OCI release-candidate build·SBOM·attestation 검증과 registry push·immutable manifest digest promotion
-- Windows native installer, code signing, updater manifest signing과 rollback
-- PostgreSQL·Valkey·실제 provider·money-platform·24시간 soak 운영 gate
+- Release-workflow artifact attestations and external verification
+- Hosted Syft SPDX SBOM review/attestation and Ed25519 checksum signatures verified against an external trust root
+- OCI release-candidate SBOM/attestation verification, registry push, and immutable manifest-digest promotion
+- Windows native installers, code signing, updater-manifest signing, and rollback
+- Live PostgreSQL, Valkey, provider, money-platform, and 24-hour soak operational gates
 
-공개 저장소 visibility, artifact/code-signing key custody, container registry와 배포 대상은 코드가 대신 결정할 수 없는 release-owner 입력이다. 이 항목을 확정하고 외부 환경 gate를 실제 통과하기 전에는 “production-ready” 또는 “배포 완료”로 표시하지 않는다.
+Do not label the product production-ready or deployed before those release-owner inputs and target-environment gates are complete.
 
-## 검증 대상
+## Validated Source Baseline
 
-최종 manifest 생성 직전의 수작업 소스와 생성된 manifest 조각을 합친 기준은 다음과 같다.
+- 478 source records
+- 295 Go files
+- 53 Go test files with 182 named `Test...` functions
+- 82 Markdown documents
+- 13 SQL files
+- 13 Svelte files
+- 11 TypeScript files
+- 9 JSON files
+- 14 YAML files
+- 4 Proto files
+- Baseline: Go 1.26 and Wails v3 `v3.0.0-alpha2.119`
 
-- 전체 source record 478개
-- Go 파일 295개
-- Go test 파일 53개, 명명된 `Test...` 함수 182개
-- Markdown 문서 82개
-- SQL 파일 13개
-- Svelte 파일 13개
-- TypeScript 파일 11개
-- JSON 파일 9개
-- YAML 파일 14개
-- Proto 파일 4개
-- 기준선: Go 1.26, Wails v3 `v3.0.0-alpha2.119`
+`releasepack` regenerates `TREE.md` and the manifest immediately before the source archive. Root `MANIFEST.json` references source records excluding itself and `manifest/**`; records are stored in sorted chunks below 40 KiB.
 
-`TREE.md`와 manifest는 `releasepack`이 source archive 직전에 다시 생성한다. root `MANIFEST.json`은 자기 자신과 `manifest/**`를 제외한 소스 record를 가리키며, 실제 record는 40 KiB보다 작은 정렬 chunk로 분리한다.
+## Checks That Passed
 
-## 실제로 통과한 검사
+### Full Go Dependency Scope
 
-### 전체 Go dependency 범위
+Go 1.26.4 selected the toolchain baseline from `go.mod`, and an isolated module cache produced `go.sum` through `go mod tidy`. Full-package tests then passed with `GOPROXY=off`, `GOWORK=off`, and `-mod=readonly`, including Wails, MCP, pgx, Valkey, and every command. Full `go vet` passed on the same locked graph.
 
-Go 1.26.4가 `go.mod`의 toolchain 기준을 선택했고, 격리된 module cache에서 `go mod tidy`로 `go.sum`을 생성했다. 이후 `GOPROXY=off`, `GOWORK=off`, `-mod=readonly`로 Wails, MCP, pgx, Valkey와 모든 command를 포함한 전체 package test를 통과했다. 같은 locked graph에서 전체 `go vet`도 통과했다.
+The local Windows runner lacks gcc, clang, and zig, so it could not run the `CGO_ENABLED=1` race detector. The hosted Linux `go test -race` result above is the release-gate evidence.
 
-Windows local runner에는 gcc·clang·zig가 없어 `CGO_ENABLED=1` race detector는 실행하지 못했다. GitHub Linux runner의 `go test -race` job을 실제 hosted release gate로 유지하며, workflow 존재만으로 통과했다고 기록하지 않는다.
+### Directly Verified Boundaries
 
-### 이번 변경에서 직접 검증한 경계
+- Offline `-mod=readonly` tests for protocol, runtime, routing, conformance, and fault injection under `github.com/0disoft/relaydock`
+- Public-identity hygiene and source-archive prefix regressions
+- No handwritten source, documentation, or configuration over 40 KiB
+- Root manifest and three manifest chunks below 40 KiB
+- One indivisible canonical `bun.lock` exception and no stale exceptions
+- Rejection of silently omitted symlinks, sockets, and devices
+- Rejection of unknown fields and trailing JSON in manifests and size policy
+- Sorted ZIP entries, normalized timestamps, and mode/size/SHA-256 revalidation during archive creation
+- Windows source modes normalized to `0644` for regular files and `0755` for shell scripts
+- Reproducible SHA-256 for identical source and timestamp
+- Rejection of repository-internal archive output and atomic replacement of existing output
+- Separate local Expert metadata and content-addressed source chunks of at most 32 KiB
+- Full chunk-size and SHA-256 checks when opening a store, including same-size tamper rejection
+- Chunk-lifecycle synchronization between reads/writes and destructive compaction
+- v1/v2 embedded ContextPack migration to v3 with original backup retention
+- Atomic ContextPack/consultation creation, immutable IDs, and idempotency conflicts
+- Terminal graph, orphan result, and orphan chunk compaction with dry-run
+- Ed25519 active/retiring key IDs, legacy no-ID retirement, strict trusted-key JSON, and safe key IDs
+- Remote MCP argt2 active/retiring HMAC keys, normalized-ID collision checks, and size/count limits
+- Token audience, subject, tenant, project, scope, ID, and lifetime validation
 
-- `github.com/0disoft/relaydock` module path로 protocol, runtime, routing, conformance, fault-injection package가 offline `-mod=readonly` 테스트를 통과
-- RelayDock public identity hygiene와 source archive prefix 회귀 테스트 통과
-- 40 KiB를 넘는 수작업 source·문서·설정 파일이 없음
-- root manifest와 3개 manifest chunk가 모두 40 KiB 이하
-- 분할할 수 없는 canonical `bun.lock` file-size exception 1개, stale exception 0개
-- symlink·socket·device 같은 비정규 파일을 archive에서 조용히 누락하지 않고 거절
-- manifest와 size-policy JSON의 unknown field·trailing JSON 거절
-- source ZIP entry 정렬, timestamp 정규화, archive 중 mode·size·SHA-256 재검증
-- Windows에서도 일반 파일 `0644`, 셸 스크립트 `0755` mode를 보존하는 source manifest 정규화
-- 동일 입력·timestamp의 source ZIP SHA-256 재현
-- archive output의 repository 내부 배치 거절과 기존 output 원자 교체
-- local Expert metadata와 최대 32 KiB content-addressed source chunk 분리
-- store open 시 chunk 크기와 실제 SHA-256 전수검사
-- 같은 크기로 변조된 source chunk 거절
-- ContextPack write/read와 destructive compaction의 chunk lifecycle RW 동기화
-- v1·v2 embedded ContextPack의 v3 migration과 원본 backup 보존
-- ContextPack·consultation 원자 생성, immutable ID, idempotency conflict
-- terminal graph·orphan result·orphan chunk compaction과 dry run
-- Ed25519 `signingKeyId` active/retiring overlap, legacy no-ID 종료 스위치
-- trusted signing-key JSON trailing value와 unsafe key ID 거절
-- Remote MCP `argt2.<key-id>.<claims>.<hmac>` active/retiring key overlap
-- normalized HMAC key ID 충돌, key count·secret size·claims size 상한
-- token audience·subject·tenant·project·scope·ID·수명 검증
-
-### 프론트엔드와 저장소 정적 검사
-
-Node 22의 built-in TypeScript stripping으로 입력 검증 테스트를 실행했다. 추가로 TypeScript 7 native compiler와 TypeScript 6 compatibility API를 사용하는 `svelte-check`를 두 workspace에 적용했다.
+### Frontend and Static Checks
 
 ```text
-frontend consultation validation tests  3개 통과
-fail                                  0개
+frontend consultation validation tests  3 passed
+fail                                  0
 desktop svelte-check errors/warnings  0/0
 control svelte-check errors/warnings  0/0
-desktop Vite production build         통과
-control adapter-node production build 통과
+desktop Vite production build         passed
+control adapter-node production build passed
 ```
 
-다음 정적 검사도 실제로 통과했다.
+The following static checks also passed:
 
 ```text
-전체 Go 파일 gofmt drift 없음
-Go package 디렉터리 99개 선언 일치
-로컬 module import target 존재
-Go에서 참조하는 환경 변수 116개 .env.example 문서화
-JSON 12개 파싱
-YAML 14개 파싱
-Shell script 4개 sh -n
-Proto 4개 syntax/package/go_package 선언
-Migration 000001~000004 up/down 쌍과 순차성
-VERSION·package.json·buildinfo·Go directive 일치
-trailing whitespace 없음
-0바이트 파일 없음
-source tree symlink 없음
+all Go files have no gofmt drift
+99 Go package directories have consistent declarations
+all local module import targets exist
+116 environment variables referenced by Go are documented in .env.example
+12 JSON files parse
+14 YAML files parse
+4 shell scripts pass sh -n
+4 Proto files declare syntax, package, and go_package
+migrations 000001-000004 have sequential up/down pairs
+VERSION, package.json, buildinfo, and Go directive agree
+no trailing whitespace
+no zero-byte files
+no source-tree symlinks
 ```
 
-## Source archive 검증
+## Source Archive Verification
 
-`releasepack build`는 source tree를 다시 생성하고, manifest index·chunk를 작성한 뒤 즉시 자체 `verify`를 수행한다. 그 뒤 ZIP을 만들 때 각 source file의 mode·size·SHA-256을 다시 확인한다. 최종 artifact 생성 시 다음 검사를 반복한다.
+`releasepack build` regenerates the source tree and manifest index/chunks, runs its own verification, then rechecks mode, size, and SHA-256 while copying every source file into the ZIP. Final artifact verification repeats:
 
 ```text
 releasepack audit
 releasepack verify
 ZIP CRC test
-ZIP extract 후 manifest verify
-ZIP entry path traversal·duplicate 검사
-ZIP 내부 모든 regular file 40 KiB 이하
-ZIP 내부 MANIFEST index와 chunk hash 대조
+manifest verification after ZIP extraction
+ZIP path-traversal and duplicate-entry checks
+40 KiB ceiling for every regular file in the ZIP
+MANIFEST index and chunk-hash comparison inside the ZIP
 ```
 
-최종 ZIP SHA-256은 artifact 바깥의 `.sha256` 파일에 기록한다. ZIP hash를 저장소 내부 문서에 넣지 않는 이유는 문서 수정이 다시 ZIP hash를 바꾸는 순환 참조를 만들기 때문이다.
+Record the final ZIP SHA-256 in an external `.sha256` file. Embedding it in repository documentation would create a circular hash dependency.
 
-## Hosted CI에서 통과한 gate
+## Hosted CI Gates That Passed
 
-다음은 commit `0905d93`의 hosted CI에서 실제 통과했다.
+- Go 1.26 Linux race detector and vet
+- Buf 1.72.0 lint/generate plus Protobuf and ConnectRPC compilation
+- SQLC 1.31.1 generation plus PostgreSQL repository compilation
+- PostgreSQL 18 migrations, runtime journal, and outbox lease integration
+- Bun frozen installation and desktop/Control Console Svelte checks
+- Pinned Wails v3 bindings, desktop, and MCP bridge compilation on Windows
 
-- Go 1.26 hosted Linux race detector와 vet
-- Buf 1.72.0 lint·generate 후 Protobuf·ConnectRPC package compile
-- SQLC 1.31.1 generate 후 PostgreSQL repository package compile
-- PostgreSQL 18 migration, runtime journal, outbox lease integration
-- Bun frozen install과 desktop·control-console Svelte 검사
-- Windows runner의 pinned Wails v3 bindings·desktop·MCP bridge compile
+## Operational Validation Not Performed Here
 
-## 이 환경에서 수행하지 못한 운영 검증
+Do not treat any of these as passing:
 
-다음 항목은 성공한 것으로 취급하지 않는다.
-
-- Windows local runner의 `go test -race ./...`
-- Wails v3 native desktop 실행과 Windows Named Pipe transport의 실제 OS 통합
+- Local Windows `go test -race ./...`
+- Native Wails v3 execution and real Windows Named Pipe OS integration
 - `buf breaking`
-- 실제 PostgreSQL 18 migration·rollback·multi-replica contention·backup restore
-- 실제 Valkey standalone·Sentinel·cluster Lua lease와 network partition
-- Docker·Compose·Coolify image build와 non-root smoke test
-- Windows Named Pipe ACL, Wails tray·single instance·autostart·installer·updater rollback
-- 실제 OpenAI·Anthropic·Google·DeepSeek·OpenRouter stream/tool/reasoning conformance
-- provider-reported usage와 invoice reconciliation
-- Remote MCP OIDC/OAuth와 실제 ChatGPT·Codex connector conformance
-- OS Credential Manager·Keychain·Secret Service 및 KMS adapter
-- money-platform quote–hold–capture–release의 signed outbox end-to-end 정산
-- 24시간 이상 soak test와 process kill 이후 stream·lease·worker recovery
+- Live PostgreSQL migration/rollback, multi-replica contention, backup, and restore
+- Live Valkey standalone/Sentinel/cluster Lua leases and network partitions
+- Docker, Compose, or Coolify image builds and non-root smoke tests
+- Windows Named Pipe ACLs, tray, single instance, autostart, installers, and updater rollback
+- Real OpenAI, Anthropic, Google, DeepSeek, or OpenRouter stream/tool/reasoning conformance
+- Provider-reported usage and invoice reconciliation
+- Remote MCP OIDC/OAuth and real ChatGPT/Codex connector conformance
+- OS Credential Manager, Keychain, Secret Service, or KMS adapters
+- End-to-end money-platform quote/hold/capture/release through signed outbox events
+- A 24-hour soak and stream/lease/worker recovery after process termination
 
-## Lockfile 계약
+## Lockfile Contract
 
-현재 artifact는 Go 1.26.4에서 생성한 `go.sum`과 Bun 1.3.14에서 생성한 root workspace `bun.lock`을 포함한다. CI와 release에서는 선언을 수정하지 않는 다음 frozen/read-only 동작만 허용한다.
+Artifacts include `go.sum` generated with Go 1.26.4 and root `bun.lock` generated with Bun 1.3.14. CI and release use frozen/read-only operations only:
 
 ```powershell
 go test -mod=readonly ./...
 bun install --frozen-lockfile
 ```
 
-## 개발 PC의 첫 검증 순서
+## First Validation on a Development Workstation
 
 ```powershell
 ./scripts/rename-module.ps1 -NewModule "github.com/<owner>/<repo>"
@@ -184,4 +175,4 @@ wails3 build
 task package
 ```
 
-관리형 경로는 전용 PostgreSQL·Valkey에서 migration, project bootstrap, key 발급, signed Control publish, Gateway journal, outbox sink 순서로 검증한다. 상세 절차는 `docs/15-build-and-release.md`, `docs/20-operations-runbook.md`, `docs/21-control-snapshot-distribution.md`, `docs/22-runtime-journal-and-outbox.md`, `docs/25-local-expert-store.md`, `docs/26-signing-and-token-key-rotation.md`, `docs/27-repository-size-and-source-release.md`를 따른다.
+For managed paths, validate migrations, project bootstrap, key issuance, signed Control publication, the Gateway journal, and the outbox sink against dedicated PostgreSQL and Valkey. Follow `docs/15-build-and-release.md`, `docs/20-operations-runbook.md`, `docs/21-control-snapshot-distribution.md`, `docs/22-runtime-journal-and-outbox.md`, `docs/25-local-expert-store.md`, `docs/26-signing-and-token-key-rotation.md`, and `docs/27-repository-size-and-source-release.md`.

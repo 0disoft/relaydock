@@ -1,96 +1,81 @@
 # Implementation Status
 
-## 현재 단계
+## Current Stage
 
-`0.5.2-dev`는 운영 경로와 bounded-file 계약을 가진 reference implementation이다. 외부 인프라가 없으면 `local/echo`, 원자 JSON 저장소, memory lease로 실행되고, PostgreSQL·Valkey를 연결하면 영속 consultation, virtual key, signed Control snapshot, runtime journal, transactional outbox와 분산 provider lease가 활성화된다.
+`0.5.2-dev` is a reference implementation with operational paths and bounded-file contracts. Without external infrastructure it runs with `local/echo`, an atomic JSON store, and memory leases. PostgreSQL and Valkey enable durable consultations, virtual keys, signed Control snapshots, the runtime journal, transactional outbox, and distributed provider leases.
 
-완전한 production-ready 판정은 아니다. 실제 공급자 계정, money-platform, Go 1.26 전체 dependency build, PostgreSQL·Valkey 실서버, Wails installer·update·code signing은 대상 환경에서 별도 통과해야 한다.
+This is not a claim of full production readiness. Real provider accounts, the money-platform, a complete Go 1.26 dependency build, live PostgreSQL and Valkey, Wails installers and updates, and code signing still require validation in target environments.
 
-## 구성요소별 상태
+## Component Status
 
-| 영역 | 상태 | 현재 구현 | 남은 production 작업 |
+| Area | Status | Implemented | Remaining production work |
 |---|---|---|---|
-| Canonical protocol | 구현·테스트 | OpenAI Responses·Chat, Anthropic Messages, Gemini decode/encode, strict loss report | 실제 provider fixture 확대와 version drift 감시 |
-| Live streaming | 구현·테스트 | 즉시 delta 전달, semantic commit, tool delta, terminal 검증, 중간 EOF 실패 | provider 공식 resume token은 별도 adapter 필요 |
-| Gateway composition | 구현·테스트 | 환경 provider 등록, virtual route, 정책으로 제한되는 `provider/model`, signed snapshot authoritative route·price revision swap | 대규모 route benchmark와 hot-reload soak |
-| Provider adapters | 구현 | OpenAI, Anthropic, Google, DeepSeek, OpenRouter, generic OpenAI-compatible | 실제 계정 conformance·billing usage 대사 |
-| Error taxonomy | 구현·테스트 | auth, permission, quota, rate-limit, overloaded, timeout, transport, invalid request | provider별 세부 error fixture |
-| Retry safety | 구현·테스트 | 첫 semantic event 전만 retry, 이후 fail-visible | resume 지원 provider의 명시적 continuation |
-| Routing | 구현·테스트 | capability·region·cost·availability filter, deterministic score | 실측 TTFT·TPS와 분산 health 공유 |
-| Provider cooldown | 구현·테스트 | 오류 유형별 health degradation, exponential cooldown, success recovery | Valkey/Control 기반 multi-instance health sharing |
-| Concurrency lease | 구현·테스트 | memory lease, Valkey Lua acquire·renew·release, server time | 실제 Valkey cluster·Sentinel·partition 검증 |
-| Signed Control snapshot | 구현·테스트 | key-ID Ed25519 fetch·watch·verify, dual trust, old-key re-sign, atomic route swap, LKG, expiry fail-closed | 장기 watch·실제 secret-manager rotation soak |
-| Control local store | 구현·테스트 | atomic snapshot/key persistence | single-instance 용도로만 유지 |
-| Control PostgreSQL store | 구현 | immutable revision history, advisory lock, polling watch, HA init recovery | 실제 multi-replica contention·DB failover 검증 |
-| Runtime request journal | 구현·테스트 | request·attempt·commit·usage·error lifecycle, retry total usage, operator UUID startup validation | table partition·retention·실부하 tuning |
-| Transactional outbox | 구현·테스트 | FinishRequest와 event 단일 transaction, idempotency conflict | downstream money-platform E2E |
-| Outbox worker | 구현·테스트 | lease, stale-worker fencing, Retry-After, backoff, dead letter, graceful stop | 실제 network partition·receiver outage soak |
-| Signed webhook | 구현·테스트 | HMAC, replay window, idempotency key, redirect/insecure HTTP guard | mTLS 또는 workload identity |
-| Reference webhook sink | 구현·테스트 | signature·duplicate·payload conflict contract | production ledger로 사용 금지 |
-| ContextPack | 구현·테스트 | file selection, path defense, symlink exclusion, digest, Git revision, redaction, limit | symbol index, tokenizer-aware estimate, R2 adapter |
-| Consultation local store | 구현·테스트 | v3 metadata, immutable 32 KiB content chunks, full digest open verification, atomic create, chunk lifecycle RW lock, migration, compaction·stats | 실제 대형 저장소 crash·disk-full·antivirus soak |
-| Consultation PostgreSQL | 구현 | tenant/project scope, idempotency, claim, lease, stale recovery, fencing | 실제 long contention·backup restore |
-| Expert worker | 구현·테스트 | concurrency, renew, retry, max attempts, fencing | cost authorization·multi-provider executor |
-| Expert API route | 구현 | OpenAI Responses, reasoning mode·effort, structured result validation | 실제 model conformance·usage reconciliation |
-| Web handoff | 구현 | read token, expiry, result import, user-declared attestation | ChatGPT connector UX와 organization policy |
-| Remote MCP | 구현·부분 테스트 | host·origin·body guard, bounded argt2 key-ID HMAC token, retiring key overlap, normalized key collision guard, tenant/project isolation | OIDC/OAuth, live SDK conformance |
-| MCP bridge | 구현 | STDIO tools → local IPC | Codex·Claude Code·OpenCode 실사용 conformance |
-| Local IPC | 구현·테스트 | Unix socket, Windows named pipe, frame limit, reconnect | Windows multi-user ACL 실기기 검증 |
-| Wails desktop | 구현 | tray, single instance, close-to-tray, autostart, settings, provider runtime | installer·signing·sleep/resume·updater rollback |
-| Virtual key | 구현·테스트 | PostgreSQL HMAC key, scope·model auth, revoke, v2·legacy parser | pepper rotation·audit·high-volume cache |
-| Database migration | 구현·테스트 | embedded SQL, checksum, advisory lock, per-migration transaction | actual upgrade matrix and PITR exercise |
-| Bootstrap CLI | 구현 | organization/project ensure, key issue/revoke, Control/MCP/outbox ops | Control Console RBAC 연결 |
-| Accounting domain | 개발 계약 | quote, hold, capture, release, adjustment, idempotency | mandarin money-platform client·reconciliation |
-| Storage primitives | 부분 구현 | encrypted memory secret, credential, expiring object, durable outbox | OS keychain, KMS, R2/S3 |
-| Updater | staging 구현 | manifest signature, SHA-256, size, pending artifact | platform bootstrap replacement·rollback |
-| Control Console | 읽기 화면 | health·snapshot·model route 조회 | login, organization, key, route, audit, usage UI |
-| Packaging | 구현·테스트 | desktop+MCP bundle, server/ops list, 40 KiB audit, non-regular-file rejection, strict chunked manifest, deterministic source ZIP | native installer·artifact signing·cross-Go-version reproducibility |
-| CI contracts | 구현 | Go, Buf, sqlc, frontend, PostgreSQL integration gates | 실제 hosted runner 통과·artifact 서명 |
+| Canonical protocol | Implemented and tested | OpenAI Responses/Chat, Anthropic Messages, Gemini encode/decode, strict loss reports | More real-provider fixtures and version-drift monitoring |
+| Live streaming | Implemented and tested | Immediate deltas, semantic commit, tool deltas, terminal validation, midstream EOF failure | Provider-specific official resume adapters |
+| Gateway composition | Implemented and tested | Environment providers, virtual routes, policy-limited direct models, authoritative signed route/price swaps | Large route benchmarks and hot-reload soak |
+| Provider adapters | Implemented | OpenAI, Anthropic, Google, DeepSeek, OpenRouter, generic OpenAI-compatible | Real-account conformance and billed-usage reconciliation |
+| Errors and retry safety | Implemented and tested | Stable taxonomy, Retry-After, pre-semantic retry only, visible post-semantic failure | More provider-specific fixtures and explicit continuation |
+| Routing and cooldown | Implemented and tested | Capability/region/cost/availability filters, deterministic scoring, degradation and recovery | Measured TTFT/TPS and distributed health sharing |
+| Concurrency leases | Implemented and tested | Memory and Valkey Lua acquire/renew/release with server time | Real cluster, Sentinel, and partition validation |
+| Signed Control snapshots | Implemented and tested | Key-ID Ed25519, dual trust, old-key resign, fetch/watch/verify, atomic swap, LKG, fail-closed expiry | Long watch and real secret-manager rotation soak |
+| Control stores | Implemented | Atomic local store; PostgreSQL immutable history, advisory lock, polling watch, HA initialization recovery | Real multi-replica contention and database failover |
+| Runtime journal | Implemented and tested | Request/attempt/commit/usage/error lifecycle, retry totals, operator UUID startup validation | Partitioning, retention, and load tuning |
+| Transactional outbox | Implemented and tested | Atomic finish/event insert, conflict detection, leased worker, fencing, retry, dead letter, graceful stop | Money-platform end-to-end and receiver-outage soak |
+| Signed webhook | Implemented and tested | HMAC, replay window, idempotency, redirect/plaintext guards | mTLS or workload identity |
+| ContextPack | Implemented and tested | Selection, path and symlink defense, digests, Git revision, redaction, limits | Symbol index, tokenizer estimates, R2 adapter |
+| Local consultation store | Implemented and tested | v3 metadata, immutable 32 KiB chunks, digest verification, atomic create, lifecycle locks, migration, compaction | Large-repository crash, disk-full, and antivirus soak |
+| PostgreSQL consultations | Implemented | Tenant/project scope, idempotency, claim, lease, recovery, fencing | Long contention and restore validation |
+| Expert worker/API | Implemented and tested | Renew/retry/fencing, OpenAI Responses executor, reasoning settings, result validation | Cost authorization, more executors, live model conformance |
+| Web handoff | Implemented | Scoped reads, expiry, result import, user-declared attestation | ChatGPT connector UX and organization policy |
+| Remote MCP | Partially tested | Host/origin/body guards, bounded argt2 tokens, retiring keys, tenant/project isolation | OIDC/OAuth and live SDK conformance |
+| MCP bridge and local IPC | Implemented and tested | STDIO-to-IPC tools, Unix sockets, Windows Named Pipes, frame limits, reconnect | Real Codex/Claude Code/OpenCode conformance and Windows multi-user ACLs |
+| Wails desktop | Implemented | Tray, single instance, close-to-tray, autostart, settings, provider runtime | Installers, signing, sleep/resume, updater rollback |
+| Virtual keys | Implemented and tested | PostgreSQL HMAC keys, scopes/models, revoke, v2 and legacy parsing | Pepper rotation, audit, high-volume cache |
+| Migrations and bootstrap | Implemented and tested | Embedded SQL, checksums, advisory locks, transactions, organization/project/key CLIs | Real upgrade matrix, PITR, and console RBAC |
+| Accounting domain | Development contract | Quote, hold, capture, release, adjustment, idempotency | Mandarin money-platform client and reconciliation |
+| Storage primitives | Partial | Encrypted in-memory secrets, credentials, expiring objects, durable outbox | OS keychains, KMS, R2/S3 |
+| Updater | Staging implemented | Manifest signature, SHA-256, size, pending artifact | Platform replacement and rollback |
+| Control Console | Read-only UI | Health, snapshot, and model routes | Login, organizations, keys, routes, audit, usage |
+| Packaging | Implemented and tested | Desktop/MCP bundle, server/ops list, 40 KiB audit, strict chunked manifest, deterministic source ZIP | Native installers, artifact signing, cross-version reproducibility |
+| CI contracts | Implemented | Go, Buf, sqlc, frontend, PostgreSQL integration gates | Release signatures and target-environment certification |
 
-## 0.5.2-dev까지 닫힌 주요 공백
+## Major Gaps Closed by 0.5.2-dev
 
-1. 40 KiB 저장소 파일 상한과 이유가 필요한 예외 정책을 CI·release에 강제했다.
-2. 단일 대형 manifest를 root index와 검증 가능한 chunk로 분리했다.
-3. source ZIP을 저장소 밖에서 deterministic하게 만들고 생성 중 파일 교체를 탐지한다.
-4. CandidateSource, HTTP ingress, provider stream decoder, runtime attempt·lease를 책임별 파일로 분리했다.
-5. 로컬 ContextPack source를 metadata에서 떼어 32 KiB content-addressed chunk로 저장한다.
-6. legacy local store migration, immutable pack conflict, missing chunk 검증과 orphan garbage collection을 추가했다.
-7. local과 PostgreSQL consultation 생성에서 ContextPack과 consultation의 원자성을 강화했다.
-8. Control snapshot에 signing key ID와 old/new public-key overlap을 추가했다.
-9. Remote MCP token을 key-ID argt2 형식으로 바꾸고 retiring HMAC key 검증, key-map collision 방지와 claims 크기 상한을 추가했다.
-10. legacy no-key-ID snapshot과 argt1 token을 명시적으로 종료할 수 있게 했다.
-11. `expertstorectl`과 `releasepack` 운영 CLI를 release artifact와 문서에 포함했다.
-12. manifest tamper, archive replacement, store migration·compaction, key rotation 회귀 테스트를 추가했다.
+1. Enforced a 40 KiB file ceiling with reasoned exceptions in CI and releases.
+2. Split the monolithic manifest into a root index and verifiable chunks.
+3. Added deterministic external source ZIPs and detection of files changing during generation.
+4. Split candidate, ingress, stream-decoder, attempt, and lease responsibilities by file.
+5. Moved local ContextPack source from metadata into 32 KiB content-addressed chunks.
+6. Added legacy-store migration, immutable-pack conflicts, missing-chunk checks, and orphan collection.
+7. Made ContextPack and consultation creation atomic in local and PostgreSQL stores.
+8. Added signing key IDs and overlapping old/new public-key trust to Control snapshots.
+9. Added argt2 key-ID MCP tokens, retiring HMAC keys, collision checks, and claims limits.
+10. Added explicit retirement switches for legacy snapshots and argt1 tokens.
+11. Included `expertstorectl` and `releasepack` in release artifacts and documentation.
+12. Added regression tests for manifests, archive replacement, store migration/compaction, and key rotation.
 
-## 외부 의존성 없이 현재 검증된 범위
+## Validated Without External Dependencies
 
-- protocol canonical roundtrip과 strict loss
-- unknown provider event 보존
-- parallel tool-call delta ordering과 terminal 검증
-- pre-semantic retry와 post-semantic retry 차단
-- provider error taxonomy와 cooldown
-- signed snapshot validation, LKG manager, concurrent Control initialization recovery
-- ContextPack secret 제거·digest·path defense
-- consultation lifecycle·idempotency·worker fencing
-- argt2 scoped MCP token 발급·검증, key rotation, argt1 migration과 accidental broker-token reuse 방지 설정
-- runtime request/attempt journal domain contract
-- outbox lease, exact-expiry fencing, retry, HMAC signing과 receiver verification
-- local durable state corruption detection, legacy migration, chunk hydration and compaction
-- virtual-key v2·legacy parser
-- migration load·ordering·checksum contract
-- local IPC roundtrip
-- update staging과 storage contract
-- 40 KiB audit, 비정규 파일 거절, strict chunked manifest, aggregate 검증과 deterministic source archive
+- Canonical protocol round trips, strict loss, and unknown-event preservation
+- Parallel tool-call ordering, terminal validation, and semantic retry boundaries
+- Provider error taxonomy and cooldown
+- Signed-snapshot validation, LKG management, and concurrent Control initialization
+- ContextPack redaction, digests, path defense, lifecycle, idempotency, and worker fencing
+- Scoped argt2 issuance/verification, key rotation, argt1 migration, and bearer-reuse safeguards
+- Request/attempt journal domain contracts and outbox lease/fencing/retry/HMAC verification
+- Local durable-state corruption detection, migration, chunk hydration, and compaction
+- Virtual-key parsing, migration ordering/checksums, and local IPC round trips
+- Update staging, storage contracts, size audit, nonregular-file rejection, strict manifests, and deterministic archives
 
-## 운영 진입 조건
+## Conditions for Production Entry
 
-1. clean DB와 이전 production schema에서 모든 migration을 실제 수행한다.
-2. PostgreSQL integration test를 전용 DB에서 통과하고, multi-replica Control·outbox contention을 soak test한다.
-3. Valkey standalone·Sentinel 또는 cluster 장애에서 lease fail-closed를 검증한다.
-4. 실제 provider별 non-stream·stream·tool·reasoning·429·중간 EOF fixture를 통과한다.
-5. provider reported usage와 invoice reconciliation 오차 기준을 확정한다.
-6. money-platform의 quote–hold–capture–release와 signed outbox event를 E2E 연결한다.
-7. Windows Wails lifecycle, named-pipe ACL, installer overwrite, updater rollback을 실기기에서 통과한다.
-8. Remote MCP를 OIDC/OAuth 또는 workload identity와 key rotation으로 확장한다.
-9. provider credential을 OS keychain 또는 KMS로 이동한다.
-10. 24시간 이상 soak test와 graceful shutdown 중 stream·lease·worker recovery를 검증한다.
+1. Apply every migration to both a clean database and the previous production schema.
+2. Pass PostgreSQL integration on a dedicated database and soak multi-replica Control/outbox contention.
+3. Verify fail-closed leases during real Valkey standalone, Sentinel, or cluster failures.
+4. Pass non-stream, stream, tool, reasoning, 429, and midstream-EOF fixtures for every real provider.
+5. Set reconciliation tolerances for provider-reported usage and invoices.
+6. Connect money-platform quote, hold, capture, and release end to end through signed outbox events.
+7. Pass physical-device tests for Wails lifecycle, Named Pipe ACLs, installer replacement, and updater rollback.
+8. Add OIDC/OAuth or workload identity and key rotation to Remote MCP.
+9. Move provider credentials to an OS keychain or KMS.
+10. Verify stream, lease, and worker recovery during a 24-hour soak and graceful shutdown.

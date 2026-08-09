@@ -75,6 +75,65 @@ func TestPublicIdentityUsesRelayDock(t *testing.T) {
 	}
 }
 
+func TestDocumentationIsEnglishOnly(t *testing.T) {
+	t.Parallel()
+	root := filepath.Join("..", "..")
+	documentExtensions := map[string]bool{
+		".adoc": true,
+		".md":   true,
+		".mdx":  true,
+		".rst":  true,
+		".txt":  true,
+	}
+	skipDirectories := map[string]bool{
+		".git":          true,
+		".svelte-check": true,
+		".svelte-kit":   true,
+		"node_modules":  true,
+	}
+
+	err := filepath.WalkDir(root, func(path string, entry os.DirEntry, err error) error {
+		if err != nil {
+			return err
+		}
+		if entry.IsDir() {
+			if path != root && skipDirectories[entry.Name()] {
+				return filepath.SkipDir
+			}
+			return nil
+		}
+		if !documentExtensions[strings.ToLower(filepath.Ext(path))] {
+			return nil
+		}
+		raw, err := os.ReadFile(path)
+		if err != nil {
+			return err
+		}
+		for _, value := range string(raw) {
+			if isHangul(value) {
+				relative, relErr := filepath.Rel(root, path)
+				if relErr != nil {
+					relative = path
+				}
+				t.Errorf("documentation contains Hangul text: %s", filepath.ToSlash(relative))
+				break
+			}
+		}
+		return nil
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+}
+
+func isHangul(value rune) bool {
+	return value >= 0x1100 && value <= 0x11ff ||
+		value >= 0x3130 && value <= 0x318f ||
+		value >= 0xa960 && value <= 0xa97f ||
+		value >= 0xac00 && value <= 0xd7af ||
+		value >= 0xd7b0 && value <= 0xd7ff
+}
+
 func TestReleaseArtifactsRequireBuildProvenance(t *testing.T) {
 	t.Parallel()
 	workflowPath := filepath.Join("..", "..", ".github", "workflows", "release.yml")
