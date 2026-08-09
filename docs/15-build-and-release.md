@@ -24,6 +24,8 @@ generated contracts, source archive, server binaries, web assets, Windows deskto
 
 provenance와 SBOM attestation은 독립 release signing key를 대체하지 않는다. release artifact 서명과 desktop updater manifest 서명은 각각 별도 gate로 통과해야 한다.
 
+container release-candidate job은 pinned Docker Buildx action으로 Gateway, Control, Expert, Outbox, Ops, Webhook Sink의 Linux/amd64 OCI archive를 만든다. 각 artifact에는 Buildx image digest, OCI tar SHA-256, SPDX SBOM과 archive-bound attestations가 포함된다. 이 job은 registry login과 push를 명시적으로 하지 않는다. registry가 확정된 뒤 같은 tested OCI content를 rebuild 없이 import하고 registry manifest digest에 대한 별도 attestation을 발급해야 production promotion이 완료된다.
+
 ## Toolchain pins
 
 - Go: `go.mod` 기준선
@@ -50,7 +52,8 @@ provenance와 SBOM attestation은 독립 release signing key를 대체하지 않
 13. container non-root smoke test
 14. artifact checksum과 job-scoped provenance attestation
 15. pinned Syft SPDX SBOM과 subject-bound SBOM attestation
-16. 독립 artifact·updater-manifest signature
+16. unpublished OCI release-candidate와 image digest evidence
+17. registry digest promotion과 독립 artifact·updater-manifest signature
 
 PostgreSQL integration test는 전용 일회성 DB만 사용한다. reset opt-in 환경 변수가 없으면 실행을 거절한다.
 

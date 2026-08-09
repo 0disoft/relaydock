@@ -51,8 +51,8 @@ func TestReleaseArtifactsRequireBuildProvenance(t *testing.T) {
 	}
 	workflow := string(raw)
 
-	if count := strings.Count(workflow, "uses: actions/attest@v4"); count != 10 {
-		t.Fatalf("release workflow has %d provenance and SBOM attestation steps, want 10", count)
+	if count := strings.Count(workflow, "uses: actions/attest@v4"); count != 12 {
+		t.Fatalf("release workflow has %d provenance and SBOM attestation steps, want 12", count)
 	}
 	for _, required := range []string{
 		"id-token: write",
@@ -79,12 +79,12 @@ func TestReleaseArtifactsRequirePinnedSBOMs(t *testing.T) {
 	workflow := string(raw)
 
 	for token, want := range map[string]int{
-		"uses: anchore/sbom-action@v0.24.0": 5,
-		"syft-version: v1.50.0":             5,
-		"format: spdx-json":                 5,
-		"upload-artifact: false":            5,
-		"upload-release-assets: false":      5,
-		"sbom-path:":                        5,
+		"uses: anchore/sbom-action@v0.24.0": 6,
+		"syft-version: v1.50.0":             6,
+		"format: spdx-json":                 6,
+		"upload-artifact: false":            6,
+		"upload-release-assets: false":      6,
+		"sbom-path:":                        6,
 	} {
 		if count := strings.Count(workflow, token); count != want {
 			t.Errorf("release workflow contains %q %d times, want %d", token, count, want)
@@ -95,10 +95,54 @@ func TestReleaseArtifactsRequirePinnedSBOMs(t *testing.T) {
 		"dist/source-SBOM.spdx.json",
 		"dist/server-${{ matrix.suffix }}-SBOM.spdx.json",
 		"dist/web-SBOM.spdx.json",
+		"dist/container-${{ matrix.component }}-SBOM.spdx.json",
 		"dist/windows-desktop-SBOM.spdx.json",
 	} {
 		if !strings.Contains(workflow, required) {
 			t.Errorf("release workflow does not contain %q", required)
+		}
+	}
+}
+
+func TestReleaseContainerCandidatesStayUnpublished(t *testing.T) {
+	t.Parallel()
+	workflowPath := filepath.Join("..", "..", ".github", "workflows", "release.yml")
+	raw, err := os.ReadFile(workflowPath)
+	if err != nil {
+		t.Fatal(err)
+	}
+	workflow := string(raw)
+
+	for _, required := range []string{
+		"uses: docker/setup-buildx-action@v4.1.0",
+		"uses: docker/build-push-action@v7.2.0",
+		"version: v0.34.1",
+		"driver-opts: image=moby/buildkit:v0.30.0",
+		"platforms: linux/amd64",
+		"push: false",
+		"provenance: false",
+		"sbom: false",
+		"outputs: type=oci,dest=",
+		"subject-checksums: dist/SHA256SUMS-container",
+		"^sha256:[0-9a-f]{64}$",
+	} {
+		if !strings.Contains(workflow, required) {
+			t.Errorf("release workflow does not contain %q", required)
+		}
+	}
+	if strings.Contains(workflow, "docker/login-action") {
+		t.Error("release-candidate workflow must not log in to a container registry")
+	}
+	for _, dockerfile := range []string{
+		"deploy/docker/Dockerfile.gateway",
+		"deploy/docker/Dockerfile.control",
+		"deploy/docker/Dockerfile.expert",
+		"deploy/docker/Dockerfile.outbox",
+		"deploy/docker/Dockerfile.ops",
+		"deploy/docker/Dockerfile.webhook-sink",
+	} {
+		if !strings.Contains(workflow, "dockerfile: "+dockerfile) {
+			t.Errorf("release workflow does not build %s", dockerfile)
 		}
 	}
 }

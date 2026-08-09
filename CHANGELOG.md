@@ -9,6 +9,7 @@
 - release workflow 앞단에 version·module·lockfile·license·source manifest fail-closed readiness gate를 추가했다.
 - generated contracts·source·server·web·Windows desktop 산출물의 체크섬에 job-scoped SLSA build provenance attestation을 추가했다.
 - pinned Syft로 각 release artifact 집합의 SPDX JSON을 만들고 같은 checksum subject에 SBOM attestation을 연결했다.
+- 여섯 service의 unpublished Linux/amd64 OCI release-candidate와 image digest·archive checksum·SBOM·attestation artifact를 추가했다.
 - CI와 release의 Go module resolution을 read-only로, Bun 설치를 루트 workspace `bun.lock` 기반 frozen install로 통일했다.
 - 모든 service Dockerfile이 `go.sum`을 필수 입력으로 사용하고 read-only module resolution과 non-root runtime을 유지하도록 고정했다.
 - service image의 Go buildinfo와 OCI labels에 동일한 version·commit·build time release envelope를 강제했다.
