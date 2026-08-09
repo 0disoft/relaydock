@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.5.4-dev -- OIDC Control Identity
+
+- Added provider-neutral OIDC discovery and ID-token verification for Control API bearers.
+- Required exact issuer, audience, authorized party, signature, expiry, not-before, subject, and explicit provider-role mapping before creating a `control-access/v1` principal.
+- Preserved digested static credentials alongside OIDC for Gateway and bootstrap use.
+- Pseudonymized OIDC subjects before authorization audit events and rejected oversized or structurally invalid bearer tokens.
+- Validated the configured issuer, redirects, and discovered JWKS endpoint against the SSRF policy and dialed validated addresses to reduce DNS-rebinding exposure.
+- Added live TLS discovery, denial, scoped-privilege, private-address, and JWKS rotation regression tests.
+- Kept browser authorization-code, nonce, PKCE, session-cookie, membership, and revocation work explicitly outside the API bearer boundary.
+
 ## 0.5.3-dev -- Control Plane Access Foundation
 
 - Replaced the one-token/one-authority Control boundary with a central deny-by-default `control-access/v1` policy.

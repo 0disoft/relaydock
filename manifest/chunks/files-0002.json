@@ -15,14 +15,14 @@
     },
     {
       "path": "go.mod",
-      "size": 1222,
-      "sha256": "fdadde809f46a9d5a9f4ed6584c17ac31492f1948964c6ba5b63d6c94c5be5ef",
+      "size": 1310,
+      "sha256": "4d0d7507f0b138dcedbe5a2bacf4d6e2599169c89f03160c608fe8deffb0c00e",
       "mode": "0644"
     },
     {
       "path": "go.sum",
-      "size": 7305,
-      "sha256": "d4a29e13d0ccdb73b81375cb012f3ea4a9c68c19f721489279eee652630d97ac",
+      "size": 7659,
+      "sha256": "62332f5675cd79385f5e20305893fe655be2e6dabc2d5658d22f76a2ab2570dc",
       "mode": "0644"
     },
     {
@@ -80,6 +80,24 @@
       "mode": "0644"
     },
     {
+      "path": "internal/auth/controlaccess/authenticator.go",
+      "size": 1626,
+      "sha256": "55260db388249d8a6b356562d1fb0f7733bc2fa482c269db8d27076c38b457b6",
+      "mode": "0644"
+    },
+    {
+      "path": "internal/auth/controlaccess/oidc.go",
+      "size": 10363,
+      "sha256": "1c44dcecb44f8191770709197830ab83cdad7ef375637cc0009da8134f0be9a4",
+      "mode": "0644"
+    },
+    {
+      "path": "internal/auth/controlaccess/oidc_test.go",
+      "size": 9080,
+      "sha256": "48db44ec64522299c3b22a9a34ffd5dbf40f2d2d9af2a8f9373064464ae4b104",
+      "mode": "0644"
+    },
+    {
       "path": "internal/auth/controlaccess/policy.go",
       "size": 4046,
       "sha256": "282756b26ea1dca99713996603ca1cc3c1e562c3be6cc547bc000e8d7c3545cb",
@@ -93,8 +111,8 @@
     },
     {
       "path": "internal/auth/controlaccess/static.go",
-      "size": 4987,
-      "sha256": "121e368903a217651aab45d850896aee3241d028ae1193ffbfc513df79a1455a",
+      "size": 5223,
+      "sha256": "62c034beaa34fcd7be94839aee6d737136bea5b84f5f57898f2c3bd8f3a205a5",
       "mode": "0644"
     },
     {
@@ -226,7 +244,7 @@
     {
       "path": "internal/buildinfo/info.go",
       "size": 320,
-      "sha256": "82ea28909d0ff8bc27ee3aedf9fa8eeedcdd3e55ae7ff29d4641e7e05183fdf1",
+      "sha256": "e0faf2ec5685acd856cf9c00709d994b85f0c509ac5900c3086e1cfe06837740",
       "mode": "0644"
     },
     {
@@ -941,24 +959,6 @@
       "path": "internal/outbox/webhook.go",
       "size": 11045,
       "sha256": "20fc8f542bad55416f386a04dac0af811fbd6c570aa32adf84eaaebf0ef42f39",
-      "mode": "0644"
-    },
-    {
-      "path": "internal/outbox/webhook_test.go",
-      "size": 9297,
-      "sha256": "f4d84447bd9a56c09f91e18f6a263f76a5502457366c876d7036af747a10e8d6",
-      "mode": "0644"
-    },
-    {
-      "path": "internal/outbox/webhooksink/handler.go",
-      "size": 7928,
-      "sha256": "bce4247bb6de78f2ec44fd2006e288f84de39a3273b9c579d2cd5f129c5626ce",
-      "mode": "0644"
-    },
-    {
-      "path": "internal/outbox/webhooksink/handler_test.go",
-      "size": 3881,
-      "sha256": "bb9f3cc882da1647538bb5a8019bfae46a8b6f5fec91be3065c1b3fbcf669134",
       "mode": "0644"
     }
   ]

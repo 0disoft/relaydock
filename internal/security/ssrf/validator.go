@@ -38,12 +38,6 @@ func (v Validator) Validate(ctx context.Context, target *url.URL) error {
 		return fmt.Errorf("%w: scheme %q", core.ErrForbidden, scheme)
 	}
 	host := strings.TrimSpace(target.Hostname())
-	if host == "" {
-		return fmt.Errorf("%w: URL host", core.ErrInvalidArgument)
-	}
-	if strings.EqualFold(host, "localhost") || strings.HasSuffix(strings.ToLower(host), ".localhost") {
-		return fmt.Errorf("%w: localhost", core.ErrForbidden)
-	}
 	port := target.Port()
 	if port != "" {
 		n, err := strconv.Atoi(port)
@@ -54,8 +48,27 @@ func (v Validator) Validate(ctx context.Context, target *url.URL) error {
 			return fmt.Errorf("%w: port %d", core.ErrForbidden, n)
 		}
 	}
-	if addr, err := netip.ParseAddr(strings.Trim(host, "[]")); err == nil {
-		return v.validateAddr(addr)
+	_, err := v.ResolveAndValidate(ctx, host)
+	return err
+}
+
+// ResolveAndValidate returns only addresses that satisfy the validator policy.
+// Callers that open a connection should dial one of these returned addresses so
+// validation and connection do not perform separate DNS lookups.
+func (v Validator) ResolveAndValidate(ctx context.Context, host string) ([]netip.Addr, error) {
+	host = strings.TrimSpace(strings.Trim(host, "[]"))
+	if host == "" {
+		return nil, fmt.Errorf("%w: URL host", core.ErrInvalidArgument)
+	}
+	if strings.EqualFold(host, "localhost") || strings.HasSuffix(strings.ToLower(host), ".localhost") {
+		return nil, fmt.Errorf("%w: localhost", core.ErrForbidden)
+	}
+	if addr, err := netip.ParseAddr(host); err == nil {
+		addr = addr.Unmap()
+		if err := v.validateAddr(addr); err != nil {
+			return nil, err
+		}
+		return []netip.Addr{addr}, nil
 	}
 	resolver := v.Resolver
 	if resolver == nil {
@@ -63,27 +76,33 @@ func (v Validator) Validate(ctx context.Context, target *url.URL) error {
 	}
 	addresses, err := resolver.LookupIPAddr(ctx, host)
 	if err != nil {
-		return err
+		return nil, err
 	}
 	if len(addresses) == 0 {
-		return core.ErrNotFound
+		return nil, core.ErrNotFound
 	}
+	resolved := make([]netip.Addr, 0, len(addresses))
 	for _, address := range addresses {
 		addr, ok := netip.AddrFromSlice(address.IP)
 		if !ok {
-			return fmt.Errorf("%w: unresolved address", core.ErrForbidden)
+			return nil, fmt.Errorf("%w: unresolved address", core.ErrForbidden)
 		}
-		if err := v.validateAddr(addr.Unmap()); err != nil {
-			return err
+		addr = addr.Unmap()
+		if err := v.validateAddr(addr); err != nil {
+			return nil, err
 		}
+		resolved = append(resolved, addr)
 	}
-	return nil
+	return resolved, nil
 }
 func (v Validator) validateAddr(addr netip.Addr) error {
-	if v.AllowPrivate {
+	if !addr.IsValid() || addr.IsUnspecified() || addr.IsMulticast() {
+		return fmt.Errorf("%w: non-public address %s", core.ErrForbidden, addr)
+	}
+	if v.AllowPrivate && (addr.IsPrivate() || addr.IsLoopback()) {
 		return nil
 	}
-	if !addr.IsValid() || addr.IsUnspecified() || addr.IsLoopback() || addr.IsPrivate() || addr.IsLinkLocalUnicast() || addr.IsLinkLocalMulticast() || addr.IsMulticast() {
+	if addr.IsLoopback() || addr.IsPrivate() || addr.IsLinkLocalUnicast() || addr.IsLinkLocalMulticast() {
 		return fmt.Errorf("%w: non-public address %s", core.ErrForbidden, addr)
 	}
 	blocked := []netip.Prefix{netip.MustParsePrefix("0.0.0.0/8"), netip.MustParsePrefix("100.64.0.0/10"), netip.MustParsePrefix("169.254.0.0/16"), netip.MustParsePrefix("192.0.0.0/24"), netip.MustParsePrefix("198.18.0.0/15"), netip.MustParsePrefix("fc00::/7"), netip.MustParsePrefix("fe80::/10")}

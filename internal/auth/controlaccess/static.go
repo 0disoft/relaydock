@@ -102,12 +102,8 @@ func (a *StaticAuthenticator) AuthenticateBearer(header string) (Principal, bool
 	if a == nil {
 		return Principal{}, false
 	}
-	const prefix = "Bearer "
-	if !strings.HasPrefix(header, prefix) {
-		return Principal{}, false
-	}
-	token := strings.TrimSpace(strings.TrimPrefix(header, prefix))
-	if token == "" {
+	token, ok := bearerToken(header)
+	if !ok {
 		return Principal{}, false
 	}
 	digest := sha256.Sum256([]byte(token))
@@ -139,17 +135,30 @@ func (a *StaticAuthenticator) MiddlewareWithAudit(next http.Handler, audit Audit
 		}
 		principal, ok := a.AuthenticateBearer(r.Header.Get("Authorization"))
 		if !ok {
-			if audit != nil {
-				audit(r.Context(), AuditEvent{
-					Action: ActionAuthenticate, Allowed: false, Reason: "authentication_required", PolicyVersion: PolicyVersion,
-				})
-			}
-			w.Header().Set("WWW-Authenticate", `Bearer realm="relaydock-control"`)
-			w.Header().Set("Content-Type", "application/json; charset=utf-8")
-			w.WriteHeader(http.StatusUnauthorized)
-			_, _ = w.Write([]byte(`{"error":{"code":"authentication_required","message":"valid control-plane bearer token required"}}`))
+			writeAuthenticationRequired(w, r, audit)
 			return
 		}
 		next.ServeHTTP(w, r.WithContext(WithPrincipal(r.Context(), principal)))
 	})
+}
+
+func bearerToken(header string) (string, bool) {
+	scheme, token, ok := strings.Cut(strings.TrimSpace(header), " ")
+	if !ok || !strings.EqualFold(scheme, "Bearer") {
+		return "", false
+	}
+	token = strings.TrimSpace(token)
+	return token, token != ""
+}
+
+func writeAuthenticationRequired(w http.ResponseWriter, r *http.Request, audit AuditFunc) {
+	if audit != nil {
+		audit(r.Context(), AuditEvent{
+			Action: ActionAuthenticate, Allowed: false, Reason: "authentication_required", PolicyVersion: PolicyVersion,
+		})
+	}
+	w.Header().Set("WWW-Authenticate", `Bearer realm="relaydock-control"`)
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.WriteHeader(http.StatusUnauthorized)
+	_, _ = w.Write([]byte(`{"error":{"code":"authentication_required","message":"valid control-plane bearer token required"}}`))
 }

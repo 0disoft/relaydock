@@ -2,6 +2,24 @@
   "version": 2,
   "files": [
     {
+      "path": "internal/outbox/webhook_test.go",
+      "size": 9297,
+      "sha256": "f4d84447bd9a56c09f91e18f6a263f76a5502457366c876d7036af747a10e8d6",
+      "mode": "0644"
+    },
+    {
+      "path": "internal/outbox/webhooksink/handler.go",
+      "size": 7928,
+      "sha256": "bce4247bb6de78f2ec44fd2006e288f84de39a3273b9c579d2cd5f129c5626ce",
+      "mode": "0644"
+    },
+    {
+      "path": "internal/outbox/webhooksink/handler_test.go",
+      "size": 3881,
+      "sha256": "bb9f3cc882da1647538bb5a8019bfae46a8b6f5fec91be3065c1b3fbcf669134",
+      "mode": "0644"
+    },
+    {
       "path": "internal/persistence/atomicfile/file.go",
       "size": 3650,
       "sha256": "5384eb83d3030f2cc9cd6a8895ae67fb336f1166a0a7cc8349a057be76ae7b5d",
@@ -465,8 +483,14 @@
     },
     {
       "path": "internal/security/ssrf/validator.go",
-      "size": 3045,
-      "sha256": "a8a6d17be17ae08a0726e85cb430b70ce75825506f94679d66f55bba1e932e01",
+      "size": 3817,
+      "sha256": "c7389a95e7f9e695c66708459cc791f234ba4061b6376ae54e189332ec12b07c",
+      "mode": "0644"
+    },
+    {
+      "path": "internal/security/ssrf/validator_test.go",
+      "size": 1691,
+      "sha256": "cb57276eeecad9d947ab573b9cf37a01dbc36b4990a355faafb3ad153571bbb8",
       "mode": "0644"
     },
     {
@@ -610,7 +634,7 @@
     {
       "path": "package.json",
       "size": 471,
-      "sha256": "5c5d5e39f2f69cb64edb8354e5222c26f1a9ce25fe9f87b7de5a44e37cd59042",
+      "sha256": "0b7ebd7222f4177c96bd3b1a48464bd3acad0e7ae55fbf76aab440d96074b6af",
       "mode": "0644"
     },
     {
@@ -898,7 +922,7 @@
     {
       "path": "web/control-console/package.json",
       "size": 629,
-      "sha256": "43d84ba25d09e952ec72448c65c7449db514c743038d924b6bb2483db51577b4",
+      "sha256": "0d8beec05d869ccfdb14b02565088e3d14840d9dcf2449f50a43c55cd2d91ae4",
       "mode": "0644"
     },
     {
@@ -935,12 +959,6 @@
       "path": "web/control-console/vite.config.ts",
       "size": 143,
       "sha256": "b2e81bb7415499d7d6b5612166d29d0a9df5f0e7d2300eae5b8237c336c84c09",
-      "mode": "0644"
-    },
-    {
-      "path": "web/shared/README.md",
-      "size": 175,
-      "sha256": "92b6d09d0c650b5e07f7750113fd0512c9091f30a2410e9bd499dcfe9f6bb96b",
       "mode": "0644"
     }
   ]

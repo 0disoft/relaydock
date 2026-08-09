@@ -2,7 +2,7 @@
 
 RelayDock is a Go-first AI Runtime Gateway that connects coding agents such as Codex, Claude Code, and OpenCode with official AI APIs, self-hosted models, and an Expert Escalation MCP path for difficult architecture reviews.
 
-`0.5.3-dev` is a reference implementation that connects a Wails v3 local runtime, compatible API gateway, multi-provider router, role-scoped Control Plane, signed Control snapshots, a durable request journal, transactional outbox, and scoped Remote MCP. The `local/echo` vertical slice runs without external infrastructure; PostgreSQL and Valkey enable managed paths.
+`0.5.4-dev` is a reference implementation that connects a Wails v3 local runtime, compatible API gateway, multi-provider router, OIDC-capable role-scoped Control Plane, signed Control snapshots, a durable request journal, transactional outbox, and scoped Remote MCP. The `local/echo` vertical slice runs without external infrastructure; PostgreSQL and Valkey enable managed paths.
 
 This is not full production certification. Real provider accounts, a complete Go 1.26 module build, live PostgreSQL and Valkey, native Wails packaging and code signing, and money-platform settlement still require target-environment validation. [`VALIDATION.md`](VALIDATION.md) is the source of truth for executed checks.
 
@@ -205,7 +205,7 @@ go test -tags=integration -count=1 ./tests/postgres
 - Distributed provider health based on real TTFT and TPS probes
 - OS Credential Manager, Keychain, and Secret Service adapters
 - Remote MCP OIDC/OAuth and workload identity
-- OIDC-backed Control Console login, memberships, mutations, and usage views
+- Control Console authorization-code login, secure sessions, memberships, mutations, and usage views
 - Physical-device Wails lifecycle, installers, signing, and rollback
 - Real-provider fixtures, billed-usage reconciliation, and 24-hour soak tests
 - PostgreSQL partitioning and retention based on measured load

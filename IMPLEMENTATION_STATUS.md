@@ -2,7 +2,7 @@
 
 ## Current Stage
 
-`0.5.3-dev` is a reference implementation with operational paths, bounded-file contracts, and a deny-by-default Control Plane access policy. Without external infrastructure it runs with `local/echo`, an atomic JSON store, and memory leases. PostgreSQL and Valkey enable durable consultations, virtual keys, signed Control snapshots, the runtime journal, transactional outbox, and distributed provider leases.
+`0.5.4-dev` is a reference implementation with operational paths, bounded-file contracts, and a deny-by-default Control Plane access policy with static and OIDC identity sources. Without external infrastructure it runs with `local/echo`, an atomic JSON store, and memory leases. PostgreSQL and Valkey enable durable consultations, virtual keys, signed Control snapshots, the runtime journal, transactional outbox, and distributed provider leases.
 
 This is not a claim of full production readiness. Real provider accounts, the money-platform, a complete Go 1.26 dependency build, live PostgreSQL and Valkey, Wails installers and updates, and code signing still require validation in target environments.
 
@@ -19,7 +19,7 @@ This is not a claim of full production readiness. Real provider accounts, the mo
 | Concurrency leases | Implemented and tested | Memory and Valkey Lua acquire/renew/release with server time | Real cluster, Sentinel, and partition validation |
 | Signed Control snapshots | Implemented and tested | Key-ID Ed25519, dual trust, old-key resign, fetch/watch/verify, atomic swap, LKG, fail-closed expiry | Long watch and real secret-manager rotation soak |
 | Control stores | Implemented | Atomic local store; PostgreSQL immutable history, advisory lock, polling watch, HA initialization recovery | Real multi-replica contention and database failover |
-| Control access policy | Implemented and tested | Digested static credentials, gateway/viewer/publisher/admin roles, tenant/project model filtering, provider-account redaction, denial audit | OIDC login, membership persistence, revocation, and Console role management |
+| Control access policy | Implemented and tested | Digested static credentials, OIDC discovery/JWKS verification and rotation, explicit claim-to-role mapping, gateway/viewer/publisher/admin roles, tenant/project model filtering, provider-account redaction, denial audit | Browser code flow and sessions, membership persistence, revocation, and Console role management |
 | Runtime journal | Implemented and tested | Request/attempt/commit/usage/error lifecycle, retry totals, operator UUID startup validation | Partitioning, retention, and load tuning |
 | Transactional outbox | Implemented and tested | Atomic finish/event insert, conflict detection, leased worker, fencing, retry, dead letter, graceful stop | Money-platform end-to-end and receiver-outage soak |
 | Signed webhook | Implemented and tested | HMAC, replay window, idempotency, redirect/plaintext guards | mTLS or workload identity |
@@ -66,6 +66,7 @@ This is not a claim of full production readiness. Real provider accounts, the mo
 - Request/attempt journal domain contracts and outbox lease/fencing/retry/HMAC verification
 - Local durable-state corruption detection, migration, chunk hydration, and compaction
 - Virtual-key parsing, migration ordering/checksums, and local IPC round trips
+- OIDC issuer/audience/time/signature checks, JWKS rotation, claim mapping, scoped-role rejection, and DNS-address validation
 - Update staging, storage contracts, size audit, nonregular-file rejection, strict manifests, and deterministic archives
 
 ## Conditions for Production Entry

@@ -1,6 +1,6 @@
 # Validation Report
 
-Validation date: **2026-08-09**. Target version: **`0.5.3-dev`**. This report separates checks actually executed in the current sandbox or hosted CI from checks that could not run without external tools, services, operating systems, or provider credentials. A check defined in a workflow is not treated as a passing result.
+Validation date: **2026-08-09**. Target version: **`0.5.4-dev`**. This report separates checks actually executed in the current sandbox or hosted CI from checks that could not run without external tools, services, operating systems, or provider credentials. A check defined in a workflow is not treated as a passing result.
 
 ## Release-Readiness Decision
 
@@ -8,12 +8,14 @@ Validation date: **2026-08-09**. Target version: **`0.5.3-dev`**. This report se
 
 The repository-wide license boundary was finalized as Apache-2.0 on 2026-08-09. Root `LICENSE` and `NOTICE` are present, `LICENSE-PENDING.md` is removed, and portable-bundle regression checks require both files.
 
-`releasepack readiness --root . --version 0.5.3-dev` passed with Go 1.26.4, locked dependencies, Apache-2.0 files, the public module identity, and the current 485-record source manifest.
+`releasepack readiness --root . --version 0.5.4-dev` passed with Go 1.26.4, locked dependencies, Apache-2.0 files, the public module identity, and the current 489-record source manifest.
 
 [GitHub Actions CI run 31301723465](https://github.com/0disoft/relaydock/actions/runs/31301723465) for commit `0905d93` passed all six jobs. It provides hosted-runner evidence for Linux race tests and vet, PostgreSQL 18 integration, Buf and SQLC generation plus generated-package compilation, Bun/Svelte checks, and Windows Wails desktop/MCP bridge compilation.
 
 The following readiness additions passed locally:
 
+- OIDC discovery, exact issuer/audience/authorized-party/time/signature verification, explicit claim-to-role mapping, JWKS rotation, and static-bootstrap coexistence tests
+- SSRF denial for private/mixed DNS results and validated-address dialing for issuer, redirect, and JWKS requests
 - Deny-by-default Control role policy, SHA-256 static credential lookup, project model filtering, provider-account redaction, and safe access-decision audit tests
 - Full Go package tests and vet with read-only, offline module resolution
 - Read-only Go module resolution and frozen root-workspace Bun installation in CI and release workflows
@@ -32,19 +34,20 @@ The following are configured or documented but do not yet have successful execut
 - OCI release-candidate SBOM/attestation verification, registry push, and immutable manifest-digest promotion
 - Windows native installers, code signing, updater-manifest signing, and rollback
 - Live PostgreSQL, Valkey, provider, money-platform, and 24-hour soak operational gates
+- Real external IdP conformance and the separate Control Console authorization-code/session flow
 
 Do not label the product production-ready or deployed before those release-owner inputs and target-environment gates are complete.
 
 ## Validated Source Baseline
 
-- 485 source records
-- 302 Go files
-- 57 Go test files with 197 named `Test...` functions
+- 489 source records
+- 306 Go files
+- 59 Go test files with 205 named `Test...` functions
 - 83 Markdown documents
 - 13 SQL files
 - 13 Svelte files
 - 11 TypeScript files
-- 13 JSON files
+- 14 JSON files
 - 14 YAML files
 - 4 Proto files
 - Baseline: Go 1.26 and Wails v3 `v3.0.0-alpha2.119`

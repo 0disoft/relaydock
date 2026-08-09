@@ -240,6 +240,9 @@ relaydock
 │   │   │   ├── scopes.go
 │   │   │   └── set.go
 │   │   ├── controlaccess/
+│   │   │   ├── authenticator.go
+│   │   │   ├── oidc.go
+│   │   │   ├── oidc_test.go
 │   │   │   ├── policy.go
 │   │   │   ├── policy_test.go
 │   │   │   ├── static.go
@@ -546,7 +549,8 @@ relaydock
 │   │   │   ├── encrypted_memory.go
 │   │   │   └── store.go
 │   │   └── ssrf/
-│   │       └── validator.go
+│   │       ├── validator.go
+│   │       └── validator_test.go
 │   ├── serverutil/
 │   │   ├── exposure.go
 │   │   └── server.go

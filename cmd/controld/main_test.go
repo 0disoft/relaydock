@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"strings"
 	"testing"
 
@@ -18,18 +19,18 @@ func TestLoadControlAuthenticatorCombinesScopedAndLegacyCredentials(t *testing.T
 	})
 	t.Setenv("CONTROL_ACCESS_TOKENS_JSON", `[{"tokenSha256":"`+scoped.TokenSHA256+`","subject":"project-viewer","role":"viewer","tenantId":"00000000-0000-0000-0000-000000000001","projectId":"00000000-0000-0000-0000-000000000002"}]`)
 
-	authenticator, count, err := loadControlAuthenticator(legacyToken)
+	authenticator, count, oidcConfigured, err := loadControlAuthenticator(context.Background(), legacyToken)
 	if err != nil {
 		t.Fatal(err)
 	}
-	if count != 2 || !authenticator.Configured() {
+	if count != 2 || oidcConfigured || !authenticator.Configured() {
 		t.Fatalf("credential count=%d configured=%v, want 2 true", count, authenticator.Configured())
 	}
-	viewer, ok := authenticator.AuthenticateBearer("Bearer " + scopedToken)
+	viewer, ok := authenticator.AuthenticateBearer(context.Background(), "Bearer "+scopedToken)
 	if !ok || viewer.Role != controlaccess.RoleViewer || viewer.ProjectID == "" {
 		t.Fatalf("unexpected scoped principal: %#v, %v", viewer, ok)
 	}
-	legacy, ok := authenticator.AuthenticateBearer("Bearer " + legacyToken)
+	legacy, ok := authenticator.AuthenticateBearer(context.Background(), "Bearer "+legacyToken)
 	if !ok || legacy.Role != controlaccess.RoleAdmin || !legacy.IsClusterScoped() {
 		t.Fatalf("unexpected legacy principal: %#v, %v", legacy, ok)
 	}
@@ -37,7 +38,14 @@ func TestLoadControlAuthenticatorCombinesScopedAndLegacyCredentials(t *testing.T
 
 func TestLoadControlAuthenticatorRejectsInvalidStaticPolicy(t *testing.T) {
 	t.Setenv("CONTROL_ACCESS_TOKENS_JSON", `[{"tokenSha256":"invalid","subject":"admin","role":"admin"}]`)
-	if _, _, err := loadControlAuthenticator(""); err == nil {
+	if _, _, _, err := loadControlAuthenticator(context.Background(), ""); err == nil {
 		t.Fatal("accepted invalid token digest")
+	}
+}
+
+func TestLoadOIDCAuthenticatorRejectsPartialConfiguration(t *testing.T) {
+	t.Setenv("CONTROL_OIDC_AUDIENCE", "relaydock-control")
+	if _, err := loadOIDCAuthenticator(context.Background()); err == nil {
+		t.Fatal("accepted OIDC audience without issuer")
 	}
 }

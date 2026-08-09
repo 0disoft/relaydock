@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "files": [
+    {
+      "path": "web/shared/README.md",
+      "size": 175,
+      "sha256": "92b6d09d0c650b5e07f7750113fd0512c9091f30a2410e9bd499dcfe9f6bb96b",
+      "mode": "0644"
+    }
+  ]
+}

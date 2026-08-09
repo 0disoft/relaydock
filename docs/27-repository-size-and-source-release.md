@@ -50,7 +50,7 @@ The root records chunk paths, ranges, file counts, sizes, SHA-256 values, and th
 ```powershell
 go run ./cmd/releasepack build `
   --root . `
-  --output ../relaydock-0.5.3-dev-source.zip `
+  --output ../relaydock-0.5.4-dev-source.zip `
   --generated-at 2026-08-08T12:00:00Z
 
 go run ./cmd/releasepack verify --root .

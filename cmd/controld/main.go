@@ -22,7 +22,7 @@ func main() {
 	logger := observability.NewLogger(os.Stdout, slog.LevelInfo).With("service", "controld")
 	address := envOr("CONTROL_ADDRESS", "127.0.0.1:8081")
 	token := strings.TrimSpace(os.Getenv("CONTROL_BEARER_TOKEN"))
-	authenticator, credentialCount, err := loadControlAuthenticator(token)
+	authenticator, credentialCount, oidcConfigured, err := loadControlAuthenticator(context.Background(), token)
 	if err != nil {
 		logger.Error("load control access policy", "error", err)
 		os.Exit(1)
@@ -85,6 +85,7 @@ func main() {
 		"address", address,
 		"authentication", authenticator.Configured(),
 		"accessCredentials", credentialCount,
+		"oidc", oidcConfigured,
 		"snapshotStore", storeDescription,
 		"signingKey", signerDescription,
 		"signingKeyId", signer.SigningKeyID(),
@@ -96,10 +97,10 @@ func main() {
 	}
 }
 
-func loadControlAuthenticator(legacyToken string) (*controlaccess.StaticAuthenticator, int, error) {
+func loadControlAuthenticator(ctx context.Context, legacyToken string) (*controlaccess.Authenticator, int, bool, error) {
 	configs, err := controlaccess.ParseCredentialConfig(os.Getenv("CONTROL_ACCESS_TOKENS_JSON"))
 	if err != nil {
-		return nil, 0, err
+		return nil, 0, false, err
 	}
 	if legacyToken = strings.TrimSpace(legacyToken); legacyToken != "" {
 		configs = append(configs, controlaccess.CredentialForToken(legacyToken, controlaccess.Principal{
@@ -108,9 +109,48 @@ func loadControlAuthenticator(legacyToken string) (*controlaccess.StaticAuthenti
 	}
 	authenticator, err := controlaccess.NewStaticAuthenticator(configs)
 	if err != nil {
-		return nil, 0, err
+		return nil, 0, false, err
 	}
-	return authenticator, len(configs), nil
+	oidcAuthenticator, err := loadOIDCAuthenticator(ctx)
+	if err != nil {
+		return nil, 0, false, err
+	}
+	return controlaccess.NewAuthenticator(authenticator, oidcAuthenticator), len(configs), oidcAuthenticator != nil, nil
+}
+
+func loadOIDCAuthenticator(ctx context.Context) (*controlaccess.OIDCAuthenticator, error) {
+	issuer := strings.TrimSpace(os.Getenv("CONTROL_OIDC_ISSUER"))
+	audience := strings.TrimSpace(os.Getenv("CONTROL_OIDC_AUDIENCE"))
+	rawMappings := strings.TrimSpace(os.Getenv("CONTROL_OIDC_ROLE_MAPPINGS_JSON"))
+	if issuer == "" {
+		if audience != "" || rawMappings != "" || firstNonEmpty(
+			os.Getenv("CONTROL_OIDC_ROLE_CLAIM"), os.Getenv("CONTROL_OIDC_TENANT_CLAIM"),
+			os.Getenv("CONTROL_OIDC_PROJECT_CLAIM"), os.Getenv("CONTROL_OIDC_ALLOW_PRIVATE_ISSUER"),
+			os.Getenv("CONTROL_OIDC_HTTP_TIMEOUT"),
+		) != "" {
+			return nil, fmt.Errorf("CONTROL_OIDC_ISSUER is required when any OIDC setting is configured")
+		}
+		return nil, nil
+	}
+	mappings, err := controlaccess.ParseOIDCRoleMappings(rawMappings)
+	if err != nil {
+		return nil, err
+	}
+	allowPrivate, err := booleanEnv("CONTROL_OIDC_ALLOW_PRIVATE_ISSUER", false)
+	if err != nil {
+		return nil, err
+	}
+	timeout, err := durationEnv("CONTROL_OIDC_HTTP_TIMEOUT", 10*time.Second)
+	if err != nil {
+		return nil, err
+	}
+	return controlaccess.NewOIDCAuthenticator(ctx, controlaccess.OIDCConfig{
+		Issuer: issuer, Audience: audience,
+		RoleClaim:    strings.TrimSpace(os.Getenv("CONTROL_OIDC_ROLE_CLAIM")),
+		TenantClaim:  strings.TrimSpace(os.Getenv("CONTROL_OIDC_TENANT_CLAIM")),
+		ProjectClaim: strings.TrimSpace(os.Getenv("CONTROL_OIDC_PROJECT_CLAIM")),
+		RoleMappings: mappings, AllowPrivate: allowPrivate, HTTPTimeout: timeout,
+	}, nil)
 }
 
 func openSnapshotStore() (snapshot.Store, string, func(), error) {
