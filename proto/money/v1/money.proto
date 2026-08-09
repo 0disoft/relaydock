@@ -1,0 +1,77 @@
+syntax = "proto3";
+
+package airuntime.money.v1;
+
+option go_package = "github.com/your-org/ai-runtime-gateway/gen/go/money/v1;moneyv1";
+
+service MoneyService {
+  rpc CreateQuote(CreateQuoteRequest) returns (CreateQuoteResponse);
+  rpc AuthorizeHold(AuthorizeHoldRequest) returns (AuthorizeHoldResponse);
+  rpc CaptureUsage(CaptureUsageRequest) returns (CaptureUsageResponse);
+  rpc ReleaseHold(ReleaseHoldRequest) returns (ReleaseHoldResponse);
+  rpc CreateAdjustment(CreateAdjustmentRequest) returns (CreateAdjustmentResponse);
+}
+
+message CreateQuoteRequest {
+  string tenant_id = 1;
+  string product_id = 2;
+  string price_revision_id = 3;
+  int64 maximum_charge_minor = 4;
+  string idempotency_key = 5;
+}
+
+message CreateQuoteResponse {
+  string quote_id = 1;
+  int64 maximum_charge_minor = 2;
+}
+
+message AuthorizeHoldRequest {
+  string quote_id = 1;
+  string idempotency_key = 2;
+}
+
+message AuthorizeHoldResponse {
+  string authorization_id = 1;
+  int64 held_minor = 2;
+}
+
+message UsageDimension {
+  string name = 1;
+  int64 quantity = 2;
+}
+
+message CaptureUsageRequest {
+  string authorization_id = 1;
+  string request_id = 2;
+  string usage_event_id = 3;
+  repeated UsageDimension dimensions = 4;
+  int64 charge_minor = 5;
+  string idempotency_key = 6;
+}
+
+message CaptureUsageResponse {
+  string capture_id = 1;
+  int64 captured_minor = 2;
+}
+
+message ReleaseHoldRequest {
+  string authorization_id = 1;
+  int64 release_minor = 2;
+  string idempotency_key = 3;
+}
+
+message ReleaseHoldResponse {
+  string release_id = 1;
+  int64 released_minor = 2;
+}
+
+message CreateAdjustmentRequest {
+  string original_capture_id = 1;
+  int64 amount_minor = 2;
+  string reason = 3;
+  string idempotency_key = 4;
+}
+
+message CreateAdjustmentResponse {
+  string adjustment_id = 1;
+}

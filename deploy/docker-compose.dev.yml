@@ -1,0 +1,210 @@
+name: ai-runtime-gateway-dev
+
+# Every credential below is development-only and intentionally fixed so the
+# local stack is reproducible. Never copy these values into a shared deploy.
+services:
+  postgres:
+    image: postgres:18-alpine
+    environment:
+      POSTGRES_DB: airuntime
+      POSTGRES_USER: airuntime
+      POSTGRES_PASSWORD: airuntime
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U airuntime -d airuntime"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  valkey:
+    image: valkey/valkey:9-alpine
+    command: ["valkey-server", "--appendonly", "no"]
+    ports:
+      - "127.0.0.1:6379:6379"
+    healthcheck:
+      test: ["CMD", "valkey-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  migrate:
+    build:
+      context: ..
+      dockerfile: deploy/docker/Dockerfile.ops
+    environment:
+      ARG_POSTGRES_URL: postgres://airuntime:airuntime@postgres:5432/airuntime?sslmode=disable
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: "no"
+
+  seed-dev:
+    image: postgres:18-alpine
+    environment:
+      PGPASSWORD: airuntime
+    entrypoint: ["/bin/sh", "-ec"]
+    command: |
+      psql "postgres://airuntime@postgres:5432/airuntime?sslmode=disable" -v ON_ERROR_STOP=1 <<'SQL'
+      INSERT INTO control.organizations (id, slug, name)
+      VALUES ('00000000-0000-4000-8000-000000000001', 'development', 'Development Organization')
+      ON CONFLICT (id) DO UPDATE SET slug = EXCLUDED.slug, name = EXCLUDED.name;
+
+      INSERT INTO control.projects (id, organization_id, slug, name)
+      VALUES (
+        '00000000-0000-4000-8000-000000000002',
+        '00000000-0000-4000-8000-000000000001',
+        'development',
+        'Development Project'
+      )
+      ON CONFLICT (id) DO UPDATE SET
+        organization_id = EXCLUDED.organization_id,
+        slug = EXCLUDED.slug,
+        name = EXCLUDED.name;
+
+      INSERT INTO control.virtual_keys (
+        id, project_id, public_id, secret_digest, scopes, allowed_models
+      ) VALUES (
+        '00000000-0000-4000-8000-000000000003',
+        '00000000-0000-4000-8000-000000000002',
+        'development-operator',
+        decode('00', 'hex'),
+        ARRAY['models:invoke'],
+        ARRAY[]::text[]
+      )
+      ON CONFLICT (id) DO UPDATE SET
+        project_id = EXCLUDED.project_id,
+        public_id = EXCLUDED.public_id,
+        scopes = EXCLUDED.scopes,
+        allowed_models = EXCLUDED.allowed_models,
+        revoked_at = NULL;
+      SQL
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    restart: "no"
+
+  controld:
+    build:
+      context: ..
+      dockerfile: deploy/docker/Dockerfile.control
+    environment:
+      CONTROL_ADDRESS: 0.0.0.0:8081
+      CONTROL_BEARER_TOKEN: development-control-token
+      CONTROL_SNAPSHOT_STORE: postgres
+      CONTROL_POSTGRES_URL: postgres://airuntime:airuntime@postgres:5432/airuntime?sslmode=disable
+      CONTROL_SNAPSHOT_POLL_INTERVAL: 500ms
+      CONTROL_SIGNING_PRIVATE_KEY: AQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyA
+    ports:
+      - "127.0.0.1:8081:8081"
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    restart: unless-stopped
+
+  expert-brokerd:
+    build:
+      context: ..
+      dockerfile: deploy/docker/Dockerfile.expert
+    environment:
+      EXPERT_BROKER_ADDRESS: 0.0.0.0:8082
+      EXPERT_BROKER_BEARER_TOKEN: development-expert-token
+      EXPERT_POSTGRES_URL: postgres://airuntime:airuntime@postgres:5432/airuntime?sslmode=disable
+      EXPERT_TENANT_ID: 00000000-0000-4000-8000-000000000001
+      EXPERT_PROJECT_ID: 00000000-0000-4000-8000-000000000002
+      EXPERT_MCP_TOKEN_SECRET: 0123456789abcdef0123456789abcdef
+      EXPERT_MCP_TOKEN_AUDIENCE: expert-mcp-development
+      EXPERT_MCP_ALLOW_BROKER_TOKEN: "false"
+      EXPERT_MCP_ALLOWED_HOSTS: 127.0.0.1,localhost,expert-brokerd
+    ports:
+      - "127.0.0.1:8082:8082"
+    depends_on:
+      seed-dev:
+        condition: service_completed_successfully
+    restart: unless-stopped
+
+  webhook-sink:
+    profiles: ["outbox"]
+    build:
+      context: ..
+      dockerfile: deploy/docker/Dockerfile.webhook-sink
+    environment:
+      WEBHOOK_SINK_ADDRESS: 0.0.0.0:8090
+      WEBHOOK_SINK_BEARER_TOKEN: development-webhook-sink-token
+      WEBHOOK_SINK_SECRET: 0123456789abcdef0123456789abcdef
+    ports:
+      - "127.0.0.1:8090:8090"
+    restart: unless-stopped
+
+  outboxd:
+    profiles: ["outbox"]
+    build:
+      context: ..
+      dockerfile: deploy/docker/Dockerfile.outbox
+    environment:
+      OUTBOX_POSTGRES_URL: postgres://airuntime:airuntime@postgres:5432/airuntime?sslmode=disable
+      OUTBOX_WEBHOOK_URL: http://webhook-sink:8090/events
+      OUTBOX_WEBHOOK_SECRET: 0123456789abcdef0123456789abcdef
+      OUTBOX_ALLOW_INSECURE_HTTP: "true"
+      OUTBOX_HEALTH_ADDRESS: 0.0.0.0:8083
+      OUTBOX_BEARER_TOKEN: development-outbox-token
+    ports:
+      - "127.0.0.1:8083:8083"
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      webhook-sink:
+        condition: service_started
+    restart: unless-stopped
+
+  gatewayd:
+    build:
+      context: ..
+      dockerfile: deploy/docker/Dockerfile.gateway
+    environment:
+      GATEWAY_ADDRESS: 0.0.0.0:8080
+      GATEWAY_BEARER_TOKEN: development-gateway-token
+      GATEWAY_POSTGRES_URL: postgres://airuntime:airuntime@postgres:5432/airuntime?sslmode=disable
+      GATEWAY_RUNTIME_JOURNAL: postgres
+      GATEWAY_RUNTIME_JOURNAL_TIMEOUT: 5s
+      GATEWAY_OPERATOR_TENANT_ID: 00000000-0000-4000-8000-000000000001
+      GATEWAY_OPERATOR_PROJECT_ID: 00000000-0000-4000-8000-000000000002
+      GATEWAY_OPERATOR_VIRTUAL_KEY_ID: 00000000-0000-4000-8000-000000000003
+      GATEWAY_PRICE_REVISION_ID: development-unpriced-v1
+      GATEWAY_VALKEY_URL: redis://valkey:6379/0
+      GATEWAY_VALKEY_PREFIX: arg-dev
+      GATEWAY_CONTROL_URL: http://controld:8081
+      GATEWAY_CONTROL_BEARER_TOKEN: development-control-token
+      GATEWAY_CONTROL_SIGNING_PUBLIC_KEY_B64: ebVWLo_mVPlAeLES6KmLp5AfhTrmlb7X4OORC60ElmQ
+      GATEWAY_CONTROL_REQUIRED: "true"
+      GATEWAY_CONTROL_LKG_PATH: /var/lib/ai-runtime/gateway/runtime-snapshot.json
+    ports:
+      - "127.0.0.1:8080:8080"
+    volumes:
+      - gateway-state:/var/lib/ai-runtime/gateway
+    depends_on:
+      valkey:
+        condition: service_healthy
+      seed-dev:
+        condition: service_completed_successfully
+      controld:
+        condition: service_started
+    restart: unless-stopped
+
+  caddy:
+    image: caddy:2-alpine
+    profiles: ["proxy"]
+    ports:
+      - "127.0.0.1:8088:8088"
+    volumes:
+      - ./caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+    depends_on:
+      - gatewayd
+      - controld
+      - expert-brokerd
+
+volumes:
+  postgres-data:
+  gateway-state:

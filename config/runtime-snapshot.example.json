@@ -1,0 +1,65 @@
+{
+  "expiresInSeconds": 86400,
+  "models": [
+    {
+      "virtualModel": "code-fast",
+      "policyId": "default-fast-v1",
+      "candidateDetails": [
+        {
+          "provider": "openai",
+          "accountId": "openai/default",
+          "model": "<fast-model-id>",
+          "protocol": "openai.responses",
+          "region": "global",
+          "estimatedCost": 1,
+          "healthScore": 1,
+          "concurrencyLimit": 8
+        }
+      ]
+    },
+    {
+      "virtualModel": "code-deep",
+      "policyId": "default-deep-v1",
+      "candidateDetails": [
+        {
+          "provider": "openai",
+          "accountId": "openai/default",
+          "model": "<deep-model-id>",
+          "protocol": "openai.responses",
+          "region": "global",
+          "estimatedCost": 4,
+          "healthScore": 1,
+          "concurrencyLimit": 4
+        },
+        {
+          "provider": "anthropic",
+          "accountId": "anthropic/default",
+          "model": "<fallback-model-id>",
+          "protocol": "anthropic.messages",
+          "region": "global",
+          "estimatedCost": 5,
+          "healthScore": 1,
+          "concurrencyLimit": 4
+        }
+      ]
+    }
+  ],
+  "providerRefs": [
+    {
+      "id": "openai/default",
+      "provider": "openai",
+      "region": "global"
+    },
+    {
+      "id": "anthropic/default",
+      "provider": "anthropic",
+      "region": "global"
+    }
+  ],
+  "priceRevisions": [
+    {
+      "id": "unpriced-development",
+      "effectiveAt": "2026-08-08T00:00:00Z"
+    }
+  ]
+}

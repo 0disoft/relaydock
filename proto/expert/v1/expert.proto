@@ -1,0 +1,71 @@
+syntax = "proto3";
+
+package airuntime.expert.v1;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/your-org/ai-runtime-gateway/gen/go/expert/v1;expertv1";
+
+service ExpertService {
+  rpc CreateConsultation(CreateConsultationRequest) returns (CreateConsultationResponse);
+  rpc GetConsultation(GetConsultationRequest) returns (GetConsultationResponse);
+  rpc CancelConsultation(CancelConsultationRequest) returns (CancelConsultationResponse);
+  rpc SubmitConsultationResult(SubmitConsultationResultRequest) returns (SubmitConsultationResultResponse);
+}
+
+message CreateConsultationRequest {
+  string tenant_id = 1;
+  string project_id = 2;
+  string objective = 3;
+  string task_type = 4;
+  string route = 5;
+  string context_pack_id = 6;
+  int64 maximum_cost_minor = 7;
+  string idempotency_key = 8;
+}
+
+message CreateConsultationResponse {
+  Consultation consultation = 1;
+}
+
+message GetConsultationRequest {
+  string consultation_id = 1;
+}
+
+message GetConsultationResponse {
+  Consultation consultation = 1;
+  bytes structured_result = 2;
+}
+
+message CancelConsultationRequest {
+  string consultation_id = 1;
+}
+
+message CancelConsultationResponse {
+  Consultation consultation = 1;
+}
+
+message SubmitConsultationResultRequest {
+  string consultation_id = 1;
+  bytes structured_result = 2;
+  string model_attestation = 3;
+  string idempotency_key = 4;
+}
+
+message SubmitConsultationResultResponse {
+  Consultation consultation = 1;
+}
+
+message Consultation {
+  string id = 1;
+  string tenant_id = 2;
+  string project_id = 3;
+  string objective = 4;
+  string route = 5;
+  string state = 6;
+  string context_pack_id = 7;
+  string result_id = 8;
+  google.protobuf.Timestamp created_at = 9;
+  google.protobuf.Timestamp updated_at = 10;
+  google.protobuf.Timestamp expires_at = 11;
+}

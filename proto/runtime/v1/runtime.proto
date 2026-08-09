@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package airuntime.runtime.v1;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/your-org/ai-runtime-gateway/gen/go/runtime/v1;runtimev1";
+
+service RuntimeEventService {
+  rpc RecordUsage(RecordUsageRequest) returns (RecordUsageResponse);
+  rpc RecordProviderHealth(RecordProviderHealthRequest) returns (RecordProviderHealthResponse);
+}
+
+message RecordUsageRequest {
+  string usage_event_id = 1;
+  string request_id = 2;
+  string attempt_id = 3;
+  string provider = 4;
+  string model = 5;
+  int64 input_tokens = 6;
+  int64 cache_read_tokens = 7;
+  int64 cache_write_tokens = 8;
+  int64 output_tokens = 9;
+  int64 reasoning_tokens = 10;
+  string price_revision_id = 11;
+  string idempotency_key = 12;
+}
+
+message RecordUsageResponse {
+  string usage_event_id = 1;
+}
+
+message RecordProviderHealthRequest {
+  string provider = 1;
+  string account_id = 2;
+  string model = 3;
+  bool healthy = 4;
+  int64 ttft_milliseconds = 5;
+  string error_code = 6;
+  google.protobuf.Timestamp measured_at = 7;
+}
+
+message RecordProviderHealthResponse {}

@@ -1,0 +1,68 @@
+# Declarative target shape. Current binaries read equivalent environment
+# variables from .env.example; this file documents the intended ConfigSource
+# contract for a later file-backed control-plane adapter.
+app:
+  environment: development
+  log_level: info
+
+services:
+  gateway:
+    address: 127.0.0.1:8080
+    operator_bearer_token_env: GATEWAY_BEARER_TOKEN
+    virtual_key_environment: live
+    route_file: config/gateway-routes.example.json
+    maximum_attempts: 3
+    provider_lease_ttl: 2m
+    retry_base_delay: 250ms
+    retry_max_delay: 5s
+  control:
+    address: 127.0.0.1:8081
+    bearer_token_env: CONTROL_BEARER_TOKEN
+    state_path: data/control/snapshot.json
+    signing_key_path: data/control/signing.key
+  expert:
+    address: 127.0.0.1:8082
+    bearer_token_env: EXPERT_BROKER_BEARER_TOKEN
+    local_state_path: data/expert-broker/state.json
+
+http:
+  read_timeout: 15s
+  write_timeout: 0s
+  idle_timeout: 90s
+  shutdown_timeout: 15s
+  maximum_body_bytes: 8388608
+
+database:
+  postgres_url_env: ARG_POSTGRES_URL
+
+valkey:
+  url_env: GATEWAY_VALKEY_URL
+  address_env: GATEWAY_VALKEY_ADDRESS
+  namespace: arg
+
+object_store:
+  endpoint_env: ARG_OBJECT_STORE_ENDPOINT
+  bucket_env: ARG_OBJECT_STORE_BUCKET
+  region_env: ARG_OBJECT_STORE_REGION
+
+expert:
+  default_route: openai_api_pro
+  approval: always
+  maximum_calls_per_task: 2
+  maximum_cost_minor_per_task: 800
+  delegation_depth: 1
+  worker:
+    concurrency: 1
+    maximum_attempts: 3
+    poll_interval: 500ms
+    lease_ttl: 2m
+    renew_interval: 40s
+    retry_base_delay: 2s
+    retry_max_delay: 2m
+
+security:
+  payload_logging: false
+  allow_private_provider_endpoints: false
+  context_pack_maximum_bytes: 10485760
+  context_pack_maximum_files: 100
+  require_authentication_outside_loopback: true

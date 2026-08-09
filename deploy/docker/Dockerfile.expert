@@ -1,0 +1,18 @@
+FROM golang:1.26-alpine AS build
+WORKDIR /src
+COPY go.mod ./
+RUN go mod download
+COPY . .
+ARG VERSION=dev
+ARG COMMIT=unknown
+RUN CGO_ENABLED=0 go build -trimpath \
+    -ldflags "-s -w -X github.com/your-org/ai-runtime-gateway/internal/buildinfo.Version=${VERSION} -X github.com/your-org/ai-runtime-gateway/internal/buildinfo.Commit=${COMMIT}" \
+    -o /out/expert-brokerd ./cmd/expert-brokerd \
+    && mkdir -p /out/state/expert
+
+FROM gcr.io/distroless/static-debian12:nonroot
+COPY --from=build /out/expert-brokerd /expert-brokerd
+COPY --from=build --chown=65532:65532 /out/state /var/lib/ai-runtime
+ENV EXPERT_STATE_PATH=/var/lib/ai-runtime/expert/state.json
+USER nonroot:nonroot
+ENTRYPOINT ["/expert-brokerd"]

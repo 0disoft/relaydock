@@ -1,0 +1,165 @@
+version: "3"
+
+vars:
+  APP_NAME: ai-runtime-gateway
+  WAILS_VERSION: v3.0.0-alpha2.119
+  TASK_VERSION: v3.51.1
+  BUF_VERSION: v1.72.0
+  SQLC_VERSION: v1.31.1
+
+includes:
+  common: ./build/Taskfile.yml
+  windows:
+    taskfile: ./build/windows/Taskfile.yml
+    optional: true
+  darwin:
+    taskfile: ./build/darwin/Taskfile.yml
+    optional: true
+  linux:
+    taskfile: ./build/linux/Taskfile.yml
+    optional: true
+
+tasks:
+  setup:
+    desc: Install the pinned Wails CLI, development tools, and workspace dependencies
+    cmds:
+      - go install github.com/wailsapp/wails/v3/cmd/wails3@{{.WAILS_VERSION}}
+      - go install github.com/go-task/task/v3/cmd/task@{{.TASK_VERSION}}
+      - go install github.com/bufbuild/buf/cmd/buf@{{.BUF_VERSION}}
+      - go install github.com/sqlc-dev/sqlc/cmd/sqlc@{{.SQLC_VERSION}}
+      - bun install
+
+  generate:
+    desc: Generate protobuf, sqlc and Wails bindings
+    cmds:
+      - buf generate
+      - sqlc generate
+      - wails3 generate bindings
+
+  format:
+    desc: Format Go source files
+    cmds:
+      - cmd: powershell -ExecutionPolicy Bypass -File ./scripts/format.ps1
+        platforms: [windows]
+      - cmd: ./scripts/format.sh
+        platforms: [linux, darwin]
+
+  check:
+    desc: Fail on formatting drift and run backend and frontend verification
+    cmds:
+      - cmd: powershell -ExecutionPolicy Bypass -File ./scripts/check.ps1
+        platforms: [windows]
+      - cmd: ./scripts/check.sh
+        platforms: [linux, darwin]
+
+  test:
+    desc: Run backend and desktop frontend tests with the race detector
+    cmds:
+      - go test -count=1 ./cmd/... ./db ./internal/... ./tests/...
+      - go test -race -count=1 ./internal/... ./tests/...
+      - bun --cwd frontend run test
+
+  dev:
+    desc: Run Wails v3 development mode
+    cmds:
+      - wails3 dev
+
+  build:
+    desc: Build the current-platform desktop application and MCP bridge
+    cmds:
+      - task: "{{OS}}:build"
+
+  package:
+    desc: Create a portable current-platform bundle
+    cmds:
+      - task: "{{OS}}:package"
+
+  build-assets:
+    desc: Refresh Wails native installer and platform assets from build/config.yml
+    cmds:
+      - wails3 update build-assets
+
+  server:gateway:
+    cmds:
+      - go run ./cmd/gatewayd
+
+  server:control:
+    cmds:
+      - go run ./cmd/controld
+
+  server:expert:
+    cmds:
+      - go run ./cmd/expert-brokerd
+
+  server:outbox:
+    desc: Deliver PostgreSQL outbox events to the configured signed webhook
+    cmds:
+      - go run ./cmd/outboxd
+
+  server:webhook-sink:
+    desc: Run the reference signed-webhook consumer used for local integration
+    cmds:
+      - go run ./cmd/webhook-sink
+
+  control:key:
+    desc: Print the Control Plane Ed25519 public key
+    cmds:
+      - go run ./cmd/controlctl signing-key --raw
+
+  outbox:status:
+    desc: Show transactional outbox delivery status
+    cmds:
+      - go run ./cmd/outboxctl status
+
+  outbox:dead:
+    desc: List transactional outbox dead letters
+    cmds:
+      - go run ./cmd/outboxctl dead --limit 100
+
+  db:status:
+    desc: Show embedded PostgreSQL migration status
+    cmds:
+      - go run ./cmd/dbmigrate status
+
+  db:migrate:
+    desc: Apply all pending PostgreSQL migrations
+    cmds:
+      - go run ./cmd/dbmigrate up
+
+  db:rollback-one:
+    desc: Roll back the most recent PostgreSQL migration
+    cmds:
+      - go run ./cmd/dbmigrate -steps 1 down
+
+  project:ensure:
+    desc: Idempotently create the default organization and project
+    cmds:
+      - go run ./cmd/projectctl ensure
+
+  repo:audit:
+    desc: Enforce the 40 KiB repository file-size policy and documented exceptions
+    cmds:
+      - go run ./cmd/releasepack audit --root .
+
+  release:source:
+    desc: Regenerate TREE and chunked manifest, then build a deterministic source ZIP outside the repository
+    vars:
+      OUTPUT: '{{default "../ai-runtime-gateway-source.zip" .OUTPUT}}'
+    cmds:
+      - go run ./cmd/releasepack build --root . --output {{.OUTPUT}}
+      - go run ./cmd/releasepack verify --root .
+
+  expert:store-stats:
+    desc: Inspect the local Expert store and content-addressed chunks
+    cmds:
+      - go run ./cmd/expertstorectl stats
+
+  expert:store-compact:
+    desc: Compact terminal consultations, orphaned ContextPacks, results, and chunks
+    cmds:
+      - go run ./cmd/expertstorectl compact --terminal-retention 720h --orphan-grace 24h
+
+  clean:
+    desc: Remove generated files without relying on platform shell commands
+    cmds:
+      - go run ./scripts/clean.go

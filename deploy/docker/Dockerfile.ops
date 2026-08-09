@@ -1,0 +1,22 @@
+FROM golang:1.26-alpine AS build
+WORKDIR /src
+COPY go.mod ./
+RUN go mod download
+COPY . .
+RUN CGO_ENABLED=0 go build -trimpath -ldflags "-s -w" -o /out/dbmigrate ./cmd/dbmigrate \
+    && CGO_ENABLED=0 go build -trimpath -ldflags "-s -w" -o /out/projectctl ./cmd/projectctl \
+    && CGO_ENABLED=0 go build -trimpath -ldflags "-s -w" -o /out/keyctl ./cmd/keyctl \
+    && CGO_ENABLED=0 go build -trimpath -ldflags "-s -w" -o /out/controlctl ./cmd/controlctl \
+    && CGO_ENABLED=0 go build -trimpath -ldflags "-s -w" -o /out/mcptokenctl ./cmd/mcptokenctl \
+    && CGO_ENABLED=0 go build -trimpath -ldflags "-s -w" -o /out/outboxctl ./cmd/outboxctl
+
+FROM gcr.io/distroless/static-debian12:nonroot
+COPY --from=build /out/dbmigrate /dbmigrate
+COPY --from=build /out/projectctl /projectctl
+COPY --from=build /out/keyctl /keyctl
+COPY --from=build /out/controlctl /controlctl
+COPY --from=build /out/mcptokenctl /mcptokenctl
+COPY --from=build /out/outboxctl /outboxctl
+USER nonroot:nonroot
+ENTRYPOINT ["/dbmigrate"]
+CMD ["up"]

@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package airuntime.control.v1;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/your-org/ai-runtime-gateway/gen/go/control/v1;controlv1";
+
+service ControlPlaneService {
+  rpc GetRuntimeSnapshot(GetRuntimeSnapshotRequest) returns (GetRuntimeSnapshotResponse);
+  rpc WatchRuntimeSnapshots(WatchRuntimeSnapshotsRequest) returns (stream RuntimeSnapshotChunk);
+  rpc RotateVirtualKey(RotateVirtualKeyRequest) returns (RotateVirtualKeyResponse);
+}
+
+message GetRuntimeSnapshotRequest {
+  int64 after_revision = 1;
+}
+
+message GetRuntimeSnapshotResponse {
+  RuntimeSnapshot snapshot = 1;
+}
+
+message WatchRuntimeSnapshotsRequest {
+  int64 after_revision = 1;
+}
+
+message RuntimeSnapshotChunk {
+  RuntimeSnapshot snapshot = 1;
+}
+
+message RuntimeSnapshot {
+  int64 revision = 1;
+  google.protobuf.Timestamp generated_at = 2;
+  google.protobuf.Timestamp expires_at = 3;
+  bytes payload = 4;
+  bytes signature = 5;
+}
+
+message RotateVirtualKeyRequest {
+  string virtual_key_id = 1;
+  string idempotency_key = 2;
+}
+
+message RotateVirtualKeyResponse {
+  string virtual_key_id = 1;
+  string presented_key = 2;
+}

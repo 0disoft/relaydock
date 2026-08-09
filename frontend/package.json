@@ -1,0 +1,19 @@
+{
+  "name": "@ai-runtime/desktop",
+  "private": true,
+  "version": "0.5.0-dev",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "check": "vite build --mode check",
+    "test": "node --experimental-strip-types --test src/lib/*.test.ts"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "7.2.0",
+    "svelte": "5.56.4",
+    "typescript": "7.0.2",
+    "unocss": "66.7.5",
+    "vite": "8.1.5"
+  }
+}

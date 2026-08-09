@@ -1,0 +1,40 @@
+version: "3"
+
+tasks:
+  frontend:install:
+    dir: ../frontend
+    status:
+      - test -d node_modules
+    cmds:
+      - bun install
+
+  frontend:build:
+    deps: [frontend:install, bindings]
+    dir: ../frontend
+    sources:
+      - src/**/*
+      - index.html
+      - package.json
+      - vite.config.ts
+      - uno.config.ts
+    generates:
+      - dist/**/*
+    cmds:
+      - bun run build
+
+  bindings:
+    dir: ..
+    cmds:
+      - wails3 generate bindings
+
+  go:tidy:
+    dir: ..
+    sources:
+      - go.mod
+    cmds:
+      - go mod tidy
+
+  test:
+    dir: ..
+    cmds:
+      - go test ./internal/...

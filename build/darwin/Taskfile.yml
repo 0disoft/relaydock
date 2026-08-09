@@ -1,0 +1,30 @@
+version: "3"
+
+vars:
+  APP_NAME: ai-runtime-gateway
+  VERSION:
+    sh: tr -d '\r\n' < VERSION
+  ARCH:
+    sh: go env GOARCH
+
+tasks:
+  build:
+    platforms: [darwin]
+    dir: ../..
+    deps:
+      - task: common:frontend:build
+    cmds:
+      - mkdir -p bin
+      - go build -trimpath -tags production -ldflags "-s -w" -o bin/{{.APP_NAME}} .
+      - go build -trimpath -ldflags "-s -w" -o bin/mcp-bridge ./cmd/mcp-bridge
+
+  package:
+    desc: Create a portable macOS tarball containing the desktop app and MCP bridge
+    platforms: [darwin]
+    dir: ../..
+    deps: [build]
+    cmds:
+      - rm -rf dist/{{.APP_NAME}}-{{.VERSION}}-darwin-{{.ARCH}}
+      - mkdir -p dist/{{.APP_NAME}}-{{.VERSION}}-darwin-{{.ARCH}}
+      - cp bin/{{.APP_NAME}} bin/mcp-bridge README.md LICENSE-PENDING.md dist/{{.APP_NAME}}-{{.VERSION}}-darwin-{{.ARCH}}/
+      - tar -C dist -czf dist/{{.APP_NAME}}-{{.VERSION}}-darwin-{{.ARCH}}.tar.gz {{.APP_NAME}}-{{.VERSION}}-darwin-{{.ARCH}}

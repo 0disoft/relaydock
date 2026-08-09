@@ -1,0 +1,5 @@
+{"type":"message_start","message":{"id":"msg_fixture"}}
+{"type":"content_block_start","index":0,"content_block":{"type":"tool_use","id":"tool_fixture","name":"inspect"}}
+{"type":"content_block_delta","index":0,"delta":{"type":"input_json_delta","partial_json":"{\\"path\\":"}}
+{"type":"content_block_delta","index":0,"delta":{"type":"input_json_delta","partial_json":"\\"README.md\\"}"}}
+{"type":"message_stop"}

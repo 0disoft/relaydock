@@ -1,0 +1,34 @@
+version: "3"
+
+vars:
+  APP_NAME: ai-runtime-gateway
+  VERSION:
+    sh: powershell -NoProfile -Command "(Get-Content VERSION -Raw).Trim()"
+
+tasks:
+  build:
+    platforms: [windows]
+    dir: ../..
+    deps:
+      - task: common:frontend:build
+    cmds:
+      - powershell -NoProfile -Command "New-Item -ItemType Directory -Force -Path bin | Out-Null"
+      - go build -trimpath -tags production -ldflags "-s -w -H windowsgui" -o bin/{{.APP_NAME}}.exe .
+      - go build -trimpath -ldflags "-s -w" -o bin/mcp-bridge.exe ./cmd/mcp-bridge
+
+  package:
+    desc: Create a portable Windows ZIP containing the desktop app and MCP bridge
+    platforms: [windows]
+    dir: ../..
+    deps: [build]
+    cmds:
+      - >-
+        powershell -NoProfile -Command
+        "$ErrorActionPreference='Stop';
+        $stage='dist/{{.APP_NAME}}-{{.VERSION}}-windows-amd64';
+        Remove-Item -Recurse -Force $stage -ErrorAction SilentlyContinue;
+        New-Item -ItemType Directory -Force -Path $stage | Out-Null;
+        Copy-Item 'bin/{{.APP_NAME}}.exe','bin/mcp-bridge.exe','README.md','LICENSE-PENDING.md' -Destination $stage;
+        $archive=$stage+'.zip';
+        Remove-Item -Force $archive -ErrorAction SilentlyContinue;
+        Compress-Archive -Path ($stage+'/*') -DestinationPath $archive -CompressionLevel Optimal"

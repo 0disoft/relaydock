@@ -1,0 +1,263 @@
+name: release-candidate
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: SemVer version without a leading v
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: version
+        shell: bash
+        env:
+          VERSION: ${{ inputs.version }}
+        run: |
+          if [[ ! "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+([.-][0-9A-Za-z.-]+)?$ ]]; then
+            echo "invalid semantic version: $VERSION" >&2
+            exit 1
+          fi
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+      - uses: actions/setup-go@v6
+        with:
+          go-version: '1.26.x'
+          cache: true
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.14
+      - name: Enforce repository file-size policy
+        run: go run ./cmd/releasepack audit --root .
+      - name: Test non-desktop core
+        shell: bash
+        run: |
+          go list ./internal/... ./tests/... | grep -v '/internal/desktopwails$' > /tmp/test-packages.txt
+          xargs go test -race < /tmp/test-packages.txt
+      - run: bun install --cwd frontend && bun --cwd frontend run test && bun --cwd frontend run check
+      - run: bun install --cwd web/control-console && bun --cwd web/control-console run check
+
+  contracts:
+    needs: validate
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v6
+        with:
+          go-version: '1.26.x'
+          cache: true
+      - name: Validate generated contracts
+        run: |
+          go run github.com/bufbuild/buf/cmd/buf@v1.72.0 lint
+          go run github.com/bufbuild/buf/cmd/buf@v1.72.0 generate
+          go run github.com/sqlc-dev/sqlc/cmd/sqlc@v1.31.1 generate
+          go test ./gen/go/... ./internal/persistence/postgres/sqlcgen/...
+      - name: Archive generated contracts
+        shell: bash
+        run: |
+          mkdir -p dist/contracts
+          cp -R gen/go dist/contracts/protobuf-go
+          cp -R internal/persistence/postgres/sqlcgen dist/contracts/sqlc-go
+          tar -czf dist/generated-contracts-${{ needs.validate.outputs.version }}.tar.gz -C dist/contracts .
+          sha256sum dist/generated-contracts-*.tar.gz > dist/generated-contracts-SHA256SUMS
+      - uses: actions/upload-artifact@v4
+        with:
+          name: generated-contracts
+          path: |
+            dist/generated-contracts-*.tar.gz
+            dist/generated-contracts-SHA256SUMS
+          if-no-files-found: error
+          retention-days: 14
+
+  postgres-integration:
+    needs: validate
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    services:
+      postgres:
+        image: postgres:18-alpine
+        env:
+          POSTGRES_USER: airuntime
+          POSTGRES_PASSWORD: airuntime
+          POSTGRES_DB: airuntime
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U airuntime -d airuntime"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 20
+    env:
+      ARG_TEST_POSTGRES_URL: postgres://airuntime:airuntime@127.0.0.1:5432/airuntime?sslmode=disable
+      ARG_TEST_POSTGRES_ALLOW_RESET: I_UNDERSTAND_THIS_DATABASE_WILL_BE_TRUNCATED
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v6
+        with:
+          go-version: '1.26.x'
+          cache: true
+      - name: Exercise migration and durable delivery contracts
+        run: go test -tags=integration -count=1 -timeout=2m ./tests/postgres
+
+  source-archive:
+    needs: [validate, contracts, postgres-integration]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v6
+        with:
+          go-version: '1.26.x'
+          cache: true
+      - name: Build deterministic source archive
+        shell: bash
+        env:
+          VERSION: ${{ needs.validate.outputs.version }}
+        run: |
+          mkdir -p dist
+          generated_at="$(git show -s --format=%cI HEAD)"
+          go run ./cmd/releasepack build --root . --output "$RUNNER_TEMP/ai-runtime-gateway-$VERSION-source.zip" --generated-at "$generated_at"
+          go run ./cmd/releasepack verify --root .
+          cp "$RUNNER_TEMP/ai-runtime-gateway-$VERSION-source.zip" dist/
+          (cd dist && sha256sum *.zip > SHA256SUMS-source)
+      - uses: actions/upload-artifact@v4
+        with:
+          name: source-archive
+          path: |
+            dist/ai-runtime-gateway-*-source.zip
+            dist/SHA256SUMS-source
+          if-no-files-found: error
+          retention-days: 14
+
+
+  server-binaries:
+    needs: [validate, contracts, postgres-integration]
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - goos: linux
+            goarch: amd64
+            suffix: linux-amd64
+          - goos: linux
+            goarch: arm64
+            suffix: linux-arm64
+          - goos: windows
+            goarch: amd64
+            suffix: windows-amd64.exe
+          - goos: darwin
+            goarch: arm64
+            suffix: darwin-arm64
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v6
+        with:
+          go-version: '1.26.x'
+          cache: true
+      - name: Build headless services
+        shell: bash
+        env:
+          GOOS: ${{ matrix.goos }}
+          GOARCH: ${{ matrix.goarch }}
+          CGO_ENABLED: '0'
+          VERSION: ${{ needs.validate.outputs.version }}
+          SUFFIX: ${{ matrix.suffix }}
+        run: |
+          mkdir -p dist
+          commit="${GITHUB_SHA}"
+          built_at="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          ldflags="-s -w -X github.com/your-org/ai-runtime-gateway/internal/buildinfo.Version=${VERSION} -X github.com/your-org/ai-runtime-gateway/internal/buildinfo.Commit=${commit} -X github.com/your-org/ai-runtime-gateway/internal/buildinfo.BuildTime=${built_at}"
+          for command in gatewayd controld expert-brokerd outboxd headless mcp-bridge dbmigrate projectctl keyctl controlctl mcptokenctl outboxctl webhook-sink expertstorectl releasepack; do
+            extension=""
+            if [[ "$GOOS" == windows ]]; then extension=".exe"; fi
+            go build -trimpath -ldflags "$ldflags" -o "dist/${command}-${SUFFIX%.*}${extension}" "./cmd/${command}"
+          done
+          (cd dist && sha256sum * > SHA256SUMS)
+      - uses: actions/upload-artifact@v4
+        with:
+          name: server-${{ matrix.suffix }}
+          path: dist/*
+          if-no-files-found: error
+          retention-days: 14
+
+  web-assets:
+    needs: [validate, contracts, postgres-integration]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.14
+      - run: bun install --cwd frontend && bun --cwd frontend run build
+      - run: bun install --cwd web/control-console && bun --cwd web/control-console run build
+      - name: Archive web assets
+        shell: bash
+        run: |
+          mkdir -p dist
+          tar -czf dist/desktop-frontend-${{ needs.validate.outputs.version }}.tar.gz -C frontend dist
+          tar -czf dist/control-console-${{ needs.validate.outputs.version }}.tar.gz -C web/control-console build
+          (cd dist && sha256sum * > SHA256SUMS)
+      - uses: actions/upload-artifact@v4
+        with:
+          name: web-assets
+          path: dist/*
+          if-no-files-found: error
+          retention-days: 14
+
+
+  windows-desktop:
+    needs: [validate, contracts, postgres-integration]
+    runs-on: windows-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v6
+        with:
+          go-version: '1.26.x'
+          cache: true
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.14
+      - name: Install pinned Wails CLI
+        shell: pwsh
+        run: go install github.com/wailsapp/wails/v3/cmd/wails3@v3.0.0-alpha2.119
+      - name: Build Windows desktop bundle
+        shell: pwsh
+        env:
+          VERSION: ${{ needs.validate.outputs.version }}
+        run: |
+          bun install --cwd frontend
+          wails3 generate bindings
+          bun --cwd frontend run test
+          bun --cwd frontend run check
+          bun --cwd frontend run build
+          New-Item -ItemType Directory -Force -Path bin,dist | Out-Null
+          $builtAt = [DateTime]::UtcNow.ToString('yyyy-MM-ddTHH:mm:ssZ')
+          $ldflags = "-s -w -H windowsgui -X github.com/your-org/ai-runtime-gateway/internal/buildinfo.Version=$env:VERSION -X github.com/your-org/ai-runtime-gateway/internal/buildinfo.Commit=$env:GITHUB_SHA -X github.com/your-org/ai-runtime-gateway/internal/buildinfo.BuildTime=$builtAt"
+          go build -trimpath -tags production -ldflags $ldflags -o bin/ai-runtime-gateway.exe .
+          $bridgeFlags = "-s -w -X github.com/your-org/ai-runtime-gateway/internal/buildinfo.Version=$env:VERSION -X github.com/your-org/ai-runtime-gateway/internal/buildinfo.Commit=$env:GITHUB_SHA -X github.com/your-org/ai-runtime-gateway/internal/buildinfo.BuildTime=$builtAt"
+          go build -trimpath -ldflags $bridgeFlags -o bin/mcp-bridge.exe ./cmd/mcp-bridge
+          $stage = "dist/ai-runtime-gateway-$env:VERSION-windows-amd64"
+          New-Item -ItemType Directory -Force -Path $stage | Out-Null
+          Copy-Item bin/ai-runtime-gateway.exe,bin/mcp-bridge.exe,README.md,LICENSE-PENDING.md -Destination $stage
+          $archive = "$stage.zip"
+          Compress-Archive -Path "$stage/*" -DestinationPath $archive -CompressionLevel Optimal
+          $hash = (Get-FileHash -Algorithm SHA256 $archive).Hash.ToLowerInvariant()
+          "$hash  $([IO.Path]::GetFileName($archive))" | Set-Content -NoNewline -Encoding ascii "dist/SHA256SUMS-windows-desktop"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: desktop-windows-amd64
+          path: |
+            dist/ai-runtime-gateway-*-windows-amd64.zip
+            dist/SHA256SUMS-windows-desktop
+          if-no-files-found: error
+          retention-days: 14

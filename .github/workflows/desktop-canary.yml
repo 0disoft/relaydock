@@ -1,0 +1,25 @@
+name: desktop-canary
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '23 3 * * 1'
+
+permissions:
+  contents: read
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v6
+        with:
+          go-version: '1.26.x'
+      - uses: oven-sh/setup-bun@v2
+      - run: go install github.com/wailsapp/wails/v3/cmd/wails3@v3.0.0-alpha2.119
+      - run: bun install
+      - run: wails3 doctor
+      - run: go test ./internal/desktopwails
+      - run: go build -trimpath -o bin/mcp-bridge.exe ./cmd/mcp-bridge
+      - run: wails3 build

@@ -1,0 +1,15 @@
+FROM golang:1.26-alpine AS build
+WORKDIR /src
+COPY go.mod ./
+RUN go mod download
+COPY . .
+RUN CGO_ENABLED=0 go build -trimpath -ldflags "-s -w" -o /out/controld ./cmd/controld \
+    && mkdir -p /out/state/control
+
+FROM gcr.io/distroless/static-debian12:nonroot
+COPY --from=build /out/controld /controld
+COPY --from=build --chown=65532:65532 /out/state /var/lib/ai-runtime
+ENV CONTROL_STATE_PATH=/var/lib/ai-runtime/control/snapshot.json
+ENV CONTROL_SIGNING_KEY_PATH=/var/lib/ai-runtime/control/signing.key
+USER nonroot:nonroot
+ENTRYPOINT ["/controld"]

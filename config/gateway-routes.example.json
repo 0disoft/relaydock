@@ -1,0 +1,48 @@
+{
+  "code-fast": [
+    {
+      "provider": "openai",
+      "accountId": "openai/default",
+      "model": "<fast-model-id>",
+      "protocol": "openai.responses",
+      "region": "global",
+      "estimatedCost": 1,
+      "healthScore": 1,
+      "concurrencyLimit": 8
+    }
+  ],
+  "code-deep": [
+    {
+      "provider": "openai",
+      "accountId": "openai/default",
+      "model": "<deep-model-id>",
+      "protocol": "openai.responses",
+      "region": "global",
+      "estimatedCost": 4,
+      "healthScore": 1,
+      "concurrencyLimit": 4
+    },
+    {
+      "provider": "anthropic",
+      "accountId": "anthropic/default",
+      "model": "<fallback-model-id>",
+      "protocol": "anthropic.messages",
+      "region": "global",
+      "estimatedCost": 5,
+      "healthScore": 1,
+      "concurrencyLimit": 4
+    }
+  ],
+  "local-test": [
+    {
+      "provider": "mock",
+      "accountId": "mock/local",
+      "model": "local/echo",
+      "protocol": "openai.responses",
+      "region": "local",
+      "estimatedCost": 0,
+      "healthScore": 1,
+      "concurrencyLimit": 64
+    }
+  ]
+}

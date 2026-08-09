@@ -1,0 +1,50 @@
+# Go
+/bin/
+/dist/
+*.exe
+*.test
+*.out
+coverage*.txt
+/vendor/
+
+# Wails generated
+/frontend/bindings/
+/frontend/dist/*
+!/frontend/dist/index.html
+/.wake/
+/.task/
+
+# Frontend
+**/node_modules/
+**/.svelte-kit/
+**/.vite/
+**/build/
+!build/
+**/coverage/
+
+# Generated
+/gen/go/
+/internal/persistence/postgres/sqlcgen/
+
+# Runtime data
+/data/
+/tmp/
+*.db
+*.sqlite
+*.sqlite3
+*.log
+
+# Secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
