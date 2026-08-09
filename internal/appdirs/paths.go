@@ -9,7 +9,10 @@ import (
 	"github.com/0disoft/relaydock/internal/core"
 )
 
-const applicationDirectory = "ai-runtime-gateway"
+const (
+	applicationDirectory       = "relaydock"
+	legacyApplicationDirectory = "ai-runtime-gateway"
+)
 
 // ConfigDir returns the per-user directory for durable local runtime state.
 // An explicit root is useful for portable installs, tests, and isolated CI.
@@ -25,7 +28,19 @@ func ConfigDir(explicitRoot string) (string, error) {
 	if err != nil || strings.TrimSpace(base) == "" {
 		return "", fmt.Errorf("%w: user configuration directory: %v", core.ErrInvalidConfiguration, err)
 	}
-	return filepath.Join(base, applicationDirectory), nil
+	return configDirFromBase(base), nil
+}
+
+func configDirFromBase(base string) string {
+	current := filepath.Join(base, applicationDirectory)
+	if info, err := os.Stat(current); err == nil && info.IsDir() {
+		return current
+	}
+	legacy := filepath.Join(base, legacyApplicationDirectory)
+	if info, err := os.Stat(legacy); err == nil && info.IsDir() {
+		return legacy
+	}
+	return current
 }
 
 func SettingsPath(explicitRoot string) (string, error) {

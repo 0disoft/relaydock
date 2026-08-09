@@ -10,7 +10,7 @@ import (
 	"github.com/0disoft/relaydock/internal/core"
 )
 
-const desktopAutostartIdentifier = "dev.zerodi.ai-runtime-gateway"
+const desktopAutostartIdentifier = "com.0disoft.relaydock"
 
 var _ autostart.Service = (*wailsAutostartService)(nil)
 

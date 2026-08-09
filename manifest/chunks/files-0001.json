@@ -87,8 +87,8 @@
     },
     {
       "path": ".env.example",
-      "size": 6876,
-      "sha256": "50517d8298860be171c3a73b0c50e4e5191aa5b25d6889111e73fa4b46ad184f",
+      "size": 6867,
+      "sha256": "5645fe190bbcb431006416dbe3b50ea3e86f037fad6c40c2ade6fa1c6fd21024",
       "mode": "0644"
     },
     {
@@ -141,8 +141,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "size": 13676,
-      "sha256": "bfeb0e23f48b555bcfb3295b7cb5e0e645f5254d97302209c529e37e0d31f8c9",
+      "size": 13812,
+      "sha256": "e0127d146703162f8e603a155bf15dc2395b6e33a6f5f6e5208562039c2482e1",
       "mode": "0644"
     },
     {
@@ -183,8 +183,8 @@
     },
     {
       "path": "TREE.md",
-      "size": 22338,
-      "sha256": "3554f329325801141293f5e79b75216cf9c4d7598a33941bce8b8e864876a153",
+      "size": 22374,
+      "sha256": "9ba350b4b907101069b335985418a052c6d64e6eec0293fd898bc555092de5d6",
       "mode": "0644"
     },
     {
@@ -279,8 +279,8 @@
     },
     {
       "path": "cmd/expertstorectl/main.go",
-      "size": 3424,
-      "sha256": "29989b44037cce7e5f7a705f9806ace13604d3e1c381c854d25b93372acdb9f8",
+      "size": 3454,
+      "sha256": "0b1390fc7723d705230c6389fe4291b06ab392b03c68829a444e97487030da7d",
       "mode": "0644"
     },
     {

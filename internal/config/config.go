@@ -89,7 +89,7 @@ func Load(ctx context.Context) (Config, error) {
 			Region:   strings.TrimSpace(os.Getenv("ARG_OBJECT_STORE_REGION")),
 		},
 		Desktop: DesktopConfig{
-			IPCName:      envString("ARG_DESKTOP_IPC_NAME", "ai-runtime-gateway"),
+			IPCName:      envString("ARG_DESKTOP_IPC_NAME", "relaydock"),
 			SettingsPath: strings.TrimSpace(os.Getenv("ARG_DESKTOP_SETTINGS_PATH")),
 		},
 		Providers: ProviderConfig{

@@ -212,7 +212,8 @@ relaydock
 │   │   ├── service.go
 │   │   └── types.go
 │   ├── appdirs/
-│   │   └── paths.go
+│   │   ├── paths.go
+│   │   └── paths_test.go
 │   ├── auth/
 │   │   ├── authorization/
 │   │   │   ├── scopes.go

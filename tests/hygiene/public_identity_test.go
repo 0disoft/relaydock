@@ -20,6 +20,8 @@ func TestPublicIdentityUsesRelayDock(t *testing.T) {
 		".github/workflows/ci.yml":                    {"bin/relaydock.exe"},
 		".github/workflows/release.yml":               {"relaydock-$VERSION-source.zip", "bin/relaydock.exe", "dist/relaydock-$env:VERSION-windows-amd64"},
 		"frontend/index.html":                         {"<title>RelayDock</title>"},
+		"internal/localipc/endpoint_unix.go":          {"relaydock.sock"},
+		"internal/localipc/endpoint_windows.go":       {`\\.\pipe\relaydock`},
 		"web/control-console/src/routes/+page.svelte": {"RelayDock control plane"},
 	}
 	for relative, required := range expectations {

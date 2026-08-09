@@ -7,7 +7,7 @@ import "os/user"
 func DefaultEndpoint() string {
 	current, err := user.Current()
 	if err != nil {
-		return `\\.\pipe\ai-runtime-gateway`
+		return `\\.\pipe\relaydock`
 	}
-	return `\\.\pipe\ai-runtime-gateway-` + current.Uid
+	return `\\.\pipe\relaydock-` + current.Uid
 }

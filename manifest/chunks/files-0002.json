@@ -33,8 +33,14 @@
     },
     {
       "path": "internal/appdirs/paths.go",
-      "size": 1444,
-      "sha256": "e0e782fa080bb3976ae2904af7070ee24284b3abcb0df1664186dff1fbea035c",
+      "size": 1822,
+      "sha256": "dc9da9dbe499b6b91d2d1ffc0823b4cb8bcc6752321ff7864d9db0be4289773d",
+      "mode": "0644"
+    },
+    {
+      "path": "internal/appdirs/paths_test.go",
+      "size": 810,
+      "sha256": "e20ade110a0dfd2d4a29f9811240d9653815ae19002146653df3621e23f2c326",
       "mode": "0644"
     },
     {
@@ -231,8 +237,8 @@
     },
     {
       "path": "internal/config/config.go",
-      "size": 5389,
-      "sha256": "0a05e4915f1683c80fe190d66ac455e06d8791727cdc9022e72295be413fadb8",
+      "size": 5380,
+      "sha256": "006b3af4dfd542b13333549d456d774c28b245e7d05cafaeb1c46b8d82ea242a",
       "mode": "0644"
     },
     {
@@ -411,8 +417,8 @@
     },
     {
       "path": "internal/desktopwails/wails_autostart.go",
-      "size": 1707,
-      "sha256": "71a837c5ac239cd3b4387fd178539fb578904da50778e02d74921a94643e4f62",
+      "size": 1699,
+      "sha256": "ec909d94c6b3e535deb58c4fdb5adc7d8a203bf6ae9d4b08b76a01903c462709",
       "mode": "0644"
     },
     {
@@ -735,14 +741,14 @@
     },
     {
       "path": "internal/localipc/endpoint_unix.go",
-      "size": 243,
-      "sha256": "4dd9ff519c5d1f2692e442e923d1d6a97b012d841d460f8d02816afe58461a4f",
+      "size": 234,
+      "sha256": "ddb5a6a9ec74f662fd4546c428c6ca60b32bc38b3824a807640134df8610d4b1",
       "mode": "0644"
     },
     {
       "path": "internal/localipc/endpoint_windows.go",
-      "size": 234,
-      "sha256": "ff849f774c6ccf4d79df95f97fca76724f891fe0c416b3788813ec699169c580",
+      "size": 216,
+      "sha256": "3340f68c95cef79b6eb615adca5554107fc763442d3d16f7a448792ae6c45698",
       "mode": "0644"
     },
     {
@@ -947,12 +953,6 @@
       "path": "internal/persistence/objectstore/store.go",
       "size": 336,
       "sha256": "860ca6fbf12c3ec44b7120373b231193afac62d210f66f799b72727b0297721f",
-      "mode": "0644"
-    },
-    {
-      "path": "internal/persistence/postgres/db.go",
-      "size": 1273,
-      "sha256": "b7cc2be9d128aab82de9d35716d628f4c1069293aaae7d6120c7c8b70ee31b15",
       "mode": "0644"
     }
   ]

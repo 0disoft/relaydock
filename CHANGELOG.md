@@ -5,6 +5,7 @@
 - RelayDock를 ssealed의 minimal monorepo profile과 desktop-app·cli-tool addon에 연결했다.
 - 공개 Go module path와 내부 import를 `github.com/0disoft/relaydock`로 확정했다.
 - desktop binary, source archive, workspace package, Wails product metadata와 public protocol identity를 RelayDock 이름으로 통일했다.
+- 신규 local state·IPC·autostart 식별자를 RelayDock로 전환하고 기존 state directory는 읽기 호환으로 보존했다.
 - 생성된 제품·아키텍처·운영 문서는 기존 번호 문서를 가리키는 얇은 라우팅 인덱스로 유지한다.
 - Windows source scan에서 일반 파일을 `0644`, 셸 스크립트를 `0755`로 정규화해 POSIX manifest mode의 불필요한 전체 변경을 막았다.
 - source archive의 mode 검증도 같은 정규화 계약을 사용하고 Windows·POSIX 회귀 테스트를 추가했다.

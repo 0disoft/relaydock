@@ -12,5 +12,5 @@ func DefaultEndpoint() string {
 	if base == "" {
 		base = os.TempDir()
 	}
-	return filepath.Join(base, "ai-runtime-gateway.sock")
+	return filepath.Join(base, "relaydock.sock")
 }

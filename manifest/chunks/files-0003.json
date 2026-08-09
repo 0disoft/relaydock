@@ -2,6 +2,12 @@
   "version": 2,
   "files": [
     {
+      "path": "internal/persistence/postgres/db.go",
+      "size": 1273,
+      "sha256": "b7cc2be9d128aab82de9d35716d628f4c1069293aaae7d6120c7c8b70ee31b15",
+      "mode": "0644"
+    },
+    {
       "path": "internal/persistence/postgres/outbox_repository.go",
       "size": 9771,
       "sha256": "d052bdc40f1cc0eb2e8c3858e2ae1a62a60ea8964f5c345a23a5109a2af3839f",
@@ -723,8 +729,8 @@
     },
     {
       "path": "tests/hygiene/public_identity_test.go",
-      "size": 1633,
-      "sha256": "c07f93815ae3befebc9e1c66d8329bd9db6dbf2ee332e9195f8adc1f4b6c5c30",
+      "size": 1775,
+      "sha256": "538d27ca048584631ad7b855244c9fdc77abcb68b00cdbc09938e744084f11a6",
       "mode": "0644"
     },
     {

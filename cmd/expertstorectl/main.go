@@ -10,6 +10,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/0disoft/relaydock/internal/appdirs"
 	"github.com/0disoft/relaydock/internal/expert/localstore"
 )
 
@@ -111,11 +112,11 @@ func defaultStatePath() string {
 	if configured := strings.TrimSpace(os.Getenv("EXPERT_STATE_PATH")); configured != "" {
 		return configured
 	}
-	config, err := os.UserConfigDir()
+	config, err := appdirs.ConfigDir("")
 	if err != nil {
 		return filepath.Join(".", "expert-state.json")
 	}
-	return filepath.Join(config, "ai-runtime-gateway", "expert-state.json")
+	return filepath.Join(config, "expert-state.json")
 }
 
 func writeJSON(value any) error {
