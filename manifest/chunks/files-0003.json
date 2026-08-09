@@ -669,8 +669,8 @@
     },
     {
       "path": "tests/README.md",
-      "size": 601,
-      "sha256": "217fc112b78a14959044180e31607cae8568c2fd8b1254cc5b8df79f24a1286c",
+      "size": 608,
+      "sha256": "231f22800d3fc8a05f6741f34faae902024493e684a7ca0065038c4dd0c2543d",
       "mode": "0644"
     },
     {
@@ -759,8 +759,8 @@
     },
     {
       "path": "tests/hygiene/public_identity_test.go",
-      "size": 12576,
-      "sha256": "d03a121d60003a002ec12191476ddfef8a4315d491f9b501782f77febc6643dd",
+      "size": 13902,
+      "sha256": "d07b4ac9921d5387780eb93947493b33f79849e8b87c3cb7e95652111d5578ab",
       "mode": "0644"
     },
     {
@@ -849,8 +849,8 @@
     },
     {
       "path": "web/control-console/README.md",
-      "size": 784,
-      "sha256": "8a81d2e8be630a507db08d1354d87e606d6c7c43f24132af4b26aa13e0e019c9",
+      "size": 770,
+      "sha256": "074e427ae80fbe8eda3c2b318ba03fb3f80814a1767353ae52167a467b20f1b8",
       "mode": "0644"
     },
     {
@@ -897,8 +897,8 @@
     },
     {
       "path": "web/shared/README.md",
-      "size": 189,
-      "sha256": "079731f389ea35e4d6820aac0c68c0ce19b1505e3ee32e5e1e3decabbd4cab74",
+      "size": 175,
+      "sha256": "92b6d09d0c650b5e07f7750113fd0512c9091f30a2410e9bd499dcfe9f6bb96b",
       "mode": "0644"
     }
   ]

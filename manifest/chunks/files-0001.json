@@ -39,8 +39,8 @@
     },
     {
       "path": ".agents/context-map.md",
-      "size": 1028,
-      "sha256": "31e4def2b68dc1680797787b6fe2bb776c843847537f94088cc32514e50b23c7",
+      "size": 1055,
+      "sha256": "2764644e5fd2cc06f6c5d867ff7cf2fb9a934274236b91a374b59e6eaa578dba",
       "mode": "0644"
     },
     {
@@ -130,19 +130,19 @@
     {
       "path": ".ssealed/manifest.json",
       "size": 18269,
-      "sha256": "1a1426c3c259ddb2d042ffe4c7a97d7852fdff4ed65d506d2df455f6530e2cfd",
+      "sha256": "7f51a20deb36afd630963744b7db663c629d48af496de0c411283e100ee91e4d",
       "mode": "0644"
     },
     {
       "path": "AGENTS.md",
-      "size": 3268,
-      "sha256": "40a8a3ad0a93bed158698c21cb280a65ea31088ae1c21d86178084bcf6514b7d",
+      "size": 3270,
+      "sha256": "7a501652131b77602d055906c2deb6307c265427e6d8212c11f5ab13f2f720b9",
       "mode": "0644"
     },
     {
       "path": "CHANGELOG.md",
-      "size": 16843,
-      "sha256": "fb824ab3928d18b2a280ebfb248d64585f697205a42b6f8b94a29569350950b1",
+      "size": 8174,
+      "sha256": "21c769a0837a8050a8552f52d267223a458ce3c5856a1f9bdb6de9410dc2ee3a",
       "mode": "0644"
     },
     {
@@ -153,14 +153,14 @@
     },
     {
       "path": "CONTRIBUTING.md",
-      "size": 1412,
-      "sha256": "b82fc13af5664076cf2691910b3ac2ebd754cf84289fd983cb3af21fd581cbcf",
+      "size": 1422,
+      "sha256": "46ab8b860ae7076afabbfbe4ff5333e3d382c44fdc6267a89cea114855033f0f",
       "mode": "0644"
     },
     {
       "path": "IMPLEMENTATION_STATUS.md",
-      "size": 9911,
-      "sha256": "64cae0f982db6191f02f6444f817a5b8431fd6920748369eea6f2819f9af1932",
+      "size": 8582,
+      "sha256": "80c047e4ef91ba0ffdf992073dc885ced3a0d13f93aba98f69b41eab3ffbbf4b",
       "mode": "0644"
     },
     {
@@ -177,14 +177,14 @@
     },
     {
       "path": "README.md",
-      "size": 18804,
-      "sha256": "5ef17db005ee4053f0719a3655ea6325116e47cdfc137125105944a3b6603b26",
+      "size": 9981,
+      "sha256": "1322ec6321449d3aee94268c413c3639b5952ee499ce5acbf1617b67eacdeba6",
       "mode": "0644"
     },
     {
       "path": "SECURITY.md",
-      "size": 658,
-      "sha256": "d0405b43578e5be4b783dc718be13ae5abaa3e06caa35a17c3c4c895b7b2c6d4",
+      "size": 705,
+      "sha256": "3eae796f1e201d93d893a693925b26fdc24b1a9691bccbabe2ee4d58ef23d652",
       "mode": "0644"
     },
     {
@@ -201,8 +201,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "size": 11027,
-      "sha256": "9f17c707760be4d78a9e310e22b3077b6314f4347263a1fdb6de23c7dac186e1",
+      "size": 9636,
+      "sha256": "caa43ec6a1abf8a6887573fc1c4457df52f8b32c64509fab756ec86532ab18d6",
       "mode": "0644"
     },
     {
@@ -225,8 +225,8 @@
     },
     {
       "path": "build/README.md",
-      "size": 1448,
-      "sha256": "73faa9b5e3e9ee5087427668966ed006fc65d9a2512b9fac6a34cfc5e1eb262e",
+      "size": 1313,
+      "sha256": "4d1de4a2aaa3dc5150c7a4397793a7dea41e636dff2385e6c550268ade45837a",
       "mode": "0644"
     },
     {
@@ -393,8 +393,8 @@
     },
     {
       "path": "db/README.md",
-      "size": 1655,
-      "sha256": "35aae16fef34efc065c0b151e3f2b221d71c9f91985cec30d075b39b3ccd7ba9",
+      "size": 1488,
+      "sha256": "fe33c7727192163a0a6d3e017eb1dadd9f688a9ed428abe50698c921b7d77d9f",
       "mode": "0644"
     },
     {
@@ -483,8 +483,8 @@
     },
     {
       "path": "deploy/README.md",
-      "size": 2789,
-      "sha256": "540fa523f77259f6fdf003ccef61f9f9016652b9fc9991267c4fcd514b287397",
+      "size": 2786,
+      "sha256": "0564101b344e8392d0bd2c1c38c1f1932f01400b5e697d29643a11d09d062a97",
       "mode": "0644"
     },
     {
@@ -495,8 +495,8 @@
     },
     {
       "path": "deploy/coolify/README.md",
-      "size": 2630,
-      "sha256": "a256ccc6942af31e681e650a51bbceb50140039862b275e2f937c3eb7bb0aba1",
+      "size": 2550,
+      "sha256": "c06390e65e34faa386b4e7a87b4eed7ddcd29d93e0535137546dbb5492fddf9c",
       "mode": "0644"
     },
     {
@@ -543,116 +543,116 @@
     },
     {
       "path": "docs/00-product-identity.md",
-      "size": 1943,
-      "sha256": "9c30217ebfefff5e2a6038085e74d7ab18d463f3c365331e5b21bf9cda533982",
+      "size": 1999,
+      "sha256": "ea915adebef20083a79e69877e81f215ad7151d97da5ea0be6137122060808a8",
       "mode": "0644"
     },
     {
       "path": "docs/01-scope-and-non-goals.md",
-      "size": 1082,
-      "sha256": "5976af8e811ee171e9dc657a6e10a5d26bb044ff7d87ecc2f648c7d03e3286cd",
+      "size": 1132,
+      "sha256": "edec397712611bd3ce1a8499652987107c8de3a7cc3a53c069a611caef41d971",
       "mode": "0644"
     },
     {
       "path": "docs/02-system-context.md",
-      "size": 2433,
-      "sha256": "112ad6590e0c973316b11ec6639f15f461c5988ef70756658672ab46cdce1f98",
+      "size": 1876,
+      "sha256": "a4518d0b547e6190285116a701f44ce53de3d76b153252809a078e3b8c930ce1",
       "mode": "0644"
     },
     {
       "path": "docs/03-repository-map.md",
-      "size": 2865,
-      "sha256": "7f9fc8f75c073b6992ad705648bbbbf9397fdc73bb0c58fc9bed0b6aa8b7a0c5",
+      "size": 2862,
+      "sha256": "060ec87893588f453a5e6f2d0ce64235e832eb2bc552f48eb5698d46a5ebc8ca",
       "mode": "0644"
     },
     {
       "path": "docs/04-request-lifecycle.md",
-      "size": 1165,
-      "sha256": "58049d256f95aed537430e4df9b9d9066a3ea7df12f267cd0dfe4235b7d573a6",
+      "size": 1094,
+      "sha256": "08134d53318450e5b3f95f47dd0d8ce35e82ddd7ceb4e38219af09a90a452f10",
       "mode": "0644"
     },
     {
       "path": "docs/05-expert-escalation.md",
-      "size": 1055,
-      "sha256": "f74a6f2745da3130488bf409b31bbf0d89bcc6b3e916b9e4c3bafcce05720409",
+      "size": 1094,
+      "sha256": "96fb7ba795815cdefb9af59934478db361b5fb9fe8428599aa5e7699ffee8670",
       "mode": "0644"
     },
     {
       "path": "docs/06-mcp-contract.md",
-      "size": 2105,
-      "sha256": "5daf49f26a2a1af0bd060dd2eee8866b695c5e45838fdc8e69eaafe4df7c4abe",
+      "size": 2042,
+      "sha256": "e415b18e21aa713bf8a6f01ada58df192d59294e493ab586e8ab4995ab8fd6ea",
       "mode": "0644"
     },
     {
       "path": "docs/07-context-pack.md",
-      "size": 1009,
-      "sha256": "7324a8a9ce2858620762da01d7d5c57e4fc14e840c115f6332bac38055de35dd",
+      "size": 1034,
+      "sha256": "f9e1ea4bfd7d957d03f3945ce310dad6bc5535421186c22a757f480fda908639",
       "mode": "0644"
     },
     {
       "path": "docs/08-protocol-compiler.md",
-      "size": 1008,
-      "sha256": "7d1c861cd37d83f713112de800f8c61320e747c14f7254317b23a597097dd022",
+      "size": 988,
+      "sha256": "6466f50f37cc5806a219458526e687274ebf038141c3e064444144999c6336b1",
       "mode": "0644"
     },
     {
       "path": "docs/09-routing.md",
-      "size": 838,
-      "sha256": "42aaacefa377a6e6a2e15f7aa599c428c7aa3ad8baf0ee98d7f0bd7104d0908f",
+      "size": 842,
+      "sha256": "868cadf363cb974fa621a695e9a6e60d54284185c369b1f4ae5b4a6d34d518e7",
       "mode": "0644"
     },
     {
       "path": "docs/10-accounting.md",
-      "size": 914,
-      "sha256": "81506f0e9cbc9fe94bb9e86343b2c763d6526e9e46440bc49122db3d36ff3493",
+      "size": 898,
+      "sha256": "ab282867cf3d9e26a869a96e260ea87fe50c05cb8d87e4760244eb41cbc90ffc",
       "mode": "0644"
     },
     {
       "path": "docs/11-security-threat-model.md",
-      "size": 1264,
-      "sha256": "dd601bb966d6ea75a383c983897afee47bfb950fb4504a3f3a0afc35e29dbaa9",
+      "size": 1278,
+      "sha256": "25935c79c1b13aa269114906f2958ce48705d73aa99edc0bda28e721ed416038",
       "mode": "0644"
     },
     {
       "path": "docs/12-data-model.md",
-      "size": 2213,
-      "sha256": "25499de8dd201786f3d61126c3bff796e895b76650497c9af536ce90953c7a4e",
+      "size": 2214,
+      "sha256": "71f2c7f6cd8556e28a9f7fd8f2e212f5a93998ffc5b90443c8744a3dc1d9a368",
       "mode": "0644"
     },
     {
       "path": "docs/13-observability.md",
-      "size": 682,
-      "sha256": "94d5a6635ceebe70c5cb59a89303bcbaebf386f3dad5756f1c94557ed82150ad",
+      "size": 705,
+      "sha256": "71824bc29a5ac315f52c6e8eae74cf398263852f39d79f274addd2d48c475a7f",
       "mode": "0644"
     },
     {
       "path": "docs/14-testing-strategy.md",
-      "size": 1022,
-      "sha256": "a8b4038c1bfad3566bb0e97628f5f87ce3c14f90a01eaa130991ea00298411f3",
+      "size": 1040,
+      "sha256": "67743d11e79e9670f06b0f49f641b7a7bc259f616248690d27fff90363deecbd",
       "mode": "0644"
     },
     {
       "path": "docs/15-build-and-release.md",
-      "size": 8871,
-      "sha256": "39b1d3ffbe2b7bfcc1dd430efcf41d8582b695649120f8dbca4a68c0dcd1440a",
+      "size": 8971,
+      "sha256": "f8ff2c81f57a11c4a5c27f42fa8fc14a5e98a4bb0e67e126067041305a0b9c31",
       "mode": "0644"
     },
     {
       "path": "docs/16-implementation-order.md",
-      "size": 5720,
-      "sha256": "37e18cb4b189d0904150ebdd4bedb5bfe4f0fcfd5c5331742e271492c44f8158",
+      "size": 5953,
+      "sha256": "c8d51657b1ad2d2002559d6c65afef9f0d9001fe0d6eaf59c0c2281b29c6b498",
       "mode": "0644"
     },
     {
       "path": "docs/17-open-questions.md",
-      "size": 2239,
-      "sha256": "af0b96c225324e1378c4b974bcc6c9c064b935fadd76751b09958218467d4fb7",
+      "size": 2357,
+      "sha256": "dbfd0d80cbeff231f57329126a7cca98bec9a541865024d6d4867d8d82623f84",
       "mode": "0644"
     },
     {
       "path": "docs/18-api-conventions.md",
-      "size": 780,
-      "sha256": "187dd12ffe2cc8092b8d6ef80904086752208ac80854db52a8dacd27481e6ff7",
+      "size": 785,
+      "sha256": "76baa3820f69254d5502661c6a4d99fae35e294e4208fe57c85c2a994a71a61e",
       "mode": "0644"
     },
     {
@@ -663,122 +663,122 @@
     },
     {
       "path": "docs/20-operations-runbook.md",
-      "size": 12339,
-      "sha256": "f3f94d8b2780d155d1182c9168a26fafa155ad5613b35c227e4b3920bf2de75a",
+      "size": 10053,
+      "sha256": "e71303d2deffdf006e242386db2f25365f1614dbb8757f96e6e386f0d4d149c9",
       "mode": "0644"
     },
     {
       "path": "docs/21-control-snapshot-distribution.md",
-      "size": 4804,
-      "sha256": "ab2720a7737a050c3492e1847c2f8fa9f64ccfda8842276fd01a51ea67845c4f",
+      "size": 3958,
+      "sha256": "0af286f8798faa2e02a7ea100bcf15275152b4bd4a5c34e0b7daa1e1740aeda5",
       "mode": "0644"
     },
     {
       "path": "docs/22-runtime-journal-and-outbox.md",
-      "size": 3856,
-      "sha256": "f3b3482e0f54d3dcb0e502855e9669c4bb27a7a384aaa9030b3798430005de6a",
+      "size": 3473,
+      "sha256": "5da78171a5c8abf7b840de62eca27016383c86e34adc25b4047fcd9a89dfec28",
       "mode": "0644"
     },
     {
       "path": "docs/23-remote-mcp-security.md",
-      "size": 4293,
-      "sha256": "e50de61f1f006907d279b21d470723249727879efa02ad5d0a1d1bcebb94ae31",
+      "size": 3558,
+      "sha256": "8f6f877db8e54cf8e6a9217b29ce36ccc1327a2db57d0b8fb5e7d5d2815e8e83",
       "mode": "0644"
     },
     {
       "path": "docs/24-development-stack.md",
-      "size": 2176,
-      "sha256": "cb15b2a9469fc7219eca757fc5715743b3743927f7973163483942bebe2195bc",
+      "size": 2057,
+      "sha256": "4627a9f1f87df98270b0c68d7234fc6127d9547826f0290c1a7a4d0c718c01ef",
       "mode": "0644"
     },
     {
       "path": "docs/25-local-expert-store.md",
-      "size": 3973,
-      "sha256": "5d49966235a2595c5ed8743dfdc3b31b211e9e315176ac67203b677ed2e45189",
+      "size": 3101,
+      "sha256": "754b2569f545998ea90187f74b731f20437d27cc29c0fe586f946d23b00f6a76",
       "mode": "0644"
     },
     {
       "path": "docs/26-signing-and-token-key-rotation.md",
-      "size": 3533,
-      "sha256": "ffad76f5528140ca4dd777ba5866a7bad891cddbd4abf22da0bea7dd14546008",
+      "size": 2751,
+      "sha256": "9c01272b8dbbdca9aacf6f83379f8bebc6946b5f0a9c1d4e5bed0daede0294e4",
       "mode": "0644"
     },
     {
       "path": "docs/27-repository-size-and-source-release.md",
-      "size": 3591,
-      "sha256": "d429263be381920ecced8501e4904dcfaa26c90ce8e6943583795dd5e91bf068",
+      "size": 2655,
+      "sha256": "15d8047c131b0527d400702ccb48df8b61186cadec9247c16e485306ebef2b18",
       "mode": "0644"
     },
     {
       "path": "docs/README.md",
-      "size": 1879,
-      "sha256": "6161be9c606acef499b9126ab371b33ec380a305964c25a01368d53120703c34",
+      "size": 2039,
+      "sha256": "171b4cdcf3292703069ce3c138098a68d19482a11a6c33b49d87f8d5e600e815",
       "mode": "0644"
     },
     {
       "path": "docs/adr/0001-go-first.md",
-      "size": 1600,
-      "sha256": "327cc83ce09fc6616ff219c30048178b358870feabf3462749ff0a5e4f238ec5",
+      "size": 1506,
+      "sha256": "a181ab44002bab9a3ae0e7951345aced409723be11130e3dd4c0f71f0a9749ae",
       "mode": "0644"
     },
     {
       "path": "docs/adr/0002-wails-v3.md",
-      "size": 1520,
-      "sha256": "800523fef8af61926dda9e0013fb91b9787eb7129c2871146d1ea215964d7d9a",
+      "size": 1346,
+      "sha256": "ba26d2d694ed14826a168aa0bf5037bd030dc50af3fc5d0060c21e75651f2c36",
       "mode": "0644"
     },
     {
       "path": "docs/adr/0003-local-ipc.md",
-      "size": 1366,
-      "sha256": "d4cd639562af6a5adb43dab052df6b8bcb3d0297a903d0de737becf3002be2ce",
+      "size": 1305,
+      "sha256": "359343642d947df77435af8fc6e0f5321dfcdc3765d11f17da417395d34a1e64",
       "mode": "0644"
     },
     {
       "path": "docs/adr/0004-no-web-automation.md",
-      "size": 1294,
-      "sha256": "8d3a39200be3547acfee0ac63a40fc97cae0b5264c2a4f74fa6715c4546cdd70",
+      "size": 1189,
+      "sha256": "98af27b2446a6a7f53487836b1e31a342222f6a58b1675b08eaad8b4cd042873",
       "mode": "0644"
     },
     {
       "path": "docs/adr/0005-postgres-outbox.md",
-      "size": 1255,
-      "sha256": "95c91e5f9f4671736043c41274dad42f7858cce76f39743054a99a0fdde6570a",
+      "size": 1184,
+      "sha256": "b1a5544921d8c52de16987f9ea4e3e3c4fbb58789a98bdc38dfe2ea0f715ac9d",
       "mode": "0644"
     },
     {
       "path": "docs/adr/0006-protocol-loss-modes.md",
-      "size": 1227,
-      "sha256": "02ba8cc090f567ff58489c10e8326a1698421c6d57041b7013a9c90c26698889",
+      "size": 1200,
+      "sha256": "2260a18c1fc22931d26e06aeb94fb182d9528c5777f9d18adae10cf8d72b1367",
       "mode": "0644"
     },
     {
       "path": "docs/adr/0007-money-boundary.md",
-      "size": 1349,
-      "sha256": "c3273942cb30fe5fd65725f0fa573d1a11fdcbae5d7fb62bac3e89b16c80d8e4",
+      "size": 1289,
+      "sha256": "f2a1c27fc2aef08995648dd3ddfabb05988a64a0c5b910777df0f32f852ddc65",
       "mode": "0644"
     },
     {
       "path": "docs/adr/0008-license-boundary.md",
-      "size": 1936,
-      "sha256": "d1c87db495e037b0e06fe4b95657377402a59609de3cd7d6cabac4dd24eb1cb3",
+      "size": 1770,
+      "sha256": "3815c467dca7a1f88b2d8195dd30596bf0f1845f6651c17ed572874d72c228d3",
       "mode": "0644"
     },
     {
       "path": "docs/adr/0009-mcp-sdk-version.md",
-      "size": 1034,
-      "sha256": "d2edf566227a6cfe9328015ed44856d149bf1921aa2225308895a37ace4f9ddd",
+      "size": 977,
+      "sha256": "da3a7da7b834b0590febe4d91be2f6ca50346a83b0f07e1104016d4e94581040",
       "mode": "0644"
     },
     {
       "path": "docs/adr/0010-wails-version-pin.md",
-      "size": 1172,
-      "sha256": "7b65d635584040b816cbdefa7e70a98cdd721a6822548ec79988dc93b2ae4e4c",
+      "size": 1157,
+      "sha256": "af89c5c4a50a776cd478ac1d3c6e7dbfca1c3fae79922ee51e32057ff68ba63b",
       "mode": "0644"
     },
     {
       "path": "docs/architecture/00-system-boundary.md",
-      "size": 943,
-      "sha256": "10fe9839037135c99e4332e0472877b5ac24ab6a966fc9ac360a9144707004d6",
+      "size": 969,
+      "sha256": "099b84b6565257dbe9dfc1198c94c50b06f7b805b7fa327717c6bfe46ec80dcc",
       "mode": "0644"
     },
     {
@@ -789,8 +789,8 @@
     },
     {
       "path": "docs/cli/command-contract.md",
-      "size": 862,
-      "sha256": "a38cb14323d6ce0d3e16df261edd05f95d65bdeba6ddf42b08c001e7da0c42f0",
+      "size": 890,
+      "sha256": "2746d20864b547666a41481674da0b9156ed36ceabbc64ee22b41804538c76ff",
       "mode": "0644"
     },
     {
@@ -801,14 +801,14 @@
     },
     {
       "path": "docs/desktop/installers.md",
-      "size": 879,
-      "sha256": "0fda73226e84d5ae712243648a64944b6aa2ec2a0f90b18ef54a30bcface5d46",
+      "size": 908,
+      "sha256": "4377828cad2e30ec002cf2db0755e23980059ed987ca0c34dd4b8f53f88ee94d",
       "mode": "0644"
     },
     {
       "path": "docs/engineering/00-project-invariants.md",
-      "size": 842,
-      "sha256": "4d890a16b82891bad5572ce10ff403719d30497ccabc352a063fd9d4e96a887d",
+      "size": 832,
+      "sha256": "6334898a739b9bab88e1c349ef1d85e6d4ee51a1f49218cb3d20c53572a1220d",
       "mode": "0644"
     },
     {
@@ -819,38 +819,38 @@
     },
     {
       "path": "docs/monorepo/workspace-boundaries.md",
-      "size": 875,
-      "sha256": "4c2c08361a1f4294d89ad11d66e6119030380c7aa98e27785207fc9e10e84584",
+      "size": 873,
+      "sha256": "eb1ecd7b7c1724d7da3e2150dffba457eae9954fd94f7db22a50861a162665d2",
       "mode": "0644"
     },
     {
       "path": "docs/ops/00-operational-contract.md",
-      "size": 914,
-      "sha256": "d78567dbcfc590b2ba95b6b45814175757c923b188abd976b0974a28a6b92990",
+      "size": 944,
+      "sha256": "e8ec43b828b0a871ec54a44143f329f36a0ada681e4e811a409e6059331b0355",
       "mode": "0644"
     },
     {
       "path": "docs/product/00-product-brief.md",
-      "size": 970,
-      "sha256": "20f00401aafce872ab84690456eb3da5d473dd3eb19f179ef541cd7a4410458a",
+      "size": 939,
+      "sha256": "c1b0790aef6c76990f5f24eb7f412e8586877ccea1db7c3b09163a74a12bc8b7",
       "mode": "0644"
     },
     {
       "path": "docs/product/02-spec.md",
-      "size": 1331,
-      "sha256": "d0d48d64cd9ce43cf78a5eee105b42abcdce39d2149dad26640a403055f859bd",
+      "size": 1339,
+      "sha256": "249e0bf2713a510f684c96b92e1d7e42b04a80d12a62ff0faf0b644cb45870d7",
       "mode": "0644"
     },
     {
       "path": "frontend/README.md",
-      "size": 603,
-      "sha256": "ed06eac7e707c0c1b4766dd0a1f9374fd5c2b356725aa68db9ac055e57f25c19",
+      "size": 558,
+      "sha256": "ed1b1a0c10a680ea28dbba507068c5aa5e2a66b72e2fe3a31ec35cb706eae826",
       "mode": "0644"
     },
     {
       "path": "frontend/bindings/README.md",
-      "size": 271,
-      "sha256": "3af8ef9790b05ddce6ef9db4084d63e9d528379a373c3f8cb69c15b947c1b3fc",
+      "size": 243,
+      "sha256": "d32b21822298fb01e6bf797fa5726774c0e19301a667bd7f0127e876389ee327",
       "mode": "0644"
     },
     {
@@ -1005,8 +1005,8 @@
     },
     {
       "path": "gen/go/README.md",
-      "size": 155,
-      "sha256": "06ebe06d5955f745e0b3431d5026981d1d7421c0f5469b7693d0d2e7ad312f01",
+      "size": 136,
+      "sha256": "a80160a90cf494eebdfa98ddcc6acf69c2f682f2efc2eac16aa8a0412d2c22d2",
       "mode": "0644"
     }
   ]
