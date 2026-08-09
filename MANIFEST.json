@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "generatedAt": "2026-08-09T13:27:51Z",
+  "generatedAt": "2026-08-09T13:40:52Z",
   "hashAlgorithm": "sha256",
   "fileCount": 497,
-  "totalBytes": 1576839,
+  "totalBytes": 1576928,
   "maximumFileBytes": 40960,
-  "aggregateSha256": "8a9987574219af1adf0a8303017253923aec4010b75a702a03523c5cd033ec10",
+  "aggregateSha256": "c58cd9d3373ae0d2d45bee614c35c8c458b083040f7827cd31fcd279b5f4168b",
   "chunks": [
     {
       "path": "manifest/chunks/files-0001.json",
@@ -21,7 +21,7 @@
       "firstPath": "frontend/uno.config.ts",
       "lastPath": "internal/observability/logger.go",
       "size": 30539,
-      "sha256": "d8dbd3afe7234690c778d9d2abe6d5cc2bfffb6bacea8a2187ac8d7a04c8611b"
+      "sha256": "b3da8f9f33982bc8736d24035d620305ad29915a90e9eb4cbf359d1615ffb9a8"
     },
     {
       "path": "manifest/chunks/files-0003.json",

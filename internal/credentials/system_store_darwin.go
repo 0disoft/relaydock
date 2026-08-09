@@ -153,7 +153,11 @@ static OSStatus relaydockKeychainDelete(const void *serviceBytes, size_t service
 
 static void relaydockFreeSecret(void *bytes, size_t length) {
 	if (bytes == NULL) return;
-	explicit_bzero(bytes, length);
+	volatile unsigned char *cursor = (volatile unsigned char *)bytes;
+	while (length > 0) {
+		*cursor++ = 0;
+		length--;
+	}
 	free(bytes);
 }
 */

@@ -465,8 +465,8 @@
     },
     {
       "path": "internal/credentials/system_store_darwin.go",
-      "size": 5870,
-      "sha256": "7f766a313e050b61612d4f6a87981b114f312fdc0d0018a704ed54d97c2422e6",
+      "size": 5959,
+      "sha256": "d9d9c1429991acab676026f9b1f105afa0792af5fabf3d74471874030df7b579",
       "mode": "0644"
     },
     {
