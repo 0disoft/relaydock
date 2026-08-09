@@ -1,43 +1,43 @@
 {
   "version": 2,
-  "generatedAt": "2026-08-09T11:31:26Z",
+  "generatedAt": "2026-08-09T12:00:08Z",
   "hashAlgorithm": "sha256",
-  "fileCount": 494,
-  "totalBytes": 1546069,
+  "fileCount": 496,
+  "totalBytes": 1568900,
   "maximumFileBytes": 40960,
-  "aggregateSha256": "b2785a498bd2c2aa1122eaaba3665da90c83fbd43482302b5dcd3eea01123874",
+  "aggregateSha256": "ad7b17881c3e4da33fbca4a18a375e82aa7f62107d69e5c4af9d79b1b701cb33",
   "chunks": [
     {
       "path": "manifest/chunks/files-0001.json",
       "fileCount": 168,
       "firstPath": ".agents/README.md",
       "lastPath": "frontend/tsconfig.json",
-      "size": 30655,
-      "sha256": "6284f715022ee6707b16044e101d4f43ad266e39c8ae10f522ead76c972add4d"
+      "size": 30657,
+      "sha256": "8e409765219d971a48d8a1a778b61d0479e11d5562e0c4460fd3606832aee485"
     },
     {
       "path": "manifest/chunks/files-0002.json",
       "fileCount": 160,
       "firstPath": "frontend/uno.config.ts",
-      "lastPath": "internal/outbox/delivery.go",
-      "size": 30665,
-      "sha256": "7ceffe9d98f82e34735ddbef15ec308a3e75ce516366b531d85780831da34808"
+      "lastPath": "internal/observability/tracing.go",
+      "size": 30717,
+      "sha256": "25f42405b314ea254d0ade83c8c5ecbe9a32aed8963723ed270aed13a18a61f5"
     },
     {
       "path": "manifest/chunks/files-0003.json",
       "fileCount": 161,
-      "firstPath": "internal/outbox/delivery_test.go",
-      "lastPath": "web/control-console/src/routes/+page.server.ts",
-      "size": 30718,
-      "sha256": "215e7a52f875448f531d2aebc07a467cdfe5628b315f728b7cd7261582fade35"
+      "firstPath": "internal/outbox/admin.go",
+      "lastPath": "web/control-console/package.json",
+      "size": 30692,
+      "sha256": "b1c736a511fcf1fd40222607328e7871b49982d3e879ad21cd9635c03371ef9e"
     },
     {
       "path": "manifest/chunks/files-0004.json",
-      "fileCount": 5,
-      "firstPath": "web/control-console/src/routes/+page.svelte",
+      "fileCount": 7,
+      "firstPath": "web/control-console/src/app.html",
       "lastPath": "web/shared/README.md",
-      "size": 978,
-      "sha256": "d71aff60385c2de1330ce0783cf5ee62f90d0281608e4f56f4c5a82e4b3330d0"
+      "size": 1367,
+      "sha256": "e0acee8c453ac778adf14650c2fd6ad3ce3a59110ff1ae1852e6cccda402543c"
     }
   ],
   "excluded": [

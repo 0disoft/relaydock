@@ -50,6 +50,15 @@ button { color: inherit; }
 .badge[data-state='offline'] { color: #f58b94; border-color: #5b2931; background: #2d161b; }
 .card-list { display: grid; gap: 12px; }
 .provider-card, .consultation-card, .setup-card { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 18px 20px; }
+.provider-card { align-items: flex-start; flex-wrap: wrap; }
+.provider-identity { min-width: 180px; flex: 1; }
+.provider-identity small, .provider-credential small { display: block; margin-top: 8px; color: var(--muted); }
+.provider-status { padding-top: 2px; }
+.provider-credential { flex: 1 1 340px; display: grid; gap: 10px; }
+.provider-credential label { display: grid; gap: 8px; color: var(--muted); font-size: 13px; }
+.provider-credential input { width: 100%; border: 1px solid var(--border); border-radius: 8px; background: #0f1218; color: #fff; padding: 10px 12px; outline: none; }
+.provider-credential input:focus { border-color: var(--accent); }
+.provider-actions { display: flex; gap: 8px; }
 .provider-card h3, .consultation-card h3, .setup-card h2 { margin: 0 0 6px; font-size: 16px; }
 .provider-card p, .setup-card p { margin: 0; color: var(--muted); font-size: 13px; }
 .consultation-card span { color: #9188ff; font-size: 11px; font-weight: 800; }

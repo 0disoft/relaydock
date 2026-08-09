@@ -4,6 +4,7 @@ export interface RuntimeStatus {
   version: string;
   ipcReady: boolean;
   mcpConfigured: boolean;
+  gatewayStarting: boolean;
   gatewayReady: boolean;
   gatewayAddress?: string;
   lastError?: string;
@@ -14,6 +15,8 @@ export interface ProviderSummary {
   name: string;
   configured: boolean;
   mode: string;
+  credentialSource: 'embedded' | 'environment' | 'system' | 'none' | 'anonymous' | 'unavailable';
+  credentialWritable: boolean;
 }
 
 export interface ConsultationSummary {

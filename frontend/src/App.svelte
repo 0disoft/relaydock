@@ -14,6 +14,7 @@
     version: 'loading',
     ipcReady: false,
     mcpConfigured: false,
+    gatewayStarting: false,
     gatewayReady: false
   };
   let providers: ProviderSummary[] = [];
@@ -26,6 +27,10 @@
 
   async function refreshConsultations(): Promise<void> {
     consultations = await listConsultations();
+  }
+
+  async function refreshProviders(): Promise<void> {
+    providers = await listProviders();
   }
 
   async function loadInitialState(): Promise<void> {
@@ -53,7 +58,7 @@
   {#if active === 'overview'}
     <Overview {status} onRefresh={refreshStatus} />
   {:else if active === 'providers'}
-    <Providers {providers} />
+    <Providers {providers} gatewayBusy={status.gatewayReady || status.gatewayStarting} onChanged={refreshProviders} />
   {:else if active === 'architect'}
     <Architect {consultations} onChanged={refreshConsultations} />
   {:else if active === 'mcp'}

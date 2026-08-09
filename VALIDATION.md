@@ -1,6 +1,6 @@
 # Validation Report
 
-Validation date: **2026-08-09**. Target version: **`0.5.5-dev`**. This report separates checks actually executed in the current sandbox or hosted CI from checks that could not run without external tools, services, operating systems, or provider credentials. A check defined in a workflow is not treated as a passing result.
+Validation date: **2026-08-09**. Target version: **`0.5.6-dev`**. This report separates checks actually executed in the current sandbox or hosted CI from checks that could not run without external tools, services, operating systems, or provider credentials. A check defined in a workflow is not treated as a passing result.
 
 ## Release-Readiness Decision
 
@@ -8,13 +8,14 @@ Validation date: **2026-08-09**. Target version: **`0.5.5-dev`**. This report se
 
 The repository-wide license boundary was finalized as Apache-2.0 on 2026-08-09. Root `LICENSE` and `NOTICE` are present, `LICENSE-PENDING.md` is removed, and portable-bundle regression checks require both files.
 
-`releasepack readiness --root . --version 0.5.5-dev` passed with Go 1.26.4, locked dependencies, Apache-2.0 files, the public module identity, and the current 494-record source manifest.
+The full Go suite and `go vet` passed after wiring stored provider credentials into desktop gateway composition. Both Svelte workspaces passed `svelte-check` with zero errors and zero warnings, both production builds completed, and all three desktop frontend tests passed. Source refresh produced 496 records in four chunks and verified the deterministic archive and manifest.
 
 [GitHub Actions CI run 31301723465](https://github.com/0disoft/relaydock/actions/runs/31301723465) for commit `0905d93` passed all six jobs. It provides hosted-runner evidence for Linux race tests and vet, PostgreSQL 18 integration, Buf and SQLC generation plus generated-package compilation, Bun/Svelte checks, and Windows Wails desktop/MCP bridge compilation.
 
 The following readiness additions passed locally:
 
 - Windows Credential Manager adapter compilation plus opaque-target, copy-isolation, size, cancellation, missing-value, idempotent-delete, and secret-free-error tests
+- Desktop provider credential status, save, replace, delete, environment precedence, gateway-stop conflict, unavailable-store denial, secret non-disclosure, and gateway Authorization-header tests
 - OIDC discovery, exact issuer/audience/authorized-party/time/signature verification, explicit claim-to-role mapping, JWKS rotation, and static-bootstrap coexistence tests
 - SSRF denial for private/mixed DNS results and validated-address dialing for issuer, redirect, and JWKS requests
 - Deny-by-default Control role policy, SHA-256 static credential lookup, project model filtering, provider-account redaction, and safe access-decision audit tests
@@ -36,20 +37,20 @@ The following are configured or documented but do not yet have successful execut
 - Windows native installers, code signing, updater-manifest signing, and rollback
 - Live PostgreSQL, Valkey, provider, money-platform, and 24-hour soak operational gates
 - Real external IdP conformance and the separate Control Console authorization-code/session flow
-- A disposable-user physical Windows Credential Manager smoke, desktop provider wiring, macOS Keychain, Linux Secret Service, and server KMS integration
+- A disposable-user physical Windows Credential Manager smoke, macOS Keychain, Linux Secret Service, and server KMS integration
 
 Do not label the product production-ready or deployed before those release-owner inputs and target-environment gates are complete.
 
 ## Validated Source Baseline
 
-- 494 source records
-- 310 Go files
-- 60 Go test files with 208 named `Test...` functions
+- 496 source records
+- 312 Go files
+- 61 Go test files with 215 named `Test...` functions
 - 84 Markdown documents
 - 13 SQL files
 - 13 Svelte files
 - 11 TypeScript files
-- 14 JSON files
+- 9 JSON files
 - 14 YAML files
 - 4 Proto files
 - Baseline: Go 1.26 and Wails v3 `v3.0.0-alpha2.119`
@@ -69,7 +70,7 @@ The local Windows runner lacks gcc, clang, and zig, so it could not run the `CGO
 - Offline `-mod=readonly` tests for protocol, runtime, routing, conformance, and fault injection under `github.com/0disoft/relaydock`
 - Public-identity hygiene and source-archive prefix regressions
 - No handwritten source, documentation, or configuration over 40 KiB
-- Root manifest and three manifest chunks below 40 KiB
+- Root manifest and four manifest chunks below 40 KiB
 - One indivisible canonical `bun.lock` exception and no stale exceptions
 - Rejection of silently omitted symlinks, sockets, and devices
 - Rejection of unknown fields and trailing JSON in manifests and size policy
@@ -155,7 +156,7 @@ Do not treat any of these as passing:
 - Real OpenAI, Anthropic, Google, DeepSeek, or OpenRouter stream/tool/reasoning conformance
 - Provider-reported usage and invoice reconciliation
 - Remote MCP OIDC/OAuth and real ChatGPT/Codex connector conformance
-- OS Credential Manager, Keychain, Secret Service, or KMS adapters
+- Physical OS credential-store smoke, macOS Keychain, Linux Secret Service, or KMS adapters
 - End-to-end money-platform quote/hold/capture/release through signed outbox events
 - A 24-hour soak and stream/lease/worker recovery after process termination
 

@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.5.6-dev -- Desktop Provider Credential Wiring
+
+- Connected Windows Credential Manager values to desktop provider discovery and local Gateway construction.
+- Added provider credential status, save, replace, and delete operations without exposing stored values to the frontend.
+- Preserved environment-variable precedence and denied changes while the local Gateway is starting or running.
+- Disabled implicit local-echo fallback when any real provider credential is available and verified Authorization-header delivery with an in-process provider fixture.
+- Added a 2,048-byte boundary at both the desktop service and native store, cleared submitted UI secrets after every attempt, and added accessible error/status relationships.
+- Kept physical Windows credential-store smoke, native macOS Keychain, Linux Secret Service, and server KMS integration explicitly open.
+
 ## 0.5.5-dev -- Windows Credential Store Foundation
 
 - Added a native Windows Credential Manager adapter behind the existing credential-store port without a plaintext fallback.

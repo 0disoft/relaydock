@@ -2,6 +2,18 @@
   "version": 2,
   "files": [
     {
+      "path": "internal/outbox/admin.go",
+      "size": 952,
+      "sha256": "a5ed5a02f86aeb7a065c1f08c305c678b3dd6b8eaca965ca7fcfab1029b8e942",
+      "mode": "0644"
+    },
+    {
+      "path": "internal/outbox/delivery.go",
+      "size": 10221,
+      "sha256": "bd466c731073024fd691770e4888aea23f82306140ca3becff49d0557ee0094e",
+      "mode": "0644"
+    },
+    {
       "path": "internal/outbox/delivery_test.go",
       "size": 6958,
       "sha256": "ed7e7bed78f9e3302306b76902beb949be5c5fac945e4fc26e18b5b4b15b2bef",
@@ -664,7 +676,7 @@
     {
       "path": "package.json",
       "size": 471,
-      "sha256": "52cb66d85d3332af754ece19a16265f0abd220fb779e0c2df0ce739606ac60da",
+      "sha256": "c22482d5dae9214e0460a3fd9b20ffe27a4c657f015844f61b996a86af804708",
       "mode": "0644"
     },
     {
@@ -952,19 +964,7 @@
     {
       "path": "web/control-console/package.json",
       "size": 629,
-      "sha256": "19795ce02b074592a4ccec094e71d0036ad7a06042272b0cae8750f286224480",
-      "mode": "0644"
-    },
-    {
-      "path": "web/control-console/src/app.html",
-      "size": 240,
-      "sha256": "5c20b37cda73e33d61ac36f9cedbd1f0568518e0a8e72851523e8b8f8595158d",
-      "mode": "0644"
-    },
-    {
-      "path": "web/control-console/src/routes/+page.server.ts",
-      "size": 1921,
-      "sha256": "a57c3f2b8b5d9d485a00d657d4c450d2a41a24acf9e45b1caccaef6f79ac36cc",
+      "sha256": "7ba47a7aacfa7eac2a530412cc6e33fd67c28149b0657d01bb8c77bb014a2784",
       "mode": "0644"
     }
   ]

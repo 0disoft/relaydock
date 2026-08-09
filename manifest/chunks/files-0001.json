@@ -130,7 +130,7 @@
     {
       "path": ".ssealed/manifest.json",
       "size": 18269,
-      "sha256": "395054dff94f029df539d3990c9757d0e10985c0a56e0ee8c7bbe006a86cde0a",
+      "sha256": "d1db04ae9df5a99f078eb3ecfa7ebc84f19288546d0a0cddbda54fe9c24081fa",
       "mode": "0644"
     },
     {
@@ -141,8 +141,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "size": 10907,
-      "sha256": "283dff4ee83347810863bf2a6ec15fa3a814fb6c0dd40253cbac20b4302bf1cd",
+      "size": 11779,
+      "sha256": "81bcd985126c4dbcd67f7cbbb5cfdad599a18350e7dafbb5fb959e78df398fc6",
       "mode": "0644"
     },
     {
@@ -159,8 +159,8 @@
     },
     {
       "path": "IMPLEMENTATION_STATUS.md",
-      "size": 9477,
-      "sha256": "7a9c1a086a80bd45621438c872b5ad3259bcee62f64294ed0f454fd44d195277",
+      "size": 9506,
+      "sha256": "f0743680e46656f0fd69a3f88892354333b07f87da4cb71d81c752290cb79508",
       "mode": "0644"
     },
     {
@@ -177,8 +177,8 @@
     },
     {
       "path": "README.md",
-      "size": 10337,
-      "sha256": "dc2b16d4b66453dc2f6e74c8d8a1b06258bd3ee568ccb87576e301de131cf281",
+      "size": 10437,
+      "sha256": "f2a06fd9d9ee4753644b09076cf7dc47d546e4c34f814c934c05f702be13c62b",
       "mode": "0644"
     },
     {
@@ -189,8 +189,8 @@
     },
     {
       "path": "TREE.md",
-      "size": 24846,
-      "sha256": "ddc71c5d50062d3aade26f5506ae17b71836c99f67176e416a6cab74115fff43",
+      "size": 24947,
+      "sha256": "94c316a1ba2be81b2d7734475de4f26c97ebf8ea64a585616d94a86bc1b8620b",
       "mode": "0644"
     },
     {
@@ -201,14 +201,14 @@
     },
     {
       "path": "VALIDATION.md",
-      "size": 10562,
-      "sha256": "69967a743099abb7bf1959130f8f955802b90a9e26ff84c309aea43c07cd78b2",
+      "size": 10946,
+      "sha256": "c2a6f60ec5474ed9a0b7880c80447df56e04aa37d03e8f642db3f4d81bb1a92d",
       "mode": "0644"
     },
     {
       "path": "VERSION",
       "size": 10,
-      "sha256": "8f45aa5ef579d11f280709213d6a950488d78f06e163c8d05a475f5af58d0019",
+      "sha256": "e74e22bbf2007b2c0f1a044edb72ca24c48b4fb7e2d9049033bf46a1d30f5897",
       "mode": "0644"
     },
     {
@@ -262,7 +262,7 @@
     {
       "path": "bun.lock",
       "size": 60860,
-      "sha256": "d2bba537a89857d9dceece3c908d0b3425418d281aeec9fa18f7e5960e048ec7",
+      "sha256": "fa5205390bc5da9ab4482ede1306052a2502c93dde9fb892f8f789f1e626df59",
       "mode": "0644"
     },
     {
@@ -712,7 +712,7 @@
     {
       "path": "docs/27-repository-size-and-source-release.md",
       "size": 2655,
-      "sha256": "752239d65e5b06303615bb11df171786e359f8f3ffb067c08540e9bb04e3d1ca",
+      "sha256": "ed821400048cc957ed809ebd521f0a56e005e7e2d3fbb65bfbce8918495533af",
       "mode": "0644"
     },
     {
@@ -723,8 +723,8 @@
     },
     {
       "path": "docs/29-system-credential-storage.md",
-      "size": 3006,
-      "sha256": "5da499faebb6a311c2e1eea0884c82f1ab7befea2f8ebdc178fa8959c35474fd",
+      "size": 3541,
+      "sha256": "0bbcf0d83e556e0ee6314b8b8ac92d53df14c5bf377bbed63b6fbe8e38d3d75f",
       "mode": "0644"
     },
     {
@@ -880,13 +880,13 @@
     {
       "path": "frontend/package.json",
       "size": 680,
-      "sha256": "eb8a0ec0d6d8316757bf06dcadcc2e2948e840a521d7939e941949057a5c0d4f",
+      "sha256": "16d445d0c19c9d87c84a457d340bb338f4980fd5812b261becf48238ce48d9ad",
       "mode": "0644"
     },
     {
       "path": "frontend/src/App.svelte",
-      "size": 1962,
-      "sha256": "d83fe95d22a4fdd08c4f21bee85649d5d3678f5171a15a583f54edcafa3d65d9",
+      "size": 2176,
+      "sha256": "d08cbb29213ae381058fe7350cb383a324c250e6b7804a3676aaf020f4d95ca7",
       "mode": "0644"
     },
     {
@@ -909,8 +909,8 @@
     },
     {
       "path": "frontend/src/components/ProviderCard.svelte",
-      "size": 373,
-      "sha256": "7a7e35e4a06746d2377a5cfc4e143fe12769c8ddefe93676068d055a35b7afe7",
+      "size": 3501,
+      "sha256": "11919043e06eceac3b7f041aff32c44de664576295fb7321bff33aa3700e5e3c",
       "mode": "0644"
     },
     {
@@ -939,20 +939,20 @@
     },
     {
       "path": "frontend/src/lib/runtime-adapter.ts",
-      "size": 2528,
-      "sha256": "803348112a061c7fa0b7f8fc265347e7e044643d05011cb844fff185a584d4d0",
+      "size": 2814,
+      "sha256": "5c3b389c3763ef9f28478499b2efda5c03774717cacdf59f0823034b3e3b321e",
       "mode": "0644"
     },
     {
       "path": "frontend/src/lib/types.ts",
-      "size": 1798,
-      "sha256": "0c1018082dd0e962985a7cd781e7ba59cfdf02dfdc635c83d2fe3d4a48f7d1d2",
+      "size": 1955,
+      "sha256": "37b69a20ebb09115db2a26182118a880c69442ec0374cda3afc748d1d72c7cad",
       "mode": "0644"
     },
     {
       "path": "frontend/src/lib/wails-services.ts",
-      "size": 2490,
-      "sha256": "3893b6ed4cff91409f2a08eaf854332c03a2d57ff0d3d2ad7ecdf7344d3bccdf",
+      "size": 2774,
+      "sha256": "c86d525af288f03590e5e180a685b5fe9389b59e2c64bc848086fbb5514ded22",
       "mode": "0644"
     },
     {
@@ -981,8 +981,8 @@
     },
     {
       "path": "frontend/src/pages/Providers.svelte",
-      "size": 830,
-      "sha256": "cf172c19edf6f7339d1f7ae4d9e01f652f17e26537bb6cd4b07f1ad889b0bb7e",
+      "size": 1341,
+      "sha256": "f9598657ba23f101d369933439bbd1f4724c3be883d53284d70a7383bb27f95a",
       "mode": "0644"
     },
     {
@@ -993,8 +993,8 @@
     },
     {
       "path": "frontend/src/styles.css",
-      "size": 7264,
-      "sha256": "ea230493b63f7e5f9865854f76ae95e24bc6c3a9765f2a81f1b11155b6cd3151",
+      "size": 7966,
+      "sha256": "8105e4aadb03d7bbbaebf020f34a29c574ade3807260d069a1b3f1f993a2f022",
       "mode": "0644"
     },
     {

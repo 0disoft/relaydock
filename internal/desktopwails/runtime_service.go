@@ -2,6 +2,7 @@ package desktopwails
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"net"
 	"net/http"
@@ -15,6 +16,7 @@ import (
 	"github.com/0disoft/relaydock/internal/buildinfo"
 	gatewaycomposition "github.com/0disoft/relaydock/internal/composition/gateway"
 	"github.com/0disoft/relaydock/internal/core"
+	"github.com/0disoft/relaydock/internal/credentials"
 	"github.com/0disoft/relaydock/internal/localipc"
 	"github.com/0disoft/relaydock/internal/transport/httpgateway"
 )
@@ -31,10 +33,12 @@ type RuntimeStatus struct {
 }
 
 type ProviderSummary struct {
-	ID         string `json:"id"`
-	Name       string `json:"name"`
-	Configured bool   `json:"configured"`
-	Mode       string `json:"mode"`
+	ID                 string `json:"id"`
+	Name               string `json:"name"`
+	Configured         bool   `json:"configured"`
+	Mode               string `json:"mode"`
+	CredentialSource   string `json:"credentialSource"`
+	CredentialWritable bool   `json:"credentialWritable"`
 }
 
 type RuntimeService struct {
@@ -51,10 +55,16 @@ type RuntimeService struct {
 	gatewayAddress  string
 	lastError       string
 	mcpConfigured   bool
+	credentialStore credentials.Store
+	credentialError error
 }
 
 func NewRuntimeService(handler localipc.Handler) *RuntimeService {
-	return &RuntimeService{ipcHandler: handler}
+	return NewRuntimeServiceWithCredentialStore(handler, nil, credentials.ErrSystemStoreUnavailable)
+}
+
+func NewRuntimeServiceWithCredentialStore(handler localipc.Handler, store credentials.Store, storeErr error) *RuntimeService {
+	return &RuntimeService{ipcHandler: handler, credentialStore: store, credentialError: storeErr}
 }
 
 func (s *RuntimeService) Status() RuntimeStatus {
@@ -150,7 +160,10 @@ func (s *RuntimeService) StartLocalGateway(port int) error {
 	s.gatewayStarting = true
 	s.mu.Unlock()
 
-	providerRuntime, err := gatewaycomposition.BuildFromEnvironment()
+	s.mu.RLock()
+	credentialStore := s.credentialStore
+	s.mu.RUnlock()
+	providerRuntime, err := gatewaycomposition.BuildFromEnvironmentWithCredentials(context.Background(), credentialStore)
 	if err != nil {
 		s.finishGatewayStart(nil, nil, nil, "", err)
 		return fmt.Errorf("construct local provider runtime: %w", err)
@@ -222,15 +235,113 @@ func (s *RuntimeService) StopLocalGateway() error {
 }
 
 func (s *RuntimeService) ListProviders() []ProviderSummary {
-	return []ProviderSummary{
-		{ID: "local-echo", Name: "Local Echo", Configured: true, Mode: "development"},
-		{ID: "openai", Name: "OpenAI", Configured: os.Getenv("OPENAI_API_KEY") != "", Mode: "official-api"},
-		{ID: "anthropic", Name: "Anthropic", Configured: os.Getenv("ANTHROPIC_API_KEY") != "", Mode: "official-api"},
-		{ID: "google", Name: "Google Gemini", Configured: os.Getenv("GOOGLE_API_KEY") != "" || os.Getenv("GEMINI_API_KEY") != "", Mode: "official-api"},
-		{ID: "deepseek", Name: "DeepSeek", Configured: os.Getenv("DEEPSEEK_API_KEY") != "", Mode: "official-api"},
-		{ID: "openrouter", Name: "OpenRouter", Configured: os.Getenv("OPENROUTER_API_KEY") != "", Mode: "official-api"},
-		{ID: "openai-compatible", Name: "OpenAI Compatible", Configured: os.Getenv("OPENAI_COMPATIBLE_BASE_URL") != "", Mode: "custom-endpoint"},
+	summaries := []ProviderSummary{{
+		ID: "local-echo", Name: "Local Echo", Configured: true, Mode: "development",
+		CredentialSource: "embedded", CredentialWritable: false,
+	}}
+	providers := []ProviderSummary{
+		{ID: "openai", Name: "OpenAI", Mode: "official-api"},
+		{ID: "anthropic", Name: "Anthropic", Mode: "official-api"},
+		{ID: "google", Name: "Google Gemini", Mode: "official-api"},
+		{ID: "deepseek", Name: "DeepSeek", Mode: "official-api"},
+		{ID: "openrouter", Name: "OpenRouter", Mode: "official-api"},
+		{ID: "openai-compatible", Name: "OpenAI Compatible", Mode: "custom-endpoint"},
 	}
+	for _, summary := range providers {
+		configured, source, writable := s.providerCredentialStatus(summary.ID)
+		if summary.ID == "openai-compatible" && strings.TrimSpace(os.Getenv("OPENAI_COMPATIBLE_BASE_URL")) != "" {
+			configured = true
+			if source != "environment" && source != "system" {
+				source = "anonymous"
+			}
+		}
+		summary.Configured = configured
+		summary.CredentialSource = source
+		summary.CredentialWritable = writable
+		summaries = append(summaries, summary)
+	}
+	return summaries
+}
+
+func (s *RuntimeService) SaveProviderCredential(providerID, value string) error {
+	providerID = strings.ToLower(strings.TrimSpace(providerID))
+	if gatewaycomposition.ProviderCredentialEnvironmentConfigured(providerID) {
+		return fmt.Errorf("%w: environment credential override is active for %s", core.ErrConflict, providerID)
+	}
+	if value == "" || strings.TrimSpace(value) != value {
+		return fmt.Errorf("%w: provider credential must be non-empty without surrounding whitespace", core.ErrInvalidArgument)
+	}
+	if len(value) > credentials.MaximumSystemCredentialBytes {
+		return fmt.Errorf("%w: provider credential must not exceed %d bytes", core.ErrInvalidArgument, credentials.MaximumSystemCredentialBytes)
+	}
+	ref, err := gatewaycomposition.ProviderCredentialReference(providerID)
+	if err != nil {
+		return err
+	}
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	if s.gatewayStarting || s.gatewayListen != nil {
+		return fmt.Errorf("%w: stop the local gateway before changing provider credentials", core.ErrConflict)
+	}
+	if s.credentialStore == nil {
+		return s.credentialStoreUnavailableError()
+	}
+	return s.credentialStore.Put(context.Background(), ref, []byte(value))
+}
+
+func (s *RuntimeService) DeleteProviderCredential(providerID string) error {
+	providerID = strings.ToLower(strings.TrimSpace(providerID))
+	if gatewaycomposition.ProviderCredentialEnvironmentConfigured(providerID) {
+		return fmt.Errorf("%w: environment credential override is active for %s", core.ErrConflict, providerID)
+	}
+	ref, err := gatewaycomposition.ProviderCredentialReference(providerID)
+	if err != nil {
+		return err
+	}
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	if s.gatewayStarting || s.gatewayListen != nil {
+		return fmt.Errorf("%w: stop the local gateway before changing provider credentials", core.ErrConflict)
+	}
+	if s.credentialStore == nil {
+		return s.credentialStoreUnavailableError()
+	}
+	return s.credentialStore.Delete(context.Background(), ref)
+}
+
+func (s *RuntimeService) providerCredentialStatus(providerID string) (configured bool, source string, writable bool) {
+	if gatewaycomposition.ProviderCredentialEnvironmentConfigured(providerID) {
+		return true, "environment", false
+	}
+	s.mu.RLock()
+	store := s.credentialStore
+	s.mu.RUnlock()
+	if store == nil {
+		return false, "unavailable", false
+	}
+	ref, err := gatewaycomposition.ProviderCredentialReference(providerID)
+	if err != nil {
+		return false, "unavailable", false
+	}
+	value, err := store.Get(context.Background(), ref)
+	if errors.Is(err, core.ErrNotFound) {
+		return false, "none", true
+	}
+	if err != nil {
+		return false, "unavailable", false
+	}
+	for index := range value {
+		value[index] = 0
+	}
+	return true, "system", true
+}
+
+func (s *RuntimeService) credentialStoreUnavailableError() error {
+	err := s.credentialError
+	if err == nil {
+		err = credentials.ErrSystemStoreUnavailable
+	}
+	return fmt.Errorf("%w: %v", credentials.ErrSystemStoreUnavailable, err)
 }
 
 func (s *RuntimeService) MCPConfigSnippet(bridgePath string) (string, error) {

@@ -11,7 +11,8 @@ import (
 	"github.com/0disoft/relaydock/internal/core"
 )
 
-const maximumSystemCredentialBytes = 2048
+// MaximumSystemCredentialBytes is the largest value accepted by native stores.
+const MaximumSystemCredentialBytes = 2048
 
 var ErrSystemStoreUnavailable = errors.New("system credential store unavailable")
 
@@ -64,8 +65,8 @@ func (s *SystemStore) Put(ctx context.Context, ref Reference, value []byte) erro
 	if err != nil {
 		return err
 	}
-	if len(value) == 0 || len(value) > maximumSystemCredentialBytes {
-		return fmt.Errorf("%w: credential must contain between 1 and %d bytes", core.ErrInvalidArgument, maximumSystemCredentialBytes)
+	if len(value) == 0 || len(value) > MaximumSystemCredentialBytes {
+		return fmt.Errorf("%w: credential must contain between 1 and %d bytes", core.ErrInvalidArgument, MaximumSystemCredentialBytes)
 	}
 	copyValue := append([]byte(nil), value...)
 	defer zeroCredential(copyValue)
@@ -90,7 +91,7 @@ func (s *SystemStore) Get(ctx context.Context, ref Reference) ([]byte, error) {
 		}
 		return nil, fmt.Errorf("read system credential: %w", err)
 	}
-	if len(value) == 0 || len(value) > maximumSystemCredentialBytes {
+	if len(value) == 0 || len(value) > MaximumSystemCredentialBytes {
 		zeroCredential(value)
 		return nil, fmt.Errorf("%w: stored credential has an invalid size", core.ErrInvalidConfiguration)
 	}

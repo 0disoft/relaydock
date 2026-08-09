@@ -18,6 +18,10 @@ function call<T>(methodName: string, ...args: unknown[]): Promise<T> {
 export const RuntimeService = {
   status: () => call<RuntimeStatus>(`${prefix}.RuntimeService.Status`),
   listProviders: () => call<ProviderSummary[]>(`${prefix}.RuntimeService.ListProviders`),
+  saveProviderCredential: (providerId: string, value: string) =>
+    call<void>(`${prefix}.RuntimeService.SaveProviderCredential`, providerId, value),
+  deleteProviderCredential: (providerId: string) =>
+    call<void>(`${prefix}.RuntimeService.DeleteProviderCredential`, providerId),
   startGateway: (port: number) => call<void>(`${prefix}.RuntimeService.StartLocalGateway`, port),
   stopGateway: () => call<void>(`${prefix}.RuntimeService.StopLocalGateway`),
   mcpConfigSnippet: (bridgePath: string) =>

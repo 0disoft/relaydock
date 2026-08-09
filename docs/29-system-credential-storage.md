@@ -6,7 +6,9 @@ Provider API credentials belong in a per-user operating-system credential store,
 
 The first native backend supports Windows Credential Manager through `CredWriteW`, `CredReadW`, `CredDeleteW`, and `CredFree`. It uses a generic credential persisted for the current user on the local machine. No plaintext-file fallback exists. macOS and Linux currently return `ErrSystemStoreUnavailable` until native Keychain and Secret Service adapters are implemented.
 
-This adapter is the storage foundation only. The next implementation unit must connect provider credential save/delete/status operations and Gateway composition to it before the desktop can claim end-to-end secure provider-key storage.
+The desktop provider page now exposes status, save, replace, and delete operations through the Wails runtime service. The frontend never receives a stored credential value. Submitted values use password inputs and are cleared after every success or failure. Credential changes are denied while the local Gateway is starting or running so a displayed state cannot diverge from the active runtime.
+
+Environment credentials retain precedence and are read-only in the desktop UI. When no environment override exists, Gateway composition resolves the provider key from the system store. A stored real-provider credential disables the implicit `local/echo` fallback in the same way as an environment credential. Store errors fail closed and never trigger a plaintext fallback.
 
 ## Identity and Size Contract
 

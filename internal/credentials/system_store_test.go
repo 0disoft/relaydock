@@ -114,7 +114,7 @@ func TestSystemStoreValidatesNamespaceIdentitySizeAndContext(t *testing.T) {
 	if err := store.Put(context.Background(), ref, nil); err == nil {
 		t.Fatal("accepted empty credential")
 	}
-	if err := store.Put(context.Background(), ref, bytes.Repeat([]byte{'x'}, maximumSystemCredentialBytes+1)); err == nil {
+	if err := store.Put(context.Background(), ref, bytes.Repeat([]byte{'x'}, MaximumSystemCredentialBytes+1)); err == nil {
 		t.Fatal("accepted oversized credential")
 	}
 	canceled, cancel := context.WithCancel(context.Background())

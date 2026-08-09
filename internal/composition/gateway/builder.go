@@ -1,11 +1,13 @@
 package gateway
 
 import (
+	"context"
 	"fmt"
 	"os"
 	"strconv"
 	"strings"
 
+	"github.com/0disoft/relaydock/internal/credentials"
 	"github.com/0disoft/relaydock/internal/protocol/canonical"
 	"github.com/0disoft/relaydock/internal/protocol/compiler"
 	"github.com/0disoft/relaydock/internal/protocol/defaults"
@@ -30,6 +32,13 @@ type Runtime struct {
 }
 
 func BuildFromEnvironment() (*Runtime, error) {
+	return BuildFromEnvironmentWithCredentials(context.Background(), nil)
+}
+
+func BuildFromEnvironmentWithCredentials(ctx context.Context, credentialStore credentials.Store) (*Runtime, error) {
+	if err := ctx.Err(); err != nil {
+		return nil, err
+	}
 	registry := provider.NewRegistry()
 	definitions := make(map[string]providerDefinition)
 	register := func(adapter provider.Adapter, protocol canonical.Protocol, configured bool) {
@@ -37,11 +46,30 @@ func BuildFromEnvironment() (*Runtime, error) {
 		definitions[adapter.Name()] = providerDefinition{Adapter: adapter, Protocol: protocol, Configured: configured}
 	}
 
-	openAIConfigured := configured("OPENAI_API_KEY")
-	anthropicConfigured := configured("ANTHROPIC_API_KEY")
-	googleConfigured := configuredAny("GOOGLE_API_KEY", "GEMINI_API_KEY")
-	deepSeekConfigured := configured("DEEPSEEK_API_KEY")
-	openRouterConfigured := configured("OPENROUTER_API_KEY")
+	openAIKey, openAIConfigured, err := resolveProviderCredential(ctx, credentialStore, "openai")
+	if err != nil {
+		return nil, err
+	}
+	anthropicKey, anthropicConfigured, err := resolveProviderCredential(ctx, credentialStore, "anthropic")
+	if err != nil {
+		return nil, err
+	}
+	googleKey, googleConfigured, err := resolveProviderCredential(ctx, credentialStore, "google")
+	if err != nil {
+		return nil, err
+	}
+	deepSeekKey, deepSeekConfigured, err := resolveProviderCredential(ctx, credentialStore, "deepseek")
+	if err != nil {
+		return nil, err
+	}
+	openRouterKey, openRouterConfigured, err := resolveProviderCredential(ctx, credentialStore, "openrouter")
+	if err != nil {
+		return nil, err
+	}
+	compatibleKey, _, err := resolveProviderCredential(ctx, credentialStore, "openai-compatible")
+	if err != nil {
+		return nil, err
+	}
 	compatibleConfigured := strings.TrimSpace(os.Getenv("OPENAI_COMPATIBLE_BASE_URL")) != ""
 	realProviderConfigured := openAIConfigured || anthropicConfigured || googleConfigured || deepSeekConfigured || openRouterConfigured || compatibleConfigured
 	localEchoEnabled, err := optionalBooleanEnvironment("GATEWAY_ENABLE_LOCAL_ECHO", !realProviderConfigured)
@@ -52,17 +80,17 @@ func BuildFromEnvironment() (*Runtime, error) {
 	mockAdapter := mock.New("Local mock provider is active.")
 	register(mockAdapter, canonical.ProtocolOpenAIResponses, localEchoEnabled)
 
-	openAIAdapter := openai.New()
+	openAIAdapter := openai.NewWithConfig(os.Getenv("OPENAI_BASE_URL"), openAIKey)
 	register(openAIAdapter, canonical.ProtocolOpenAIResponses, openAIConfigured)
-	anthropicAdapter := anthropicprovider.New()
+	anthropicAdapter := anthropicprovider.NewWithConfig(os.Getenv("ANTHROPIC_BASE_URL"), anthropicKey)
 	register(anthropicAdapter, canonical.ProtocolAnthropicMessages, anthropicConfigured)
-	googleAdapter := googleprovider.New()
+	googleAdapter := googleprovider.NewWithConfig(os.Getenv("GOOGLE_GENERATIVE_LANGUAGE_BASE_URL"), googleKey)
 	register(googleAdapter, canonical.ProtocolGeminiGenerate, googleConfigured)
-	deepSeekAdapter := deepseek.New()
+	deepSeekAdapter := deepseek.NewWithConfig(os.Getenv("DEEPSEEK_BASE_URL"), deepSeekKey)
 	register(deepSeekAdapter, canonical.ProtocolOpenAIChat, deepSeekConfigured)
-	openRouterAdapter := openrouter.New()
+	openRouterAdapter := openrouter.NewWithConfig(os.Getenv("OPENROUTER_BASE_URL"), openRouterKey)
 	register(openRouterAdapter, canonical.ProtocolOpenAIChat, openRouterConfigured)
-	compatibleAdapter := openaicompatible.New()
+	compatibleAdapter := openaicompatible.NewWithConfig(os.Getenv("OPENAI_COMPATIBLE_BASE_URL"), compatibleKey)
 	register(compatibleAdapter, canonical.ProtocolOpenAIChat, compatibleConfigured)
 
 	routes, err := loadRouteConfig(os.Getenv("GATEWAY_ROUTES_FILE"), os.Getenv("GATEWAY_ROUTES_JSON"))

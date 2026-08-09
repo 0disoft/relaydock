@@ -279,6 +279,7 @@ relaydock
 │   │   └── gateway/
 │   │       ├── builder.go
 │   │       ├── builder_test.go
+│   │       ├── provider_credentials.go
 │   │       ├── routes_config.go
 │   │       ├── routes_health.go
 │   │       ├── routes_snapshot.go
@@ -325,6 +326,7 @@ relaydock
 │   │   ├── app.go
 │   │   ├── consultation_service.go
 │   │   ├── container.go
+│   │   ├── provider_credentials_test.go
 │   │   ├── runtime_service.go
 │   │   ├── settings_service.go
 │   │   ├── tray.go

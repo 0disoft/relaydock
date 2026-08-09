@@ -2,6 +2,18 @@
   "version": 2,
   "files": [
     {
+      "path": "web/control-console/src/app.html",
+      "size": 240,
+      "sha256": "5c20b37cda73e33d61ac36f9cedbd1f0568518e0a8e72851523e8b8f8595158d",
+      "mode": "0644"
+    },
+    {
+      "path": "web/control-console/src/routes/+page.server.ts",
+      "size": 1921,
+      "sha256": "a57c3f2b8b5d9d485a00d657d4c450d2a41a24acf9e45b1caccaef6f79ac36cc",
+      "mode": "0644"
+    },
+    {
       "path": "web/control-console/src/routes/+page.svelte",
       "size": 5743,
       "sha256": "1988a81b3be3654f6b713d1b75b5293f0fbc9c9b018bea242b074b16b201d305",

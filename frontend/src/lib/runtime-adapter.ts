@@ -11,6 +11,10 @@ import { ConsultationService, RuntimeService, SettingsService } from './wails-se
 
 export const getRuntimeStatus = (): Promise<RuntimeStatus> => RuntimeService.status();
 export const listProviders = (): Promise<ProviderSummary[]> => RuntimeService.listProviders();
+export const saveProviderCredential = (providerId: string, value: string): Promise<void> =>
+  RuntimeService.saveProviderCredential(providerId, value);
+export const deleteProviderCredential = (providerId: string): Promise<void> =>
+  RuntimeService.deleteProviderCredential(providerId);
 export const listConsultations = (): Promise<ConsultationSummary[]> => ConsultationService.list(50);
 export const getSettings = (): Promise<Settings> => SettingsService.get();
 export const saveSettings = (settings: Settings): Promise<void> => SettingsService.save(settings);

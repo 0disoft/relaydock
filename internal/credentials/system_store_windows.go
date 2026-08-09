@@ -101,7 +101,7 @@ func (windowsCredentialBackend) Read(target string) ([]byte, error) {
 		return nil, fmt.Errorf("%w: Windows returned an empty credential", core.ErrInvalidConfiguration)
 	}
 	defer procCredFree.Call(uintptr(unsafe.Pointer(credential)))
-	if credential.CredentialBlobSize == 0 || credential.CredentialBlob == nil || credential.CredentialBlobSize > maximumSystemCredentialBytes {
+	if credential.CredentialBlobSize == 0 || credential.CredentialBlob == nil || credential.CredentialBlobSize > MaximumSystemCredentialBytes {
 		return nil, fmt.Errorf("%w: Windows returned an empty credential value", core.ErrInvalidConfiguration)
 	}
 	value := unsafe.Slice(credential.CredentialBlob, int(credential.CredentialBlobSize))

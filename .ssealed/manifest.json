@@ -1,7 +1,7 @@
 {
   "tool": "ssealed",
   "version": "0.6.11",
-  "generatedAt": "2026-08-09T11:21:59.542Z",
+  "generatedAt": "2026-08-09T11:54:20.228Z",
   "scope": "general",
   "profile": "monorepo",
   "addons": [
@@ -343,24 +343,24 @@
     },
     {
       "path": "README.md",
-      "checksum": "sha256:dc2b16d4b66453dc2f6e74c8d8a1b06258bd3ee568ccb87576e301de131cf281",
+      "checksum": "sha256:f2a06fd9d9ee4753644b09076cf7dc47d546e4c34f814c934c05f702be13c62b",
       "kind": "document",
       "ownership": "project-owned",
       "presence": "optional",
       "status": "active",
       "initialChecksum": "sha256:b21f2d71424eb62fa19b7f78251be57a7b7df1a555f14bd972da81862e1fecd5",
-      "acceptedChecksum": "sha256:dc2b16d4b66453dc2f6e74c8d8a1b06258bd3ee568ccb87576e301de131cf281",
+      "acceptedChecksum": "sha256:f2a06fd9d9ee4753644b09076cf7dc47d546e4c34f814c934c05f702be13c62b",
       "generatedChecksum": "sha256:b21f2d71424eb62fa19b7f78251be57a7b7df1a555f14bd972da81862e1fecd5"
     },
     {
       "path": "VALIDATION.md",
-      "checksum": "sha256:69967a743099abb7bf1959130f8f955802b90a9e26ff84c309aea43c07cd78b2",
+      "checksum": "sha256:58033fbb048e6a17e37dfcf125e2b034022ef1bd04f4c3ad39de049bb4b7ee98",
       "kind": "validation",
       "ownership": "project-owned",
       "presence": "optional",
       "status": "active",
       "initialChecksum": "sha256:c5a688cf5818bb3e21bf862bce6c1b7f0b5f70b3cda5a8e3fc53096ef536c902",
-      "acceptedChecksum": "sha256:69967a743099abb7bf1959130f8f955802b90a9e26ff84c309aea43c07cd78b2",
+      "acceptedChecksum": "sha256:58033fbb048e6a17e37dfcf125e2b034022ef1bd04f4c3ad39de049bb4b7ee98",
       "generatedChecksum": "sha256:c5a688cf5818bb3e21bf862bce6c1b7f0b5f70b3cda5a8e3fc53096ef536c902"
     }
   ]

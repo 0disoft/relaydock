@@ -4,6 +4,7 @@ import (
 	"os"
 
 	"github.com/0disoft/relaydock/internal/appdirs"
+	"github.com/0disoft/relaydock/internal/credentials"
 	expertapp "github.com/0disoft/relaydock/internal/expert/app"
 	"github.com/0disoft/relaydock/internal/localruntime"
 )
@@ -35,10 +36,11 @@ func NewContainer() (*Container, error) {
 	if err != nil {
 		return nil, err
 	}
+	credentialStore, credentialStoreErr := credentials.NewSystemStore("com.0disoft.relaydock.credentials.v1")
 	return &Container{
 		App:           application,
 		Local:         local,
-		Runtime:       NewRuntimeService(local.Handler()),
+		Runtime:       NewRuntimeServiceWithCredentialStore(local.Handler(), credentialStore, credentialStoreErr),
 		Consultations: NewConsultationService(application),
 		Settings:      settingsService,
 	}, nil

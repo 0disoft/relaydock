@@ -1,7 +1,20 @@
 <script lang="ts">
   import ProviderCard from '../components/ProviderCard.svelte';
   import type { ProviderSummary } from '../lib/types';
+  import { deleteProviderCredential, saveProviderCredential } from '../lib/runtime-adapter';
   export let providers: ProviderSummary[];
+  export let gatewayBusy: boolean;
+  export let onChanged: () => Promise<void>;
+
+  async function save(providerId: string, value: string): Promise<void> {
+    await saveProviderCredential(providerId, value);
+    await onChanged();
+  }
+
+  async function remove(providerId: string): Promise<void> {
+    await deleteProviderCredential(providerId);
+    await onChanged();
+  }
 </script>
 
 <header class="page-header">
@@ -21,7 +34,7 @@
 {:else}
   <section class="card-list">
     {#each providers as provider}
-      <ProviderCard {provider} />
+      <ProviderCard {provider} {gatewayBusy} onSave={save} onDelete={remove} />
     {/each}
   </section>
 {/if}
