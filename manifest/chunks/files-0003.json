@@ -243,8 +243,8 @@
     },
     {
       "path": "internal/releasepack/releasepack_test.go",
-      "size": 14903,
-      "sha256": "0375918ddf216211991c2f766ced79cbcde5f40fc97142abcd884ba5caccff7a",
+      "size": 15569,
+      "sha256": "d76a08aaece3e0d7eb19aebd1f2d22390c2d2ad8c9137f311e6af56bbbaa5532",
       "mode": "0644"
     },
     {
@@ -261,8 +261,8 @@
     },
     {
       "path": "internal/releasepack/scan.go",
-      "size": 4180,
-      "sha256": "3de26785313b3c7c0c76c0d0de49b21bb5ec75fc38bb9f346dbda0c82766790a",
+      "size": 4617,
+      "sha256": "0249cf40745efeaa71150d33f9169d4d40cfc9b11f1082de85a8a879ae2d3ae6",
       "mode": "0644"
     },
     {

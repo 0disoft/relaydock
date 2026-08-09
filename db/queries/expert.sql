@@ -34,14 +34,14 @@ LIMIT $3;
 
 -- name: ClaimNextConsultation :one
 WITH candidate AS (
-    SELECT id
-    FROM expert.consultations
-    WHERE state = 'queued'
-      AND route = $1
-      AND available_at <= $2
-      AND expires_at > $2
-      AND attempt_count < $3
-    ORDER BY available_at, created_at, id
+    SELECT consultation.id
+    FROM expert.consultations AS consultation
+    WHERE consultation.state = 'queued'
+      AND consultation.route = $1
+      AND consultation.available_at <= $2
+      AND consultation.expires_at > $2
+      AND consultation.attempt_count < $3
+    ORDER BY consultation.available_at, consultation.created_at, consultation.id
     FOR UPDATE SKIP LOCKED
     LIMIT 1
 )

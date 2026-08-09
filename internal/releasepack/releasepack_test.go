@@ -245,6 +245,10 @@ func TestScanExcludesNestedFrontendOutputsButKeepsRootBuildSources(t *testing.T)
 	mustWrite(t, filepath.Join(root, "frontend", "dist", "assets", "app.js"), strings.Repeat("x", 50_000))
 	mustWrite(t, filepath.Join(root, "frontend", ".svelte-check", "cache"), strings.Repeat("x", 50_000))
 	mustWrite(t, filepath.Join(root, "web", "control-console", "build", "server", "index.js"), strings.Repeat("x", 50_000))
+	mustWrite(t, filepath.Join(root, "frontend", "bindings", "desktop.js"), strings.Repeat("x", 50_000))
+	mustWrite(t, filepath.Join(root, "gen", "go", "README.md"), "generated contracts live here\n")
+	mustWrite(t, filepath.Join(root, "gen", "go", "control", "v1", "control.pb.go"), strings.Repeat("x", 50_000))
+	mustWrite(t, filepath.Join(root, "internal", "persistence", "postgres", "sqlcgen", "expert.sql.go"), strings.Repeat("x", 50_000))
 	records, err := scanFiles(root, false)
 	if err != nil {
 		t.Fatal(err)
@@ -256,10 +260,16 @@ func TestScanExcludesNestedFrontendOutputsButKeepsRootBuildSources(t *testing.T)
 	if !paths["build/windows/Taskfile.yml"] {
 		t.Fatal("root build source was excluded")
 	}
+	if !paths["gen/go/README.md"] {
+		t.Fatal("generated-directory source guidance was excluded")
+	}
 	for _, generated := range []string{
 		"frontend/dist/assets/app.js",
 		"frontend/.svelte-check/cache",
 		"web/control-console/build/server/index.js",
+		"frontend/bindings/desktop.js",
+		"gen/go/control/v1/control.pb.go",
+		"internal/persistence/postgres/sqlcgen/expert.sql.go",
 	} {
 		if paths[generated] {
 			t.Fatalf("generated frontend output was included: %s", generated)

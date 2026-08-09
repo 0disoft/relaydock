@@ -22,6 +22,12 @@ var excludedFileNames = map[string]struct{}{
 	".DS_Store": {}, "Thumbs.db": {},
 }
 
+var generatedDirectoryPrefixes = []string{
+	"frontend/bindings/",
+	"gen/go/",
+	"internal/persistence/postgres/sqlcgen/",
+}
+
 func scanFiles(root string, includeManifest bool) ([]FileRecord, error) {
 	root, err := filepath.Abs(root)
 	if err != nil {
@@ -53,6 +59,9 @@ func scanFiles(root string, includeManifest bool) ([]FileRecord, error) {
 			return fmt.Errorf("repository contains unsupported non-regular file %s", relative)
 		}
 		if _, excluded := excludedFileNames[entry.Name()]; excluded {
+			return nil
+		}
+		if shouldExcludeGeneratedFile(relative) {
 			return nil
 		}
 		if !includeManifest && relative == rootManifestPath {
@@ -151,4 +160,13 @@ func shouldExcludeDirectory(relative, name string) bool {
 		return true
 	}
 	return name == "build" && relative != "build"
+}
+
+func shouldExcludeGeneratedFile(relative string) bool {
+	for _, prefix := range generatedDirectoryPrefixes {
+		if strings.HasPrefix(relative, prefix) && !strings.EqualFold(filepath.Base(relative), "README.md") {
+			return true
+		}
+	}
+	return false
 }
