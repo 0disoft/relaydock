@@ -53,6 +53,7 @@ Connect·Wails·MCP·pgx 의존성을 전이적으로 포함하는 server comman
 ### 이번 변경에서 직접 검증한 경계
 
 - `github.com/0disoft/relaydock` module path로 protocol, runtime, routing, conformance, fault-injection package가 offline `-mod=readonly` 테스트를 통과
+- RelayDock public identity hygiene와 source archive prefix 회귀 테스트 통과
 - 40 KiB를 넘는 수작업 source·문서·설정 파일이 없음
 - root manifest와 3개 manifest chunk가 모두 40 KiB 이하
 - file-size exception 0개, stale exception 0개

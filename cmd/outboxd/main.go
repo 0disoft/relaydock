@@ -50,7 +50,7 @@ func main() {
 	publisher, err := outbox.NewWebhookPublisher(outbox.WebhookConfig{
 		Endpoint:          configuration.WebhookURL,
 		Secret:            configuration.WebhookSecret,
-		UserAgent:         "ai-runtime-gateway-outbox/" + buildinfo.Version,
+		UserAgent:         "relaydock-outbox/" + buildinfo.Version,
 		AllowInsecureHTTP: configuration.AllowInsecureHTTP,
 		Headers:           configuration.WebhookHeaders,
 	})

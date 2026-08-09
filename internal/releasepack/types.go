@@ -6,7 +6,7 @@ const (
 	ManifestVersion           = 2
 	DefaultMaximumFileBytes   = int64(40 * 1024)
 	DefaultManifestChunkBytes = 30 * 1024
-	defaultArchivePrefix      = "ai-runtime-gateway"
+	defaultArchivePrefix      = "relaydock"
 	rootManifestPath          = "MANIFEST.json"
 	manifestDirectory         = "manifest"
 	manifestChunkDirectory    = "manifest/chunks"

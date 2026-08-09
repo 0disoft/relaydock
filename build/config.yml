@@ -1,14 +1,14 @@
 info:
-  productName: "AI Runtime Gateway"
-  productIdentifier: "dev.zerodi.airuntime"
-  productVersion: "0.5.0"
-  companyName: "ZeroD"
+  productName: "RelayDock"
+  productIdentifier: "com.0disoft.relaydock"
+  productVersion: "0.5.1"
+  companyName: "0disoft"
   productDescription: "Local AI routing and expert escalation runtime"
   copyright: "Copyright © 2026"
 
 protocols:
   - scheme: airuntime
-    description: "AI Runtime Gateway deep link"
+    description: "RelayDock deep link"
 
 windows:
   installer:

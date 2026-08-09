@@ -7,7 +7,7 @@
 
 <svelte:head>
   <title>AI Runtime Control</title>
-  <meta name="description" content="AI Runtime Gateway control plane" />
+  <meta name="description" content="RelayDock control plane" />
 </svelte:head>
 
 <div class="shell">

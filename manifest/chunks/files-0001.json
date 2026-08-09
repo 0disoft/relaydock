@@ -87,8 +87,8 @@
     },
     {
       "path": ".env.example",
-      "size": 6885,
-      "sha256": "e0c0f54d891a5c6042068302099c78b5fcb417739cf2fe74aef0160b69d4a678",
+      "size": 6876,
+      "sha256": "50517d8298860be171c3a73b0c50e4e5191aa5b25d6889111e73fa4b46ad184f",
       "mode": "0644"
     },
     {
@@ -105,8 +105,8 @@
     },
     {
       "path": ".github/workflows/ci.yml",
-      "size": 4420,
-      "sha256": "2701ceaff934f48bb495ae188be5e9fa64053ab7b952c094a3c478e9c6037dc6",
+      "size": 4411,
+      "sha256": "e9a7c701723c026bd14dc00275d68e2968f37952abd95f11db3398da5d3d5a8e",
       "mode": "0644"
     },
     {
@@ -117,8 +117,8 @@
     },
     {
       "path": ".github/workflows/release.yml",
-      "size": 10103,
-      "sha256": "a57b65270508d34bdbc2e2b4f94b12bf4ebdd10f4c32a6876722332d8d9fa39f",
+      "size": 10040,
+      "sha256": "33af1ef9bf3471c176afd1b204e06d242c1ed554a572af301687c6161cf27fb8",
       "mode": "0644"
     },
     {
@@ -130,7 +130,7 @@
     {
       "path": ".ssealed/manifest.json",
       "size": 18269,
-      "sha256": "9bc004cf08fd26f50e55bfaeaec0404c2c200b887d39687fcee25366b8db9f76",
+      "sha256": "2775fd0c1733a6025d2ac4f207d26688ae52b6031aa402b1c53e594ec84ada73",
       "mode": "0644"
     },
     {
@@ -141,8 +141,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "size": 13532,
-      "sha256": "d29a87f23378fe5d380967720ea0c492a4f4de2a1e2465217cb3f7f6d5279989",
+      "size": 13676,
+      "sha256": "bfeb0e23f48b555bcfb3295b7cb5e0e645f5254d97302209c529e37e0d31f8c9",
       "mode": "0644"
     },
     {
@@ -171,8 +171,8 @@
     },
     {
       "path": "README.md",
-      "size": 18580,
-      "sha256": "11b63a37e68a6122800f1611aefe111d16c8ec0ec5bac1074a88d07fb6eabb26",
+      "size": 18571,
+      "sha256": "144e47a1ce4871665fc20b6a6ca5f43733991c6eccb7b9fc99d6e391e002588b",
       "mode": "0644"
     },
     {
@@ -183,20 +183,20 @@
     },
     {
       "path": "TREE.md",
-      "size": 22267,
-      "sha256": "62fd8e9cdf0fadbf2c42e5f02e0b84e4308c137c0c30d098c052ccc7978a6e87",
+      "size": 22338,
+      "sha256": "3554f329325801141293f5e79b75216cf9c4d7598a33941bce8b8e864876a153",
       "mode": "0644"
     },
     {
       "path": "Taskfile.yml",
-      "size": 4479,
-      "sha256": "b6de1257dceb2707f4febe1d595f9b79b0a455121c9445fa91133b547db9d304",
+      "size": 4461,
+      "sha256": "e1667deeb989f5de0885af0282b9334c5ed52f312e4c3fc1c889839608349d44",
       "mode": "0644"
     },
     {
       "path": "VALIDATION.md",
-      "size": 8952,
-      "sha256": "14bd9e5ac2edacff9847790011b523e7ecc10178cb49209ab5ba5774b7e31903",
+      "size": 9037,
+      "sha256": "909da77904c93b3715170ca19606c34fce3f50186403b45933b806695375f493",
       "mode": "0644"
     },
     {
@@ -231,26 +231,26 @@
     },
     {
       "path": "build/config.yml",
-      "size": 580,
-      "sha256": "44cfed6cf18aea2c42d4d395a77180b3abf54706b40646f4b87d805c2c5246b9",
+      "size": 565,
+      "sha256": "3638563bf132af8a7b467e050ea34d58fa59b438419fc214808a39c3f12ea586",
       "mode": "0644"
     },
     {
       "path": "build/darwin/Taskfile.yml",
-      "size": 960,
-      "sha256": "885bc80ddab21ee0fedfbe425722a6f0d5d43b53358a62fb77bff5b8c735977a",
+      "size": 951,
+      "sha256": "6dd82b2cf52b60a2735d9ea6b4f7595ea10bb6d558efe53b45afd7ec826bdb9b",
       "mode": "0644"
     },
     {
       "path": "build/linux/Taskfile.yml",
-      "size": 953,
-      "sha256": "afdd04fea10668c94201de89a50c3dfff9972ff99acf95d3d9bf8afe373e0c29",
+      "size": 944,
+      "sha256": "fa36243c613e3d061950c7fdfe417e714c80d6569485023955b96f5a51a41985",
       "mode": "0644"
     },
     {
       "path": "build/windows/Taskfile.yml",
-      "size": 1306,
-      "sha256": "2651b8d1faab6f11c8eab2730da767b7665e2226fda5226fb16625b3de1c8291",
+      "size": 1297,
+      "sha256": "9e121f26286286d9779d6babf7a12c8b8c251117bb84bc0205b0f5391bcce93b",
       "mode": "0644"
     },
     {
@@ -333,8 +333,8 @@
     },
     {
       "path": "cmd/outboxd/main.go",
-      "size": 11758,
-      "sha256": "9aa32fc67a27f4d319f405b48844b7c1e33f2aaa8f14d11f405deed27083e801",
+      "size": 11749,
+      "sha256": "46cc1b3571528ad2f0ba737422f1275d5856b52eef448cf1cc1a0fedc49a243e",
       "mode": "0644"
     },
     {
@@ -345,8 +345,8 @@
     },
     {
       "path": "cmd/releasepack/main.go",
-      "size": 3281,
-      "sha256": "dcfc1c5b8d5ada07ebbc6610d53203fd303891de32c52a4fd6321b52da3a2646",
+      "size": 3263,
+      "sha256": "f7f3298cef270d7622a11a917ebc06a30dc2452c6daede9d23905a6dbc1fd18e",
       "mode": "0644"
     },
     {
@@ -489,8 +489,8 @@
     },
     {
       "path": "deploy/docker-compose.dev.yml",
-      "size": 6839,
-      "sha256": "673bc698e96f307ff8f1982e628a0f1ce34d385b5cc4cd29efcb40ce8a0007ed",
+      "size": 6830,
+      "sha256": "7babba5d84764e253ffd05f3ea3355447d6a6e8896788c5f1ab5a44929e58d4e",
       "mode": "0644"
     },
     {
@@ -651,8 +651,8 @@
     },
     {
       "path": "docs/20-operations-runbook.md",
-      "size": 12287,
-      "sha256": "9ab08752a882921a68f629a0c8d9829603124d028d861fd4bf9aa43f78c8bcce",
+      "size": 12278,
+      "sha256": "d4149f56868eae9e83574f99013d167fceef7e9c74c6c7d56eb86575156b74d9",
       "mode": "0644"
     },
     {
@@ -693,8 +693,8 @@
     },
     {
       "path": "docs/27-repository-size-and-source-release.md",
-      "size": 3221,
-      "sha256": "f8d1675ab35f4dd824ee65a85e89f78f4e913ecaf906cc8e3cf87072705f8833",
+      "size": 3212,
+      "sha256": "78c1c6d49578d9414b15dd4a1f56183121c6be646c611b600027b33f416eb2cb",
       "mode": "0644"
     },
     {
@@ -843,14 +843,14 @@
     },
     {
       "path": "frontend/index.html",
-      "size": 357,
-      "sha256": "4af430c145bc5c99fef015cc9c81259625da6e1a8864946f071d49394d94f604",
+      "size": 348,
+      "sha256": "d5d4311c279ac3ae1f96986de466edd6397af7edbda2844079847cb1ba86886d",
       "mode": "0644"
     },
     {
       "path": "frontend/package.json",
-      "size": 446,
-      "sha256": "9ad9b1359001cc4511cd5b160d17ab3255a3e9acee8c0cd3e0474145936c3594",
+      "size": 453,
+      "sha256": "6864b02373b1b1cd39c6d41d53496fafb85cb43ab05837faf4d557509c7676ca",
       "mode": "0644"
     },
     {

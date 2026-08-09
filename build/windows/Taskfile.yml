@@ -1,7 +1,7 @@
 version: "3"
 
 vars:
-  APP_NAME: ai-runtime-gateway
+  APP_NAME: relaydock
   VERSION:
     sh: powershell -NoProfile -Command "(Get-Content VERSION -Raw).Trim()"
 

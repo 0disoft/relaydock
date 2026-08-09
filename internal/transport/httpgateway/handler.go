@@ -70,7 +70,7 @@ func (a *api) models(w http.ResponseWriter, r *http.Request) {
 			continue
 		}
 		models = append(models, map[string]any{
-			"id": model, "object": "model", "owned_by": "ai-runtime-gateway",
+			"id": model, "object": "model", "owned_by": "relaydock",
 		})
 	}
 	apiutil.WriteJSON(w, http.StatusOK, map[string]any{"object": "list", "data": models})

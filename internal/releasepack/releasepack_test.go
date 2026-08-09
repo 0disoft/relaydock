@@ -48,6 +48,13 @@ func TestBuildCreatesChunkedManifestAndDeterministicArchive(t *testing.T) {
 	}
 }
 
+func TestDefaultArchivePrefixUsesRelayDockIdentity(t *testing.T) {
+	t.Parallel()
+	if defaultArchivePrefix != "relaydock" {
+		t.Fatalf("default archive prefix = %q, want relaydock", defaultArchivePrefix)
+	}
+}
+
 func TestCanonicalFileModeForOS(t *testing.T) {
 	t.Parallel()
 	tests := []struct {

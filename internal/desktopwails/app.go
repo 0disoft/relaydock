@@ -22,7 +22,7 @@ func Run(assets embed.FS) error {
 
 	var window *application.WebviewWindow
 	app := application.New(application.Options{
-		Name:        "AI Runtime Gateway",
+		Name:        "RelayDock",
 		Description: "Local AI gateway and expert escalation runtime",
 		Services: []application.Service{
 			application.NewService(container.Runtime),
@@ -55,7 +55,7 @@ func Run(assets embed.FS) error {
 
 	window = app.Window.NewWithOptions(application.WebviewWindowOptions{
 		Name:   "main",
-		Title:  "AI Runtime Gateway",
+		Title:  "RelayDock",
 		Width:  1180,
 		Height: 760,
 		URL:    "/",

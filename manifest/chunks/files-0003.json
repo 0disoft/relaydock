@@ -213,8 +213,8 @@
     },
     {
       "path": "internal/releasepack/releasepack_test.go",
-      "size": 7729,
-      "sha256": "f744220e44d525cde8f3145a6395d004f2d6265fd7a7b61437cbe6ac2dbedb05",
+      "size": 7938,
+      "sha256": "4fb16cc575de99914fada65d74ad04267554c83a23d5150d70ee5c4b3e6ab54a",
       "mode": "0644"
     },
     {
@@ -243,8 +243,8 @@
     },
     {
       "path": "internal/releasepack/types.go",
-      "size": 2283,
-      "sha256": "f10573ac1ad1e4e40e1da8b999e2a646f40ff3202d928587a961c40c9863fdad",
+      "size": 2274,
+      "sha256": "124c6fabb7bd830a7ec3b4a1317a78995aa47a8736cc1d0859abea60b36aa927",
       "mode": "0644"
     },
     {
@@ -423,8 +423,8 @@
     },
     {
       "path": "internal/transport/apiutil/gateway_auth.go",
-      "size": 2318,
-      "sha256": "970089ecfe8233bf691dee521de6c16334f924789132a854ae9ac984dd88ed66",
+      "size": 2309,
+      "sha256": "b5f679b398231220adccb873ee26165ff43e0e8b53edaf6f142bd5b4743e9207",
       "mode": "0644"
     },
     {
@@ -459,8 +459,8 @@
     },
     {
       "path": "internal/transport/httpgateway/handler.go",
-      "size": 3806,
-      "sha256": "49018187e5e4019b00150c22d8edc725ccf8d12fe3239e041d31c7e92309253b",
+      "size": 3797,
+      "sha256": "5659b76883fcbf01558946727b04425f136260dacbc897de2efc71dabe7fd4d4",
       "mode": "0644"
     },
     {
@@ -531,8 +531,8 @@
     },
     {
       "path": "package.json",
-      "size": 399,
-      "sha256": "f02cc743f659c8db4e77191d28712613e0223a7b641ea7de928b10d901317d7a",
+      "size": 381,
+      "sha256": "e031a6d2b940143feca4171aad2d1e1de64059f49e96a7a0774381ddd69ea1f8",
       "mode": "0644"
     },
     {
@@ -585,8 +585,8 @@
     },
     {
       "path": "scripts/clean.go",
-      "size": 1165,
-      "sha256": "6721cb4506b5b46d6b8f625d94be2254a74b87afb35ed9beaf664edc6726ddad",
+      "size": 1156,
+      "sha256": "7e703b74125d314ea4b399ca2bd972fdbdd822dd06ae3ccd5db17ca0f3a32785",
       "mode": "0644"
     },
     {
@@ -722,6 +722,12 @@
       "mode": "0644"
     },
     {
+      "path": "tests/hygiene/public_identity_test.go",
+      "size": 1633,
+      "sha256": "c07f93815ae3befebc9e1c66d8329bd9db6dbf2ee332e9195f8adc1f4b6c5c30",
+      "mode": "0644"
+    },
+    {
       "path": "tests/integration/http_error_paths_test.go",
       "size": 1689,
       "sha256": "b056bb37c97fdc6feac42b4706ed9ac2f32bde21b25e438f43e0b432ebfc566c",
@@ -801,8 +807,8 @@
     },
     {
       "path": "web/control-console/package.json",
-      "size": 451,
-      "sha256": "9dac9ba7fd6e4b3594d86d28913823c54d7e908e3687d5ee6dc317b7d647ad7b",
+      "size": 458,
+      "sha256": "65ec8f7cc46a85a3be96db9bd1bc2830679859aefb183fbd678d90fcb2792ec4",
       "mode": "0644"
     },
     {
@@ -819,8 +825,8 @@
     },
     {
       "path": "web/control-console/src/routes/+page.svelte",
-      "size": 5752,
-      "sha256": "f08304d9e21a6b2db5ef0336f0a80485473d90fa4a107a77793628e47c8077ef",
+      "size": 5743,
+      "sha256": "1988a81b3be3654f6b713d1b75b5293f0fbc9c9b018bea242b074b16b201d305",
       "mode": "0644"
     },
     {

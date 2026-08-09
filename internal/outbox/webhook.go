@@ -74,7 +74,7 @@ func NewWebhookPublisher(config WebhookConfig) (*WebhookPublisher, error) {
 	}
 	config.UserAgent = strings.TrimSpace(config.UserAgent)
 	if config.UserAgent == "" {
-		config.UserAgent = "ai-runtime-gateway-outbox/unknown"
+		config.UserAgent = "relaydock-outbox/unknown"
 	}
 	if config.Now == nil {
 		config.Now = func() time.Time { return time.Now().UTC() }

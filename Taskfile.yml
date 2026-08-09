@@ -1,7 +1,7 @@
 version: "3"
 
 vars:
-  APP_NAME: ai-runtime-gateway
+  APP_NAME: relaydock
   WAILS_VERSION: v3.0.0-alpha2.119
   TASK_VERSION: v3.51.1
   BUF_VERSION: v1.72.0
@@ -144,7 +144,7 @@ tasks:
   release:source:
     desc: Regenerate TREE and chunked manifest, then build a deterministic source ZIP outside the repository
     vars:
-      OUTPUT: '{{default "../ai-runtime-gateway-source.zip" .OUTPUT}}'
+      OUTPUT: '{{default "../relaydock-source.zip" .OUTPUT}}'
     cmds:
       - go run ./cmd/releasepack build --root . --output {{.OUTPUT}}
       - go run ./cmd/releasepack verify --root .

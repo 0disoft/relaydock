@@ -8,7 +8,7 @@ import (
 
 const fallbackHTML = `<!doctype html>
 <html lang="ko">
-  <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><title>AI Runtime Gateway</title></head>
+  <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><title>RelayDock</title></head>
   <body><p>프론트엔드 번들이 없다. frontend에서 빌드를 실행해야 한다.</p></body>
 </html>
 `

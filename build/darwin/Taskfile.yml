@@ -1,7 +1,7 @@
 version: "3"
 
 vars:
-  APP_NAME: ai-runtime-gateway
+  APP_NAME: relaydock
   VERSION:
     sh: tr -d '\r\n' < VERSION
   ARCH:

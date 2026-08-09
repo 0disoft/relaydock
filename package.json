@@ -1,5 +1,5 @@
 {
-  "name": "ai-runtime-gateway-monorepo",
+  "name": "relaydock",
   "private": true,
   "version": "0.5.1-dev",
   "workspaces": [

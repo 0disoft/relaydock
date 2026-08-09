@@ -289,7 +289,7 @@ go run ./cmd/expertstorectl compact `
 
 ```powershell
 go run ./cmd/releasepack audit --root .
-go run ./cmd/releasepack build --root . --output ../ai-runtime-gateway-source.zip
+go run ./cmd/releasepack build --root . --output ../relaydock-source.zip
 go run ./cmd/releasepack verify --root .
 ```
 

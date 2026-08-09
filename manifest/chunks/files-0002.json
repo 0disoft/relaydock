@@ -375,8 +375,8 @@
     },
     {
       "path": "internal/desktopwails/app.go",
-      "size": 2105,
-      "sha256": "ce7dd46c21132c24b21dd30d19eac7c6d446c460907eff1614b9b678df5acc6d",
+      "size": 2087,
+      "sha256": "6d036935ddc85bb131ee5018cf10ae30e9795de6f7909287a42fe073816aca34",
       "mode": "0644"
     },
     {
@@ -879,8 +879,8 @@
     },
     {
       "path": "internal/outbox/webhook.go",
-      "size": 11054,
-      "sha256": "356c8a79c66bb804f2752c696cdbd1f24074f9982a9905f8e831ad0c0ad06c80",
+      "size": 11045,
+      "sha256": "20fc8f542bad55416f386a04dac0af811fbd6c570aa32adf84eaaebf0ef42f39",
       "mode": "0644"
     },
     {

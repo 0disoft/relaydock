@@ -45,7 +45,7 @@ func RequireGatewayAuthentication(staticToken string, authenticator virtualkey.A
 				}
 			}
 		}
-		w.Header().Set("WWW-Authenticate", `Bearer realm="ai-runtime-gateway"`)
+		w.Header().Set("WWW-Authenticate", `Bearer realm="relaydock"`)
 		WriteJSON(w, http.StatusUnauthorized, ErrorBody{Error: ErrorDetail{Code: "unauthorized", Message: "valid gateway API key required"}})
 	})
 }

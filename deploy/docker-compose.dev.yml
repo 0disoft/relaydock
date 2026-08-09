@@ -1,4 +1,4 @@
-name: ai-runtime-gateway-dev
+name: relaydock-dev
 
 # Every credential below is development-only and intentionally fixed so the
 # local stack is reproducible. Never copy these values into a shared deploy.

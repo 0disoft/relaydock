@@ -139,5 +139,5 @@ jobs:
         shell: pwsh
         run: |
           New-Item -ItemType Directory -Force -Path bin | Out-Null
-          go build -trimpath -tags production -ldflags "-s -w -H windowsgui" -o bin/ai-runtime-gateway.exe .
+          go build -trimpath -tags production -ldflags "-s -w -H windowsgui" -o bin/relaydock.exe .
           go build -trimpath -ldflags "-s -w" -o bin/mcp-bridge.exe ./cmd/mcp-bridge

@@ -66,7 +66,7 @@ func runBuild(arguments []string) error {
 	flags := flag.NewFlagSet("build", flag.ContinueOnError)
 	root := flags.String("root", ".", "repository root")
 	output := flags.String("output", "", "output ZIP path")
-	prefix := flags.String("prefix", "ai-runtime-gateway", "archive root directory")
+	prefix := flags.String("prefix", "relaydock", "archive root directory")
 	generated := flags.String("generated-at", "", "RFC3339 archive timestamp")
 	if err := flags.Parse(arguments); err != nil {
 		return err
@@ -76,7 +76,7 @@ func runBuild(arguments []string) error {
 		if err != nil {
 			return fmt.Errorf("read VERSION: %w", err)
 		}
-		*output = filepath.Join(filepath.Dir(filepath.Clean(*root)), "ai-runtime-gateway-"+stringTrimSpace(version)+".zip")
+		*output = filepath.Join(filepath.Dir(filepath.Clean(*root)), "relaydock-"+stringTrimSpace(version)+".zip")
 	}
 	var generatedAt time.Time
 	var err error

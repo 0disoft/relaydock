@@ -124,15 +124,15 @@ jobs:
         run: |
           mkdir -p dist
           generated_at="$(git show -s --format=%cI HEAD)"
-          go run ./cmd/releasepack build --root . --output "$RUNNER_TEMP/ai-runtime-gateway-$VERSION-source.zip" --generated-at "$generated_at"
+          go run ./cmd/releasepack build --root . --output "$RUNNER_TEMP/relaydock-$VERSION-source.zip" --generated-at "$generated_at"
           go run ./cmd/releasepack verify --root .
-          cp "$RUNNER_TEMP/ai-runtime-gateway-$VERSION-source.zip" dist/
+          cp "$RUNNER_TEMP/relaydock-$VERSION-source.zip" dist/
           (cd dist && sha256sum *.zip > SHA256SUMS-source)
       - uses: actions/upload-artifact@v4
         with:
           name: source-archive
           path: |
-            dist/ai-runtime-gateway-*-source.zip
+            dist/relaydock-*-source.zip
             dist/SHA256SUMS-source
           if-no-files-found: error
           retention-days: 14
@@ -243,12 +243,12 @@ jobs:
           New-Item -ItemType Directory -Force -Path bin,dist | Out-Null
           $builtAt = [DateTime]::UtcNow.ToString('yyyy-MM-ddTHH:mm:ssZ')
           $ldflags = "-s -w -H windowsgui -X github.com/0disoft/relaydock/internal/buildinfo.Version=$env:VERSION -X github.com/0disoft/relaydock/internal/buildinfo.Commit=$env:GITHUB_SHA -X github.com/0disoft/relaydock/internal/buildinfo.BuildTime=$builtAt"
-          go build -trimpath -tags production -ldflags $ldflags -o bin/ai-runtime-gateway.exe .
+          go build -trimpath -tags production -ldflags $ldflags -o bin/relaydock.exe .
           $bridgeFlags = "-s -w -X github.com/0disoft/relaydock/internal/buildinfo.Version=$env:VERSION -X github.com/0disoft/relaydock/internal/buildinfo.Commit=$env:GITHUB_SHA -X github.com/0disoft/relaydock/internal/buildinfo.BuildTime=$builtAt"
           go build -trimpath -ldflags $bridgeFlags -o bin/mcp-bridge.exe ./cmd/mcp-bridge
-          $stage = "dist/ai-runtime-gateway-$env:VERSION-windows-amd64"
+          $stage = "dist/relaydock-$env:VERSION-windows-amd64"
           New-Item -ItemType Directory -Force -Path $stage | Out-Null
-          Copy-Item bin/ai-runtime-gateway.exe,bin/mcp-bridge.exe,README.md,LICENSE-PENDING.md -Destination $stage
+          Copy-Item bin/relaydock.exe,bin/mcp-bridge.exe,README.md,LICENSE-PENDING.md -Destination $stage
           $archive = "$stage.zip"
           Compress-Archive -Path "$stage/*" -DestinationPath $archive -CompressionLevel Optimal
           $hash = (Get-FileHash -Algorithm SHA256 $archive).Hash.ToLowerInvariant()
@@ -257,7 +257,7 @@ jobs:
         with:
           name: desktop-windows-amd64
           path: |
-            dist/ai-runtime-gateway-*-windows-amd64.zip
+            dist/relaydock-*-windows-amd64.zip
             dist/SHA256SUMS-windows-desktop
           if-no-files-found: error
           retention-days: 14
