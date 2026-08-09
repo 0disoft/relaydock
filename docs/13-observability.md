@@ -1,39 +1,39 @@
 # 13. Observability
 
-## 기본 신호
+## Default Signals
 
-- request ID
-- tenant/project
-- ingress protocol
-- virtual model
-- provider/model
-- route revision
-- attempt
+- Request ID
+- Tenant/project
+- Ingress protocol
+- Virtual model
+- Provider/model
+- Route revision
+- Attempt
 - TTFT
-- first semantic event
-- inter-token latency
-- output TPS
-- cancellation latency
-- usage dimension
-- estimated/provider cost
-- loss report
-- retry phase
+- First semantic event
+- Inter-token latency
+- Output TPS
+- Cancellation latency
+- Usage dimensions
+- Estimated/provider cost
+- Loss report
+- Retry phase
 
-## 민감정보
+## Sensitive Data
 
-prompt, response, tool argument, ContextPack content는 기본 trace/log에 넣지 않는다.
+Do not include prompts, responses, tool arguments, or ContextPack content in default traces or logs.
 
-## 중요 metric
+## Important Metrics
 
-- auth latency
-- snapshot lookup
-- route decision
-- provider queue wait
-- connection latency
+- Authentication latency
+- Snapshot lookup
+- Route decision
+- Provider queue wait
+- Connection latency
 - TTFT
-- partial stream rate
-- retry-before-semantic rate
-- post-semantic failure rate
-- usage mismatch
-- capture conflict
-- stale ContextPack result
+- Partial-stream rate
+- Pre-semantic retry rate
+- Post-semantic failure rate
+- Usage mismatch
+- Capture conflict
+- Stale ContextPack result

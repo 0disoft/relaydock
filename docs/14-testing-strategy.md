@@ -1,53 +1,53 @@
 # 14. Testing Strategy
 
-## Golden streams
+## Golden Streams
 
-provider raw event를 JSONL fixture로 보관하고 canonical event와 client output을 비교한다.
+Store raw provider events as JSONL fixtures and compare them with canonical events and client output.
 
-필수 fixture:
+Required fixtures:
 
-- plain text
-- reasoning
-- parallel tool call
-- fragmented tool JSON
-- image
-- refusal
-- unknown event
-- 429 before stream
-- disconnect before semantic
-- disconnect after semantic
-- cancellation
+- Plain text
+- Reasoning
+- Parallel tool calls
+- Fragmented tool JSON
+- Image
+- Refusal
+- Unknown event
+- 429 before streaming
+- Disconnect before a semantic event
+- Disconnect after a semantic event
+- Cancellation
 
-## State machine
+## State Machines
 
-consultation, request, attempt, stream, charge 상태 전이를 table test로 검증한다.
+Verify consultation, request, attempt, stream, and charge transitions with table-driven tests.
 
-## Fuzz
+## Fuzzing
 
 - SSE parser
-- JSON fragment assembler
-- virtual key parser
+- JSON-fragment assembler
+- Virtual-key parser
 - URL validator
-- redaction scanner
-- provider extension preservation
+- Redaction scanner
+- Provider-extension preservation
 
-## Fault injection
+## Fault Injection
 
 - PostgreSQL commit timeout
 - Valkey loss
-- provider half-close
-- slow client backpressure
-- object store partial upload
-- duplicate webhook
-- process restart during capture
+- Provider half-close
+- Slow-client backpressure
+- Partial object-store upload
+- Duplicate webhook
+- Process restart during capture
 
 ## UI
 
-Playwright는 Wails binding을 mock adapter로 교체해 다음을 확인한다.
+Playwright replaces Wails bindings with a mock adapter and verifies:
 
-- context preview
-- approval
-- consultation progress
-- stale result warning
-- provider degraded state
-- update rollback message
+- Context preview
+- Approval
+- Consultation progress
+- Stale-result warning
+- Provider-degraded state
+- Update-rollback message

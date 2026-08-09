@@ -2,46 +2,46 @@
 
 ```text
 authenticate
-→ budget authorization
-→ decode ingress
-→ capability requirement extraction
-→ candidate hard filter
-→ route decision
-→ account/provider lease
-→ upstream request
-→ stream translation
-→ usage finalization
-→ capture/release
-→ reconciliation
+-> budget authorization
+-> decode ingress
+-> capability requirement extraction
+-> candidate hard filter
+-> route decision
+-> account/provider lease
+-> upstream request
+-> stream translation
+-> usage finalization
+-> capture/release
+-> reconciliation
 ```
 
-## Retry 경계
+## Retry Boundary
 
-### Pre-semantic retry
+### Pre-Semantic Retry
 
-사용자에게 text, reasoning, tool call, image chunk 중 아무것도 전달하지 않은 상태다. 동일 요청을 다른 attempt로 재시도할 수 있다.
+No text, reasoning, tool call, or image chunk has been delivered to the user. The same request may be retried as a new attempt.
 
-### Post-semantic failure
+### Post-Semantic Failure
 
-첫 semantic event가 전달된 뒤다. 다른 provider로 조용히 갈아타지 않는다.
+The first semantic event has already been delivered. Do not silently switch to another provider.
 
-가능한 처리:
+Allowed handling:
 
-- 공급자가 공식 resume를 지원하면 같은 attempt를 resume
-- 클라이언트에 partial failure를 노출
-- 사용자가 승인한 explicit continuation 생성
+- Resume the same attempt when the provider officially supports resume.
+- Expose a partial failure to the client.
+- Create an explicit continuation approved by the user.
 
-## 취소
+## Cancellation
 
-클라이언트 취소는 다음 계층으로 전파한다.
+Propagate client cancellation through every layer:
 
 ```text
 client context
-→ ingress handler
-→ router lease
-→ provider request
-→ expert job
-→ accounting provisional state
+-> ingress handler
+-> router lease
+-> provider request
+-> expert job
+-> accounting provisional state
 ```
 
-취소됐다고 이미 발생한 provider 비용이 사라지는 건 아니다. usage와 charge 정책은 별도로 정산한다.
+Cancellation does not erase provider costs already incurred. Reconcile usage and charge policies separately.

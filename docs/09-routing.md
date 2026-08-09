@@ -1,19 +1,19 @@
 # 09. Routing
 
-## 1단계: hard filter
+## Stage 1: Hard Filter
 
-- protocol capability
-- context/output limit
-- modality
-- tool calling
-- structured output
-- reasoning preservation
-- state continuation
-- region
-- tenant allowlist
-- maximum estimated cost
+- Protocol capability
+- Context and output limits
+- Modality
+- Tool calling
+- Structured output
+- Reasoning preservation
+- State continuation
+- Region
+- Tenant allowlist
+- Maximum estimated cost
 
-## 2단계: deterministic score
+## Stage 2: Deterministic Score
 
 ```text
 health
@@ -28,12 +28,12 @@ health
 - queue pressure
 ```
 
-## virtual model
+## Virtual Model
 
-사용자는 `code-fast`, `code-deep`, `vision-balanced` 같은 안정 ID를 요청한다. 실제 provider mapping은 revision을 가진다.
+Users request stable IDs such as `code-fast`, `code-deep`, and `vision-balanced`. The actual provider mapping is revisioned.
 
 ## Lease
 
-route decision과 실제 호출 사이에 concurrency slot이 사라지지 않도록 짧은 lease를 획득한다.
+Acquire a short lease so the concurrency slot cannot disappear between the route decision and the actual call.
 
-Valkey 장애 시 lease 정책은 provider별로 fail-open 또는 fail-closed를 명시한다. customer balance와는 무관하다.
+When Valkey is unavailable, each provider's lease policy explicitly chooses fail-open or fail-closed behavior. This is unrelated to customer balances.

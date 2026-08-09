@@ -2,81 +2,81 @@
 
 ## Root
 
-Wails v3 desktop entrypoint, workspace metadata, version, build contract를 둔다. protocol·routing·billing 로직을 두지 않는다.
+Contains the Wails v3 desktop entrypoint, workspace metadata, version, and build contract. Do not place protocol, routing, or billing logic here.
 
 ## `cmd/`
 
-독립 실행 진입점만 둔다.
+Contains independent executable entrypoints only.
 
-| 디렉터리 | 책임 |
+| Directory | Responsibility |
 |---|---|
-| `gatewayd/` | API data plane 조립과 process lifecycle |
-| `controld/` | signed snapshot control plane |
-| `expert-brokerd/` | consultation API, worker, Remote MCP |
-| `mcp-bridge/` | STDIO MCP ↔ local IPC bridge |
-| `headless/` | GUI 없는 local runtime |
-| `dbmigrate/` | embedded migration runner CLI |
-| `projectctl/` | organization/project bootstrap CLI |
-| `keyctl/` | PostgreSQL virtual key 관리 CLI |
+| `gatewayd/` | API data-plane composition and process lifecycle |
+| `controld/` | Signed-snapshot control plane |
+| `expert-brokerd/` | Consultation API, worker, and Remote MCP |
+| `mcp-bridge/` | STDIO MCP to local IPC bridge |
+| `headless/` | Local runtime without a GUI |
+| `dbmigrate/` | Embedded migration-runner CLI |
+| `projectctl/` | Organization and project bootstrap CLI |
+| `keyctl/` | PostgreSQL virtual-key management CLI |
 
-명령 package에 도메인 규칙을 복제하지 않는다. validation과 persistence 계약은 `internal/` package에 둔다.
+Do not duplicate domain rules in command packages. Keep validation and persistence contracts in `internal/` packages.
 
 ## `internal/protocol/`
 
-wire protocol과 canonical representation. provider credential, DB, UI를 알지 못한다.
+Wire protocols and the canonical representation. It knows nothing about provider credentials, databases, or the UI.
 
 ## `internal/provider/`
 
-provider 호출 adapter와 provider error taxonomy. routing 정책과 customer billing을 소유하지 않는다.
+Provider-call adapters and the provider-error taxonomy. It does not own routing policy or customer billing.
 
 ## `internal/composition/`
 
-실행물별 dependency composition. 환경 변수와 adapter를 domain interface로 조립한다.
+Dependency composition for each executable. It assembles environment variables and adapters behind domain interfaces.
 
 ## `internal/routing/`
 
-capability filter, health, cost, affinity, lease를 사용해 후보를 선택한다. HTTP payload를 직접 파싱하지 않는다. `distributedlease/`는 Valkey Lua 계약을 소유한다.
+Selects candidates using capability filters, health, cost, affinity, and leases. It does not parse HTTP payloads directly. `distributedlease/` owns the Valkey Lua contract.
 
 ## `internal/runtime/`
 
-attempt lifecycle, retry boundary, lease renewal, semantic commit을 소유한다. ingress 응답 형식은 알지 못한다.
+Owns attempt lifecycle, retry boundaries, lease renewal, and semantic commit. It does not know ingress response formats.
 
 ## `internal/expert/`
 
-consultation, ContextPack, redaction, result contract, local/PostgreSQL repository, worker, expert route를 소유한다.
+Owns consultations, ContextPacks, redaction, result contracts, local and PostgreSQL repositories, workers, and expert routes.
 
 ## `internal/desktopwails/`
 
-Wails와 domain 사이 adapter다. Wails import는 여기서 끝나야 한다.
+The adapter between Wails and the domain. Wails imports must end here.
 
 ## `internal/persistence/`
 
-PostgreSQL, Valkey, atomic file, object store, migration adapter. 도메인 package가 pgx·valkey type을 노출하지 않게 한다.
+PostgreSQL, Valkey, atomic-file, object-store, and migration adapters. Domain packages must not expose pgx or Valkey types.
 
 ## `internal/transport/`
 
-HTTP ingress, SSE encoder, authentication middleware. domain state를 직접 소유하지 않는다.
+HTTP ingress, SSE encoding, and authentication middleware. It does not own domain state directly.
 
 ## `config/`
 
-검토 가능한 example route와 배포 설정. 실제 secret이나 provider credential을 넣지 않는다.
+Reviewable example routes and deployment settings. Never store real secrets or provider credentials here.
 
 ## `proto/`
 
-서비스 간 공개 계약. 데이터베이스 모델을 그대로 Proto로 노출하지 않는다.
+Public contracts between services. Do not expose database models directly as Proto messages.
 
 ## `db/`
 
-embedded migration, schema reference, sqlc query. 이미 적용된 migration을 수정하지 않는다.
+Embedded migrations, schema reference, and sqlc queries. Never modify an applied migration.
 
 ## `frontend/`
 
-Wails desktop UI. 생성 binding을 adapter 뒤에서 호출한다.
+Wails desktop UI. Calls generated bindings through an adapter.
 
 ## `web/control-console/`
 
-관리형 Control Plane UI. Desktop UI와 배포 경계를 공유하지 않는다.
+Managed Control Plane UI. It does not share a deployment boundary with the Desktop UI.
 
 ## `tests/`
 
-protocol conformance, golden stream, fault injection, expert worker, storage, accounting, load test를 둔다. 실제 provider credential이 필요한 시험은 별도 opt-in suite로 분리한다.
+Protocol conformance, golden streams, fault injection, expert workers, storage, accounting, and load tests. Tests that require real provider credentials belong in a separate opt-in suite.

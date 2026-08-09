@@ -1,52 +1,52 @@
 # 07. ContextPack
 
-## 포함 내용
+## Contents
 
-- objective
-- success criteria
-- repository revision
-- working tree digest
-- architecture summary
-- 관련 파일 조각
-- 관련 테스트
-- 오류 로그
-- 이미 실패한 접근
-- 금지된 대안
-- open questions
+- Objective
+- Success criteria
+- Repository revision
+- Working-tree digest
+- Architecture summary
+- Relevant file fragments
+- Relevant tests
+- Error logs
+- Previously failed approaches
+- Forbidden alternatives
+- Open questions
 
-## 파일 선택
+## File Selection
 
-Selector는 다음 신호를 조합한다.
+The selector combines these signals:
 
-- 명시적으로 언급된 파일
-- failing test import graph
-- git diff
-- symbol reference
-- runtime stack trace
-- architecture ownership map
-- 사용자 pin
+- Explicitly mentioned files
+- Failing-test import graph
+- Git diff
+- Symbol references
+- Runtime stack traces
+- Architecture ownership map
+- User pins
 
 ## Redaction
 
-전송 전 local에서 실행한다.
+Run locally before transmission:
 
-- 경로 denylist
-- `.env`, key, certificate 기본 제외
-- known token prefix
-- high entropy
-- connection string
-- 개인정보 pattern
-- 사용자 custom rule
+- Path denylist
+- Default exclusion of `.env`, keys, and certificates
+- Known token prefixes
+- High-entropy values
+- Connection strings
+- Personal-data patterns
+- Custom user rules
 
-## 무결성
+## Integrity
 
-모든 evidence에 digest와 line range를 남긴다. 상담 결과를 받을 때 현재 파일 digest와 비교해 stale 여부를 표시한다.
+Record a digest and line range for every item of evidence. Compare current file digests when consultation results arrive and mark stale evidence.
 
-## 상한
+## Limits
 
-- 최대 파일 수
-- 최대 byte
-- 최대 추정 token
-- 바이너리 제외
-- generated code 기본 제외
-- dependency vendor 기본 제외
+- Maximum file count
+- Maximum bytes
+- Maximum estimated tokens
+- Exclude binaries
+- Exclude generated code by default
+- Exclude vendored dependencies by default

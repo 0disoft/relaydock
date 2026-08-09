@@ -1,8 +1,8 @@
 # 08. Protocol Compiler
 
-## canonical representation
+## Canonical Representation
 
-공통 부분은 canonical item으로 표현한다.
+Represent shared concepts as canonical items:
 
 - message
 - text
@@ -14,23 +14,23 @@
 - usage
 - provider extension
 
-공급자 고유 필드는 `ProviderExtensions`에 보존한다.
+Preserve provider-specific fields in `ProviderExtensions`.
 
-## 변환 모드
+## Conversion Modes
 
-### strict
+### Strict
 
-손실 가능성이 하나라도 있으면 요청을 거절한다.
+Reject a request when any potential semantic loss exists.
 
-### compatible
+### Compatible
 
-사전에 검증된 변환만 허용하고 loss report를 반환한다.
+Allow only prevalidated conversions and return a loss report.
 
-### passthrough
+### Passthrough
 
-동일 protocol 또는 명시적으로 wire-compatible한 upstream에 원본 의미를 유지한다.
+Preserve the original meaning for the same protocol or an explicitly wire-compatible upstream.
 
-## Loss kind
+## Loss Kinds
 
 - field dropped
 - field approximated
@@ -43,6 +43,6 @@
 - unknown event preserved
 - unknown event rejected
 
-## 금지
+## Prohibition
 
-`messages[]` 하나를 universal internal model로 사용하지 않는다. Responses item, Anthropic block, Gemini part를 억지로 평평하게 만들지 않는다.
+Do not use a single `messages[]` shape as a universal internal model. Do not force Responses items, Anthropic blocks, and Gemini parts into an artificial flat representation.

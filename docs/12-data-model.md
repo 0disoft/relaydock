@@ -1,17 +1,17 @@
 # 12. Data Model
 
-## Schema ownership
+## Schema Ownership
 
-| schema | 소유 모듈 |
+| Schema | Owning module |
 |---|---|
-| `control` | controld와 bootstrap CLI |
-| `runtime` | gatewayd journal |
-| `expert` | expert-brokerd |
-| `outbox` | transaction producer와 outboxd |
+| `control` | `controld` and bootstrap CLI |
+| `runtime` | `gatewayd` journal |
+| `expert` | `expert-brokerd` |
+| `outbox` | Transaction producers and `outboxd` |
 
-Migration 파일이 schema 변경 이력의 SSOT이고 `db/schema.sql`은 모든 migration 적용 뒤의 검증 snapshot이다.
+Migration files are the source of truth for schema history. `db/schema.sql` is the verification snapshot after all migrations are applied.
 
-## control
+## Control
 
 - `organizations`
 - `projects`
@@ -20,56 +20,56 @@ Migration 파일이 schema 변경 이력의 SSOT이고 `db/schema.sql`은 모든
 - `model_routes`
 - `runtime_snapshots`
 
-`runtime_snapshots`는 revision append-only다. Payload와 signature, generated/expiry columns가 일치하지 않으면 손상으로 처리한다.
+`runtime_snapshots` is revision-append-only. Treat mismatches among payload, signature, generated columns, and expiry columns as corruption.
 
-## runtime
+## Runtime
 
-### requests
+### Requests
 
-사용자 관점의 한 요청이다.
+One request from the user's perspective:
 
-- tenant/project/virtual-key identity
-- client request ID
-- ingress protocol과 virtual model
-- price revision과 authorization reference
-- state와 first semantic commit 시각
-- attempt count와 모든 attempt의 token 합계
-- terminal error와 완료 시각
+- Tenant, project, and virtual-key identity
+- Client request ID
+- Ingress protocol and virtual model
+- Price revision and authorization reference
+- State and first semantic-commit time
+- Attempt count and total tokens across all attempts
+- Terminal error and completion time
 
-### provider_attempts
+### Provider Attempts
 
-Retry·fallback마다 별도 row다.
+Each retry or fallback uses a separate row:
 
-- request ID와 attempt number
-- provider, account, upstream model, protocol
-- committed 여부
-- attempt usage와 terminal error
-- 시작·완료 시각
+- Request ID and attempt number
+- Provider, account, upstream model, and protocol
+- Commit status
+- Attempt usage and terminal error
+- Start and completion time
 
-### usage_events
+### Usage Events
 
-Provider report와 local estimate를 보존하는 상세 usage row다. Request·attempt summary와 함께 reconciliation 근거로 사용한다.
+Detailed usage rows preserve provider reports and local estimates. Together with request and attempt summaries, they provide reconciliation evidence.
 
-## expert
+## Expert
 
 - `context_packs`
 - `consultations`
 - `consultation_results`
 
-Consultation은 tenant/project scope, idempotency fingerprint, queue availability, worker lease, attempts, failure reason, result reference를 가진다. Result commit은 worker fencing을 통과해야 한다.
+A consultation contains tenant/project scope, an idempotency fingerprint, queue availability, worker lease, attempts, failure reason, and result reference. Result commits must pass worker fencing.
 
-## outbox
+## Outbox
 
-`events`는 aggregate event의 delivery state를 가진다.
+`events` stores aggregate-event delivery state:
 
-- topic, aggregate ID, JSON payload
-- available time
-- locked worker와 lease expiry
-- attempt count와 last error
-- published 또는 dead-letter time
+- Topic, aggregate ID, and JSON payload
+- Available time
+- Locked worker and lease expiry
+- Attempt count and last error
+- Published or dead-letter time
 
-Request terminal update와 event insert가 같은 transaction에서 수행된다. Consumer는 event ID를 idempotency key로 사용한다.
+The request terminal update and event insertion occur in one transaction. Consumers use the event ID as the idempotency key.
 
-## 경계
+## Boundary
 
-다른 schema table을 임의 update하지 않는다. Cross-domain 전달은 API, immutable snapshot, transactional outbox를 사용한다. Valkey state는 이 schema의 권위 데이터를 대체하지 않는다.
+Do not update tables in another schema directly. Use APIs, immutable snapshots, or the transactional outbox for cross-domain transfer. Valkey state never replaces authoritative data in these schemas.
