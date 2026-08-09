@@ -68,3 +68,41 @@ func TestReleaseArtifactsRequireBuildProvenance(t *testing.T) {
 		}
 	}
 }
+
+func TestCIUsesFrozenDependencyResolution(t *testing.T) {
+	t.Parallel()
+	root := filepath.Join("..", "..")
+	for _, relative := range []string{
+		".github/workflows/ci.yml",
+		".github/workflows/release.yml",
+	} {
+		relative := relative
+		t.Run(relative, func(t *testing.T) {
+			t.Parallel()
+			raw, err := os.ReadFile(filepath.Join(root, filepath.FromSlash(relative)))
+			if err != nil {
+				t.Fatal(err)
+			}
+			workflow := string(raw)
+			if !strings.Contains(workflow, "GOFLAGS: -mod=readonly") {
+				t.Error("workflow does not enforce read-only Go module resolution")
+			}
+			installCount := 0
+			for _, line := range strings.Split(workflow, "\n") {
+				if !strings.Contains(line, "bun install") {
+					continue
+				}
+				installCount++
+				if !strings.Contains(line, "bun install --frozen-lockfile") {
+					t.Errorf("non-frozen Bun install: %s", strings.TrimSpace(line))
+				}
+				if strings.Contains(line, "--cwd") {
+					t.Errorf("workspace install must run from repository root: %s", strings.TrimSpace(line))
+				}
+			}
+			if installCount == 0 {
+				t.Error("workflow has no Bun install step")
+			}
+		})
+	}
+}

@@ -14,7 +14,7 @@
 - signed desktop update manifest
 - versioned config와 route examples
 
-`go.sum`과 Bun lockfile은 네트워크가 연결된 기준 toolchain에서 생성하고 release commit에 포함한다. lockfile이 없거나 generated code가 dirty인 상태에서는 정식 release를 만들지 않는다.
+`go.sum`과 루트 Bun workspace의 `bun.lock`은 네트워크가 연결된 기준 toolchain에서 생성하고 release commit에 포함한다. CI와 release job은 `GOFLAGS=-mod=readonly`와 저장소 루트의 `bun install --frozen-lockfile`만 사용하며 암묵적인 module 수정, 하위 workspace별 lockfile, dependency drift를 허용하지 않는다. lockfile이 없거나 generated code가 dirty인 상태에서는 정식 release를 만들지 않는다.
 
 `releasepack readiness --root . --version <version>`은 version, public Go module, `go.sum`, `bun.lock`, `LICENSE`, pending-license 제거와 source manifest 일치를 expensive release job 전에 fail-closed 검사한다.
 

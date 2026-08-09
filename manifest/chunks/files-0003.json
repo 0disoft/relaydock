@@ -735,8 +735,8 @@
     },
     {
       "path": "tests/hygiene/public_identity_test.go",
-      "size": 2623,
-      "sha256": "14f9d646a07212e43f1b722189f211fa71a6072cdad49b72167271ca27854f45",
+      "size": 3740,
+      "sha256": "97535f051bb14ee6037eacd1a7635035ecf207290693a5cf5272b6a123be44a9",
       "mode": "0644"
     },
     {
