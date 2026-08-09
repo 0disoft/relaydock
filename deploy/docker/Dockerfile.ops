@@ -4,14 +4,26 @@ ENV GOFLAGS=-mod=readonly
 COPY go.mod go.sum ./
 RUN go mod download
 COPY . .
-RUN CGO_ENABLED=0 go build -trimpath -ldflags "-s -w" -o /out/dbmigrate ./cmd/dbmigrate \
-    && CGO_ENABLED=0 go build -trimpath -ldflags "-s -w" -o /out/projectctl ./cmd/projectctl \
-    && CGO_ENABLED=0 go build -trimpath -ldflags "-s -w" -o /out/keyctl ./cmd/keyctl \
-    && CGO_ENABLED=0 go build -trimpath -ldflags "-s -w" -o /out/controlctl ./cmd/controlctl \
-    && CGO_ENABLED=0 go build -trimpath -ldflags "-s -w" -o /out/mcptokenctl ./cmd/mcptokenctl \
-    && CGO_ENABLED=0 go build -trimpath -ldflags "-s -w" -o /out/outboxctl ./cmd/outboxctl
+ARG VERSION=dev
+ARG COMMIT=unknown
+ARG BUILD_TIME=unknown
+RUN ldflags="-s -w -X github.com/0disoft/relaydock/internal/buildinfo.Version=${VERSION} -X github.com/0disoft/relaydock/internal/buildinfo.Commit=${COMMIT} -X github.com/0disoft/relaydock/internal/buildinfo.BuildTime=${BUILD_TIME}" \
+    && CGO_ENABLED=0 go build -trimpath -ldflags "$ldflags" -o /out/dbmigrate ./cmd/dbmigrate \
+    && CGO_ENABLED=0 go build -trimpath -ldflags "$ldflags" -o /out/projectctl ./cmd/projectctl \
+    && CGO_ENABLED=0 go build -trimpath -ldflags "$ldflags" -o /out/keyctl ./cmd/keyctl \
+    && CGO_ENABLED=0 go build -trimpath -ldflags "$ldflags" -o /out/controlctl ./cmd/controlctl \
+    && CGO_ENABLED=0 go build -trimpath -ldflags "$ldflags" -o /out/mcptokenctl ./cmd/mcptokenctl \
+    && CGO_ENABLED=0 go build -trimpath -ldflags "$ldflags" -o /out/outboxctl ./cmd/outboxctl
 
 FROM gcr.io/distroless/static-debian12:nonroot
+ARG VERSION=dev
+ARG COMMIT=unknown
+ARG BUILD_TIME=unknown
+LABEL org.opencontainers.image.title="RelayDock Operations" \
+      org.opencontainers.image.source="https://github.com/0disoft/relaydock" \
+      org.opencontainers.image.version="${VERSION}" \
+      org.opencontainers.image.revision="${COMMIT}" \
+      org.opencontainers.image.created="${BUILD_TIME}"
 COPY --from=build /out/dbmigrate /dbmigrate
 COPY --from=build /out/projectctl /projectctl
 COPY --from=build /out/keyctl /keyctl

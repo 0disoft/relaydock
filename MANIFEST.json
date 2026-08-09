@@ -1,19 +1,19 @@
 {
   "version": 2,
-  "generatedAt": "2026-08-09T04:22:59Z",
+  "generatedAt": "2026-08-09T04:27:45Z",
   "hashAlgorithm": "sha256",
   "fileCount": 471,
-  "totalBytes": 1361635,
+  "totalBytes": 1365582,
   "maximumFileBytes": 40960,
-  "aggregateSha256": "31c7fbb433d039bde5a92ba4e1d3c7df9def859f0372a186a582ba6e004a8a55",
+  "aggregateSha256": "6fa3aebfa7c2b0788845f9a9f2ebb6a68fdc6ee988e6f15324893b32c7b7dce0",
   "chunks": [
     {
       "path": "manifest/chunks/files-0001.json",
       "fileCount": 168,
       "firstPath": ".agents/README.md",
       "lastPath": "go.mod",
-      "size": 30647,
-      "sha256": "9e8774829e480e1b6c11a35da00fa183d6f9833626d6c646cae34cb171dc2091"
+      "size": 30651,
+      "sha256": "861cf0eac016cf012c493b578804ce8b91fd03f711aee7e1507088c120af84f8"
     },
     {
       "path": "manifest/chunks/files-0002.json",
@@ -29,7 +29,7 @@
       "firstPath": "internal/persistence/postgres/db.go",
       "lastPath": "web/shared/README.md",
       "size": 27355,
-      "sha256": "a48c5bfaa2c85c299e2a9010f846c4b7919611ecf935818715f33d0f44063df5"
+      "sha256": "9d68fef7b757cb3d1233be2d17f38b280a9b82e1b8f6cdac9e469681fad8c3ef"
     }
   ],
   "excluded": [

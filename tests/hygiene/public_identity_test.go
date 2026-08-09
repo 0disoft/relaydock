@@ -163,6 +163,13 @@ func TestContainerBuildsRequireGoChecksums(t *testing.T) {
 			for _, required := range []string{
 				"ENV GOFLAGS=-mod=readonly",
 				"COPY go.mod go.sum ./",
+				"internal/buildinfo.Version=${VERSION}",
+				"internal/buildinfo.Commit=${COMMIT}",
+				"internal/buildinfo.BuildTime=${BUILD_TIME}",
+				"org.opencontainers.image.source=\"https://github.com/0disoft/relaydock\"",
+				"org.opencontainers.image.version=\"${VERSION}\"",
+				"org.opencontainers.image.revision=\"${COMMIT}\"",
+				"org.opencontainers.image.created=\"${BUILD_TIME}\"",
 				"USER nonroot:nonroot",
 			} {
 				if !strings.Contains(content, required) {

@@ -141,8 +141,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "size": 14512,
-      "sha256": "cf0cb75308cf54b193dff85d6af428d9a662221a1db537562a15695e13f674c0",
+      "size": 14633,
+      "sha256": "0e682fe74fabf8a48dfa01c8fca686eced4979056247305edbde7e822fe2362f",
       "mode": "0644"
     },
     {
@@ -471,8 +471,8 @@
     },
     {
       "path": "deploy/README.md",
-      "size": 2498,
-      "sha256": "a1ffbc496af34a7f046d64c2db60260459bf2e592fa0f24562e3c462d35a8fec",
+      "size": 2789,
+      "sha256": "540fa523f77259f6fdf003ccef61f9f9016652b9fc9991267c4fcd514b287397",
       "mode": "0644"
     },
     {
@@ -495,38 +495,38 @@
     },
     {
       "path": "deploy/docker/Dockerfile.control",
-      "size": 585,
-      "sha256": "3f2e9aa4cabd440b3ae899559ca00cd65a8bbf466f8d4696ae09f97768467f8a",
+      "size": 1227,
+      "sha256": "e61c992a9bed244baca82e6036bda8a0e256ee36e64c3d2fb9294266cd9c5ed5",
       "mode": "0644"
     },
     {
       "path": "deploy/docker/Dockerfile.expert",
-      "size": 725,
-      "sha256": "16f62390476b74d8bb60053ac63254ce94b133c0b79259d63567593104804827",
+      "size": 1181,
+      "sha256": "8e4862cd268a525179f401c76ca3068dd1e195441c837a735928395c4a72b159",
       "mode": "0644"
     },
     {
       "path": "deploy/docker/Dockerfile.gateway",
-      "size": 715,
-      "sha256": "783fba9dc1f5cdf545b40f41426586a5d5a0b219dad9d37db93abc58fdd8824c",
+      "size": 1172,
+      "sha256": "83657e54a25e7159a12399ec1a72d91ed14df6b266d677adfa5d60ce6557927a",
       "mode": "0644"
     },
     {
       "path": "deploy/docker/Dockerfile.ops",
-      "size": 1050,
-      "sha256": "8120d144c12cf45d1ee96c196b3d372d23b09f65b57e2c5c0701524ad2f6081d",
+      "size": 1726,
+      "sha256": "62cb30be25d7274b34f7cef5bf214f96dc1e3911b1ea526b99f9b0ec573c8b32",
       "mode": "0644"
     },
     {
       "path": "deploy/docker/Dockerfile.outbox",
-      "size": 525,
-      "sha256": "ad5c7d1fa1e1038a11900928702c714b5e5681756a4ca6204d5826372166f87e",
+      "size": 981,
+      "sha256": "b0821754912afbc43db6ee7a54e12b34818145a913ff78209094d33348df2024",
       "mode": "0644"
     },
     {
       "path": "deploy/docker/Dockerfile.webhook-sink",
-      "size": 550,
-      "sha256": "c77cacd94d1ea82fc575c934edf2a27b47fd00998a2112b6fdd1207894f1e94e",
+      "size": 1012,
+      "sha256": "e2323dd0fe60920f6988ea0a5da2c806631a6452d7bc74869f546f3f76bfb78b",
       "mode": "0644"
     },
     {
