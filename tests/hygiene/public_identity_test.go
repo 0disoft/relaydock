@@ -51,8 +51,8 @@ func TestReleaseArtifactsRequireBuildProvenance(t *testing.T) {
 	}
 	workflow := string(raw)
 
-	if count := strings.Count(workflow, "uses: actions/attest@v4"); count != 5 {
-		t.Fatalf("release workflow has %d provenance steps, want 5", count)
+	if count := strings.Count(workflow, "uses: actions/attest@v4"); count != 10 {
+		t.Fatalf("release workflow has %d provenance and SBOM attestation steps, want 10", count)
 	}
 	for _, required := range []string{
 		"id-token: write",
@@ -62,6 +62,40 @@ func TestReleaseArtifactsRequireBuildProvenance(t *testing.T) {
 		"subject-checksums: dist/SHA256SUMS-source",
 		"subject-checksums: dist/SHA256SUMS",
 		"subject-checksums: dist/SHA256SUMS-windows-desktop",
+	} {
+		if !strings.Contains(workflow, required) {
+			t.Errorf("release workflow does not contain %q", required)
+		}
+	}
+}
+
+func TestReleaseArtifactsRequirePinnedSBOMs(t *testing.T) {
+	t.Parallel()
+	workflowPath := filepath.Join("..", "..", ".github", "workflows", "release.yml")
+	raw, err := os.ReadFile(workflowPath)
+	if err != nil {
+		t.Fatal(err)
+	}
+	workflow := string(raw)
+
+	for token, want := range map[string]int{
+		"uses: anchore/sbom-action@v0.24.0": 5,
+		"syft-version: v1.50.0":             5,
+		"format: spdx-json":                 5,
+		"upload-artifact: false":            5,
+		"upload-release-assets: false":      5,
+		"sbom-path:":                        5,
+	} {
+		if count := strings.Count(workflow, token); count != want {
+			t.Errorf("release workflow contains %q %d times, want %d", token, count, want)
+		}
+	}
+	for _, required := range []string{
+		"dist/generated-contracts-SBOM.spdx.json",
+		"dist/source-SBOM.spdx.json",
+		"dist/server-${{ matrix.suffix }}-SBOM.spdx.json",
+		"dist/web-SBOM.spdx.json",
+		"dist/windows-desktop-SBOM.spdx.json",
 	} {
 		if !strings.Contains(workflow, required) {
 			t.Errorf("release workflow does not contain %q", required)

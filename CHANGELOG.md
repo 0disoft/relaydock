@@ -8,6 +8,7 @@
 - 신규 local state·IPC·autostart 식별자를 RelayDock로 전환하고 기존 state directory는 읽기 호환으로 보존했다.
 - release workflow 앞단에 version·module·lockfile·license·source manifest fail-closed readiness gate를 추가했다.
 - generated contracts·source·server·web·Windows desktop 산출물의 체크섬에 job-scoped SLSA build provenance attestation을 추가했다.
+- pinned Syft로 각 release artifact 집합의 SPDX JSON을 만들고 같은 checksum subject에 SBOM attestation을 연결했다.
 - CI와 release의 Go module resolution을 read-only로, Bun 설치를 루트 workspace `bun.lock` 기반 frozen install로 통일했다.
 - 모든 service Dockerfile이 `go.sum`을 필수 입력으로 사용하고 read-only module resolution과 non-root runtime을 유지하도록 고정했다.
 - 생성된 제품·아키텍처·운영 문서는 기존 번호 문서를 가리키는 얇은 라우팅 인덱스로 유지한다.

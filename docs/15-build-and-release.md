@@ -18,9 +18,11 @@
 
 `releasepack readiness --root . --version <version>`은 version, public Go module, `go.sum`, `bun.lock`, `LICENSE`, pending-license 제거와 source manifest 일치를 expensive release job 전에 fail-closed 검사한다.
 
-generated contracts, source archive, server binaries, web assets, Windows desktop bundle은 각 build job이 만든 SHA-256 목록을 `actions/attest@v4`에 전달해 같은 job identity와 commit에 묶인 SLSA build provenance를 발급한다. 공개 저장소에서는 `gh attestation verify <artifact> --repo 0disoft/relaydock`로 검증한다. 비공개 저장소는 GitHub Enterprise Cloud가 아니면 artifact attestation을 사용할 수 없으므로 정식 공개 release 전에 저장소 visibility와 plan을 확인한다.
+generated contracts, source archive, server binaries, web assets, Windows desktop bundle은 각 build job이 만든 SHA-256 목록을 `actions/attest@v4`에 전달해 같은 job identity와 commit에 묶인 SLSA build provenance를 발급한다. 각 job은 Apache-2.0 Syft `v1.50.0`을 사용하는 Anchore SBOM Action `v0.24.0`으로 SPDX JSON을 만들고, 같은 checksum subject에 별도 SBOM attestation을 발급한다. action의 자동 artifact·release upload는 끄고 기존 release-candidate artifact에 SBOM을 명시적으로 포함한다.
 
-provenance attestation은 SBOM이나 독립 release signing key를 대체하지 않는다. SPDX/CycloneDX SBOM 생성·attestation, release artifact 서명, desktop updater manifest 서명은 각각 별도 gate로 통과해야 한다.
+공개 저장소에서는 `gh attestation verify <artifact> --repo 0disoft/relaydock`로 provenance와 SBOM attestation을 검증한다. 비공개 저장소는 GitHub Enterprise Cloud가 아니면 artifact attestation을 사용할 수 없으므로 정식 공개 release 전에 저장소 visibility와 plan을 확인한다.
+
+provenance와 SBOM attestation은 독립 release signing key를 대체하지 않는다. release artifact 서명과 desktop updater manifest 서명은 각각 별도 gate로 통과해야 한다.
 
 ## Toolchain pins
 
@@ -47,7 +49,8 @@ provenance attestation은 SBOM이나 독립 release signing key를 대체하지 
 12. Windows runner에서 Wails frontend·bindings·desktop·MCP bridge compile
 13. container non-root smoke test
 14. artifact checksum과 job-scoped provenance attestation
-15. SBOM과 독립 artifact·updater-manifest signature
+15. pinned Syft SPDX SBOM과 subject-bound SBOM attestation
+16. 독립 artifact·updater-manifest signature
 
 PostgreSQL integration test는 전용 일회성 DB만 사용한다. reset opt-in 환경 변수가 없으면 실행을 거절한다.
 

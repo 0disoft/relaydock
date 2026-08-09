@@ -26,7 +26,7 @@
 - 네트워크가 연결된 Go 1.26 환경의 `go.sum` 생성과 전체 dependency build
 - Bun 1.3.14의 `bun.lock` 생성, frozen install, frontend production build
 - hosted GitHub Actions 전체 실행과 artifact attestation 발급·검증
-- SPDX/CycloneDX SBOM 생성·attestation과 독립 artifact signature
+- hosted runner의 pinned Syft SPDX SBOM 생성·내용 검토·attestation 검증과 독립 artifact signature
 - container image build·scan·registry push·immutable digest promotion
 - Windows native installer, code signing, updater manifest signing과 rollback
 - PostgreSQL·Valkey·실제 provider·money-platform·24시간 soak 운영 gate
