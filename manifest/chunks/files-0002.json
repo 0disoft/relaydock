@@ -3,14 +3,14 @@
   "files": [
     {
       "path": "go.mod",
-      "size": 1153,
-      "sha256": "86c03980dc7deb7b9c4237d6f1dcea1c276ab7dc9a068024185966ed5b4c77af",
+      "size": 1222,
+      "sha256": "fdadde809f46a9d5a9f4ed6584c17ac31492f1948964c6ba5b63d6c94c5be5ef",
       "mode": "0644"
     },
     {
       "path": "go.sum",
-      "size": 6965,
-      "sha256": "12a8bdb7db89b3a25160debe064b680954e6b3df20c2d868c446c0650196864d",
+      "size": 7305,
+      "sha256": "d4a29e13d0ccdb73b81375cb012f3ea4a9c68c19f721489279eee652630d97ac",
       "mode": "0644"
     },
     {
@@ -728,6 +728,12 @@
       "mode": "0644"
     },
     {
+      "path": "internal/generateddeps/deps.go",
+      "size": 278,
+      "sha256": "dabd76c97e668967f4b73f07c6de0e64147e842abc7272356de9711ed0c981e0",
+      "mode": "0644"
+    },
+    {
       "path": "internal/identifier/uuid.go",
       "size": 1005,
       "sha256": "38265542cc6fa8177db27fcc65979819542df17ccfa4301e518b8b0d7b76c2a7",
@@ -953,12 +959,6 @@
       "path": "internal/persistence/migrate/migration.go",
       "size": 3066,
       "sha256": "96ba8af97634d4c5c3a2cba9cdc87f8ba903d238003c039eb2f69b8834b2249a",
-      "mode": "0644"
-    },
-    {
-      "path": "internal/persistence/migrate/migration_test.go",
-      "size": 1358,
-      "sha256": "96ec4f88d6b4cd2a4245ece7c15b342137626c2e159b5466582c5d04d16d74dc",
       "mode": "0644"
     }
   ]

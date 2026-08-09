@@ -3,12 +3,14 @@ module github.com/0disoft/relaydock
 go 1.26
 
 require (
+	connectrpc.com/connect v1.20.0
 	github.com/Microsoft/go-winio v0.6.2
 	github.com/jackc/pgx/v5 v5.10.0
 	github.com/modelcontextprotocol/go-sdk v1.6.1
 	github.com/valkey-io/valkey-go v1.0.76
 	github.com/wailsapp/wails/v3 v3.0.0-alpha2.119
 	golang.org/x/sys v0.43.0
+	google.golang.org/protobuf v1.36.11
 )
 
 require (

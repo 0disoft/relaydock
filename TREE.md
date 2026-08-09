@@ -203,6 +203,26 @@ relaydock
 │   └── vite.config.ts
 ├── gen/
 │   └── go/
+│       ├── control/
+│       │   └── v1/
+│       │       ├── controlv1connect/
+│       │       │   └── control.connect.go
+│       │       └── control.pb.go
+│       ├── expert/
+│       │   └── v1/
+│       │       ├── expertv1connect/
+│       │       │   └── expert.connect.go
+│       │       └── expert.pb.go
+│       ├── money/
+│       │   └── v1/
+│       │       ├── moneyv1connect/
+│       │       │   └── money.connect.go
+│       │       └── money.pb.go
+│       ├── runtime/
+│       │   └── v1/
+│       │       ├── runtimev1connect/
+│       │       │   └── runtime.connect.go
+│       │       └── runtime.pb.go
 │       └── README.md
 ├── internal/
 │   ├── accounting/
@@ -356,6 +376,8 @@ relaydock
 │   │   └── worker/
 │   │       ├── openai_executor.go
 │   │       └── worker.go
+│   ├── generateddeps/
+│   │   └── deps.go
 │   ├── identifier/
 │   │   ├── uuid.go
 │   │   └── uuid_test.go

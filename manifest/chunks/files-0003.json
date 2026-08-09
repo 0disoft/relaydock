@@ -2,6 +2,12 @@
   "version": 2,
   "files": [
     {
+      "path": "internal/persistence/migrate/migration_test.go",
+      "size": 1358,
+      "sha256": "96ec4f88d6b4cd2a4245ece7c15b342137626c2e159b5466582c5d04d16d74dc",
+      "mode": "0644"
+    },
+    {
       "path": "internal/persistence/migrate/runner.go",
       "size": 7845,
       "sha256": "1d6aa75a2ada5f4b7df68e99d9cc3aac8b541ff6bee1f6da7c2e73a8df72faf6",
