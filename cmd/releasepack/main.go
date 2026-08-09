@@ -8,6 +8,7 @@ import (
 	"time"
 
 	"github.com/0disoft/relaydock/internal/releasepack"
+	"github.com/0disoft/relaydock/internal/updater"
 )
 
 func main() {
@@ -29,6 +30,10 @@ func main() {
 		err = runSignChecksums(os.Args[2:])
 	case "verify-checksums":
 		err = runVerifyChecksums(os.Args[2:])
+	case "sign-update-manifest":
+		err = runSignUpdateManifest(os.Args[2:])
+	case "verify-update-manifest":
+		err = runVerifyUpdateManifest(os.Args[2:])
 	default:
 		usage()
 		os.Exit(2)
@@ -37,6 +42,61 @@ func main() {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
+}
+
+func runSignUpdateManifest(arguments []string) error {
+	flags := flag.NewFlagSet("sign-update-manifest", flag.ContinueOnError)
+	input := flags.String("input", "", "unsigned updater manifest JSON")
+	output := flags.String("output", "", "signed updater manifest output path")
+	privateKeyEnvironment := flags.String("private-key-env", "RELAYDOCK_UPDATER_SIGNING_PRIVATE_KEY", "environment variable containing the base64 Ed25519 updater key")
+	if err := flags.Parse(arguments); err != nil {
+		return err
+	}
+	if *input == "" || *output == "" {
+		return fmt.Errorf("sign-update-manifest requires --input and --output")
+	}
+	manifest, err := updater.ReadManifestFile(*input)
+	if err != nil {
+		return err
+	}
+	privateKey, err := releasepack.DecodeReleasePrivateKey(os.Getenv(*privateKeyEnvironment))
+	if err != nil {
+		return err
+	}
+	signed, err := updater.SignManifest(manifest, privateKey)
+	if err != nil {
+		return err
+	}
+	if err := updater.WriteManifestFile(*output, signed); err != nil {
+		return err
+	}
+	fmt.Printf("update manifest signed: version=%s output=%s\n", signed.Version, *output)
+	return nil
+}
+
+func runVerifyUpdateManifest(arguments []string) error {
+	flags := flag.NewFlagSet("verify-update-manifest", flag.ContinueOnError)
+	input := flags.String("input", "", "signed updater manifest JSON")
+	publicKeyEnvironment := flags.String("public-key-env", "RELAYDOCK_UPDATER_SIGNING_PUBLIC_KEY", "environment variable containing the base64 Ed25519 updater public key")
+	if err := flags.Parse(arguments); err != nil {
+		return err
+	}
+	if *input == "" {
+		return fmt.Errorf("verify-update-manifest requires --input")
+	}
+	manifest, err := updater.ReadManifestFile(*input)
+	if err != nil {
+		return err
+	}
+	publicKey, err := releasepack.DecodeReleasePublicKey(os.Getenv(*publicKeyEnvironment))
+	if err != nil {
+		return err
+	}
+	if err := updater.VerifyManifestSignature(manifest, publicKey); err != nil {
+		return err
+	}
+	fmt.Printf("update manifest verified: version=%s input=%s\n", manifest.Version, *input)
+	return nil
 }
 
 func runSignChecksums(arguments []string) error {
@@ -170,7 +230,7 @@ func runBuild(arguments []string) error {
 }
 
 func usage() {
-	fmt.Fprintln(os.Stderr, "usage: releasepack <audit|verify|build|readiness|sign-checksums|verify-checksums> [flags]")
+	fmt.Fprintln(os.Stderr, "usage: releasepack <audit|verify|build|readiness|sign-checksums|verify-checksums|sign-update-manifest|verify-update-manifest> [flags]")
 }
 
 func stringTrimSpace(value []byte) string {

@@ -225,8 +225,8 @@
     },
     {
       "path": "internal/releasepack/releasepack_test.go",
-      "size": 11823,
-      "sha256": "06bc7e3b0a8cd04bb0e64e99ddeaf445784100fc5d8e449d82f6df5b39c1ccd4",
+      "size": 13620,
+      "sha256": "b19257a042dce1c89884c2988bdf485dddac941ea245824ead2df2df13d5d6cd",
       "mode": "0644"
     },
     {
@@ -525,8 +525,8 @@
     },
     {
       "path": "internal/updater/http_service.go",
-      "size": 8962,
-      "sha256": "88a912254a8a03400bc6567ae3903443e8eb0963ca155964bf24e67cfa7f86e5",
+      "size": 11421,
+      "sha256": "ee21fd0144ae4545b82a0dd7af48fc55718bc3e152f74fc25c1c6b5d2e38e597",
       "mode": "0644"
     },
     {

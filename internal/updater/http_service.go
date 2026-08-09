@@ -1,12 +1,14 @@
 package updater
 
 import (
+	"bytes"
 	"context"
 	"crypto/ed25519"
 	"crypto/sha256"
 	"encoding/base64"
 	"encoding/hex"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io"
 	"net/http"
@@ -95,11 +97,9 @@ func (s *HTTPService) Check(ctx context.Context) (Info, error) {
 	if err != nil {
 		return Info{}, err
 	}
-	var manifest Manifest
-	decoder := json.NewDecoder(strings.NewReader(string(payload)))
-	decoder.DisallowUnknownFields()
-	if err := decoder.Decode(&manifest); err != nil {
-		return Info{}, fmt.Errorf("%w: malformed update manifest: %v", core.ErrInvalidArgument, err)
+	manifest, err := DecodeManifest(payload)
+	if err != nil {
+		return Info{}, err
 	}
 	if err := s.validateManifest(manifest); err != nil {
 		return Info{}, err
@@ -220,35 +220,123 @@ func (s *HTTPService) cachedManifest(version string) (Manifest, error) {
 }
 
 func (s *HTTPService) validateManifest(manifest Manifest) error {
-	manifest.Version = strings.TrimSpace(manifest.Version)
-	manifest.ArtifactURL = strings.TrimSpace(manifest.ArtifactURL)
-	manifest.SHA256 = strings.ToLower(strings.TrimSpace(manifest.SHA256))
+	if err := validateManifestFields(manifest, s.options.MaximumArtifact); err != nil {
+		return err
+	}
+	if s.options.RequireSignature || manifest.Signature != "" {
+		if err := VerifyManifestSignature(manifest, s.options.PublicKey); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+func DecodeManifest(payload []byte) (Manifest, error) {
+	decoder := json.NewDecoder(bytes.NewReader(payload))
+	decoder.DisallowUnknownFields()
+	var manifest Manifest
+	if err := decoder.Decode(&manifest); err != nil {
+		return Manifest{}, fmt.Errorf("%w: malformed update manifest: %v", core.ErrInvalidArgument, err)
+	}
+	var trailing any
+	if err := decoder.Decode(&trailing); !errors.Is(err, io.EOF) {
+		return Manifest{}, fmt.Errorf("%w: update manifest has trailing JSON", core.ErrInvalidArgument)
+	}
+	return normalizeManifest(manifest), nil
+}
+
+func SignManifest(manifest Manifest, privateKey ed25519.PrivateKey) (Manifest, error) {
+	if len(privateKey) != ed25519.PrivateKeySize {
+		return Manifest{}, fmt.Errorf("invalid Ed25519 updater private key")
+	}
+	manifest = normalizeManifest(manifest)
+	manifest.Signature = ""
+	if err := validateManifestFields(manifest, 512<<20); err != nil {
+		return Manifest{}, err
+	}
+	manifest.Signature = base64.RawStdEncoding.EncodeToString(ed25519.Sign(privateKey, manifestSigningPayload(manifest)))
+	return manifest, nil
+}
+
+func VerifyManifestSignature(manifest Manifest, publicKey ed25519.PublicKey) error {
+	if len(publicKey) != ed25519.PublicKeySize {
+		return fmt.Errorf("%w: update signing key", core.ErrInvalidConfiguration)
+	}
+	signature, err := base64.RawStdEncoding.DecodeString(manifest.Signature)
+	if err != nil || len(signature) != ed25519.SignatureSize {
+		return core.ErrUnauthorized
+	}
+	if !ed25519.Verify(publicKey, manifestSigningPayload(manifest), signature) {
+		return core.ErrUnauthorized
+	}
+	return nil
+}
+
+func ReadManifestFile(path string) (Manifest, error) {
+	payload, err := os.ReadFile(path)
+	if err != nil {
+		return Manifest{}, fmt.Errorf("read update manifest: %w", err)
+	}
+	return DecodeManifest(payload)
+}
+
+func WriteManifestFile(path string, manifest Manifest) error {
+	payload, err := json.MarshalIndent(manifest, "", "  ")
+	if err != nil {
+		return fmt.Errorf("encode update manifest: %w", err)
+	}
+	payload = append(payload, '\n')
+	if err := os.MkdirAll(filepath.Dir(filepath.Clean(path)), 0o755); err != nil {
+		return fmt.Errorf("create update manifest directory: %w", err)
+	}
+	file, err := os.OpenFile(path, os.O_WRONLY|os.O_CREATE|os.O_EXCL, 0o644)
+	if err != nil {
+		return fmt.Errorf("create update manifest without overwrite: %w", err)
+	}
+	written := false
+	defer func() {
+		_ = file.Close()
+		if !written {
+			_ = os.Remove(path)
+		}
+	}()
+	if _, err := file.Write(payload); err != nil {
+		return err
+	}
+	if err := file.Sync(); err != nil {
+		return err
+	}
+	if err := file.Close(); err != nil {
+		return err
+	}
+	written = true
+	return nil
+}
+
+func validateManifestFields(manifest Manifest, maximumArtifact int64) error {
+	manifest = normalizeManifest(manifest)
 	if manifest.Version == "" || manifest.ArtifactURL == "" || len(manifest.SHA256) != sha256.Size*2 || manifest.Size <= 0 {
 		return fmt.Errorf("%w: incomplete update manifest", core.ErrInvalidArgument)
 	}
 	if _, err := hex.DecodeString(manifest.SHA256); err != nil {
 		return fmt.Errorf("%w: invalid update digest", core.ErrInvalidArgument)
 	}
-	artifactURL, err := url.Parse(manifest.ArtifactURL)
-	if err != nil || artifactURL.Scheme != "https" && artifactURL.Scheme != "http" {
+	parsed, err := url.Parse(manifest.ArtifactURL)
+	if err != nil || parsed.Scheme != "https" && parsed.Scheme != "http" {
 		return fmt.Errorf("%w: invalid update artifact URL", core.ErrInvalidArgument)
 	}
-	if manifest.Size > s.options.MaximumArtifact {
+	if manifest.Size > maximumArtifact {
 		return core.ErrFrameTooLarge
 	}
-	if s.options.RequireSignature || manifest.Signature != "" {
-		if len(s.options.PublicKey) != ed25519.PublicKeySize {
-			return fmt.Errorf("%w: update signing key", core.ErrInvalidConfiguration)
-		}
-		signature, err := base64.RawStdEncoding.DecodeString(manifest.Signature)
-		if err != nil || len(signature) != ed25519.SignatureSize {
-			return core.ErrUnauthorized
-		}
-		if !ed25519.Verify(s.options.PublicKey, manifestSigningPayload(manifest), signature) {
-			return core.ErrUnauthorized
-		}
-	}
 	return nil
+}
+
+func normalizeManifest(manifest Manifest) Manifest {
+	manifest.Version = strings.TrimSpace(manifest.Version)
+	manifest.ArtifactURL = strings.TrimSpace(manifest.ArtifactURL)
+	manifest.SHA256 = strings.ToLower(strings.TrimSpace(manifest.SHA256))
+	manifest.Signature = strings.TrimSpace(manifest.Signature)
+	return manifest
 }
 
 func manifestSigningPayload(manifest Manifest) []byte {

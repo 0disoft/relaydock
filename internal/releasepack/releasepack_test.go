@@ -10,7 +10,59 @@ import (
 	"strings"
 	"testing"
 	"time"
+
+	"github.com/0disoft/relaydock/internal/updater"
 )
+
+func TestUpdaterManifestSigningUsesCanonicalVerifierPayload(t *testing.T) {
+	t.Parallel()
+	publicKey, privateKey, err := ed25519.GenerateKey(rand.Reader)
+	if err != nil {
+		t.Fatal(err)
+	}
+	manifest := updater.Manifest{
+		Version:      " 0.5.1 ",
+		ReleaseNotes: "signed updater test",
+		ArtifactURL:  " https://updates.example/relaydock-0.5.1-windows-amd64.zip ",
+		SHA256:       " ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789 ",
+		Size:         4096,
+	}
+	signed, err := updater.SignManifest(manifest, privateKey)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if signed.Version != "0.5.1" || signed.ArtifactURL != "https://updates.example/relaydock-0.5.1-windows-amd64.zip" || signed.SHA256 != strings.ToLower(strings.TrimSpace(manifest.SHA256)) {
+		t.Fatalf("manifest was not normalized before signing: %+v", signed)
+	}
+	if err := updater.VerifyManifestSignature(signed, publicKey); err != nil {
+		t.Fatal(err)
+	}
+	path := filepath.Join(t.TempDir(), "update-manifest.json")
+	if err := updater.WriteManifestFile(path, signed); err != nil {
+		t.Fatal(err)
+	}
+	loaded, err := updater.ReadManifestFile(path)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := updater.VerifyManifestSignature(loaded, publicKey); err != nil {
+		t.Fatal(err)
+	}
+	if err := updater.WriteManifestFile(path, signed); err == nil {
+		t.Fatal("expected signed updater manifest overwrite rejection")
+	}
+	loaded.Size++
+	if err := updater.VerifyManifestSignature(loaded, publicKey); err == nil {
+		t.Fatal("expected updater manifest tamper rejection")
+	}
+	raw, err := os.ReadFile(path)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if _, err := updater.DecodeManifest(append(raw, []byte("{}\n")...)); err == nil {
+		t.Fatal("expected trailing updater manifest JSON rejection")
+	}
+}
 
 func TestReleaseChecksumSignatureRoundTripAndTamperRejection(t *testing.T) {
 	t.Parallel()
