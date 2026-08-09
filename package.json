@@ -1,7 +1,7 @@
 {
   "name": "relaydock",
   "private": true,
-  "version": "0.5.4-dev",
+  "version": "0.5.5-dev",
   "license": "Apache-2.0",
   "packageManager": "bun@1.3.14",
   "workspaces": [

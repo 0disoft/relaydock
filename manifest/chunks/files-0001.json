@@ -130,7 +130,7 @@
     {
       "path": ".ssealed/manifest.json",
       "size": 18269,
-      "sha256": "f50ac9c1c2abefd4cee969fbc934bce6851ea2951e14fa558fd6b94d187443c7",
+      "sha256": "395054dff94f029df539d3990c9757d0e10985c0a56e0ee8c7bbe006a86cde0a",
       "mode": "0644"
     },
     {
@@ -141,8 +141,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "size": 10096,
-      "sha256": "7e93985c405a6f7eec7c535a666acdea4892506595b38fa8e28f7b2017147b5e",
+      "size": 10907,
+      "sha256": "283dff4ee83347810863bf2a6ec15fa3a814fb6c0dd40253cbac20b4302bf1cd",
       "mode": "0644"
     },
     {
@@ -159,8 +159,8 @@
     },
     {
       "path": "IMPLEMENTATION_STATUS.md",
-      "size": 9183,
-      "sha256": "a6b1cfec041e9d0a6f26aadccca6c4c532db1e6678cb4b87ac3d8dc36cd40dd5",
+      "size": 9477,
+      "sha256": "7a9c1a086a80bd45621438c872b5ad3259bcee62f64294ed0f454fd44d195277",
       "mode": "0644"
     },
     {
@@ -177,8 +177,8 @@
     },
     {
       "path": "README.md",
-      "size": 10236,
-      "sha256": "cc3e2528f22ae306d47f6e4359bdc588557abda2cf23dbda5a465d3c8be2f6f9",
+      "size": 10337,
+      "sha256": "dc2b16d4b66453dc2f6e74c8d8a1b06258bd3ee568ccb87576e301de131cf281",
       "mode": "0644"
     },
     {
@@ -189,8 +189,8 @@
     },
     {
       "path": "TREE.md",
-      "size": 24621,
-      "sha256": "db68ad9f6f671e79a39e1de1d9496b536b66d0f7490edcbe4efd40c381031237",
+      "size": 24846,
+      "sha256": "ddc71c5d50062d3aade26f5506ae17b71836c99f67176e416a6cab74115fff43",
       "mode": "0644"
     },
     {
@@ -201,14 +201,14 @@
     },
     {
       "path": "VALIDATION.md",
-      "size": 10242,
-      "sha256": "9fbac7700e68690a62a98947594af057ddf559640b313ff060c3ea05a53e159b",
+      "size": 10562,
+      "sha256": "69967a743099abb7bf1959130f8f955802b90a9e26ff84c309aea43c07cd78b2",
       "mode": "0644"
     },
     {
       "path": "VERSION",
       "size": 10,
-      "sha256": "cc3cd439eb8d4015d5b2f75d093c272f2df487d9f1a178b55b86664b08b1a2fa",
+      "sha256": "8f45aa5ef579d11f280709213d6a950488d78f06e163c8d05a475f5af58d0019",
       "mode": "0644"
     },
     {
@@ -262,7 +262,7 @@
     {
       "path": "bun.lock",
       "size": 60860,
-      "sha256": "84d5692871fe2b91950d72af879e4fc74c6055fe554752eadd423642932b3b18",
+      "sha256": "d2bba537a89857d9dceece3c908d0b3425418d281aeec9fa18f7e5960e048ec7",
       "mode": "0644"
     },
     {
@@ -712,7 +712,7 @@
     {
       "path": "docs/27-repository-size-and-source-release.md",
       "size": 2655,
-      "sha256": "5cf1299a27777b96473c64e4fa40c13a90527fa8299f3d4fa468f36863facd85",
+      "sha256": "752239d65e5b06303615bb11df171786e359f8f3ffb067c08540e9bb04e3d1ca",
       "mode": "0644"
     },
     {
@@ -722,9 +722,15 @@
       "mode": "0644"
     },
     {
+      "path": "docs/29-system-credential-storage.md",
+      "size": 3006,
+      "sha256": "5da499faebb6a311c2e1eea0884c82f1ab7befea2f8ebdc178fa8959c35474fd",
+      "mode": "0644"
+    },
+    {
       "path": "docs/README.md",
-      "size": 2128,
-      "sha256": "82b6cff37f2227c0653d4b5bfd880ed88abb43ada63c3d8c3e4aa4847439348a",
+      "size": 2235,
+      "sha256": "5786b969b3fb3694dc0b902b2c4a8130d32002676e03e1793f1acba4db1eba4c",
       "mode": "0644"
     },
     {
@@ -874,7 +880,7 @@
     {
       "path": "frontend/package.json",
       "size": 680,
-      "sha256": "e64d63289c8db572ac6090f16a48e5458d8d169afcde8cb599250a0fe1e1700a",
+      "sha256": "eb8a0ec0d6d8316757bf06dcadcc2e2948e840a521d7939e941949057a5c0d4f",
       "mode": "0644"
     },
     {
@@ -1001,12 +1007,6 @@
       "path": "frontend/tsconfig.json",
       "size": 641,
       "sha256": "4555afbf2b8b716fbb2dfc9a18a79377ff62215a8999fc63dad31c091b1efc2d",
-      "mode": "0644"
-    },
-    {
-      "path": "frontend/uno.config.ts",
-      "size": 500,
-      "sha256": "d31008b5cf399c029f05faaa90ac5cee60c1ad0efb66ac6856aa7a478ca65b15",
       "mode": "0644"
     }
   ]

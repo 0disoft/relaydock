@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.5.5-dev -- Windows Credential Store Foundation
+
+- Added a native Windows Credential Manager adapter behind the existing credential-store port without a plaintext fallback.
+- Minimized operating-system metadata with namespace-scoped SHA-256 targets instead of provider, account, or logical credential names.
+- Bounded values to 2,048 bytes, copied caller/backend buffers, and zeroed transient adapter values.
+- Kept missing deletion idempotent and mapped missing reads to the existing `core.ErrNotFound` contract.
+- Added denial and isolation tests for invalid namespaces, references, sizes, cancellation, missing values, backend failures, and secret-free errors.
+- Kept macOS Keychain, Linux Secret Service, desktop provider wiring, physical-device validation, and server KMS integration explicitly open.
+
 ## 0.5.4-dev -- OIDC Control Identity
 
 - Added provider-neutral OIDC discovery and ID-token verification for Control API bearers.

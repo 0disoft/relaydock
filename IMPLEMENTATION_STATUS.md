@@ -2,7 +2,7 @@
 
 ## Current Stage
 
-`0.5.4-dev` is a reference implementation with operational paths, bounded-file contracts, and a deny-by-default Control Plane access policy with static and OIDC identity sources. Without external infrastructure it runs with `local/echo`, an atomic JSON store, and memory leases. PostgreSQL and Valkey enable durable consultations, virtual keys, signed Control snapshots, the runtime journal, transactional outbox, and distributed provider leases.
+`0.5.5-dev` is a reference implementation with operational paths, bounded-file contracts, a deny-by-default Control Plane access policy with static and OIDC identity sources, and a Windows Credential Manager storage adapter. Without external infrastructure it runs with `local/echo`, an atomic JSON store, and memory leases. PostgreSQL and Valkey enable durable consultations, virtual keys, signed Control snapshots, the runtime journal, transactional outbox, and distributed provider leases.
 
 This is not a claim of full production readiness. Real provider accounts, the money-platform, a complete Go 1.26 dependency build, live PostgreSQL and Valkey, Wails installers and updates, and code signing still require validation in target environments.
 
@@ -34,7 +34,7 @@ This is not a claim of full production readiness. Real provider accounts, the mo
 | Virtual keys | Implemented and tested | PostgreSQL HMAC keys, scopes/models, revoke, v2 and legacy parsing | Pepper rotation, audit, high-volume cache |
 | Migrations and bootstrap | Implemented and tested | Embedded SQL, checksums, advisory locks, transactions, organization/project/key CLIs | Real upgrade matrix, PITR, and persisted membership management |
 | Accounting domain | Development contract | Quote, hold, capture, release, adjustment, idempotency | Mandarin money-platform client and reconciliation |
-| Storage primitives | Partial | Encrypted in-memory secrets, credentials, expiring objects, durable outbox | OS keychains, KMS, R2/S3 |
+| Storage primitives | Partial | Encrypted in-memory secrets, Windows Credential Manager adapter, opaque credential targets, expiring objects, durable outbox | Desktop provider wiring, physical-device smoke, macOS Keychain, Linux Secret Service, KMS, R2/S3 |
 | Updater | Staging implemented | Manifest signature, SHA-256, size, pending artifact | Platform replacement and rollback |
 | Control Console | Read-only UI | Health, snapshot, and model routes | Login, organizations, keys, routes, audit, usage |
 | Packaging | Implemented and tested | Desktop/MCP bundle, server/ops list, 40 KiB audit, strict chunked manifest, deterministic source ZIP | Native installers, artifact signing, cross-version reproducibility |
@@ -79,5 +79,5 @@ This is not a claim of full production readiness. Real provider accounts, the mo
 6. Connect money-platform quote, hold, capture, and release end to end through signed outbox events.
 7. Pass physical-device tests for Wails lifecycle, Named Pipe ACLs, installer replacement, and updater rollback.
 8. Add OIDC/OAuth or workload identity and key rotation to Remote MCP.
-9. Move provider credentials to an OS keychain or KMS.
+9. Wire desktop provider credentials through Windows Credential Manager, then add native macOS Keychain and Linux Secret Service adapters; use KMS or workload identity for servers.
 10. Verify stream, lease, and worker recovery during a 24-hour soak and graceful shutdown.

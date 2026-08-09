@@ -1,7 +1,7 @@
 {
   "tool": "ssealed",
   "version": "0.6.11",
-  "generatedAt": "2026-08-09T10:56:07.254Z",
+  "generatedAt": "2026-08-09T11:21:59.542Z",
   "scope": "general",
   "profile": "monorepo",
   "addons": [
@@ -332,35 +332,35 @@
     },
     {
       "path": "docs/README.md",
-      "checksum": "sha256:82b6cff37f2227c0653d4b5bfd880ed88abb43ada63c3d8c3e4aa4847439348a",
+      "checksum": "sha256:5786b969b3fb3694dc0b902b2c4a8130d32002676e03e1793f1acba4db1eba4c",
       "kind": "document",
       "ownership": "project-owned",
       "presence": "optional",
       "status": "active",
       "initialChecksum": "sha256:b138299dfbdd71e594cfdf8daba6ecbb8880668fec2633902135a2f53d60fa51",
-      "acceptedChecksum": "sha256:82b6cff37f2227c0653d4b5bfd880ed88abb43ada63c3d8c3e4aa4847439348a",
+      "acceptedChecksum": "sha256:5786b969b3fb3694dc0b902b2c4a8130d32002676e03e1793f1acba4db1eba4c",
       "generatedChecksum": "sha256:b138299dfbdd71e594cfdf8daba6ecbb8880668fec2633902135a2f53d60fa51"
     },
     {
       "path": "README.md",
-      "checksum": "sha256:cc3e2528f22ae306d47f6e4359bdc588557abda2cf23dbda5a465d3c8be2f6f9",
+      "checksum": "sha256:dc2b16d4b66453dc2f6e74c8d8a1b06258bd3ee568ccb87576e301de131cf281",
       "kind": "document",
       "ownership": "project-owned",
       "presence": "optional",
       "status": "active",
       "initialChecksum": "sha256:b21f2d71424eb62fa19b7f78251be57a7b7df1a555f14bd972da81862e1fecd5",
-      "acceptedChecksum": "sha256:cc3e2528f22ae306d47f6e4359bdc588557abda2cf23dbda5a465d3c8be2f6f9",
+      "acceptedChecksum": "sha256:dc2b16d4b66453dc2f6e74c8d8a1b06258bd3ee568ccb87576e301de131cf281",
       "generatedChecksum": "sha256:b21f2d71424eb62fa19b7f78251be57a7b7df1a555f14bd972da81862e1fecd5"
     },
     {
       "path": "VALIDATION.md",
-      "checksum": "sha256:9fbac7700e68690a62a98947594af057ddf559640b313ff060c3ea05a53e159b",
+      "checksum": "sha256:69967a743099abb7bf1959130f8f955802b90a9e26ff84c309aea43c07cd78b2",
       "kind": "validation",
       "ownership": "project-owned",
       "presence": "optional",
       "status": "active",
       "initialChecksum": "sha256:c5a688cf5818bb3e21bf862bce6c1b7f0b5f70b3cda5a8e3fc53096ef536c902",
-      "acceptedChecksum": "sha256:9fbac7700e68690a62a98947594af057ddf559640b313ff060c3ea05a53e159b",
+      "acceptedChecksum": "sha256:69967a743099abb7bf1959130f8f955802b90a9e26ff84c309aea43c07cd78b2",
       "generatedChecksum": "sha256:c5a688cf5818bb3e21bf862bce6c1b7f0b5f70b3cda5a8e3fc53096ef536c902"
     }
   ]

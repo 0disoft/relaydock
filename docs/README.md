@@ -31,3 +31,4 @@
 | 26 | `26-signing-and-token-key-rotation.md` | Zero-downtime Ed25519 and MCP HMAC rotation |
 | 27 | `27-repository-size-and-source-release.md` | 40 KiB policy, manifests, and reproducible ZIPs |
 | 28 | `28-control-plane-access.md` | Control authentication, roles, scopes, and audit |
+| 29 | `29-system-credential-storage.md` | Native desktop credential-store boundary and failure contract |

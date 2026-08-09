@@ -2,6 +2,30 @@
   "version": 2,
   "files": [
     {
+      "path": "web/control-console/src/routes/+page.svelte",
+      "size": 5743,
+      "sha256": "1988a81b3be3654f6b713d1b75b5293f0fbc9c9b018bea242b074b16b201d305",
+      "mode": "0644"
+    },
+    {
+      "path": "web/control-console/svelte.config.js",
+      "size": 208,
+      "sha256": "d0f087c8d00ef378fdfcc9e5eb21c8020d94c661d38f87c93b36439dbc899004",
+      "mode": "0644"
+    },
+    {
+      "path": "web/control-console/tsconfig.json",
+      "size": 181,
+      "sha256": "eb9c803e8489d658461e34822ed77643c4812dca87dd4794e81cacd78bfef75d",
+      "mode": "0644"
+    },
+    {
+      "path": "web/control-console/vite.config.ts",
+      "size": 143,
+      "sha256": "b2e81bb7415499d7d6b5612166d29d0a9df5f0e7d2300eae5b8237c336c84c09",
+      "mode": "0644"
+    },
+    {
       "path": "web/shared/README.md",
       "size": 175,
       "sha256": "92b6d09d0c650b5e07f7750113fd0512c9091f30a2410e9bd499dcfe9f6bb96b",

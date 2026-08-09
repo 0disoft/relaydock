@@ -2,6 +2,36 @@
   "version": 2,
   "files": [
     {
+      "path": "internal/outbox/delivery_test.go",
+      "size": 6958,
+      "sha256": "ed7e7bed78f9e3302306b76902beb949be5c5fac945e4fc26e18b5b4b15b2bef",
+      "mode": "0644"
+    },
+    {
+      "path": "internal/outbox/memory.go",
+      "size": 2305,
+      "sha256": "fcbf9d07b5ab494c76be70fc3d1b28ee86c8aa754e494c5b780f532a85f0f84e",
+      "mode": "0644"
+    },
+    {
+      "path": "internal/outbox/memory_delivery.go",
+      "size": 5882,
+      "sha256": "d15b701efce0dc2a9f9464c01f98e390c1e5c5ea1d511e9cb07141b8ea74823c",
+      "mode": "0644"
+    },
+    {
+      "path": "internal/outbox/types.go",
+      "size": 257,
+      "sha256": "0a71990c17ce1c19039b49e5f5e63a7114a3edd712e34278d065549c575a2e1e",
+      "mode": "0644"
+    },
+    {
+      "path": "internal/outbox/webhook.go",
+      "size": 11045,
+      "sha256": "20fc8f542bad55416f386a04dac0af811fbd6c570aa32adf84eaaebf0ef42f39",
+      "mode": "0644"
+    },
+    {
       "path": "internal/outbox/webhook_test.go",
       "size": 9297,
       "sha256": "f4d84447bd9a56c09f91e18f6a263f76a5502457366c876d7036af747a10e8d6",
@@ -634,7 +664,7 @@
     {
       "path": "package.json",
       "size": 471,
-      "sha256": "0b7ebd7222f4177c96bd3b1a48464bd3acad0e7ae55fbf76aab440d96074b6af",
+      "sha256": "52cb66d85d3332af754ece19a16265f0abd220fb779e0c2df0ce739606ac60da",
       "mode": "0644"
     },
     {
@@ -922,7 +952,7 @@
     {
       "path": "web/control-console/package.json",
       "size": 629,
-      "sha256": "0d8beec05d869ccfdb14b02565088e3d14840d9dcf2449f50a43c55cd2d91ae4",
+      "sha256": "19795ce02b074592a4ccec094e71d0036ad7a06042272b0cae8750f286224480",
       "mode": "0644"
     },
     {
@@ -935,30 +965,6 @@
       "path": "web/control-console/src/routes/+page.server.ts",
       "size": 1921,
       "sha256": "a57c3f2b8b5d9d485a00d657d4c450d2a41a24acf9e45b1caccaef6f79ac36cc",
-      "mode": "0644"
-    },
-    {
-      "path": "web/control-console/src/routes/+page.svelte",
-      "size": 5743,
-      "sha256": "1988a81b3be3654f6b713d1b75b5293f0fbc9c9b018bea242b074b16b201d305",
-      "mode": "0644"
-    },
-    {
-      "path": "web/control-console/svelte.config.js",
-      "size": 208,
-      "sha256": "d0f087c8d00ef378fdfcc9e5eb21c8020d94c661d38f87c93b36439dbc899004",
-      "mode": "0644"
-    },
-    {
-      "path": "web/control-console/tsconfig.json",
-      "size": 181,
-      "sha256": "eb9c803e8489d658461e34822ed77643c4812dca87dd4794e81cacd78bfef75d",
-      "mode": "0644"
-    },
-    {
-      "path": "web/control-console/vite.config.ts",
-      "size": 143,
-      "sha256": "b2e81bb7415499d7d6b5612166d29d0a9df5f0e7d2300eae5b8237c336c84c09",
       "mode": "0644"
     }
   ]

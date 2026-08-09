@@ -1,43 +1,43 @@
 {
   "version": 2,
-  "generatedAt": "2026-08-09T10:59:57Z",
+  "generatedAt": "2026-08-09T11:31:26Z",
   "hashAlgorithm": "sha256",
-  "fileCount": 489,
-  "totalBytes": 1528671,
+  "fileCount": 494,
+  "totalBytes": 1546069,
   "maximumFileBytes": 40960,
-  "aggregateSha256": "e2417ad3ae1b0f252d0bd5bcce5da13026d8ce6066184013fbb0432b30500cdf",
+  "aggregateSha256": "b2785a498bd2c2aa1122eaaba3665da90c83fbd43482302b5dcd3eea01123874",
   "chunks": [
     {
       "path": "manifest/chunks/files-0001.json",
       "fileCount": 168,
       "firstPath": ".agents/README.md",
-      "lastPath": "frontend/uno.config.ts",
-      "size": 30640,
-      "sha256": "02847e208bce0f1c02a2a86f1904156bd2414e256b31b950be0b555acc84abcf"
+      "lastPath": "frontend/tsconfig.json",
+      "size": 30655,
+      "sha256": "6284f715022ee6707b16044e101d4f43ad266e39c8ae10f522ead76c972add4d"
     },
     {
       "path": "manifest/chunks/files-0002.json",
       "fileCount": 160,
-      "firstPath": "frontend/vite.config.ts",
-      "lastPath": "internal/outbox/webhook.go",
-      "size": 30617,
-      "sha256": "10ef7121cb01c690aa1f42f7b3f23c98c698019b81caa5f95a39a55ec3889626"
+      "firstPath": "frontend/uno.config.ts",
+      "lastPath": "internal/outbox/delivery.go",
+      "size": 30665,
+      "sha256": "7ceffe9d98f82e34735ddbef15ec308a3e75ce516366b531d85780831da34808"
     },
     {
       "path": "manifest/chunks/files-0003.json",
-      "fileCount": 160,
-      "firstPath": "internal/outbox/webhook_test.go",
-      "lastPath": "web/control-console/vite.config.ts",
-      "size": 30564,
-      "sha256": "06a51aa117d87820552bed542f9196e0f6520e1398daa3ece78397722e57c62f"
+      "fileCount": 161,
+      "firstPath": "internal/outbox/delivery_test.go",
+      "lastPath": "web/control-console/src/routes/+page.server.ts",
+      "size": 30718,
+      "sha256": "215e7a52f875448f531d2aebc07a467cdfe5628b315f728b7cd7261582fade35"
     },
     {
       "path": "manifest/chunks/files-0004.json",
-      "fileCount": 1,
-      "firstPath": "web/shared/README.md",
+      "fileCount": 5,
+      "firstPath": "web/control-console/src/routes/+page.svelte",
       "lastPath": "web/shared/README.md",
-      "size": 211,
-      "sha256": "127417119be7b4959e6f6b4517f2bdf76453594b7c63055b954d5425bec54f6a"
+      "size": 978,
+      "sha256": "d71aff60385c2de1330ce0783cf5ee62f90d0281608e4f56f4c5a82e4b3330d0"
     }
   ],
   "excluded": [

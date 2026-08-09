@@ -1,6 +1,6 @@
 # Validation Report
 
-Validation date: **2026-08-09**. Target version: **`0.5.4-dev`**. This report separates checks actually executed in the current sandbox or hosted CI from checks that could not run without external tools, services, operating systems, or provider credentials. A check defined in a workflow is not treated as a passing result.
+Validation date: **2026-08-09**. Target version: **`0.5.5-dev`**. This report separates checks actually executed in the current sandbox or hosted CI from checks that could not run without external tools, services, operating systems, or provider credentials. A check defined in a workflow is not treated as a passing result.
 
 ## Release-Readiness Decision
 
@@ -8,12 +8,13 @@ Validation date: **2026-08-09**. Target version: **`0.5.4-dev`**. This report se
 
 The repository-wide license boundary was finalized as Apache-2.0 on 2026-08-09. Root `LICENSE` and `NOTICE` are present, `LICENSE-PENDING.md` is removed, and portable-bundle regression checks require both files.
 
-`releasepack readiness --root . --version 0.5.4-dev` passed with Go 1.26.4, locked dependencies, Apache-2.0 files, the public module identity, and the current 489-record source manifest.
+`releasepack readiness --root . --version 0.5.5-dev` passed with Go 1.26.4, locked dependencies, Apache-2.0 files, the public module identity, and the current 494-record source manifest.
 
 [GitHub Actions CI run 31301723465](https://github.com/0disoft/relaydock/actions/runs/31301723465) for commit `0905d93` passed all six jobs. It provides hosted-runner evidence for Linux race tests and vet, PostgreSQL 18 integration, Buf and SQLC generation plus generated-package compilation, Bun/Svelte checks, and Windows Wails desktop/MCP bridge compilation.
 
 The following readiness additions passed locally:
 
+- Windows Credential Manager adapter compilation plus opaque-target, copy-isolation, size, cancellation, missing-value, idempotent-delete, and secret-free-error tests
 - OIDC discovery, exact issuer/audience/authorized-party/time/signature verification, explicit claim-to-role mapping, JWKS rotation, and static-bootstrap coexistence tests
 - SSRF denial for private/mixed DNS results and validated-address dialing for issuer, redirect, and JWKS requests
 - Deny-by-default Control role policy, SHA-256 static credential lookup, project model filtering, provider-account redaction, and safe access-decision audit tests
@@ -35,15 +36,16 @@ The following are configured or documented but do not yet have successful execut
 - Windows native installers, code signing, updater-manifest signing, and rollback
 - Live PostgreSQL, Valkey, provider, money-platform, and 24-hour soak operational gates
 - Real external IdP conformance and the separate Control Console authorization-code/session flow
+- A disposable-user physical Windows Credential Manager smoke, desktop provider wiring, macOS Keychain, Linux Secret Service, and server KMS integration
 
 Do not label the product production-ready or deployed before those release-owner inputs and target-environment gates are complete.
 
 ## Validated Source Baseline
 
-- 489 source records
-- 306 Go files
-- 59 Go test files with 205 named `Test...` functions
-- 83 Markdown documents
+- 494 source records
+- 310 Go files
+- 60 Go test files with 208 named `Test...` functions
+- 84 Markdown documents
 - 13 SQL files
 - 13 Svelte files
 - 11 TypeScript files

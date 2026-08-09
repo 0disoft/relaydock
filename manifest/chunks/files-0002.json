@@ -2,6 +2,12 @@
   "version": 2,
   "files": [
     {
+      "path": "frontend/uno.config.ts",
+      "size": 500,
+      "sha256": "d31008b5cf399c029f05faaa90ac5cee60c1ad0efb66ac6856aa7a478ca65b15",
+      "mode": "0644"
+    },
+    {
       "path": "frontend/vite.config.ts",
       "size": 372,
       "sha256": "7b46c525b828dc4dec18101cd0e64f1540b9acb0e6ef35c119180c0e365a42db",
@@ -244,7 +250,7 @@
     {
       "path": "internal/buildinfo/info.go",
       "size": 320,
-      "sha256": "e0faf2ec5685acd856cf9c00709d994b85f0c509ac5900c3086e1cfe06837740",
+      "sha256": "904650e74224dcab3585dcb1965191e99367ec8017ba5f57d9fda21a39868c2c",
       "mode": "0644"
     },
     {
@@ -443,6 +449,30 @@
       "path": "internal/credentials/store.go",
       "size": 280,
       "sha256": "3fc4317938419d8021b7f6732e10666ddf09f0dacc7ba3cc57920a47663fbbe4",
+      "mode": "0644"
+    },
+    {
+      "path": "internal/credentials/system_store.go",
+      "size": 3907,
+      "sha256": "4e5404931fee011470e697c75b128c46cfecdef46b3928e2ca9261e6f9092983",
+      "mode": "0644"
+    },
+    {
+      "path": "internal/credentials/system_store_test.go",
+      "size": 4190,
+      "sha256": "31500f788ad569351500fc72a37f783da9cf28747d7f411bda73444b8c3dc0a5",
+      "mode": "0644"
+    },
+    {
+      "path": "internal/credentials/system_store_unsupported.go",
+      "size": 238,
+      "sha256": "be7eead5d084476744173c7e0ed1e71d5125567eb65f3b7233f6c4f55b8921a5",
+      "mode": "0644"
+    },
+    {
+      "path": "internal/credentials/system_store_windows.go",
+      "size": 4199,
+      "sha256": "d89aa141646f8383b61b327f1338c7487a2aa419e6dc110d3abebd45388a8c02",
       "mode": "0644"
     },
     {
@@ -929,36 +959,6 @@
       "path": "internal/outbox/delivery.go",
       "size": 10221,
       "sha256": "bd466c731073024fd691770e4888aea23f82306140ca3becff49d0557ee0094e",
-      "mode": "0644"
-    },
-    {
-      "path": "internal/outbox/delivery_test.go",
-      "size": 6958,
-      "sha256": "ed7e7bed78f9e3302306b76902beb949be5c5fac945e4fc26e18b5b4b15b2bef",
-      "mode": "0644"
-    },
-    {
-      "path": "internal/outbox/memory.go",
-      "size": 2305,
-      "sha256": "fcbf9d07b5ab494c76be70fc3d1b28ee86c8aa754e494c5b780f532a85f0f84e",
-      "mode": "0644"
-    },
-    {
-      "path": "internal/outbox/memory_delivery.go",
-      "size": 5882,
-      "sha256": "d15b701efce0dc2a9f9464c01f98e390c1e5c5ea1d511e9cb07141b8ea74823c",
-      "mode": "0644"
-    },
-    {
-      "path": "internal/outbox/types.go",
-      "size": 257,
-      "sha256": "0a71990c17ce1c19039b49e5f5e63a7114a3edd712e34278d065549c575a2e1e",
-      "mode": "0644"
-    },
-    {
-      "path": "internal/outbox/webhook.go",
-      "size": 11045,
-      "sha256": "20fc8f542bad55416f386a04dac0af811fbd6c570aa32adf84eaaebf0ef42f39",
       "mode": "0644"
     }
   ]

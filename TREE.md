@@ -169,6 +169,7 @@ relaydock
 │   ├── 26-signing-and-token-key-rotation.md
 │   ├── 27-repository-size-and-source-release.md
 │   ├── 28-control-plane-access.md
+│   ├── 29-system-credential-storage.md
 │   └── README.md
 ├── frontend/
 │   ├── bindings/
@@ -315,7 +316,11 @@ relaydock
 │   │   └── errors.go
 │   ├── credentials/
 │   │   ├── memory.go
-│   │   └── store.go
+│   │   ├── store.go
+│   │   ├── system_store.go
+│   │   ├── system_store_test.go
+│   │   ├── system_store_unsupported.go
+│   │   └── system_store_windows.go
 │   ├── desktopwails/
 │   │   ├── app.go
 │   │   ├── consultation_service.go
