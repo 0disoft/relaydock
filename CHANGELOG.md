@@ -9,6 +9,7 @@
 - release workflow 앞단에 version·module·lockfile·license·source manifest fail-closed readiness gate를 추가했다.
 - generated contracts·source·server·web·Windows desktop 산출물의 체크섬에 job-scoped SLSA build provenance attestation을 추가했다.
 - CI와 release의 Go module resolution을 read-only로, Bun 설치를 루트 workspace `bun.lock` 기반 frozen install로 통일했다.
+- 모든 service Dockerfile이 `go.sum`을 필수 입력으로 사용하고 read-only module resolution과 non-root runtime을 유지하도록 고정했다.
 - 생성된 제품·아키텍처·운영 문서는 기존 번호 문서를 가리키는 얇은 라우팅 인덱스로 유지한다.
 - Windows source scan에서 일반 파일을 `0644`, 셸 스크립트를 `0755`로 정규화해 POSIX manifest mode의 불필요한 전체 변경을 막았다.
 - source archive의 mode 검증도 같은 정규화 계약을 사용하고 Windows·POSIX 회귀 테스트를 추가했다.

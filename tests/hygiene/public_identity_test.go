@@ -106,3 +106,35 @@ func TestCIUsesFrozenDependencyResolution(t *testing.T) {
 		})
 	}
 }
+
+func TestContainerBuildsRequireGoChecksums(t *testing.T) {
+	t.Parallel()
+	root := filepath.Join("..", "..")
+	dockerfiles, err := filepath.Glob(filepath.Join(root, "deploy", "docker", "Dockerfile.*"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(dockerfiles) != 6 {
+		t.Fatalf("found %d service Dockerfiles, want 6", len(dockerfiles))
+	}
+	for _, dockerfile := range dockerfiles {
+		dockerfile := dockerfile
+		t.Run(filepath.Base(dockerfile), func(t *testing.T) {
+			t.Parallel()
+			raw, err := os.ReadFile(dockerfile)
+			if err != nil {
+				t.Fatal(err)
+			}
+			content := string(raw)
+			for _, required := range []string{
+				"ENV GOFLAGS=-mod=readonly",
+				"COPY go.mod go.sum ./",
+				"USER nonroot:nonroot",
+			} {
+				if !strings.Contains(content, required) {
+					t.Errorf("%s does not contain %q", filepath.Base(dockerfile), required)
+				}
+			}
+		})
+	}
+}

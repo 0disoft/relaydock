@@ -37,6 +37,8 @@ docker compose -f deploy/docker-compose.dev.yml --profile proxy up --build
 
 Control과 Expert runtime은 non-root UID로 실행한다. 상태 volume의 ownership을 임의 root UID로 바꾸면 재기동이 실패할 수 있다.
 
+모든 service image build stage는 `go.mod`와 `go.sum`을 함께 복사하고 `GOFLAGS=-mod=readonly`로 module graph 변경을 거절한다. `go.sum`이 없거나 현재 `go.mod`와 일치하지 않으면 image build를 진행하지 않는다.
+
 ## 초기 운영 기준
 
 - Cloudflare: DNS, WAF, TLS, 정적 자산
