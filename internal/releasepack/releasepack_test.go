@@ -2,12 +2,79 @@ package releasepack
 
 import (
 	"archive/zip"
+	"crypto/ed25519"
+	"crypto/rand"
+	"encoding/base64"
 	"os"
 	"path/filepath"
 	"strings"
 	"testing"
 	"time"
 )
+
+func TestReleaseChecksumSignatureRoundTripAndTamperRejection(t *testing.T) {
+	t.Parallel()
+	publicKey, privateKey, err := ed25519.GenerateKey(rand.Reader)
+	if err != nil {
+		t.Fatal(err)
+	}
+	checksums := filepath.Join(t.TempDir(), "SHA256SUMS")
+	mustWrite(t, checksums, strings.Repeat("a", 64)+"  relaydock.zip\n")
+	envelope, err := SignReleaseChecksums(checksums, privateKey)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if envelope.SchemaVersion != releaseSignatureSchema || envelope.Algorithm != "Ed25519" || envelope.KeyID == "" {
+		t.Fatalf("unexpected release signature envelope: %+v", envelope)
+	}
+	signaturePath := filepath.Join(t.TempDir(), "SHA256SUMS.sig.json")
+	if err := WriteReleaseSignature(signaturePath, envelope); err != nil {
+		t.Fatal(err)
+	}
+	loaded, err := ReadReleaseSignature(signaturePath)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := VerifyReleaseChecksums(checksums, loaded, publicKey); err != nil {
+		t.Fatal(err)
+	}
+	mustWrite(t, checksums, strings.Repeat("b", 64)+"  relaydock.zip\n")
+	if err := VerifyReleaseChecksums(checksums, loaded, publicKey); err == nil {
+		t.Fatal("expected changed checksum file rejection")
+	}
+	otherPublic, _, err := ed25519.GenerateKey(rand.Reader)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := VerifyReleaseChecksums(checksums, loaded, otherPublic); err == nil {
+		t.Fatal("expected wrong release key rejection")
+	}
+}
+
+func TestReleaseSigningKeysAndEnvelopeFailClosed(t *testing.T) {
+	t.Parallel()
+	_, privateKey, err := ed25519.GenerateKey(rand.Reader)
+	if err != nil {
+		t.Fatal(err)
+	}
+	seed := privateKey.Seed()
+	decoded, err := DecodeReleasePrivateKey(base64.RawURLEncoding.EncodeToString(seed))
+	if err != nil || !privateKey.Equal(decoded) {
+		t.Fatalf("decode release seed: %v", err)
+	}
+	if _, err := DecodeReleasePrivateKey(base64.RawURLEncoding.EncodeToString([]byte("short"))); err == nil {
+		t.Fatal("expected short release key rejection")
+	}
+	path := filepath.Join(t.TempDir(), "signature.json")
+	mustWrite(t, path, `{"schemaVersion":"relaydock.release-checksums-signature/v1","algorithm":"Ed25519","keyId":"x","subjectSha256":"x","signature":"x","unknown":true}`)
+	if _, err := ReadReleaseSignature(path); err == nil {
+		t.Fatal("expected unknown release signature field rejection")
+	}
+	mustWrite(t, path, `{"schemaVersion":"relaydock.release-checksums-signature/v1","algorithm":"Ed25519","keyId":"x","subjectSha256":"x","signature":"x"} {}`)
+	if _, err := ReadReleaseSignature(path); err == nil {
+		t.Fatal("expected trailing release signature JSON rejection")
+	}
+}
 
 func TestBuildCreatesChunkedManifestAndDeterministicArchive(t *testing.T) {
 	t.Parallel()

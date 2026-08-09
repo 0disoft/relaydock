@@ -141,8 +141,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "size": 14778,
-      "sha256": "e36d43dc140f2d61fe3ca5f33cf6e7758c0c263e843059cd70a21e2cad3141df",
+      "size": 14917,
+      "sha256": "909394f71b3751df2b7bed3b5321586ef7cc98bead9d82dd9b5d65e081b803e6",
       "mode": "0644"
     },
     {
@@ -345,8 +345,8 @@
     },
     {
       "path": "cmd/releasepack/main.go",
-      "size": 3841,
-      "sha256": "28100abfcf49979ecdb75690ec56ab693bd25849f0aabad137b56895fed83487",
+      "size": 6033,
+      "sha256": "b5d98eaa8a28656918c4824cd41cd908b59b131640d1d73427c0e0dec333f74b",
       "mode": "0644"
     },
     {
@@ -621,8 +621,8 @@
     },
     {
       "path": "docs/15-build-and-release.md",
-      "size": 7108,
-      "sha256": "5e5060fef56991b1a43c974e3a0d8822005d041979105e6efe545812bf8cb608",
+      "size": 7665,
+      "sha256": "c09db6dbd8eef31b982f63bc040a7310b54d35e78b2f378452ea119c4f8f0e45",
       "mode": "0644"
     },
     {

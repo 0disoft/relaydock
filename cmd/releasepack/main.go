@@ -25,6 +25,10 @@ func main() {
 		err = runBuild(os.Args[2:])
 	case "readiness":
 		err = runReadiness(os.Args[2:])
+	case "sign-checksums":
+		err = runSignChecksums(os.Args[2:])
+	case "verify-checksums":
+		err = runVerifyChecksums(os.Args[2:])
 	default:
 		usage()
 		os.Exit(2)
@@ -33,6 +37,58 @@ func main() {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
+}
+
+func runSignChecksums(arguments []string) error {
+	flags := flag.NewFlagSet("sign-checksums", flag.ContinueOnError)
+	input := flags.String("input", "", "checksum file to sign")
+	output := flags.String("output", "", "signature envelope output path")
+	privateKeyEnvironment := flags.String("private-key-env", "RELAYDOCK_RELEASE_SIGNING_PRIVATE_KEY", "environment variable containing the base64 Ed25519 release key")
+	if err := flags.Parse(arguments); err != nil {
+		return err
+	}
+	if *input == "" || *output == "" {
+		return fmt.Errorf("sign-checksums requires --input and --output")
+	}
+	privateKey, err := releasepack.DecodeReleasePrivateKey(os.Getenv(*privateKeyEnvironment))
+	if err != nil {
+		return err
+	}
+	envelope, err := releasepack.SignReleaseChecksums(*input, privateKey)
+	if err != nil {
+		return err
+	}
+	if err := releasepack.WriteReleaseSignature(*output, envelope); err != nil {
+		return err
+	}
+	fmt.Printf("release checksums signed: keyId=%s output=%s\n", envelope.KeyID, *output)
+	return nil
+}
+
+func runVerifyChecksums(arguments []string) error {
+	flags := flag.NewFlagSet("verify-checksums", flag.ContinueOnError)
+	input := flags.String("input", "", "signed checksum file")
+	signature := flags.String("signature", "", "signature envelope path")
+	publicKeyEnvironment := flags.String("public-key-env", "RELAYDOCK_RELEASE_SIGNING_PUBLIC_KEY", "environment variable containing the base64 Ed25519 release public key")
+	if err := flags.Parse(arguments); err != nil {
+		return err
+	}
+	if *input == "" || *signature == "" {
+		return fmt.Errorf("verify-checksums requires --input and --signature")
+	}
+	publicKey, err := releasepack.DecodeReleasePublicKey(os.Getenv(*publicKeyEnvironment))
+	if err != nil {
+		return err
+	}
+	envelope, err := releasepack.ReadReleaseSignature(*signature)
+	if err != nil {
+		return err
+	}
+	if err := releasepack.VerifyReleaseChecksums(*input, envelope, publicKey); err != nil {
+		return err
+	}
+	fmt.Printf("release checksums verified: keyId=%s input=%s\n", envelope.KeyID, *input)
+	return nil
 }
 
 func runReadiness(arguments []string) error {
@@ -114,7 +170,7 @@ func runBuild(arguments []string) error {
 }
 
 func usage() {
-	fmt.Fprintln(os.Stderr, "usage: releasepack <audit|verify|build|readiness> [flags]")
+	fmt.Fprintln(os.Stderr, "usage: releasepack <audit|verify|build|readiness|sign-checksums|verify-checksums> [flags]")
 }
 
 func stringTrimSpace(value []byte) string {

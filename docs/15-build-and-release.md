@@ -24,6 +24,8 @@ generated contracts, source archive, server binaries, web assets, Windows deskto
 
 provenance와 SBOM attestation은 독립 release signing key를 대체하지 않는다. release artifact 서명과 desktop updater manifest 서명은 각각 별도 gate로 통과해야 한다.
 
+`releasepack sign-checksums`는 `RELAYDOCK_RELEASE_SIGNING_PRIVATE_KEY`의 base64/base64url Ed25519 seed 또는 private key로 checksum 파일을 domain-separated 서명한다. private key 값은 CLI argument나 artifact에 기록하지 않는다. `releasepack verify-checksums`는 별도 `RELAYDOCK_RELEASE_SIGNING_PUBLIC_KEY`로 strict JSON signature envelope의 schema, algorithm, key ID, subject digest와 signature를 모두 검증한다. release artifact key는 updater manifest key, Control snapshot key, MCP token key와 재사용하지 않는다.
+
 container release-candidate job은 pinned Docker Buildx action으로 Gateway, Control, Expert, Outbox, Ops, Webhook Sink의 Linux/amd64 OCI archive를 만든다. 각 artifact에는 Buildx image digest, OCI tar SHA-256, SPDX SBOM과 archive-bound attestations가 포함된다. 이 job은 registry login과 push를 명시적으로 하지 않는다. registry가 확정된 뒤 같은 tested OCI content를 rebuild 없이 import하고 registry manifest digest에 대한 별도 attestation을 발급해야 production promotion이 완료된다.
 
 ## Toolchain pins
