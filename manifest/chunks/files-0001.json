@@ -2,6 +2,78 @@
   "version": 2,
   "files": [
     {
+      "path": ".agents/README.md",
+      "size": 728,
+      "sha256": "5ebe31900abffcd5799999435bf4ef89e10140432eda0c8417624531b0cf7150",
+      "mode": "0644"
+    },
+    {
+      "path": ".agents/checklists/cli-tool.md",
+      "size": 605,
+      "sha256": "cfc95248934a70790fa41514f68f12e3087b76ece4b98ccbc18df47c175a2018",
+      "mode": "0644"
+    },
+    {
+      "path": ".agents/checklists/desktop-app.md",
+      "size": 608,
+      "sha256": "3440d86d1ff11a2f915e2d1cd127ecce9882ce577eb66f119c4e3afdf633e3e9",
+      "mode": "0644"
+    },
+    {
+      "path": ".agents/checklists/monorepo.md",
+      "size": 605,
+      "sha256": "0bca87f18d079ce3fb9670cb6ab31f7b5394c85f34fe0a16f755f9ffec93f819",
+      "mode": "0644"
+    },
+    {
+      "path": ".agents/checklists/ops-change.md",
+      "size": 861,
+      "sha256": "682e797aeeaf6f20fccc2507613ca4a5d8c6b393258f8d5d9c282b43e5a29bf9",
+      "mode": "0644"
+    },
+    {
+      "path": ".agents/checklists/security.md",
+      "size": 815,
+      "sha256": "db052f2a933eb67ea0f23b02e497c4ab0db4eceac26c5984befb65fae033040c",
+      "mode": "0644"
+    },
+    {
+      "path": ".agents/context-map.md",
+      "size": 1028,
+      "sha256": "31e4def2b68dc1680797787b6fe2bb776c843847537f94088cc32514e50b23c7",
+      "mode": "0644"
+    },
+    {
+      "path": ".agents/skills/bugfix/SKILL.md",
+      "size": 915,
+      "sha256": "583cb275672e0009ff7f806e79550fded726cd6031cd58388cdddf2b57a01bee",
+      "mode": "0644"
+    },
+    {
+      "path": ".agents/skills/cli-tool/SKILL.md",
+      "size": 921,
+      "sha256": "090bf19817034cfb257c9b0e2a7dc9ced002b09b1d5624cc140cb638f8bea234",
+      "mode": "0644"
+    },
+    {
+      "path": ".agents/skills/desktop-app/SKILL.md",
+      "size": 930,
+      "sha256": "6839eae4b6c931658efbc358f24fe593951927073584c2f1d902ec513948ad59",
+      "mode": "0644"
+    },
+    {
+      "path": ".agents/skills/feature/SKILL.md",
+      "size": 918,
+      "sha256": "79ac7185824fa8e9866baa78d8ebe990677cd06822d80498759563d16255310d",
+      "mode": "0644"
+    },
+    {
+      "path": ".agents/skills/monorepo/SKILL.md",
+      "size": 921,
+      "sha256": "ec7cee82293159d51e6ab59e02eef0660729721f52339db1c2168c6f1c849aa5",
+      "mode": "0644"
+    },
+    {
       "path": ".dockerignore",
       "size": 263,
       "sha256": "0468ab109a82187886751a3ef1cff4a266c53dcd056c99726750d1046a0d4bc3",
@@ -26,6 +98,12 @@
       "mode": "0644"
     },
     {
+      "path": ".github/PULL_REQUEST_TEMPLATE.md",
+      "size": 364,
+      "sha256": "d3f33f0e7741bfc7030c18b3f348b8f82e543ffbc0b05a6f5dc3daa7863a803f",
+      "mode": "0644"
+    },
+    {
       "path": ".github/workflows/ci.yml",
       "size": 4420,
       "sha256": "2701ceaff934f48bb495ae188be5e9fa64053ab7b952c094a3c478e9c6037dc6",
@@ -45,8 +123,14 @@
     },
     {
       "path": ".gitignore",
-      "size": 475,
-      "sha256": "4fe7b4d29671decfb215b01ef90873c0aac473caeeb20eb935a75571250ce419",
+      "size": 764,
+      "sha256": "79e5f00fced7de6527350530435fd8e2a250acce908fb3afdafa913dea283f65",
+      "mode": "0644"
+    },
+    {
+      "path": ".ssealed/manifest.json",
+      "size": 18269,
+      "sha256": "65301ada7b66832f5ccb200ff77d8a6464c957480618679e0e02df8cc0d4b4b7",
       "mode": "0644"
     },
     {
@@ -57,8 +141,14 @@
     },
     {
       "path": "CHANGELOG.md",
-      "size": 12862,
-      "sha256": "686925e083d05a2c5ca2d607370dc8f44d07ebe1da1ea60bf739ea91f97b38b4",
+      "size": 13440,
+      "sha256": "ba27136ed22d970918308b6ea2adbf7fe0e8eae369ca8b92034ee1f50f3e1888",
+      "mode": "0644"
+    },
+    {
+      "path": "CHECKLIST.md",
+      "size": 709,
+      "sha256": "9e464993526a1ffd413fd4fc1eddc95d8e70e196fac8ed5279376ed74f67232d",
       "mode": "0644"
     },
     {
@@ -70,7 +160,7 @@
     {
       "path": "IMPLEMENTATION_STATUS.md",
       "size": 9911,
-      "sha256": "5fc280e112922e74dd0cae97cf4fa31d9c19f8afd42bd3cf6f30d7b8f3685753",
+      "sha256": "23aa626301d5424b70f087e9475e57e2ebf6fd49e12790c9b1d2168929a42bfc",
       "mode": "0644"
     },
     {
@@ -82,7 +172,7 @@
     {
       "path": "README.md",
       "size": 18510,
-      "sha256": "061cff6b294e1a9a9a0d7cb75b01bdabf7cad43dd17316ebd373db80feba181f",
+      "sha256": "0b73a5ecc0dd4e33410abca8a501cc6886513378a8e910604a5d80f698935aae",
       "mode": "0644"
     },
     {
@@ -93,8 +183,8 @@
     },
     {
       "path": "TREE.md",
-      "size": 20898,
-      "sha256": "6e3cd119ac5a25cc5cc9926f5bfd1c4cd830f8a23274dac14808752b3ad2c8c8",
+      "size": 22267,
+      "sha256": "62fd8e9cdf0fadbf2c42e5f02e0b84e4308c137c0c30d098c052ccc7978a6e87",
       "mode": "0644"
     },
     {
@@ -105,14 +195,14 @@
     },
     {
       "path": "VALIDATION.md",
-      "size": 8680,
-      "sha256": "98f529cd13541b5948dc92afa3cf15bf0eb1dc59f60596f13772dc7e7c80180d",
+      "size": 8792,
+      "sha256": "2821fed05b22ab1377dd9fbb1ffe08aa31ea582f2cbd6b73070618e308c6272b",
       "mode": "0644"
     },
     {
       "path": "VERSION",
       "size": 10,
-      "sha256": "90c55baf2f7a40eaba6a4502e42e39285710734266feb653b68cff2122ae777d",
+      "sha256": "3a458586c6b83474c0fc256792cf55e362acba30e5eaabe04da9889d5bdc1fd4",
       "mode": "0644"
     },
     {
@@ -604,7 +694,7 @@
     {
       "path": "docs/27-repository-size-and-source-release.md",
       "size": 3221,
-      "sha256": "c84b497dd7eef061e01bd0b8a1f0dda07839bbbd68680dbc76585736cea2083b",
+      "sha256": "f8d1675ab35f4dd824ee65a85e89f78f4e913ecaf906cc8e3cf87072705f8833",
       "mode": "0644"
     },
     {
@@ -674,6 +764,72 @@
       "mode": "0644"
     },
     {
+      "path": "docs/architecture/00-system-boundary.md",
+      "size": 943,
+      "sha256": "10fe9839037135c99e4332e0472877b5ac24ab6a966fc9ac360a9144707004d6",
+      "mode": "0644"
+    },
+    {
+      "path": "docs/cli/README.md",
+      "size": 835,
+      "sha256": "f24d28132a04755cff0222861f090e4fbdf3d95a7801b006999b499c4bf3ebf0",
+      "mode": "0644"
+    },
+    {
+      "path": "docs/cli/command-contract.md",
+      "size": 862,
+      "sha256": "a38cb14323d6ce0d3e16df261edd05f95d65bdeba6ddf42b08c001e7da0c42f0",
+      "mode": "0644"
+    },
+    {
+      "path": "docs/desktop/README.md",
+      "size": 897,
+      "sha256": "83c5a8b55ef7264bb00a7be40e8781436bcd1648f1eed3d6c2e0d83e84a335ac",
+      "mode": "0644"
+    },
+    {
+      "path": "docs/desktop/installers.md",
+      "size": 879,
+      "sha256": "0fda73226e84d5ae712243648a64944b6aa2ec2a0f90b18ef54a30bcface5d46",
+      "mode": "0644"
+    },
+    {
+      "path": "docs/engineering/00-project-invariants.md",
+      "size": 842,
+      "sha256": "4d890a16b82891bad5572ce10ff403719d30497ccabc352a063fd9d4e96a887d",
+      "mode": "0644"
+    },
+    {
+      "path": "docs/monorepo/README.md",
+      "size": 718,
+      "sha256": "08ce7856254f7f2c6f93c1c503dc1219d9d36b904f95082a90a53e3cf6bda85d",
+      "mode": "0644"
+    },
+    {
+      "path": "docs/monorepo/workspace-boundaries.md",
+      "size": 875,
+      "sha256": "4c2c08361a1f4294d89ad11d66e6119030380c7aa98e27785207fc9e10e84584",
+      "mode": "0644"
+    },
+    {
+      "path": "docs/ops/00-operational-contract.md",
+      "size": 914,
+      "sha256": "d78567dbcfc590b2ba95b6b45814175757c923b188abd976b0974a28a6b92990",
+      "mode": "0644"
+    },
+    {
+      "path": "docs/product/00-product-brief.md",
+      "size": 970,
+      "sha256": "20f00401aafce872ab84690456eb3da5d473dd3eb19f179ef541cd7a4410458a",
+      "mode": "0644"
+    },
+    {
+      "path": "docs/product/02-spec.md",
+      "size": 1331,
+      "sha256": "d0d48d64cd9ce43cf78a5eee105b42abcdce39d2149dad26640a403055f859bd",
+      "mode": "0644"
+    },
+    {
       "path": "frontend/README.md",
       "size": 603,
       "sha256": "ed06eac7e707c0c1b4766dd0a1f9374fd5c2b356725aa68db9ac055e57f25c19",
@@ -694,7 +850,7 @@
     {
       "path": "frontend/package.json",
       "size": 446,
-      "sha256": "b2829caacd3cb9991c7e69e1d37d6a769589b251b82ef865034c3f3dff44599b",
+      "sha256": "9ad9b1359001cc4511cd5b160d17ab3255a3e9acee8c0cd3e0474145936c3594",
       "mode": "0644"
     },
     {
@@ -851,156 +1007,6 @@
       "path": "go.mod",
       "size": 306,
       "sha256": "55125c16fc34456f1d7fae9b2c428f9d3dbdda61695f4f46fbd438c89c66c991",
-      "mode": "0644"
-    },
-    {
-      "path": "go.work",
-      "size": 15,
-      "sha256": "afae2d8432202a6145ed5cff5a1ce79e4f84ae10162d175ba3e70f3e57588393",
-      "mode": "0644"
-    },
-    {
-      "path": "internal/accounting/memory.go",
-      "size": 3309,
-      "sha256": "9d66a1e61f5eb03b409270c072d929e718ae86def870165875b2d635878c6148",
-      "mode": "0644"
-    },
-    {
-      "path": "internal/accounting/money_client.go",
-      "size": 319,
-      "sha256": "14075f7d11ee79fda6097cf57c2b98a40968d49e53680e99ba814fbf81d69d60",
-      "mode": "0644"
-    },
-    {
-      "path": "internal/accounting/service.go",
-      "size": 2190,
-      "sha256": "a3526366a320dbe207bdf739278ed5607d90d290df56fdafd3d5d5985a43fa59",
-      "mode": "0644"
-    },
-    {
-      "path": "internal/accounting/types.go",
-      "size": 819,
-      "sha256": "7344c7d7454181cde3f294f24b142e90cdaea01b24f9926b3cc6826e7179d226",
-      "mode": "0644"
-    },
-    {
-      "path": "internal/appdirs/paths.go",
-      "size": 1454,
-      "sha256": "b622e09664f3dc1b28abc4f48b084d5ea1a3b719c28025d9cd0cd9d42136a41a",
-      "mode": "0644"
-    },
-    {
-      "path": "internal/auth/authorization/scopes.go",
-      "size": 330,
-      "sha256": "faea42916f22397fa91d5107c81defa75d3fd7494d867dd12a1170ea2bd900c0",
-      "mode": "0644"
-    },
-    {
-      "path": "internal/auth/authorization/set.go",
-      "size": 495,
-      "sha256": "f13a197c2362f062bf3a582279d0039795fd3acfd7bd61f0f38cb784df9c435b",
-      "mode": "0644"
-    },
-    {
-      "path": "internal/auth/mcpconfig/static_token.go",
-      "size": 1255,
-      "sha256": "586106d54dcb12e7469fb9182e26bb3d363cbc1d015fb7240262c4dc9e81273b",
-      "mode": "0644"
-    },
-    {
-      "path": "internal/auth/mcpconfig/static_token_test.go",
-      "size": 1389,
-      "sha256": "818dc7ee383702e7d19e1356bc5c42fb80829381e6cfaa7635b8108653d7c75e",
-      "mode": "0644"
-    },
-    {
-      "path": "internal/auth/mcpscope/scope.go",
-      "size": 2830,
-      "sha256": "ddf94dfe4e9005f8ff98c2e0bdc265dee9d7ef6d546f72af4ba30dc8fea5c59c",
-      "mode": "0644"
-    },
-    {
-      "path": "internal/auth/mcpscope/scope_test.go",
-      "size": 1849,
-      "sha256": "a93356bb87e6b84bf5c2f4aa7e199bdd9bbe8b9126bb4ad30c8f2572f6b31190",
-      "mode": "0644"
-    },
-    {
-      "path": "internal/auth/scopedtoken/claims.go",
-      "size": 881,
-      "sha256": "17d620d9cb60578c4cdcd223aa331e94d50f02e368342f9329c7cc46848d402b",
-      "mode": "0644"
-    },
-    {
-      "path": "internal/auth/scopedtoken/context.go",
-      "size": 588,
-      "sha256": "25f1c73d58713f2129bbeda670db66f988ba8521b4a1e57a98b7298169d35711",
-      "mode": "0644"
-    },
-    {
-      "path": "internal/auth/scopedtoken/keyring.go",
-      "size": 4914,
-      "sha256": "f0b0ab605016ce801d5fa377eb13c1a257a76ce91e3780fe1be7d3835be43345",
-      "mode": "0644"
-    },
-    {
-      "path": "internal/auth/scopedtoken/secrets.go",
-      "size": 2065,
-      "sha256": "bba89dfc681bd1f29f8c53b9208d8bab244d41b667fe27d9dda5ce15d756f663",
-      "mode": "0644"
-    },
-    {
-      "path": "internal/auth/scopedtoken/service.go",
-      "size": 5591,
-      "sha256": "039ad4ad4e79abe0164493f22a671a76c941bbf3714780378c55fcc57983ef6a",
-      "mode": "0644"
-    },
-    {
-      "path": "internal/auth/scopedtoken/token_test.go",
-      "size": 6542,
-      "sha256": "b35838eb0c59a67719cc466c9ddab40ce2d855da93c0dce61a4f16d24c1e97c6",
-      "mode": "0644"
-    },
-    {
-      "path": "internal/auth/scopedtoken/types.go",
-      "size": 986,
-      "sha256": "a55b2efd8fa8dc9da6acb55fafda49dc40ef5e072cf19dd93bd676959bb293f5",
-      "mode": "0644"
-    },
-    {
-      "path": "internal/auth/scopedtoken/validation.go",
-      "size": 1328,
-      "sha256": "478b47b66ce5bf6e0562f0a046d9ba0799b8cf870238a2c34162413b0ac15e1e",
-      "mode": "0644"
-    },
-    {
-      "path": "internal/auth/virtualkey/context.go",
-      "size": 374,
-      "sha256": "01321dab0f334be8e5098dad8935116a28b3bb6da9bef143203817c4d5828c8b",
-      "mode": "0644"
-    },
-    {
-      "path": "internal/auth/virtualkey/memory.go",
-      "size": 2830,
-      "sha256": "f2ca883317815fbe722636a2ba4a806839900603d28215298110624bad63ed5c",
-      "mode": "0644"
-    },
-    {
-      "path": "internal/auth/virtualkey/parser.go",
-      "size": 1993,
-      "sha256": "e0962dee79bf85e3e05255ce996ea1a79c30301270eb9aaa9ed908ca76b8b6d7",
-      "mode": "0644"
-    },
-    {
-      "path": "internal/auth/virtualkey/parser_test.go",
-      "size": 1557,
-      "sha256": "f63baaa1006c5750db4acfd6e76543bbb9d54b5610a1fd70479a5a2a451198b4",
-      "mode": "0644"
-    },
-    {
-      "path": "internal/auth/virtualkey/postgres.go",
-      "size": 6561,
-      "sha256": "f53b2bec865f2cf1a86e628769209e19d127e81a1bffd28ba830f95b8d721002",
       "mode": "0644"
     }
   ]

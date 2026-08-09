@@ -2,6 +2,150 @@
   "version": 2,
   "files": [
     {
+      "path": "internal/persistence/postgres/outbox_repository.go",
+      "size": 9791,
+      "sha256": "25fa849e42be618ba983ec70656121701bad749dda45ae5520e1305248483188",
+      "mode": "0644"
+    },
+    {
+      "path": "internal/persistence/postgres/runtime_journal.go",
+      "size": 13461,
+      "sha256": "5d0cfe7945be5c25a9135c3c1f9f5662f522b92e9322cfee17f4ff0956b2a7a7",
+      "mode": "0644"
+    },
+    {
+      "path": "internal/persistence/postgres/snapshot_store.go",
+      "size": 7366,
+      "sha256": "20e091361ea01ff623e63e57d4f5b827d25169b77eef54ac15b0820d36d0c804",
+      "mode": "0644"
+    },
+    {
+      "path": "internal/persistence/valkey/client.go",
+      "size": 1580,
+      "sha256": "5986ead6e45aae89cfb0c60efdbab89efdb01dba9bc01bc1f899ca6bae59fca8",
+      "mode": "0644"
+    },
+    {
+      "path": "internal/persistence/valkey/lease_manager.go",
+      "size": 838,
+      "sha256": "50daf30474a9e5a7f7caf7400f653bfdd2b39bf9cb7a58ca23e166a4cd501a13",
+      "mode": "0644"
+    },
+    {
+      "path": "internal/protocol/anthropic/messages/adapter.go",
+      "size": 9124,
+      "sha256": "39facc0fb6e61dad95d76acac0486415f78cb3d3530a10d08d8635d64bb26888",
+      "mode": "0644"
+    },
+    {
+      "path": "internal/protocol/canonical/capabilities.go",
+      "size": 1307,
+      "sha256": "3ab87a68f7442d850cd445599e7bf052eeb1f6d73f52c7193d88616f9034f9a9",
+      "mode": "0644"
+    },
+    {
+      "path": "internal/protocol/canonical/types.go",
+      "size": 3482,
+      "sha256": "db013b1a1ed8698e73212663abed49f095a93c85e84f843e130ec77b597cd217",
+      "mode": "0644"
+    },
+    {
+      "path": "internal/protocol/compiler/compiler.go",
+      "size": 2612,
+      "sha256": "b36c35f45cdcb3b223b774aad90e53ff1b494f2be706e045d25df7471fbd6e11",
+      "mode": "0644"
+    },
+    {
+      "path": "internal/protocol/compiler/loss.go",
+      "size": 944,
+      "sha256": "7b784d97a74a82f4f4cc5a477a51760a6ceac0a9e61f66ecbb62648d611cc112",
+      "mode": "0644"
+    },
+    {
+      "path": "internal/protocol/compiler/registry.go",
+      "size": 1413,
+      "sha256": "453a4f5f52f9ba6fa2092e5a59b5afaafd6d3585e6f3403709d96e3df99c4437",
+      "mode": "0644"
+    },
+    {
+      "path": "internal/protocol/defaults/registry.go",
+      "size": 847,
+      "sha256": "5436b47b85bd041e5d8f20b6561df6aca9cb2cc11987b13d3bf71b00940d9dca",
+      "mode": "0644"
+    },
+    {
+      "path": "internal/protocol/gemini/generate/adapter.go",
+      "size": 7792,
+      "sha256": "39a8ace7222c2a45891c37325a46d445e0bf63c3a0f4eb70d9c5182d895ac5c0",
+      "mode": "0644"
+    },
+    {
+      "path": "internal/protocol/openai/chat/adapter.go",
+      "size": 8244,
+      "sha256": "98101c247fdc8bb436bc4e62e90f3dc3458f220fbe6bb31ab2c2b4b8834a9c2d",
+      "mode": "0644"
+    },
+    {
+      "path": "internal/protocol/openai/responses/adapter.go",
+      "size": 9368,
+      "sha256": "bf75e38e357c01e6349c3ad07b41a93b5516f0fd8c88a8b2f68fad3a7f09101e",
+      "mode": "0644"
+    },
+    {
+      "path": "internal/protocol/stream/event.go",
+      "size": 1114,
+      "sha256": "396555d6b3c4377abdc10ab1dabf94480da74e99679115c5e1a3a514fcebbc9d",
+      "mode": "0644"
+    },
+    {
+      "path": "internal/protocol/stream/state_machine.go",
+      "size": 2766,
+      "sha256": "d6aae3b74e0ad557a95eea79cba4572d829af0f878d708d371d9beb11ae57597",
+      "mode": "0644"
+    },
+    {
+      "path": "internal/provider/adapter.go",
+      "size": 779,
+      "sha256": "585190d73f6db90276dc4ad605367c054f0716c8bf66cf22753d10efe86035bd",
+      "mode": "0644"
+    },
+    {
+      "path": "internal/provider/anthropic/adapter.go",
+      "size": 1655,
+      "sha256": "cfca4fe20a12c3e10203a4aeafff7c5fdb5139897be23bd23cd8297e13f4ea80",
+      "mode": "0644"
+    },
+    {
+      "path": "internal/provider/deepseek/adapter.go",
+      "size": 1558,
+      "sha256": "9e52f90475a0151acaf53ac639c3c24c187d674826bb5d23d7ef26437d2ed610",
+      "mode": "0644"
+    },
+    {
+      "path": "internal/provider/error.go",
+      "size": 7387,
+      "sha256": "6b308b4f695e1651c22695aa239b1688900b1f6b69087b825ac062ff28a0148d",
+      "mode": "0644"
+    },
+    {
+      "path": "internal/provider/google/adapter.go",
+      "size": 2287,
+      "sha256": "8693343c7a6ee2b4c3fbf1776cfdad55600392f4bdedeca3857c0bbf39f9dbab",
+      "mode": "0644"
+    },
+    {
+      "path": "internal/provider/httpadapter/adapter.go",
+      "size": 4558,
+      "sha256": "9a34c2077976c7aaee3bdfd003f9d54a8945d41d6dc737a95b055b242bb257b7",
+      "mode": "0644"
+    },
+    {
+      "path": "internal/provider/httpadapter/decode.go",
+      "size": 6889,
+      "sha256": "619fa9101e248b62084eba5ad3fc696b3a211aee494ba038105aa2dc2b706285",
+      "mode": "0644"
+    },
+    {
       "path": "internal/provider/httpadapter/response_stream.go",
       "size": 4865,
       "sha256": "b9f16e6f203a239cdc6b9662f0db78e76488709a44efca1863ef3bd7e518ae14",
@@ -39,8 +183,8 @@
     },
     {
       "path": "internal/releasepack/archive.go",
-      "size": 6034,
-      "sha256": "45e7fc1df435d116e16c50a84b7ab98a4fa65dde722870ab7032cf9363d2f932",
+      "size": 6084,
+      "sha256": "7174a3f3a2817e0382864eaf3690064276abf478a92395bf18d9e84dd3c0cb1d",
       "mode": "0644"
     },
     {
@@ -69,8 +213,8 @@
     },
     {
       "path": "internal/releasepack/releasepack_test.go",
-      "size": 6874,
-      "sha256": "53560c7a03528394909537576ad0b44c7148e52564ed9a2a6a13dc9080213bc0",
+      "size": 7729,
+      "sha256": "f744220e44d525cde8f3145a6395d004f2d6265fd7a7b61437cbe6ac2dbedb05",
       "mode": "0644"
     },
     {
@@ -87,8 +231,8 @@
     },
     {
       "path": "internal/releasepack/scan.go",
-      "size": 3515,
-      "sha256": "c93e617fcb9b79be89230c8795fb1b1193608b6d301e58d4712ba6c8f7d2d455",
+      "size": 4105,
+      "sha256": "5f5f793ae24b3137795dcfe6e76b1187c21d8e63fc3be4ebf72181c4f34d128e",
       "mode": "0644"
     },
     {
@@ -388,7 +532,7 @@
     {
       "path": "package.json",
       "size": 399,
-      "sha256": "37756ffe6f1f88bf0e9e6be811d23dba6095fc1a7a3e5ef8d62fac1780d9eec8",
+      "sha256": "f02cc743f659c8db4e77191d28712613e0223a7b641ea7de928b10d901317d7a",
       "mode": "0644"
     },
     {
@@ -658,7 +802,7 @@
     {
       "path": "web/control-console/package.json",
       "size": 451,
-      "sha256": "85435e4b2cb8020abe15b4b39d2b5f93a1a6231c70c1ef09f90c6ad96e75e946",
+      "sha256": "9dac9ba7fd6e4b3594d86d28913823c54d7e908e3687d5ee6dc317b7d647ad7b",
       "mode": "0644"
     },
     {

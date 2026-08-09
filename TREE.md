@@ -1,12 +1,35 @@
 # Repository Tree
 
 ```text
-ai-runtime-gateway
+relaydock
+├── .agents/
+│   ├── checklists/
+│   │   ├── cli-tool.md
+│   │   ├── desktop-app.md
+│   │   ├── monorepo.md
+│   │   ├── ops-change.md
+│   │   └── security.md
+│   ├── skills/
+│   │   ├── bugfix/
+│   │   │   └── SKILL.md
+│   │   ├── cli-tool/
+│   │   │   └── SKILL.md
+│   │   ├── desktop-app/
+│   │   │   └── SKILL.md
+│   │   ├── feature/
+│   │   │   └── SKILL.md
+│   │   └── monorepo/
+│   │       └── SKILL.md
+│   ├── context-map.md
+│   └── README.md
 ├── .github/
-│   └── workflows/
-│       ├── ci.yml
-│       ├── desktop-canary.yml
-│       └── release.yml
+│   ├── workflows/
+│   │   ├── ci.yml
+│   │   ├── desktop-canary.yml
+│   │   └── release.yml
+│   └── PULL_REQUEST_TEMPLATE.md
+├── .ssealed/
+│   └── manifest.json
 ├── build/
 │   ├── darwin/
 │   │   └── Taskfile.yml
@@ -98,6 +121,24 @@ ai-runtime-gateway
 │   │   ├── 0008-license-boundary.md
 │   │   ├── 0009-mcp-sdk-version.md
 │   │   └── 0010-wails-version-pin.md
+│   ├── architecture/
+│   │   └── 00-system-boundary.md
+│   ├── cli/
+│   │   ├── command-contract.md
+│   │   └── README.md
+│   ├── desktop/
+│   │   ├── installers.md
+│   │   └── README.md
+│   ├── engineering/
+│   │   └── 00-project-invariants.md
+│   ├── monorepo/
+│   │   ├── README.md
+│   │   └── workspace-boundaries.md
+│   ├── ops/
+│   │   └── 00-operational-contract.md
+│   ├── product/
+│   │   ├── 00-product-brief.md
+│   │   └── 02-spec.md
 │   ├── 00-product-identity.md
 │   ├── 01-scope-and-non-goals.md
 │   ├── 02-system-context.md
@@ -582,6 +623,7 @@ ai-runtime-gateway
 ├── buf.gen.yaml
 ├── buf.yaml
 ├── CHANGELOG.md
+├── CHECKLIST.md
 ├── config.example.yaml
 ├── CONTRIBUTING.md
 ├── go.mod

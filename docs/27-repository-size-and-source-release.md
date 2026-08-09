@@ -57,7 +57,7 @@ root index에는 chunk 경로, 범위, 파일 수, 크기, SHA-256과 전체 rec
 ```powershell
 go run ./cmd/releasepack build `
   --root . `
-  --output ../ai-runtime-gateway-0.5.0-dev-source.zip `
+  --output ../ai-runtime-gateway-0.5.1-dev-source.zip `
   --generated-at 2026-08-08T12:00:00Z
 
 go run ./cmd/releasepack verify --root .

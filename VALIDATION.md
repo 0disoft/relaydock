@@ -1,6 +1,6 @@
 # Validation Report
 
-검증 시점은 **2026-08-08**이며 대상 버전은 **`0.5.0-dev`**다. 이 문서는 현재 샌드박스에서 실제로 실행한 검사와, 외부 도구·서비스·운영체제·공급자 자격 증명이 없어 실행하지 못한 검사를 분리한다. CI workflow에 정의돼 있다는 사실을 실제 통과 결과로 간주하지 않는다.
+검증 시점은 **2026-08-09**이며 대상 버전은 **`0.5.1-dev`**다. 이 문서는 현재 샌드박스에서 실제로 실행한 검사와, 외부 도구·서비스·운영체제·공급자 자격 증명이 없어 실행하지 못한 검사를 분리한다. CI workflow에 정의돼 있다는 사실을 실제 통과 결과로 간주하지 않는다.
 
 ## 검증 대상
 
@@ -58,6 +58,7 @@ Connect·Wails·MCP·pgx 의존성을 전이적으로 포함하는 server comman
 - symlink·socket·device 같은 비정규 파일을 archive에서 조용히 누락하지 않고 거절
 - manifest와 size-policy JSON의 unknown field·trailing JSON 거절
 - source ZIP entry 정렬, timestamp 정규화, archive 중 mode·size·SHA-256 재검증
+- Windows에서도 일반 파일 `0644`, 셸 스크립트 `0755` mode를 보존하는 source manifest 정규화
 - 동일 입력·timestamp의 source ZIP SHA-256 재현
 - archive output의 repository 내부 배치 거절과 기존 output 원자 교체
 - local Expert metadata와 최대 32 KiB content-addressed source chunk 분리

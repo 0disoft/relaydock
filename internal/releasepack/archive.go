@@ -163,7 +163,7 @@ func addZIPFile(writer *zip.Writer, root, prefix string, generatedAt time.Time, 
 	if err != nil {
 		return fmt.Errorf("stat archive file %s: %w", record.Path, err)
 	}
-	if !before.Mode().IsRegular() || before.Size() != record.Size || before.Mode().Perm() != mode.Perm() {
+	if !before.Mode().IsRegular() || before.Size() != record.Size || canonicalFileMode(record.Path, before.Mode()) != mode.Perm() {
 		return fmt.Errorf("source metadata changed before archiving %s", record.Path)
 	}
 	header := &zip.FileHeader{
@@ -184,7 +184,7 @@ func addZIPFile(writer *zip.Writer, root, prefix string, generatedAt time.Time, 
 	if statErr != nil {
 		return fmt.Errorf("restat archive file %s: %w", record.Path, statErr)
 	}
-	if written != record.Size || hex.EncodeToString(hash.Sum(nil)) != record.SHA256 || after.Size() != record.Size || after.Mode().Perm() != mode.Perm() {
+	if written != record.Size || hex.EncodeToString(hash.Sum(nil)) != record.SHA256 || after.Size() != record.Size || canonicalFileMode(record.Path, after.Mode()) != mode.Perm() {
 		return fmt.Errorf("source changed while archiving %s", record.Path)
 	}
 	return nil

@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.1-dev — ssealed lifecycle and portable source modes
+
+- RelayDock를 ssealed의 minimal monorepo profile과 desktop-app·cli-tool addon에 연결했다.
+- 생성된 제품·아키텍처·운영 문서는 기존 번호 문서를 가리키는 얇은 라우팅 인덱스로 유지한다.
+- Windows source scan에서 일반 파일을 `0644`, 셸 스크립트를 `0755`로 정규화해 POSIX manifest mode의 불필요한 전체 변경을 막았다.
+- source archive의 mode 검증도 같은 정규화 계약을 사용하고 Windows·POSIX 회귀 테스트를 추가했다.
+
 ## 0.5.0-dev — bounded modules, chunked local state, and key rotation
 
 저장소와 로컬 상태가 커질수록 생기던 단일 파일 병목을 제거하고, 서명키·MCP HMAC key를 중단 없이 회전할 수 있게 만들었다.

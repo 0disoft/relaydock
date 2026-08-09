@@ -48,6 +48,30 @@ func TestBuildCreatesChunkedManifestAndDeterministicArchive(t *testing.T) {
 	}
 }
 
+func TestCanonicalFileModeForOS(t *testing.T) {
+	t.Parallel()
+	tests := []struct {
+		name     string
+		path     string
+		mode     os.FileMode
+		goos     string
+		expected os.FileMode
+	}{
+		{name: "Windows regular file", path: "README.md", mode: 0o666, goos: "windows", expected: 0o644},
+		{name: "Windows shell source", path: "scripts/check.sh", mode: 0o666, goos: "windows", expected: 0o755},
+		{name: "POSIX executable", path: "scripts/tool", mode: 0o755, goos: "linux", expected: 0o755},
+		{name: "POSIX regular file", path: "config.json", mode: 0o600, goos: "linux", expected: 0o644},
+	}
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			t.Parallel()
+			if actual := canonicalFileModeForOS(test.path, test.mode, test.goos); actual != test.expected {
+				t.Fatalf("mode = %04o, want %04o", actual, test.expected)
+			}
+		})
+	}
+}
+
 func TestAuditRejectsOversizedFileWithoutDocumentedException(t *testing.T) {
 	t.Parallel()
 	root := t.TempDir()

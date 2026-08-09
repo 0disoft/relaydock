@@ -8,6 +8,7 @@ import (
 	"io/fs"
 	"os"
 	"path/filepath"
+	"runtime"
 	"sort"
 	"strings"
 )
@@ -87,8 +88,25 @@ func inspectFile(path, relative string) (FileRecord, error) {
 	}
 	return FileRecord{
 		Path: relative, Size: info.Size(), SHA256: hex.EncodeToString(hash.Sum(nil)),
-		Mode: fmt.Sprintf("%04o", info.Mode().Perm()),
+		Mode: fmt.Sprintf("%04o", canonicalFileMode(relative, info.Mode())),
 	}, nil
+}
+
+func canonicalFileMode(relative string, mode os.FileMode) os.FileMode {
+	return canonicalFileModeForOS(relative, mode, runtime.GOOS)
+}
+
+func canonicalFileModeForOS(relative string, mode os.FileMode, goos string) os.FileMode {
+	executable := mode.Perm()&0o111 != 0
+	if goos == "windows" {
+		// Windows does not expose POSIX execute bits. Shell sources are the only
+		// executable files shipped by this repository outside built artifacts.
+		executable = strings.EqualFold(filepath.Ext(relative), ".sh")
+	}
+	if executable {
+		return 0o755
+	}
+	return 0o644
 }
 
 func enforceSizePolicy(records []FileRecord, policy SizePolicy) error {
