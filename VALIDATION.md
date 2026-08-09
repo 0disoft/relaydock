@@ -1,6 +1,6 @@
 # Validation Report
 
-검증 시점은 **2026-08-09**이며 대상 버전은 **`0.5.1-dev`**다. 이 문서는 현재 샌드박스에서 실제로 실행한 검사와, 외부 도구·서비스·운영체제·공급자 자격 증명이 없어 실행하지 못한 검사를 분리한다. CI workflow에 정의돼 있다는 사실을 실제 통과 결과로 간주하지 않는다.
+검증 시점은 **2026-08-09**이며 대상 버전은 **`0.5.2-dev`**다. 이 문서는 현재 샌드박스에서 실제로 실행한 검사와, 외부 도구·서비스·운영체제·공급자 자격 증명이 없어 실행하지 못한 검사를 분리한다. CI workflow에 정의돼 있다는 사실을 실제 통과 결과로 간주하지 않는다.
 
 ## 배포 준비 판정
 
@@ -8,7 +8,7 @@
 
 라이선스 경계는 2026-08-09에 저장소 전체 Apache-2.0으로 확정했다. 루트 `LICENSE`와 `NOTICE`를 추가하고 `LICENSE-PENDING.md`를 제거했으며, 모든 휴대용 bundle이 두 파일을 함께 포함하도록 회귀 검사를 통과했다.
 
-`releasepack readiness --root . --version 0.5.1-dev`는 Go 1.26.4, `go.sum`, Bun 1.3.14 `bun.lock`, `LICENSE`, `NOTICE`, public module identity와 477개 source record의 현재 manifest를 확인하고 통과했다.
+`releasepack readiness --root . --version 0.5.2-dev`는 Go 1.26.4, `go.sum`, Bun 1.3.14 `bun.lock`, `LICENSE`, `NOTICE`, public module identity와 477개 source record의 현재 manifest를 확인하고 통과했다.
 
 이번 준비도 보강에서 다음 항목은 로컬 검증을 통과했다.
 

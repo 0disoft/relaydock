@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.5.1-dev — ssealed lifecycle and portable source modes
+## 0.5.2-dev — verified local release gates
 
 - RelayDock를 ssealed의 minimal monorepo profile과 desktop-app·cli-tool addon에 연결했다.
 - 공개 Go module path와 내부 import를 `github.com/0disoft/relaydock`로 확정했다.

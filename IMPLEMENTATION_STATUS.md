@@ -2,7 +2,7 @@
 
 ## 현재 단계
 
-`0.5.1-dev`는 운영 경로와 bounded-file 계약을 가진 reference implementation이다. 외부 인프라가 없으면 `local/echo`, 원자 JSON 저장소, memory lease로 실행되고, PostgreSQL·Valkey를 연결하면 영속 consultation, virtual key, signed Control snapshot, runtime journal, transactional outbox와 분산 provider lease가 활성화된다.
+`0.5.2-dev`는 운영 경로와 bounded-file 계약을 가진 reference implementation이다. 외부 인프라가 없으면 `local/echo`, 원자 JSON 저장소, memory lease로 실행되고, PostgreSQL·Valkey를 연결하면 영속 consultation, virtual key, signed Control snapshot, runtime journal, transactional outbox와 분산 provider lease가 활성화된다.
 
 완전한 production-ready 판정은 아니다. 실제 공급자 계정, money-platform, Go 1.26 전체 dependency build, PostgreSQL·Valkey 실서버, Wails installer·update·code signing은 대상 환경에서 별도 통과해야 한다.
 
@@ -47,7 +47,7 @@
 | Packaging | 구현·테스트 | desktop+MCP bundle, server/ops list, 40 KiB audit, non-regular-file rejection, strict chunked manifest, deterministic source ZIP | native installer·artifact signing·cross-Go-version reproducibility |
 | CI contracts | 구현 | Go, Buf, sqlc, frontend, PostgreSQL integration gates | 실제 hosted runner 통과·artifact 서명 |
 
-## 0.5.1-dev까지 닫힌 주요 공백
+## 0.5.2-dev까지 닫힌 주요 공백
 
 1. 40 KiB 저장소 파일 상한과 이유가 필요한 예외 정책을 CI·release에 강제했다.
 2. 단일 대형 manifest를 root index와 검증 가능한 chunk로 분리했다.

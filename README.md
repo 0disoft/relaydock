@@ -2,7 +2,7 @@
 
 Codex·Claude Code·OpenCode 같은 코딩 에이전트, 공식 AI API, 자체 모델 서버, 고난도 설계 검토용 Expert Escalation MCP를 하나의 운영 계층으로 묶는 Go-first 저장소다.
 
-`0.5.1-dev`는 scaffold가 아니라 **Wails v3 로컬 런타임, 호환 API Gateway, 다중 공급자 라우터, 서명된 Control snapshot, 영속 request journal, transactional outbox, scoped Remote MCP까지 연결한 reference implementation**이다. 외부 인프라 없이 `local/echo` 수직 슬라이스를 실행할 수 있고, PostgreSQL·Valkey를 붙이면 관리형 경로를 사용할 수 있다.
+`0.5.2-dev`는 scaffold가 아니라 **Wails v3 로컬 런타임, 호환 API Gateway, 다중 공급자 라우터, 서명된 Control snapshot, 영속 request journal, transactional outbox, scoped Remote MCP까지 연결한 reference implementation**이다. 외부 인프라 없이 `local/echo` 수직 슬라이스를 실행할 수 있고, PostgreSQL·Valkey를 붙이면 관리형 경로를 사용할 수 있다.
 
 완전한 production certification을 주장하지 않는다. 실제 공급자 계정, Go 1.26 전체 module build, PostgreSQL·Valkey 실서버, Wails 네이티브 패키징·코드 서명, money-platform 정산은 대상 환경에서 별도로 통과해야 한다. 실제 검증 범위는 `VALIDATION.md`가 SSOT다.
 

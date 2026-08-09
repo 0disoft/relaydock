@@ -130,7 +130,7 @@
     {
       "path": ".ssealed/manifest.json",
       "size": 18269,
-      "sha256": "05759cd14d0b5289bc617068bc6d5b0439a93c141f9224276ffe60d6db3632c8",
+      "sha256": "53dba0a1a8895bfc2e71afc253a04f2e1448abc98d6f21164025279c22bcc441",
       "mode": "0644"
     },
     {
@@ -141,8 +141,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "size": 16412,
-      "sha256": "c4c9b24f60a307da62197adea8f4d0eb3ab60efb930504d14ab18477f18b2895",
+      "size": 16397,
+      "sha256": "00268f0c303880b35baeb94c316728ceb6510872637d05a0439c87a0515a6131",
       "mode": "0644"
     },
     {
@@ -160,7 +160,7 @@
     {
       "path": "IMPLEMENTATION_STATUS.md",
       "size": 9911,
-      "sha256": "23aa626301d5424b70f087e9475e57e2ebf6fd49e12790c9b1d2168929a42bfc",
+      "sha256": "64cae0f982db6191f02f6444f817a5b8431fd6920748369eea6f2819f9af1932",
       "mode": "0644"
     },
     {
@@ -178,7 +178,7 @@
     {
       "path": "README.md",
       "size": 18804,
-      "sha256": "2f4e888a3d10f9c58818b766d5bbac149c3cbe5ed9da14516c9660fff9726baf",
+      "sha256": "5ef17db005ee4053f0719a3655ea6325116e47cdfc137125105944a3b6603b26",
       "mode": "0644"
     },
     {
@@ -202,13 +202,13 @@
     {
       "path": "VALIDATION.md",
       "size": 10785,
-      "sha256": "edd86c6fc42a264d1353dda992217d85e29d711f42d13abdec0182b5ce233a85",
+      "sha256": "8dd21584d73d1ad3356ab5078850096451ec011f60cc17101159c8887f3569d3",
       "mode": "0644"
     },
     {
       "path": "VERSION",
       "size": 10,
-      "sha256": "3a458586c6b83474c0fc256792cf55e362acba30e5eaabe04da9889d5bdc1fd4",
+      "sha256": "37ad7ae7e967478231818355f49789f774a4fd9aaa72c7c3abb8c44bf7a06cf4",
       "mode": "0644"
     },
     {
@@ -238,7 +238,7 @@
     {
       "path": "build/config.yml",
       "size": 565,
-      "sha256": "3638563bf132af8a7b467e050ea34d58fa59b438419fc214808a39c3f12ea586",
+      "sha256": "7d7148f00784451350202938f0fcc5e0ba72eee72e33cd2582e31c6f63f22239",
       "mode": "0644"
     },
     {
@@ -706,7 +706,7 @@
     {
       "path": "docs/27-repository-size-and-source-release.md",
       "size": 3591,
-      "sha256": "60b76c5e987bc6a4eb399f5c22c828bfb26ac6a3ca71b6a41ff30cf7a827c12e",
+      "sha256": "d429263be381920ecced8501e4904dcfaa26c90ce8e6943583795dd5e91bf068",
       "mode": "0644"
     },
     {
@@ -862,7 +862,7 @@
     {
       "path": "frontend/package.json",
       "size": 680,
-      "sha256": "93e5f284de583b696cce8ca2e087737b4812de3eade9dea8a309dd6902f2f919",
+      "sha256": "5eeee45f01dd8c78c8b4edc47dcefb59b6d5049395343d392bd1ed8ff7e08fdd",
       "mode": "0644"
     },
     {

@@ -562,7 +562,7 @@
     {
       "path": "package.json",
       "size": 471,
-      "sha256": "883770744f3f5c19c478a5ebbb1ed31223ecdc48b98e4ecd29965771afc950fd",
+      "sha256": "cbb1630338c91c1eeb902c16ee7425121073cd08ab26c0a9dd8cb82a516b8ef0",
       "mode": "0644"
     },
     {
@@ -850,7 +850,7 @@
     {
       "path": "web/control-console/package.json",
       "size": 629,
-      "sha256": "33dfb4e6422aa9bfd3b27295003b2b646640d33a0a3a1b7b2a045679989e31ea",
+      "sha256": "710451250deaab29cdc71e2c6daae5e79d2e2500ed2d1286249d32014cade745",
       "mode": "0644"
     },
     {
