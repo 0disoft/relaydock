@@ -8,7 +8,9 @@
 
 라이선스 경계는 2026-08-09에 저장소 전체 Apache-2.0으로 확정했다. 루트 `LICENSE`와 `NOTICE`를 추가하고 `LICENSE-PENDING.md`를 제거했으며, 모든 휴대용 bundle이 두 파일을 함께 포함하도록 회귀 검사를 통과했다.
 
-`releasepack readiness --root . --version 0.5.2-dev`는 Go 1.26.4, `go.sum`, Bun 1.3.14 `bun.lock`, `LICENSE`, `NOTICE`, public module identity와 477개 source record의 현재 manifest를 확인하고 통과했다.
+`releasepack readiness --root . --version 0.5.2-dev`는 Go 1.26.4, `go.sum`, Bun 1.3.14 `bun.lock`, `LICENSE`, `NOTICE`, public module identity와 478개 source record의 현재 manifest를 확인하고 통과했다.
+
+commit `0905d93`의 [GitHub Actions CI run 31301723465](https://github.com/0disoft/relaydock/actions/runs/31301723465)은 여섯 job을 모두 통과했다. 이 결과는 Linux race test, PostgreSQL 18 integration, Buf·SQLC generation과 generated package compile, Bun/Svelte 검사, Windows Wails desktop·MCP bridge compile을 실제 hosted runner에서 검증한 근거다.
 
 이번 준비도 보강에서 다음 항목은 로컬 검증을 통과했다.
 
@@ -23,7 +25,7 @@
 
 다음 항목은 workflow에 구성됐거나 문서 계약만 존재할 뿐 실제 성공 근거가 없다.
 
-- hosted GitHub Actions 전체 실행과 artifact attestation 발급·검증
+- release workflow의 artifact attestation 발급·외부 검증
 - hosted runner의 pinned Syft SPDX SBOM 생성·내용 검토·attestation 검증과 전용 Ed25519 key checksum signature 발급·외부 trust-root 검증
 - hosted runner의 OCI release-candidate build·SBOM·attestation 검증과 registry push·immutable manifest digest promotion
 - Windows native installer, code signing, updater manifest signing과 rollback
@@ -35,7 +37,7 @@
 
 최종 manifest 생성 직전의 수작업 소스와 생성된 manifest 조각을 합친 기준은 다음과 같다.
 
-- 전체 source record 477개
+- 전체 source record 478개
 - Go 파일 295개
 - Go test 파일 53개, 명명된 `Test...` 함수 182개
 - Markdown 문서 82개
@@ -130,25 +132,24 @@ ZIP 내부 MANIFEST index와 chunk hash 대조
 
 최종 ZIP SHA-256은 artifact 바깥의 `.sha256` 파일에 기록한다. ZIP hash를 저장소 내부 문서에 넣지 않는 이유는 문서 수정이 다시 ZIP hash를 바꾸는 순환 참조를 만들기 때문이다.
 
-## CI에 정의했지만 이 샌드박스에서 실행하지 못한 gate
+## Hosted CI에서 통과한 gate
 
-다음은 workflow에 구성돼 있으나 이번 로컬 결과를 통과로 기록하지 않는다.
+다음은 commit `0905d93`의 hosted CI에서 실제 통과했다.
 
-- Go 1.26 hosted Linux race detector
-- Buf lint·generate 후 generated Go compile
-- sqlc generate 후 generated repository compile
+- Go 1.26 hosted Linux race detector와 vet
+- Buf 1.72.0 lint·generate 후 Protobuf·ConnectRPC package compile
+- SQLC 1.31.1 generate 후 PostgreSQL repository package compile
 - PostgreSQL 18 migration, runtime journal, outbox lease integration
-- Bun/Svelte desktop·control-console build
+- Bun frozen install과 desktop·control-console Svelte 검사
 - Windows runner의 pinned Wails v3 bindings·desktop·MCP bridge compile
-- native release artifact와 checksum 생성
 
 ## 이 환경에서 수행하지 못한 운영 검증
 
 다음 항목은 성공한 것으로 취급하지 않는다.
 
-- Windows local runner의 `go test -race ./...`와 hosted Linux race 결과
+- Windows local runner의 `go test -race ./...`
 - Wails v3 native desktop 실행과 Windows Named Pipe transport의 실제 OS 통합
-- `buf lint`, `buf breaking`, `buf generate`, `sqlc generate`
+- `buf breaking`
 - 실제 PostgreSQL 18 migration·rollback·multi-replica contention·backup restore
 - 실제 Valkey standalone·Sentinel·cluster Lua lease와 network partition
 - Docker·Compose·Coolify image build와 non-root smoke test

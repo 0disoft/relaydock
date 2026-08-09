@@ -2,6 +2,10 @@
 
 ## 0.5.2-dev — verified local release gates
 
+- Closed the complete hosted CI chain: Linux race and vet, PostgreSQL 18 integration, Buf and SQLC generation, generated contract compilation, both Svelte workspaces, and Windows Wails desktop/MCP compilation.
+- Patched `@sveltejs/kit` to 2.70.2 for GHSA-29g2-3rmr-qm68 and added a lockfile regression gate.
+- Upgraded `actions/checkout` to Node 24-based v7.0.1 and added local Go-format, Buf, SQLC, and generated-contract verification intents.
+
 - RelayDock를 ssealed의 minimal monorepo profile과 desktop-app·cli-tool addon에 연결했다.
 - 공개 Go module path와 내부 import를 `github.com/0disoft/relaydock`로 확정했다.
 - desktop binary, source archive, workspace package, Wails product metadata와 public protocol identity를 RelayDock 이름으로 통일했다.

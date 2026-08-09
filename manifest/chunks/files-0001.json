@@ -105,20 +105,20 @@
     },
     {
       "path": ".github/workflows/ci.yml",
-      "size": 4404,
-      "sha256": "6f0b91c0e2a79c4bdfd680504cdbc0579d28df04bf6a9aaaa337758bde6ae250",
+      "size": 4428,
+      "sha256": "3f5984301d34d98d6f079035b34f6a0ea2151e694629eba330b0ef5e223c3d22",
       "mode": "0644"
     },
     {
       "path": ".github/workflows/desktop-canary.yml",
-      "size": 596,
-      "sha256": "a5dcbf93dfdce44e0adee849d7a656b5edcbd2380bcf2bf2b1dd271fa9baf0f4",
+      "size": 600,
+      "sha256": "4a9ce481c6d58df951f44067bf51ff8062fc5313bda8cbbd8301a0e1a3f70727",
       "mode": "0644"
     },
     {
       "path": ".github/workflows/release.yml",
-      "size": 19666,
-      "sha256": "53483d85b7067988d9879b1c13ff7a3b19ef6a78f616818487a9b222cdc59534",
+      "size": 19702,
+      "sha256": "009c0ff5c97250424af5e279e7201a872af87e5eb0d82ebf551df247d048ce68",
       "mode": "0644"
     },
     {
@@ -130,7 +130,7 @@
     {
       "path": ".ssealed/manifest.json",
       "size": 18269,
-      "sha256": "53dba0a1a8895bfc2e71afc253a04f2e1448abc98d6f21164025279c22bcc441",
+      "sha256": "1a1426c3c259ddb2d042ffe4c7a97d7852fdff4ed65d506d2df455f6530e2cfd",
       "mode": "0644"
     },
     {
@@ -141,8 +141,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "size": 16397,
-      "sha256": "00268f0c303880b35baeb94c316728ceb6510872637d05a0439c87a0515a6131",
+      "size": 16843,
+      "sha256": "fb824ab3928d18b2a280ebfb248d64585f697205a42b6f8b94a29569350950b1",
       "mode": "0644"
     },
     {
@@ -201,8 +201,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "size": 10785,
-      "sha256": "8dd21584d73d1ad3356ab5078850096451ec011f60cc17101159c8887f3569d3",
+      "size": 11027,
+      "sha256": "9f17c707760be4d78a9e310e22b3077b6314f4347263a1fdb6de23c7dac186e1",
       "mode": "0644"
     },
     {

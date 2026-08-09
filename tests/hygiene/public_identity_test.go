@@ -277,6 +277,32 @@ func TestCIUsesFrozenDependencyResolution(t *testing.T) {
 	}
 }
 
+func TestWorkflowsUseNode24Checkout(t *testing.T) {
+	t.Parallel()
+	root := filepath.Join("..", "..")
+	for _, relative := range []string{
+		".github/workflows/ci.yml",
+		".github/workflows/release.yml",
+		".github/workflows/desktop-canary.yml",
+	} {
+		relative := relative
+		t.Run(relative, func(t *testing.T) {
+			t.Parallel()
+			raw, err := os.ReadFile(filepath.Join(root, filepath.FromSlash(relative)))
+			if err != nil {
+				t.Fatal(err)
+			}
+			workflow := string(raw)
+			if strings.Contains(workflow, "actions/checkout@v4") {
+				t.Error("workflow still uses the Node 20 checkout action")
+			}
+			if !strings.Contains(workflow, "actions/checkout@v7.0.1") {
+				t.Error("workflow does not pin the reviewed Node 24 checkout action")
+			}
+		})
+	}
+}
+
 func TestBunWorkspaceCommandsDoNotExitThroughHelp(t *testing.T) {
 	t.Parallel()
 	root := filepath.Join("..", "..")
