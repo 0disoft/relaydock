@@ -2,6 +2,37 @@
 
 검증 시점은 **2026-08-09**이며 대상 버전은 **`0.5.1-dev`**다. 이 문서는 현재 샌드박스에서 실제로 실행한 검사와, 외부 도구·서비스·운영체제·공급자 자격 증명이 없어 실행하지 못한 검사를 분리한다. CI workflow에 정의돼 있다는 사실을 실제 통과 결과로 간주하지 않는다.
 
+## 배포 준비 판정
+
+**현재 판정은 release blocked다.** source review와 내부 개발을 계속할 수는 있지만 public source release, 바이너리 배포, container publication, desktop update channel 개방을 시작하지 않는다.
+
+`releasepack readiness --root . --version 0.5.1-dev`는 다음 네 가지를 실제 blocker로 보고 fail-closed 처리했다.
+
+- `go.sum` 없음
+- 루트 Bun workspace의 `bun.lock` 없음
+- 최종 `LICENSE` 없음
+- `LICENSE-PENDING.md`가 아직 존재함
+
+이번 준비도 보강에서 다음 항목은 로컬 검증을 통과했다.
+
+- CI·release workflow의 Go read-only module resolution과 Bun frozen root-workspace install 계약
+- generated contracts, source, server, web, Windows desktop 산출물별 GitHub build provenance 단계 존재
+- 여섯 service Dockerfile의 `go.sum` 필수 입력, read-only module resolution, non-root runtime 계약
+- release readiness·workflow·container hygiene 회귀 테스트
+- source manifest 재생성·검증과 ssealed strict doctor
+
+다음 항목은 workflow에 구성됐거나 문서 계약만 존재할 뿐 실제 성공 근거가 없다.
+
+- 네트워크가 연결된 Go 1.26 환경의 `go.sum` 생성과 전체 dependency build
+- Bun 1.3.14의 `bun.lock` 생성, frozen install, frontend production build
+- hosted GitHub Actions 전체 실행과 artifact attestation 발급·검증
+- SPDX/CycloneDX SBOM 생성·attestation과 독립 artifact signature
+- container image build·scan·registry push·immutable digest promotion
+- Windows native installer, code signing, updater manifest signing과 rollback
+- PostgreSQL·Valkey·실제 provider·money-platform·24시간 soak 운영 gate
+
+라이선스 경계, 공개 저장소 visibility, artifact/code-signing key custody, container registry와 배포 대상은 코드가 대신 결정할 수 없는 release-owner 입력이다. 이 항목을 확정하고 외부 환경 gate를 실제 통과하기 전에는 “production-ready” 또는 “배포 완료”로 표시하지 않는다.
+
 ## 검증 대상
 
 최종 manifest 생성 직전의 수작업 소스와 생성된 manifest 조각을 합친 기준은 다음과 같다.

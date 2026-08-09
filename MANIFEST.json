@@ -1,19 +1,19 @@
 {
   "version": 2,
-  "generatedAt": "2026-08-09T04:12:42Z",
+  "generatedAt": "2026-08-09T04:15:12Z",
   "hashAlgorithm": "sha256",
   "fileCount": 471,
-  "totalBytes": 1355322,
+  "totalBytes": 1357366,
   "maximumFileBytes": 40960,
-  "aggregateSha256": "e2fa39ef9137d423b00ec78490e6dffb8672723e9de88de44808838e9c06d38a",
+  "aggregateSha256": "a748c3973c462d91a3e88543d1fe8132087ae3f8fcc091efa747fb2e13759159",
   "chunks": [
     {
       "path": "manifest/chunks/files-0001.json",
       "fileCount": 168,
       "firstPath": ".agents/README.md",
       "lastPath": "go.mod",
-      "size": 30646,
-      "sha256": "eba38fa4e004b4fce574d2a8206b36a0642276982cd1800864f55626b66e54c7"
+      "size": 30647,
+      "sha256": "93effd68185f93cd71116aea3a2603ab34fde724d6c4a3890f0cd7086922d9c1"
     },
     {
       "path": "manifest/chunks/files-0002.json",
