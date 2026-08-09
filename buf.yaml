@@ -4,6 +4,11 @@ modules:
 lint:
   use:
     - STANDARD
+  except:
+    # Public proto paths intentionally omit the airuntime package prefix.
+    - PACKAGE_DIRECTORY_MATCH
+    # Preserve the published RuntimeSnapshotChunk streaming response type.
+    - RPC_RESPONSE_STANDARD_NAME
 breaking:
   use:
     - FILE

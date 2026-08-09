@@ -189,8 +189,8 @@
     },
     {
       "path": "TREE.md",
-      "size": 22616,
-      "sha256": "2a233b9677673f6f18b8708ef10365e1776f1565fb9844bfeec49b0913079046",
+      "size": 22902,
+      "sha256": "6b20d4dea41554a0455cf3c3ce872da2107374dc82cbc6b33d2c475039bb3d57",
       "mode": "0644"
     },
     {
@@ -219,8 +219,8 @@
     },
     {
       "path": "buf.yaml",
-      "size": 93,
-      "sha256": "bda68586bbdf808b33c348d4c11029efaedf23a94b5e078208337606e24cd1ce",
+      "size": 315,
+      "sha256": "d05d9c5a5ed2f58d69a6801ad5ac4439cee27617d48a503c1300b5a95a66025f",
       "mode": "0644"
     },
     {

@@ -4,8 +4,8 @@ import (
 	"context"
 	"fmt"
 
-	valkeygo "github.com/valkey-io/valkey-go"
 	"github.com/0disoft/relaydock/internal/routing/distributedlease"
+	valkeygo "github.com/valkey-io/valkey-go"
 )
 
 type scriptExecutor struct {

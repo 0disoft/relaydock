@@ -5,9 +5,9 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/wailsapp/wails/v3/pkg/application"
 	"github.com/0disoft/relaydock/internal/autostart"
 	"github.com/0disoft/relaydock/internal/core"
+	"github.com/wailsapp/wails/v3/pkg/application"
 )
 
 const desktopAutostartIdentifier = "com.0disoft.relaydock"

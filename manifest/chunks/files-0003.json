@@ -52,7 +52,7 @@
     {
       "path": "internal/persistence/valkey/lease_manager.go",
       "size": 828,
-      "sha256": "0293d61f242e0ffcf9fd64c85f8ae0d196283d698e1de75bdd49c2a2310c793f",
+      "sha256": "5d228d244cd42dc00e1056e9bf39c032fd4e4c70556221600648e2231ab66a31",
       "mode": "0644"
     },
     {
