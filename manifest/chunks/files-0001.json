@@ -117,8 +117,8 @@
     },
     {
       "path": ".github/workflows/release.yml",
-      "size": 19659,
-      "sha256": "cd715bc593d55f6e8a3023d0021c1a8f64570d69a08b7c83dc410afc42bee455",
+      "size": 19666,
+      "sha256": "4f6dda303839c429cad552bf1f24a37fec330aebb6253d435f0bc9e2a0379115",
       "mode": "0644"
     },
     {
@@ -141,8 +141,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "size": 15381,
-      "sha256": "0a1ccbd0a63a7ec1621f5074b971380f6c8c9a0f36cd695c9840802885104111",
+      "size": 15530,
+      "sha256": "87820ef756543cb10caf04022ce7cff0bc46e7bdb35ac00528c81755217a1697",
       "mode": "0644"
     },
     {
@@ -153,8 +153,8 @@
     },
     {
       "path": "CONTRIBUTING.md",
-      "size": 1261,
-      "sha256": "4b6251b61bf971898e2d0a1c659d8b78b8799b32a0c2d17d03914bd7e0fd6eaa",
+      "size": 1412,
+      "sha256": "b82fc13af5664076cf2691910b3ac2ebd754cf84289fd983cb3af21fd581cbcf",
       "mode": "0644"
     },
     {
@@ -164,15 +164,21 @@
       "mode": "0644"
     },
     {
-      "path": "LICENSE-PENDING.md",
-      "size": 740,
-      "sha256": "a961e65115ef78415714a1254490846bc6d9042e8151f6db4e024d95016c1e43",
+      "path": "LICENSE",
+      "size": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "mode": "0644"
+    },
+    {
+      "path": "NOTICE",
+      "size": 240,
+      "sha256": "d0d8f123152074e6a390ffb89ce06425f917695e2d0cb16bd526efdcaad4d113",
       "mode": "0644"
     },
     {
       "path": "README.md",
-      "size": 18571,
-      "sha256": "144e47a1ce4871665fc20b6a6ca5f43733991c6eccb7b9fc99d6e391e002588b",
+      "size": 18781,
+      "sha256": "8ec6d5048cfc0e7d65e02de3a155e9660f09889a61b1e020e6ff161ad181ce9a",
       "mode": "0644"
     },
     {
@@ -183,8 +189,8 @@
     },
     {
       "path": "TREE.md",
-      "size": 22409,
-      "sha256": "8003f8a3aa661868cd32865101e3d6157d095b2fa1213506e65575915ceb8c60",
+      "size": 22415,
+      "sha256": "7c7ee3479463101b0c866efd6f6d8d13c1e000d8590630ada9814952fa6d8660",
       "mode": "0644"
     },
     {
@@ -195,8 +201,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "size": 11221,
-      "sha256": "1c52701f45d0589745bb57c67495808e3aaf17a8f2c708d3038e36a20eb1640e",
+      "size": 11239,
+      "sha256": "433a7bfdf5dd4fc258569d7d395b75153633c78c43e2f47456ff5157565a32d4",
       "mode": "0644"
     },
     {
@@ -219,8 +225,8 @@
     },
     {
       "path": "build/README.md",
-      "size": 1512,
-      "sha256": "e470e2a0763e0eb2e8acc05e7e59c79a6e87625ee869835ded33f9d025b22369",
+      "size": 1448,
+      "sha256": "73faa9b5e3e9ee5087427668966ed006fc65d9a2512b9fac6a34cfc5e1eb262e",
       "mode": "0644"
     },
     {
@@ -237,20 +243,20 @@
     },
     {
       "path": "build/darwin/Taskfile.yml",
-      "size": 940,
-      "sha256": "804899823c443591291aaa4ee582612c102d309e716360fd2506b9f377d7e3e2",
+      "size": 947,
+      "sha256": "7f7bd6faaa4d8fba6c55dad2961238d3fd56cc5fd061cc7c06d9cffdd5a81dfc",
       "mode": "0644"
     },
     {
       "path": "build/linux/Taskfile.yml",
-      "size": 933,
-      "sha256": "794c4075d310b8fc19882c4729645d78213fdb13ad2b67f7de180a1752cbe30c",
+      "size": 940,
+      "sha256": "78df65e630db4f400a578ead13415721e3330f6a901803ba4f04660ae33f0cfe",
       "mode": "0644"
     },
     {
       "path": "build/windows/Taskfile.yml",
-      "size": 1286,
-      "sha256": "a4d3c930e91841cc915f78c2857c762de68a79fce02ccb4fe86d6d603a21e76c",
+      "size": 1295,
+      "sha256": "41b52644c862c6ac619b068d2f359003b9185d0a7dabc5ef2252cb3d1631daf3",
       "mode": "0644"
     },
     {
@@ -621,8 +627,8 @@
     },
     {
       "path": "docs/15-build-and-release.md",
-      "size": 8850,
-      "sha256": "3f625aadb6829c6f713488db18d4cc0bcaa10e5f63bdaa1bd378e5d1f70673bb",
+      "size": 8871,
+      "sha256": "39b1d3ffbe2b7bfcc1dd430efcf41d8582b695649120f8dbca4a68c0dcd1440a",
       "mode": "0644"
     },
     {
@@ -633,8 +639,8 @@
     },
     {
       "path": "docs/17-open-questions.md",
-      "size": 2216,
-      "sha256": "a33d5e9dc8830be1f48bdc02f4f52e5a8e3fe1f8fe0c5428fbfd563b5cca5c63",
+      "size": 2239,
+      "sha256": "af0b96c225324e1378c4b974bcc6c9c064b935fadd76751b09958218467d4fb7",
       "mode": "0644"
     },
     {
@@ -747,8 +753,8 @@
     },
     {
       "path": "docs/adr/0008-license-boundary.md",
-      "size": 1282,
-      "sha256": "fb52c46545f8b7eb62df779cab0711efe44f07c3573ce3445f5f200ee1b0fb1f",
+      "size": 1936,
+      "sha256": "d1c87db495e037b0e06fe4b95657377402a59609de3cd7d6cabac4dd24eb1cb3",
       "mode": "0644"
     },
     {
@@ -849,8 +855,8 @@
     },
     {
       "path": "frontend/package.json",
-      "size": 453,
-      "sha256": "6864b02373b1b1cd39c6d41d53496fafb85cb43ab05837faf4d557509c7676ca",
+      "size": 480,
+      "sha256": "cc42f4fbe548be50908e26969ecac59b381fd5d1dbd6b79e71de81409f91edeb",
       "mode": "0644"
     },
     {
@@ -1001,12 +1007,6 @@
       "path": "gen/go/README.md",
       "size": 155,
       "sha256": "06ebe06d5955f745e0b3431d5026981d1d7421c0f5469b7693d0d2e7ad312f01",
-      "mode": "0644"
-    },
-    {
-      "path": "go.mod",
-      "size": 296,
-      "sha256": "d73fd8e1065acf9613350af1e9773860d00e513d9ec4d5794962c8d3bc3867a7",
       "mode": "0644"
     }
   ]

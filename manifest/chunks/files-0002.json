@@ -2,6 +2,12 @@
   "version": 2,
   "files": [
     {
+      "path": "go.mod",
+      "size": 296,
+      "sha256": "d73fd8e1065acf9613350af1e9773860d00e513d9ec4d5794962c8d3bc3867a7",
+      "mode": "0644"
+    },
+    {
       "path": "go.work",
       "size": 15,
       "sha256": "afae2d8432202a6145ed5cff5a1ce79e4f84ae10162d175ba3e70f3e57588393",

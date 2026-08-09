@@ -1,6 +1,6 @@
 # Build and packaging
 
-`task build`는 현재 운영체제용 Wails 데스크톱 실행 파일과 `mcp-bridge`를 함께 만든다. `task package`는 두 실행 파일, README, 최종 LICENSE를 한 디렉터리에 모아 ZIP 또는 `tar.gz` 휴대용 번들로 만든다. 라이선스 결정이 pending인 동안 package는 의도적으로 실패한다.
+`task build`는 현재 운영체제용 Wails 데스크톱 실행 파일과 `mcp-bridge`를 함께 만든다. `task package`는 두 실행 파일, README, Apache-2.0 `LICENSE`와 `NOTICE`를 한 디렉터리에 모아 ZIP 또는 `tar.gz` 휴대용 번들로 만든다.
 
 ```powershell
 wails3 doctor

@@ -16,7 +16,7 @@
 
 `go.sum`과 루트 Bun workspace의 `bun.lock`은 네트워크가 연결된 기준 toolchain에서 생성하고 release commit에 포함한다. CI와 release job은 `GOFLAGS=-mod=readonly`와 저장소 루트의 `bun install --frozen-lockfile`만 사용하며 암묵적인 module 수정, 하위 workspace별 lockfile, dependency drift를 허용하지 않는다. lockfile이 없거나 generated code가 dirty인 상태에서는 정식 release를 만들지 않는다.
 
-`releasepack readiness --root . --version <version>`은 version, public Go module, `go.sum`, `bun.lock`, `LICENSE`, pending-license 제거와 source manifest 일치를 expensive release job 전에 fail-closed 검사한다.
+`releasepack readiness --root . --version <version>`은 version, public Go module, `go.sum`, `bun.lock`, Apache-2.0 `LICENSE`, `NOTICE`, pending-license 제거와 source manifest 일치를 expensive release job 전에 fail-closed 검사한다.
 
 generated contracts, source archive, server binaries, web assets, Windows desktop bundle은 각 build job이 만든 SHA-256 목록을 `actions/attest@v4`에 전달해 같은 job identity와 commit에 묶인 SLSA build provenance를 발급한다. 각 job은 Apache-2.0 Syft `v1.50.0`을 사용하는 Anchore SBOM Action `v0.24.0`으로 SPDX JSON을 만들고, 같은 checksum subject에 별도 SBOM attestation을 발급한다. action의 자동 artifact·release upload는 끄고 기존 release-candidate artifact에 SBOM을 명시적으로 포함한다.
 

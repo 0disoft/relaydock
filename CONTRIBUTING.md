@@ -1,5 +1,8 @@
 # Contributing
 
+RelayDock에 의도적으로 제출한 기여는 별도 서면 합의가 없는 한 루트
+`LICENSE`의 Apache License 2.0 조건으로 제공된다.
+
 ## 브랜치
 
 - `main`: 테스트와 계약 검증을 통과한 코드

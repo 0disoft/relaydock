@@ -416,3 +416,8 @@ CI와 release는 Go test·race·vet, Buf·sqlc contract generation, frontend che
 - `docs/24-development-stack.md`
 - `VALIDATION.md`
 - `TREE.md`
+
+## 라이선스
+
+RelayDock 저장소와 배포 산출물은 Apache License 2.0으로 제공된다. 비공개
+managed service 구현은 이 저장소에 혼합하지 않고 별도 저장소에서 관리한다.

@@ -2,10 +2,10 @@
 
 이미 코드로 결정된 항목은 이 문서에서 제거한다. 아래 질문은 구현 전에 ADR이나 운영 정책 revision으로 닫아야 한다.
 
-## 제품과 라이선스
+## 제품과 패키징
 
-- Apache-2.0 또는 다른 OSS 라이선스 범위
-- managed Control Plane·money-platform·enterprise self-host의 상용 경계
+- 별도 비공개 managed service 저장소와 공개 RelayDock API의 운영 경계
+- enterprise self-host 지원·보증·상표 사용의 상용 계약
 - 개인 무료판의 provider·route·Expert 호출 상한
 
 ## Wails 배포

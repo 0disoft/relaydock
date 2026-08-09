@@ -176,7 +176,7 @@ func TestReleaseSigningKeyIsIsolatedToFinalJob(t *testing.T) {
 	}
 }
 
-func TestDistributableBundlesRequireFinalLicense(t *testing.T) {
+func TestDistributableBundlesRequireFinalLicenseAndNotice(t *testing.T) {
 	t.Parallel()
 	root := filepath.Join("..", "..")
 	for _, relative := range []string{
@@ -198,6 +198,9 @@ func TestDistributableBundlesRequireFinalLicense(t *testing.T) {
 			}
 			if !strings.Contains(content, "LICENSE") {
 				t.Error("distributable bundle does not package the final LICENSE")
+			}
+			if !strings.Contains(content, "NOTICE") {
+				t.Error("distributable bundle does not package NOTICE")
 			}
 		})
 	}

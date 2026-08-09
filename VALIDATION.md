@@ -6,12 +6,12 @@
 
 **현재 판정은 release blocked다.** source review와 내부 개발을 계속할 수는 있지만 public source release, 바이너리 배포, container publication, desktop update channel 개방을 시작하지 않는다.
 
-`releasepack readiness --root . --version 0.5.1-dev`는 다음 네 가지를 실제 blocker로 보고 fail-closed 처리했다.
+라이선스 경계는 2026-08-09에 저장소 전체 Apache-2.0으로 확정했다. 루트 `LICENSE`와 `NOTICE`를 추가하고 `LICENSE-PENDING.md`를 제거했으며, 모든 휴대용 bundle이 두 파일을 함께 포함하도록 회귀 검사를 통과했다.
+
+현재 남은 repository-owned release readiness blocker는 다음 두 가지다.
 
 - `go.sum` 없음
 - 루트 Bun workspace의 `bun.lock` 없음
-- 최종 `LICENSE` 없음
-- `LICENSE-PENDING.md`가 아직 존재함
 
 이번 준비도 보강에서 다음 항목은 로컬 검증을 통과했다.
 
@@ -31,7 +31,7 @@
 - Windows native installer, code signing, updater manifest signing과 rollback
 - PostgreSQL·Valkey·실제 provider·money-platform·24시간 soak 운영 gate
 
-라이선스 경계, 공개 저장소 visibility, artifact/code-signing key custody, container registry와 배포 대상은 코드가 대신 결정할 수 없는 release-owner 입력이다. 이 항목을 확정하고 외부 환경 gate를 실제 통과하기 전에는 “production-ready” 또는 “배포 완료”로 표시하지 않는다.
+공개 저장소 visibility, artifact/code-signing key custody, container registry와 배포 대상은 코드가 대신 결정할 수 없는 release-owner 입력이다. 이 항목을 확정하고 외부 환경 gate를 실제 통과하기 전에는 “production-ready” 또는 “배포 완료”로 표시하지 않는다.
 
 ## 검증 대상
 
@@ -184,7 +184,7 @@ ZIP 내부 MANIFEST index와 chunk hash 대조
 
 ## Lockfile 주의
 
-현재 artifact에는 `go.sum`과 Bun lockfile이 없다. 외부 module을 내려받지 못하는 환경에서 검증되지 않은 checksum을 만들어 넣지 않았다. 정식 개발 환경에서는 다음을 먼저 실행하고 생성 결과를 리뷰해 커밋해야 한다.
+현재 artifact에는 `go.sum`과 Bun lockfile이 없다. 정식 개발 환경에서는 다음을 먼저 실행하고 생성 결과를 리뷰해 커밋해야 한다.
 
 ```powershell
 go mod tidy

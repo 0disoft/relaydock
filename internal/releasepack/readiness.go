@@ -51,7 +51,7 @@ func CheckReleaseReadiness(root, expectedVersion string) (ReadinessReport, error
 	if module != "" && !strings.HasPrefix(module, "module "+publicModulePath+"\n") && module != "module "+publicModulePath {
 		blockers = append(blockers, "go.mod does not declare "+publicModulePath)
 	}
-	for _, required := range []string{"go.sum", "bun.lock", "LICENSE"} {
+	for _, required := range []string{"go.sum", "bun.lock", "LICENSE", "NOTICE"} {
 		readTrimmed(filepath.Join(root, required), required, &blockers)
 	}
 	if _, err := os.Stat(filepath.Join(root, "LICENSE-PENDING.md")); err == nil {

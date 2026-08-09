@@ -633,8 +633,9 @@ relaydock
 ├── go.mod
 ├── go.work
 ├── IMPLEMENTATION_STATUS.md
-├── LICENSE-PENDING.md
+├── LICENSE
 ├── main.go
+├── NOTICE
 ├── package.json
 ├── README.md
 ├── SECURITY.md

@@ -452,7 +452,7 @@ jobs:
           go build -trimpath -ldflags $bridgeFlags -o bin/mcp-bridge.exe ./cmd/mcp-bridge
           $stage = "dist/relaydock-$env:VERSION-windows-amd64"
           New-Item -ItemType Directory -Force -Path $stage | Out-Null
-          Copy-Item bin/relaydock.exe,bin/mcp-bridge.exe,README.md,LICENSE -Destination $stage
+          Copy-Item bin/relaydock.exe,bin/mcp-bridge.exe,README.md,LICENSE,NOTICE -Destination $stage
           $archive = "$stage.zip"
           Compress-Archive -Path "$stage/*" -DestinationPath $archive -CompressionLevel Optimal
           $hash = (Get-FileHash -Algorithm SHA256 $archive).Hash.ToLowerInvariant()

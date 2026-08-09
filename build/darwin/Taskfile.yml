@@ -26,5 +26,5 @@ tasks:
     cmds:
       - rm -rf dist/{{.APP_NAME}}-{{.VERSION}}-darwin-{{.ARCH}}
       - mkdir -p dist/{{.APP_NAME}}-{{.VERSION}}-darwin-{{.ARCH}}
-      - cp bin/{{.APP_NAME}} bin/mcp-bridge README.md LICENSE dist/{{.APP_NAME}}-{{.VERSION}}-darwin-{{.ARCH}}/
+      - cp bin/{{.APP_NAME}} bin/mcp-bridge README.md LICENSE NOTICE dist/{{.APP_NAME}}-{{.VERSION}}-darwin-{{.ARCH}}/
       - tar -C dist -czf dist/{{.APP_NAME}}-{{.VERSION}}-darwin-{{.ARCH}}.tar.gz {{.APP_NAME}}-{{.VERSION}}-darwin-{{.ARCH}}

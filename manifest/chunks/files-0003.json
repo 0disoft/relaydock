@@ -219,14 +219,14 @@
     },
     {
       "path": "internal/releasepack/readiness.go",
-      "size": 8419,
-      "sha256": "29c122fd67538462428d42a27242a999cc60338c0ced340cd93824d65e6b7302",
+      "size": 8429,
+      "sha256": "251f0f675ab87c4dd3a5ef6894aafec2526765d42de502d7bc42867d542469b2",
       "mode": "0644"
     },
     {
       "path": "internal/releasepack/releasepack_test.go",
-      "size": 13620,
-      "sha256": "b19257a042dce1c89884c2988bdf485dddac941ea245824ead2df2df13d5d6cd",
+      "size": 13726,
+      "sha256": "b15b4e824d8e8e62e59a1af6831e202571d4bf64c43e72c16529af57902e78ec",
       "mode": "0644"
     },
     {
@@ -543,8 +543,8 @@
     },
     {
       "path": "package.json",
-      "size": 381,
-      "sha256": "e031a6d2b940143feca4171aad2d1e1de64059f49e96a7a0774381ddd69ea1f8",
+      "size": 408,
+      "sha256": "ac03b9858cf481ee392f93df52ddd713ee125ee9fd4ffcd1217dfe27e9eb29f1",
       "mode": "0644"
     },
     {
@@ -735,8 +735,8 @@
     },
     {
       "path": "tests/hygiene/public_identity_test.go",
-      "size": 9330,
-      "sha256": "8dbca35a7ed3ebe8af63adce916744964a3dc91ba49d5c9c3dd628e8260fa842",
+      "size": 9449,
+      "sha256": "81c8043bb45f2ef45ebae8eaf1add5ad54a51470e5261ad87dd55edb0527ada2",
       "mode": "0644"
     },
     {
@@ -819,8 +819,8 @@
     },
     {
       "path": "web/control-console/package.json",
-      "size": 458,
-      "sha256": "65ec8f7cc46a85a3be96db9bd1bc2830679859aefb183fbd678d90fcb2792ec4",
+      "size": 485,
+      "sha256": "9eca69ef2525a81d3c26f22383e4750962209372fb24979473e44f3537172103",
       "mode": "0644"
     },
     {

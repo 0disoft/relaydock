@@ -2,6 +2,7 @@
   "name": "relaydock",
   "private": true,
   "version": "0.5.1-dev",
+  "license": "Apache-2.0",
   "workspaces": [
     "frontend",
     "web/control-console"
