@@ -1,150 +1,150 @@
 # 16. Implementation Order
 
-이 문서는 기능 목록이 아니라 의존 순서와 완료 판정 기준을 고정한다. 현재 저장소는 Stage 0, Stage 1, Stage 2의 핵심 코드까지 구현했다. 남은 일은 새로운 기능을 더 붙이는 작업보다 실제 인프라·공급자·데스크톱 환경에서 운영 조건을 검증하고 money-platform 경계를 연결하는 작업이다.
+This document fixes dependency order and completion criteria rather than listing features. The repository implements the core code for Stages 0, 1, and 2. Remaining work is primarily operational validation against real infrastructure, providers, and desktop environments, plus integration with the money-platform boundary.
 
-## Stage 0A: 계약 — 완료
+## Stage 0A: Contracts -- Complete
 
-완료된 범위:
+Completed scope:
 
-- canonical request·response·stream type
-- strict/compatible/passthrough loss taxonomy
-- provider error taxonomy
-- consultation 상태 전이와 idempotency
-- ContextPack manifest와 content digest
-- MCP tool 입출력 schema
-- PostgreSQL schema와 embedded migration 계약
-- virtual key v2 형식과 legacy parser
+- Canonical request, response, and stream types
+- Strict, compatible, and passthrough loss taxonomy
+- Provider-error taxonomy
+- Consultation transitions and idempotency
+- ContextPack manifest and content digest
+- MCP tool input/output schemas
+- PostgreSQL schemas and embedded migration contract
+- Virtual-key v2 format and legacy parser
 
-완료 판정:
+Completion evidence:
 
-- 외부 모듈 없이 실행 가능한 protocol·state·storage 테스트 통과
-- migration 파일 version·checksum·up/down pairing 검사 통과
-- 알 수 없는 provider event의 raw 보존
+- Protocol, state, and storage tests that run without external modules
+- Migration version, checksum, and up/down-pair validation
+- Raw preservation of unknown provider events
 
-## Stage 0B: 로컬 런타임 — 코드 완료, 실기기 검증 대기
+## Stage 0B: Local Runtime -- Code Complete, Device Validation Pending
 
-구현 범위:
+Implemented scope:
 
-- Wails v3 tray와 single instance
-- close-to-tray와 `--background` 로그인 자동 시작
-- MCP STDIO bridge → Named Pipe/Unix Domain Socket
-- ContextPack preview와 consultation 생성·조회
-- local atomic state persistence
-- 로컬 Gateway 시작·중지
+- Wails v3 tray and single-instance handling
+- Close-to-tray and `--background` login autostart
+- MCP STDIO bridge to Named Pipe or Unix Domain Socket
+- ContextPack preview and consultation creation/read
+- Local atomic-state persistence
+- Local Gateway start/stop
 
-운영 완료 조건:
+Operational completion conditions:
 
-- Windows 일반 사용자·관리자·다른 사용자 계정에서 Named Pipe ACL 검증
-- 절전·로그아웃·재로그인·업데이트 뒤 autostart 검증
-- macOS launch lifecycle과 Linux desktop session 검증
-- MCP stdout 오염, 런타임 crash, 재접속 회귀 테스트
+- Validate Named Pipe ACLs for standard, administrator, and different Windows user accounts.
+- Validate autostart after sleep, logout, login, and updates.
+- Validate macOS launch lifecycle and Linux desktop sessions.
+- Regression-test MCP stdout contamination, runtime crashes, and reconnection.
 
-## Stage 1A: Gateway data plane — 코드 완료
+## Stage 1A: Gateway Data Plane -- Code Complete
 
-구현 범위:
+Implemented scope:
 
-- OpenAI Responses·Chat, Anthropic Messages, Gemini ingress
-- OpenAI·Anthropic·Google·DeepSeek·OpenRouter·OpenAI-compatible adapter
-- virtual model route와 direct `provider/model`
-- live SSE forwarding
-- cancellation, response-size limit, terminal validation
-- provider error 분류와 Retry-After
-- pre-semantic retry, post-semantic fail-visible
-- process-local health degradation과 cooldown
-- memory/Valkey concurrency lease
+- OpenAI Responses and Chat, Anthropic Messages, and Gemini ingress
+- OpenAI, Anthropic, Google, DeepSeek, OpenRouter, and OpenAI-compatible adapters
+- Virtual-model routes and direct `provider/model` routing
+- Live SSE forwarding
+- Cancellation, response-size limits, and terminal validation
+- Provider-error classification and Retry-After
+- Pre-semantic retry and visible post-semantic failure
+- Process-local health degradation and cooldown
+- Memory and Valkey concurrency leases
 
-운영 완료 조건:
+Operational completion conditions:
 
-- 각 공급자의 실제 key로 non-stream·stream·tool·reasoning conformance 통과
-- 429, quota exhaustion, overloaded, timeout, transport reset fixture 통과
-- provider usage와 local usage estimate의 허용 오차 확정
-- Valkey failover 중 lease 상한 위반 여부 검증
-- 24시간 soak test에서 goroutine·connection·memory leak 부재 확인
+- Pass non-stream, stream, tool, and reasoning conformance with real credentials for every provider.
+- Pass 429, exhausted-quota, overloaded, timeout, and transport-reset fixtures.
+- Establish tolerances between provider usage and local usage estimates.
+- Verify lease limits during Valkey failover.
+- Confirm no goroutine, connection, or memory leaks in a 24-hour soak test.
 
-## Stage 1B: Expert Broker — 코드 완료
+## Stage 1B: Expert Broker -- Code Complete
 
-구현 범위:
+Implemented scope:
 
-- ContextPack preview·build·redaction
-- local atomic file과 PostgreSQL repository
-- consultation create·approve·cancel·list·get
-- worker claim·renew·retry·stale recovery·maximum attempts
-- worker fencing을 적용한 result commit
+- ContextPack preview, build, and redaction
+- Local atomic-file and PostgreSQL repositories
+- Consultation create, approve, cancel, list, and get
+- Worker claim, renewal, retry, stale recovery, and maximum attempts
+- Worker-fenced result commits
 - OpenAI Responses expert executor
-- ChatGPT web handoff와 수동 result import
-- result model attestation
-- Remote MCP get·submit
+- ChatGPT web handoff and manual result import
+- Result model attestation
+- Remote MCP get and submit
 
-운영 완료 조건:
+Operational completion conditions:
 
-- 실제 PostgreSQL에서 다중 worker contention·crash recovery 테스트
-- API model usage와 consultation maximum cost reconciliation
-- scoped Remote MCP의 tenant/project 격리 실서버 conformance
-- OIDC/OAuth와 key ID rotation 설계
-- stale ContextPack 결과의 UI 경고와 재검토 절차
+- Test multi-worker contention and crash recovery on real PostgreSQL.
+- Reconcile API-model usage with consultation maximum cost.
+- Pass live-server conformance for tenant/project isolation in scoped Remote MCP.
+- Define OIDC/OAuth and key-ID rotation.
+- Provide UI warnings and rereview procedures for stale ContextPack results.
 
-## Stage 1C: Control snapshot — 코드 완료
+## Stage 1C: Control Snapshot -- Code Complete
 
-구현 범위:
+Implemented scope:
 
-- Ed25519 signing key load/create와 secret-manager 주입
-- local atomic store와 PostgreSQL immutable history
-- current·publish·watch·public-key API
-- 다중 replica 초기화·갱신 경쟁 복구
-- Gateway fetch·watch·signature 검증·atomic route swap
-- last-known-good persistence와 snapshot expiry fail-closed
+- Ed25519 signing-key load/create and secret-manager injection
+- Local atomic store and PostgreSQL immutable history
+- Current, publish, watch, and public-key APIs
+- Recovery from multi-replica initialization and update races
+- Gateway fetch, watch, signature verification, and atomic route swaps
+- Last-known-good persistence and fail-closed snapshot expiry
 
-운영 완료 조건:
+Operational completion conditions:
 
-- signing key rotation과 key ID 기반 dual trust
-- Control DB failover·watch 장기 soak
-- route file과 signed Control snapshot의 production SSOT 고정
-- snapshot TTL과 장애 복구 목표 확정
+- Signing-key rotation and key-ID-based dual trust
+- Long Control database failover and watch soak
+- A fixed production source of truth between route files and signed Control snapshots
+- Final snapshot TTL and recovery objectives
 
-## Stage 2: 관리형 운영 기반 — 핵심 코드 완료
+## Stage 2: Managed Operations Foundation -- Core Code Complete
 
-완료된 범위:
+Completed scope:
 
-- embedded PostgreSQL migration runner
-- organization/project bootstrap CLI
-- PostgreSQL virtual key issue·authenticate·revoke
-- project scope와 model allowlist
+- Embedded PostgreSQL migration runner
+- Organization/project bootstrap CLI
+- PostgreSQL virtual-key issue, authenticate, and revoke
+- Project scope and model allowlist
 - Valkey distributed provider lease
-- runtime request·provider attempt·usage journal
-- transactional PostgreSQL outbox
-- worker lease·fencing·dead letter·signed webhook
+- Runtime request, provider-attempt, and usage journal
+- Transactional PostgreSQL outbox
+- Worker lease, fencing, dead letter, and signed webhooks
 - PostgreSQL integration CI contract
 
-다음 작업:
+Next work:
 
-- provider health probe와 분산 측정값
-- audit event와 관리자 RBAC
-- provider credential KMS/OS keychain adapter
-- runtime retention·partition 정책
+- Provider health probes and distributed measurements
+- Audit events and administrative RBAC
+- Provider-credential KMS and OS-keychain adapters
+- Runtime retention and partition policies
 
-## Stage 3: Accounting과 상용화 — 계약만 구현
+## Stage 3: Accounting and Commercialization -- Contract Only
 
-현재 quote → hold → capture → release·adjustment의 domain contract와 idempotency 테스트가 있다. 실제 결제와 mandarin 차감은 다음 조건 뒤에 연다.
+The domain contract and idempotency tests exist for `quote -> hold -> capture -> release/adjustment`. Open real payments and Mandarin deductions only after all of the following:
 
-- `zdp-money-platform` ConnectRPC 계약
-- request charge와 provider attempt cost 분리
-- stream partial failure 비용 정책
-- 늦게 도착한 usage adjustment
-- 환불·취소·무료/유료 크레딧 소진 revision
-- 구현된 signed PostgreSQL outbox와 money-platform consumer idempotency의 E2E 검증
-- provider invoice reconciliation
+- `zdp-money-platform` ConnectRPC contract
+- Separation of request charges and provider-attempt cost
+- Partial-stream failure cost policy
+- Late usage adjustments
+- Refund, cancellation, and free/paid credit-consumption revisions
+- End-to-end verification of the signed PostgreSQL outbox and money-platform consumer idempotency
+- Provider-invoice reconciliation
 
-결제부터 열고 usage persistence를 나중에 붙이는 순서는 금지한다.
+Do not enable payments before usage persistence.
 
-## Stage 4: Release certification
+## Stage 4: Release Certification
 
-출시 후보는 다음 증거가 모두 있어야 한다.
+A release candidate requires all of this evidence:
 
-- clean machine build와 재현 가능한 artifact hash
-- Wails installer upgrade·rollback 실기기 기록
-- PostgreSQL backup·PITR·restore rehearsal
-- Valkey 장애와 provider outage game day
-- MCP client별 conformance report
-- 실제 공급자 bill reconciliation report
-- security review: SSRF, secret redaction, local IPC ACL, token scope
-- 24시간 soak와 graceful shutdown report
+- Clean-machine build and reproducible artifact hash
+- Physical-device records for Wails installer upgrade and rollback
+- PostgreSQL backup, PITR, and restore rehearsal
+- Valkey failure and provider-outage game day
+- Conformance report for each MCP client
+- Real provider-bill reconciliation report
+- Security review covering SSRF, secret redaction, local IPC ACLs, and token scope
+- 24-hour soak and graceful-shutdown report

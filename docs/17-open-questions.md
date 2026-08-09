@@ -1,57 +1,57 @@
 # 17. Open Questions
 
-이미 코드로 결정된 항목은 이 문서에서 제거한다. 아래 질문은 구현 전에 ADR이나 운영 정책 revision으로 닫아야 한다.
+Remove items from this page once code decides them. Close each question through an ADR or operational-policy revision before implementation.
 
-## 제품과 패키징
+## Product and Packaging
 
-- 별도 비공개 managed service 저장소와 공개 RelayDock API의 운영 경계
-- enterprise self-host 지원·보증·상표 사용의 상용 계약
-- 개인 무료판의 provider·route·Expert 호출 상한
+- Operational boundary between a separate private managed-service repository and the public RelayDock API
+- Commercial terms for enterprise self-hosting support, warranties, and trademark use
+- Provider, route, and Expert-call limits for the free personal edition
 
-## Wails 배포
+## Wails Distribution
 
-- Windows 기본 설치 형식: NSIS 또는 MSIX
-- updater의 실제 process replacement와 rollback 책임
-- macOS notarization·entitlement 범위
-- Linux 배포 대상과 WebKitGTK 최소 기준
-- Wails v3 alpha pin을 해제할 release gate
+- Default Windows installation format: NSIS or MSIX
+- Ownership of actual process replacement and rollback in the updater
+- Scope of macOS notarization and entitlements
+- Target Linux distributions and minimum WebKitGTK baseline
+- Release gate for removing the Wails v3 alpha pin
 
-## MCP와 Expert
+## MCP and Expert
 
-- Remote MCP의 OAuth/OIDC issuer와 조직 RBAC 모델
-- ChatGPT 개인 플랜용 result import UX
-- user-declared model attestation의 UI 표현
-- API Expert 실패 비용을 고객에게 넘길지 플랫폼이 부담할지
-- 복수 Expert panel의 최대 delegation·비용 정책
+- OAuth/OIDC issuer and organization RBAC model for Remote MCP
+- Result-import UX for personal ChatGPT plans
+- UI representation of user-declared model attestation
+- Whether customers or the platform absorb failed API Expert costs
+- Maximum delegation and cost policy for multi-Expert panels
 
 ## ContextPack
 
-- symbol index를 Go parser 중심으로 만들지 tree-sitter를 붙일지
-- gitignored 파일의 기본 제외와 수동 포함 정책
-- 공급자별 tokenizer를 넣을 시점
-- binary artifact·이미지·대형 로그의 요약 adapter
-- R2/S3 upload의 encryption key 소유권과 TTL
+- Whether the symbol index should use Go parsers or tree-sitter
+- Default exclusion and manual inclusion policy for gitignored files
+- When to add provider-specific tokenizers
+- Summary adapters for binary artifacts, images, and large logs
+- Encryption-key ownership and TTL for R2/S3 uploads
 
-## Gateway와 routing
+## Gateway and Routing
 
-- production에서 signed Control snapshot을 유일 SSOT로 강제할 전환 시점
-- process-local cooldown을 Valkey로 공유할 데이터 모델
-- provider health probe 주기와 false positive 억제 방식
-- session affinity와 prompt-cache affinity key의 개인정보 경계
-- same-provider stream resume를 허용할 공급자 목록
+- When to make signed Control snapshots the only production source of truth
+- Data model for sharing process-local cooldowns through Valkey
+- Provider health-probe interval and false-positive suppression
+- Personal-data boundaries for session-affinity and prompt-cache-affinity keys
+- Provider allowlist for same-provider stream resume
 
 ## Accounting
 
-- 실패 attempt 비용의 customer charge 정책
-- provider usage 수정 도착을 기다릴 최대 기간
-- 환율과 mandarin price revision 시점
-- 무료·유료·프로모션 크레딧 소진 순서
-- 조정 원장의 최소 보존 기간과 감사 export 형식
+- Customer-charge policy for failed attempts
+- Maximum delay for provider-usage corrections
+- Exchange-rate and Mandarin price-revision timing
+- Consumption order for free, paid, and promotional credits
+- Minimum adjustment-ledger retention and audit-export format
 
-## Infra와 운영
+## Infrastructure and Operations
 
-- 초기 단일 PostgreSQL의 schema-level ACL
-- managed object store 기본값: R2, B2, S3
-- provider별 egress region과 data residency
-- PostgreSQL polling outbox의 처리량 상한과 broker 도입 trigger
-- single-region 복구 목표와 multi-region 진입 조건
+- Schema-level ACLs for the initial single PostgreSQL cluster
+- Default managed object store: R2, B2, or S3
+- Provider egress regions and data residency
+- Throughput limit for PostgreSQL polling outbox and broker-adoption trigger
+- Single-region recovery objectives and multi-region entry conditions
