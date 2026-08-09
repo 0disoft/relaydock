@@ -44,13 +44,13 @@ One replica may use a local store. Two or more replicas require PostgreSQL and o
 $env:CONTROL_SNAPSHOT_STORE = "postgres"
 $env:CONTROL_POSTGRES_URL = $env:ARG_POSTGRES_URL
 $env:CONTROL_SIGNING_PRIVATE_KEY = "<base64url-ed25519-seed>"
-$env:CONTROL_BEARER_TOKEN = "<operator-token>"
+$env:CONTROL_ACCESS_TOKENS_JSON = '<gateway, viewer, publisher, and admin token-digest records>'
 go run ./cmd/controld
 
 $publicKey = go run ./cmd/controlctl signing-key --raw
 ```
 
-Without `CONTROL_SIGNING_PRIVATE_KEY`, Control creates a per-instance file at `CONTROL_SIGNING_KEY_PATH`. Do not use per-replica files in PostgreSQL HA mode.
+Without `CONTROL_SIGNING_PRIVATE_KEY`, Control creates a per-instance file at `CONTROL_SIGNING_KEY_PATH`. Do not use per-replica files in PostgreSQL HA mode. Follow [`28-control-plane-access.md`](28-control-plane-access.md) to generate separate credentials. `CONTROL_BEARER_TOKEN` remains only as a legacy cluster-admin bootstrap path.
 
 ## 4. Publish Routes and Synchronize Gateway
 
@@ -60,7 +60,7 @@ go run ./cmd/controlctl snapshot --output snapshot.json
 go run ./cmd/controlctl models
 
 $env:GATEWAY_CONTROL_URL = "http://127.0.0.1:8081"
-$env:GATEWAY_CONTROL_BEARER_TOKEN = "<operator-token>"
+$env:GATEWAY_CONTROL_BEARER_TOKEN = "<raw-token-for-a-gateway-role-credential>"
 $env:GATEWAY_CONTROL_SIGNING_PUBLIC_KEY_B64 = $publicKey
 $env:GATEWAY_CONTROL_REQUIRED = "true"
 $env:GATEWAY_CONTROL_LKG_PATH = "data/gateway/runtime-snapshot.json"

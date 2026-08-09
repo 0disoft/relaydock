@@ -44,7 +44,8 @@ relaydock
 │   ├── controlctl/
 │   │   └── main.go
 │   ├── controld/
-│   │   └── main.go
+│   │   ├── main.go
+│   │   └── main_test.go
 │   ├── dbmigrate/
 │   │   └── main.go
 │   ├── expert-brokerd/
@@ -167,6 +168,7 @@ relaydock
 │   ├── 25-local-expert-store.md
 │   ├── 26-signing-and-token-key-rotation.md
 │   ├── 27-repository-size-and-source-release.md
+│   ├── 28-control-plane-access.md
 │   └── README.md
 ├── frontend/
 │   ├── bindings/
@@ -237,6 +239,11 @@ relaydock
 │   │   ├── authorization/
 │   │   │   ├── scopes.go
 │   │   │   └── set.go
+│   │   ├── controlaccess/
+│   │   │   ├── policy.go
+│   │   │   ├── policy_test.go
+│   │   │   ├── static.go
+│   │   │   └── static_test.go
 │   │   ├── mcpconfig/
 │   │   │   ├── static_token.go
 │   │   │   └── static_token_test.go
@@ -549,6 +556,7 @@ relaydock
 │   │   │   ├── auth.go
 │   │   │   └── gateway_auth.go
 │   │   ├── controlhttp/
+│   │   │   ├── access_test.go
 │   │   │   ├── key_rotation_test.go
 │   │   │   ├── server.go
 │   │   │   └── server_test.go

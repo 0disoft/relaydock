@@ -30,3 +30,4 @@
 | 25 | `25-local-expert-store.md` | Chunk storage, migration, and compaction |
 | 26 | `26-signing-and-token-key-rotation.md` | Zero-downtime Ed25519 and MCP HMAC rotation |
 | 27 | `27-repository-size-and-source-release.md` | 40 KiB policy, manifests, and reproducible ZIPs |
+| 28 | `28-control-plane-access.md` | Control authentication, roles, scopes, and audit |

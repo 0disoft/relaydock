@@ -4,16 +4,17 @@ import (
 	"context"
 	"fmt"
 	"log/slog"
+	"net/http"
 	"os"
 	"path/filepath"
 	"strings"
 	"time"
 
+	"github.com/0disoft/relaydock/internal/auth/controlaccess"
 	"github.com/0disoft/relaydock/internal/control/snapshot"
 	"github.com/0disoft/relaydock/internal/observability"
 	persistencepostgres "github.com/0disoft/relaydock/internal/persistence/postgres"
 	"github.com/0disoft/relaydock/internal/serverutil"
-	"github.com/0disoft/relaydock/internal/transport/apiutil"
 	"github.com/0disoft/relaydock/internal/transport/controlhttp"
 )
 
@@ -21,7 +22,16 @@ func main() {
 	logger := observability.NewLogger(os.Stdout, slog.LevelInfo).With("service", "controld")
 	address := envOr("CONTROL_ADDRESS", "127.0.0.1:8081")
 	token := strings.TrimSpace(os.Getenv("CONTROL_BEARER_TOKEN"))
-	if err := serverutil.RequireAuthenticationOutsideLoopback(address, token); err != nil {
+	authenticator, credentialCount, err := loadControlAuthenticator(token)
+	if err != nil {
+		logger.Error("load control access policy", "error", err)
+		os.Exit(1)
+	}
+	authenticationMarker := ""
+	if authenticator.Configured() {
+		authenticationMarker = "configured"
+	}
+	if err := serverutil.RequireAuthenticationOutsideLoopback(address, authenticationMarker); err != nil {
 		logger.Error("unsafe control-plane configuration", "error", err)
 		os.Exit(1)
 	}
@@ -48,11 +58,33 @@ func main() {
 		logger.Error("initialise control API", "error", err)
 		os.Exit(1)
 	}
-	handler := apiutil.RequireBearer(token, api.Handler(), "/healthz", "/readyz")
+	accessAudit := func(ctx context.Context, event controlaccess.AuditEvent) {
+		logger.InfoContext(ctx, "control access decision",
+			"subject", event.Subject,
+			"role", event.Role,
+			"tenantId", event.TenantID,
+			"projectId", event.ProjectID,
+			"action", event.Action,
+			"allowed", event.Allowed,
+			"reason", event.Reason,
+			"policyVersion", event.PolicyVersion,
+		)
+	}
+	api.SetAccessAudit(accessAudit)
+	var handler http.Handler
+	if authenticator.Configured() {
+		handler = authenticator.MiddlewareWithAudit(api.Handler(), accessAudit, "/healthz", "/readyz")
+	} else {
+		developmentPrincipal := controlaccess.Principal{Subject: "loopback-development", Role: controlaccess.RoleAdmin}
+		handler = http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			api.Handler().ServeHTTP(w, r.WithContext(controlaccess.WithPrincipal(r.Context(), developmentPrincipal)))
+		})
+	}
 	logger.Info(
 		"starting control plane",
 		"address", address,
-		"authentication", token != "",
+		"authentication", authenticator.Configured(),
+		"accessCredentials", credentialCount,
 		"snapshotStore", storeDescription,
 		"signingKey", signerDescription,
 		"signingKeyId", signer.SigningKeyID(),
@@ -62,6 +94,23 @@ func main() {
 		logger.Error("server stopped", "error", err)
 		os.Exit(1)
 	}
+}
+
+func loadControlAuthenticator(legacyToken string) (*controlaccess.StaticAuthenticator, int, error) {
+	configs, err := controlaccess.ParseCredentialConfig(os.Getenv("CONTROL_ACCESS_TOKENS_JSON"))
+	if err != nil {
+		return nil, 0, err
+	}
+	if legacyToken = strings.TrimSpace(legacyToken); legacyToken != "" {
+		configs = append(configs, controlaccess.CredentialForToken(legacyToken, controlaccess.Principal{
+			Subject: "legacy-control-operator", Role: controlaccess.RoleAdmin,
+		}))
+	}
+	authenticator, err := controlaccess.NewStaticAuthenticator(configs)
+	if err != nil {
+		return nil, 0, err
+	}
+	return authenticator, len(configs), nil
 }
 
 func openSnapshotStore() (snapshot.Store, string, func(), error) {

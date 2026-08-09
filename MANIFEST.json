@@ -1,35 +1,35 @@
 {
   "version": 2,
-  "generatedAt": "2026-08-09T08:34:47Z",
+  "generatedAt": "2026-08-09T09:37:15Z",
   "hashAlgorithm": "sha256",
-  "fileCount": 478,
-  "totalBytes": 1462437,
+  "fileCount": 485,
+  "totalBytes": 1497704,
   "maximumFileBytes": 40960,
-  "aggregateSha256": "e6bc45f5a9357edeef966fde2adfbedcf8efca3b79286b9bbfb7e82c73d8aebd",
+  "aggregateSha256": "87082644d092dcdb13a442b3d84be39461b32742cd99ee62d6a04f196f8fc739",
   "chunks": [
     {
       "path": "manifest/chunks/files-0001.json",
       "fileCount": 168,
       "firstPath": ".agents/README.md",
-      "lastPath": "gen/go/README.md",
-      "size": 30618,
-      "sha256": "759518bad625a8af59b4295bbb84bae22232034b0eac1cc00f47884d697517e6"
+      "lastPath": "frontend/uno.config.ts",
+      "size": 30638,
+      "sha256": "76f7284c0a33669204ee378ca17b9de702a4e57b1498a14ce953a1317f84ef84"
     },
     {
       "path": "manifest/chunks/files-0002.json",
       "fileCount": 160,
-      "firstPath": "go.mod",
-      "lastPath": "internal/persistence/migrate/migration.go",
-      "size": 30692,
-      "sha256": "b03d6f2a2dd9a3ad801b642e513067fccc61b6e876f0f77e3898b9e79d3c937b"
+      "firstPath": "frontend/vite.config.ts",
+      "lastPath": "internal/outbox/webhooksink/handler_test.go",
+      "size": 30609,
+      "sha256": "b71f6744526c8b4f72b99c9ba90d63d1838a199280b713d16b1439305c323a19"
     },
     {
       "path": "manifest/chunks/files-0003.json",
-      "fileCount": 150,
-      "firstPath": "internal/persistence/migrate/migration_test.go",
+      "fileCount": 157,
+      "firstPath": "internal/persistence/atomicfile/file.go",
       "lastPath": "web/shared/README.md",
-      "size": 28548,
-      "sha256": "c8673081ea422a1d8cbdca8a2ef544837542d41a3bc3c6f7fb081a8de2d043c8"
+      "size": 29963,
+      "sha256": "56f9d99ef6c302de9a26b681632dbaa52b01d41b50dacc62ee679ae8116861ab"
     }
   ],
   "excluded": [

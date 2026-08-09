@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.5.3-dev -- Control Plane Access Foundation
+
+- Replaced the one-token/one-authority Control boundary with a central deny-by-default `control-access/v1` policy.
+- Added separate cluster `gateway`, scoped `viewer`, cluster `publisher`, and cluster `admin` roles.
+- Added strict SHA-256 token-digest configuration so servers do not store raw static bearer tokens.
+- Limited tenant/project viewers to models allowed by matching virtual keys and removed internal provider account IDs from their responses.
+- Kept full snapshot read, watch, signing-key read, and publication behind explicit cluster roles.
+- Added safe structured audit events for authentication and authorization decisions without bearer tokens or token digests.
+- Preserved loopback-only development without credentials and the legacy `CONTROL_BEARER_TOKEN` cluster-admin compatibility path.
+- Added denial-first role, cross-project visibility, global publication, authentication, audit, and strict-config regression tests.
+
 ## 0.5.2-dev -- Verified Local Release Gates
 
 - Closed the hosted CI chain for Linux race/vet, PostgreSQL 18 integration, Buf and SQLC generation, generated contracts, both Svelte workspaces, and Windows Wails desktop/MCP compilation.

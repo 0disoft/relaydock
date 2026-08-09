@@ -2,6 +2,18 @@
   "version": 2,
   "files": [
     {
+      "path": "frontend/vite.config.ts",
+      "size": 372,
+      "sha256": "7b46c525b828dc4dec18101cd0e64f1540b9acb0e6ef35c119180c0e365a42db",
+      "mode": "0644"
+    },
+    {
+      "path": "gen/go/README.md",
+      "size": 136,
+      "sha256": "a80160a90cf494eebdfa98ddcc6acf69c2f682f2efc2eac16aa8a0412d2c22d2",
+      "mode": "0644"
+    },
+    {
       "path": "go.mod",
       "size": 1222,
       "sha256": "fdadde809f46a9d5a9f4ed6584c17ac31492f1948964c6ba5b63d6c94c5be5ef",
@@ -65,6 +77,30 @@
       "path": "internal/auth/authorization/set.go",
       "size": 495,
       "sha256": "f13a197c2362f062bf3a582279d0039795fd3acfd7bd61f0f38cb784df9c435b",
+      "mode": "0644"
+    },
+    {
+      "path": "internal/auth/controlaccess/policy.go",
+      "size": 4046,
+      "sha256": "282756b26ea1dca99713996603ca1cc3c1e562c3be6cc547bc000e8d7c3545cb",
+      "mode": "0644"
+    },
+    {
+      "path": "internal/auth/controlaccess/policy_test.go",
+      "size": 2128,
+      "sha256": "6b774206cc32cf64e360b6a55788e1bbd6ad6af9eb726308ec3edf2d058e5e69",
+      "mode": "0644"
+    },
+    {
+      "path": "internal/auth/controlaccess/static.go",
+      "size": 4987,
+      "sha256": "121e368903a217651aab45d850896aee3241d028ae1193ffbfc513df79a1455a",
+      "mode": "0644"
+    },
+    {
+      "path": "internal/auth/controlaccess/static_test.go",
+      "size": 3896,
+      "sha256": "af9d1de562771d035b91bcb0090048217c3985b70d82ab1dd2fe131adac21d5d",
       "mode": "0644"
     },
     {
@@ -190,7 +226,7 @@
     {
       "path": "internal/buildinfo/info.go",
       "size": 320,
-      "sha256": "1668a570c6a7f2e1ac027481d2446c13c7db2453c3e044988ac19590d37d74d5",
+      "sha256": "82ea28909d0ff8bc27ee3aedf9fa8eeedcdd3e55ae7ff29d4641e7e05183fdf1",
       "mode": "0644"
     },
     {
@@ -923,42 +959,6 @@
       "path": "internal/outbox/webhooksink/handler_test.go",
       "size": 3881,
       "sha256": "bb9f3cc882da1647538bb5a8019bfae46a8b6f5fec91be3065c1b3fbcf669134",
-      "mode": "0644"
-    },
-    {
-      "path": "internal/persistence/atomicfile/file.go",
-      "size": 3650,
-      "sha256": "5384eb83d3030f2cc9cd6a8895ae67fb336f1166a0a7cc8349a057be76ae7b5d",
-      "mode": "0644"
-    },
-    {
-      "path": "internal/persistence/atomicfile/permissions_unix.go",
-      "size": 114,
-      "sha256": "8e98cf1098f31a8ac5b1ce7b330c1cedf72f87211a54779ffa6e4c72e71a169a",
-      "mode": "0644"
-    },
-    {
-      "path": "internal/persistence/atomicfile/permissions_windows.go",
-      "size": 996,
-      "sha256": "a3d6f7384d5c877a7c15acbd27de50a60c792e310679f557f996e2d60c3784b8",
-      "mode": "0644"
-    },
-    {
-      "path": "internal/persistence/atomicfile/replace_unix.go",
-      "size": 309,
-      "sha256": "64cac72d6b4d62ef9baff56728d287555bdc95ab1feb57c6b69d4e677f230232",
-      "mode": "0644"
-    },
-    {
-      "path": "internal/persistence/atomicfile/replace_windows.go",
-      "size": 831,
-      "sha256": "7d8a99df1177a23fbe5035c73dae95325198c39f1c00d9977e40b2c021958bab",
-      "mode": "0644"
-    },
-    {
-      "path": "internal/persistence/migrate/migration.go",
-      "size": 3066,
-      "sha256": "96ba8af97634d4c5c3a2cba9cdc87f8ba903d238003c039eb2f69b8834b2249a",
       "mode": "0644"
     }
   ]

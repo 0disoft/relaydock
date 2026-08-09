@@ -87,8 +87,8 @@
     },
     {
       "path": ".env.example",
-      "size": 6867,
-      "sha256": "5645fe190bbcb431006416dbe3b50ea3e86f037fad6c40c2ade6fa1c6fd21024",
+      "size": 7121,
+      "sha256": "a8677f044a4c62dc753737092aafcac48657c151fed0044f471e958240847d49",
       "mode": "0644"
     },
     {
@@ -130,7 +130,7 @@
     {
       "path": ".ssealed/manifest.json",
       "size": 18269,
-      "sha256": "7f51a20deb36afd630963744b7db663c629d48af496de0c411283e100ee91e4d",
+      "sha256": "d9e41fa5117827f899342f202b15012704fc0de59f1c17895da7e12122dbc9da",
       "mode": "0644"
     },
     {
@@ -141,8 +141,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "size": 8174,
-      "sha256": "21c769a0837a8050a8552f52d267223a458ce3c5856a1f9bdb6de9410dc2ee3a",
+      "size": 9165,
+      "sha256": "52b592624f97486cea51587e805b3aea309807a25bcb137072d7100b478afaba",
       "mode": "0644"
     },
     {
@@ -159,8 +159,8 @@
     },
     {
       "path": "IMPLEMENTATION_STATUS.md",
-      "size": 8582,
-      "sha256": "80c047e4ef91ba0ffdf992073dc885ced3a0d13f93aba98f69b41eab3ffbbf4b",
+      "size": 8920,
+      "sha256": "5c81eec0fb3d5f2af9781a2943179424e0b7adde300c90b19e71db822bf20013",
       "mode": "0644"
     },
     {
@@ -177,8 +177,8 @@
     },
     {
       "path": "README.md",
-      "size": 9981,
-      "sha256": "1322ec6321449d3aee94268c413c3639b5952ee499ce5acbf1617b67eacdeba6",
+      "size": 10199,
+      "sha256": "98cf3a9328775a149a972eb808204a19d2fcab3e809d7753906fa562622cc95a",
       "mode": "0644"
     },
     {
@@ -189,8 +189,8 @@
     },
     {
       "path": "TREE.md",
-      "size": 24135,
-      "sha256": "27d92a76321f8ffb59294cb318c2dd8d9ff9ddcbd623852853406b89bc565683",
+      "size": 24455,
+      "sha256": "7863dddde45beb38f0dfc55841c04e353d5c6077e619d46c34ca6c8423aa11b3",
       "mode": "0644"
     },
     {
@@ -201,14 +201,14 @@
     },
     {
       "path": "VALIDATION.md",
-      "size": 9636,
-      "sha256": "caa43ec6a1abf8a6887573fc1c4457df52f8b32c64509fab756ec86532ab18d6",
+      "size": 9859,
+      "sha256": "3920adc5e7eb50f55b0b0a715f37418b156471134306e7cefba746a19940c61c",
       "mode": "0644"
     },
     {
       "path": "VERSION",
       "size": 10,
-      "sha256": "37ad7ae7e967478231818355f49789f774a4fd9aaa72c7c3abb8c44bf7a06cf4",
+      "sha256": "86dc3c2ed0b500b077b3cfae1ae76da2b29a9f65c510e449a6566970e7b1afcf",
       "mode": "0644"
     },
     {
@@ -262,7 +262,7 @@
     {
       "path": "bun.lock",
       "size": 60860,
-      "sha256": "fa58401bde066848ba30a8058e37367d975f7eb1d8d8afbb8bfa91ac7ed6c777",
+      "sha256": "0dff79e966229a2358c3df5524e391f7a4a1a7bcde51f2a4440e3302a509cdc5",
       "mode": "0644"
     },
     {
@@ -273,8 +273,14 @@
     },
     {
       "path": "cmd/controld/main.go",
-      "size": 6194,
-      "sha256": "aa6e465dac0a9b46276d8f051806416e8c19f77519ded5a8a0088a8546f58f98",
+      "size": 7984,
+      "sha256": "f6137695d55c8f33a43fe04fd012b118c38b8dab4da10f0105652df4f8111e29",
+      "mode": "0644"
+    },
+    {
+      "path": "cmd/controld/main_test.go",
+      "size": 1745,
+      "sha256": "ff504d6c50ec7b27c24175113c43c2e41d23cb5afdeb71458490feb6a71a1e9d",
       "mode": "0644"
     },
     {
@@ -663,8 +669,8 @@
     },
     {
       "path": "docs/20-operations-runbook.md",
-      "size": 10053,
-      "sha256": "e71303d2deffdf006e242386db2f25365f1614dbb8757f96e6e386f0d4d149c9",
+      "size": 10306,
+      "sha256": "c48c60275615db03035e3e749292adb82060aba67761ca74b071ea24c5248171",
       "mode": "0644"
     },
     {
@@ -706,13 +712,19 @@
     {
       "path": "docs/27-repository-size-and-source-release.md",
       "size": 2655,
-      "sha256": "15d8047c131b0527d400702ccb48df8b61186cadec9247c16e485306ebef2b18",
+      "sha256": "1eb57b514a9ed638876d1b3ff87a0501f2dc6d0174d788d35b2cee4be3535f71",
+      "mode": "0644"
+    },
+    {
+      "path": "docs/28-control-plane-access.md",
+      "size": 3908,
+      "sha256": "f6a59f8416a279c8e68f0b47b128a13a20dfa734faceb1925fb8c28c1e8d796a",
       "mode": "0644"
     },
     {
       "path": "docs/README.md",
-      "size": 2039,
-      "sha256": "171b4cdcf3292703069ce3c138098a68d19482a11a6c33b49d87f8d5e600e815",
+      "size": 2128,
+      "sha256": "82b6cff37f2227c0653d4b5bfd880ed88abb43ada63c3d8c3e4aa4847439348a",
       "mode": "0644"
     },
     {
@@ -862,7 +874,7 @@
     {
       "path": "frontend/package.json",
       "size": 680,
-      "sha256": "5eeee45f01dd8c78c8b4edc47dcefb59b6d5049395343d392bd1ed8ff7e08fdd",
+      "sha256": "e903d2d18da73ee823fa098d7968d7e05520f7267629b69305ee0b99a25e39d3",
       "mode": "0644"
     },
     {
@@ -995,18 +1007,6 @@
       "path": "frontend/uno.config.ts",
       "size": 500,
       "sha256": "d31008b5cf399c029f05faaa90ac5cee60c1ad0efb66ac6856aa7a478ca65b15",
-      "mode": "0644"
-    },
-    {
-      "path": "frontend/vite.config.ts",
-      "size": 372,
-      "sha256": "7b46c525b828dc4dec18101cd0e64f1540b9acb0e6ef35c119180c0e365a42db",
-      "mode": "0644"
-    },
-    {
-      "path": "gen/go/README.md",
-      "size": 136,
-      "sha256": "a80160a90cf494eebdfa98ddcc6acf69c2f682f2efc2eac16aa8a0412d2c22d2",
       "mode": "0644"
     }
   ]

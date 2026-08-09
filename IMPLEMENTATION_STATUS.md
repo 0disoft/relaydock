@@ -2,7 +2,7 @@
 
 ## Current Stage
 
-`0.5.2-dev` is a reference implementation with operational paths and bounded-file contracts. Without external infrastructure it runs with `local/echo`, an atomic JSON store, and memory leases. PostgreSQL and Valkey enable durable consultations, virtual keys, signed Control snapshots, the runtime journal, transactional outbox, and distributed provider leases.
+`0.5.3-dev` is a reference implementation with operational paths, bounded-file contracts, and a deny-by-default Control Plane access policy. Without external infrastructure it runs with `local/echo`, an atomic JSON store, and memory leases. PostgreSQL and Valkey enable durable consultations, virtual keys, signed Control snapshots, the runtime journal, transactional outbox, and distributed provider leases.
 
 This is not a claim of full production readiness. Real provider accounts, the money-platform, a complete Go 1.26 dependency build, live PostgreSQL and Valkey, Wails installers and updates, and code signing still require validation in target environments.
 
@@ -19,6 +19,7 @@ This is not a claim of full production readiness. Real provider accounts, the mo
 | Concurrency leases | Implemented and tested | Memory and Valkey Lua acquire/renew/release with server time | Real cluster, Sentinel, and partition validation |
 | Signed Control snapshots | Implemented and tested | Key-ID Ed25519, dual trust, old-key resign, fetch/watch/verify, atomic swap, LKG, fail-closed expiry | Long watch and real secret-manager rotation soak |
 | Control stores | Implemented | Atomic local store; PostgreSQL immutable history, advisory lock, polling watch, HA initialization recovery | Real multi-replica contention and database failover |
+| Control access policy | Implemented and tested | Digested static credentials, gateway/viewer/publisher/admin roles, tenant/project model filtering, provider-account redaction, denial audit | OIDC login, membership persistence, revocation, and Console role management |
 | Runtime journal | Implemented and tested | Request/attempt/commit/usage/error lifecycle, retry totals, operator UUID startup validation | Partitioning, retention, and load tuning |
 | Transactional outbox | Implemented and tested | Atomic finish/event insert, conflict detection, leased worker, fencing, retry, dead letter, graceful stop | Money-platform end-to-end and receiver-outage soak |
 | Signed webhook | Implemented and tested | HMAC, replay window, idempotency, redirect/plaintext guards | mTLS or workload identity |
@@ -31,7 +32,7 @@ This is not a claim of full production readiness. Real provider accounts, the mo
 | MCP bridge and local IPC | Implemented and tested | STDIO-to-IPC tools, Unix sockets, Windows Named Pipes, frame limits, reconnect | Real Codex/Claude Code/OpenCode conformance and Windows multi-user ACLs |
 | Wails desktop | Implemented | Tray, single instance, close-to-tray, autostart, settings, provider runtime | Installers, signing, sleep/resume, updater rollback |
 | Virtual keys | Implemented and tested | PostgreSQL HMAC keys, scopes/models, revoke, v2 and legacy parsing | Pepper rotation, audit, high-volume cache |
-| Migrations and bootstrap | Implemented and tested | Embedded SQL, checksums, advisory locks, transactions, organization/project/key CLIs | Real upgrade matrix, PITR, and console RBAC |
+| Migrations and bootstrap | Implemented and tested | Embedded SQL, checksums, advisory locks, transactions, organization/project/key CLIs | Real upgrade matrix, PITR, and persisted membership management |
 | Accounting domain | Development contract | Quote, hold, capture, release, adjustment, idempotency | Mandarin money-platform client and reconciliation |
 | Storage primitives | Partial | Encrypted in-memory secrets, credentials, expiring objects, durable outbox | OS keychains, KMS, R2/S3 |
 | Updater | Staging implemented | Manifest signature, SHA-256, size, pending artifact | Platform replacement and rollback |

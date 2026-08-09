@@ -15,6 +15,7 @@ import (
 	"testing"
 	"time"
 
+	"github.com/0disoft/relaydock/internal/auth/controlaccess"
 	"github.com/0disoft/relaydock/internal/control/snapshot"
 	"github.com/0disoft/relaydock/internal/expert/consultation"
 	"github.com/0disoft/relaydock/internal/transport/controlhttp"
@@ -175,7 +176,10 @@ func TestControlPlanePublishesVerifiableSnapshots(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	server := httptest.NewServer(api.Handler())
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		principal := controlaccess.Principal{Subject: "integration-control-admin", Role: controlaccess.RoleAdmin}
+		api.Handler().ServeHTTP(w, r.WithContext(controlaccess.WithPrincipal(r.Context(), principal)))
+	}))
 	defer server.Close()
 
 	keyResponse, err := http.Get(server.URL + "/v1/signing-key")

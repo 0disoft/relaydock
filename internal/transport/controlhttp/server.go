@@ -14,6 +14,7 @@ import (
 	"sync"
 	"time"
 
+	"github.com/0disoft/relaydock/internal/auth/controlaccess"
 	"github.com/0disoft/relaydock/internal/control/snapshot"
 	"github.com/0disoft/relaydock/internal/core"
 	"github.com/0disoft/relaydock/internal/transport/apiutil"
@@ -34,6 +35,7 @@ type API struct {
 	verifier snapshot.Verifier
 	public   ed25519.PublicKey
 	keyID    string
+	audit    controlaccess.AuditFunc
 	mu       sync.Mutex
 }
 
@@ -146,12 +148,52 @@ func (a *API) Handler() http.Handler {
 	}}
 	mux.HandleFunc("GET /healthz", probe.Health)
 	mux.HandleFunc("GET /readyz", probe.Readiness)
-	mux.HandleFunc("GET /v1/snapshot", a.current)
-	mux.HandleFunc("POST /v1/snapshot", a.publish)
-	mux.HandleFunc("GET /v1/snapshots/watch", a.watch)
-	mux.HandleFunc("GET /v1/signing-key", a.signingKey)
-	mux.HandleFunc("GET /v1/models", a.models)
+	mux.Handle("GET /v1/snapshot", a.requireAction(controlaccess.ActionSnapshotRead, http.HandlerFunc(a.current)))
+	mux.Handle("POST /v1/snapshot", a.requireAction(controlaccess.ActionSnapshotPublish, http.HandlerFunc(a.publish)))
+	mux.Handle("GET /v1/snapshots/watch", a.requireAction(controlaccess.ActionSnapshotWatch, http.HandlerFunc(a.watch)))
+	mux.Handle("GET /v1/signing-key", a.requireAction(controlaccess.ActionSigningKeyRead, http.HandlerFunc(a.signingKey)))
+	mux.Handle("GET /v1/models", a.requireAction(controlaccess.ActionModelsRead, http.HandlerFunc(a.models)))
 	return mux
+}
+
+func (a *API) SetAccessAudit(audit controlaccess.AuditFunc) {
+	a.audit = audit
+}
+
+func (a *API) requireAction(action controlaccess.Action, next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		principal, ok := controlaccess.PrincipalFromContext(r.Context())
+		if !ok {
+			a.recordAccess(r.Context(), controlaccess.Principal{}, action, controlaccess.Decision{
+				Reason: "authentication_required", PolicyVersion: controlaccess.PolicyVersion,
+			})
+			w.Header().Set("WWW-Authenticate", `Bearer realm="relaydock-control"`)
+			apiutil.WriteJSON(w, http.StatusUnauthorized, apiutil.ErrorBody{Error: apiutil.ErrorDetail{
+				Code: "authentication_required", Message: "authenticated control-plane principal required",
+			}})
+			return
+		}
+		decision := controlaccess.Authorize(principal, action)
+		a.recordAccess(r.Context(), principal, action, decision)
+		w.Header().Set("X-RelayDock-Policy-Version", decision.PolicyVersion)
+		if !decision.Allowed {
+			apiutil.WriteJSON(w, http.StatusForbidden, apiutil.ErrorBody{Error: apiutil.ErrorDetail{
+				Code: "permission_denied", Message: "control-plane action is not permitted",
+			}})
+			return
+		}
+		next.ServeHTTP(w, r)
+	})
+}
+
+func (a *API) recordAccess(ctx context.Context, principal controlaccess.Principal, action controlaccess.Action, decision controlaccess.Decision) {
+	if a.audit == nil {
+		return
+	}
+	a.audit(ctx, controlaccess.AuditEvent{
+		Subject: principal.Subject, Role: principal.Role, TenantID: principal.TenantID, ProjectID: principal.ProjectID,
+		Action: action, Allowed: decision.Allowed, Reason: decision.Reason, PolicyVersion: decision.PolicyVersion,
+	})
 }
 
 func (a *API) current(w http.ResponseWriter, r *http.Request) {
@@ -263,7 +305,48 @@ func (a *API) models(w http.ResponseWriter, r *http.Request) {
 		apiutil.WriteError(w, err)
 		return
 	}
-	apiutil.WriteJSON(w, http.StatusOK, map[string]any{"models": current.Models, "revision": current.Revision})
+	principal, _ := controlaccess.PrincipalFromContext(r.Context())
+	apiutil.WriteJSON(w, http.StatusOK, map[string]any{
+		"models": filterModelsForPrincipal(current, principal), "revision": current.Revision,
+	})
+}
+
+func filterModelsForPrincipal(current snapshot.Snapshot, principal controlaccess.Principal) []snapshot.ModelRoute {
+	if principal.IsClusterScoped() {
+		return append([]snapshot.ModelRoute(nil), current.Models...)
+	}
+	allowed := make(map[string]struct{})
+	allowAll := false
+	for _, key := range current.VirtualKeys {
+		if !strings.EqualFold(strings.TrimSpace(key.TenantID), strings.TrimSpace(principal.TenantID)) {
+			continue
+		}
+		if principal.ProjectID != "" && !strings.EqualFold(strings.TrimSpace(key.ProjectID), strings.TrimSpace(principal.ProjectID)) {
+			continue
+		}
+		if len(key.AllowedModels) == 0 {
+			allowAll = true
+			break
+		}
+		for _, model := range key.AllowedModels {
+			if model = strings.TrimSpace(model); model != "" {
+				allowed[strings.ToLower(model)] = struct{}{}
+			}
+		}
+	}
+	models := make([]snapshot.ModelRoute, 0, len(current.Models))
+	for _, model := range current.Models {
+		if _, ok := allowed[strings.ToLower(strings.TrimSpace(model.VirtualModel))]; allowAll || ok {
+			filtered := model
+			filtered.Candidates = append([]string(nil), model.Candidates...)
+			filtered.CandidateDetails = append([]snapshot.RouteCandidate(nil), model.CandidateDetails...)
+			for index := range filtered.CandidateDetails {
+				filtered.CandidateDetails[index].AccountID = ""
+			}
+			models = append(models, filtered)
+		}
+	}
+	return models
 }
 
 func validatePublish(request PublishRequest) error {
