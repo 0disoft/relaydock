@@ -1,5 +1,5 @@
-# Generated Wails bindings
+# Generated Wails Bindings
 
-`wails3 dev`, `wails3 build`, 또는 `wails3 generate bindings`가 이 디렉터리를 덮어쓴다.
+`wails3 dev`, `wails3 build`, or `wails3 generate bindings` overwrites this directory.
 
-프론트엔드에서 생성 코드를 직접 여러 곳에서 import하지 말고 `src/lib/runtime-adapter.ts` 한 파일 뒤로 가둔다.
+Do not import generated code from multiple frontend locations. Keep it behind the single `src/lib/runtime-adapter.ts` adapter.

@@ -21,4 +21,4 @@
 - Security checklist: `.agents/checklists/security.md`
 - Operations checklist: `.agents/checklists/ops-change.md`
 
-`.agents`와 ssealed 문서는 작업 라우팅과 소유권 보조 자료다. 기존 번호 문서, `AGENTS.md`, 코드, 테스트, 상위 mustflow command contract를 대체하지 않는다.
+The `.agents` and ssealed documents are supporting materials for task routing and ownership. They do not replace the existing numbered documents, `AGENTS.md`, source code, tests, or the parent mustflow command contract.

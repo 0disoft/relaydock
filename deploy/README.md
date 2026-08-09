@@ -1,55 +1,55 @@
 # Deployment
 
-이 디렉터리는 서버 바이너리용 distroless 이미지, migration·bootstrap용 ops 이미지, 전체 개발 Compose, Caddy reverse proxy 예시를 제공한다. Wails 데스크톱 앱은 Docker로 배포하지 않는다.
+This directory provides distroless images for server binaries, an operations image for migration and bootstrap tasks, the complete development Compose stack, and an example Caddy reverse proxy. The Wails desktop app is not deployed with Docker.
 
-## 개발 Compose
+## Development Compose
 
 ```powershell
 docker compose -f deploy/docker-compose.dev.yml up --build
 ```
 
-기본 노출:
+Default exposure:
 
-| 서비스 | 주소 | 개발 인증 |
+| Service | Address | Development authentication |
 |---|---|---|
 | Gateway | `127.0.0.1:8080` | `development-gateway-token` |
 | Control | `127.0.0.1:8081` | `development-control-token` |
 | Expert | `127.0.0.1:8082` | `development-expert-token` |
-| PostgreSQL | `127.0.0.1:5432` | compose 파일의 개발 계정 |
-| Valkey | `127.0.0.1:6379` | 인증 없음 |
+| PostgreSQL | `127.0.0.1:5432` | Development account in the Compose file |
+| Valkey | `127.0.0.1:6379` | None |
 
-이 값은 로컬 전용이다. 외부 호스트나 공유 개발 서버에 그대로 사용하지 않는다.
+These values are for local use only. Do not reuse them on an external host or shared development server.
 
-Compose는 PostgreSQL health 이후 `dbmigrate up`을 단일 실행하고 Gateway를 시작한다. Expert Broker는 기본적으로 writable volume의 local atomic store를 사용한다. PostgreSQL Expert store를 시험할 때는 먼저 `projectctl ensure`로 tenant/project ID를 만든 뒤 `EXPERT_POSTGRES_URL`, `EXPERT_TENANT_ID`, `EXPERT_PROJECT_ID`를 주입한다.
+Compose runs `dbmigrate up` once after PostgreSQL becomes healthy, then starts the Gateway. The Expert Broker uses a local atomic store on a writable volume by default. To test the PostgreSQL Expert store, first create tenant and project IDs with `projectctl ensure`, then provide `EXPERT_POSTGRES_URL`, `EXPERT_TENANT_ID`, and `EXPERT_PROJECT_ID`.
 
-선택적 Caddy proxy:
+Optional Caddy proxy:
 
 ```powershell
 docker compose -f deploy/docker-compose.dev.yml --profile proxy up --build
 ```
 
-## 이미지
+## Images
 
 - `Dockerfile.gateway`: stateless Gateway data plane
-- `Dockerfile.control`: writable Control snapshot·signing-key 디렉터리 포함
-- `Dockerfile.expert`: writable local Expert state 디렉터리 포함
-- `Dockerfile.ops`: `dbmigrate`, `projectctl`, `keyctl`
+- `Dockerfile.control`: includes writable Control snapshot and signing-key directories
+- `Dockerfile.expert`: includes a writable local Expert-state directory
+- `Dockerfile.ops`: `dbmigrate`, `projectctl`, and `keyctl`
 
-Control과 Expert runtime은 non-root UID로 실행한다. 상태 volume의 ownership을 임의 root UID로 바꾸면 재기동이 실패할 수 있다.
+The Control and Expert runtimes use non-root UIDs. Changing state-volume ownership to an arbitrary root UID can prevent restart.
 
-모든 service image build stage는 `go.mod`와 `go.sum`을 함께 복사하고 `GOFLAGS=-mod=readonly`로 module graph 변경을 거절한다. `go.sum`이 없거나 현재 `go.mod`와 일치하지 않으면 image build를 진행하지 않는다.
+Every service-image build stage copies both `go.mod` and `go.sum` and rejects module-graph changes with `GOFLAGS=-mod=readonly`. The image build does not proceed when `go.sum` is missing or inconsistent with the current `go.mod`.
 
-release image build는 `VERSION`, `COMMIT`, `BUILD_TIME` build argument를 모두 전달한다. 같은 값은 Go `buildinfo`와 OCI `version`, `revision`, `created` label에 함께 들어가야 하며, 기본값 `dev`·`unknown`이 남은 image는 production promotion 대상이 아니다.
+Release image builds must provide the `VERSION`, `COMMIT`, and `BUILD_TIME` build arguments. The same values must appear in Go `buildinfo` and the OCI `version`, `revision`, and `created` labels. Images that retain the `dev` or `unknown` defaults are not eligible for production promotion.
 
-## 초기 운영 기준
+## Initial Operational Baseline
 
-- Cloudflare: DNS, WAF, TLS, 정적 자산
-- Hetzner: Gateway / Control / Expert
-- PostgreSQL: 권위 상태, backup·PITR·restore rehearsal
-- Valkey: 재생 가능한 lease·cooldown·rate state만 저장
-- R2/S3: 암호화 ContextPack과 짧은 TTL 첨부파일
-- migration: 배포당 단일 실행자
-- image: immutable digest pin과 SBOM
-- secret: Compose 파일이나 image layer에 포함 금지
+- Cloudflare: DNS, WAF, TLS, and static assets
+- Hetzner: Gateway, Control, and Expert
+- PostgreSQL: authoritative state, backups, PITR, and restore rehearsals
+- Valkey: replayable lease, cooldown, and rate state only
+- R2/S3: encrypted ContextPacks and short-TTL attachments
+- Migration: one runner per deployment
+- Image: immutable digest pinning and SBOM
+- Secrets: never included in Compose files or image layers
 
-상세 장애·복구 절차는 `../docs/20-operations-runbook.md`를 본다.
+See `../docs/20-operations-runbook.md` for detailed failure and recovery procedures.

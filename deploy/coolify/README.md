@@ -1,52 +1,52 @@
-# Coolify deployment
+# Coolify Deployment
 
-초기 관리형 배포는 Gateway, Control, Expert를 별도 서비스로 등록한다. PostgreSQL은 애플리케이션 재배포와 분리하고 외부 백업, PITR, 복구 훈련을 갖춘 인스턴스로 다룬다. Valkey는 재생 가능한 lease·rate-limit 상태만 보유한다.
+Register Gateway, Control, and Expert as separate services for the initial managed deployment. Keep PostgreSQL independent from application redeployments and operate it with external backups, PITR, and restore rehearsals. Valkey holds only replayable lease and rate-limit state.
 
 ## Services
 
 | Service | Image | Persistent data | Public exposure |
 |---|---|---|---|
-| Migration job | `Dockerfile.ops` | 없음 | 비공개 one-shot |
-| Control | `Dockerfile.control` | signing key, snapshot state | 관리망 또는 인증된 endpoint |
-| Expert | `Dockerfile.expert` | PostgreSQL 사용 권장, local mode면 state volume | 인증된 endpoint |
-| Gateway | `Dockerfile.gateway` | 없음 | public API |
-| PostgreSQL | managed or dedicated | database volume and backups | private network only |
-| Valkey | managed or dedicated | optional AOF, authoritative data 없음 | private network only |
+| Migration job | `Dockerfile.ops` | None | Private one-shot |
+| Control | `Dockerfile.control` | Signing key and snapshot state | Management network or authenticated endpoint |
+| Expert | `Dockerfile.expert` | PostgreSQL recommended; state volume in local mode | Authenticated endpoint |
+| Gateway | `Dockerfile.gateway` | None | Public API |
+| PostgreSQL | Managed or dedicated | Database volume and backups | Private network only |
+| Valkey | Managed or dedicated | Optional AOF; no authoritative data | Private network only |
 
-## First deployment
+## First Deployment
 
-1. 이미지 registry와 immutable digest 정책을 확정한다.
-2. PostgreSQL과 Valkey private endpoint를 만든다.
-3. secret provider에 provider key, bearer token, virtual-key HMAC key를 등록한다.
-4. Control signing key와 snapshot 경로에 persistent volume을 연결한다.
-5. `Dockerfile.ops` 이미지로 `dbmigrate up` one-shot job을 실행한다.
-6. 같은 ops 이미지의 `projectctl ensure`로 초기 organization과 project를 생성한다.
-7. `keyctl issue`로 첫 virtual key를 발급하고 안전한 secret manager에 저장한다.
-8. Control과 Expert를 배포하고 `/healthz`, `/readyz`를 확인한다.
-9. Gateway를 canary로 배포해 `local/echo`가 아닌 실제 route와 provider를 검증한다.
-10. public rollout 뒤 provider usage와 내부 usage event를 대조한다.
+1. Establish the image registry and immutable-digest policy.
+2. Create private PostgreSQL and Valkey endpoints.
+3. Register provider keys, bearer tokens, and the virtual-key HMAC key with the secret provider.
+4. Attach persistent volumes for the Control signing key and snapshot path.
+5. Run a one-shot `dbmigrate up` job with the `Dockerfile.ops` image.
+6. Create the initial organization and project with `projectctl ensure` from the same operations image.
+7. Issue the first virtual key with `keyctl issue` and store it in a secure secret manager.
+8. Deploy Control and Expert, then verify `/healthz` and `/readyz`.
+9. Canary the Gateway and verify a real route and provider, not `local/echo`.
+10. Reconcile provider usage with internal usage events after public rollout.
 
-## Required deployment checks
+## Required Deployment Checks
 
-- `/healthz`, `/readyz` probe
-- migration 단일 실행자
-- non-root container의 state directory write permission
+- `/healthz` and `/readyz` probes
+- A single migration runner
+- State-directory write permission for non-root containers
 - PostgreSQL backup and restore test
-- Valkey 장애 시 gateway capacity가 무한 확장되지 않는지 확인
+- Bounded Gateway capacity during a Valkey outage
 - R2/S3 bucket lifecycle and encryption
-- OTLP endpoint와 payload logging 기본값
-- 외부 bind 시 authentication enforcement
-- Caddy 또는 upstream proxy의 request body·idle timeout이 streaming 요구와 일치
+- OTLP endpoint and default payload-logging behavior
+- Authentication enforcement on external binds
+- Caddy or upstream-proxy request-body and idle timeouts that match streaming requirements
 
 ## Upgrade
 
 ```text
 backup checkpoint
-  → ops/dbmigrate up
-  → control
-  → expert
-  → gateway canary
-  → gateway rollout
+  -> ops/dbmigrate up
+  -> control
+  -> expert
+  -> gateway canary
+  -> gateway rollout
 ```
 
-Coolify의 자동 재배포가 migration job을 여러 인스턴스에서 동시에 실행하지 않도록 한다. Migration runner 자체도 PostgreSQL advisory lock을 사용하지만 배포 오케스트레이션에서 단일 실행을 유지한다.
+Prevent Coolify automatic redeployment from running the migration job concurrently on multiple instances. The migration runner also uses a PostgreSQL advisory lock, but deployment orchestration must still preserve a single runner.

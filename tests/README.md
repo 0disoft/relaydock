@@ -1,12 +1,12 @@
 # Tests
 
-테스트 디렉터리는 제품 경계에 맞춰 나눈다.
+Test directories follow product boundaries:
 
-- `conformance`: ingress/egress 프로토콜 계약
-- `golden_streams`: 공급자 이벤트 재생과 순서 검증
-- `fault_injection`: 중간 연결 종료, 취소, 429/5xx, backpressure
-- `billing`: usage idempotency와 quote-hold-capture 정산
-- `expert`: ContextPack, redaction, 상담 상태 머신, 재귀 호출 방지
-- `load`: TTFT, inter-token latency, queue delay를 분리 측정
+- `conformance`: ingress and egress protocol contracts
+- `golden_streams`: provider-event replay and ordering verification
+- `fault_injection`: midstream disconnects, cancellation, 429/5xx, and backpressure
+- `billing`: usage idempotency and quote-hold-capture settlement
+- `expert`: ContextPack, redaction, consultation state machine, and recursion prevention
+- `load`: separate TTFT, inter-token latency, and queue-delay measurements
 
-실제 공급자 live test는 기본 CI에서 실행하지 않는다. 별도 nightly probe와 제한된 자격 증명을 사용한다.
+Live provider tests do not run in the default CI workflow. Use a separate nightly probe with restricted credentials.

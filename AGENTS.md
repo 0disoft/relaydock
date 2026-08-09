@@ -1,62 +1,62 @@
 # AGENTS.md
 
-## 저장소 목적
+## Repository Purpose
 
-이 저장소는 일반 챗봇이 아니라 AI 요청의 프로토콜·라우팅·비용·상담 handoff를 통제하는 런타임이다. 기능 개수보다 경계와 실패 의미가 중요하다.
+This repository is not a general-purpose chatbot. It is a runtime that controls the protocol, routing, cost, and consultation-handoff boundaries of AI requests. Boundaries and failure semantics matter more than feature count.
 
-## 반드시 지킬 규칙
+## Mandatory Rules
 
 ### Wails
 
-- `internal/desktopwails`만 Wails package를 import한다.
-- Wails service는 DTO 변환과 use-case 호출만 담당한다.
-- 프론트엔드 binding 호출은 얇은 adapter 뒤에 둔다.
-- 창 종료와 런타임 종료를 동일시하지 않는다.
-- 두 번째 인스턴스의 args와 additional data는 불신 입력으로 취급한다.
+- Only `internal/desktopwails` may import Wails packages.
+- Wails services are limited to DTO conversion and use-case invocation.
+- Keep frontend binding calls behind a thin adapter.
+- Do not treat closing the window as terminating the runtime.
+- Treat the arguments and additional data from a second instance as untrusted input.
 
 ### MCP
 
-- STDIO transport에서 stdout에는 MCP message 외의 것을 절대 쓰지 않는다.
-- 모든 로그는 stderr로 보낸다.
-- tool handler에서 장기 작업 완료를 기다리지 않고 consultation ID를 반환한다.
-- Codex token에는 create/read/cancel만, ChatGPT connector token에는 read/answer만 부여한다.
-- delegation depth를 1보다 크게 만들지 않는다.
+- Never write anything except MCP messages to stdout on the STDIO transport.
+- Send all logs to stderr.
+- Tool handlers must return a consultation ID instead of waiting for long-running work to finish.
+- Grant Codex tokens only create/read/cancel scopes, and ChatGPT connector tokens only read/answer scopes.
+- Do not allow delegation depth greater than 1.
 
-### 프로토콜 변환
+### Protocol Conversion
 
-- 모르는 필드와 event를 즉시 삭제하지 않는다.
-- strict mode에서 손실이 하나라도 있으면 거절한다.
-- compatible mode의 모든 변환은 loss report에 남긴다.
-- passthrough는 upstream과 ingress가 같은 의미 계약일 때만 허용한다.
-- 첫 semantic event 이후 자동 retry는 금지한다.
+- Do not immediately discard unknown fields or events.
+- Reject any conversion with loss in strict mode.
+- Record every compatible-mode conversion in the loss report.
+- Allow passthrough only when upstream and ingress share the same semantic contract.
+- Never retry automatically after the first semantic event.
 
-### 과금
+### Billing
 
-- PostgreSQL이 권위 상태다.
-- Valkey는 lease, rate limit, cooldown, affinity에만 쓴다.
-- usage event와 customer charge를 같은 row로 뭉치지 않는다.
-- price revision은 요청 시작 시 고정한다.
-- 조정은 원본 row 수정이 아니라 adjustment entry로 기록한다.
-- idempotency key 없는 capture API를 만들지 않는다.
+- PostgreSQL is authoritative state.
+- Use Valkey only for leases, rate limits, cooldowns, and affinity.
+- Do not combine usage events and customer charges in the same row.
+- Pin the price revision when the request begins.
+- Record adjustments as adjustment entries instead of modifying original rows.
+- Do not create a capture API without an idempotency key.
 
-### 보안
+### Security
 
-- 임의 provider URL과 MCP URL은 SSRF 검사 후 연결한다.
-- context pack은 local에서 선별·redact한 뒤 전송한다.
-- prompt/response 본문 logging은 기본 비활성이다.
-- ChatGPT 웹 DOM 자동화, 쿠키 추출, 비공개 endpoint 흉내를 공식 기능으로 넣지 않는다.
-- secret 값은 error와 structured log에 들어가면 안 된다.
+- Apply SSRF checks before connecting to arbitrary provider or MCP URLs.
+- Select and redact ContextPack content locally before transmission.
+- Disable prompt and response body logging by default.
+- Do not ship ChatGPT web DOM automation, cookie extraction, or imitation of private endpoints as official features.
+- Secret values must never appear in errors or structured logs.
 
-### 코드
+### Code
 
-- 생성 디렉터리는 직접 수정하지 않는다.
-- TODO를 성공 처리로 위장하지 않는다.
-- 외부 의존성이 필요한 경로는 명시적 설정 오류를 반환하고, 로컬 메모리 구현으로 수직 흐름을 검증한다.
-- public interface 변경에는 ADR 또는 contract 문서 변경이 따라야 한다.
-- 상태 전이는 switch 문 곳곳이 아니라 한 state machine에 모은다.
-- provider별 예외를 canonical core에 직접 박지 않는다.
+- Do not edit generated directories directly.
+- Do not disguise TODOs as successful behavior.
+- Paths that require external dependencies must return explicit configuration errors; use local in-memory implementations to verify vertical flows.
+- Public interface changes require an ADR or contract-document update.
+- Centralize state transitions in one state machine instead of scattering them across switch statements.
+- Do not embed provider-specific exceptions directly in the canonical core.
 
-## 생성 디렉터리
+## Generated Directories
 
 ```text
 frontend/bindings/
@@ -64,9 +64,9 @@ gen/go/
 internal/persistence/postgres/sqlcgen/
 ```
 
-## 테스트 완료 조건
+## Test Completion Criteria
 
-변경 영역에 따라 최소 하나 이상을 추가한다.
+Add at least one applicable test for the changed area:
 
 - golden wire fixture
 - state transition test
@@ -76,13 +76,13 @@ internal/persistence/postgres/sqlcgen/
 - Playwright UI test
 - migration round-trip test
 
-## 리뷰 우선순위
+## Review Priorities
 
-1. 이중 차감·권한 상승·비밀 유출
-2. 중간 스트림 중복 실행
-3. 손실 있는 프로토콜 변환
-4. 상태 머신 우회
-5. 취소·timeout 누락
-6. 무제한 메모리·본문·동시성
-7. 관측 불가능한 실패
-8. 유지보수성
+1. Double charging, privilege escalation, and secret disclosure
+2. Duplicate execution after a partial stream
+3. Lossy protocol conversion
+4. State-machine bypass
+5. Missing cancellation or timeout handling
+6. Unbounded memory, body size, or concurrency
+7. Unobservable failures
+8. Maintainability
