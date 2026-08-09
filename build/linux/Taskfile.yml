@@ -26,5 +26,5 @@ tasks:
     cmds:
       - rm -rf dist/{{.APP_NAME}}-{{.VERSION}}-linux-{{.ARCH}}
       - mkdir -p dist/{{.APP_NAME}}-{{.VERSION}}-linux-{{.ARCH}}
-      - cp bin/{{.APP_NAME}} bin/mcp-bridge README.md LICENSE-PENDING.md dist/{{.APP_NAME}}-{{.VERSION}}-linux-{{.ARCH}}/
+      - cp bin/{{.APP_NAME}} bin/mcp-bridge README.md LICENSE dist/{{.APP_NAME}}-{{.VERSION}}-linux-{{.ARCH}}/
       - tar -C dist -czf dist/{{.APP_NAME}}-{{.VERSION}}-linux-{{.ARCH}}.tar.gz {{.APP_NAME}}-{{.VERSION}}-linux-{{.ARCH}}

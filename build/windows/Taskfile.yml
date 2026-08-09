@@ -28,7 +28,7 @@ tasks:
         $stage='dist/{{.APP_NAME}}-{{.VERSION}}-windows-amd64';
         Remove-Item -Recurse -Force $stage -ErrorAction SilentlyContinue;
         New-Item -ItemType Directory -Force -Path $stage | Out-Null;
-        Copy-Item 'bin/{{.APP_NAME}}.exe','bin/mcp-bridge.exe','README.md','LICENSE-PENDING.md' -Destination $stage;
+        Copy-Item 'bin/{{.APP_NAME}}.exe','bin/mcp-bridge.exe','README.md','LICENSE' -Destination $stage;
         $archive=$stage+'.zip';
         Remove-Item -Force $archive -ErrorAction SilentlyContinue;
         Compress-Archive -Path ($stage+'/*') -DestinationPath $archive -CompressionLevel Optimal"

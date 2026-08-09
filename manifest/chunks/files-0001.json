@@ -117,8 +117,8 @@
     },
     {
       "path": ".github/workflows/release.yml",
-      "size": 19670,
-      "sha256": "a6f2cfb5dc476c5c4094c14578a02957de722c44a040904e66e6e5fd4ae8e88c",
+      "size": 19659,
+      "sha256": "cd715bc593d55f6e8a3023d0021c1a8f64570d69a08b7c83dc410afc42bee455",
       "mode": "0644"
     },
     {
@@ -141,8 +141,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "size": 15240,
-      "sha256": "f2d61ed962f269166d7ac6f0e5a38839328f131040fc1c531b5b520decb9c6a2",
+      "size": 15381,
+      "sha256": "0a1ccbd0a63a7ec1621f5074b971380f6c8c9a0f36cd695c9840802885104111",
       "mode": "0644"
     },
     {
@@ -219,8 +219,8 @@
     },
     {
       "path": "build/README.md",
-      "size": 1442,
-      "sha256": "5d2315dc85f39810623c57e4101b1af1f3420e6bada6ddaa0d52910113eabb67",
+      "size": 1512,
+      "sha256": "e470e2a0763e0eb2e8acc05e7e59c79a6e87625ee869835ded33f9d025b22369",
       "mode": "0644"
     },
     {
@@ -237,20 +237,20 @@
     },
     {
       "path": "build/darwin/Taskfile.yml",
-      "size": 951,
-      "sha256": "6dd82b2cf52b60a2735d9ea6b4f7595ea10bb6d558efe53b45afd7ec826bdb9b",
+      "size": 940,
+      "sha256": "804899823c443591291aaa4ee582612c102d309e716360fd2506b9f377d7e3e2",
       "mode": "0644"
     },
     {
       "path": "build/linux/Taskfile.yml",
-      "size": 944,
-      "sha256": "fa36243c613e3d061950c7fdfe417e714c80d6569485023955b96f5a51a41985",
+      "size": 933,
+      "sha256": "794c4075d310b8fc19882c4729645d78213fdb13ad2b67f7de180a1752cbe30c",
       "mode": "0644"
     },
     {
       "path": "build/windows/Taskfile.yml",
-      "size": 1297,
-      "sha256": "9e121f26286286d9779d6babf7a12c8b8c251117bb84bc0205b0f5391bcce93b",
+      "size": 1286,
+      "sha256": "a4d3c930e91841cc915f78c2857c762de68a79fce02ccb4fe86d6d603a21e76c",
       "mode": "0644"
     },
     {

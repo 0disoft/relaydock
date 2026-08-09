@@ -176,6 +176,33 @@ func TestReleaseSigningKeyIsIsolatedToFinalJob(t *testing.T) {
 	}
 }
 
+func TestDistributableBundlesRequireFinalLicense(t *testing.T) {
+	t.Parallel()
+	root := filepath.Join("..", "..")
+	for _, relative := range []string{
+		".github/workflows/release.yml",
+		"build/linux/Taskfile.yml",
+		"build/darwin/Taskfile.yml",
+		"build/windows/Taskfile.yml",
+	} {
+		relative := relative
+		t.Run(relative, func(t *testing.T) {
+			t.Parallel()
+			raw, err := os.ReadFile(filepath.Join(root, filepath.FromSlash(relative)))
+			if err != nil {
+				t.Fatal(err)
+			}
+			content := string(raw)
+			if strings.Contains(content, "LICENSE-PENDING.md") {
+				t.Error("distributable bundle still packages LICENSE-PENDING.md")
+			}
+			if !strings.Contains(content, "LICENSE") {
+				t.Error("distributable bundle does not package the final LICENSE")
+			}
+		})
+	}
+}
+
 func TestCIUsesFrozenDependencyResolution(t *testing.T) {
 	t.Parallel()
 	root := filepath.Join("..", "..")

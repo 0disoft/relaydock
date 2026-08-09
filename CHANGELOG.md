@@ -13,6 +13,7 @@
 - 별도 Ed25519 release key로 checksum 파일을 domain-separated 서명·검증하는 fail-closed `releasepack` 명령을 추가했다.
 - 모든 artifact 생성 뒤 private key를 한 job에만 노출해 14개 checksum 파일을 서명·즉시 검증하고 별도 signature artifact로 보존한다.
 - updater signer와 runtime verifier가 하나의 canonical payload를 공유하고 strict JSON·no-overwrite manifest 발행을 사용하도록 연결했다.
+- platform bundle과 Windows release workflow가 pending 문서 대신 최종 `LICENSE`만 package하도록 fail-closed 경계를 맞췄다.
 - CI와 release의 Go module resolution을 read-only로, Bun 설치를 루트 workspace `bun.lock` 기반 frozen install로 통일했다.
 - 모든 service Dockerfile이 `go.sum`을 필수 입력으로 사용하고 read-only module resolution과 non-root runtime을 유지하도록 고정했다.
 - service image의 Go buildinfo와 OCI labels에 동일한 version·commit·build time release envelope를 강제했다.
