@@ -21,6 +21,7 @@ import (
 	"github.com/0disoft/relaydock/internal/persistence/postgres"
 	valkeystore "github.com/0disoft/relaydock/internal/persistence/valkey"
 	runtimegateway "github.com/0disoft/relaydock/internal/runtime"
+	"github.com/0disoft/relaydock/internal/security/serversecrets"
 	"github.com/0disoft/relaydock/internal/serverutil"
 	"github.com/0disoft/relaydock/internal/transport/apiutil"
 	"github.com/0disoft/relaydock/internal/transport/httpgateway"
@@ -54,7 +55,12 @@ func main() {
 		logger.Error("unsafe gateway configuration", "error", err)
 		os.Exit(1)
 	}
-	runtime, err := gatewaycomposition.BuildFromEnvironment()
+	secretResolver, err := serversecrets.NewResolver(serversecrets.NewGCPSecretManager())
+	if err != nil {
+		logger.Error("configure server-secret resolver", "error", err)
+		os.Exit(1)
+	}
+	runtime, err := gatewaycomposition.BuildFromEnvironmentWithCredentialSources(ctx, nil, secretResolver)
 	if err != nil {
 		logger.Error("construct provider runtime", "error", err)
 		os.Exit(1)

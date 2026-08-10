@@ -2,6 +2,30 @@
   "version": 2,
   "files": [
     {
+      "path": "tests/storage/control_snapshot_store_test.go",
+      "size": 2993,
+      "sha256": "9a495d52333512c4d27ac218de9e2a4134a6b50f66afab9e1e60dd292cd756fe",
+      "mode": "0644"
+    },
+    {
+      "path": "tests/storage/file_permissions_unix_test.go",
+      "size": 322,
+      "sha256": "e2dceac2b22c87c6d9f9e5e8dbe4e63589cbb0c5dbdb7957a11483a97ec87130",
+      "mode": "0644"
+    },
+    {
+      "path": "tests/storage/file_permissions_windows_test.go",
+      "size": 1116,
+      "sha256": "83a27d9dc28c4a9414178d7d6c9d289f7a51eae9851484d2d0442e79b29854f6",
+      "mode": "0644"
+    },
+    {
+      "path": "tests/storage/local_expert_store_test.go",
+      "size": 5448,
+      "sha256": "9a29e178aa12271f61ef0879ebee0f38301aea2287716f0465be2c55a6d25fcc",
+      "mode": "0644"
+    },
+    {
       "path": "tests/storage/stores_test.go",
       "size": 4423,
       "sha256": "1ffbfb3fd9d7eed048b54ac164a423ec69c9afa43add2d7d4377f1357f2cede0",
@@ -28,7 +52,7 @@
     {
       "path": "web/control-console/package.json",
       "size": 629,
-      "sha256": "2c25850029dfa4df5e9c42a7abb581aa279bb26acf0d254e710df6a678ecee78",
+      "sha256": "39ff1a04a017e0a8061d8a4b5055dd046b8667455f4476b41ae7664cdc178bac",
       "mode": "0644"
     },
     {

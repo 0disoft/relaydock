@@ -250,25 +250,25 @@
     {
       "path": "internal/buildinfo/info.go",
       "size": 320,
-      "sha256": "d15d0de7fc790fdd68a3ad58cc4a9f22e98391d0955e9346e7b9af002c8e3e22",
+      "sha256": "f69b575d18181529186b4eb21b588951030c5673003a0ba6d9153cd63918ac96",
       "mode": "0644"
     },
     {
       "path": "internal/composition/gateway/builder.go",
-      "size": 5522,
-      "sha256": "b0b90d4984e42313cb8cec1273f3ef74b070a0b071356379a9fe9af63ccc4794",
+      "size": 6027,
+      "sha256": "e278965721635a97462ed6b15d91a5d3e17083e183cfa271ab4d5f6ad8ffc1e6",
       "mode": "0644"
     },
     {
       "path": "internal/composition/gateway/builder_test.go",
-      "size": 4594,
-      "sha256": "3a013d838d12425e2e0461cc78d6ce28f14cfb43a0e655914f491b6cd05889eb",
+      "size": 6982,
+      "sha256": "6131f0b7f8e5e55d6a1b955f2e5bfb637d2d0b04bcf9f298f65987cd357968e9",
       "mode": "0644"
     },
     {
       "path": "internal/composition/gateway/provider_credentials.go",
-      "size": 2980,
-      "sha256": "f6155d561c6420170ff8bae46a48eea07a8370b82db5fc5a49c5d0a2093e9d5b",
+      "size": 4410,
+      "sha256": "f7473defde1c1533553c1238716d0380e895e8cc9dc089d5b54025286d8235e1",
       "mode": "0644"
     },
     {

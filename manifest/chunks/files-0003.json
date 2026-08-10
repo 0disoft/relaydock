@@ -554,6 +554,30 @@
       "mode": "0644"
     },
     {
+      "path": "internal/security/serversecrets/gcp_secret_manager.go",
+      "size": 7104,
+      "sha256": "8c85bcc50e074be17e61dac57f61df8aceafbf6d394407acd88d6f9a5615cbe8",
+      "mode": "0644"
+    },
+    {
+      "path": "internal/security/serversecrets/gcp_secret_manager_test.go",
+      "size": 4348,
+      "sha256": "df611467acac8e79095ec7b22ce14bce2c5a118813750726e72c2a924da5ea1d",
+      "mode": "0644"
+    },
+    {
+      "path": "internal/security/serversecrets/resolver.go",
+      "size": 3055,
+      "sha256": "3c24cde1d6a9cd0e4a3a864fa91e3f6593d8b6822b5186df78b41fc53b90f4c5",
+      "mode": "0644"
+    },
+    {
+      "path": "internal/security/serversecrets/resolver_test.go",
+      "size": 1777,
+      "sha256": "31e5b2abb49af9be606c6612adef4053066988fc37b5856616c16d67e7a76a80",
+      "mode": "0644"
+    },
+    {
       "path": "internal/security/ssrf/validator.go",
       "size": 3817,
       "sha256": "c7389a95e7f9e695c66708459cc791f234ba4061b6376ae54e189332ec12b07c",
@@ -706,7 +730,7 @@
     {
       "path": "package.json",
       "size": 471,
-      "sha256": "bb481bad0f7e304b39b3064dae464e0fed4c3a0c3b02a6f0d25e210316e1b614",
+      "sha256": "f23dc2a12574abbd214975be1c39704375f8f4bc8b122cd1e8a498554a3b0a71",
       "mode": "0644"
     },
     {
@@ -941,30 +965,6 @@
       "path": "tests/postgres/runtime_outbox_integration_test.go",
       "size": 16572,
       "sha256": "2234e2d38291c5e2e5d2e9ab99ebad148b8366a47ebfcdbdfde67725d4bde033",
-      "mode": "0644"
-    },
-    {
-      "path": "tests/storage/control_snapshot_store_test.go",
-      "size": 2993,
-      "sha256": "9a495d52333512c4d27ac218de9e2a4134a6b50f66afab9e1e60dd292cd756fe",
-      "mode": "0644"
-    },
-    {
-      "path": "tests/storage/file_permissions_unix_test.go",
-      "size": 322,
-      "sha256": "e2dceac2b22c87c6d9f9e5e8dbe4e63589cbb0c5dbdb7957a11483a97ec87130",
-      "mode": "0644"
-    },
-    {
-      "path": "tests/storage/file_permissions_windows_test.go",
-      "size": 1116,
-      "sha256": "83a27d9dc28c4a9414178d7d6c9d289f7a51eae9851484d2d0442e79b29854f6",
-      "mode": "0644"
-    },
-    {
-      "path": "tests/storage/local_expert_store_test.go",
-      "size": 5448,
-      "sha256": "9a29e178aa12271f61ef0879ebee0f38301aea2287716f0465be2c55a6d25fcc",
       "mode": "0644"
     }
   ]

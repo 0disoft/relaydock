@@ -107,12 +107,72 @@ func TestBuildWithCredentialsKeepsExplicitEnvironmentPrecedence(t *testing.T) {
 		t.Fatal(err)
 	}
 	t.Setenv("OPENAI_API_KEY", "environment-key")
-	value, configured, err := resolveProviderCredential(context.Background(), store, "openai")
+	value, configured, err := resolveProviderCredential(context.Background(), store, nil, "openai")
 	if err != nil {
 		t.Fatal(err)
 	}
 	if !configured || value != "environment-key" {
 		t.Fatalf("resolved %q configured=%v", value, configured)
+	}
+}
+
+type staticServerSecretResolver struct {
+	value     []byte
+	reference string
+}
+
+func (r *staticServerSecretResolver) Resolve(ctx context.Context, reference string) ([]byte, error) {
+	if err := ctx.Err(); err != nil {
+		return nil, err
+	}
+	r.reference = reference
+	return append([]byte(nil), r.value...), nil
+}
+
+func TestBuildWithCredentialSourcesUsesServerSecretReference(t *testing.T) {
+	clearGatewayEnvironment(t)
+	resolver := &staticServerSecretResolver{value: []byte("workload-key")}
+	t.Setenv("GATEWAY_OPENAI_API_KEY_REF", "gcp-sm:projects/project-1/secrets/openai-key/versions/latest")
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if r.Header.Get("Authorization") != "Bearer workload-key" {
+			t.Errorf("authorization=%q", r.Header.Get("Authorization"))
+		}
+		w.Header().Set("Content-Type", "application/json")
+		_, _ = w.Write([]byte(`{"id":"response"}`))
+	}))
+	defer server.Close()
+	t.Setenv("OPENAI_BASE_URL", server.URL)
+
+	runtime, err := BuildFromEnvironmentWithCredentialSources(context.Background(), nil, resolver)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if resolver.reference != "gcp-sm:projects/project-1/secrets/openai-key/versions/latest" {
+		t.Fatalf("reference=%q", resolver.reference)
+	}
+	adapter, ok := runtime.Gateway.Providers.Get("openai")
+	if !ok {
+		t.Fatal("OpenAI adapter was not registered")
+	}
+	stream, err := adapter.Execute(context.Background(), provider.AttemptRequest{Request: compiler.EncodedRequest{
+		Protocol: canonical.ProtocolOpenAIResponses,
+		Body:     []byte(`{"model":"test","input":"hello"}`),
+	}})
+	if err != nil {
+		t.Fatal(err)
+	}
+	_ = stream.Close()
+	if containsModel(runtime.Candidates.Models(), "local/echo") {
+		t.Fatal("server-secret provider credential did not disable implicit local echo")
+	}
+}
+
+func TestBuildWithCredentialSourcesFailsClosedWithoutResolver(t *testing.T) {
+	clearGatewayEnvironment(t)
+	t.Setenv("GATEWAY_OPENAI_API_KEY_REF", "gcp-sm:projects/project-1/secrets/openai-key/versions/latest")
+	_, err := BuildFromEnvironmentWithCredentialSources(context.Background(), nil, nil)
+	if !errors.Is(err, core.ErrInvalidConfiguration) {
+		t.Fatalf("error=%v", err)
 	}
 }
 
@@ -129,6 +189,8 @@ func clearGatewayEnvironment(t *testing.T) {
 		"DEEPSEEK_API_KEY", "OPENROUTER_API_KEY", "OPENAI_COMPATIBLE_API_KEY", "OPENAI_COMPATIBLE_BASE_URL",
 		"GATEWAY_ENABLE_LOCAL_ECHO", "GATEWAY_ROUTES_FILE", "GATEWAY_ROUTES_JSON",
 		"GATEWAY_DEFAULT_PROVIDER",
+		"GATEWAY_OPENAI_API_KEY_REF", "GATEWAY_ANTHROPIC_API_KEY_REF", "GATEWAY_GOOGLE_API_KEY_REF",
+		"GATEWAY_DEEPSEEK_API_KEY_REF", "GATEWAY_OPENROUTER_API_KEY_REF", "GATEWAY_OPENAI_COMPATIBLE_API_KEY_REF",
 	} {
 		t.Setenv(name, "")
 	}

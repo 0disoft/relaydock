@@ -40,4 +40,29 @@ Credential values must contain between 1 and 2,048 bytes. This stays below the W
 
 The common adapter tests cover opaque targets, caller-memory isolation, size and namespace bounds, cancellation, idempotent deletion, missing values, and secret-free errors. Secret Service tests additionally cover session negotiation, default-collection replacement, opaque attributes, locked-item prompts, duplicate rejection, invalid paths, buffer zeroing, and remote error-body omission. Windows CI compiles the complete desktop path, Linux CI runs the D-Bus protocol tests, and a dedicated macOS job compiles Security.framework integration. Automated suites intentionally do not write real credentials into developer or hosted-runner accounts; disposable-user physical-device smoke tests remain required before production certification.
 
-Server processes require a separate KMS or workload-identity adapter. Windows Credential Manager, macOS Keychain, and Linux Secret Service are desktop-user boundaries and must not be presented as clustered server secret-management solutions.
+Windows Credential Manager, macOS Keychain, and Linux Secret Service are desktop-user boundaries and must not be presented as clustered server secret-management solutions.
+
+## Server Workload Identity
+
+`gatewayd` supports read-only server-secret references for provider API keys. The server resolver is separate from `credentials.Store`: it cannot create, replace, or delete a secret, and desktop composition never enables it. Direct provider-key environment variables keep highest priority, the desktop system store remains second when present, and a server reference is consulted only when neither source supplied a value.
+
+The first production adapter is Google Cloud Secret Manager with an attached workload identity. References use this canonical form:
+
+```text
+gcp-sm:projects/PROJECT_ID/secrets/SECRET_ID/versions/VERSION_ID
+```
+
+`VERSION_ID` may be a numeric version, `latest`, or a configured alias. `gatewayd` accepts the following reference variables:
+
+- `GATEWAY_OPENAI_API_KEY_REF`
+- `GATEWAY_ANTHROPIC_API_KEY_REF`
+- `GATEWAY_GOOGLE_API_KEY_REF`
+- `GATEWAY_DEEPSEEK_API_KEY_REF`
+- `GATEWAY_OPENROUTER_API_KEY_REF`
+- `GATEWAY_OPENAI_COMPATIBLE_API_KEY_REF`
+
+The adapter requests a short-lived OAuth access token from the fixed Google metadata endpoint with `Metadata-Flavor: Google`, then accesses the fixed HTTPS Secret Manager v1 endpoint. Metadata requests bypass environment proxies, and neither endpoint is configurable in production. Redirects are rejected. Token and response bodies are bounded, non-success bodies are never copied into errors, and returned secret bytes must pass the Secret Manager CRC32C check. Provider credentials retain the common 1-to-2,048-byte size and surrounding-whitespace rules.
+
+The attached service account or GKE workload identity needs `secretmanager.versions.access`, normally through `roles/secretmanager.secretAccessor`, granted on each required secret rather than on the whole project. Compute Engine and GKE nodes must expose the `cloud-platform` OAuth scope required by Secret Manager. RelayDock does not accept service-account key files or long-lived Google credentials for this path.
+
+Missing workload identity, denied IAM access, malformed references, unavailable metadata, redirects, corrupt payloads, and unsupported reference schemes fail Gateway startup. Removing the `GATEWAY_*_API_KEY_REF` and restoring the existing direct environment variable is the rollback path. Other server secrets, including database URLs, virtual-key peppers, Control signing keys, MCP HMAC keys, and webhook secrets, still require deployment-platform secret injection or future adapters; this release must not be described as complete KMS coverage.

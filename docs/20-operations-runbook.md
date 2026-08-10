@@ -68,6 +68,16 @@ $env:GATEWAY_CONTROL_LKG_PATH = "data/gateway/runtime-snapshot.json"
 
 Gateway validates signature, revision, generation, and expiry, and applies only higher revisions. It uses LKG during a Control outage but fails readiness and new requests after snapshot expiry. Correct a bad route with a higher revision; never update the existing row.
 
+### Provider keys with Google Cloud workload identity
+
+For `gatewayd` on Google Cloud, store each provider key in Secret Manager and grant the attached service account or GKE workload identity `roles/secretmanager.secretAccessor` on that secret only. The underlying instance or node also needs the `cloud-platform` OAuth scope. Configure a reference instead of placing the provider key in the process environment:
+
+```powershell
+$env:GATEWAY_OPENAI_API_KEY_REF = "gcp-sm:projects/relay-production/secrets/openai-api-key/versions/latest"
+```
+
+Use the equivalent `GATEWAY_ANTHROPIC_API_KEY_REF`, `GATEWAY_GOOGLE_API_KEY_REF`, `GATEWAY_DEEPSEEK_API_KEY_REF`, `GATEWAY_OPENROUTER_API_KEY_REF`, or `GATEWAY_OPENAI_COMPATIBLE_API_KEY_REF` for other providers. A direct provider-key environment variable takes precedence over its reference, which provides a bounded rollback path. Gateway startup fails when the reference, workload identity, IAM permission, payload checksum, or metadata response is invalid. See [`29-system-credential-storage.md`](29-system-credential-storage.md) for the complete boundary and the server secrets that are not covered yet.
+
 ## 5. Start Expert Broker and Remote MCP
 
 ```powershell
@@ -178,7 +188,7 @@ Also assess exposure of provider credentials, operator bearers, and MCP secrets.
 
 ## 14. Minimum Backup Scope
 
-Back up PostgreSQL plus WAL/PITR, Control signing material, Gateway LKG, provider credentials, virtual-key pepper, Remote MCP key material, and the outbox receiver HMAC secret. Do not treat Valkey lease/cooldown state, process-local health scores, or expired ContextPacks as recovery targets.
+Back up PostgreSQL plus WAL/PITR, Control signing material, Gateway LKG, provider credentials or their external secret versions, virtual-key pepper, Remote MCP key material, and the outbox receiver HMAC secret. Do not treat Valkey lease/cooldown state, process-local health scores, or expired ContextPacks as recovery targets.
 
 ## 15. Incident Triage
 

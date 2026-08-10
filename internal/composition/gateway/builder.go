@@ -32,10 +32,16 @@ type Runtime struct {
 }
 
 func BuildFromEnvironment() (*Runtime, error) {
-	return BuildFromEnvironmentWithCredentials(context.Background(), nil)
+	return BuildFromEnvironmentWithCredentialSources(context.Background(), nil, nil)
 }
 
 func BuildFromEnvironmentWithCredentials(ctx context.Context, credentialStore credentials.Store) (*Runtime, error) {
+	return BuildFromEnvironmentWithCredentialSources(ctx, credentialStore, nil)
+}
+
+// BuildFromEnvironmentWithCredentialSources composes a runtime with optional
+// desktop and server credential sources while preserving environment priority.
+func BuildFromEnvironmentWithCredentialSources(ctx context.Context, credentialStore credentials.Store, secretResolver ServerSecretResolver) (*Runtime, error) {
 	if err := ctx.Err(); err != nil {
 		return nil, err
 	}
@@ -46,27 +52,27 @@ func BuildFromEnvironmentWithCredentials(ctx context.Context, credentialStore cr
 		definitions[adapter.Name()] = providerDefinition{Adapter: adapter, Protocol: protocol, Configured: configured}
 	}
 
-	openAIKey, openAIConfigured, err := resolveProviderCredential(ctx, credentialStore, "openai")
+	openAIKey, openAIConfigured, err := resolveProviderCredential(ctx, credentialStore, secretResolver, "openai")
 	if err != nil {
 		return nil, err
 	}
-	anthropicKey, anthropicConfigured, err := resolveProviderCredential(ctx, credentialStore, "anthropic")
+	anthropicKey, anthropicConfigured, err := resolveProviderCredential(ctx, credentialStore, secretResolver, "anthropic")
 	if err != nil {
 		return nil, err
 	}
-	googleKey, googleConfigured, err := resolveProviderCredential(ctx, credentialStore, "google")
+	googleKey, googleConfigured, err := resolveProviderCredential(ctx, credentialStore, secretResolver, "google")
 	if err != nil {
 		return nil, err
 	}
-	deepSeekKey, deepSeekConfigured, err := resolveProviderCredential(ctx, credentialStore, "deepseek")
+	deepSeekKey, deepSeekConfigured, err := resolveProviderCredential(ctx, credentialStore, secretResolver, "deepseek")
 	if err != nil {
 		return nil, err
 	}
-	openRouterKey, openRouterConfigured, err := resolveProviderCredential(ctx, credentialStore, "openrouter")
+	openRouterKey, openRouterConfigured, err := resolveProviderCredential(ctx, credentialStore, secretResolver, "openrouter")
 	if err != nil {
 		return nil, err
 	}
-	compatibleKey, _, err := resolveProviderCredential(ctx, credentialStore, "openai-compatible")
+	compatibleKey, _, err := resolveProviderCredential(ctx, credentialStore, secretResolver, "openai-compatible")
 	if err != nil {
 		return nil, err
 	}

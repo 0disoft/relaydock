@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.5.9-dev -- Server Workload-Identity Provider Secrets
+
+- Added a provider-neutral, read-only server-secret reference resolver with fail-closed scheme dispatch and secret-free errors.
+- Added a Google Cloud Secret Manager adapter that obtains short-lived access tokens from the attached workload identity instead of accepting service-account key files.
+- Fixed metadata and Secret Manager origins, bypassed environment proxies for metadata requests, rejected redirects, bounded response bodies, and verified CRC32C before returning secret bytes.
+- Added `GATEWAY_*_API_KEY_REF` support for every Gateway provider while preserving direct environment and desktop system-store precedence.
+- Added deterministic HTTP transport, corruption, redirect, malformed-reference, proxy, and provider-request regression tests without requiring a live cloud account.
+- Kept database URLs, virtual-key peppers, Control signing keys, MCP HMAC keys, webhook secrets, physical cloud smoke, and non-Google secret-manager adapters explicitly open.
+
 ## 0.5.8-dev -- Linux Secret Service Credential Store
 
 - Added a native Secret Service backend over the per-user D-Bus session bus without invoking `secret-tool` or another shell command.

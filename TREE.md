@@ -559,6 +559,11 @@ relaydock
 │   │   ├── secrets/
 │   │   │   ├── encrypted_memory.go
 │   │   │   └── store.go
+│   │   ├── serversecrets/
+│   │   │   ├── gcp_secret_manager.go
+│   │   │   ├── gcp_secret_manager_test.go
+│   │   │   ├── resolver.go
+│   │   │   └── resolver_test.go
 │   │   └── ssrf/
 │   │       ├── validator.go
 │   │       └── validator_test.go

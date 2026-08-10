@@ -141,8 +141,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "size": 13570,
-      "sha256": "bc10ff1ea510e1b86fbca042dd70338c484db0281e5c183437ea7998442094f6",
+      "size": 14601,
+      "sha256": "6726bb784d870dc25d4c98bac9b2906621324580da64402b1be31bd5d06928df",
       "mode": "0644"
     },
     {
@@ -159,8 +159,8 @@
     },
     {
       "path": "IMPLEMENTATION_STATUS.md",
-      "size": 9530,
-      "sha256": "437ae229ab2baa1772acff3c0795f6d78cddc18da723edf1bf9046a42ec4f5d6",
+      "size": 9795,
+      "sha256": "f1582d272df7e7d43f8d104b2e9dfd9af3392ad075119c83416acd97bff0df96",
       "mode": "0644"
     },
     {
@@ -177,8 +177,8 @@
     },
     {
       "path": "README.md",
-      "size": 10467,
-      "sha256": "29eb71289a7cb720e90807c9779d8f90db97e02532eeea3f2065a69c9a341b73",
+      "size": 10919,
+      "sha256": "8155abf291dd2e18408dc58acd9780398aaeed48fd1084b5ecb4d048dae441c4",
       "mode": "0644"
     },
     {
@@ -189,8 +189,8 @@
     },
     {
       "path": "TREE.md",
-      "size": 25121,
-      "sha256": "70669ae00b39e9ef22d7e4e9362748b7576661d9fdc2a8155fa3e45bd49165a9",
+      "size": 25348,
+      "sha256": "d35d23134c44d100a343f37678cd7110d74e0b303dcc80abd3688c3cabdf1a08",
       "mode": "0644"
     },
     {
@@ -201,14 +201,14 @@
     },
     {
       "path": "VALIDATION.md",
-      "size": 11332,
-      "sha256": "e82a898c29d80eaf95075d07b6c18df581fc51716f034153aebd7e960bccba78",
+      "size": 12127,
+      "sha256": "e45e360d4579038d172d489732beb06a993adfb836ba141954c153dcc9a68401",
       "mode": "0644"
     },
     {
       "path": "VERSION",
       "size": 10,
-      "sha256": "bb83d752d25d96948973b0db6f0f08c93caa15d33005e117081769d5ce41757e",
+      "sha256": "a36ae13c05f47018692b95c57f8f0720feda2cea6c863bb889098d095342e740",
       "mode": "0644"
     },
     {
@@ -262,7 +262,7 @@
     {
       "path": "bun.lock",
       "size": 60860,
-      "sha256": "1a2b82c1910a6366a8c8e45e55b85f334ffeb205a00492212dc8fd7e75f8e8eb",
+      "sha256": "0254b059724060ece494b33a25607b0fd5079b1a592d3e19953e580ddab84386",
       "mode": "0644"
     },
     {
@@ -315,8 +315,8 @@
     },
     {
       "path": "cmd/gatewayd/main.go",
-      "size": 11400,
-      "sha256": "6b230abd00dc8cd5fcaf3869670661f5275bb0ad588d318a172a21b388e22272",
+      "size": 11694,
+      "sha256": "9613f0b97183b9a701b1cdbc46395584b0a0b89fc74adea6b795eb44ba1edd9a",
       "mode": "0644"
     },
     {
@@ -615,8 +615,8 @@
     },
     {
       "path": "docs/11-security-threat-model.md",
-      "size": 1278,
-      "sha256": "25935c79c1b13aa269114906f2958ce48705d73aa99edc0bda28e721ed416038",
+      "size": 1821,
+      "sha256": "cfd66848f486addf289b767133ba428fafcdbfc154c935370e4cb8e213656d61",
       "mode": "0644"
     },
     {
@@ -669,8 +669,8 @@
     },
     {
       "path": "docs/20-operations-runbook.md",
-      "size": 10306,
-      "sha256": "c48c60275615db03035e3e749292adb82060aba67761ca74b071ea24c5248171",
+      "size": 11491,
+      "sha256": "434ca382b4c3ad5815a3fc49b09c94b54e8072f6cb3563cebbc7737a7f7dfacd",
       "mode": "0644"
     },
     {
@@ -712,7 +712,7 @@
     {
       "path": "docs/27-repository-size-and-source-release.md",
       "size": 2655,
-      "sha256": "a0c127bc0d8a2789725c4da93f8c91e5b1e2db36094ff996cf8f015eb5090387",
+      "sha256": "54257f56b4bb77f3c6eec6d957337fa836e99948a32dee2010076d6b8c4588a5",
       "mode": "0644"
     },
     {
@@ -723,14 +723,14 @@
     },
     {
       "path": "docs/29-system-credential-storage.md",
-      "size": 5533,
-      "sha256": "7a00c6e911c0ec590a181a68398207a39a1fd146fda87971664aab9b6b95f837",
+      "size": 7984,
+      "sha256": "acffeaef83768485a0a258253016f886536bc2cf656574cfdbe0c711ddd7152b",
       "mode": "0644"
     },
     {
       "path": "docs/README.md",
-      "size": 2235,
-      "sha256": "5786b969b3fb3694dc0b902b2c4a8130d32002676e03e1793f1acba4db1eba4c",
+      "size": 2242,
+      "sha256": "05331a354515e1650c10c451d5d673a3926ec4af35481395fd19c9a52ec908f2",
       "mode": "0644"
     },
     {
@@ -880,7 +880,7 @@
     {
       "path": "frontend/package.json",
       "size": 680,
-      "sha256": "2fd474dc5a29738944c3b69cdd7c80196c96e807b711425a1696b1674ea74d97",
+      "sha256": "8b30cee1c48fa37c6b793413b541df28dd4522da20058f35bfcb9c792226a622",
       "mode": "0644"
     },
     {

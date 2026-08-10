@@ -39,6 +39,21 @@ Controls:
 - Block private ranges by default
 - Port policy
 
+### Server Secret Resolution
+
+A compromised proxy, malformed reference, redirect, or overbroad workload identity may expose provider credentials.
+
+Controls:
+
+- Lowercase scheme and fixed resource-shape validation
+- Fixed metadata and Secret Manager origins
+- No environment proxy for metadata-token requests
+- No redirects and bounded response bodies
+- Short-lived attached-workload tokens; no service-account key files
+- Secret-level `secretmanager.versions.access`
+- CRC32C payload verification
+- Secret-free errors and fail-closed startup
+
 ### Remote MCP
 
 A malicious web origin or oversized body may invoke tools.

@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "generatedAt": "2026-08-09T14:26:35Z",
+  "generatedAt": "2026-08-10T01:23:36Z",
   "hashAlgorithm": "sha256",
-  "fileCount": 500,
-  "totalBytes": 1602050,
+  "fileCount": 504,
+  "totalBytes": 1629907,
   "maximumFileBytes": 40960,
-  "aggregateSha256": "42354f94f48f14c39935cd3ec0d3136e23beb1e8fb2d9df242e8d95b2d7f4761",
+  "aggregateSha256": "0d4041cdccd8943927bc992c0e6970d7cea0b4d9caaded4f805eb44cf4d6206a",
   "chunks": [
     {
       "path": "manifest/chunks/files-0001.json",
@@ -13,7 +13,7 @@
       "firstPath": ".agents/README.md",
       "lastPath": "frontend/tsconfig.json",
       "size": 30657,
-      "sha256": "aa2e42432eb7499e4b70f1d349eee721efc6a84a16686a4fda0e50dd744471a3"
+      "sha256": "bae60f6dfd1ed7f01d94a951f4218a899a88708034eeed8324fe30421192a87e"
     },
     {
       "path": "manifest/chunks/files-0002.json",
@@ -21,23 +21,23 @@
       "firstPath": "frontend/uno.config.ts",
       "lastPath": "internal/mcpremote/backend_test.go",
       "size": 30576,
-      "sha256": "82ea65fb7c8e0872035d08e250a8b4b2ee5bd445fba738a624d9e43ee39d031c"
+      "sha256": "d78c4ccae2a1e8d1bf81bb8b87107b7c5959f982246561514978d300fcf75f12"
     },
     {
       "path": "manifest/chunks/files-0003.json",
       "fileCount": 161,
       "firstPath": "internal/mcpremote/server.go",
-      "lastPath": "tests/storage/local_expert_store_test.go",
-      "size": 30659,
-      "sha256": "0efb192b961a6be2ef9318c825ecd7f0231259a89deedd6ed4ba646d0e2d5162"
+      "lastPath": "tests/postgres/runtime_outbox_integration_test.go",
+      "size": 30689,
+      "sha256": "441c89d62a8ed9d653011f0547561511e5a466182d098ad12f2e06803aa5ba2f"
     },
     {
       "path": "manifest/chunks/files-0004.json",
-      "fileCount": 12,
-      "firstPath": "tests/storage/stores_test.go",
+      "fileCount": 16,
+      "firstPath": "tests/storage/control_snapshot_store_test.go",
       "lastPath": "web/shared/README.md",
-      "size": 2331,
-      "sha256": "79415625afeb755eece81895d4496893274cab8218c862808c117a2b3c2b1580"
+      "size": 3127,
+      "sha256": "11173dede557c1321344c52f9294ed518245fce2d13f833d2bfead361c8fff02"
     }
   ],
   "excluded": [

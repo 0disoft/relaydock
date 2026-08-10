@@ -2,7 +2,7 @@
 
 RelayDock is a Go-first AI Runtime Gateway that connects coding agents such as Codex, Claude Code, and OpenCode with official AI APIs, self-hosted models, and an Expert Escalation MCP path for difficult architecture reviews.
 
-`0.5.8-dev` is a reference implementation that connects a Wails v3 local runtime, compatible API gateway, multi-provider router, OIDC-capable role-scoped Control Plane, signed Control snapshots, operating-system-backed desktop provider keys, a durable request journal, transactional outbox, and scoped Remote MCP. The `local/echo` vertical slice runs without external infrastructure; PostgreSQL and Valkey enable managed paths.
+`0.5.9-dev` is a reference implementation that connects a Wails v3 local runtime, compatible API gateway, multi-provider router, OIDC-capable role-scoped Control Plane, signed Control snapshots, operating-system-backed desktop provider keys, optional Google Cloud workload-identity provider-key resolution, a durable request journal, transactional outbox, and scoped Remote MCP. The `local/echo` vertical slice runs without external infrastructure; PostgreSQL and Valkey enable managed paths.
 
 This is not full production certification. Real provider accounts, a complete Go 1.26 module build, live PostgreSQL and Valkey, native Wails packaging and code signing, and money-platform settlement still require target-environment validation. [`VALIDATION.md`](VALIDATION.md) is the source of truth for executed checks.
 
@@ -166,6 +166,8 @@ Invoke-RestMethod `
   -Body '{"model":"local/echo","input":"Review the ledger","stream":false}'
 ```
 
+Managed `gatewayd` deployments may use `GATEWAY_*_API_KEY_REF` values such as `gcp-sm:projects/PROJECT_ID/secrets/SECRET_ID/versions/latest` instead of placing provider keys directly in the environment. See [`docs/29-system-credential-storage.md`](docs/29-system-credential-storage.md).
+
 Start the local Expert Broker with:
 
 ```powershell
@@ -205,6 +207,7 @@ go test -tags=integration -count=1 ./tests/postgres
 - Money-platform quote, hold, capture, and usage reconciliation
 - Distributed provider health based on real TTFT and TPS probes
 - Complete disposable-user physical credential-store smoke tests on Windows, macOS, and Linux
+- Extend workload-identity resolution beyond Gateway provider API keys and add non-Google adapters
 - Remote MCP OIDC/OAuth and workload identity
 - Control Console authorization-code login, secure sessions, memberships, mutations, and usage views
 - Physical-device Wails lifecycle, installers, signing, and rollback
