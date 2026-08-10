@@ -2,7 +2,7 @@
 
 ## Current Stage
 
-`0.5.9-dev` is a reference implementation with operational paths, bounded-file contracts, a deny-by-default Control Plane access policy with static and OIDC identity sources, operating-system-backed desktop provider keys on Windows, macOS, and Linux, and Google Cloud workload-identity resolution for Gateway provider keys. Without external infrastructure it runs with `local/echo`, an atomic JSON store, and memory leases. PostgreSQL and Valkey enable durable consultations, virtual keys, signed Control snapshots, the runtime journal, transactional outbox, and distributed provider leases.
+`0.5.10-dev` is a reference implementation with operational paths, bounded-file contracts, a deny-by-default Control Plane access policy with static and OIDC identity sources, operating-system-backed desktop provider keys on Windows, macOS, and Linux, and Google Cloud workload-identity resolution for Gateway provider keys and the virtual-key pepper. Without external infrastructure it runs with `local/echo`, an atomic JSON store, and memory leases. PostgreSQL and Valkey enable durable consultations, virtual keys, signed Control snapshots, the runtime journal, transactional outbox, and distributed provider leases.
 
 This is not a claim of full production readiness. Real provider accounts, the money-platform, a complete Go 1.26 dependency build, live PostgreSQL and Valkey, Wails installers and updates, and code signing still require validation in target environments.
 
@@ -31,10 +31,10 @@ This is not a claim of full production readiness. Real provider accounts, the mo
 | Remote MCP | Partially tested | Host/origin/body guards, bounded argt2 tokens, retiring keys, tenant/project isolation | OIDC/OAuth and live SDK conformance |
 | MCP bridge and local IPC | Implemented and tested | STDIO-to-IPC tools, Unix sockets, Windows Named Pipes, frame limits, reconnect | Real Codex/Claude Code/OpenCode conformance and Windows multi-user ACLs |
 | Wails desktop | Implemented | Tray, single instance, close-to-tray, autostart, settings, provider runtime, Windows/macOS/Linux provider-key status/save/replace/delete | Physical credential-store smoke, installers, signing, sleep/resume, updater rollback |
-| Virtual keys | Implemented and tested | PostgreSQL HMAC keys, scopes/models, revoke, v2 and legacy parsing | Pepper rotation, audit, high-volume cache |
+| Virtual keys | Implemented and tested | PostgreSQL HMAC keys, scopes/models, revoke, v2 and legacy parsing, direct or workload-identity pepper loading | Multi-pepper rotation, audit, high-volume cache |
 | Migrations and bootstrap | Implemented and tested | Embedded SQL, checksums, advisory locks, transactions, organization/project/key CLIs | Real upgrade matrix, PITR, and persisted membership management |
 | Accounting domain | Development contract | Quote, hold, capture, release, adjustment, idempotency | Mandarin money-platform client and reconciliation |
-| Storage primitives | Partial | Encrypted in-memory secrets, Windows Credential Manager, macOS Keychain, Linux Secret Service, and read-only Google Cloud Secret Manager adapters, opaque credential targets, expiring objects, durable outbox | Physical-device smoke, non-provider server-secret coverage, additional KMS adapters, R2/S3 |
+| Storage primitives | Partial | Encrypted in-memory secrets, Windows Credential Manager, macOS Keychain, Linux Secret Service, and read-only Google Cloud Secret Manager adapters for provider keys and virtual-key pepper, opaque credential targets, expiring objects, durable outbox | Physical-device smoke, remaining server-secret coverage, additional KMS adapters, R2/S3 |
 | Updater | Staging implemented | Manifest signature, SHA-256, size, pending artifact | Platform replacement and rollback |
 | Control Console | Read-only UI | Health, snapshot, and model routes | Login, organizations, keys, routes, audit, usage |
 | Packaging | Implemented and tested | Desktop/MCP bundle, server/ops list, 40 KiB audit, strict chunked manifest, deterministic source ZIP | Native installers, artifact signing, cross-version reproducibility |

@@ -2,6 +2,18 @@
   "version": 2,
   "files": [
     {
+      "path": "tests/load/gateway.js",
+      "size": 278,
+      "sha256": "8411e21e5b6034490013d0dbb8b2c3b5b95dabd0aeb00e04eb1542fa5f6d9979",
+      "mode": "0644"
+    },
+    {
+      "path": "tests/postgres/runtime_outbox_integration_test.go",
+      "size": 16572,
+      "sha256": "2234e2d38291c5e2e5d2e9ab99ebad148b8366a47ebfcdbdfde67725d4bde033",
+      "mode": "0644"
+    },
+    {
       "path": "tests/storage/control_snapshot_store_test.go",
       "size": 2993,
       "sha256": "9a495d52333512c4d27ac218de9e2a4134a6b50f66afab9e1e60dd292cd756fe",
@@ -51,8 +63,8 @@
     },
     {
       "path": "web/control-console/package.json",
-      "size": 629,
-      "sha256": "39ff1a04a017e0a8061d8a4b5055dd046b8667455f4476b41ae7664cdc178bac",
+      "size": 630,
+      "sha256": "c6c5e51033867a3156f8990db6f1d305eab9e4800ccaa1a561c92d53c2b25398",
       "mode": "0644"
     },
     {

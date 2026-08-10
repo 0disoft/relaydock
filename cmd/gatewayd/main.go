@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"database/sql"
-	"encoding/base64"
 	"fmt"
 	"log/slog"
 	"os"
@@ -42,7 +41,12 @@ func main() {
 	if database != nil {
 		defer database.Close()
 	}
-	authenticator, authMode, err := gatewayAuthenticator(database)
+	secretResolver, err := serversecrets.NewDefaultResolver()
+	if err != nil {
+		logger.Error("configure server-secret resolver", "error", err)
+		os.Exit(1)
+	}
+	authenticator, authMode, err := gatewayAuthenticator(ctx, database, secretResolver)
 	if err != nil {
 		logger.Error("configure gateway authentication", "error", err)
 		os.Exit(1)
@@ -53,11 +57,6 @@ func main() {
 	}
 	if err := serverutil.RequireAuthenticationOutsideLoopback(address, authenticationMarker); err != nil {
 		logger.Error("unsafe gateway configuration", "error", err)
-		os.Exit(1)
-	}
-	secretResolver, err := serversecrets.NewResolver(serversecrets.NewGCPSecretManager())
-	if err != nil {
-		logger.Error("configure server-secret resolver", "error", err)
 		os.Exit(1)
 	}
 	runtime, err := gatewaycomposition.BuildFromEnvironmentWithCredentialSources(ctx, nil, secretResolver)
@@ -201,31 +200,24 @@ func openGatewayDatabase(ctx context.Context) (*sql.DB, error) {
 	return postgres.OpenSQL(openCtx, databaseURL)
 }
 
-func gatewayAuthenticator(database *sql.DB) (virtualkey.Authenticator, string, error) {
-	rawPepper := strings.TrimSpace(os.Getenv("GATEWAY_VIRTUAL_KEY_PEPPER"))
-	encodedPepper := strings.TrimSpace(os.Getenv("GATEWAY_VIRTUAL_KEY_PEPPER_B64"))
-	if rawPepper == "" && encodedPepper == "" {
+func gatewayAuthenticator(ctx context.Context, database *sql.DB, secretResolver virtualkey.SecretResolver) (virtualkey.Authenticator, string, error) {
+	rawPepper := os.Getenv("GATEWAY_VIRTUAL_KEY_PEPPER")
+	encodedPepper := os.Getenv("GATEWAY_VIRTUAL_KEY_PEPPER_B64")
+	pepperReference := os.Getenv("GATEWAY_VIRTUAL_KEY_PEPPER_REF")
+	if !virtualkey.PepperConfigured(rawPepper, encodedPepper, pepperReference) {
 		if strings.TrimSpace(os.Getenv("GATEWAY_BEARER_TOKEN")) != "" {
 			return nil, "operator-bearer", nil
 		}
 		return nil, "disabled", nil
 	}
-	var pepper []byte
-	if encodedPepper != "" {
-		decoded, err := base64.RawStdEncoding.DecodeString(encodedPepper)
-		if err != nil {
-			decoded, err = base64.StdEncoding.DecodeString(encodedPepper)
-		}
-		if err != nil {
-			return nil, "", fmt.Errorf("decode GATEWAY_VIRTUAL_KEY_PEPPER_B64: %w", err)
-		}
-		pepper = decoded
-	} else {
-		pepper = []byte(rawPepper)
-	}
 	if database == nil {
 		return nil, "", fmt.Errorf("GATEWAY_POSTGRES_URL or ARG_POSTGRES_URL is required with virtual key authentication")
 	}
+	pepper, err := virtualkey.ResolvePepper(ctx, secretResolver, rawPepper, encodedPepper, pepperReference)
+	if err != nil {
+		return nil, "", err
+	}
+	defer clear(pepper)
 	authenticator, err := virtualkey.NewPostgresAuthenticator(database, pepper, envOr("GATEWAY_KEY_ENVIRONMENT", "live"))
 	if err != nil {
 		return nil, "", err

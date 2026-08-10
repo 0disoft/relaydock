@@ -2,7 +2,6 @@ package main
 
 import (
 	"context"
-	"encoding/base64"
 	"encoding/json"
 	"flag"
 	"fmt"
@@ -12,6 +11,7 @@ import (
 
 	"github.com/0disoft/relaydock/internal/auth/virtualkey"
 	"github.com/0disoft/relaydock/internal/persistence/postgres"
+	"github.com/0disoft/relaydock/internal/security/serversecrets"
 )
 
 func main() {
@@ -45,7 +45,9 @@ func issue(args []string) error {
 	if err := flags.Parse(args); err != nil {
 		return err
 	}
-	authenticator, closeDatabase, err := openAuthenticator()
+	setupContext, cancelSetup := context.WithTimeout(context.Background(), 15*time.Second)
+	authenticator, closeDatabase, err := openAuthenticator(setupContext)
+	cancelSetup()
 	if err != nil {
 		return err
 	}
@@ -57,9 +59,9 @@ func issue(args []string) error {
 	if *expires > 0 {
 		expiresAt = time.Now().UTC().Add(*expires)
 	}
-	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
-	defer cancel()
-	raw, record, err := authenticator.Issue(ctx, *tenantID, *projectID, splitCSV(*scopesCSV), splitCSV(*modelsCSV), expiresAt)
+	operationContext, cancelOperation := context.WithTimeout(context.Background(), 15*time.Second)
+	defer cancelOperation()
+	raw, record, err := authenticator.Issue(operationContext, *tenantID, *projectID, splitCSV(*scopesCSV), splitCSV(*modelsCSV), expiresAt)
 	if err != nil {
 		return err
 	}
@@ -82,30 +84,40 @@ func revoke(args []string) error {
 	if err := flags.Parse(args); err != nil {
 		return err
 	}
-	authenticator, closeDatabase, err := openAuthenticator()
+	setupContext, cancelSetup := context.WithTimeout(context.Background(), 15*time.Second)
+	authenticator, closeDatabase, err := openAuthenticator(setupContext)
+	cancelSetup()
 	if err != nil {
 		return err
 	}
 	defer closeDatabase()
-	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
-	defer cancel()
-	if err := authenticator.Revoke(ctx, *keyID, *projectID); err != nil {
+	operationContext, cancelOperation := context.WithTimeout(context.Background(), 15*time.Second)
+	defer cancelOperation()
+	if err := authenticator.Revoke(operationContext, *keyID, *projectID); err != nil {
 		return err
 	}
 	return json.NewEncoder(os.Stdout).Encode(map[string]any{"revoked": true, "virtualKeyId": *keyID})
 }
 
-func openAuthenticator() (*virtualkey.PostgresAuthenticator, func(), error) {
+func openAuthenticator(ctx context.Context) (*virtualkey.PostgresAuthenticator, func(), error) {
 	databaseURL := firstNonEmpty(os.Getenv("GATEWAY_POSTGRES_URL"), os.Getenv("ARG_POSTGRES_URL"))
 	if databaseURL == "" {
 		return nil, nil, fmt.Errorf("GATEWAY_POSTGRES_URL or ARG_POSTGRES_URL is required")
 	}
-	pepper, err := decodePepper(os.Getenv("GATEWAY_VIRTUAL_KEY_PEPPER"), os.Getenv("GATEWAY_VIRTUAL_KEY_PEPPER_B64"))
+	secretResolver, err := serversecrets.NewDefaultResolver()
 	if err != nil {
 		return nil, nil, err
 	}
-	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
-	defer cancel()
+	pepper, err := virtualkey.ResolvePepper(
+		ctx, secretResolver,
+		os.Getenv("GATEWAY_VIRTUAL_KEY_PEPPER"),
+		os.Getenv("GATEWAY_VIRTUAL_KEY_PEPPER_B64"),
+		os.Getenv("GATEWAY_VIRTUAL_KEY_PEPPER_REF"),
+	)
+	if err != nil {
+		return nil, nil, err
+	}
+	defer clear(pepper)
 	database, err := postgres.OpenSQL(ctx, databaseURL)
 	if err != nil {
 		return nil, nil, err
@@ -116,25 +128,6 @@ func openAuthenticator() (*virtualkey.PostgresAuthenticator, func(), error) {
 		return nil, nil, err
 	}
 	return authenticator, func() { _ = database.Close() }, nil
-}
-
-func decodePepper(raw, encoded string) ([]byte, error) {
-	raw = strings.TrimSpace(raw)
-	encoded = strings.TrimSpace(encoded)
-	if encoded != "" {
-		decoded, err := base64.RawStdEncoding.DecodeString(encoded)
-		if err != nil {
-			decoded, err = base64.StdEncoding.DecodeString(encoded)
-		}
-		if err != nil {
-			return nil, fmt.Errorf("decode GATEWAY_VIRTUAL_KEY_PEPPER_B64: %w", err)
-		}
-		return decoded, nil
-	}
-	if raw == "" {
-		return nil, fmt.Errorf("GATEWAY_VIRTUAL_KEY_PEPPER or GATEWAY_VIRTUAL_KEY_PEPPER_B64 is required")
-	}
-	return []byte(raw), nil
 }
 
 func splitCSV(value string) []string {

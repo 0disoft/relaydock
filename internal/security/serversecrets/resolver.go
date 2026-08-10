@@ -22,6 +22,12 @@ type Resolver struct {
 	providers map[string]Provider
 }
 
+// NewDefaultResolver registers the production server-secret providers
+// supported by this build.
+func NewDefaultResolver() (*Resolver, error) {
+	return NewResolver(NewGCPSecretManager())
+}
+
 func NewResolver(providers ...Provider) (*Resolver, error) {
 	resolver := &Resolver{providers: make(map[string]Provider, len(providers))}
 	for _, provider := range providers {

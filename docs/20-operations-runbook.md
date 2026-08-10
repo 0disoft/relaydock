@@ -36,6 +36,14 @@ $key = go run ./cmd/keyctl issue `
 
 Losing the pepper makes existing keys unverifiable, and plaintext keys cannot be read again. Store them separately.
 
+On Google Cloud, `gatewayd` and `keyctl` can instead load the raw pepper bytes through the attached workload identity:
+
+```powershell
+$env:GATEWAY_VIRTUAL_KEY_PEPPER_REF = "gcp-sm:projects/relay-production/secrets/virtual-key-pepper/versions/7"
+```
+
+Use an immutable numeric version, not `latest` or a mutable alias. A changed pepper invalidates all existing virtual keys immediately. Direct base64 and raw environment values retain precedence over the reference for rollback.
+
 ## 3. Establish the Control Plane Trust Root
 
 One replica may use a local store. Two or more replicas require PostgreSQL and one shared signing secret.

@@ -2,6 +2,18 @@
   "version": 2,
   "files": [
     {
+      "path": "internal/mcpremote/backend.go",
+      "size": 4588,
+      "sha256": "29389cd101b0470e80f1554f69844c03484483eea6e1454ad85ae37c08502179",
+      "mode": "0644"
+    },
+    {
+      "path": "internal/mcpremote/backend_test.go",
+      "size": 5602,
+      "sha256": "71d16ab59bd25b5f800c107b74ab600da7d10f00532e96f0d31cef44fe8c5bdf",
+      "mode": "0644"
+    },
+    {
       "path": "internal/mcpremote/server.go",
       "size": 5132,
       "sha256": "3cf08027f94d8b186412d991f4dc1c94055973ed78d0acf1c49e9205fb54d60f",
@@ -567,8 +579,8 @@
     },
     {
       "path": "internal/security/serversecrets/resolver.go",
-      "size": 3055,
-      "sha256": "3c24cde1d6a9cd0e4a3a864fa91e3f6593d8b6822b5186df78b41fc53b90f4c5",
+      "size": 3247,
+      "sha256": "c9cfee242700cbfa13b577bb5117f687e7818ec9051c853aaf9f54324b306bad",
       "mode": "0644"
     },
     {
@@ -729,8 +741,8 @@
     },
     {
       "path": "package.json",
-      "size": 471,
-      "sha256": "f23dc2a12574abbd214975be1c39704375f8f4bc8b122cd1e8a498554a3b0a71",
+      "size": 472,
+      "sha256": "a79184f7852a6ced9ed333ee191f30846d51252f9c45852cab5feaff697f0d9a",
       "mode": "0644"
     },
     {
@@ -953,18 +965,6 @@
       "path": "tests/integration/updater_test.go",
       "size": 2877,
       "sha256": "9afc8f8c98fb06b887c87ddc03a6cf7ef9286c2b3665861e801fd8083db22447",
-      "mode": "0644"
-    },
-    {
-      "path": "tests/load/gateway.js",
-      "size": 278,
-      "sha256": "8411e21e5b6034490013d0dbb8b2c3b5b95dabd0aeb00e04eb1542fa5f6d9979",
-      "mode": "0644"
-    },
-    {
-      "path": "tests/postgres/runtime_outbox_integration_test.go",
-      "size": 16572,
-      "sha256": "2234e2d38291c5e2e5d2e9ab99ebad148b8366a47ebfcdbdfde67725d4bde033",
       "mode": "0644"
     }
   ]

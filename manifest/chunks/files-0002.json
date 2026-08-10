@@ -224,6 +224,18 @@
       "mode": "0644"
     },
     {
+      "path": "internal/auth/virtualkey/pepper.go",
+      "size": 2324,
+      "sha256": "3c8ec04ea3fe8030003d4775318350e0649209e68b1b97ecdf4b9f4f6ed30646",
+      "mode": "0644"
+    },
+    {
+      "path": "internal/auth/virtualkey/pepper_test.go",
+      "size": 3334,
+      "sha256": "02a673e93bfdc1fa2ebc4f030b43e155d4468429b681a4cc469830b8eea45672",
+      "mode": "0644"
+    },
+    {
       "path": "internal/auth/virtualkey/postgres.go",
       "size": 6541,
       "sha256": "55d255a335c39b8d1989238acac2f2d227fb11fab46994277fae1626022f4c8f",
@@ -249,8 +261,8 @@
     },
     {
       "path": "internal/buildinfo/info.go",
-      "size": 320,
-      "sha256": "f69b575d18181529186b4eb21b588951030c5673003a0ba6d9153cd63918ac96",
+      "size": 321,
+      "sha256": "9999a2769adde5f07dc61b0559dc0a82fb56685bee4df5138d16a600a5f361c0",
       "mode": "0644"
     },
     {
@@ -941,18 +953,6 @@
       "path": "internal/mcpcontract/types.go",
       "size": 2031,
       "sha256": "64c5d5ec1a379a9a5c3b6d19d18bfdc8bf8e2e3f6a0eb32eed30bea03ee9de7d",
-      "mode": "0644"
-    },
-    {
-      "path": "internal/mcpremote/backend.go",
-      "size": 4588,
-      "sha256": "29389cd101b0470e80f1554f69844c03484483eea6e1454ad85ae37c08502179",
-      "mode": "0644"
-    },
-    {
-      "path": "internal/mcpremote/backend_test.go",
-      "size": 5602,
-      "sha256": "71d16ab59bd25b5f800c107b74ab600da7d10f00532e96f0d31cef44fe8c5bdf",
       "mode": "0644"
     }
   ]

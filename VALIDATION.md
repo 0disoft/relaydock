@@ -1,6 +1,6 @@
 # Validation Report
 
-Validation date: **2026-08-10**. Target version: **`0.5.9-dev`**. This report separates checks actually executed in the current sandbox or hosted CI from checks that could not run without external tools, services, operating systems, or provider credentials. A check defined in a workflow is not treated as a passing result.
+Validation date: **2026-08-10**. Target version: **`0.5.10-dev`**. This report separates checks actually executed in the current sandbox or hosted CI from checks that could not run without external tools, services, operating systems, or provider credentials. A check defined in a workflow is not treated as a passing result.
 
 ## Release-Readiness Decision
 
@@ -8,7 +8,7 @@ Validation date: **2026-08-10**. Target version: **`0.5.9-dev`**. This report se
 
 The repository-wide license boundary was finalized as Apache-2.0 on 2026-08-09. Root `LICENSE` and `NOTICE` are present, `LICENSE-PENDING.md` is removed, and portable-bundle regression checks require both files.
 
-The full Go suite and `go vet` passed after wiring desktop and server provider-credential sources into Gateway composition. Both Svelte workspaces passed `svelte-check` with zero errors and zero warnings, both production builds completed, and all three desktop frontend tests passed. Source refresh produced 504 records in four chunks and verified the deterministic archive and manifest.
+The full Go suite and `go vet` passed after extending workload-identity resolution to the virtual-key pepper. The existing frontend evidence remains the last completed Svelte/build run because this change modifies only workspace version metadata there; a current frozen install still belongs to hosted CI. Source refresh produced 506 records in four chunks and verified the deterministic archive and manifest.
 
 [GitHub Actions CI run 31301723465](https://github.com/0disoft/relaydock/actions/runs/31301723465) for commit `0905d93` passed all six jobs. It provides hosted-runner evidence for Linux race tests and vet, PostgreSQL 18 integration, Buf and SQLC generation plus generated-package compilation, Bun/Svelte checks, and Windows Wails desktop/MCP bridge compilation.
 
@@ -19,6 +19,7 @@ The following readiness additions passed locally:
 - Linux Secret Service session negotiation, opaque search attributes, locked-item prompt handling, create/read/delete behavior, duplicate rejection, transient-buffer zeroing, context propagation, and D-Bus error-body omission tests
 - Desktop provider credential status, save, replace, delete, environment precedence, gateway-stop conflict, unavailable-store denial, secret non-disclosure, and gateway Authorization-header tests
 - Server-secret reference parsing, GCP metadata-token and Secret Manager request shape, proxy bypass, redirect denial, response bounds, CRC32C verification, reference precedence, and fail-closed Gateway startup tests with deterministic fake HTTP transports
+- Virtual-key pepper reference resolution shared by `gatewayd` and `keyctl`, including direct-source precedence, 32-4,096-byte bounds, cancellation, missing-resolver denial, and secret-free errors
 - OIDC discovery, exact issuer/audience/authorized-party/time/signature verification, explicit claim-to-role mapping, JWKS rotation, and static-bootstrap coexistence tests
 - SSRF denial for private/mixed DNS results and validated-address dialing for issuer, redirect, and JWKS requests
 - Deny-by-default Control role policy, SHA-256 static credential lookup, project model filtering, provider-account redaction, and safe access-decision audit tests
@@ -42,15 +43,15 @@ The following are configured or documented but do not yet have successful execut
 - Real external IdP conformance and the separate Control Console authorization-code/session flow
 - Disposable-user physical Windows Credential Manager, macOS Keychain, and Linux Secret Service smoke tests
 - Live Google Cloud attached-workload, secret-level IAM, metadata, Secret Manager, rotation, and denial smoke tests
-- Workload-identity coverage for non-provider server secrets and non-Google secret-manager adapters
+- Workload-identity coverage for remaining server secrets and non-Google secret-manager adapters
 
 Do not label the product production-ready or deployed before those release-owner inputs and target-environment gates are complete.
 
 ## Validated Source Baseline
 
-- 504 source records
-- 320 Go files
-- 64 Go test files with 230 named `Test...` functions
+- 506 source records
+- 322 Go files
+- 65 Go test files with 234 named `Test...` functions
 - 84 Markdown documents
 - 13 SQL files
 - 13 Svelte files
@@ -93,6 +94,7 @@ The local Windows runner lacks gcc, clang, and zig, so it could not run the `CGO
 - Remote MCP argt2 active/retiring HMAC keys, normalized-ID collision checks, and size/count limits
 - Token audience, subject, tenant, project, scope, ID, and lifetime validation
 - Read-only `gcp-sm:` dispatch, fixed-origin metadata and Secret Manager calls, no-proxy metadata transport, redirect denial, bounded bodies, payload CRC32C, and secret-free error behavior
+- Virtual-key pepper direct/reference precedence, immutable byte bounds, cancellation, and secret-free failure behavior
 
 ### Frontend and Static Checks
 

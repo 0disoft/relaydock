@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.5.10-dev -- Workload-Identity Virtual-Key Pepper
+
+- Added `GATEWAY_VIRTUAL_KEY_PEPPER_REF` for `gatewayd` and `keyctl` through the existing read-only server-secret resolver.
+- Preserved direct base64 and raw environment precedence for rollback and bounded resolved pepper material to 32-4,096 bytes.
+- Added cancellation, source-precedence, missing-resolver, malformed-base64, short-secret, oversized-secret, and secret-free-error tests.
+- Documented that pepper references should use immutable versions because RelayDock does not retain an old-pepper verification ring.
+- Kept database URLs, Control signing keys, MCP HMAC keys, webhook secrets, physical cloud smoke, and non-Google secret-manager adapters explicitly open.
+
 ## 0.5.9-dev -- Server Workload-Identity Provider Secrets
 
 - Added a provider-neutral, read-only server-secret reference resolver with fail-closed scheme dispatch and secret-free errors.
@@ -7,7 +15,7 @@
 - Fixed metadata and Secret Manager origins, bypassed environment proxies for metadata requests, rejected redirects, bounded response bodies, and verified CRC32C before returning secret bytes.
 - Added `GATEWAY_*_API_KEY_REF` support for every Gateway provider while preserving direct environment and desktop system-store precedence.
 - Added deterministic HTTP transport, corruption, redirect, malformed-reference, proxy, and provider-request regression tests without requiring a live cloud account.
-- Kept database URLs, virtual-key peppers, Control signing keys, MCP HMAC keys, webhook secrets, physical cloud smoke, and non-Google secret-manager adapters explicitly open.
+- Kept database URLs, virtual-key peppers, Control signing keys, MCP HMAC keys, webhook secrets, physical cloud smoke, and non-Google secret-manager adapters explicitly open at that version.
 
 ## 0.5.8-dev -- Linux Secret Service Credential Store
 

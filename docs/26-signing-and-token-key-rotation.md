@@ -57,6 +57,12 @@ Rotation order:
 
 Because argt1 has no key ID, verify it against every retiring secret. This compatibility path is temporary.
 
+## Virtual-Key Pepper Replacement
+
+The virtual-key pepper is not an online rotation key. RelayDock stores only pepper-derived HMAC values and has no old-pepper verification ring, so changing `GATEWAY_VIRTUAL_KEY_PEPPER`, `GATEWAY_VIRTUAL_KEY_PEPPER_B64`, or the bytes resolved by `GATEWAY_VIRTUAL_KEY_PEPPER_REF` invalidates every existing virtual key.
+
+Use an immutable external-secret version. To replace the pepper, create replacement virtual keys under the new pepper, distribute them through the consumer credential channel, switch every Gateway and `keyctl` deployment as one coordinated cutover, and then revoke the old records. Do not point the reference at `latest` or a mutable alias.
+
 ## Prohibitions
 
 - Key IDs are not secrets; logging IDs is acceptable, logging secrets is not.
