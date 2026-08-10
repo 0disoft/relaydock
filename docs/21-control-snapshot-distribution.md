@@ -20,7 +20,7 @@ Only the Control Plane publishes revisions. A Gateway neither modifies a snapsho
 
 ## Signing Keys
 
-`CONTROL_SIGNING_PRIVATE_KEY` accepts a base64 or base64url-encoded 32-byte Ed25519 seed or 64-byte private key. Without it, Control uses a per-instance file at `CONTROL_SIGNING_KEY_PATH`.
+`CONTROL_SIGNING_PRIVATE_KEY` accepts a base64 or base64url-encoded 32-byte Ed25519 seed or 64-byte private key. `CONTROL_SIGNING_PRIVATE_KEY_REF` instead resolves a raw 32-byte seed or raw 64-byte private key through the server workload identity. The direct environment value takes precedence, followed by the reference and then the per-instance file at `CONTROL_SIGNING_KEY_PATH`. A configured reference fails closed and never falls through to the file.
 
 All Control replicas must receive the same secret-manager value. Per-replica local keys produce inconsistent signatures even with a shared PostgreSQL snapshot store.
 

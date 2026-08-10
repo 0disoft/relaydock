@@ -44,7 +44,7 @@ Windows Credential Manager, macOS Keychain, and Linux Secret Service are desktop
 
 ## Server Workload Identity
 
-`gatewayd` supports read-only server-secret references for provider API keys and the virtual-key pepper. The server resolver is separate from `credentials.Store`: it cannot create, replace, or delete a secret, and desktop composition never enables it. Direct provider-key environment variables keep highest priority, the desktop system store remains second when present, and a server reference is consulted only when neither source supplied a value.
+Managed `gatewayd` and `controld` processes support read-only server-secret references for provider API keys, the virtual-key pepper, and the Control signing private key. The server resolver is separate from `credentials.Store`: it cannot create, replace, or delete a secret, and desktop composition never enables it. Direct provider-key environment variables keep highest priority, the desktop system store remains second when present, and a server reference is consulted only when neither source supplied a value.
 
 The first production adapter is Google Cloud Secret Manager with an attached workload identity. References use this canonical form:
 
@@ -61,11 +61,14 @@ gcp-sm:projects/PROJECT_ID/secrets/SECRET_ID/versions/VERSION_ID
 - `GATEWAY_OPENROUTER_API_KEY_REF`
 - `GATEWAY_OPENAI_COMPATIBLE_API_KEY_REF`
 - `GATEWAY_VIRTUAL_KEY_PEPPER_REF`
+- `CONTROL_SIGNING_PRIVATE_KEY_REF`
 
 The adapter requests a short-lived OAuth access token from the fixed Google metadata endpoint with `Metadata-Flavor: Google`, then accesses the fixed HTTPS Secret Manager v1 endpoint. Metadata requests bypass environment proxies, and neither endpoint is configurable in production. Redirects are rejected. Token and response bodies are bounded, non-success bodies are never copied into errors, and returned secret bytes must pass the Secret Manager CRC32C check. Provider credentials retain the common 1-to-2,048-byte size and surrounding-whitespace rules. A resolved virtual-key pepper must contain 32 to 4,096 raw bytes. `GATEWAY_VIRTUAL_KEY_PEPPER_B64` takes precedence over `GATEWAY_VIRTUAL_KEY_PEPPER`, which takes precedence over `GATEWAY_VIRTUAL_KEY_PEPPER_REF`; `gatewayd` and `keyctl` use the same resolution contract.
 
 Use an immutable numeric Secret Manager version for the pepper. Changing the resolved bytes immediately makes every existing virtual key unverifiable, so `latest` and mutable aliases are unsafe unless the deployment intentionally coordinates a full key replacement. RelayDock does not retain an old-pepper verification ring.
 
+A Control signing-key reference resolves raw bytes and accepts only a 32-byte Ed25519 seed or 64-byte private key. `CONTROL_SIGNING_PRIVATE_KEY` remains the higher-precedence base64/base64url source. When neither is configured, Control may use `CONTROL_SIGNING_KEY_PATH`; once a reference is configured, resolution or parsing failure stops startup instead of creating or loading a local key. The 15-second startup context bounds the external lookup, and source buffers are cleared after the signer copies the key. Use immutable versions and the existing key-ID/public-key trust ring for overlap during rotation.
+
 The attached service account or GKE workload identity needs `secretmanager.versions.access`, normally through `roles/secretmanager.secretAccessor`, granted on each required secret rather than on the whole project. Compute Engine and GKE nodes must expose the `cloud-platform` OAuth scope required by Secret Manager. RelayDock does not accept service-account key files or long-lived Google credentials for this path.
 
-Missing workload identity, denied IAM access, malformed references, unavailable metadata, redirects, corrupt payloads, and unsupported reference schemes fail Gateway startup. Removing a reference and restoring the corresponding direct environment variable is the rollback path. Other server secrets, including database URLs, Control signing keys, MCP HMAC keys, and webhook secrets, still require deployment-platform secret injection or future adapters; this release must not be described as complete KMS coverage.
+Missing workload identity, denied IAM access, malformed references, unavailable metadata, redirects, corrupt payloads, and unsupported reference schemes fail the consuming service startup. Removing a reference and restoring the corresponding direct environment variable is the rollback path. Other server secrets, including database URLs, MCP HMAC keys, and webhook secrets, still require deployment-platform secret injection or future adapters; this release must not be described as complete KMS coverage.

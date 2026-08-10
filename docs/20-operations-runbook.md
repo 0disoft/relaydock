@@ -58,7 +58,16 @@ go run ./cmd/controld
 $publicKey = go run ./cmd/controlctl signing-key --raw
 ```
 
-Without `CONTROL_SIGNING_PRIVATE_KEY`, Control creates a per-instance file at `CONTROL_SIGNING_KEY_PATH`. Do not use per-replica files in PostgreSQL HA mode. Follow [`28-control-plane-access.md`](28-control-plane-access.md) to generate separate credentials. `CONTROL_BEARER_TOKEN` remains only as a legacy cluster-admin bootstrap path.
+Without `CONTROL_SIGNING_PRIVATE_KEY` or `CONTROL_SIGNING_PRIVATE_KEY_REF`, Control creates a per-instance file at `CONTROL_SIGNING_KEY_PATH`. Do not use per-replica files in PostgreSQL HA mode. Follow [`28-control-plane-access.md`](28-control-plane-access.md) to generate separate credentials. `CONTROL_BEARER_TOKEN` remains only as a legacy cluster-admin bootstrap path.
+
+On Google Cloud, store the raw 32-byte Ed25519 seed or raw 64-byte private key in Secret Manager and use the attached workload identity:
+
+```powershell
+$env:CONTROL_SIGNING_PRIVATE_KEY_REF = "gcp-sm:projects/relay-production/secrets/control-signing-private-key/versions/8"
+$env:CONTROL_SIGNING_KEY_ID = "2026-q3"
+```
+
+`CONTROL_SIGNING_PRIVATE_KEY` retains precedence over the reference. A configured reference that cannot be resolved or parsed fails Control startup and never falls back to `CONTROL_SIGNING_KEY_PATH`. Use an immutable version and follow the overlapping public-key rotation sequence before switching it.
 
 ## 4. Publish Routes and Synchronize Gateway
 

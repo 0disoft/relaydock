@@ -1,19 +1,19 @@
 {
   "version": 2,
-  "generatedAt": "2026-08-10T03:10:21Z",
+  "generatedAt": "2026-08-10T03:33:41Z",
   "hashAlgorithm": "sha256",
   "fileCount": 506,
-  "totalBytes": 1638723,
+  "totalBytes": 1646919,
   "maximumFileBytes": 40960,
-  "aggregateSha256": "e6d0a41114f019bf134f975713d184e25a206c4af170a0c619b96770fe96c8e8",
+  "aggregateSha256": "7319e6679bd0e876566373885b0359f6aceab28522360bd634b8fef74971ab2f",
   "chunks": [
     {
       "path": "manifest/chunks/files-0001.json",
       "fileCount": 168,
       "firstPath": ".agents/README.md",
       "lastPath": "frontend/tsconfig.json",
-      "size": 30657,
-      "sha256": "3796a5b4231a2909724687c17f81307f8ecbaae2f21de5247951f9b6624d93ac"
+      "size": 30659,
+      "sha256": "e9f555d783db1c2f4ce93328288faf4bb67e179f26f453d59e462e5f0f3737ab"
     },
     {
       "path": "manifest/chunks/files-0002.json",
@@ -21,7 +21,7 @@
       "firstPath": "frontend/uno.config.ts",
       "lastPath": "internal/mcpcontract/types.go",
       "size": 30586,
-      "sha256": "d4cd6d9385b229472aca5121ae0aaf763f2b5f4acd84e016acb86f5d9f761712"
+      "sha256": "fe8fade6ead2d1c5f93155ad6a3bc407df81de2e26f2d67cb7848870ead6ef8d"
     },
     {
       "path": "manifest/chunks/files-0003.json",
@@ -29,7 +29,7 @@
       "firstPath": "internal/mcpremote/backend.go",
       "lastPath": "tests/integration/updater_test.go",
       "size": 30682,
-      "sha256": "1032ab7ce5895cea786996e8ae9f6c4c381aaf49f3dac876ce321a6a46aaa315"
+      "sha256": "b435a7c9ee32045dd542bfbc4b31cfd8f0123f73bf210befdf33659af61e9b4b"
     },
     {
       "path": "manifest/chunks/files-0004.json",
@@ -37,7 +37,7 @@
       "firstPath": "tests/load/gateway.js",
       "lastPath": "web/shared/README.md",
       "size": 3509,
-      "sha256": "56c0ec29770a8690ad44e6672d4ba0a2a8fa84c6f42a85ff77b3d9bc508418e8"
+      "sha256": "3aeff8d8e3412fa35648808368694d10c6541093966574fd1505e3795abd776f"
     }
   ],
   "excluded": [

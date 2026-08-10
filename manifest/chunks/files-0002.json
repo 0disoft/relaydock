@@ -262,7 +262,7 @@
     {
       "path": "internal/buildinfo/info.go",
       "size": 321,
-      "sha256": "9999a2769adde5f07dc61b0559dc0a82fb56685bee4df5138d16a600a5f361c0",
+      "sha256": "3070359ca5800443edd48d0b81016ff9e514aa12a0a284cf7f61747aa159d16d",
       "mode": "0644"
     },
     {
@@ -363,14 +363,14 @@
     },
     {
       "path": "internal/control/snapshot/keyparse.go",
-      "size": 1421,
-      "sha256": "03fd2c5be6e728001b581ca904e3e31facba5462a46c0f70c53c7f80a564a2e7",
+      "size": 1706,
+      "sha256": "f3c7e8a59de0cd9414348fc0687d85bafd9a73c4ff782ba7ebfbbe6e0a42b261",
       "mode": "0644"
     },
     {
       "path": "internal/control/snapshot/keyparse_test.go",
-      "size": 1388,
-      "sha256": "ae0329cab2f91083057255c5aeaf7d0cf7fdece472ad97b4968f6fd8d0650a11",
+      "size": 1818,
+      "sha256": "0f0db9022790eb95f4c7eb5c638da7f5e927a3ab8e3585590599832462806ea3",
       "mode": "0644"
     },
     {

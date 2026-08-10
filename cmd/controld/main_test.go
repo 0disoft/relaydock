@@ -2,11 +2,28 @@ package main
 
 import (
 	"context"
+	"crypto/ed25519"
+	"encoding/base64"
+	"os"
+	"path/filepath"
 	"strings"
 	"testing"
 
 	"github.com/0disoft/relaydock/internal/auth/controlaccess"
 )
+
+type controlSigningResolver struct {
+	value []byte
+	calls int
+}
+
+func (r *controlSigningResolver) Resolve(ctx context.Context, _ string) ([]byte, error) {
+	if err := ctx.Err(); err != nil {
+		return nil, err
+	}
+	r.calls++
+	return append([]byte(nil), r.value...), nil
+}
 
 func TestLoadControlAuthenticatorCombinesScopedAndLegacyCredentials(t *testing.T) {
 	scopedToken := strings.Repeat("a", 32)
@@ -47,5 +64,67 @@ func TestLoadOIDCAuthenticatorRejectsPartialConfiguration(t *testing.T) {
 	t.Setenv("CONTROL_OIDC_AUDIENCE", "relaydock-control")
 	if _, err := loadOIDCAuthenticator(context.Background()); err == nil {
 		t.Fatal("accepted OIDC audience without issuer")
+	}
+}
+
+func TestLoadSignerUsesRawServerSecretAndKeyID(t *testing.T) {
+	seed := make([]byte, ed25519.SeedSize)
+	for index := range seed {
+		seed[index] = byte(index + 1)
+	}
+	t.Setenv("CONTROL_SIGNING_PRIVATE_KEY", "")
+	t.Setenv("CONTROL_SIGNING_PRIVATE_KEY_REF", "gcp-sm:projects/p/secrets/control-signing/versions/8")
+	t.Setenv("CONTROL_SIGNING_KEY_ID", "2026-q3")
+	resolver := &controlSigningResolver{value: seed}
+	signer, description, err := loadSigner(context.Background(), resolver)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if resolver.calls != 1 || description != "server-secret-reference" || signer.SigningKeyID() != "2026-q3" {
+		t.Fatalf("calls=%d description=%q keyID=%q", resolver.calls, description, signer.SigningKeyID())
+	}
+	if string(signer.PrivateKey) != string(ed25519.NewKeyFromSeed(seed)) {
+		t.Fatal("resolved seed did not produce the expected private key")
+	}
+}
+
+func TestLoadSignerKeepsEnvironmentPrecedence(t *testing.T) {
+	seed := []byte(strings.Repeat("e", ed25519.SeedSize))
+	t.Setenv("CONTROL_SIGNING_PRIVATE_KEY", base64.RawURLEncoding.EncodeToString(seed))
+	t.Setenv("CONTROL_SIGNING_PRIVATE_KEY_REF", "gcp-sm:projects/p/secrets/control-signing/versions/8")
+	resolver := &controlSigningResolver{value: []byte(strings.Repeat("r", ed25519.SeedSize))}
+	_, description, err := loadSigner(context.Background(), resolver)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if resolver.calls != 0 || description != "environment-secret" {
+		t.Fatalf("calls=%d description=%q", resolver.calls, description)
+	}
+}
+
+func TestLoadSignerRejectsInvalidResolvedMaterialWithoutDisclosure(t *testing.T) {
+	secretText := "do-not-expose-signing-secret"
+	t.Setenv("CONTROL_SIGNING_PRIVATE_KEY", "")
+	t.Setenv("CONTROL_SIGNING_PRIVATE_KEY_REF", "gcp-sm:projects/p/secrets/control-signing/versions/8")
+	resolver := &controlSigningResolver{value: []byte(secretText)}
+	_, _, err := loadSigner(context.Background(), resolver)
+	if err == nil {
+		t.Fatal("accepted invalid resolved signing key")
+	}
+	if strings.Contains(err.Error(), secretText) {
+		t.Fatalf("error exposed signing key: %v", err)
+	}
+}
+
+func TestLoadSignerReferenceFailureDoesNotCreateLocalKey(t *testing.T) {
+	keyPath := filepath.Join(t.TempDir(), "signing.key")
+	t.Setenv("CONTROL_SIGNING_PRIVATE_KEY", "")
+	t.Setenv("CONTROL_SIGNING_PRIVATE_KEY_REF", "gcp-sm:projects/p/secrets/control-signing/versions/8")
+	t.Setenv("CONTROL_SIGNING_KEY_PATH", keyPath)
+	if _, _, err := loadSigner(context.Background(), nil); err == nil {
+		t.Fatal("accepted a signing-key reference without a resolver")
+	}
+	if _, err := os.Stat(keyPath); !os.IsNotExist(err) {
+		t.Fatalf("local key path changed after reference failure: %v", err)
 	}
 }

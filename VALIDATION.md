@@ -1,6 +1,6 @@
 # Validation Report
 
-Validation date: **2026-08-10**. Target version: **`0.5.10-dev`**. This report separates checks actually executed in the current sandbox or hosted CI from checks that could not run without external tools, services, operating systems, or provider credentials. A check defined in a workflow is not treated as a passing result.
+Validation date: **2026-08-10**. Target version: **`0.5.11-dev`**. This report separates checks actually executed in the current sandbox or hosted CI from checks that could not run without external tools, services, operating systems, or provider credentials. A check defined in a workflow is not treated as a passing result.
 
 ## Release-Readiness Decision
 
@@ -8,7 +8,7 @@ Validation date: **2026-08-10**. Target version: **`0.5.10-dev`**. This report s
 
 The repository-wide license boundary was finalized as Apache-2.0 on 2026-08-09. Root `LICENSE` and `NOTICE` are present, `LICENSE-PENDING.md` is removed, and portable-bundle regression checks require both files.
 
-The full Go suite and `go vet` passed after extending workload-identity resolution to the virtual-key pepper. The existing frontend evidence remains the last completed Svelte/build run because this change modifies only workspace version metadata there; a current frozen install still belongs to hosted CI. Source refresh produced 506 records in four chunks and verified the deterministic archive and manifest.
+The full Go suite and `go vet` passed after extending workload-identity resolution to the Control signing private key. The existing frontend evidence remains the last completed Svelte/build run because this change modifies only workspace version metadata there; a current frozen install still belongs to hosted CI. Source refresh produced 506 records in four chunks and verified the deterministic archive and manifest.
 
 [GitHub Actions CI run 31301723465](https://github.com/0disoft/relaydock/actions/runs/31301723465) for commit `0905d93` passed all six jobs. It provides hosted-runner evidence for Linux race tests and vet, PostgreSQL 18 integration, Buf and SQLC generation plus generated-package compilation, Bun/Svelte checks, and Windows Wails desktop/MCP bridge compilation.
 
@@ -20,6 +20,7 @@ The following readiness additions passed locally:
 - Desktop provider credential status, save, replace, delete, environment precedence, gateway-stop conflict, unavailable-store denial, secret non-disclosure, and gateway Authorization-header tests
 - Server-secret reference parsing, GCP metadata-token and Secret Manager request shape, proxy bypass, redirect denial, response bounds, CRC32C verification, reference precedence, and fail-closed Gateway startup tests with deterministic fake HTTP transports
 - Virtual-key pepper reference resolution shared by `gatewayd` and `keyctl`, including direct-source precedence, 32-4,096-byte bounds, cancellation, missing-resolver denial, and secret-free errors
+- Control signing private-key reference resolution with raw seed/private-key bounds, direct-source precedence, key-ID preservation, copied source buffers, and secret-free errors
 - OIDC discovery, exact issuer/audience/authorized-party/time/signature verification, explicit claim-to-role mapping, JWKS rotation, and static-bootstrap coexistence tests
 - SSRF denial for private/mixed DNS results and validated-address dialing for issuer, redirect, and JWKS requests
 - Deny-by-default Control role policy, SHA-256 static credential lookup, project model filtering, provider-account redaction, and safe access-decision audit tests
@@ -51,7 +52,7 @@ Do not label the product production-ready or deployed before those release-owner
 
 - 506 source records
 - 322 Go files
-- 65 Go test files with 234 named `Test...` functions
+- 65 Go test files with 239 named `Test...` functions
 - 84 Markdown documents
 - 13 SQL files
 - 13 Svelte files
@@ -95,6 +96,7 @@ The local Windows runner lacks gcc, clang, and zig, so it could not run the `CGO
 - Token audience, subject, tenant, project, scope, ID, and lifetime validation
 - Read-only `gcp-sm:` dispatch, fixed-origin metadata and Secret Manager calls, no-proxy metadata transport, redirect denial, bounded bodies, payload CRC32C, and secret-free error behavior
 - Virtual-key pepper direct/reference precedence, immutable byte bounds, cancellation, and secret-free failure behavior
+- Control signing-key raw-reference parsing, copy isolation, direct/reference precedence, key-ID assignment, and secret-free failure behavior
 
 ### Frontend and Static Checks
 

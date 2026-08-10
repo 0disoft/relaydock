@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.5.11-dev -- Workload-Identity Control Signing Key
+
+- Added `CONTROL_SIGNING_PRIVATE_KEY_REF` for `controld` through the read-only server-secret resolver.
+- Defined referenced payloads as raw 32-byte Ed25519 seeds or 64-byte private keys while retaining the existing base64 environment format.
+- Preserved direct environment precedence, failed closed instead of falling back to a local file after reference errors, and bounded secret resolution to 15 seconds.
+- Copied signer material before clearing resolved and decoded source buffers and kept errors free of secret content.
+- Added raw-key copy, reference, key-ID, direct-precedence, invalid-material, and secret-nondisclosure tests.
+- Kept database URLs, MCP HMAC keys, webhook secrets, physical cloud smoke, and non-Google secret-manager adapters explicitly open.
+
 ## 0.5.10-dev -- Workload-Identity Virtual-Key Pepper
 
 - Added `GATEWAY_VIRTUAL_KEY_PEPPER_REF` for `gatewayd` and `keyctl` through the existing read-only server-secret resolver.

@@ -14,6 +14,7 @@ import (
 	"github.com/0disoft/relaydock/internal/control/snapshot"
 	"github.com/0disoft/relaydock/internal/observability"
 	persistencepostgres "github.com/0disoft/relaydock/internal/persistence/postgres"
+	"github.com/0disoft/relaydock/internal/security/serversecrets"
 	"github.com/0disoft/relaydock/internal/serverutil"
 	"github.com/0disoft/relaydock/internal/transport/controlhttp"
 )
@@ -43,7 +44,14 @@ func main() {
 	}
 	defer closeStore()
 
-	signer, signerDescription, err := loadSigner()
+	secretResolver, err := serversecrets.NewDefaultResolver()
+	if err != nil {
+		logger.Error("configure server-secret resolver", "error", err)
+		os.Exit(1)
+	}
+	signingContext, cancelSigning := context.WithTimeout(context.Background(), 15*time.Second)
+	signer, signerDescription, err := loadSigner(signingContext, secretResolver)
+	cancelSigning()
 	if err != nil {
 		logger.Error("load control signing key", "error", err)
 		os.Exit(1)
@@ -195,7 +203,11 @@ func openSnapshotStore() (snapshot.Store, string, func(), error) {
 	}
 }
 
-func loadSigner() (snapshot.Ed25519Signer, string, error) {
+type signingSecretResolver interface {
+	Resolve(context.Context, string) ([]byte, error)
+}
+
+func loadSigner(ctx context.Context, secretResolver signingSecretResolver) (snapshot.Ed25519Signer, string, error) {
 	keyID := strings.TrimSpace(os.Getenv("CONTROL_SIGNING_KEY_ID"))
 	if encoded := strings.TrimSpace(os.Getenv("CONTROL_SIGNING_PRIVATE_KEY")); encoded != "" {
 		signer, err := snapshot.ParseSigningPrivateKey(encoded)
@@ -203,6 +215,21 @@ func loadSigner() (snapshot.Ed25519Signer, string, error) {
 			signer = snapshot.NewEd25519SignerWithKeyID(keyID, signer.PrivateKey, signer.PublicKey)
 		}
 		return signer, "environment-secret", err
+	}
+	if reference := os.Getenv("CONTROL_SIGNING_PRIVATE_KEY_REF"); strings.TrimSpace(reference) != "" {
+		if secretResolver == nil {
+			return snapshot.Ed25519Signer{}, "", fmt.Errorf("CONTROL_SIGNING_PRIVATE_KEY_REF requires a server-secret resolver")
+		}
+		raw, err := secretResolver.Resolve(ctx, reference)
+		if err != nil {
+			return snapshot.Ed25519Signer{}, "", fmt.Errorf("resolve control signing private-key reference: %w", err)
+		}
+		defer clear(raw)
+		signer, err := snapshot.ParseSigningPrivateKeyBytes(raw)
+		if err == nil && keyID != "" {
+			signer = snapshot.NewEd25519SignerWithKeyID(keyID, signer.PrivateKey, signer.PublicKey)
+		}
+		return signer, "server-secret-reference", err
 	}
 	keyPath := envOr("CONTROL_SIGNING_KEY_PATH", filepath.Join("data", "control", "signing.key"))
 	signer, err := snapshot.LoadOrCreateSigningKey(keyPath)

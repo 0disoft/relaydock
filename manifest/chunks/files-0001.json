@@ -141,8 +141,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "size": 15348,
-      "sha256": "b222f4919228a0a8a61d9b51f5ee47682c1afe997793a07e1ea9a2e2752821b6",
+      "size": 16172,
+      "sha256": "57c4f216710874ef93cf8d311fc8991607014af9421ce69014b60254b067b34c",
       "mode": "0644"
     },
     {
@@ -159,8 +159,8 @@
     },
     {
       "path": "IMPLEMENTATION_STATUS.md",
-      "size": 9911,
-      "sha256": "dbf0c41a3f3f6512a9e2c47b8c267c6648129806993731eb831976aacc267e58",
+      "size": 10018,
+      "sha256": "6f84eb2765c8f0ba967393c805df08f5b09e81eb2bb979003d65665d3ddb9f9b",
       "mode": "0644"
     },
     {
@@ -177,8 +177,8 @@
     },
     {
       "path": "README.md",
-      "size": 10952,
-      "sha256": "a720aa6d7abdf0425ea2ac58c64bb1bbc8c21dd4747a37a81344f8b2741a8e83",
+      "size": 10986,
+      "sha256": "11441cd2a8cc468db9e8ceffb1eefe16a001e1390cbb26c9ec896677a9f0c247",
       "mode": "0644"
     },
     {
@@ -201,14 +201,14 @@
     },
     {
       "path": "VALIDATION.md",
-      "size": 12464,
-      "sha256": "ef8569074b99aa9deb4737db6d78dd2e0319ca459a9226643606b0d0ab165c5c",
+      "size": 12793,
+      "sha256": "75d8f05a32f570cb4c716beaa79410f27d5b639331ad8b267b0b7438fd2799b1",
       "mode": "0644"
     },
     {
       "path": "VERSION",
       "size": 11,
-      "sha256": "59805d3cb1df4919e52855244900f3fec3d0498e7d8f56e4b9830d60a26d63f9",
+      "sha256": "06e07eb2cf2f26cf54f4a10d0989445c0eb1ecdbbb3f4949c3374d3e4c8e38a5",
       "mode": "0644"
     },
     {
@@ -262,7 +262,7 @@
     {
       "path": "bun.lock",
       "size": 60862,
-      "sha256": "3f2dd44b705435f6c69fed8339989e8f8da5ef78e371fb8de5b04a671315f414",
+      "sha256": "b3893d788907eac5399a48066a5a7ced8ac1239f83e30554b7ff95226545f1af",
       "mode": "0644"
     },
     {
@@ -273,14 +273,14 @@
     },
     {
       "path": "cmd/controld/main.go",
-      "size": 9748,
-      "sha256": "2fbb6ad7d893e0b76886f19589e0c708ae74ecda243a71a1604a28244c30215f",
+      "size": 10951,
+      "sha256": "591ec46dbff9dd98c9c5516e6cba512194d78ea14f635332a9b576b26d3b9a58",
       "mode": "0644"
     },
     {
       "path": "cmd/controld/main_test.go",
-      "size": 2136,
-      "sha256": "96abca3dea989914a132377a3e548d7e8b2bc63c7e8de705b66740bebb30790a",
+      "size": 5128,
+      "sha256": "556f2bd5213281bc8152026f98d2167b10210eeeb54c5fac2c09547365171626",
       "mode": "0644"
     },
     {
@@ -669,14 +669,14 @@
     },
     {
       "path": "docs/20-operations-runbook.md",
-      "size": 11969,
-      "sha256": "a3757caedf01408245be7f1f949745fc2b986f6a7547c697cbc4b56c1ac32ae2",
+      "size": 12627,
+      "sha256": "d645faf98feb2f28e9ab4e1029a3020f1f565c114d93f639579743c9179da6c8",
       "mode": "0644"
     },
     {
       "path": "docs/21-control-snapshot-distribution.md",
-      "size": 3958,
-      "sha256": "0af286f8798faa2e02a7ea100bcf15275152b4bd4a5c34e0b7daa1e1740aeda5",
+      "size": 4225,
+      "sha256": "eeaca656e6704317d125c98b4c9ef976b0c4b8e3b2d960258bc9fe998aaad85e",
       "mode": "0644"
     },
     {
@@ -705,14 +705,14 @@
     },
     {
       "path": "docs/26-signing-and-token-key-rotation.md",
-      "size": 3447,
-      "sha256": "b0c4db4094ffb0e3937ae1ca8d9e3beaac56440ef27bd7e293aaa2065257d5d1",
+      "size": 3807,
+      "sha256": "81d7355056e0057f0e02bf2e8fe36d2c97980f4b5f15c95d82a99d01948863cc",
       "mode": "0644"
     },
     {
       "path": "docs/27-repository-size-and-source-release.md",
       "size": 2656,
-      "sha256": "1776e3ffc3f7646f92848ff732d008a1f9e8f2823481864e0b53371f092a9ef4",
+      "sha256": "f82f2a1f36c7d639e44d01325bcf1c6913bebad4cac707fc6235d9341bb5ed38",
       "mode": "0644"
     },
     {
@@ -723,8 +723,8 @@
     },
     {
       "path": "docs/29-system-credential-storage.md",
-      "size": 8611,
-      "sha256": "fabb5725c86b8f56a0992c03f4b6cca5ab5805a25cc08f58d4c923be5e79c867",
+      "size": 9318,
+      "sha256": "99edd8a400ce1f55b9c72206b660aa8bddb3b033bb6447cbf7830829cfa6af91",
       "mode": "0644"
     },
     {
@@ -880,7 +880,7 @@
     {
       "path": "frontend/package.json",
       "size": 681,
-      "sha256": "ced03865955cf9354eb0cb8e95bffc9a19b6cbd78e5e91c6fb28b6bf21875011",
+      "sha256": "0f29d686747b0e38903285dddbe534618ea4fb40394177d7adf0ba6d750876e1",
       "mode": "0644"
     },
     {

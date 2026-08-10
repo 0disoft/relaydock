@@ -2,7 +2,7 @@
 
 ## Current Stage
 
-`0.5.10-dev` is a reference implementation with operational paths, bounded-file contracts, a deny-by-default Control Plane access policy with static and OIDC identity sources, operating-system-backed desktop provider keys on Windows, macOS, and Linux, and Google Cloud workload-identity resolution for Gateway provider keys and the virtual-key pepper. Without external infrastructure it runs with `local/echo`, an atomic JSON store, and memory leases. PostgreSQL and Valkey enable durable consultations, virtual keys, signed Control snapshots, the runtime journal, transactional outbox, and distributed provider leases.
+`0.5.11-dev` is a reference implementation with operational paths, bounded-file contracts, a deny-by-default Control Plane access policy with static and OIDC identity sources, operating-system-backed desktop provider keys on Windows, macOS, and Linux, and Google Cloud workload-identity resolution for Gateway provider keys, the virtual-key pepper, and the Control signing private key. Without external infrastructure it runs with `local/echo`, an atomic JSON store, and memory leases. PostgreSQL and Valkey enable durable consultations, virtual keys, signed Control snapshots, the runtime journal, transactional outbox, and distributed provider leases.
 
 This is not a claim of full production readiness. Real provider accounts, the money-platform, a complete Go 1.26 dependency build, live PostgreSQL and Valkey, Wails installers and updates, and code signing still require validation in target environments.
 
@@ -17,7 +17,7 @@ This is not a claim of full production readiness. Real provider accounts, the mo
 | Errors and retry safety | Implemented and tested | Stable taxonomy, Retry-After, pre-semantic retry only, visible post-semantic failure | More provider-specific fixtures and explicit continuation |
 | Routing and cooldown | Implemented and tested | Capability/region/cost/availability filters, deterministic scoring, degradation and recovery | Measured TTFT/TPS and distributed health sharing |
 | Concurrency leases | Implemented and tested | Memory and Valkey Lua acquire/renew/release with server time | Real cluster, Sentinel, and partition validation |
-| Signed Control snapshots | Implemented and tested | Key-ID Ed25519, dual trust, old-key resign, fetch/watch/verify, atomic swap, LKG, fail-closed expiry | Long watch and real secret-manager rotation soak |
+| Signed Control snapshots | Implemented and tested | Key-ID Ed25519, dual trust, direct/file/workload-identity private-key sources, old-key resign, fetch/watch/verify, atomic swap, LKG, fail-closed expiry | Long watch and real secret-manager rotation soak |
 | Control stores | Implemented | Atomic local store; PostgreSQL immutable history, advisory lock, polling watch, HA initialization recovery | Real multi-replica contention and database failover |
 | Control access policy | Implemented and tested | Digested static credentials, OIDC discovery/JWKS verification and rotation, explicit claim-to-role mapping, gateway/viewer/publisher/admin roles, tenant/project model filtering, provider-account redaction, denial audit | Browser code flow and sessions, membership persistence, revocation, and Console role management |
 | Runtime journal | Implemented and tested | Request/attempt/commit/usage/error lifecycle, retry totals, operator UUID startup validation | Partitioning, retention, and load tuning |
@@ -34,7 +34,7 @@ This is not a claim of full production readiness. Real provider accounts, the mo
 | Virtual keys | Implemented and tested | PostgreSQL HMAC keys, scopes/models, revoke, v2 and legacy parsing, direct or workload-identity pepper loading | Multi-pepper rotation, audit, high-volume cache |
 | Migrations and bootstrap | Implemented and tested | Embedded SQL, checksums, advisory locks, transactions, organization/project/key CLIs | Real upgrade matrix, PITR, and persisted membership management |
 | Accounting domain | Development contract | Quote, hold, capture, release, adjustment, idempotency | Mandarin money-platform client and reconciliation |
-| Storage primitives | Partial | Encrypted in-memory secrets, Windows Credential Manager, macOS Keychain, Linux Secret Service, and read-only Google Cloud Secret Manager adapters for provider keys and virtual-key pepper, opaque credential targets, expiring objects, durable outbox | Physical-device smoke, remaining server-secret coverage, additional KMS adapters, R2/S3 |
+| Storage primitives | Partial | Encrypted in-memory secrets, Windows Credential Manager, macOS Keychain, Linux Secret Service, and read-only Google Cloud Secret Manager adapters for provider keys, virtual-key pepper, and Control signing key, opaque credential targets, expiring objects, durable outbox | Physical-device smoke, remaining server-secret coverage, additional KMS adapters, R2/S3 |
 | Updater | Staging implemented | Manifest signature, SHA-256, size, pending artifact | Platform replacement and rollback |
 | Control Console | Read-only UI | Health, snapshot, and model routes | Login, organizations, keys, routes, audit, usage |
 | Packaging | Implemented and tested | Desktop/MCP bundle, server/ops list, 40 KiB audit, strict chunked manifest, deterministic source ZIP | Native installers, artifact signing, cross-version reproducibility |

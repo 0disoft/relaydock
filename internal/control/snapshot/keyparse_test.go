@@ -49,3 +49,18 @@ func TestParseSigningPrivateKeyRejectsMalformedInput(t *testing.T) {
 		}
 	}
 }
+
+func TestParseSigningPrivateKeyBytesCopiesSecretMaterial(t *testing.T) {
+	seed := make([]byte, ed25519.SeedSize)
+	for index := range seed {
+		seed[index] = byte(index + 1)
+	}
+	signer, err := ParseSigningPrivateKeyBytes(seed)
+	if err != nil {
+		t.Fatal(err)
+	}
+	clear(seed)
+	if signer.PrivateKey[0] == 0 || len(signer.PublicKey) != ed25519.PublicKeySize {
+		t.Fatal("signer retained or failed to derive copied key material")
+	}
+}

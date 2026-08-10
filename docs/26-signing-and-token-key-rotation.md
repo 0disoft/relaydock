@@ -17,6 +17,7 @@ Relevant environment variables:
 
 ```text
 CONTROL_SIGNING_KEY_ID
+CONTROL_SIGNING_PRIVATE_KEY_REF
 CONTROL_TRUSTED_SIGNING_PUBLIC_KEYS
 CONTROL_ALLOW_LEGACY_SIGNING_KEY_ID
 
@@ -28,6 +29,8 @@ GATEWAY_CONTROL_ALLOW_LEGACY_SIGNING_KEY_ID
 Additional trusted keys accept a JSON array or `id=base64,id=base64`. Key IDs are 1-64 ASCII letters, digits, hyphens, or underscores. Reject trailing JSON values. Allow snapshots without `signingKeyId` only during migration, then disable both legacy switches after all snapshots and LKGs contain key IDs.
 
 If Control verifies a persisted snapshot signed by a retiring key, publish the next revision with the active key. Never change only the signature at the same revision.
+
+When the private key uses `CONTROL_SIGNING_PRIVATE_KEY_REF`, point each key ID at an immutable secret version. Establish the old/new public-key overlap first, then switch the private-key reference and `CONTROL_SIGNING_KEY_ID` together. A mutable alias may change the signer without the declared key ID and is therefore unsafe.
 
 ## Remote MCP HMAC Rotation
 

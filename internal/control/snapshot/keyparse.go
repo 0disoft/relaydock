@@ -34,6 +34,13 @@ func ParseSigningPrivateKey(encoded string) (Ed25519Signer, error) {
 	if decodeErr != nil {
 		return Ed25519Signer{}, fmt.Errorf("%w: decode control signing private key", core.ErrInvalidArgument)
 	}
+	defer clear(raw)
+	return ParseSigningPrivateKeyBytes(raw)
+}
+
+// ParseSigningPrivateKeyBytes accepts an unencoded Ed25519 seed or private
+// key returned by a server-secret provider and copies the private material.
+func ParseSigningPrivateKeyBytes(raw []byte) (Ed25519Signer, error) {
 	var privateKey ed25519.PrivateKey
 	switch len(raw) {
 	case ed25519.SeedSize:
