@@ -1,10 +1,11 @@
+package controlaccess
+
 /* llmnav/1 file
 id=relaydock.control.access.contract
 role=Verify the deny-by-default Control Plane role matrix and reject project-scoped privilege roles.
 search=control authorization tests|deny role matrix|scoped control principal
 stability=contract
 */
-package controlaccess
 
 import "testing"
 

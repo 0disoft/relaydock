@@ -1,10 +1,11 @@
+package virtualkey
+
 /* llmnav/1 file
 id=relaydock.auth.virtualkey.contract
 role=Verify issued virtual keys round-trip through authentication and malformed key material is rejected.
 search=virtual key tests|authenticate issued key|reject malformed key
 stability=contract
 */
-package virtualkey
 
 import (
 	"context"
