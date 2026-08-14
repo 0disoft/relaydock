@@ -1,5 +1,15 @@
 package main
 
+/* llmnav/1 module
+id=relaydock.command.dbmigrate
+role=Apply, inspect, or explicitly roll back the embedded RelayDock PostgreSQL migration sequence.
+owns=database migration CLI|embedded migration execution|migration status output
+excludes=migration definition authoring|runtime database queries
+search=run database migrations|rollback migration steps|migration status
+invariant=Migration execution uses the ordered embedded migration set and a caller-bounded context timeout.
+stability=contract
+*/
+
 import (
 	"context"
 	"flag"

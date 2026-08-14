@@ -6,3 +6,9 @@ role Expose tenant-scoped remote expert tools behind bearer authentication, host
 owns remote MCP tool registry, remote MCP authentication, MCP request exposure limits
 excludes consultation domain logic, token issuance
 invariant Reading and answering consultations require distinct explicit scopes. Untrusted requests are bounded before reaching MCP handlers.
+
+@relaydock.mcp.stdio
+role Expose local expert consultation operations as MCP stdio tools backed by the authenticated local IPC runtime.
+owns stdio MCP tool registry, MCP to local IPC delegation, local consultation tool transport
+excludes consultation lifecycle policy, remote MCP authentication
+invariant Stdout is reserved for MCP protocol messages and operational logs are written only to stderr. Tool handlers delegate bounded operations to local IPC instead of running consultations synchronously.

@@ -1,5 +1,15 @@
 package main
 
+/* llmnav/1 module
+id=relaydock.command.releasepack
+role=Audit, build, sign, and verify RelayDock release bundles, checksums, readiness evidence, and update manifests.
+owns=release bundle CLI|checksum signature commands|update manifest verification
+excludes=GitHub publication|runtime update installation
+search=build RelayDock release|sign release checksums|verify update manifest
+invariant=Signing and verification are explicit subcommands over caller-selected release artifacts rather than implicit build side effects.
+stability=contract
+*/
+
 import (
 	"flag"
 	"fmt"

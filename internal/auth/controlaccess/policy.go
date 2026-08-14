@@ -3,6 +3,19 @@
 // authorization remains a separate deny-by-default decision.
 package controlaccess
 
+/* llmnav/1 module
+id=relaydock.control.access
+role=Establish Control Plane principals and make deny-by-default authorization decisions for every control action.
+owns=control principal validation|control role policy|authorization audit facts
+excludes=HTTP credential verification|snapshot storage
+search=control plane authorization|control principal roles|deny control action
+invariant=Authentication establishes identity but never grants an action without an explicit authorization decision.
+invariant=Tenant- or project-scoped principals cannot acquire cluster-wide publisher, gateway, or administrator authority.
+risk=auth
+rel=test>relaydock.control.access.contract
+stability=contract
+*/
+
 import (
 	"context"
 	"fmt"

@@ -1,5 +1,15 @@
 package main
 
+/* llmnav/1 module
+id=relaydock.command.outboxctl
+role=Inspect durable outbox health, list dead letters, requeue one failed event, and purge bounded published history.
+owns=outbox operator CLI|dead-letter recovery command|published-event retention command
+excludes=webhook delivery execution|outbox transaction creation
+search=inspect outbox status|requeue dead letter|purge published events
+invariant=Mutating maintenance commands require explicit bounded targets and never claim ownership of in-flight events.
+stability=contract
+*/
+
 import (
 	"context"
 	"encoding/json"

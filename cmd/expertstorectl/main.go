@@ -1,5 +1,15 @@
 package main
 
+/* llmnav/1 module
+id=relaydock.command.expertstorectl
+role=Inspect, verify, and compact the local expert consultation store with explicit retention and dry-run controls.
+owns=expert store maintenance CLI|store statistics output|bounded consultation compaction
+excludes=consultation execution|remote persistence administration
+search=compact expert store|verify consultation state|expert storage statistics
+invariant=Dry-run compaction reports the proposed changes without mutating local consultation state.
+stability=contract
+*/
+
 import (
 	"context"
 	"encoding/json"

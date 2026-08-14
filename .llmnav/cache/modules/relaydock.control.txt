@@ -1,0 +1,24 @@
+llmnav-catalog/1 repository=relaydock catalog=relaydock.control
+Read semantic cards before opening source. Resolve current paths and signatures with llmnav query or show.
+
+@relaydock.control.access
+role Establish Control Plane principals and make deny-by-default authorization decisions for every control action.
+owns control principal validation, control role policy, authorization audit facts
+excludes HTTP credential verification, snapshot storage
+invariant Authentication establishes identity but never grants an action without an explicit authorization decision. Tenant- or project-scoped principals cannot acquire cluster-wide publisher, gateway, or administrator authority.
+risk auth
+rel test>relaydock.control.access.contract
+
+@relaydock.control.access.contract
+role Verify the deny-by-default Control Plane role matrix and reject project-scoped privilege roles.
+
+@relaydock.control.snapshot
+role Verify, apply, persist, and refresh signed runtime snapshots while preserving a last-known-good fallback.
+owns runtime snapshot lifecycle, signature and revision acceptance, last-known-good synchronization
+excludes control HTTP authorization, gateway route execution
+invariant An unsigned, expired, rolled-back, or content-mutated revision is never applied as current runtime state. A last-known-good persistence failure cannot replace or invalidate an already verified active snapshot.
+risk auth, concurrency
+rel test>relaydock.control.snapshot.contract
+
+@relaydock.control.snapshot.contract
+role Verify snapshot rollback, same-revision mutation, and last-known-good persistence failure handling.

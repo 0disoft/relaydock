@@ -1,5 +1,15 @@
 package main
 
+/* llmnav/1 module
+id=relaydock.command.webhook-sink
+role=Run the reference signed-webhook receiver with bounded bodies, replay-safe verification, and authenticated non-loopback access.
+owns=reference webhook sink process|webhook verification configuration|sink HTTP lifecycle
+excludes=outbox delivery|production event processing
+search=run webhook sink|verify signed webhook|reference event receiver
+invariant=Non-loopback binding requires bearer authentication and request bodies remain within the configured maximum.
+stability=architecture
+*/
+
 import (
 	"encoding/base64"
 	"fmt"

@@ -1,9 +1,98 @@
 {
   "files": [
     {
-      "blocks": [],
-      "contentHash": "b8850e54a8a8723e09236814300f19d3d9356caa9a96849579951d6909a6f178",
-      "declarations": [],
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [
+              "control authorization policy",
+              "snapshot signature generation"
+            ],
+            "id": "relaydock.command.controlctl",
+            "invariant": [
+              "Control responses are size-bounded and valid JSON before they are printed or written atomically."
+            ],
+            "owns": [
+              "control operator CLI",
+              "bounded control API client",
+              "atomic snapshot export"
+            ],
+            "rel": [],
+            "risk": [],
+            "role": "Inspect signing keys, fetch signed snapshots and model catalogs, and publish reviewed control snapshots through the Control Plane API.",
+            "scope": "module",
+            "search": [
+              "controlctl publish snapshot",
+              "download control models",
+              "control signing key"
+            ],
+            "stability": "architecture",
+            "unknown": []
+          },
+          "end": 560,
+          "endLine": 11,
+          "entries": [
+            {
+              "key": "id",
+              "line": 4,
+              "order": 0,
+              "value": "relaydock.command.controlctl"
+            },
+            {
+              "key": "role",
+              "line": 5,
+              "order": 1,
+              "value": "Inspect signing keys, fetch signed snapshots and model catalogs, and publish reviewed control snapshots through the Control Plane API."
+            },
+            {
+              "key": "owns",
+              "line": 6,
+              "order": 2,
+              "value": "control operator CLI|bounded control API client|atomic snapshot export"
+            },
+            {
+              "key": "excludes",
+              "line": 7,
+              "order": 3,
+              "value": "control authorization policy|snapshot signature generation"
+            },
+            {
+              "key": "search",
+              "line": 8,
+              "order": 4,
+              "value": "controlctl publish snapshot|download control models|control signing key"
+            },
+            {
+              "key": "invariant",
+              "line": 9,
+              "order": 5,
+              "value": "Control responses are size-bounded and valid JSON before they are printed or written atomically."
+            },
+            {
+              "key": "stability",
+              "line": 10,
+              "order": 6,
+              "value": "architecture"
+            }
+          ],
+          "filePath": "cmd/controlctl/main.go",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.command.controlctl\nrole=Inspect signing keys, fetch signed snapshots and model catalogs, and publish reviewed control snapshots through the Control Plane API.\nowns=control operator CLI|bounded control API client|atomic snapshot export\nexcludes=control authorization policy|snapshot signature generation\nsearch=controlctl publish snapshot|download control models|control signing key\ninvariant=Control responses are size-bounded and valid JSON before they are printed or written atomically.\nstability=architecture\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 14,
+          "startLine": 3,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "80b46f30b28f595f6894731d4cfa1cc6cb0cb07dbf52efeaddeb4c8be3e59ab0",
+      "declarations": [
+        null
+      ],
       "imports": [
         "bytes",
         "context",
@@ -24,13 +113,102 @@
         "time"
       ],
       "path": "cmd/controlctl/main.go",
-      "semanticBytes": 0,
-      "sourceBytes": 6380
+      "semanticBytes": 546,
+      "sourceBytes": 6928
     },
     {
-      "blocks": [],
-      "contentHash": "591ec46dbff9dd98c9c5516e6cba512194d78ea14f635332a9b576b26d3b9a58",
-      "declarations": [],
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [
+              "gateway request execution",
+              "operator CLI behavior"
+            ],
+            "id": "relaydock.command.controld",
+            "invariant": [
+              "Non-public control operations pass authentication and authorization before snapshot state is read or changed."
+            ],
+            "owns": [
+              "control service assembly",
+              "control authentication wiring",
+              "snapshot signing configuration"
+            ],
+            "rel": [],
+            "risk": [],
+            "role": "Run the authenticated Control Plane service that signs, publishes, and serves versioned runtime snapshots and model state.",
+            "scope": "module",
+            "search": [
+              "run control plane",
+              "serve signed snapshots",
+              "configure control authentication"
+            ],
+            "stability": "architecture",
+            "unknown": []
+          },
+          "end": 565,
+          "endLine": 11,
+          "entries": [
+            {
+              "key": "id",
+              "line": 4,
+              "order": 0,
+              "value": "relaydock.command.controld"
+            },
+            {
+              "key": "role",
+              "line": 5,
+              "order": 1,
+              "value": "Run the authenticated Control Plane service that signs, publishes, and serves versioned runtime snapshots and model state."
+            },
+            {
+              "key": "owns",
+              "line": 6,
+              "order": 2,
+              "value": "control service assembly|control authentication wiring|snapshot signing configuration"
+            },
+            {
+              "key": "excludes",
+              "line": 7,
+              "order": 3,
+              "value": "gateway request execution|operator CLI behavior"
+            },
+            {
+              "key": "search",
+              "line": 8,
+              "order": 4,
+              "value": "run control plane|serve signed snapshots|configure control authentication"
+            },
+            {
+              "key": "invariant",
+              "line": 9,
+              "order": 5,
+              "value": "Non-public control operations pass authentication and authorization before snapshot state is read or changed."
+            },
+            {
+              "key": "stability",
+              "line": 10,
+              "order": 6,
+              "value": "architecture"
+            }
+          ],
+          "filePath": "cmd/controld/main.go",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.command.controld\nrole=Run the authenticated Control Plane service that signs, publishes, and serves versioned runtime snapshots and model state.\nowns=control service assembly|control authentication wiring|snapshot signing configuration\nexcludes=gateway request execution|operator CLI behavior\nsearch=run control plane|serve signed snapshots|configure control authentication\ninvariant=Non-public control operations pass authentication and authorization before snapshot state is read or changed.\nstability=architecture\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 14,
+          "startLine": 3,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "019cc95f04f6c7781dc0acd13d280b118932f64bd5d735a1b6c9e8cc07964d9e",
+      "declarations": [
+        null
+      ],
       "imports": [
         "0",
         "1",
@@ -70,8 +248,8 @@
         "trustedSigningKeyIds"
       ],
       "path": "cmd/controld/main.go",
-      "semanticBytes": 0,
-      "sourceBytes": 10951
+      "semanticBytes": 551,
+      "sourceBytes": 11504
     },
     {
       "blocks": [],
@@ -92,9 +270,98 @@
       "sourceBytes": 5128
     },
     {
-      "blocks": [],
-      "contentHash": "d9feff819718f3a065b4df41046e6f085c7042e951dabf5615c0281e9b37c095",
-      "declarations": [],
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [
+              "migration definition authoring",
+              "runtime database queries"
+            ],
+            "id": "relaydock.command.dbmigrate",
+            "invariant": [
+              "Migration execution uses the ordered embedded migration set and a caller-bounded context timeout."
+            ],
+            "owns": [
+              "database migration CLI",
+              "embedded migration execution",
+              "migration status output"
+            ],
+            "rel": [],
+            "risk": [],
+            "role": "Apply, inspect, or explicitly roll back the embedded RelayDock PostgreSQL migration sequence.",
+            "scope": "module",
+            "search": [
+              "run database migrations",
+              "rollback migration steps",
+              "migration status"
+            ],
+            "stability": "contract",
+            "unknown": []
+          },
+          "end": 511,
+          "endLine": 11,
+          "entries": [
+            {
+              "key": "id",
+              "line": 4,
+              "order": 0,
+              "value": "relaydock.command.dbmigrate"
+            },
+            {
+              "key": "role",
+              "line": 5,
+              "order": 1,
+              "value": "Apply, inspect, or explicitly roll back the embedded RelayDock PostgreSQL migration sequence."
+            },
+            {
+              "key": "owns",
+              "line": 6,
+              "order": 2,
+              "value": "database migration CLI|embedded migration execution|migration status output"
+            },
+            {
+              "key": "excludes",
+              "line": 7,
+              "order": 3,
+              "value": "migration definition authoring|runtime database queries"
+            },
+            {
+              "key": "search",
+              "line": 8,
+              "order": 4,
+              "value": "run database migrations|rollback migration steps|migration status"
+            },
+            {
+              "key": "invariant",
+              "line": 9,
+              "order": 5,
+              "value": "Migration execution uses the ordered embedded migration set and a caller-bounded context timeout."
+            },
+            {
+              "key": "stability",
+              "line": 10,
+              "order": 6,
+              "value": "contract"
+            }
+          ],
+          "filePath": "cmd/dbmigrate/main.go",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.command.dbmigrate\nrole=Apply, inspect, or explicitly roll back the embedded RelayDock PostgreSQL migration sequence.\nowns=database migration CLI|embedded migration execution|migration status output\nexcludes=migration definition authoring|runtime database queries\nsearch=run database migrations|rollback migration steps|migration status\ninvariant=Migration execution uses the ordered embedded migration set and a caller-bounded context timeout.\nstability=contract\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 14,
+          "startLine": 3,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "da14e89f184c1beddf62b51b7aa992cef7883220381ae87517e2f60ef5474946",
+      "declarations": [
+        null
+      ],
       "imports": [
         "context",
         "down",
@@ -110,13 +377,102 @@
         "up"
       ],
       "path": "cmd/dbmigrate/main.go",
-      "semanticBytes": 0,
-      "sourceBytes": 2775
+      "semanticBytes": 497,
+      "sourceBytes": 3274
     },
     {
-      "blocks": [],
-      "contentHash": "d9fa68430fc74c6ec4860b62af8734f4729efb1e4bc4387f3aace9c5f9e2989a",
-      "declarations": [],
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [
+              "expert model policy",
+              "ContextPack selection rules"
+            ],
+            "id": "relaydock.command.expert-brokerd",
+            "invariant": [
+              "Consultation requests return durable identities while execution continues through the owned asynchronous runner."
+            ],
+            "owns": [
+              "expert broker process assembly",
+              "consultation runner lifecycle",
+              "expert HTTP and MCP serving"
+            ],
+            "rel": [],
+            "risk": [],
+            "role": "Run the expert consultation broker, persistence backend, asynchronous runner, HTTP API, and optional remote MCP endpoint.",
+            "scope": "module",
+            "search": [
+              "run expert broker",
+              "consultation worker service",
+              "expert MCP endpoint"
+            ],
+            "stability": "architecture",
+            "unknown": []
+          },
+          "end": 568,
+          "endLine": 11,
+          "entries": [
+            {
+              "key": "id",
+              "line": 4,
+              "order": 0,
+              "value": "relaydock.command.expert-brokerd"
+            },
+            {
+              "key": "role",
+              "line": 5,
+              "order": 1,
+              "value": "Run the expert consultation broker, persistence backend, asynchronous runner, HTTP API, and optional remote MCP endpoint."
+            },
+            {
+              "key": "owns",
+              "line": 6,
+              "order": 2,
+              "value": "expert broker process assembly|consultation runner lifecycle|expert HTTP and MCP serving"
+            },
+            {
+              "key": "excludes",
+              "line": 7,
+              "order": 3,
+              "value": "expert model policy|ContextPack selection rules"
+            },
+            {
+              "key": "search",
+              "line": 8,
+              "order": 4,
+              "value": "run expert broker|consultation worker service|expert MCP endpoint"
+            },
+            {
+              "key": "invariant",
+              "line": 9,
+              "order": 5,
+              "value": "Consultation requests return durable identities while execution continues through the owned asynchronous runner."
+            },
+            {
+              "key": "stability",
+              "line": 10,
+              "order": 6,
+              "value": "architecture"
+            }
+          ],
+          "filePath": "cmd/expert-brokerd/main.go",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.command.expert-brokerd\nrole=Run the expert consultation broker, persistence backend, asynchronous runner, HTTP API, and optional remote MCP endpoint.\nowns=expert broker process assembly|consultation runner lifecycle|expert HTTP and MCP serving\nexcludes=expert model policy|ContextPack selection rules\nsearch=run expert broker|consultation worker service|expert MCP endpoint\ninvariant=Consultation requests return durable identities while execution continues through the owned asynchronous runner.\nstability=architecture\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 14,
+          "startLine": 3,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "9ecc41ca6c24e72aca7fd51d8d0c39b68933e48e070de2cd6455ec128ed10168",
+      "declarations": [
+        null
+      ],
       "imports": [
         "EXPERT_MCP_TOKEN_MAX_LIFETIME",
         "context",
@@ -146,13 +502,102 @@
         "time"
       ],
       "path": "cmd/expert-brokerd/main.go",
-      "semanticBytes": 0,
-      "sourceBytes": 12433
+      "semanticBytes": 554,
+      "sourceBytes": 12989
     },
     {
-      "blocks": [],
-      "contentHash": "0b1390fc7723d705230c6389fe4291b06ab392b03c68829a444e97487030da7d",
-      "declarations": [],
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [
+              "consultation execution",
+              "remote persistence administration"
+            ],
+            "id": "relaydock.command.expertstorectl",
+            "invariant": [
+              "Dry-run compaction reports the proposed changes without mutating local consultation state."
+            ],
+            "owns": [
+              "expert store maintenance CLI",
+              "store statistics output",
+              "bounded consultation compaction"
+            ],
+            "rel": [],
+            "risk": [],
+            "role": "Inspect, verify, and compact the local expert consultation store with explicit retention and dry-run controls.",
+            "scope": "module",
+            "search": [
+              "compact expert store",
+              "verify consultation state",
+              "expert storage statistics"
+            ],
+            "stability": "contract",
+            "unknown": []
+          },
+          "end": 543,
+          "endLine": 11,
+          "entries": [
+            {
+              "key": "id",
+              "line": 4,
+              "order": 0,
+              "value": "relaydock.command.expertstorectl"
+            },
+            {
+              "key": "role",
+              "line": 5,
+              "order": 1,
+              "value": "Inspect, verify, and compact the local expert consultation store with explicit retention and dry-run controls."
+            },
+            {
+              "key": "owns",
+              "line": 6,
+              "order": 2,
+              "value": "expert store maintenance CLI|store statistics output|bounded consultation compaction"
+            },
+            {
+              "key": "excludes",
+              "line": 7,
+              "order": 3,
+              "value": "consultation execution|remote persistence administration"
+            },
+            {
+              "key": "search",
+              "line": 8,
+              "order": 4,
+              "value": "compact expert store|verify consultation state|expert storage statistics"
+            },
+            {
+              "key": "invariant",
+              "line": 9,
+              "order": 5,
+              "value": "Dry-run compaction reports the proposed changes without mutating local consultation state."
+            },
+            {
+              "key": "stability",
+              "line": 10,
+              "order": 6,
+              "value": "contract"
+            }
+          ],
+          "filePath": "cmd/expertstorectl/main.go",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.command.expertstorectl\nrole=Inspect, verify, and compact the local expert consultation store with explicit retention and dry-run controls.\nowns=expert store maintenance CLI|store statistics output|bounded consultation compaction\nexcludes=consultation execution|remote persistence administration\nsearch=compact expert store|verify consultation state|expert storage statistics\ninvariant=Dry-run compaction reports the proposed changes without mutating local consultation state.\nstability=contract\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 14,
+          "startLine": 3,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "5838f26b7d3913fb4f1ea386c2b83fae366e855ce817a21a591bb3ef7b7c014f",
+      "declarations": [
+        null
+      ],
       "imports": [
         "compact",
         "context",
@@ -169,8 +614,8 @@
         "verify"
       ],
       "path": "cmd/expertstorectl/main.go",
-      "semanticBytes": 0,
-      "sourceBytes": 3454
+      "semanticBytes": 529,
+      "sourceBytes": 3985
     },
     {
       "blocks": [],
@@ -206,9 +651,98 @@
       "sourceBytes": 1790
     },
     {
-      "blocks": [],
-      "contentHash": "16ee1ece8d90bc0de6b9ffbd30569479f77b1414eeeb3d4c84cbd552b7f0072e",
-      "declarations": [],
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [
+              "provider protocol compilation",
+              "routing candidate policy"
+            ],
+            "id": "relaydock.command.gatewayd",
+            "invariant": [
+              "Startup aborts when required database, secret, authentication, or runtime dependencies cannot be constructed safely."
+            ],
+            "owns": [
+              "gateway process assembly",
+              "gateway dependency configuration",
+              "HTTP gateway lifecycle"
+            ],
+            "rel": [],
+            "risk": [],
+            "role": "Run the authenticated AI gateway with provider routing, accounting, leases, runtime journaling, and signed control-state synchronization.",
+            "scope": "module",
+            "search": [
+              "run AI gateway",
+              "configure provider gateway",
+              "gateway runtime service"
+            ],
+            "stability": "architecture",
+            "unknown": []
+          },
+          "end": 581,
+          "endLine": 11,
+          "entries": [
+            {
+              "key": "id",
+              "line": 4,
+              "order": 0,
+              "value": "relaydock.command.gatewayd"
+            },
+            {
+              "key": "role",
+              "line": 5,
+              "order": 1,
+              "value": "Run the authenticated AI gateway with provider routing, accounting, leases, runtime journaling, and signed control-state synchronization."
+            },
+            {
+              "key": "owns",
+              "line": 6,
+              "order": 2,
+              "value": "gateway process assembly|gateway dependency configuration|HTTP gateway lifecycle"
+            },
+            {
+              "key": "excludes",
+              "line": 7,
+              "order": 3,
+              "value": "provider protocol compilation|routing candidate policy"
+            },
+            {
+              "key": "search",
+              "line": 8,
+              "order": 4,
+              "value": "run AI gateway|configure provider gateway|gateway runtime service"
+            },
+            {
+              "key": "invariant",
+              "line": 9,
+              "order": 5,
+              "value": "Startup aborts when required database, secret, authentication, or runtime dependencies cannot be constructed safely."
+            },
+            {
+              "key": "stability",
+              "line": 10,
+              "order": 6,
+              "value": "architecture"
+            }
+          ],
+          "filePath": "cmd/gatewayd/main.go",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.command.gatewayd\nrole=Run the authenticated AI gateway with provider routing, accounting, leases, runtime journaling, and signed control-state synchronization.\nowns=gateway process assembly|gateway dependency configuration|HTTP gateway lifecycle\nexcludes=provider protocol compilation|routing candidate policy\nsearch=run AI gateway|configure provider gateway|gateway runtime service\ninvariant=Startup aborts when required database, secret, authentication, or runtime dependencies cannot be constructed safely.\nstability=architecture\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 14,
+          "startLine": 3,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "f8c9570f80fab2ab595200446ab26b05fd7d924210ad41ac9b4338898c1e64af",
+      "declarations": [
+        null
+      ],
       "imports": [
         "address",
         "authentication",
@@ -252,13 +786,102 @@
         "version"
       ],
       "path": "cmd/gatewayd/main.go",
-      "semanticBytes": 0,
-      "sourceBytes": 11595
+      "semanticBytes": 567,
+      "sourceBytes": 12164
     },
     {
-      "blocks": [],
-      "contentHash": "f300e46aa3a1ecd974a116b1f1445bb94840eac55f94e4b935c34912db0f31dc",
-      "declarations": [],
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [
+              "MCP tool registration",
+              "remote HTTP serving"
+            ],
+            "id": "relaydock.command.headless",
+            "invariant": [
+              "The headless process exposes the runtime only through the configured local IPC transport."
+            ],
+            "owns": [
+              "headless runtime process",
+              "persistent local runtime assembly",
+              "local IPC server lifecycle"
+            ],
+            "rel": [],
+            "risk": [],
+            "role": "Run the persistent local RelayDock runtime without a desktop UI and expose it through the platform-local IPC endpoint.",
+            "scope": "module",
+            "search": [
+              "headless local runtime",
+              "RelayDock local IPC",
+              "run without desktop UI"
+            ],
+            "stability": "architecture",
+            "unknown": []
+          },
+          "end": 527,
+          "endLine": 11,
+          "entries": [
+            {
+              "key": "id",
+              "line": 4,
+              "order": 0,
+              "value": "relaydock.command.headless"
+            },
+            {
+              "key": "role",
+              "line": 5,
+              "order": 1,
+              "value": "Run the persistent local RelayDock runtime without a desktop UI and expose it through the platform-local IPC endpoint."
+            },
+            {
+              "key": "owns",
+              "line": 6,
+              "order": 2,
+              "value": "headless runtime process|persistent local runtime assembly|local IPC server lifecycle"
+            },
+            {
+              "key": "excludes",
+              "line": 7,
+              "order": 3,
+              "value": "MCP tool registration|remote HTTP serving"
+            },
+            {
+              "key": "search",
+              "line": 8,
+              "order": 4,
+              "value": "headless local runtime|RelayDock local IPC|run without desktop UI"
+            },
+            {
+              "key": "invariant",
+              "line": 9,
+              "order": 5,
+              "value": "The headless process exposes the runtime only through the configured local IPC transport."
+            },
+            {
+              "key": "stability",
+              "line": 10,
+              "order": 6,
+              "value": "architecture"
+            }
+          ],
+          "filePath": "cmd/headless/main.go",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.command.headless\nrole=Run the persistent local RelayDock runtime without a desktop UI and expose it through the platform-local IPC endpoint.\nowns=headless runtime process|persistent local runtime assembly|local IPC server lifecycle\nexcludes=MCP tool registration|remote HTTP serving\nsearch=headless local runtime|RelayDock local IPC|run without desktop UI\ninvariant=The headless process exposes the runtime only through the configured local IPC transport.\nstability=architecture\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 14,
+          "startLine": 3,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "0fa80c1cb765902bd8a64e890c79b92d88db7c8cbdf0ea703c8579e39641bcac",
+      "declarations": [
+        null
+      ],
       "imports": [
         "context",
         "github.com/0disoft/relaydock/internal/localipc",
@@ -269,13 +892,102 @@
         "syscall"
       ],
       "path": "cmd/headless/main.go",
-      "semanticBytes": 0,
-      "sourceBytes": 883
+      "semanticBytes": 513,
+      "sourceBytes": 1398
     },
     {
-      "blocks": [],
-      "contentHash": "e299fc8206c51d4fef4b6c65318d422054a37a49af09d6e27eedebca1c17bbdd",
-      "declarations": [],
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [
+              "per-request key authentication",
+              "MCP token issuance"
+            ],
+            "id": "relaydock.command.keyctl",
+            "invariant": [
+              "The plaintext virtual-key secret is emitted only by the issue command and is never read back from storage."
+            ],
+            "owns": [
+              "virtual key operator CLI",
+              "virtual key issuance output",
+              "virtual key revocation command"
+            ],
+            "rel": [],
+            "risk": [],
+            "role": "Issue and revoke project-scoped gateway virtual keys against the authoritative PostgreSQL control store.",
+            "scope": "module",
+            "search": [
+              "issue gateway key",
+              "revoke virtual key",
+              "project key CLI"
+            ],
+            "stability": "contract",
+            "unknown": []
+          },
+          "end": 517,
+          "endLine": 11,
+          "entries": [
+            {
+              "key": "id",
+              "line": 4,
+              "order": 0,
+              "value": "relaydock.command.keyctl"
+            },
+            {
+              "key": "role",
+              "line": 5,
+              "order": 1,
+              "value": "Issue and revoke project-scoped gateway virtual keys against the authoritative PostgreSQL control store."
+            },
+            {
+              "key": "owns",
+              "line": 6,
+              "order": 2,
+              "value": "virtual key operator CLI|virtual key issuance output|virtual key revocation command"
+            },
+            {
+              "key": "excludes",
+              "line": 7,
+              "order": 3,
+              "value": "per-request key authentication|MCP token issuance"
+            },
+            {
+              "key": "search",
+              "line": 8,
+              "order": 4,
+              "value": "issue gateway key|revoke virtual key|project key CLI"
+            },
+            {
+              "key": "invariant",
+              "line": 9,
+              "order": 5,
+              "value": "The plaintext virtual-key secret is emitted only by the issue command and is never read back from storage."
+            },
+            {
+              "key": "stability",
+              "line": 10,
+              "order": 6,
+              "value": "contract"
+            }
+          ],
+          "filePath": "cmd/keyctl/main.go",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.command.keyctl\nrole=Issue and revoke project-scoped gateway virtual keys against the authoritative PostgreSQL control store.\nowns=virtual key operator CLI|virtual key issuance output|virtual key revocation command\nexcludes=per-request key authentication|MCP token issuance\nsearch=issue gateway key|revoke virtual key|project key CLI\ninvariant=The plaintext virtual-key secret is emitted only by the issue command and is never read back from storage.\nstability=contract\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 14,
+          "startLine": 3,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "9ddbc6eec37256c2e01b183891a9271ea5cc28cde1589961bd3cb51213579c9d",
+      "declarations": [
+        null
+      ],
       "imports": [
         "allowedModels",
         "apiKey",
@@ -299,13 +1011,102 @@
         "virtualKeyId"
       ],
       "path": "cmd/keyctl/main.go",
-      "semanticBytes": 0,
-      "sourceBytes": 4687
+      "semanticBytes": 503,
+      "sourceBytes": 5192
     },
     {
-      "blocks": [],
-      "contentHash": "79df7b00832fd72145b059bf1ede822d04bbe8e1ac7dd40561b3e2e5ccdacdb3",
-      "declarations": [],
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [
+              "consultation execution",
+              "remote MCP authorization"
+            ],
+            "id": "relaydock.command.mcp-bridge",
+            "invariant": [
+              "Stdout remains exclusive to MCP protocol traffic and diagnostics are written to stderr."
+            ],
+            "owns": [
+              "MCP bridge process assembly",
+              "stdio transport lifecycle",
+              "local IPC backend wiring"
+            ],
+            "rel": [],
+            "risk": [],
+            "role": "Run the local MCP stdio bridge that delegates expert consultation tools to the RelayDock local IPC runtime.",
+            "scope": "module",
+            "search": [
+              "run MCP stdio bridge",
+              "connect MCP to local runtime",
+              "expert bridge command"
+            ],
+            "stability": "architecture",
+            "unknown": []
+          },
+          "end": 521,
+          "endLine": 11,
+          "entries": [
+            {
+              "key": "id",
+              "line": 4,
+              "order": 0,
+              "value": "relaydock.command.mcp-bridge"
+            },
+            {
+              "key": "role",
+              "line": 5,
+              "order": 1,
+              "value": "Run the local MCP stdio bridge that delegates expert consultation tools to the RelayDock local IPC runtime."
+            },
+            {
+              "key": "owns",
+              "line": 6,
+              "order": 2,
+              "value": "MCP bridge process assembly|stdio transport lifecycle|local IPC backend wiring"
+            },
+            {
+              "key": "excludes",
+              "line": 7,
+              "order": 3,
+              "value": "consultation execution|remote MCP authorization"
+            },
+            {
+              "key": "search",
+              "line": 8,
+              "order": 4,
+              "value": "run MCP stdio bridge|connect MCP to local runtime|expert bridge command"
+            },
+            {
+              "key": "invariant",
+              "line": 9,
+              "order": 5,
+              "value": "Stdout remains exclusive to MCP protocol traffic and diagnostics are written to stderr."
+            },
+            {
+              "key": "stability",
+              "line": 10,
+              "order": 6,
+              "value": "architecture"
+            }
+          ],
+          "filePath": "cmd/mcp-bridge/main.go",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.command.mcp-bridge\nrole=Run the local MCP stdio bridge that delegates expert consultation tools to the RelayDock local IPC runtime.\nowns=MCP bridge process assembly|stdio transport lifecycle|local IPC backend wiring\nexcludes=consultation execution|remote MCP authorization\nsearch=run MCP stdio bridge|connect MCP to local runtime|expert bridge command\ninvariant=Stdout remains exclusive to MCP protocol traffic and diagnostics are written to stderr.\nstability=architecture\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 14,
+          "startLine": 3,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "430dd155b12a57edad3086b0cf5015d39837ef069801b7b7472bd60c2ecf1a21",
+      "declarations": [
+        null
+      ],
       "imports": [
         "context",
         "github.com/0disoft/relaydock/internal/buildinfo",
@@ -315,13 +1116,102 @@
         "os"
       ],
       "path": "cmd/mcp-bridge/main.go",
-      "semanticBytes": 0,
-      "sourceBytes": 621
+      "semanticBytes": 507,
+      "sourceBytes": 1130
     },
     {
-      "blocks": [],
-      "contentHash": "5749bb058c5c9172492b129f2ed1414c23b6cef548ae336d3a4bc47e0ef85d26",
-      "declarations": [],
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [
+              "MCP request authentication",
+              "signing-key rotation"
+            ],
+            "id": "relaydock.command.mcptokenctl",
+            "invariant": [
+              "Issued scopes and tenant or project constraints are validated and token lifetime cannot exceed the configured maximum."
+            ],
+            "owns": [
+              "MCP token issuance CLI",
+              "scope normalization",
+              "token lifetime enforcement"
+            ],
+            "rel": [],
+            "risk": [],
+            "role": "Issue bounded, audience-specific expert MCP bearer tokens with validated scopes and optional tenant or project constraints.",
+            "scope": "module",
+            "search": [
+              "issue MCP token",
+              "consultation scopes token",
+              "expert bearer credential"
+            ],
+            "stability": "contract",
+            "unknown": []
+          },
+          "end": 551,
+          "endLine": 11,
+          "entries": [
+            {
+              "key": "id",
+              "line": 4,
+              "order": 0,
+              "value": "relaydock.command.mcptokenctl"
+            },
+            {
+              "key": "role",
+              "line": 5,
+              "order": 1,
+              "value": "Issue bounded, audience-specific expert MCP bearer tokens with validated scopes and optional tenant or project constraints."
+            },
+            {
+              "key": "owns",
+              "line": 6,
+              "order": 2,
+              "value": "MCP token issuance CLI|scope normalization|token lifetime enforcement"
+            },
+            {
+              "key": "excludes",
+              "line": 7,
+              "order": 3,
+              "value": "MCP request authentication|signing-key rotation"
+            },
+            {
+              "key": "search",
+              "line": 8,
+              "order": 4,
+              "value": "issue MCP token|consultation scopes token|expert bearer credential"
+            },
+            {
+              "key": "invariant",
+              "line": 9,
+              "order": 5,
+              "value": "Issued scopes and tenant or project constraints are validated and token lifetime cannot exceed the configured maximum."
+            },
+            {
+              "key": "stability",
+              "line": 10,
+              "order": 6,
+              "value": "contract"
+            }
+          ],
+          "filePath": "cmd/mcptokenctl/main.go",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.command.mcptokenctl\nrole=Issue bounded, audience-specific expert MCP bearer tokens with validated scopes and optional tenant or project constraints.\nowns=MCP token issuance CLI|scope normalization|token lifetime enforcement\nexcludes=MCP request authentication|signing-key rotation\nsearch=issue MCP token|consultation scopes token|expert bearer credential\ninvariant=Issued scopes and tenant or project constraints are validated and token lifetime cannot exceed the configured maximum.\nstability=contract\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 14,
+          "startLine": 3,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "1cbe8c5d8d586296bb4a6db5d4f49aabc84444448a3cb82fccd014e2168e64c9",
+      "declarations": [
+        null
+      ],
       "imports": [
         "context",
         "encoding/json",
@@ -334,13 +1224,102 @@
         "time"
       ],
       "path": "cmd/mcptokenctl/main.go",
-      "semanticBytes": 0,
-      "sourceBytes": 3441
+      "semanticBytes": 537,
+      "sourceBytes": 3980
     },
     {
-      "blocks": [],
-      "contentHash": "3b15c9cb0ce6135e8c79dd81a840f69efc68986388621568acf9c5195fcf171d",
-      "declarations": [],
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [
+              "webhook delivery execution",
+              "outbox transaction creation"
+            ],
+            "id": "relaydock.command.outboxctl",
+            "invariant": [
+              "Mutating maintenance commands require explicit bounded targets and never claim ownership of in-flight events."
+            ],
+            "owns": [
+              "outbox operator CLI",
+              "dead-letter recovery command",
+              "published-event retention command"
+            ],
+            "rel": [],
+            "risk": [],
+            "role": "Inspect durable outbox health, list dead letters, requeue one failed event, and purge bounded published history.",
+            "scope": "module",
+            "search": [
+              "inspect outbox status",
+              "requeue dead letter",
+              "purge published events"
+            ],
+            "stability": "contract",
+            "unknown": []
+          },
+          "end": 547,
+          "endLine": 11,
+          "entries": [
+            {
+              "key": "id",
+              "line": 4,
+              "order": 0,
+              "value": "relaydock.command.outboxctl"
+            },
+            {
+              "key": "role",
+              "line": 5,
+              "order": 1,
+              "value": "Inspect durable outbox health, list dead letters, requeue one failed event, and purge bounded published history."
+            },
+            {
+              "key": "owns",
+              "line": 6,
+              "order": 2,
+              "value": "outbox operator CLI|dead-letter recovery command|published-event retention command"
+            },
+            {
+              "key": "excludes",
+              "line": 7,
+              "order": 3,
+              "value": "webhook delivery execution|outbox transaction creation"
+            },
+            {
+              "key": "search",
+              "line": 8,
+              "order": 4,
+              "value": "inspect outbox status|requeue dead letter|purge published events"
+            },
+            {
+              "key": "invariant",
+              "line": 9,
+              "order": 5,
+              "value": "Mutating maintenance commands require explicit bounded targets and never claim ownership of in-flight events."
+            },
+            {
+              "key": "stability",
+              "line": 10,
+              "order": 6,
+              "value": "contract"
+            }
+          ],
+          "filePath": "cmd/outboxctl/main.go",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.command.outboxctl\nrole=Inspect durable outbox health, list dead letters, requeue one failed event, and purge bounded published history.\nowns=outbox operator CLI|dead-letter recovery command|published-event retention command\nexcludes=webhook delivery execution|outbox transaction creation\nsearch=inspect outbox status|requeue dead letter|purge published events\ninvariant=Mutating maintenance commands require explicit bounded targets and never claim ownership of in-flight events.\nstability=contract\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 14,
+          "startLine": 3,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "15a184b02def6f453c249d47bb7c83d25a9de9c06394fd59530a8b78fa3a5dac",
+      "declarations": [
+        null
+      ],
       "imports": [
         "context",
         "dead",
@@ -357,13 +1336,102 @@
         "time"
       ],
       "path": "cmd/outboxctl/main.go",
-      "semanticBytes": 0,
-      "sourceBytes": 3581
+      "semanticBytes": 533,
+      "sourceBytes": 4116
     },
     {
-      "blocks": [],
-      "contentHash": "9f438239c29fb621112ec28a673a50ce41ad5d08dd52a023ad2c59c1247333cb",
-      "declarations": [],
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [
+              "business transaction writes",
+              "webhook receiver behavior"
+            ],
+            "id": "relaydock.command.outboxd",
+            "invariant": [
+              "Delivery attempts flow through the durable outbox repository so retries do not bypass lease and attempt state."
+            ],
+            "owns": [
+              "outbox worker process",
+              "webhook publisher configuration",
+              "worker and health lifecycle"
+            ],
+            "rel": [],
+            "risk": [],
+            "role": "Run the durable outbox worker that leases pending events, publishes signed webhooks, and exposes bounded health status.",
+            "scope": "module",
+            "search": [
+              "run outbox worker",
+              "deliver signed webhook",
+              "outbox health service"
+            ],
+            "stability": "architecture",
+            "unknown": []
+          },
+          "end": 553,
+          "endLine": 11,
+          "entries": [
+            {
+              "key": "id",
+              "line": 4,
+              "order": 0,
+              "value": "relaydock.command.outboxd"
+            },
+            {
+              "key": "role",
+              "line": 5,
+              "order": 1,
+              "value": "Run the durable outbox worker that leases pending events, publishes signed webhooks, and exposes bounded health status."
+            },
+            {
+              "key": "owns",
+              "line": 6,
+              "order": 2,
+              "value": "outbox worker process|webhook publisher configuration|worker and health lifecycle"
+            },
+            {
+              "key": "excludes",
+              "line": 7,
+              "order": 3,
+              "value": "business transaction writes|webhook receiver behavior"
+            },
+            {
+              "key": "search",
+              "line": 8,
+              "order": 4,
+              "value": "run outbox worker|deliver signed webhook|outbox health service"
+            },
+            {
+              "key": "invariant",
+              "line": 9,
+              "order": 5,
+              "value": "Delivery attempts flow through the durable outbox repository so retries do not bypass lease and attempt state."
+            },
+            {
+              "key": "stability",
+              "line": 10,
+              "order": 6,
+              "value": "architecture"
+            }
+          ],
+          "filePath": "cmd/outboxd/main.go",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.command.outboxd\nrole=Run the durable outbox worker that leases pending events, publishes signed webhooks, and exposes bounded health status.\nowns=outbox worker process|webhook publisher configuration|worker and health lifecycle\nexcludes=business transaction writes|webhook receiver behavior\nsearch=run outbox worker|deliver signed webhook|outbox health service\ninvariant=Delivery attempts flow through the durable outbox repository so retries do not bypass lease and attempt state.\nstability=architecture\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 14,
+          "startLine": 3,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "e093066f54409d9a3d365660261d69a81c483b66e1b7455b8cfd801a5adc9902",
+      "declarations": [
+        null
+      ],
       "imports": [
         "authentication",
         "batchSize",
@@ -396,13 +1464,102 @@
         "workerId"
       ],
       "path": "cmd/outboxd/main.go",
-      "semanticBytes": 0,
-      "sourceBytes": 11846
+      "semanticBytes": 539,
+      "sourceBytes": 12387
     },
     {
-      "blocks": [],
-      "contentHash": "d91ee8e590706ca61c96ccb2965e5eec8f47a9b653008e47f3a5bcf5f8b5b33c",
-      "declarations": [],
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [
+              "project authorization",
+              "virtual key issuance"
+            ],
+            "id": "relaydock.command.projectctl",
+            "invariant": [
+              "Organization and project creation commit together in one database transaction under validated stable slugs."
+            ],
+            "owns": [
+              "project bootstrap CLI",
+              "organization and project lookup",
+              "project identity JSON output"
+            ],
+            "rel": [],
+            "risk": [],
+            "role": "Create or retrieve stable organization and project identities in the PostgreSQL control catalog.",
+            "scope": "module",
+            "search": [
+              "ensure RelayDock project",
+              "lookup organization project",
+              "bootstrap control catalog"
+            ],
+            "stability": "contract",
+            "unknown": []
+          },
+          "end": 532,
+          "endLine": 11,
+          "entries": [
+            {
+              "key": "id",
+              "line": 4,
+              "order": 0,
+              "value": "relaydock.command.projectctl"
+            },
+            {
+              "key": "role",
+              "line": 5,
+              "order": 1,
+              "value": "Create or retrieve stable organization and project identities in the PostgreSQL control catalog."
+            },
+            {
+              "key": "owns",
+              "line": 6,
+              "order": 2,
+              "value": "project bootstrap CLI|organization and project lookup|project identity JSON output"
+            },
+            {
+              "key": "excludes",
+              "line": 7,
+              "order": 3,
+              "value": "project authorization|virtual key issuance"
+            },
+            {
+              "key": "search",
+              "line": 8,
+              "order": 4,
+              "value": "ensure RelayDock project|lookup organization project|bootstrap control catalog"
+            },
+            {
+              "key": "invariant",
+              "line": 9,
+              "order": 5,
+              "value": "Organization and project creation commit together in one database transaction under validated stable slugs."
+            },
+            {
+              "key": "stability",
+              "line": 10,
+              "order": 6,
+              "value": "contract"
+            }
+          ],
+          "filePath": "cmd/projectctl/main.go",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.command.projectctl\nrole=Create or retrieve stable organization and project identities in the PostgreSQL control catalog.\nowns=project bootstrap CLI|organization and project lookup|project identity JSON output\nexcludes=project authorization|virtual key issuance\nsearch=ensure RelayDock project|lookup organization project|bootstrap control catalog\ninvariant=Organization and project creation commit together in one database transaction under validated stable slugs.\nstability=contract\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 14,
+          "startLine": 3,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "94c21d4fed9f1ff8210443952b7a7249da51d0345fe0624f5ca6ea01ed37b307",
+      "declarations": [
+        null
+      ],
       "imports": [
         "context",
         "database/sql",
@@ -418,13 +1575,102 @@
         "time"
       ],
       "path": "cmd/projectctl/main.go",
-      "semanticBytes": 0,
-      "sourceBytes": 5915
+      "semanticBytes": 518,
+      "sourceBytes": 6435
     },
     {
-      "blocks": [],
-      "contentHash": "d5774dc1b9e517dbad7f85d99be0dbc12c88135a8478e4c9a09bd26b258557fd",
-      "declarations": [],
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [
+              "GitHub publication",
+              "runtime update installation"
+            ],
+            "id": "relaydock.command.releasepack",
+            "invariant": [
+              "Signing and verification are explicit subcommands over caller-selected release artifacts rather than implicit build side effects."
+            ],
+            "owns": [
+              "release bundle CLI",
+              "checksum signature commands",
+              "update manifest verification"
+            ],
+            "rel": [],
+            "risk": [],
+            "role": "Audit, build, sign, and verify RelayDock release bundles, checksums, readiness evidence, and update manifests.",
+            "scope": "module",
+            "search": [
+              "build RelayDock release",
+              "sign release checksums",
+              "verify update manifest"
+            ],
+            "stability": "contract",
+            "unknown": []
+          },
+          "end": 557,
+          "endLine": 11,
+          "entries": [
+            {
+              "key": "id",
+              "line": 4,
+              "order": 0,
+              "value": "relaydock.command.releasepack"
+            },
+            {
+              "key": "role",
+              "line": 5,
+              "order": 1,
+              "value": "Audit, build, sign, and verify RelayDock release bundles, checksums, readiness evidence, and update manifests."
+            },
+            {
+              "key": "owns",
+              "line": 6,
+              "order": 2,
+              "value": "release bundle CLI|checksum signature commands|update manifest verification"
+            },
+            {
+              "key": "excludes",
+              "line": 7,
+              "order": 3,
+              "value": "GitHub publication|runtime update installation"
+            },
+            {
+              "key": "search",
+              "line": 8,
+              "order": 4,
+              "value": "build RelayDock release|sign release checksums|verify update manifest"
+            },
+            {
+              "key": "invariant",
+              "line": 9,
+              "order": 5,
+              "value": "Signing and verification are explicit subcommands over caller-selected release artifacts rather than implicit build side effects."
+            },
+            {
+              "key": "stability",
+              "line": 10,
+              "order": 6,
+              "value": "contract"
+            }
+          ],
+          "filePath": "cmd/releasepack/main.go",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.command.releasepack\nrole=Audit, build, sign, and verify RelayDock release bundles, checksums, readiness evidence, and update manifests.\nowns=release bundle CLI|checksum signature commands|update manifest verification\nexcludes=GitHub publication|runtime update installation\nsearch=build RelayDock release|sign release checksums|verify update manifest\ninvariant=Signing and verification are explicit subcommands over caller-selected release artifacts rather than implicit build side effects.\nstability=contract\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 14,
+          "startLine": 3,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "61e9c02ad47025f59f119feff24c2aaffd405225cfd1af4b00af2b9f68eb9861",
+      "declarations": [
+        null
+      ],
       "imports": [
         "audit",
         "build",
@@ -443,13 +1689,102 @@
         "verify-update-manifest"
       ],
       "path": "cmd/releasepack/main.go",
-      "semanticBytes": 0,
-      "sourceBytes": 8298
+      "semanticBytes": 543,
+      "sourceBytes": 8843
     },
     {
-      "blocks": [],
-      "contentHash": "5cf4c2d1dfae7c26e6628d74631e707834e5552ff0455649f20d428697e2fb73",
-      "declarations": [],
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [
+              "outbox delivery",
+              "production event processing"
+            ],
+            "id": "relaydock.command.webhook-sink",
+            "invariant": [
+              "Non-loopback binding requires bearer authentication and request bodies remain within the configured maximum."
+            ],
+            "owns": [
+              "reference webhook sink process",
+              "webhook verification configuration",
+              "sink HTTP lifecycle"
+            ],
+            "rel": [],
+            "risk": [],
+            "role": "Run the reference signed-webhook receiver with bounded bodies, replay-safe verification, and authenticated non-loopback access.",
+            "scope": "module",
+            "search": [
+              "run webhook sink",
+              "verify signed webhook",
+              "reference event receiver"
+            ],
+            "stability": "architecture",
+            "unknown": []
+          },
+          "end": 559,
+          "endLine": 11,
+          "entries": [
+            {
+              "key": "id",
+              "line": 4,
+              "order": 0,
+              "value": "relaydock.command.webhook-sink"
+            },
+            {
+              "key": "role",
+              "line": 5,
+              "order": 1,
+              "value": "Run the reference signed-webhook receiver with bounded bodies, replay-safe verification, and authenticated non-loopback access."
+            },
+            {
+              "key": "owns",
+              "line": 6,
+              "order": 2,
+              "value": "reference webhook sink process|webhook verification configuration|sink HTTP lifecycle"
+            },
+            {
+              "key": "excludes",
+              "line": 7,
+              "order": 3,
+              "value": "outbox delivery|production event processing"
+            },
+            {
+              "key": "search",
+              "line": 8,
+              "order": 4,
+              "value": "run webhook sink|verify signed webhook|reference event receiver"
+            },
+            {
+              "key": "invariant",
+              "line": 9,
+              "order": 5,
+              "value": "Non-loopback binding requires bearer authentication and request bodies remain within the configured maximum."
+            },
+            {
+              "key": "stability",
+              "line": 10,
+              "order": 6,
+              "value": "architecture"
+            }
+          ],
+          "filePath": "cmd/webhook-sink/main.go",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.command.webhook-sink\nrole=Run the reference signed-webhook receiver with bounded bodies, replay-safe verification, and authenticated non-loopback access.\nowns=reference webhook sink process|webhook verification configuration|sink HTTP lifecycle\nexcludes=outbox delivery|production event processing\nsearch=run webhook sink|verify signed webhook|reference event receiver\ninvariant=Non-loopback binding requires bearer authentication and request bodies remain within the configured maximum.\nstability=architecture\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 14,
+          "startLine": 3,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "8e46dbaf545d25216694d7d3215b421cf93806a501731e2965b3c1421de073a9",
+      "declarations": [
+        null
+      ],
       "imports": [
         "encoding/base64",
         "fmt",
@@ -464,8 +1799,8 @@
         "strings"
       ],
       "path": "cmd/webhook-sink/main.go",
-      "semanticBytes": 0,
-      "sourceBytes": 2364
+      "semanticBytes": 545,
+      "sourceBytes": 2911
     },
     {
       "blocks": [],
@@ -1038,9 +2373,121 @@
       "sourceBytes": 9080
     },
     {
-      "blocks": [],
-      "contentHash": "282756b26ea1dca99713996603ca1cc3c1e562c3be6cc547bc000e8d7c3545cb",
-      "declarations": [],
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [
+              "HTTP credential verification",
+              "snapshot storage"
+            ],
+            "id": "relaydock.control.access",
+            "invariant": [
+              "Authentication establishes identity but never grants an action without an explicit authorization decision.",
+              "Tenant- or project-scoped principals cannot acquire cluster-wide publisher, gateway, or administrator authority."
+            ],
+            "owns": [
+              "control principal validation",
+              "control role policy",
+              "authorization audit facts"
+            ],
+            "rel": [
+              "test>relaydock.control.access.contract"
+            ],
+            "risk": [
+              "auth"
+            ],
+            "role": "Establish Control Plane principals and make deny-by-default authorization decisions for every control action.",
+            "scope": "module",
+            "search": [
+              "control plane authorization",
+              "control principal roles",
+              "deny control action"
+            ],
+            "stability": "contract",
+            "unknown": []
+          },
+          "end": 924,
+          "endLine": 17,
+          "entries": [
+            {
+              "key": "id",
+              "line": 7,
+              "order": 0,
+              "value": "relaydock.control.access"
+            },
+            {
+              "key": "role",
+              "line": 8,
+              "order": 1,
+              "value": "Establish Control Plane principals and make deny-by-default authorization decisions for every control action."
+            },
+            {
+              "key": "owns",
+              "line": 9,
+              "order": 2,
+              "value": "control principal validation|control role policy|authorization audit facts"
+            },
+            {
+              "key": "excludes",
+              "line": 10,
+              "order": 3,
+              "value": "HTTP credential verification|snapshot storage"
+            },
+            {
+              "key": "search",
+              "line": 11,
+              "order": 4,
+              "value": "control plane authorization|control principal roles|deny control action"
+            },
+            {
+              "key": "invariant",
+              "line": 12,
+              "order": 5,
+              "value": "Authentication establishes identity but never grants an action without an explicit authorization decision."
+            },
+            {
+              "key": "invariant",
+              "line": 13,
+              "order": 6,
+              "value": "Tenant- or project-scoped principals cannot acquire cluster-wide publisher, gateway, or administrator authority."
+            },
+            {
+              "key": "risk",
+              "line": 14,
+              "order": 7,
+              "value": "auth"
+            },
+            {
+              "key": "rel",
+              "line": 15,
+              "order": 8,
+              "value": "test>relaydock.control.access.contract"
+            },
+            {
+              "key": "stability",
+              "line": 16,
+              "order": 9,
+              "value": "contract"
+            }
+          ],
+          "filePath": "internal/auth/controlaccess/policy.go",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.control.access\nrole=Establish Control Plane principals and make deny-by-default authorization decisions for every control action.\nowns=control principal validation|control role policy|authorization audit facts\nexcludes=HTTP credential verification|snapshot storage\nsearch=control plane authorization|control principal roles|deny control action\ninvariant=Authentication establishes identity but never grants an action without an explicit authorization decision.\ninvariant=Tenant- or project-scoped principals cannot acquire cluster-wide publisher, gateway, or administrator authority.\nrisk=auth\nrel=test>relaydock.control.access.contract\nstability=contract\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 234,
+          "startLine": 6,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "117cc278edd972cff39c8650fe79b8dd2ffda78a8dad19f38d2ec13a5ada049f",
+      "declarations": [
+        null
+      ],
       "imports": [
         "context",
         "fmt",
@@ -1048,19 +2495,81 @@
         "strings"
       ],
       "path": "internal/auth/controlaccess/policy.go",
-      "semanticBytes": 0,
-      "sourceBytes": 4046
+      "semanticBytes": 690,
+      "sourceBytes": 4738
     },
     {
-      "blocks": [],
-      "contentHash": "6b774206cc32cf64e360b6a55788e1bbd6ad6af9eb726308ec3edf2d058e5e69",
-      "declarations": [],
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [],
+            "id": "relaydock.control.access.contract",
+            "invariant": [],
+            "owns": [],
+            "rel": [],
+            "risk": [],
+            "role": "Verify the deny-by-default Control Plane role matrix and reject project-scoped privilege roles.",
+            "scope": "file",
+            "search": [
+              "control authorization tests",
+              "deny role matrix",
+              "scoped control principal"
+            ],
+            "stability": "contract",
+            "unknown": []
+          },
+          "end": 253,
+          "endLine": 6,
+          "entries": [
+            {
+              "key": "id",
+              "line": 2,
+              "order": 0,
+              "value": "relaydock.control.access.contract"
+            },
+            {
+              "key": "role",
+              "line": 3,
+              "order": 1,
+              "value": "Verify the deny-by-default Control Plane role matrix and reject project-scoped privilege roles."
+            },
+            {
+              "key": "search",
+              "line": 4,
+              "order": 2,
+              "value": "control authorization tests|deny role matrix|scoped control principal"
+            },
+            {
+              "key": "stability",
+              "line": 5,
+              "order": 3,
+              "value": "contract"
+            }
+          ],
+          "filePath": "internal/auth/controlaccess/policy_test.go",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 file\nid=relaydock.control.access.contract\nrole=Verify the deny-by-default Control Plane role matrix and reject project-scoped privilege roles.\nsearch=control authorization tests|deny role matrix|scoped control principal\nstability=contract\n*/",
+          "scope": "file",
+          "specVersion": "1",
+          "start": 0,
+          "startLine": 1,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "6c7c97fe8f04b6d4a8201589cdd3e851873c61c13b2962dde8fbaba7c8774224",
+      "declarations": [
+        null
+      ],
       "imports": [
         "testing"
       ],
       "path": "internal/auth/controlaccess/policy_test.go",
-      "semanticBytes": 0,
-      "sourceBytes": 2128
+      "semanticBytes": 253,
+      "sourceBytes": 2382
     },
     {
       "blocks": [],
@@ -1323,9 +2832,71 @@
       "sourceBytes": 1983
     },
     {
-      "blocks": [],
-      "contentHash": "f63baaa1006c5750db4acfd6e76543bbb9d54b5610a1fd70479a5a2a451198b4",
-      "declarations": [],
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [],
+            "id": "relaydock.auth.virtualkey.contract",
+            "invariant": [],
+            "owns": [],
+            "rel": [],
+            "risk": [],
+            "role": "Verify issued virtual keys round-trip through authentication and malformed key material is rejected.",
+            "scope": "file",
+            "search": [
+              "virtual key tests",
+              "authenticate issued key",
+              "reject malformed key"
+            ],
+            "stability": "contract",
+            "unknown": []
+          },
+          "end": 252,
+          "endLine": 6,
+          "entries": [
+            {
+              "key": "id",
+              "line": 2,
+              "order": 0,
+              "value": "relaydock.auth.virtualkey.contract"
+            },
+            {
+              "key": "role",
+              "line": 3,
+              "order": 1,
+              "value": "Verify issued virtual keys round-trip through authentication and malformed key material is rejected."
+            },
+            {
+              "key": "search",
+              "line": 4,
+              "order": 2,
+              "value": "virtual key tests|authenticate issued key|reject malformed key"
+            },
+            {
+              "key": "stability",
+              "line": 5,
+              "order": 3,
+              "value": "contract"
+            }
+          ],
+          "filePath": "internal/auth/virtualkey/parser_test.go",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 file\nid=relaydock.auth.virtualkey.contract\nrole=Verify issued virtual keys round-trip through authentication and malformed key material is rejected.\nsearch=virtual key tests|authenticate issued key|reject malformed key\nstability=contract\n*/",
+          "scope": "file",
+          "specVersion": "1",
+          "start": 0,
+          "startLine": 1,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "e4795fe852a0910f3449a419ad20666eef421e6786e2aad3bc41f26b7195a462",
+      "declarations": [
+        null
+      ],
       "imports": [
         "context",
         "strings",
@@ -1333,8 +2904,8 @@
         "time"
       ],
       "path": "internal/auth/virtualkey/parser_test.go",
-      "semanticBytes": 0,
-      "sourceBytes": 1557
+      "semanticBytes": 252,
+      "sourceBytes": 1810
     },
     {
       "blocks": [],
@@ -1369,9 +2940,121 @@
       "sourceBytes": 3334
     },
     {
-      "blocks": [],
-      "contentHash": "55d255a335c39b8d1989238acac2f2d227fb11fab46994277fae1626022f4c8f",
-      "declarations": [],
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [
+              "control-plane operator roles",
+              "provider credential storage"
+            ],
+            "id": "relaydock.auth.virtualkey",
+            "invariant": [
+              "PostgreSQL stores only a peppered secret digest and the plaintext secret is returned only when a key is issued.",
+              "Authentication compares secret digests in constant time and rejects expired, revoked, or wrong-environment keys."
+            ],
+            "owns": [
+              "virtual key lifecycle",
+              "project key authentication",
+              "scope and model authorization"
+            ],
+            "rel": [
+              "test>relaydock.auth.virtualkey.contract"
+            ],
+            "risk": [
+              "auth"
+            ],
+            "role": "Issue, authenticate, authorize, and revoke project-scoped virtual keys without persisting plaintext secrets.",
+            "scope": "module",
+            "search": [
+              "issue virtual key",
+              "authenticate gateway key",
+              "revoke project key"
+            ],
+            "stability": "contract",
+            "unknown": []
+          },
+          "end": 721,
+          "endLine": 14,
+          "entries": [
+            {
+              "key": "id",
+              "line": 4,
+              "order": 0,
+              "value": "relaydock.auth.virtualkey"
+            },
+            {
+              "key": "role",
+              "line": 5,
+              "order": 1,
+              "value": "Issue, authenticate, authorize, and revoke project-scoped virtual keys without persisting plaintext secrets."
+            },
+            {
+              "key": "owns",
+              "line": 6,
+              "order": 2,
+              "value": "virtual key lifecycle|project key authentication|scope and model authorization"
+            },
+            {
+              "key": "excludes",
+              "line": 7,
+              "order": 3,
+              "value": "control-plane operator roles|provider credential storage"
+            },
+            {
+              "key": "search",
+              "line": 8,
+              "order": 4,
+              "value": "issue virtual key|authenticate gateway key|revoke project key"
+            },
+            {
+              "key": "invariant",
+              "line": 9,
+              "order": 5,
+              "value": "PostgreSQL stores only a peppered secret digest and the plaintext secret is returned only when a key is issued."
+            },
+            {
+              "key": "invariant",
+              "line": 10,
+              "order": 6,
+              "value": "Authentication compares secret digests in constant time and rejects expired, revoked, or wrong-environment keys."
+            },
+            {
+              "key": "risk",
+              "line": 11,
+              "order": 7,
+              "value": "auth"
+            },
+            {
+              "key": "rel",
+              "line": 12,
+              "order": 8,
+              "value": "test>relaydock.auth.virtualkey.contract"
+            },
+            {
+              "key": "stability",
+              "line": 13,
+              "order": 9,
+              "value": "contract"
+            }
+          ],
+          "filePath": "internal/auth/virtualkey/postgres.go",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.auth.virtualkey\nrole=Issue, authenticate, authorize, and revoke project-scoped virtual keys without persisting plaintext secrets.\nowns=virtual key lifecycle|project key authentication|scope and model authorization\nexcludes=control-plane operator roles|provider credential storage\nsearch=issue virtual key|authenticate gateway key|revoke project key\ninvariant=PostgreSQL stores only a peppered secret digest and the plaintext secret is returned only when a key is issued.\ninvariant=Authentication compares secret digests in constant time and rejects expired, revoked, or wrong-environment keys.\nrisk=auth\nrel=test>relaydock.auth.virtualkey.contract\nstability=contract\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 20,
+          "startLine": 3,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "e4060aa92caf11924b966a76882e788edd3ffcc511f0ea3027dab8e5d2a9cd03",
+      "declarations": [
+        null
+      ],
       "imports": [
         "context",
         "crypto/hmac",
@@ -1388,8 +3071,8 @@
         "zg_"
       ],
       "path": "internal/auth/virtualkey/postgres.go",
-      "semanticBytes": 0,
-      "sourceBytes": 6541
+      "semanticBytes": 701,
+      "sourceBytes": 7244
     },
     {
       "blocks": [],
@@ -1896,9 +3579,122 @@
       "sourceBytes": 2982
     },
     {
-      "blocks": [],
-      "contentHash": "992c59faad593aa77f8522fbec557b47b07789a84f8c28f6d228100a92768e18",
-      "declarations": [],
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [
+              "control HTTP authorization",
+              "gateway route execution"
+            ],
+            "id": "relaydock.control.snapshot",
+            "invariant": [
+              "An unsigned, expired, rolled-back, or content-mutated revision is never applied as current runtime state.",
+              "A last-known-good persistence failure cannot replace or invalidate an already verified active snapshot."
+            ],
+            "owns": [
+              "runtime snapshot lifecycle",
+              "signature and revision acceptance",
+              "last-known-good synchronization"
+            ],
+            "rel": [
+              "test>relaydock.control.snapshot.contract"
+            ],
+            "risk": [
+              "auth",
+              "concurrency"
+            ],
+            "role": "Verify, apply, persist, and refresh signed runtime snapshots while preserving a last-known-good fallback.",
+            "scope": "module",
+            "search": [
+              "signed runtime snapshot",
+              "last known good routes",
+              "reject snapshot rollback"
+            ],
+            "stability": "architecture",
+            "unknown": []
+          },
+          "end": 737,
+          "endLine": 14,
+          "entries": [
+            {
+              "key": "id",
+              "line": 4,
+              "order": 0,
+              "value": "relaydock.control.snapshot"
+            },
+            {
+              "key": "role",
+              "line": 5,
+              "order": 1,
+              "value": "Verify, apply, persist, and refresh signed runtime snapshots while preserving a last-known-good fallback."
+            },
+            {
+              "key": "owns",
+              "line": 6,
+              "order": 2,
+              "value": "runtime snapshot lifecycle|signature and revision acceptance|last-known-good synchronization"
+            },
+            {
+              "key": "excludes",
+              "line": 7,
+              "order": 3,
+              "value": "control HTTP authorization|gateway route execution"
+            },
+            {
+              "key": "search",
+              "line": 8,
+              "order": 4,
+              "value": "signed runtime snapshot|last known good routes|reject snapshot rollback"
+            },
+            {
+              "key": "invariant",
+              "line": 9,
+              "order": 5,
+              "value": "An unsigned, expired, rolled-back, or content-mutated revision is never applied as current runtime state."
+            },
+            {
+              "key": "invariant",
+              "line": 10,
+              "order": 6,
+              "value": "A last-known-good persistence failure cannot replace or invalidate an already verified active snapshot."
+            },
+            {
+              "key": "risk",
+              "line": 11,
+              "order": 7,
+              "value": "auth|concurrency"
+            },
+            {
+              "key": "rel",
+              "line": 12,
+              "order": 8,
+              "value": "test>relaydock.control.snapshot.contract"
+            },
+            {
+              "key": "stability",
+              "line": 13,
+              "order": 9,
+              "value": "architecture"
+            }
+          ],
+          "filePath": "internal/control/snapshot/manager.go",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.control.snapshot\nrole=Verify, apply, persist, and refresh signed runtime snapshots while preserving a last-known-good fallback.\nowns=runtime snapshot lifecycle|signature and revision acceptance|last-known-good synchronization\nexcludes=control HTTP authorization|gateway route execution\nsearch=signed runtime snapshot|last known good routes|reject snapshot rollback\ninvariant=An unsigned, expired, rolled-back, or content-mutated revision is never applied as current runtime state.\ninvariant=A last-known-good persistence failure cannot replace or invalidate an already verified active snapshot.\nrisk=auth|concurrency\nrel=test>relaydock.control.snapshot.contract\nstability=architecture\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 18,
+          "startLine": 3,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "ec9ff360a90e5dff2914015d858087517f91f63daebe14e4f9bf44dfbec198dd",
+      "declarations": [
+        null
+      ],
       "imports": [
         "bytes",
         "context",
@@ -1911,13 +3707,75 @@
         "time"
       ],
       "path": "internal/control/snapshot/manager.go",
-      "semanticBytes": 0,
-      "sourceBytes": 11108
+      "semanticBytes": 719,
+      "sourceBytes": 11829
     },
     {
-      "blocks": [],
-      "contentHash": "046ff8da0676157867b97c4ed50d2025ee6ba8f8dc7a48c011d74180628925c8",
-      "declarations": [],
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [],
+            "id": "relaydock.control.snapshot.contract",
+            "invariant": [],
+            "owns": [],
+            "rel": [],
+            "risk": [],
+            "role": "Verify snapshot rollback, same-revision mutation, and last-known-good persistence failure handling.",
+            "scope": "file",
+            "search": [
+              "snapshot manager tests",
+              "older revision rejection",
+              "last known good failure"
+            ],
+            "stability": "contract",
+            "unknown": []
+          },
+          "end": 261,
+          "endLine": 6,
+          "entries": [
+            {
+              "key": "id",
+              "line": 2,
+              "order": 0,
+              "value": "relaydock.control.snapshot.contract"
+            },
+            {
+              "key": "role",
+              "line": 3,
+              "order": 1,
+              "value": "Verify snapshot rollback, same-revision mutation, and last-known-good persistence failure handling."
+            },
+            {
+              "key": "search",
+              "line": 4,
+              "order": 2,
+              "value": "snapshot manager tests|older revision rejection|last known good failure"
+            },
+            {
+              "key": "stability",
+              "line": 5,
+              "order": 3,
+              "value": "contract"
+            }
+          ],
+          "filePath": "internal/control/snapshot/manager_test.go",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 file\nid=relaydock.control.snapshot.contract\nrole=Verify snapshot rollback, same-revision mutation, and last-known-good persistence failure handling.\nsearch=snapshot manager tests|older revision rejection|last known good failure\nstability=contract\n*/",
+          "scope": "file",
+          "specVersion": "1",
+          "start": 0,
+          "startLine": 1,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "0b917dacc157267e63914dfb36d62741a7509e7ffb54cdf9df92f7f49db4e874",
+      "declarations": [
+        null
+      ],
       "imports": [
         "context",
         "crypto/ed25519",
@@ -1928,8 +3786,8 @@
         "time"
       ],
       "path": "internal/control/snapshot/manager_test.go",
-      "semanticBytes": 0,
-      "sourceBytes": 7031
+      "semanticBytes": 261,
+      "sourceBytes": 7293
     },
     {
       "blocks": [],
@@ -3517,16 +5375,112 @@
       "sourceBytes": 1221
     },
     {
-      "blocks": [],
-      "contentHash": "46395e1e34217fb1fefc34e19805e4c5b11fc7fa1508af315f2cb8a6ab42a732",
-      "declarations": [],
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [
+              "consultation lifecycle policy",
+              "remote MCP authentication"
+            ],
+            "id": "relaydock.mcp.stdio",
+            "invariant": [
+              "Stdout is reserved for MCP protocol messages and operational logs are written only to stderr.",
+              "Tool handlers delegate bounded operations to local IPC instead of running consultations synchronously."
+            ],
+            "owns": [
+              "stdio MCP tool registry",
+              "MCP to local IPC delegation",
+              "local consultation tool transport"
+            ],
+            "rel": [],
+            "risk": [],
+            "role": "Expose local expert consultation operations as MCP stdio tools backed by the authenticated local IPC runtime.",
+            "scope": "module",
+            "search": [
+              "local MCP bridge",
+              "stdio consultation tools",
+              "MCP local IPC"
+            ],
+            "stability": "architecture",
+            "unknown": []
+          },
+          "end": 637,
+          "endLine": 12,
+          "entries": [
+            {
+              "key": "id",
+              "line": 4,
+              "order": 0,
+              "value": "relaydock.mcp.stdio"
+            },
+            {
+              "key": "role",
+              "line": 5,
+              "order": 1,
+              "value": "Expose local expert consultation operations as MCP stdio tools backed by the authenticated local IPC runtime."
+            },
+            {
+              "key": "owns",
+              "line": 6,
+              "order": 2,
+              "value": "stdio MCP tool registry|MCP to local IPC delegation|local consultation tool transport"
+            },
+            {
+              "key": "excludes",
+              "line": 7,
+              "order": 3,
+              "value": "consultation lifecycle policy|remote MCP authentication"
+            },
+            {
+              "key": "search",
+              "line": 8,
+              "order": 4,
+              "value": "local MCP bridge|stdio consultation tools|MCP local IPC"
+            },
+            {
+              "key": "invariant",
+              "line": 9,
+              "order": 5,
+              "value": "Stdout is reserved for MCP protocol messages and operational logs are written only to stderr."
+            },
+            {
+              "key": "invariant",
+              "line": 10,
+              "order": 6,
+              "value": "Tool handlers delegate bounded operations to local IPC instead of running consultations synchronously."
+            },
+            {
+              "key": "stability",
+              "line": 11,
+              "order": 7,
+              "value": "architecture"
+            }
+          ],
+          "filePath": "internal/mcpbridge/server.go",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.mcp.stdio\nrole=Expose local expert consultation operations as MCP stdio tools backed by the authenticated local IPC runtime.\nowns=stdio MCP tool registry|MCP to local IPC delegation|local consultation tool transport\nexcludes=consultation lifecycle policy|remote MCP authentication\nsearch=local MCP bridge|stdio consultation tools|MCP local IPC\ninvariant=Stdout is reserved for MCP protocol messages and operational logs are written only to stderr.\ninvariant=Tool handlers delegate bounded operations to local IPC instead of running consultations synchronously.\nstability=architecture\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 19,
+          "startLine": 3,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "f30f2720cc5b31bcbf54c91be96a2f06d53effb562f34839d88cf72857aa09a6",
+      "declarations": [
+        null
+      ],
       "imports": [
         "context",
         "github.com/modelcontextprotocol/go-sdk/mcp"
       ],
       "path": "internal/mcpbridge/server.go",
-      "semanticBytes": 0,
-      "sourceBytes": 2141
+      "semanticBytes": 618,
+      "sourceBytes": 2761
     },
     {
       "blocks": [],

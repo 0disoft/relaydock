@@ -1,5 +1,15 @@
 package main
 
+/* llmnav/1 module
+id=relaydock.command.projectctl
+role=Create or retrieve stable organization and project identities in the PostgreSQL control catalog.
+owns=project bootstrap CLI|organization and project lookup|project identity JSON output
+excludes=project authorization|virtual key issuance
+search=ensure RelayDock project|lookup organization project|bootstrap control catalog
+invariant=Organization and project creation commit together in one database transaction under validated stable slugs.
+stability=contract
+*/
+
 import (
 	"context"
 	"database/sql"

@@ -1,5 +1,15 @@
 package main
 
+/* llmnav/1 module
+id=relaydock.command.controld
+role=Run the authenticated Control Plane service that signs, publishes, and serves versioned runtime snapshots and model state.
+owns=control service assembly|control authentication wiring|snapshot signing configuration
+excludes=gateway request execution|operator CLI behavior
+search=run control plane|serve signed snapshots|configure control authentication
+invariant=Non-public control operations pass authentication and authorization before snapshot state is read or changed.
+stability=architecture
+*/
+
 import (
 	"context"
 	"fmt"

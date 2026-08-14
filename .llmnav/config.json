@@ -18,6 +18,45 @@
         "invariant"
       ],
       "scope": "module"
+    },
+    {
+      "match": [
+        "internal/auth/controlaccess/policy.go",
+        "internal/auth/virtualkey/postgres.go",
+        "internal/control/snapshot/manager.go",
+        "internal/mcpbridge/server.go"
+      ],
+      "name": "control authentication snapshot and local MCP trust boundaries",
+      "requiredFields": [
+        "owns",
+        "invariant"
+      ],
+      "scope": "module"
+    },
+    {
+      "match": [
+        "cmd/controlctl/main.go",
+        "cmd/controld/main.go",
+        "cmd/dbmigrate/main.go",
+        "cmd/expert-brokerd/main.go",
+        "cmd/expertstorectl/main.go",
+        "cmd/gatewayd/main.go",
+        "cmd/headless/main.go",
+        "cmd/keyctl/main.go",
+        "cmd/mcp-bridge/main.go",
+        "cmd/mcptokenctl/main.go",
+        "cmd/outboxctl/main.go",
+        "cmd/outboxd/main.go",
+        "cmd/projectctl/main.go",
+        "cmd/releasepack/main.go",
+        "cmd/webhook-sink/main.go"
+      ],
+      "name": "RelayDock executable command boundaries",
+      "requiredFields": [
+        "owns",
+        "invariant"
+      ],
+      "scope": "module"
     }
   ],
   "evaluation": {

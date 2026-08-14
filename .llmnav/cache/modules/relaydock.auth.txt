@@ -1,0 +1,13 @@
+llmnav-catalog/1 repository=relaydock catalog=relaydock.auth
+Read semantic cards before opening source. Resolve current paths and signatures with llmnav query or show.
+
+@relaydock.auth.virtualkey
+role Issue, authenticate, authorize, and revoke project-scoped virtual keys without persisting plaintext secrets.
+owns virtual key lifecycle, project key authentication, scope and model authorization
+excludes control-plane operator roles, provider credential storage
+invariant PostgreSQL stores only a peppered secret digest and the plaintext secret is returned only when a key is issued. Authentication compares secret digests in constant time and rejects expired, revoked, or wrong-environment keys.
+risk auth
+rel test>relaydock.auth.virtualkey.contract
+
+@relaydock.auth.virtualkey.contract
+role Verify issued virtual keys round-trip through authentication and malformed key material is rejected.

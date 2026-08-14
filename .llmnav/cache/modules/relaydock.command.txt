@@ -1,29 +1,5 @@
-llmnav-catalog/1 repository=relaydock catalog=repository
+llmnav-catalog/1 repository=relaydock catalog=relaydock.command
 Read semantic cards before opening source. Resolve current paths and signatures with llmnav query or show.
-
-@relaydock.contextpack.compile
-role Select, redact, hash, and package repository evidence before expert consultation data leaves the local boundary.
-owns ContextPack assembly, evidence redaction, content-addressed pack identity
-excludes expert model invocation, consultation persistence
-invariant Evidence content is redacted before its digest, size, and token estimate are recorded. Preview and build share the same selection and redaction path.
-
-@relaydock.mcp.remote
-role Expose tenant-scoped remote expert tools behind bearer authentication, host, origin, body-size, and per-tool scope checks.
-owns remote MCP tool registry, remote MCP authentication, MCP request exposure limits
-excludes consultation domain logic, token issuance
-invariant Reading and answering consultations require distinct explicit scopes. Untrusted requests are bounded before reaching MCP handlers.
-
-@relaydock.routing.candidates
-role Build and serve validated provider candidates for virtual and direct model routes under runtime availability state.
-owns virtual model candidate catalog, direct routing fallback, candidate runtime state projection
-excludes route scoring, provider request execution
-invariant Configured routes reference enabled providers and supported protocols. Expired signed runtime state prevents candidate selection.
-
-@relaydock.runtime.gateway
-role Coordinate candidate selection, lease acquisition, provider attempts, commit hooks, and retry termination for one canonical request.
-owns request attempt lifecycle, semantic commit boundary, retry candidate exclusion
-excludes protocol encoding, candidate configuration
-invariant No retry starts after an attempt has committed a semantic event. Each attempted candidate is excluded before another retry.
 
 @relaydock.command.controlctl
 role Inspect signing keys, fetch signed snapshots and model catalogs, and publish reviewed control snapshots through the Control Plane API.
@@ -37,11 +13,23 @@ owns control service assembly, control authentication wiring, snapshot signing c
 excludes gateway request execution, operator CLI behavior
 invariant Non-public control operations pass authentication and authorization before snapshot state is read or changed.
 
+@relaydock.command.dbmigrate
+role Apply, inspect, or explicitly roll back the embedded RelayDock PostgreSQL migration sequence.
+owns database migration CLI, embedded migration execution, migration status output
+excludes migration definition authoring, runtime database queries
+invariant Migration execution uses the ordered embedded migration set and a caller-bounded context timeout.
+
 @relaydock.command.expert-brokerd
 role Run the expert consultation broker, persistence backend, asynchronous runner, HTTP API, and optional remote MCP endpoint.
 owns expert broker process assembly, consultation runner lifecycle, expert HTTP and MCP serving
 excludes expert model policy, ContextPack selection rules
 invariant Consultation requests return durable identities while execution continues through the owned asynchronous runner.
+
+@relaydock.command.expertstorectl
+role Inspect, verify, and compact the local expert consultation store with explicit retention and dry-run controls.
+owns expert store maintenance CLI, store statistics output, bounded consultation compaction
+excludes consultation execution, remote persistence administration
+invariant Dry-run compaction reports the proposed changes without mutating local consultation state.
 
 @relaydock.command.gatewayd
 role Run the authenticated AI gateway with provider routing, accounting, leases, runtime journaling, and signed control-state synchronization.
@@ -55,11 +43,29 @@ owns headless runtime process, persistent local runtime assembly, local IPC serv
 excludes MCP tool registration, remote HTTP serving
 invariant The headless process exposes the runtime only through the configured local IPC transport.
 
+@relaydock.command.keyctl
+role Issue and revoke project-scoped gateway virtual keys against the authoritative PostgreSQL control store.
+owns virtual key operator CLI, virtual key issuance output, virtual key revocation command
+excludes per-request key authentication, MCP token issuance
+invariant The plaintext virtual-key secret is emitted only by the issue command and is never read back from storage.
+
 @relaydock.command.mcp-bridge
 role Run the local MCP stdio bridge that delegates expert consultation tools to the RelayDock local IPC runtime.
 owns MCP bridge process assembly, stdio transport lifecycle, local IPC backend wiring
 excludes consultation execution, remote MCP authorization
 invariant Stdout remains exclusive to MCP protocol traffic and diagnostics are written to stderr.
+
+@relaydock.command.mcptokenctl
+role Issue bounded, audience-specific expert MCP bearer tokens with validated scopes and optional tenant or project constraints.
+owns MCP token issuance CLI, scope normalization, token lifetime enforcement
+excludes MCP request authentication, signing-key rotation
+invariant Issued scopes and tenant or project constraints are validated and token lifetime cannot exceed the configured maximum.
+
+@relaydock.command.outboxctl
+role Inspect durable outbox health, list dead letters, requeue one failed event, and purge bounded published history.
+owns outbox operator CLI, dead-letter recovery command, published-event retention command
+excludes webhook delivery execution, outbox transaction creation
+invariant Mutating maintenance commands require explicit bounded targets and never claim ownership of in-flight events.
 
 @relaydock.command.outboxd
 role Run the durable outbox worker that leases pending events, publishes signed webhooks, and exposes bounded health status.
@@ -67,22 +73,20 @@ owns outbox worker process, webhook publisher configuration, worker and health l
 excludes business transaction writes, webhook receiver behavior
 invariant Delivery attempts flow through the durable outbox repository so retries do not bypass lease and attempt state.
 
+@relaydock.command.projectctl
+role Create or retrieve stable organization and project identities in the PostgreSQL control catalog.
+owns project bootstrap CLI, organization and project lookup, project identity JSON output
+excludes project authorization, virtual key issuance
+invariant Organization and project creation commit together in one database transaction under validated stable slugs.
+
+@relaydock.command.releasepack
+role Audit, build, sign, and verify RelayDock release bundles, checksums, readiness evidence, and update manifests.
+owns release bundle CLI, checksum signature commands, update manifest verification
+excludes GitHub publication, runtime update installation
+invariant Signing and verification are explicit subcommands over caller-selected release artifacts rather than implicit build side effects.
+
 @relaydock.command.webhook-sink
 role Run the reference signed-webhook receiver with bounded bodies, replay-safe verification, and authenticated non-loopback access.
 owns reference webhook sink process, webhook verification configuration, sink HTTP lifecycle
 excludes outbox delivery, production event processing
 invariant Non-loopback binding requires bearer authentication and request bodies remain within the configured maximum.
-
-@relaydock.control.snapshot
-role Verify, apply, persist, and refresh signed runtime snapshots while preserving a last-known-good fallback.
-owns runtime snapshot lifecycle, signature and revision acceptance, last-known-good synchronization
-excludes control HTTP authorization, gateway route execution
-invariant An unsigned, expired, rolled-back, or content-mutated revision is never applied as current runtime state. A last-known-good persistence failure cannot replace or invalidate an already verified active snapshot.
-risk auth, concurrency
-rel test>relaydock.control.snapshot.contract
-
-@relaydock.mcp.stdio
-role Expose local expert consultation operations as MCP stdio tools backed by the authenticated local IPC runtime.
-owns stdio MCP tool registry, MCP to local IPC delegation, local consultation tool transport
-excludes consultation lifecycle policy, remote MCP authentication
-invariant Stdout is reserved for MCP protocol messages and operational logs are written only to stderr. Tool handlers delegate bounded operations to local IPC instead of running consultations synchronously.

@@ -1,5 +1,15 @@
 package main
 
+/* llmnav/1 module
+id=relaydock.command.mcptokenctl
+role=Issue bounded, audience-specific expert MCP bearer tokens with validated scopes and optional tenant or project constraints.
+owns=MCP token issuance CLI|scope normalization|token lifetime enforcement
+excludes=MCP request authentication|signing-key rotation
+search=issue MCP token|consultation scopes token|expert bearer credential
+invariant=Issued scopes and tenant or project constraints are validated and token lifetime cannot exceed the configured maximum.
+stability=contract
+*/
+
 import (
 	"context"
 	"encoding/json"

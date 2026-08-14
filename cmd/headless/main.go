@@ -1,5 +1,15 @@
 package main
 
+/* llmnav/1 module
+id=relaydock.command.headless
+role=Run the persistent local RelayDock runtime without a desktop UI and expose it through the platform-local IPC endpoint.
+owns=headless runtime process|persistent local runtime assembly|local IPC server lifecycle
+excludes=MCP tool registration|remote HTTP serving
+search=headless local runtime|RelayDock local IPC|run without desktop UI
+invariant=The headless process exposes the runtime only through the configured local IPC transport.
+stability=architecture
+*/
+
 import (
 	"context"
 	"log/slog"

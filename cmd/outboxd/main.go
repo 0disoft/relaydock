@@ -1,5 +1,15 @@
 package main
 
+/* llmnav/1 module
+id=relaydock.command.outboxd
+role=Run the durable outbox worker that leases pending events, publishes signed webhooks, and exposes bounded health status.
+owns=outbox worker process|webhook publisher configuration|worker and health lifecycle
+excludes=business transaction writes|webhook receiver behavior
+search=run outbox worker|deliver signed webhook|outbox health service
+invariant=Delivery attempts flow through the durable outbox repository so retries do not bypass lease and attempt state.
+stability=architecture
+*/
+
 import (
 	"context"
 	"encoding/base64"

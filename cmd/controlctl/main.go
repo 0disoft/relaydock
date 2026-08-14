@@ -1,5 +1,15 @@
 package main
 
+/* llmnav/1 module
+id=relaydock.command.controlctl
+role=Inspect signing keys, fetch signed snapshots and model catalogs, and publish reviewed control snapshots through the Control Plane API.
+owns=control operator CLI|bounded control API client|atomic snapshot export
+excludes=control authorization policy|snapshot signature generation
+search=controlctl publish snapshot|download control models|control signing key
+invariant=Control responses are size-bounded and valid JSON before they are printed or written atomically.
+stability=architecture
+*/
+
 import (
 	"bytes"
 	"context"

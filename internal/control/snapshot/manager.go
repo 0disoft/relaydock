@@ -1,5 +1,18 @@
 package snapshot
 
+/* llmnav/1 module
+id=relaydock.control.snapshot
+role=Verify, apply, persist, and refresh signed runtime snapshots while preserving a last-known-good fallback.
+owns=runtime snapshot lifecycle|signature and revision acceptance|last-known-good synchronization
+excludes=control HTTP authorization|gateway route execution
+search=signed runtime snapshot|last known good routes|reject snapshot rollback
+invariant=An unsigned, expired, rolled-back, or content-mutated revision is never applied as current runtime state.
+invariant=A last-known-good persistence failure cannot replace or invalidate an already verified active snapshot.
+risk=auth|concurrency
+rel=test>relaydock.control.snapshot.contract
+stability=architecture
+*/
+
 import (
 	"bytes"
 	"context"

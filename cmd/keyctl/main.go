@@ -1,5 +1,15 @@
 package main
 
+/* llmnav/1 module
+id=relaydock.command.keyctl
+role=Issue and revoke project-scoped gateway virtual keys against the authoritative PostgreSQL control store.
+owns=virtual key operator CLI|virtual key issuance output|virtual key revocation command
+excludes=per-request key authentication|MCP token issuance
+search=issue gateway key|revoke virtual key|project key CLI
+invariant=The plaintext virtual-key secret is emitted only by the issue command and is never read back from storage.
+stability=contract
+*/
+
 import (
 	"context"
 	"encoding/json"

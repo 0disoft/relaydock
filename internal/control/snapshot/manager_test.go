@@ -1,3 +1,9 @@
+/* llmnav/1 file
+id=relaydock.control.snapshot.contract
+role=Verify snapshot rollback, same-revision mutation, and last-known-good persistence failure handling.
+search=snapshot manager tests|older revision rejection|last known good failure
+stability=contract
+*/
 package snapshot
 
 import (

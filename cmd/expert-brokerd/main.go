@@ -1,5 +1,15 @@
 package main
 
+/* llmnav/1 module
+id=relaydock.command.expert-brokerd
+role=Run the expert consultation broker, persistence backend, asynchronous runner, HTTP API, and optional remote MCP endpoint.
+owns=expert broker process assembly|consultation runner lifecycle|expert HTTP and MCP serving
+excludes=expert model policy|ContextPack selection rules
+search=run expert broker|consultation worker service|expert MCP endpoint
+invariant=Consultation requests return durable identities while execution continues through the owned asynchronous runner.
+stability=architecture
+*/
+
 import (
 	"context"
 	"fmt"

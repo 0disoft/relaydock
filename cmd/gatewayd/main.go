@@ -1,5 +1,15 @@
 package main
 
+/* llmnav/1 module
+id=relaydock.command.gatewayd
+role=Run the authenticated AI gateway with provider routing, accounting, leases, runtime journaling, and signed control-state synchronization.
+owns=gateway process assembly|gateway dependency configuration|HTTP gateway lifecycle
+excludes=provider protocol compilation|routing candidate policy
+search=run AI gateway|configure provider gateway|gateway runtime service
+invariant=Startup aborts when required database, secret, authentication, or runtime dependencies cannot be constructed safely.
+stability=architecture
+*/
+
 import (
 	"context"
 	"database/sql"

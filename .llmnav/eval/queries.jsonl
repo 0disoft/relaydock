@@ -7,3 +7,22 @@
 {"query":"block localhost private DNS and unsafe provider URLs before dialing","expected":["relaydock.security.ssrf"]}
 {"query":"authenticate the remote MCP endpoint and separate consultation read and answer scopes","expected":["relaydock.mcp.remote"]}
 {"query":"quote a pinned price authorize a hold capture usage and release unused money","expected":["relaydock.accounting.settlement"]}
+{"query":"decide whether a control plane principal may publish or read a signed snapshot","expected":["relaydock.control.access"]}
+{"query":"issue authenticate and revoke a project virtual key without storing its plaintext secret","expected":["relaydock.auth.virtualkey"]}
+{"query":"reject a signed runtime snapshot rollback and use the last known good routes","expected":["relaydock.control.snapshot"]}
+{"query":"bridge local expert consultation tools from MCP stdio into local IPC","expected":["relaydock.mcp.stdio"]}
+{"query":"publish a reviewed runtime snapshot or download the control signing key from the operator CLI","expected":["relaydock.command.controlctl"]}
+{"query":"run the authenticated service that signs and serves Control Plane snapshots","expected":["relaydock.command.controld"]}
+{"query":"apply rollback or inspect the embedded PostgreSQL migration sequence","expected":["relaydock.command.dbmigrate"]}
+{"query":"start the asynchronous expert consultation broker and optional remote MCP endpoint","expected":["relaydock.command.expert-brokerd"]}
+{"query":"verify compact or inspect statistics for the local expert consultation store","expected":["relaydock.command.expertstorectl"]}
+{"query":"start the authenticated provider routing accounting and runtime AI gateway process","expected":["relaydock.command.gatewayd"]}
+{"query":"run the persistent local runtime over IPC without the desktop interface","expected":["relaydock.command.headless"]}
+{"query":"issue or revoke a project scoped gateway virtual key from the operator CLI","expected":["relaydock.command.keyctl"]}
+{"query":"start the MCP stdio process that connects tools to the local RelayDock runtime","expected":["relaydock.command.mcp-bridge"]}
+{"query":"issue a bounded expert MCP bearer token with consultation scopes","expected":["relaydock.command.mcptokenctl"]}
+{"query":"list and requeue outbox dead letters or purge old published events","expected":["relaydock.command.outboxctl"]}
+{"query":"run the worker that leases outbox events and delivers signed webhooks","expected":["relaydock.command.outboxd"]}
+{"query":"bootstrap or retrieve organization and project records in the control catalog","expected":["relaydock.command.projectctl"]}
+{"query":"build sign audit and verify RelayDock release bundles and update manifests","expected":["relaydock.command.releasepack"]}
+{"query":"run the bounded authenticated reference receiver for signed webhook events","expected":["relaydock.command.webhook-sink"]}

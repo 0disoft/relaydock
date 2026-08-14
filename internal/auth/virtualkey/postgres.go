@@ -1,5 +1,18 @@
 package virtualkey
 
+/* llmnav/1 module
+id=relaydock.auth.virtualkey
+role=Issue, authenticate, authorize, and revoke project-scoped virtual keys without persisting plaintext secrets.
+owns=virtual key lifecycle|project key authentication|scope and model authorization
+excludes=control-plane operator roles|provider credential storage
+search=issue virtual key|authenticate gateway key|revoke project key
+invariant=PostgreSQL stores only a peppered secret digest and the plaintext secret is returned only when a key is issued.
+invariant=Authentication compares secret digests in constant time and rejects expired, revoked, or wrong-environment keys.
+risk=auth
+rel=test>relaydock.auth.virtualkey.contract
+stability=contract
+*/
+
 import (
 	"context"
 	"crypto/hmac"

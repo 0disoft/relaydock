@@ -1,5 +1,16 @@
 package mcpbridge
 
+/* llmnav/1 module
+id=relaydock.mcp.stdio
+role=Expose local expert consultation operations as MCP stdio tools backed by the authenticated local IPC runtime.
+owns=stdio MCP tool registry|MCP to local IPC delegation|local consultation tool transport
+excludes=consultation lifecycle policy|remote MCP authentication
+search=local MCP bridge|stdio consultation tools|MCP local IPC
+invariant=Stdout is reserved for MCP protocol messages and operational logs are written only to stderr.
+invariant=Tool handlers delegate bounded operations to local IPC instead of running consultations synchronously.
+stability=architecture
+*/
+
 import (
 	"context"
 

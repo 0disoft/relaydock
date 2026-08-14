@@ -1,5 +1,15 @@
 package main
 
+/* llmnav/1 module
+id=relaydock.command.mcp-bridge
+role=Run the local MCP stdio bridge that delegates expert consultation tools to the RelayDock local IPC runtime.
+owns=MCP bridge process assembly|stdio transport lifecycle|local IPC backend wiring
+excludes=consultation execution|remote MCP authorization
+search=run MCP stdio bridge|connect MCP to local runtime|expert bridge command
+invariant=Stdout remains exclusive to MCP protocol traffic and diagnostics are written to stderr.
+stability=architecture
+*/
+
 import (
 	"context"
 	"log/slog"
