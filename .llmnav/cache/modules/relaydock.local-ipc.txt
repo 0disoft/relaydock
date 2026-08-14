@@ -1,0 +1,8 @@
+llmnav-catalog/1 repository=relaydock catalog=relaydock.local-ipc
+Read semantic cards before opening source. Resolve current paths and signatures with llmnav query or show.
+
+@relaydock.local-ipc.server
+role Serve bounded framed JSON requests over the local endpoint with explicit connection backpressure and method dispatch.
+owns local IPC listener lifecycle, IPC frame boundary, local method dispatch
+excludes method business logic, remote network exposure
+invariant Connections beyond the configured concurrency bound are closed instead of queued without limit. Malformed or oversized frames terminate the connection after one bounded error response.

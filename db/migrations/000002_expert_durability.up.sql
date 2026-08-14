@@ -1,3 +1,14 @@
+/* llmnav/1 module
+id=relaydock.migration.expert-durability.up
+role=Add tenant scope, fenced worker lease state, result provenance, and claim indexes to durable expert consultations.
+owns=expert lease schema|expert tenant scope|consultation result linkage
+excludes=consultation transition code|worker retry policy
+search=add expert durability columns|consultation lease migration|expert tenant scope
+invariant=Consultation attempt counts cannot become negative.
+invariant=Queued and stale-running consultations have separate partial indexes for worker recovery.
+stability=contract
+*/
+
 -- Durable expert worker leases, tenant scoping, and result provenance.
 
 ALTER TABLE expert.context_packs

@@ -1,5 +1,12 @@
 package credentials
 
+/* llmnav/1 file
+id=relaydock.credentials.secret-service.contract
+role=Verify Linux Secret Service create, unlock, read, delete, cancellation, byte clearing, and remote error redaction behavior.
+search=Secret Service tests|zero credential transport value|redact D-Bus error
+stability=contract
+*/
+
 import (
 	"bytes"
 	"context"

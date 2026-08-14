@@ -1,0 +1,50 @@
+llmnav-catalog/1 repository=relaydock catalog=relaydock.migration
+Read semantic cards before opening source. Resolve current paths and signatures with llmnav query or show.
+
+@relaydock.migration.expert-durability.down
+role Remove expert durability indexes, lease metadata, tenant scope, and result linkage introduced by migration 000002.
+owns expert durability rollback, consultation lease column removal
+excludes initial expert tables, stored result payloads
+invariant Foreign-key and check constraints are removed before their owned columns. The initial consultation and ContextPack tables remain available after rollback.
+
+@relaydock.migration.expert-durability.up
+role Add tenant scope, fenced worker lease state, result provenance, and claim indexes to durable expert consultations.
+owns expert lease schema, expert tenant scope, consultation result linkage
+excludes consultation transition code, worker retry policy
+invariant Consultation attempt counts cannot become negative. Queued and stale-running consultations have separate partial indexes for worker recovery.
+
+@relaydock.migration.initial.down
+role Remove every application schema created by the initial RelayDock migration during an explicit full rollback.
+owns initial schema rollback, application schema removal
+excludes public migration ledger, database backup
+invariant Rollback removes outbox, expert, runtime, and control schemas as one ordered migration step. The public schema and migration runner ledger remain outside this rollback file.
+
+@relaydock.migration.initial.up
+role Create the initial control, runtime, expert, and outbox PostgreSQL schemas and their foundational integrity constraints.
+owns initial database schema, initial runtime ledgers, initial queue indexes
+excludes later lease durability columns, migration execution
+invariant Usage events remain separate from request and provider-attempt records. Consultation idempotency is unique within each project.
+
+@relaydock.migration.outbox-delivery.down
+role Remove recoverable lease and dead-letter state while restoring the initial pending-event queue index.
+owns outbox delivery rollback, initial queue index restoration
+excludes outbox event deletion, published event cleanup
+invariant Delivery-specific indexes are removed before their backing columns. The restored queue index continues to exclude published events.
+
+@relaydock.migration.outbox-delivery.up
+role Add recoverable outbox lease expiry, bounded failure state, dead-letter state, and worker-oriented partial indexes.
+owns outbox delivery schema, outbox lease recovery index, dead-letter persistence
+excludes delivery retry algorithm, event publisher
+invariant An event cannot be both published and dead-lettered. Claim and stale-lock indexes exclude terminal events.
+
+@relaydock.migration.runtime-journal.down
+role Remove expanded request usage and provider-attempt journal fields while restoring the original connection requirement when data permits.
+owns runtime journal rollback, provider connection constraint restoration
+excludes request row deletion, usage event rollback
+invariant The NOT NULL provider connection constraint is restored only when no existing attempt contains NULL. Base request and provider-attempt records survive the rollback.
+
+@relaydock.migration.runtime-journal.up
+role Expand the runtime journal with client identity, tenant scope, usage totals, provider attempt provenance, commit state, and bounded failure metadata.
+owns runtime journal schema, provider attempt provenance, request usage totals
+excludes journal write sequencing, usage settlement
+invariant Attempt and token counters remain non-negative. Provider attempts may omit a control-plane connection when signed snapshots supply the route.

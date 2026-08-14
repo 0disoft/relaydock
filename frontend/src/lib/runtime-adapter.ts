@@ -1,3 +1,14 @@
+/* llmnav/1 module
+id=relaydock.frontend.runtime-adapter
+role=Keep desktop UI calls behind typed Wails service adapters and build privacy-aware ContextPack previews before consultation creation.
+owns=frontend runtime adapter|frontend consultation operations|ContextPack preview defaults
+excludes=Wails binding generation|backend authorization
+search=frontend runtime calls|preview ContextPack UI|desktop consultation adapter
+invariant=UI modules consume this adapter instead of importing generated bindings directly.
+invariant=ContextPack previews use an explicit byte ceiling and report redaction findings.
+stability=architecture
+*/
+
 import type {
   ConsultationCreateInput,
   ConsultationSummary,

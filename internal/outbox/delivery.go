@@ -1,5 +1,16 @@
 package outbox
 
+/* llmnav/1 module
+id=relaydock.outbox.delivery
+role=Deliver leased outbox events with bounded concurrency, fenced completion, deterministic jitter, retry limits, and dead-letter handling.
+owns=outbox worker lifecycle|delivery retry policy|dead-letter transition
+excludes=outbox SQL persistence|event transport implementation
+search=deliver outbox events|retry webhook delivery|dead letter worker
+invariant=Lease TTL exceeds the combined publish and repository operation timeouts.
+invariant=Every completion call includes the worker identity that owns the claim.
+stability=contract
+*/
+
 import (
 	"context"
 	"errors"

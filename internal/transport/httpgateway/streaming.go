@@ -1,5 +1,16 @@
 package httpgateway
 
+/* llmnav/1 module
+id=relaydock.transport.live-stream
+role=Commit provider metadata and translate canonical stream events into OpenAI-compatible live HTTP output without reopening retry eligibility.
+owns=HTTP stream commit boundary|SSE response encoding|stream terminal emission
+excludes=provider execution|canonical stream validation
+search=write live SSE response|commit provider stream|encode OpenAI stream event
+invariant=Headers and the streaming status line are committed only once.
+invariant=No semantic event is emitted before the upstream route commit hook succeeds.
+stability=contract
+*/
+
 import (
 	"bytes"
 	"context"

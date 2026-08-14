@@ -1,5 +1,18 @@
 package scopedtoken
 
+/* llmnav/1 module
+id=relaydock.auth.scoped-token-keyring
+role=Rotate scoped-token signing keys while retaining bounded verification overlap and constant-time secret comparisons.
+owns=scoped-token key rotation|verification key overlap|legacy secret deduplication
+excludes=token claim encoding|scope authorization policy
+search=rotate scoped token key|verify retired signing key|constant time secret compare
+invariant=Only the active key signs new tokens while retained keys are verification-only.
+invariant=A verification key cannot replace the active key with different secret material.
+risk=auth
+rel=test>relaydock.auth.scoped-token.contract
+stability=contract
+*/
+
 import (
 	"crypto/sha256"
 	"encoding/base64"

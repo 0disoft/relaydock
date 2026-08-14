@@ -1,3 +1,14 @@
+/* llmnav/1 module
+id=relaydock.migration.outbox-delivery.up
+role=Add recoverable outbox lease expiry, bounded failure state, dead-letter state, and worker-oriented partial indexes.
+owns=outbox delivery schema|outbox lease recovery index|dead-letter persistence
+excludes=delivery retry algorithm|event publisher
+search=add outbox lease expiry|dead letter migration|outbox worker indexes
+invariant=An event cannot be both published and dead-lettered.
+invariant=Claim and stale-lock indexes exclude terminal events.
+stability=contract
+*/
+
 -- Add recoverable worker leases and dead-letter metadata to the transactional
 -- outbox. locked_at alone cannot distinguish a live worker from an abandoned
 -- claim after a process crash.

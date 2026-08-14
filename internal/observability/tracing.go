@@ -1,5 +1,16 @@
 package observability
 
+/* llmnav/1 module
+id=relaydock.observability.tracing
+role=Create process-local trace spans with parent propagation, exactly-once completion, and a replaceable exporter boundary.
+owns=trace context propagation|span lifecycle|trace exporter registration
+excludes=attribute redaction policy|remote exporter implementation
+search=start tracing span|propagate trace parent|configure trace exporter
+invariant=The completion closure exports a span at most once.
+invariant=Exporter failures never replace the application operation result.
+stability=architecture
+*/
+
 import (
 	"context"
 	"crypto/rand"

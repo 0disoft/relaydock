@@ -1,0 +1,14 @@
+llmnav-catalog/1 repository=relaydock catalog=relaydock.provider
+Read semantic cards before opening source. Resolve current paths and signatures with llmnav query or show.
+
+@relaydock.provider.error-taxonomy
+role Normalize HTTP and transport failures into provider-neutral classes used by retry, cooldown, metrics, and public error codes.
+owns provider error classification, retryability classification, Retry-After parsing
+excludes retry scheduling, HTTP response writing
+invariant Routing policy does not depend on provider-specific error strings. Provider messages are sanitized and bounded before entering structured errors.
+
+@relaydock.provider.http-adapter
+role Execute provider-neutral HTTP attempts with configured authentication, protocol paths, bounded responses, and normalized upstream failures.
+owns provider HTTP request boundary, provider authentication headers, response size enforcement
+excludes route selection, canonical protocol compilation
+invariant Anonymous access is rejected unless the adapter configuration explicitly permits it. Successful and error response bodies are read through fixed upper bounds.

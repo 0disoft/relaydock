@@ -1,3 +1,14 @@
+/* llmnav/1 module
+id=relaydock.migration.initial.up
+role=Create the initial control, runtime, expert, and outbox PostgreSQL schemas and their foundational integrity constraints.
+owns=initial database schema|initial runtime ledgers|initial queue indexes
+excludes=later lease durability columns|migration execution
+search=create initial RelayDock schema|bootstrap PostgreSQL tables|initial runtime database
+invariant=Usage events remain separate from request and provider-attempt records.
+invariant=Consultation idempotency is unique within each project.
+stability=contract
+*/
+
 -- Initial self-contained schema. Keep synchronized with db/schema.sql.
 
 CREATE EXTENSION IF NOT EXISTS pgcrypto;

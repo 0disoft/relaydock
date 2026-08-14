@@ -6,3 +6,15 @@ role Decode provider ingress into canonical requests and encode canonical reques
 owns protocol decoder registry, canonical request validation, loss-mode enforcement
 excludes provider network transport, routing decisions
 invariant Strict conversion rejects fatal information loss.
+
+@relaydock.protocol.canonical-envelope
+role Define the provider-neutral request vocabulary that preserves messages, tools, reasoning, capabilities, metadata, and unknown extensions.
+owns canonical request envelope, canonical item vocabulary, request structural validation
+excludes provider wire conversion, stream event transitions
+invariant Unknown extension payloads remain available as raw JSON for compatible conversion. Every item kind must carry the fields required by its canonical meaning.
+
+@relaydock.protocol.stream-state
+role Serialize canonical stream transitions and expose whether a failed attempt remains safe for transparent retry.
+owns stream lifecycle state, semantic event commit flag, stream sequence monotonicity
+excludes wire encoding, provider retry selection
+invariant Terminal streams reject every later event and cancellation. Transparent retry becomes impossible after the first semantic event is accepted.

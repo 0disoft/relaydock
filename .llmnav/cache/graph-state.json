@@ -1,8 +1,23 @@
 {
   "partitions": [
     {
-      "edges": [],
-      "inputHash": "9d52649cf3394703813ca861b644fdf85f2181d51dd7463677f370f538f9f274",
+      "edges": [
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.accounting.settlement",
+          "id": "09d6ad2988a521d72fb149ba9bb2cb5cac4932fe138e9e43b135fc44c7f9eb4c",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "internal/accounting/service.go",
+            "source": "internal/accounting/service.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.core.error-contract"
+        }
+      ],
+      "inputHash": "503abaad62b957c5909474d079e84ab7af9f8bb345a47c321b4c8387bdb21d1b",
       "key": "card:relaydock/relaydock.accounting.settlement",
       "nodes": [
         {
@@ -25,9 +40,147 @@
           "repositoryId": "relaydock",
           "role": "Quote a pinned price revision, authorize a bounded hold, capture provider usage once, and release the unused balance.",
           "semanticId": "relaydock.accounting.settlement"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.core.error-contract",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.core.error-contract"
         }
       ],
-      "outputHash": "a6556ec7bc8909396f4e721e4d55ce5cea751f429653c918a656ed72b4479909"
+      "outputHash": "ac871f0b869157ed287ccdf83933b3c1aef0d23c4edb46f3d400bfd641fdbbe1"
+    },
+    {
+      "edges": [
+        {
+          "confidence": 1,
+          "from": "relaydock/relaydock.auth.scoped-token-keyring",
+          "id": "e2a72f2b5030eb0a9a77ad0a238786fe64fa45a8ccfe1be053d33d208148be42",
+          "kind": "test",
+          "provenance": {
+            "generator": null,
+            "line": 3,
+            "path": "internal/auth/scopedtoken/keyring.go",
+            "source": "internal/auth/scopedtoken/keyring.go",
+            "type": "source-card"
+          },
+          "to": "relaydock/relaydock.auth.scoped-token.contract"
+        },
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.auth.scoped-token-keyring",
+          "id": "5113a67cb1365f0d52f3e53706476922b978875b189fd348ebedcba1c840c936",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "internal/auth/scopedtoken/keyring.go",
+            "source": "internal/auth/scopedtoken/keyring.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.core.error-contract"
+        }
+      ],
+      "inputHash": "120fbd916a47ce5961370c716954dbab1fb269857d56874a026b223a5f8c96fd",
+      "key": "card:relaydock/relaydock.auth.scoped-token-keyring",
+      "nodes": [
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.auth.scoped-token-keyring",
+          "location": {
+            "declarationLine": null,
+            "endLine": 14,
+            "exported": null,
+            "kind": null,
+            "language": null,
+            "path": "internal/auth/scopedtoken/keyring.go",
+            "receiver": null,
+            "signature": null,
+            "startLine": 3,
+            "symbol": null,
+            "visibility": null
+          },
+          "repositoryId": "relaydock",
+          "role": "Rotate scoped-token signing keys while retaining bounded verification overlap and constant-time secret comparisons.",
+          "semanticId": "relaydock.auth.scoped-token-keyring"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.auth.scoped-token.contract",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.auth.scoped-token.contract"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.core.error-contract",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.core.error-contract"
+        }
+      ],
+      "outputHash": "0af01616f56852dab7893f5d1d42101003bf08a66bb3ea38dceccb3dfdb3e2af"
+    },
+    {
+      "edges": [
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.auth.scoped-token.contract",
+          "id": "eb1b6cf9a932e804645142deeb5fdec82433e7cf1f60f2d7f1657b8b7690793a",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "internal/auth/scopedtoken/token_test.go",
+            "source": "internal/auth/scopedtoken/token_test.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.core.error-contract"
+        }
+      ],
+      "inputHash": "af07c1da4207da1adae88d6edc1fafd378af681971106642849ad9ac4ee13404",
+      "key": "card:relaydock/relaydock.auth.scoped-token.contract",
+      "nodes": [
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.auth.scoped-token.contract",
+          "location": {
+            "declarationLine": null,
+            "endLine": 8,
+            "exported": null,
+            "kind": null,
+            "language": null,
+            "path": "internal/auth/scopedtoken/token_test.go",
+            "receiver": null,
+            "signature": null,
+            "startLine": 3,
+            "symbol": null,
+            "visibility": null
+          },
+          "repositoryId": "relaydock",
+          "role": "Verify scoped-token rotation overlap, audience and expiry enforcement, tamper rejection, key-map normalization, and claim size bounds.",
+          "semanticId": "relaydock.auth.scoped-token.contract"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.core.error-contract",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.core.error-contract"
+        }
+      ],
+      "outputHash": "82eb97529ec9cc7a2ef0a9ce0a6cd531a1935d5e08da46b8ee47e45854595922"
     },
     {
       "edges": [
@@ -44,9 +197,23 @@
             "type": "source-card"
           },
           "to": "relaydock/relaydock.auth.virtualkey.contract"
+        },
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.auth.virtualkey",
+          "id": "b4820cd71da92046ba455954b9b19ac88af391d071d516e74cb78d854d5592fe",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "internal/auth/virtualkey/postgres.go",
+            "source": "internal/auth/virtualkey/postgres.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.core.error-contract"
         }
       ],
-      "inputHash": "2b7774280325e70b8ff1787ae71f408d28dbd47f9fe377199241cfc7844b6b29",
+      "inputHash": "70b58b6856848ed45397130feb2114e989fa51d9d8db288d7c429f05305abee3",
       "key": "card:relaydock/relaydock.auth.virtualkey",
       "nodes": [
         {
@@ -78,13 +245,22 @@
           "repositoryId": "relaydock",
           "role": null,
           "semanticId": "relaydock.auth.virtualkey.contract"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.core.error-contract",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.core.error-contract"
         }
       ],
-      "outputHash": "79b41ff332203a98834a82f2c6cf7d0c9cc5b9873bab64d03fb64f0ec3af191f"
+      "outputHash": "354e3b8f55ef8e11933985e49370ed5b0e0e36baac7290ce2f38c5f20f497c78"
     },
     {
       "edges": [],
-      "inputHash": "5c8d310ff0e26e412bebb128757d4447118f305ee39ee838adb5ba45c5e79aac",
+      "inputHash": "2197c3d597d9b1396a0d9b0ebbecccd2e48a71b0ba43fcb205066f2af5796b98",
       "key": "card:relaydock/relaydock.auth.virtualkey.contract",
       "nodes": [
         {
@@ -93,14 +269,14 @@
           "key": "relaydock/relaydock.auth.virtualkey.contract",
           "location": {
             "declarationLine": null,
-            "endLine": 6,
+            "endLine": 8,
             "exported": null,
             "kind": null,
             "language": null,
             "path": "internal/auth/virtualkey/parser_test.go",
             "receiver": null,
             "signature": null,
-            "startLine": 1,
+            "startLine": 3,
             "symbol": null,
             "visibility": null
           },
@@ -109,11 +285,26 @@
           "semanticId": "relaydock.auth.virtualkey.contract"
         }
       ],
-      "outputHash": "3c0d96c5c74bc17b73a43aa0a2518a0ab05ecb1ee5585f852f3a3a655a4eab65"
+      "outputHash": "a660cd16bd36d6822be82a1bb5e7d8d7709afd1c498279f28499d29044db8a44"
     },
     {
-      "edges": [],
-      "inputHash": "c800f8c825ee9ea69e4a6bb739ee206ac8d06da546caf7892e5039cf2d688c51",
+      "edges": [
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.command.controlctl",
+          "id": "841b6d313673ad439f06ba51c078aee5500027ec122c83ca1f61cb45d0b6b727",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "cmd/controlctl/main.go",
+            "source": "cmd/controlctl/main.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.persistence.atomic-file"
+        }
+      ],
+      "inputHash": "ad9d5370731afee3c17aea64543cf8497fe28a770b56cb89c97d95c508b36a24",
       "key": "card:relaydock/relaydock.command.controlctl",
       "nodes": [
         {
@@ -136,9 +327,18 @@
           "repositoryId": "relaydock",
           "role": "Inspect signing keys, fetch signed snapshots and model catalogs, and publish reviewed control snapshots through the Control Plane API.",
           "semanticId": "relaydock.command.controlctl"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.persistence.atomic-file",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.persistence.atomic-file"
         }
       ],
-      "outputHash": "509bdedbd2b99b053dc37a0e3fe14f670d672fd1ccc0ec58df82f42b2c934c9a"
+      "outputHash": "547fa421ebda65633bc7b79a567c25783543cc24e6b55bb343beb11e0a6eaa89"
     },
     {
       "edges": [
@@ -169,9 +369,37 @@
             "type": "local-import"
           },
           "to": "relaydock/relaydock.control.snapshot"
+        },
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.command.controld",
+          "id": "4a82acdb04ae0df37c3a8b539e01498527adc02d625eeca65a70e8cc0ecd5853",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "cmd/controld/main.go",
+            "source": "cmd/controld/main.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.observability.tracing"
+        },
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.command.controld",
+          "id": "323f4171a9d97b17c505d3cead24746f48cf81a34aa507c32e11bcc29118b13c",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "cmd/controld/main.go",
+            "source": "cmd/controld/main.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.outbox.postgres"
         }
       ],
-      "inputHash": "340f9fc23536b343073650dfeb0295f1301dbc4a98b23439d1066be1f30ac95c",
+      "inputHash": "82b172bd6088fd56ab011e7b27a0175f39ab0458f37bf77efae10d70e4e9427e",
       "key": "card:relaydock/relaydock.command.controld",
       "nodes": [
         {
@@ -212,13 +440,60 @@
           "repositoryId": "relaydock",
           "role": null,
           "semanticId": "relaydock.control.snapshot"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.observability.tracing",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.observability.tracing"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.outbox.postgres",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.outbox.postgres"
         }
       ],
-      "outputHash": "6d8fe8f402ec62a1ec2bca682f300b130f890c0b9caeb65b2ddf1f7912961098"
+      "outputHash": "7994a014c4b6dc298ad9ef9d83ff48a269cb123d683ec53196066ba804710285"
     },
     {
-      "edges": [],
-      "inputHash": "9a2c04ba18ee30ea0f8e3e346218a7f266162bacb344980607b0fcc9a308520d",
+      "edges": [
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.command.dbmigrate",
+          "id": "8b3bd022f8bfb97d3dd05af32e8d43680b74a72c9ed12653542e1df6d584ea0a",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "cmd/dbmigrate/main.go",
+            "source": "cmd/dbmigrate/main.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.outbox.postgres"
+        },
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.command.dbmigrate",
+          "id": "1ed11f9fc8597550602de1effc0cd8fb9332577ef54e26303b340252503e6c37",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "cmd/dbmigrate/main.go",
+            "source": "cmd/dbmigrate/main.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.persistence.migrations"
+        }
+      ],
+      "inputHash": "f58f7bd87faf1cd6d1927c59cf070b6f4d8dce80ca328f6b7cbbfc4fe0cb1fef",
       "key": "card:relaydock/relaydock.command.dbmigrate",
       "nodes": [
         {
@@ -241,12 +516,86 @@
           "repositoryId": "relaydock",
           "role": "Apply, inspect, or explicitly roll back the embedded RelayDock PostgreSQL migration sequence.",
           "semanticId": "relaydock.command.dbmigrate"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.outbox.postgres",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.outbox.postgres"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.persistence.migrations",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.persistence.migrations"
         }
       ],
-      "outputHash": "3a7368ebd5c3e9a2b883b295fda6703da4041fed0ad61c41ff903fe3ded5234d"
+      "outputHash": "9133a8d51c7b2c4bf053f935f39cbd8d9b16601ae2a43211377bc36c1acadd96"
     },
     {
       "edges": [
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.command.expert-brokerd",
+          "id": "2b7e53f8cc01cc1dac6ea940d65d31b9a3c842a65c3fa6cb8f360b2a09234621",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "cmd/expert-brokerd/main.go",
+            "source": "cmd/expert-brokerd/main.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.auth.scoped-token-keyring"
+        },
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.command.expert-brokerd",
+          "id": "a03276a68cb141ae9b9970384d36e62c2d35779f87da219b0c0da6aea824393d",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "cmd/expert-brokerd/main.go",
+            "source": "cmd/expert-brokerd/main.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.core.error-contract"
+        },
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.command.expert-brokerd",
+          "id": "bf7d4ce29c3bd0a6477fc474b58c6dc21844812214127f9a0d9c1b04d6f77a7c",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "cmd/expert-brokerd/main.go",
+            "source": "cmd/expert-brokerd/main.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.expert.application"
+        },
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.command.expert-brokerd",
+          "id": "220466f3fb1093323dbccac4ed5af20137de2b8fbd52c0354b9c848fae6224ed",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "cmd/expert-brokerd/main.go",
+            "source": "cmd/expert-brokerd/main.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.expert.openai-api"
+        },
         {
           "confidence": 0.85,
           "from": "relaydock/relaydock.command.expert-brokerd",
@@ -260,11 +609,62 @@
             "type": "local-import"
           },
           "to": "relaydock/relaydock.mcp.remote"
+        },
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.command.expert-brokerd",
+          "id": "1041367ca47a240aab8d9d07412e4c9e1435cc96712d162eb41fd6f5735e53be",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "cmd/expert-brokerd/main.go",
+            "source": "cmd/expert-brokerd/main.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.observability.tracing"
+        },
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.command.expert-brokerd",
+          "id": "0a76d0085a3b0bef32ba38b9157ce1981d211808b7ce24cf8a0d57fa641c78ee",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "cmd/expert-brokerd/main.go",
+            "source": "cmd/expert-brokerd/main.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.outbox.postgres"
+        },
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.command.expert-brokerd",
+          "id": "6181fc46c539de3e060e50c670ce95a312ac2f2699448e1722ff1481456320f0",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "cmd/expert-brokerd/main.go",
+            "source": "cmd/expert-brokerd/main.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.transport.json-api"
         }
       ],
-      "inputHash": "21257dd84c5ba8269870555222f620a54e8e114e7250e0c2d1ba4f92dda1eb6b",
+      "inputHash": "9bfcf514142ebd50aedc1cfb088d32bd047d223e4c3998084d84ab865013a545",
       "key": "card:relaydock/relaydock.command.expert-brokerd",
       "nodes": [
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.auth.scoped-token-keyring",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.auth.scoped-token-keyring"
+        },
         {
           "definitions": [],
           "external": false,
@@ -289,18 +689,72 @@
         {
           "definitions": [],
           "external": false,
+          "key": "relaydock/relaydock.core.error-contract",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.core.error-contract"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.expert.application",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.expert.application"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.expert.openai-api",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.expert.openai-api"
+        },
+        {
+          "definitions": [],
+          "external": false,
           "key": "relaydock/relaydock.mcp.remote",
           "location": null,
           "repositoryId": "relaydock",
           "role": null,
           "semanticId": "relaydock.mcp.remote"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.observability.tracing",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.observability.tracing"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.outbox.postgres",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.outbox.postgres"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.transport.json-api",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.transport.json-api"
         }
       ],
-      "outputHash": "57c5c4ff686040e0f30c5c55b049743d5428c5bb0cf7d52c06f2dd34f904d08a"
+      "outputHash": "0556418d1bbd469901bcce6e21550c406170dc997ec10c07fc2d2036602228a3"
     },
     {
       "edges": [],
-      "inputHash": "ba0c2330ca9230f3c567ccb655b9c172af7704fd9805b9731241242956817bf8",
+      "inputHash": "5939ef9f92ccfc3691a1be6d3c21b93653752d0ab4f06758a574e33c06572a48",
       "key": "card:relaydock/relaydock.command.expertstorectl",
       "nodes": [
         {
@@ -346,6 +800,34 @@
         {
           "confidence": 0.85,
           "from": "relaydock/relaydock.command.gatewayd",
+          "id": "85b9dc937889bffe66ffb9e09e0316154ff50cd9337d63ab8db0d298eebfc550",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "cmd/gatewayd/main.go",
+            "source": "cmd/gatewayd/main.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.observability.tracing"
+        },
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.command.gatewayd",
+          "id": "bb1ecbbd763eecd9b92222a6955e482395603a4bd62b05e1a1ae1c04496f575a",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "cmd/gatewayd/main.go",
+            "source": "cmd/gatewayd/main.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.outbox.postgres"
+        },
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.command.gatewayd",
           "id": "1f62169d3e5f50ea9d705751622ad850cc8445aec181e5077c5b679cad2286bc",
           "kind": "imports",
           "provenance": {
@@ -370,9 +852,37 @@
             "type": "local-import"
           },
           "to": "relaydock/relaydock.runtime.gateway"
+        },
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.command.gatewayd",
+          "id": "2060d46ac6e8818b33629334255b25453212cc6af9b04b6cbc0cef97d52c0299",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "cmd/gatewayd/main.go",
+            "source": "cmd/gatewayd/main.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.transport.json-api"
+        },
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.command.gatewayd",
+          "id": "9261cc24fcdc79ae0c3f7604e54292c93ae68b1f389eec25c592c45f42a36ba5",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "cmd/gatewayd/main.go",
+            "source": "cmd/gatewayd/main.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.transport.live-stream"
         }
       ],
-      "inputHash": "84cd5d53718212298d36875d9721ea50cde750fb11404714075c6facaba546e8",
+      "inputHash": "f3eca86fa5d7a92bc5c58c1774a9737a323bcb6c1376ce915437bdebfee3a4b9",
       "key": "card:relaydock/relaydock.command.gatewayd",
       "nodes": [
         {
@@ -408,6 +918,24 @@
         {
           "definitions": [],
           "external": false,
+          "key": "relaydock/relaydock.observability.tracing",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.observability.tracing"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.outbox.postgres",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.outbox.postgres"
+        },
+        {
+          "definitions": [],
+          "external": false,
           "key": "relaydock/relaydock.routing.candidates",
           "location": null,
           "repositoryId": "relaydock",
@@ -422,13 +950,46 @@
           "repositoryId": "relaydock",
           "role": null,
           "semanticId": "relaydock.runtime.gateway"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.transport.json-api",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.transport.json-api"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.transport.live-stream",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.transport.live-stream"
         }
       ],
-      "outputHash": "a69b4d0b65fddb3a8ee213683cb9287915ab57e1bb1731d51fbab3166b4a9ca5"
+      "outputHash": "6b904939ac48d252eef14cf791f58f39d2a97351215de2dc9329179436a995c3"
     },
     {
-      "edges": [],
-      "inputHash": "de1371f3f6479bc74da92adb32ae61cb2982b732981671931f60965f16e43b27",
+      "edges": [
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.command.headless",
+          "id": "290a61b27b3a2132d3b5fd9b42861689fbce590f216ca905bf6c3f9312aad85d",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "cmd/headless/main.go",
+            "source": "cmd/headless/main.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.local-ipc.server"
+        }
+      ],
+      "inputHash": "b63224f8e89fdc5640e92965f5d3d7e30d7592207a322e8ce5b8f30afd536615",
       "key": "card:relaydock/relaydock.command.headless",
       "nodes": [
         {
@@ -451,9 +1012,18 @@
           "repositoryId": "relaydock",
           "role": "Run the persistent local RelayDock runtime without a desktop UI and expose it through the platform-local IPC endpoint.",
           "semanticId": "relaydock.command.headless"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.local-ipc.server",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.local-ipc.server"
         }
       ],
-      "outputHash": "f52289e7f8c6343d839aa12f2831c88a0dafebfd6f7666ec63b0e4309e0c1c8c"
+      "outputHash": "11c2712bb2f2ea35f1a65b967a6fc790b4903321274396c495eee11f14cb4422"
     },
     {
       "edges": [
@@ -470,9 +1040,23 @@
             "type": "local-import"
           },
           "to": "relaydock/relaydock.auth.virtualkey"
+        },
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.command.keyctl",
+          "id": "d61fd4f7032c9a1e1852fa1e152354585a4371890308347145e2960088bce02c",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "cmd/keyctl/main.go",
+            "source": "cmd/keyctl/main.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.outbox.postgres"
         }
       ],
-      "inputHash": "c6cd229a669d0fbc8111d3c50ebfca938822f4dc4f1c7144e5ea20092bad406b",
+      "inputHash": "b9768a5d5dc6ff09c32d0827149dc473edbf7690304a0028eb7de9974e51b552",
       "key": "card:relaydock/relaydock.command.keyctl",
       "nodes": [
         {
@@ -504,12 +1088,35 @@
           "repositoryId": "relaydock",
           "role": "Issue and revoke project-scoped gateway virtual keys against the authoritative PostgreSQL control store.",
           "semanticId": "relaydock.command.keyctl"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.outbox.postgres",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.outbox.postgres"
         }
       ],
-      "outputHash": "bae3835a77e1e5e0f807d68791f43e19390edfcd5ffdc740e6edde6b2f9db711"
+      "outputHash": "a7d4ebfd9673e14f5351b92764d7b26f9b3a89337ee999ac7a0815e6e10db0df"
     },
     {
       "edges": [
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.command.mcp-bridge",
+          "id": "df657700a9b00f4cdb06fd64a0a9bf15e1cf633f63f3cf7d739a60036c920cde",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "cmd/mcp-bridge/main.go",
+            "source": "cmd/mcp-bridge/main.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.local-ipc.server"
+        },
         {
           "confidence": 0.85,
           "from": "relaydock/relaydock.command.mcp-bridge",
@@ -525,7 +1132,7 @@
           "to": "relaydock/relaydock.mcp.stdio"
         }
       ],
-      "inputHash": "68ece6da798f01914dbfbc4c433a5cccd6de672e9c53370d1d6db8064f6c25cb",
+      "inputHash": "d3bc632473bf2dffe110d9879c75787c4667eb955189ab32a43304c5e0a44c2a",
       "key": "card:relaydock/relaydock.command.mcp-bridge",
       "nodes": [
         {
@@ -552,6 +1159,15 @@
         {
           "definitions": [],
           "external": false,
+          "key": "relaydock/relaydock.local-ipc.server",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.local-ipc.server"
+        },
+        {
+          "definitions": [],
+          "external": false,
           "key": "relaydock/relaydock.mcp.stdio",
           "location": null,
           "repositoryId": "relaydock",
@@ -559,13 +1175,37 @@
           "semanticId": "relaydock.mcp.stdio"
         }
       ],
-      "outputHash": "384312585d0c503b9e9d62c03c30477fbf3f36e8fc2ed5d0eff702e833defe89"
+      "outputHash": "c2a67ea46984a5aab3743eaf934cd3176d5dbe1e3ddeedf8fd7c3e611669740b"
     },
     {
-      "edges": [],
-      "inputHash": "19ce0796920f5caa1c660394224d2155753201452998cc39ba833a3403c3761c",
+      "edges": [
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.command.mcptokenctl",
+          "id": "d890a59ad45a0179982e9e193eb31dbe4e492b03156fb69eb5fc546bb88dd47e",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "cmd/mcptokenctl/main.go",
+            "source": "cmd/mcptokenctl/main.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.auth.scoped-token-keyring"
+        }
+      ],
+      "inputHash": "5aaa85a156828701432bb7231a1792b92d466be1c1eaef7b6f31919be511c624",
       "key": "card:relaydock/relaydock.command.mcptokenctl",
       "nodes": [
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.auth.scoped-token-keyring",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.auth.scoped-token-keyring"
+        },
         {
           "definitions": [],
           "external": false,
@@ -588,11 +1228,40 @@
           "semanticId": "relaydock.command.mcptokenctl"
         }
       ],
-      "outputHash": "27bddfa3cfc7c0ff88d37629fafa1ca60036aa04f057ede59710a2fe4fef45ed"
+      "outputHash": "2986ddcb5bf357773b6f4d7e23b25057ea9b1a2e8317781f01eee5f12ce69bb0"
     },
     {
-      "edges": [],
-      "inputHash": "515b75895d3e203b5b4540737bffdca84f8ec4ce350120169052bdd8225079f0",
+      "edges": [
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.command.outboxctl",
+          "id": "7209785faf97f8ac91c9eca951e60757a2e141d2178985ffcf0c2aea0fd31145",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "cmd/outboxctl/main.go",
+            "source": "cmd/outboxctl/main.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.core.error-contract"
+        },
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.command.outboxctl",
+          "id": "82fa8a772ed2e831799f2b817bce33d993ca9fcd66f196f1760311a68d8effc9",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "cmd/outboxctl/main.go",
+            "source": "cmd/outboxctl/main.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.outbox.postgres"
+        }
+      ],
+      "inputHash": "6a5a90e174705e3316c76c5bc237e3862c23e767055b23a2799b1ce650c9924b",
       "key": "card:relaydock/relaydock.command.outboxctl",
       "nodes": [
         {
@@ -615,13 +1284,102 @@
           "repositoryId": "relaydock",
           "role": "Inspect durable outbox health, list dead letters, requeue one failed event, and purge bounded published history.",
           "semanticId": "relaydock.command.outboxctl"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.core.error-contract",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.core.error-contract"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.outbox.postgres",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.outbox.postgres"
         }
       ],
-      "outputHash": "23a05cfdae715fb56ce1bb4a53379c012ad6298135d56722200af332f5ece16b"
+      "outputHash": "ce15c1176b88c35e9ca407a6cf49f87fc170120d380bee1cfa905a16dad91b1c"
     },
     {
-      "edges": [],
-      "inputHash": "1e107a20051e5ac6f423966a43444451794529f86e605810f534871348ede04e",
+      "edges": [
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.command.outboxd",
+          "id": "1d6b239b1df3bd45991c906c672881a2276389eaa16edd619fc88a0fa0a22a1a",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "cmd/outboxd/main.go",
+            "source": "cmd/outboxd/main.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.core.error-contract"
+        },
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.command.outboxd",
+          "id": "c39d418b0a9ceed4065f012005deb4e59f58e66faadaf09c828d7255db197733",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "cmd/outboxd/main.go",
+            "source": "cmd/outboxd/main.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.observability.tracing"
+        },
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.command.outboxd",
+          "id": "ffd7a6f721eb94c3a0ef7f70e675bcca16f9cbc0dd750114b5988f8bc703ae62",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "cmd/outboxd/main.go",
+            "source": "cmd/outboxd/main.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.outbox.delivery"
+        },
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.command.outboxd",
+          "id": "8b1dc2d3468102f46a7a4dbb2d2ebef1fa9b1ad29d568ce3271503d1e35ec921",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "cmd/outboxd/main.go",
+            "source": "cmd/outboxd/main.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.outbox.postgres"
+        },
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.command.outboxd",
+          "id": "a6d61991ebf124a6c87a3bfe5c90f778663c507b3104fc968041c5fe26945663",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "cmd/outboxd/main.go",
+            "source": "cmd/outboxd/main.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.transport.json-api"
+        }
+      ],
+      "inputHash": "e9dd65d990ded5ed503a116d33b896c891cc0a7a408545f58a78136da7d2112c",
       "key": "card:relaydock/relaydock.command.outboxd",
       "nodes": [
         {
@@ -644,13 +1402,73 @@
           "repositoryId": "relaydock",
           "role": "Run the durable outbox worker that leases pending events, publishes signed webhooks, and exposes bounded health status.",
           "semanticId": "relaydock.command.outboxd"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.core.error-contract",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.core.error-contract"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.observability.tracing",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.observability.tracing"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.outbox.delivery",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.outbox.delivery"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.outbox.postgres",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.outbox.postgres"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.transport.json-api",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.transport.json-api"
         }
       ],
-      "outputHash": "a556365ab2027a99d5ea52a9ff651b6b49b3b88f054acd7526183f39395a0cec"
+      "outputHash": "404bc6c85106c3b4ffefed3df321a22b1ef148b0a52c99fa25c2168b12f44b3a"
     },
     {
-      "edges": [],
-      "inputHash": "9666dfda530b5f2f00ec728a7dda1ce04bfcdd438712a786f494e73ddf69659a",
+      "edges": [
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.command.projectctl",
+          "id": "1d319c55e42f7340eadd8b2e24278f1169cf0e5d25b8b97a9a1d05ab6587f033",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "cmd/projectctl/main.go",
+            "source": "cmd/projectctl/main.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.outbox.postgres"
+        }
+      ],
+      "inputHash": "4a44fb94977f5ff736a6cd1acfe02439010600ca484201370b645b516020509d",
       "key": "card:relaydock/relaydock.command.projectctl",
       "nodes": [
         {
@@ -673,13 +1491,22 @@
           "repositoryId": "relaydock",
           "role": "Create or retrieve stable organization and project identities in the PostgreSQL control catalog.",
           "semanticId": "relaydock.command.projectctl"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.outbox.postgres",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.outbox.postgres"
         }
       ],
-      "outputHash": "c72c8f72fb264fde839b1b785ff6c96b565be1171b8c37686e17e6c5833812c6"
+      "outputHash": "8f31a9381b9ba57b865a66a11a093a2ad230c24b3325535b2e3fba00d4abd06f"
     },
     {
       "edges": [],
-      "inputHash": "230c3f0b10a49cf5af49997fc3e312a3913f543e8606faf9c82a6a89a3150303",
+      "inputHash": "81dff4ef6a969422457488cbc1a9f84bfd11f60955279d3fcd030df6e28dd6f6",
       "key": "card:relaydock/relaydock.command.releasepack",
       "nodes": [
         {
@@ -707,8 +1534,37 @@
       "outputHash": "439d9d4ed50480b5a3d21f6639dfe77f3bd98311799fbffac8ac70a02a08303b"
     },
     {
-      "edges": [],
-      "inputHash": "aa10006bbbcf114fb136101e848b32e9895ffff621ab807d399454d46d0ad027",
+      "edges": [
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.command.webhook-sink",
+          "id": "a45386b5f49dcd0210e87a85315e6f16673a6eafc0ecf1f169eb5395ea5f3889",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "cmd/webhook-sink/main.go",
+            "source": "cmd/webhook-sink/main.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.observability.tracing"
+        },
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.command.webhook-sink",
+          "id": "7381a2f7f6b7c3f05b342754502a502ffe12b39ae957e6b3049144d9add3c81b",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "cmd/webhook-sink/main.go",
+            "source": "cmd/webhook-sink/main.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.transport.json-api"
+        }
+      ],
+      "inputHash": "258191c825a5c44a5ff52c40eadb6b3b1050cc3b717e8f26cb6cc605220128ae",
       "key": "card:relaydock/relaydock.command.webhook-sink",
       "nodes": [
         {
@@ -731,13 +1587,46 @@
           "repositoryId": "relaydock",
           "role": "Run the reference signed-webhook receiver with bounded bodies, replay-safe verification, and authenticated non-loopback access.",
           "semanticId": "relaydock.command.webhook-sink"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.observability.tracing",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.observability.tracing"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.transport.json-api",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.transport.json-api"
         }
       ],
-      "outputHash": "bc984fdd6078b1e81277e8ad61a4979bef1a9855620d09071e81ea759524798b"
+      "outputHash": "7258f3555aadd9ce0528e5d15e53f9728f4d902b141ca1187b4ac42168bb5d7c"
     },
     {
-      "edges": [],
-      "inputHash": "c1e716190105a457673577b01042e577eff7b52bb3675d94d0f94418e8b5a722",
+      "edges": [
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.contextpack.compile",
+          "id": "953ce0c7756f0d60517badb81c55228dd5cc78a2c250da70531408c48437f6f4",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "internal/expert/contextpack/compiler.go",
+            "source": "internal/expert/contextpack/compiler.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.core.error-contract"
+        }
+      ],
+      "inputHash": "d569874646a9223167a455478b401fa6533fa9712f1138a2db0df7478f28454c",
       "key": "card:relaydock/relaydock.contextpack.compile",
       "nodes": [
         {
@@ -760,9 +1649,18 @@
           "repositoryId": "relaydock",
           "role": "Select, redact, hash, and package repository evidence before expert consultation data leaves the local boundary.",
           "semanticId": "relaydock.contextpack.compile"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.core.error-contract",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.core.error-contract"
         }
       ],
-      "outputHash": "6924b62ceedcb06629313c557b7332a253f0578b98f413feda431a8dc76fe63b"
+      "outputHash": "597cce848d3cfe4536bc8b1b2eded513f5a38372321938c96fc90ececcba2b2e"
     },
     {
       "edges": [
@@ -781,7 +1679,7 @@
           "to": "relaydock/relaydock.control.access.contract"
         }
       ],
-      "inputHash": "2c977c490e830bec9023402290d85f4219917f20e11a6909a2c427c040a04c46",
+      "inputHash": "b15a1b671765b993c36ea69614ee48ea1d1ea5de705f09e367c4d20a0f9de14a",
       "key": "card:relaydock/relaydock.control.access",
       "nodes": [
         {
@@ -819,7 +1717,7 @@
     },
     {
       "edges": [],
-      "inputHash": "c5d202304d2d65da2f3879c6a36763c2bfa202f97d246c1ad4511214d4748b75",
+      "inputHash": "8df541ea645543eed1f151d17ebd18616fbe9d6a656eed55f65c4927316bf483",
       "key": "card:relaydock/relaydock.control.access.contract",
       "nodes": [
         {
@@ -828,14 +1726,14 @@
           "key": "relaydock/relaydock.control.access.contract",
           "location": {
             "declarationLine": null,
-            "endLine": 6,
+            "endLine": 8,
             "exported": null,
             "kind": null,
             "language": null,
             "path": "internal/auth/controlaccess/policy_test.go",
             "receiver": null,
             "signature": null,
-            "startLine": 1,
+            "startLine": 3,
             "symbol": null,
             "visibility": null
           },
@@ -844,7 +1742,7 @@
           "semanticId": "relaydock.control.access.contract"
         }
       ],
-      "outputHash": "c75f61c415a912e097ddbbc6ffe4a61bff66a2db8332f606b7c21ff36eb8d31a"
+      "outputHash": "108b6be91089b9bb0b803273da59ec094b8f419ea04b00bbc1f11f4a32f6154c"
     },
     {
       "edges": [
@@ -861,9 +1759,23 @@
             "type": "source-card"
           },
           "to": "relaydock/relaydock.control.snapshot.contract"
+        },
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.control.snapshot",
+          "id": "3e5f317b1e728fd6c2d86668a1523dc773fbbabad2c0c834c713e1cd6dccd58e",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "internal/control/snapshot/manager.go",
+            "source": "internal/control/snapshot/manager.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.core.error-contract"
         }
       ],
-      "inputHash": "3e5fccfc45de2e7632e4525c2ef74bc77d1887ac6a1c4825bc4253bec4be2c5e",
+      "inputHash": "fc391e5f487882161a7de3aa695ef831ec691e445ac76cbabe7014a9afdf05d7",
       "key": "card:relaydock/relaydock.control.snapshot",
       "nodes": [
         {
@@ -895,13 +1807,37 @@
           "repositoryId": "relaydock",
           "role": null,
           "semanticId": "relaydock.control.snapshot.contract"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.core.error-contract",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.core.error-contract"
         }
       ],
-      "outputHash": "d891802612733c955ea7efe93525458ef062960edd827c6571f4434cadff32a5"
+      "outputHash": "8e56401f363b5473316baf7bc544e426b031c0a49a952e1348cec082656f3260"
     },
     {
-      "edges": [],
-      "inputHash": "b765baedb7376bc0c6410b87d477839d82756ae863504dca4792e0d6c6667bcb",
+      "edges": [
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.control.snapshot.contract",
+          "id": "294cd96007a030bf45f0a2e04fbf647027a0a151bdb1e4a5fea47f397c55c7d7",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "internal/control/snapshot/manager_test.go",
+            "source": "internal/control/snapshot/manager_test.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.core.error-contract"
+        }
+      ],
+      "inputHash": "008f2cd67c60ea089e12e9e56131d0072aec129805179adfb101225c01e60e57",
       "key": "card:relaydock/relaydock.control.snapshot.contract",
       "nodes": [
         {
@@ -910,29 +1846,319 @@
           "key": "relaydock/relaydock.control.snapshot.contract",
           "location": {
             "declarationLine": null,
-            "endLine": 6,
+            "endLine": 8,
             "exported": null,
             "kind": null,
             "language": null,
             "path": "internal/control/snapshot/manager_test.go",
             "receiver": null,
             "signature": null,
-            "startLine": 1,
+            "startLine": 3,
             "symbol": null,
             "visibility": null
           },
           "repositoryId": "relaydock",
           "role": "Verify snapshot rollback, same-revision mutation, and last-known-good persistence failure handling.",
           "semanticId": "relaydock.control.snapshot.contract"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.core.error-contract",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.core.error-contract"
         }
       ],
-      "outputHash": "2d5ccb8cd34494c0949bb990f50045658280908f467b59a265215875f78c6226"
+      "outputHash": "c529b6829fc5456283c5385445726ac5ec0952fdb413b38a8778ef00d26bd08d"
     },
     {
       "edges": [],
-      "inputHash": "9b50b96688e00b14d474bdba49ee92caf50a8490dac985a0818fa5b6f1d584b0",
+      "inputHash": "a07218b88291492d6ff5818e5beb74c14bcde7b267fa68c434b7eec304dbfee6",
+      "key": "card:relaydock/relaydock.core.error-contract",
+      "nodes": [
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.core.error-contract",
+          "location": {
+            "declarationLine": null,
+            "endLine": 12,
+            "exported": null,
+            "kind": null,
+            "language": null,
+            "path": "internal/core/errors.go",
+            "receiver": null,
+            "signature": null,
+            "startLine": 3,
+            "symbol": null,
+            "visibility": null
+          },
+          "repositoryId": "relaydock",
+          "role": "Define stable cross-layer error identities used for transport status mapping, retry decisions, and operator diagnostics.",
+          "semanticId": "relaydock.core.error-contract"
+        }
+      ],
+      "outputHash": "95cfdf19f7aad50c475c36d7b83c2e25ff661deeac8dba873b037a6ad40bf146"
+    },
+    {
+      "edges": [
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.credentials.secret-service",
+          "id": "7fa54dd19b7442d024d9a1f08c153817342bace0a4ad7a88d97046724a853e7c",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "internal/credentials/secret_service.go",
+            "source": "internal/credentials/secret_service.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.core.error-contract"
+        },
+        {
+          "confidence": 1,
+          "from": "relaydock/relaydock.credentials.secret-service",
+          "id": "021f4b5ca03803081c9d1bb0c1868254acc33085c432117c4264ddaf18edc657",
+          "kind": "test",
+          "provenance": {
+            "generator": null,
+            "line": 3,
+            "path": "internal/credentials/secret_service.go",
+            "source": "internal/credentials/secret_service.go",
+            "type": "source-card"
+          },
+          "to": "relaydock/relaydock.credentials.secret-service.contract"
+        }
+      ],
+      "inputHash": "da9bb4a4c8390e24f3a143e4036a0e7979ea8dc843fcaa26b2f7c3aa3e89dd7e",
+      "key": "card:relaydock/relaydock.credentials.secret-service",
+      "nodes": [
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.core.error-contract",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.core.error-contract"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.credentials.secret-service",
+          "location": {
+            "declarationLine": null,
+            "endLine": 14,
+            "exported": null,
+            "kind": null,
+            "language": null,
+            "path": "internal/credentials/secret_service.go",
+            "receiver": null,
+            "signature": null,
+            "startLine": 3,
+            "symbol": null,
+            "visibility": null
+          },
+          "repositoryId": "relaydock",
+          "role": "Store opaque credential bytes in the Linux Secret Service through cancellable D-Bus sessions, unlock prompts, and bounded public errors.",
+          "semanticId": "relaydock.credentials.secret-service"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.credentials.secret-service.contract",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.credentials.secret-service.contract"
+        }
+      ],
+      "outputHash": "5d4f4bfc880b272f85184efe6c2886ce0bc7adbafc4c21db7df76a012c34c4c9"
+    },
+    {
+      "edges": [
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.credentials.secret-service.contract",
+          "id": "43fa4a338dd2b0b151e40e09983950c8e2de0cba9c06d9eba1d5e7a357ca0503",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "internal/credentials/secret_service_test.go",
+            "source": "internal/credentials/secret_service_test.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.core.error-contract"
+        }
+      ],
+      "inputHash": "cb4cc990d181499bc77b5f4767e4d72f6b265df4e5cc1bdcaac097a28818542f",
+      "key": "card:relaydock/relaydock.credentials.secret-service.contract",
+      "nodes": [
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.core.error-contract",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.core.error-contract"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.credentials.secret-service.contract",
+          "location": {
+            "declarationLine": null,
+            "endLine": 8,
+            "exported": null,
+            "kind": null,
+            "language": null,
+            "path": "internal/credentials/secret_service_test.go",
+            "receiver": null,
+            "signature": null,
+            "startLine": 3,
+            "symbol": null,
+            "visibility": null
+          },
+          "repositoryId": "relaydock",
+          "role": "Verify Linux Secret Service create, unlock, read, delete, cancellation, byte clearing, and remote error redaction behavior.",
+          "semanticId": "relaydock.credentials.secret-service.contract"
+        }
+      ],
+      "outputHash": "2dd793fc9dd7a37650256a32ea04e672bf27c1a7e25996e468b4e463b3e8d5ec"
+    },
+    {
+      "edges": [
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.expert.application",
+          "id": "2193ec6e86f9fdaa178cb573e27881933dc412645cfb6b23a1a3fd368744746b",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "internal/expert/app/app.go",
+            "source": "internal/expert/app/app.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.contextpack.compile"
+        },
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.expert.application",
+          "id": "93712d0236d1d359d530fd17f25890ac6b41655fcdc1041b4ca1e1ad684d555a",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "internal/expert/app/app.go",
+            "source": "internal/expert/app/app.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.core.error-contract"
+        },
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.expert.application",
+          "id": "d3e7fef974bda79c43ee311ae0c416def385c639bf462df1cda106f9d4948df7",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "internal/expert/app/app.go",
+            "source": "internal/expert/app/app.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.expert.lifecycle"
+        }
+      ],
+      "inputHash": "e10c8b51e46592d90275ab8ff3da7489ccd2277cf3b2c97331431e4a3416386d",
+      "key": "card:relaydock/relaydock.expert.application",
+      "nodes": [
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.contextpack.compile",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.contextpack.compile"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.core.error-contract",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.core.error-contract"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.expert.application",
+          "location": {
+            "declarationLine": null,
+            "endLine": 12,
+            "exported": null,
+            "kind": null,
+            "language": null,
+            "path": "internal/expert/app/app.go",
+            "receiver": null,
+            "signature": null,
+            "startLine": 3,
+            "symbol": null,
+            "visibility": null
+          },
+          "repositoryId": "relaydock",
+          "role": "Compose expert consultation, ContextPack, and result stores while preserving atomic cross-aggregate creation and completion when supported.",
+          "semanticId": "relaydock.expert.application"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.expert.lifecycle",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.expert.lifecycle"
+        }
+      ],
+      "outputHash": "456b35f357f2ec39b216069a775d80d302ceb7dcf68e9c637658554e25a0ee94"
+    },
+    {
+      "edges": [
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.expert.lifecycle",
+          "id": "99167a6bd66e9fdcfde17b8b8081eba881e26e7ed5686481a9f3de9c6bccfbe4",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "internal/expert/consultation/state_machine.go",
+            "source": "internal/expert/consultation/state_machine.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.core.error-contract"
+        }
+      ],
+      "inputHash": "7a69960914cc9ff179787f94ee7c3301f4efce4595bac5b4cddfac428a8985bf",
       "key": "card:relaydock/relaydock.expert.lifecycle",
       "nodes": [
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.core.error-contract",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.core.error-contract"
+        },
         {
           "definitions": [],
           "external": false,
@@ -955,13 +2181,294 @@
           "semanticId": "relaydock.expert.lifecycle"
         }
       ],
-      "outputHash": "c33d01f246df07c5276d8bc925e23216018b4ea089145f5230ad377325e0a613"
+      "outputHash": "debcbbba157a1420fa6e0bdbb10e176f2f421e208077a5ab6447be33cc663481"
+    },
+    {
+      "edges": [
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.expert.openai-api",
+          "id": "de4d5326967d0b26f3f1f5878747d977c439cb795b629425dff291dbb88cad11",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "internal/expert/routes/openaiapi/client.go",
+            "source": "internal/expert/routes/openaiapi/client.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.contextpack.compile"
+        },
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.expert.openai-api",
+          "id": "d4120fc0d221757573bdfe94a1ae99ca5fa48640d8cb89b41497192eb4e8e51d",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "internal/expert/routes/openaiapi/client.go",
+            "source": "internal/expert/routes/openaiapi/client.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.core.error-contract"
+        },
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.expert.openai-api",
+          "id": "39a66c22fa23fc0c76ac2a70b1dc1645977ae52236c218f5f093b8b35f02fe3b",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "internal/expert/routes/openaiapi/client.go",
+            "source": "internal/expert/routes/openaiapi/client.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.provider.error-taxonomy"
+        }
+      ],
+      "inputHash": "d40d2cf30bacb56660bc13b5b71673a4bab7759ca3d05bbb945a887d7c42ddcb",
+      "key": "card:relaydock/relaydock.expert.openai-api",
+      "nodes": [
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.contextpack.compile",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.contextpack.compile"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.core.error-contract",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.core.error-contract"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.expert.openai-api",
+          "location": {
+            "declarationLine": null,
+            "endLine": 12,
+            "exported": null,
+            "kind": null,
+            "language": null,
+            "path": "internal/expert/routes/openaiapi/client.go",
+            "receiver": null,
+            "signature": null,
+            "startLine": 3,
+            "symbol": null,
+            "visibility": null
+          },
+          "repositoryId": "relaydock",
+          "role": "Submit a redacted ContextPack to the OpenAI Responses API under explicit output and cost ceilings, then validate the structured expert result.",
+          "semanticId": "relaydock.expert.openai-api"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.provider.error-taxonomy",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.provider.error-taxonomy"
+        }
+      ],
+      "outputHash": "e48606cf4d04a69078a20cfc717dc4e9efd0e2d906241d98212bd3b4af87d8ba"
+    },
+    {
+      "edges": [
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.expert.web-handoff",
+          "id": "cc0396ea05c4675b21cd4215de21b0a72f94b4d67b3a23688897ee1cfc02b5f8",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "internal/expert/routes/webhandoff/service.go",
+            "source": "internal/expert/routes/webhandoff/service.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.core.error-contract"
+        }
+      ],
+      "inputHash": "7cdeb684f797f40e70ac0388b685db5ce77f9382d8dc5857175c275e117aa331",
+      "key": "card:relaydock/relaydock.expert.web-handoff",
+      "nodes": [
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.core.error-contract",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.core.error-contract"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.expert.web-handoff",
+          "location": {
+            "declarationLine": null,
+            "endLine": 12,
+            "exported": null,
+            "kind": null,
+            "language": null,
+            "path": "internal/expert/routes/webhandoff/service.go",
+            "receiver": null,
+            "signature": null,
+            "startLine": 3,
+            "symbol": null,
+            "visibility": null
+          },
+          "repositoryId": "relaydock",
+          "role": "Issue expiring read tokens for browser handoff consultations and accept only validated structured results before expiry.",
+          "semanticId": "relaydock.expert.web-handoff"
+        }
+      ],
+      "outputHash": "39e23d62bf7b801e0dfdfdb17d7eebe451744dcb76e71aa91dbfe2999127c7cc"
     },
     {
       "edges": [],
-      "inputHash": "674dd86f404868920b6fc314be3b17f4c877b98d89a82425bd80c8b3e8051a27",
+      "inputHash": "1cb0a58154279dbc8ee115e5ee583cea65205cfdf31c74db1bfdd25a0ce566f6",
+      "key": "card:relaydock/relaydock.frontend.runtime-adapter",
+      "nodes": [
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.frontend.runtime-adapter",
+          "location": {
+            "declarationLine": null,
+            "endLine": 10,
+            "exported": null,
+            "kind": null,
+            "language": null,
+            "path": "frontend/src/lib/runtime-adapter.ts",
+            "receiver": null,
+            "signature": null,
+            "startLine": 1,
+            "symbol": null,
+            "visibility": null
+          },
+          "repositoryId": "relaydock",
+          "role": "Keep desktop UI calls behind typed Wails service adapters and build privacy-aware ContextPack previews before consultation creation.",
+          "semanticId": "relaydock.frontend.runtime-adapter"
+        }
+      ],
+      "outputHash": "f451477ae14fd9242f08415a941d410230538c819f66beb42d19df5de39a6ede"
+    },
+    {
+      "edges": [
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.local-ipc.server",
+          "id": "c31f7f23e9a3b93b84f355430f293439772d3d088fe34d9013de49f40861b21f",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "internal/localipc/server.go",
+            "source": "internal/localipc/server.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.core.error-contract"
+        }
+      ],
+      "inputHash": "9cf7ad7ea4828b0626e2766d7d9e27f61ad1e896c590a272af9535d7b6a5d0f1",
+      "key": "card:relaydock/relaydock.local-ipc.server",
+      "nodes": [
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.core.error-contract",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.core.error-contract"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.local-ipc.server",
+          "location": {
+            "declarationLine": null,
+            "endLine": 12,
+            "exported": null,
+            "kind": null,
+            "language": null,
+            "path": "internal/localipc/server.go",
+            "receiver": null,
+            "signature": null,
+            "startLine": 3,
+            "symbol": null,
+            "visibility": null
+          },
+          "repositoryId": "relaydock",
+          "role": "Serve bounded framed JSON requests over the local endpoint with explicit connection backpressure and method dispatch.",
+          "semanticId": "relaydock.local-ipc.server"
+        }
+      ],
+      "outputHash": "c2c5638ca85bfb67a0f9da0a88e550167c7e149c7ec1c9454ba56983cd429a06"
+    },
+    {
+      "edges": [
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.mcp.remote",
+          "id": "8a81acf11c4600462cdf02037c6badd4674c9dfae5bcfd31e196a1e53577bd45",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "internal/mcpremote/server.go",
+            "source": "internal/mcpremote/server.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.auth.scoped-token-keyring"
+        },
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.mcp.remote",
+          "id": "e2d9cae863129fedc8cca36551a43b6119b5632d380e7645ea181f8bbe35a082",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "internal/mcpremote/server.go",
+            "source": "internal/mcpremote/server.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.core.error-contract"
+        }
+      ],
+      "inputHash": "0c781469bb079edebe49b43f9d786ec0da89cd3daea0c1bf2daa161b88592f57",
       "key": "card:relaydock/relaydock.mcp.remote",
       "nodes": [
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.auth.scoped-token-keyring",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.auth.scoped-token-keyring"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.core.error-contract",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.core.error-contract"
+        },
         {
           "definitions": [],
           "external": false,
@@ -984,11 +2491,11 @@
           "semanticId": "relaydock.mcp.remote"
         }
       ],
-      "outputHash": "39d11dc2565ab560ee83e750e50b3fbcb12815bb4ad6e836f1f70c5badac9f7f"
+      "outputHash": "b2bc218bbf3cb8611348a70957791163c0a9d3592a97e06895e740e0816b2ee9"
     },
     {
       "edges": [],
-      "inputHash": "68485b177429cd3350793fdc3f58c16979fabfa3144017335d689bd79497b52a",
+      "inputHash": "ceed9e5ddb636a1e88300360b4a92335fdbde0b09e70598700dbcc351f0c0b7a",
       "key": "card:relaydock/relaydock.mcp.stdio",
       "nodes": [
         {
@@ -1017,9 +2524,581 @@
     },
     {
       "edges": [],
-      "inputHash": "ae681ed5fed7684c115f132aa0085a613c51119fa022ab7222db324edbe8811d",
+      "inputHash": "178632f8831f2c7ee9b59b22f75f29da27c075e8a3507f9d7144a3103897e9aa",
+      "key": "card:relaydock/relaydock.migration.expert-durability.down",
+      "nodes": [
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.migration.expert-durability.down",
+          "location": {
+            "declarationLine": null,
+            "endLine": 10,
+            "exported": null,
+            "kind": null,
+            "language": null,
+            "path": "db/migrations/000002_expert_durability.down.sql",
+            "receiver": null,
+            "signature": null,
+            "startLine": 1,
+            "symbol": null,
+            "visibility": null
+          },
+          "repositoryId": "relaydock",
+          "role": "Remove expert durability indexes, lease metadata, tenant scope, and result linkage introduced by migration 000002.",
+          "semanticId": "relaydock.migration.expert-durability.down"
+        }
+      ],
+      "outputHash": "50db99dda78e77ae86da3bf06473fc99cd75f9e528acfc61692d76d48ff58fd3"
+    },
+    {
+      "edges": [],
+      "inputHash": "23b8e6ada10a103b96369f4324f03b118bca95188745e64c0140072923ebf17e",
+      "key": "card:relaydock/relaydock.migration.expert-durability.up",
+      "nodes": [
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.migration.expert-durability.up",
+          "location": {
+            "declarationLine": null,
+            "endLine": 10,
+            "exported": null,
+            "kind": null,
+            "language": null,
+            "path": "db/migrations/000002_expert_durability.up.sql",
+            "receiver": null,
+            "signature": null,
+            "startLine": 1,
+            "symbol": null,
+            "visibility": null
+          },
+          "repositoryId": "relaydock",
+          "role": "Add tenant scope, fenced worker lease state, result provenance, and claim indexes to durable expert consultations.",
+          "semanticId": "relaydock.migration.expert-durability.up"
+        }
+      ],
+      "outputHash": "8284fa2b8d7395370ec9ab70905e53ebdb5fbe5dbc4958da16552620d1ae4890"
+    },
+    {
+      "edges": [],
+      "inputHash": "5ee9c1fa4d8a27b4bfd81c31e3245a8af37e99f99e23bae6d7c9245a983d6756",
+      "key": "card:relaydock/relaydock.migration.initial.down",
+      "nodes": [
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.migration.initial.down",
+          "location": {
+            "declarationLine": null,
+            "endLine": 10,
+            "exported": null,
+            "kind": null,
+            "language": null,
+            "path": "db/migrations/000001_initial.down.sql",
+            "receiver": null,
+            "signature": null,
+            "startLine": 1,
+            "symbol": null,
+            "visibility": null
+          },
+          "repositoryId": "relaydock",
+          "role": "Remove every application schema created by the initial RelayDock migration during an explicit full rollback.",
+          "semanticId": "relaydock.migration.initial.down"
+        }
+      ],
+      "outputHash": "1d856a3c5b81613a5e6434ec0e3ad96011725f48ad91cc0d6190676994b00df7"
+    },
+    {
+      "edges": [],
+      "inputHash": "ed533d6665c5798ad4fe3ccb9f222254544b42b8ee54c69a1b645ac8f2fd8aed",
+      "key": "card:relaydock/relaydock.migration.initial.up",
+      "nodes": [
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.migration.initial.up",
+          "location": {
+            "declarationLine": null,
+            "endLine": 10,
+            "exported": null,
+            "kind": null,
+            "language": null,
+            "path": "db/migrations/000001_initial.up.sql",
+            "receiver": null,
+            "signature": null,
+            "startLine": 1,
+            "symbol": null,
+            "visibility": null
+          },
+          "repositoryId": "relaydock",
+          "role": "Create the initial control, runtime, expert, and outbox PostgreSQL schemas and their foundational integrity constraints.",
+          "semanticId": "relaydock.migration.initial.up"
+        }
+      ],
+      "outputHash": "26b7c1c461f1ac12c013e87fcedb70d9746fa7255780ce4a89ce46dc2786e9b0"
+    },
+    {
+      "edges": [],
+      "inputHash": "cd6503657de1c86a48d84178d98d3d7a39cdf4c6e9d122de5b7e81d79e20636d",
+      "key": "card:relaydock/relaydock.migration.outbox-delivery.down",
+      "nodes": [
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.migration.outbox-delivery.down",
+          "location": {
+            "declarationLine": null,
+            "endLine": 10,
+            "exported": null,
+            "kind": null,
+            "language": null,
+            "path": "db/migrations/000004_outbox_delivery.down.sql",
+            "receiver": null,
+            "signature": null,
+            "startLine": 1,
+            "symbol": null,
+            "visibility": null
+          },
+          "repositoryId": "relaydock",
+          "role": "Remove recoverable lease and dead-letter state while restoring the initial pending-event queue index.",
+          "semanticId": "relaydock.migration.outbox-delivery.down"
+        }
+      ],
+      "outputHash": "f2adb4523726f3c718515edaf9f4f3f1e05e05bacff62e7442a5eb6882258271"
+    },
+    {
+      "edges": [],
+      "inputHash": "df08c2826adca930737cc3e1b4cf4b15fcf6d7b495fbebc2691017fe9bca8ca8",
+      "key": "card:relaydock/relaydock.migration.outbox-delivery.up",
+      "nodes": [
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.migration.outbox-delivery.up",
+          "location": {
+            "declarationLine": null,
+            "endLine": 10,
+            "exported": null,
+            "kind": null,
+            "language": null,
+            "path": "db/migrations/000004_outbox_delivery.up.sql",
+            "receiver": null,
+            "signature": null,
+            "startLine": 1,
+            "symbol": null,
+            "visibility": null
+          },
+          "repositoryId": "relaydock",
+          "role": "Add recoverable outbox lease expiry, bounded failure state, dead-letter state, and worker-oriented partial indexes.",
+          "semanticId": "relaydock.migration.outbox-delivery.up"
+        }
+      ],
+      "outputHash": "d69b8021fa91ca82627b8115da285332d0292ed4041774d51a2c26ac7f018f85"
+    },
+    {
+      "edges": [],
+      "inputHash": "fb2772dc94d6d1c470f7703bf68602162e0ef2fa52632f33bea172f283d897e4",
+      "key": "card:relaydock/relaydock.migration.runtime-journal.down",
+      "nodes": [
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.migration.runtime-journal.down",
+          "location": {
+            "declarationLine": null,
+            "endLine": 10,
+            "exported": null,
+            "kind": null,
+            "language": null,
+            "path": "db/migrations/000003_runtime_journal.down.sql",
+            "receiver": null,
+            "signature": null,
+            "startLine": 1,
+            "symbol": null,
+            "visibility": null
+          },
+          "repositoryId": "relaydock",
+          "role": "Remove expanded request usage and provider-attempt journal fields while restoring the original connection requirement when data permits.",
+          "semanticId": "relaydock.migration.runtime-journal.down"
+        }
+      ],
+      "outputHash": "38d544e6ca2b5e1d7192ca918d843fcc5d873041de45c0dd2dcbd7b3846b252e"
+    },
+    {
+      "edges": [],
+      "inputHash": "93c8fbcba2995cd8c31ef85dc40808ab54a5a386ae1a1eae6be528a177e2ebf6",
+      "key": "card:relaydock/relaydock.migration.runtime-journal.up",
+      "nodes": [
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.migration.runtime-journal.up",
+          "location": {
+            "declarationLine": null,
+            "endLine": 10,
+            "exported": null,
+            "kind": null,
+            "language": null,
+            "path": "db/migrations/000003_runtime_journal.up.sql",
+            "receiver": null,
+            "signature": null,
+            "startLine": 1,
+            "symbol": null,
+            "visibility": null
+          },
+          "repositoryId": "relaydock",
+          "role": "Expand the runtime journal with client identity, tenant scope, usage totals, provider attempt provenance, commit state, and bounded failure metadata.",
+          "semanticId": "relaydock.migration.runtime-journal.up"
+        }
+      ],
+      "outputHash": "2762466835c5ebe1b37da94f25e104629dad5935d7cb393668ec712637ed8cc6"
+    },
+    {
+      "edges": [
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.observability.tracing",
+          "id": "7d231d04ad659c2a744827f4352ef7710d5de3bb9e45b65b8f98a1eeee8823d5",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "internal/observability/tracing.go",
+            "source": "internal/observability/tracing.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.core.error-contract"
+        }
+      ],
+      "inputHash": "a5475881883cd0f53dacf8d02b2be82fe21977467603a1c8924e73a160f8a64d",
+      "key": "card:relaydock/relaydock.observability.tracing",
+      "nodes": [
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.core.error-contract",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.core.error-contract"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.observability.tracing",
+          "location": {
+            "declarationLine": null,
+            "endLine": 12,
+            "exported": null,
+            "kind": null,
+            "language": null,
+            "path": "internal/observability/tracing.go",
+            "receiver": null,
+            "signature": null,
+            "startLine": 3,
+            "symbol": null,
+            "visibility": null
+          },
+          "repositoryId": "relaydock",
+          "role": "Create process-local trace spans with parent propagation, exactly-once completion, and a replaceable exporter boundary.",
+          "semanticId": "relaydock.observability.tracing"
+        }
+      ],
+      "outputHash": "cd3c94a52b1762389b47eaea2eb7db7e26c6f8c424cf6fbfb2c7ffaf4a912146"
+    },
+    {
+      "edges": [
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.outbox.delivery",
+          "id": "2cb7785bc6c37f81a15b5019f87c4e99fdce366dace9f8042f33f394814112f3",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "internal/outbox/delivery.go",
+            "source": "internal/outbox/delivery.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.core.error-contract"
+        }
+      ],
+      "inputHash": "9254fe5577af551f4e6fdeb9f9911079a701d0626ea5c05c02f724bbdeb2f3d5",
+      "key": "card:relaydock/relaydock.outbox.delivery",
+      "nodes": [
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.core.error-contract",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.core.error-contract"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.outbox.delivery",
+          "location": {
+            "declarationLine": null,
+            "endLine": 12,
+            "exported": null,
+            "kind": null,
+            "language": null,
+            "path": "internal/outbox/delivery.go",
+            "receiver": null,
+            "signature": null,
+            "startLine": 3,
+            "symbol": null,
+            "visibility": null
+          },
+          "repositoryId": "relaydock",
+          "role": "Deliver leased outbox events with bounded concurrency, fenced completion, deterministic jitter, retry limits, and dead-letter handling.",
+          "semanticId": "relaydock.outbox.delivery"
+        }
+      ],
+      "outputHash": "0a72daa3740d6e704cf4ecb4b0d42caefa9fd3b37c03d47c4fdc2f4ad079b0aa"
+    },
+    {
+      "edges": [
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.outbox.postgres",
+          "id": "e7ecff9d349efd4437734a898b9295dc3c4584e48cbad80f93d9626716cc462f",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "internal/persistence/postgres/outbox_repository.go",
+            "source": "internal/persistence/postgres/outbox_repository.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.core.error-contract"
+        },
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.outbox.postgres",
+          "id": "d8c4d143e80e4b7cd65ce5381b7613861e2bd8b3b74454b739ac1476603b636d",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "internal/persistence/postgres/outbox_repository.go",
+            "source": "internal/persistence/postgres/outbox_repository.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.outbox.delivery"
+        }
+      ],
+      "inputHash": "c4017d3fe060e5d0ad0665a1ac5a209e63ba2403ad4154f190dd7ad0aa258c38",
+      "key": "card:relaydock/relaydock.outbox.postgres",
+      "nodes": [
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.core.error-contract",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.core.error-contract"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.outbox.delivery",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.outbox.delivery"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.outbox.postgres",
+          "location": {
+            "declarationLine": null,
+            "endLine": 12,
+            "exported": null,
+            "kind": null,
+            "language": null,
+            "path": "internal/persistence/postgres/outbox_repository.go",
+            "receiver": null,
+            "signature": null,
+            "startLine": 3,
+            "symbol": null,
+            "visibility": null
+          },
+          "repositoryId": "relaydock",
+          "role": "Lease PostgreSQL outbox events to workers and fence publish, retry, release, and dead-letter completion by the active lease owner.",
+          "semanticId": "relaydock.outbox.postgres"
+        }
+      ],
+      "outputHash": "e23d6d7d4695f50fd906b2c682a27bf25deb6aa8cbf5b3f4c9c1921be42dd825"
+    },
+    {
+      "edges": [],
+      "inputHash": "f9bc93740b30952d659e3e285a668f49d92cf80fc9702fab32b73184c875f177",
+      "key": "card:relaydock/relaydock.persistence.atomic-file",
+      "nodes": [
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.persistence.atomic-file",
+          "location": {
+            "declarationLine": null,
+            "endLine": 12,
+            "exported": null,
+            "kind": null,
+            "language": null,
+            "path": "internal/persistence/atomicfile/file.go",
+            "receiver": null,
+            "signature": null,
+            "startLine": 3,
+            "symbol": null,
+            "visibility": null
+          },
+          "repositoryId": "relaydock",
+          "role": "Persist bounded local state through a same-directory temporary file, durable flushes, restrictive permissions, and recoverable replacement.",
+          "semanticId": "relaydock.persistence.atomic-file"
+        }
+      ],
+      "outputHash": "fb73bd10dffd77d0aae5094b1d9d9a0899cea354b260f9a72eeb81c562f144f5"
+    },
+    {
+      "edges": [],
+      "inputHash": "65c0ed972c49b0efa5d2517ea7c82b07cea80abf6a31e14170999619df4d2663",
+      "key": "card:relaydock/relaydock.persistence.migrations",
+      "nodes": [
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.persistence.migrations",
+          "location": {
+            "declarationLine": null,
+            "endLine": 12,
+            "exported": null,
+            "kind": null,
+            "language": null,
+            "path": "internal/persistence/migrate/runner.go",
+            "receiver": null,
+            "signature": null,
+            "startLine": 3,
+            "symbol": null,
+            "visibility": null
+          },
+          "repositoryId": "relaydock",
+          "role": "Apply or roll back embedded PostgreSQL migrations in version order under one advisory lock with checksum validation.",
+          "semanticId": "relaydock.persistence.migrations"
+        }
+      ],
+      "outputHash": "df9418b1c18d2d0a8849cdbfe7b5515f5926550f0515f3d2e19054ce187d46bc"
+    },
+    {
+      "edges": [
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.protocol.canonical-envelope",
+          "id": "8c258a9667c7f32be1386d771ee7464c8e63591719726a604d10ba60f7151874",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "internal/protocol/canonical/types.go",
+            "source": "internal/protocol/canonical/types.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.core.error-contract"
+        }
+      ],
+      "inputHash": "47b8666ca6add976762cfa763306d27c2d9de67549f0524d0e25bbb1396522d7",
+      "key": "card:relaydock/relaydock.protocol.canonical-envelope",
+      "nodes": [
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.core.error-contract",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.core.error-contract"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.protocol.canonical-envelope",
+          "location": {
+            "declarationLine": null,
+            "endLine": 12,
+            "exported": null,
+            "kind": null,
+            "language": null,
+            "path": "internal/protocol/canonical/types.go",
+            "receiver": null,
+            "signature": null,
+            "startLine": 3,
+            "symbol": null,
+            "visibility": null
+          },
+          "repositoryId": "relaydock",
+          "role": "Define the provider-neutral request vocabulary that preserves messages, tools, reasoning, capabilities, metadata, and unknown extensions.",
+          "semanticId": "relaydock.protocol.canonical-envelope"
+        }
+      ],
+      "outputHash": "e33908fff009c408ca42e99c7e0d69fa9bdeec0f9633634e2aae9d6ec6357f8b"
+    },
+    {
+      "edges": [
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.protocol.compiler",
+          "id": "bfb5068bb5a0ae035ecadfc957de8c140ef459370a3b46548ac48ecdac7cbe99",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "internal/protocol/compiler/compiler.go",
+            "source": "internal/protocol/compiler/compiler.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.core.error-contract"
+        },
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.protocol.compiler",
+          "id": "ced942476e1f60b4c5f524931e0bdfd09c9f488c3526819c856dc3e61b87a789",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "internal/protocol/compiler/compiler.go",
+            "source": "internal/protocol/compiler/compiler.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.protocol.canonical-envelope"
+        }
+      ],
+      "inputHash": "84d9d2bc5c6e714adca05cb27c321cd1dbfc3edbe89a8b6e47d18e4efd9fc7c5",
       "key": "card:relaydock/relaydock.protocol.compiler",
       "nodes": [
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.core.error-contract",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.core.error-contract"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.protocol.canonical-envelope",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.protocol.canonical-envelope"
+        },
         {
           "definitions": [],
           "external": false,
@@ -1042,13 +3121,288 @@
           "semanticId": "relaydock.protocol.compiler"
         }
       ],
-      "outputHash": "d18a81f0c5bf01dc706466a9c42a659f3e1bddb006219f84bbcc3302827cf9b8"
+      "outputHash": "56a7ef3e8d6412d4d2f547a7036fed1cce9c05ef298607b85a24c3f552da05eb"
     },
     {
-      "edges": [],
-      "inputHash": "4f6fc12812aaea63e3aeeb673eb5a52679fa65ca29db0f8108decdc843c06277",
+      "edges": [
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.protocol.stream-state",
+          "id": "d45e72d405652318a6d7d2f6b8a2abf3cee3cee3e6b68651acb3b08e720289e6",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "internal/protocol/stream/state_machine.go",
+            "source": "internal/protocol/stream/state_machine.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.core.error-contract"
+        }
+      ],
+      "inputHash": "1807318953b64b0f8e41cdfc0ccbeced111ccd63a525eb110bace6e4d6ab922f",
+      "key": "card:relaydock/relaydock.protocol.stream-state",
+      "nodes": [
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.core.error-contract",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.core.error-contract"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.protocol.stream-state",
+          "location": {
+            "declarationLine": null,
+            "endLine": 12,
+            "exported": null,
+            "kind": null,
+            "language": null,
+            "path": "internal/protocol/stream/state_machine.go",
+            "receiver": null,
+            "signature": null,
+            "startLine": 3,
+            "symbol": null,
+            "visibility": null
+          },
+          "repositoryId": "relaydock",
+          "role": "Serialize canonical stream transitions and expose whether a failed attempt remains safe for transparent retry.",
+          "semanticId": "relaydock.protocol.stream-state"
+        }
+      ],
+      "outputHash": "aed99f43a2bb93e359862214d55c8e16ea688a13922cb3b4df0be7c42757b9b0"
+    },
+    {
+      "edges": [
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.provider.error-taxonomy",
+          "id": "5dd70bc483a0ee0e64b378f46fcea41694f4d22d56e57e3858014eb22b2b5e3d",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "internal/provider/error.go",
+            "source": "internal/provider/error.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.core.error-contract"
+        }
+      ],
+      "inputHash": "cbfb020e185518f3685594fe31cb378f2f6c7ecb2fe1e72a06d364c85869e3cf",
+      "key": "card:relaydock/relaydock.provider.error-taxonomy",
+      "nodes": [
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.core.error-contract",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.core.error-contract"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.provider.error-taxonomy",
+          "location": {
+            "declarationLine": null,
+            "endLine": 12,
+            "exported": null,
+            "kind": null,
+            "language": null,
+            "path": "internal/provider/error.go",
+            "receiver": null,
+            "signature": null,
+            "startLine": 3,
+            "symbol": null,
+            "visibility": null
+          },
+          "repositoryId": "relaydock",
+          "role": "Normalize HTTP and transport failures into provider-neutral classes used by retry, cooldown, metrics, and public error codes.",
+          "semanticId": "relaydock.provider.error-taxonomy"
+        }
+      ],
+      "outputHash": "c61968680a6b95faf915d5d19075989eca51f7d5bc1a70e5c8985f7824d9e5eb"
+    },
+    {
+      "edges": [
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.provider.http-adapter",
+          "id": "154c3938e24866ff1a3095fafb848a4c7bd4102fcaaf742d8c2a8dbca5188114",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "internal/provider/httpadapter/adapter.go",
+            "source": "internal/provider/httpadapter/adapter.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.core.error-contract"
+        },
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.provider.http-adapter",
+          "id": "7c4f87c1f47ffced0365366c4d9912265369931eb798015417cb6918b07bcc38",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "internal/provider/httpadapter/adapter.go",
+            "source": "internal/provider/httpadapter/adapter.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.protocol.canonical-envelope"
+        },
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.provider.http-adapter",
+          "id": "4736c713db285a6c43b8b9bf2ac3aef2e1ba12254168412df526f7387a5e41f6",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "internal/provider/httpadapter/adapter.go",
+            "source": "internal/provider/httpadapter/adapter.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.protocol.stream-state"
+        },
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.provider.http-adapter",
+          "id": "c9557a63756030040af28b79e8d87e845fe6afbaea4211938a18ac0b942bcdf2",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "internal/provider/httpadapter/adapter.go",
+            "source": "internal/provider/httpadapter/adapter.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.provider.error-taxonomy"
+        }
+      ],
+      "inputHash": "11e5d2920c789afaf844ff57c5675513ac40b02c05bd694c46a6c98662310a06",
+      "key": "card:relaydock/relaydock.provider.http-adapter",
+      "nodes": [
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.core.error-contract",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.core.error-contract"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.protocol.canonical-envelope",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.protocol.canonical-envelope"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.protocol.stream-state",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.protocol.stream-state"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.provider.error-taxonomy",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.provider.error-taxonomy"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.provider.http-adapter",
+          "location": {
+            "declarationLine": null,
+            "endLine": 12,
+            "exported": null,
+            "kind": null,
+            "language": null,
+            "path": "internal/provider/httpadapter/adapter.go",
+            "receiver": null,
+            "signature": null,
+            "startLine": 3,
+            "symbol": null,
+            "visibility": null
+          },
+          "repositoryId": "relaydock",
+          "role": "Execute provider-neutral HTTP attempts with configured authentication, protocol paths, bounded responses, and normalized upstream failures.",
+          "semanticId": "relaydock.provider.http-adapter"
+        }
+      ],
+      "outputHash": "fb11fe7260933a9b9d3d67fe253e39e588636b604ca05a364cbf3876c9bd788e"
+    },
+    {
+      "edges": [
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.routing.candidates",
+          "id": "55df4eeeab0dd245e8a9e5e22ccfd4ff8f5c6cc283c7f7e880522e288109d7df",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "internal/composition/gateway/routes_source.go",
+            "source": "internal/composition/gateway/routes_source.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.core.error-contract"
+        },
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.routing.candidates",
+          "id": "f67957f8e7131d7e799cb593ca69845d65d5d3418d8fb6838edf0e744143ca02",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "internal/composition/gateway/routes_source.go",
+            "source": "internal/composition/gateway/routes_source.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.protocol.canonical-envelope"
+        }
+      ],
+      "inputHash": "2ef284486f9bc599606392b3a23d683271e82f90aac7cee76c897effd952399a",
       "key": "card:relaydock/relaydock.routing.candidates",
       "nodes": [
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.core.error-contract",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.core.error-contract"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.protocol.canonical-envelope",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.protocol.canonical-envelope"
+        },
         {
           "definitions": [],
           "external": false,
@@ -1071,13 +3425,106 @@
           "semanticId": "relaydock.routing.candidates"
         }
       ],
-      "outputHash": "a22f333c5bb9ccaa2a2abeed8bc9c0278718f9c3378a498cc0c7781099a36553"
+      "outputHash": "75b06d77a291561052bc2aa0a1d5d629e3fa7b50106a101f816159d0cd64f934"
     },
     {
-      "edges": [],
-      "inputHash": "35f3f9998141ec8037a655d0a6595fa0f21321a1e726d260e7bb5bf3945a52c8",
+      "edges": [
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.runtime.gateway",
+          "id": "93ebb67de9ea9ad6c485f9d44b0f4a608b088094e2d928f0b3a5e04ed2172dd5",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "internal/runtime/run.go",
+            "source": "internal/runtime/run.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.core.error-contract"
+        },
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.runtime.gateway",
+          "id": "40c93f7b1d79285431230690c78a442369d8b5c13141166deabe9c928bbeccf3",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "internal/runtime/run.go",
+            "source": "internal/runtime/run.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.protocol.canonical-envelope"
+        },
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.runtime.gateway",
+          "id": "16a891411412a84f7464aa9d473f4126f3d5886263c36a99bd4fc74f50ead1c4",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "internal/runtime/run.go",
+            "source": "internal/runtime/run.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.protocol.stream-state"
+        },
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.runtime.gateway",
+          "id": "b87881d0e9818edfe3342153515303d754541076587e15e1dcf3bc9a75d290d1",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "internal/runtime/run.go",
+            "source": "internal/runtime/run.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.provider.error-taxonomy"
+        }
+      ],
+      "inputHash": "c4ae872ca149f11c3b7ab401e00ddd78982e1e1af7280df8cd1b4890af8d43f4",
       "key": "card:relaydock/relaydock.runtime.gateway",
       "nodes": [
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.core.error-contract",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.core.error-contract"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.protocol.canonical-envelope",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.protocol.canonical-envelope"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.protocol.stream-state",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.protocol.stream-state"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.provider.error-taxonomy",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.provider.error-taxonomy"
+        },
         {
           "definitions": [],
           "external": false,
@@ -1100,13 +3547,37 @@
           "semanticId": "relaydock.runtime.gateway"
         }
       ],
-      "outputHash": "3b9d392420950ac738ffc56f629b63d85eacbe9749a1d698a364b94ec605ad4b"
+      "outputHash": "006fcbeb785a73f78ca2bd01080c2a9155848a3108a55afac60c331abda4c1d4"
     },
     {
-      "edges": [],
-      "inputHash": "63d1312dbfa4aac1a0f512570a6ede3d3c1ffbc428b3b188f077dec454d50400",
+      "edges": [
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.security.ssrf",
+          "id": "7b982edd8be91ea25c25f60e2f51199445185de8f787e5a4fe34809d10f03c98",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "internal/security/ssrf/validator.go",
+            "source": "internal/security/ssrf/validator.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.core.error-contract"
+        }
+      ],
+      "inputHash": "777468f562cdad558cf46e911439e3451e37c3dbb0a41bafd0609a1ecd94cd29",
       "key": "card:relaydock/relaydock.security.ssrf",
       "nodes": [
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.core.error-contract",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.core.error-contract"
+        },
         {
           "definitions": [],
           "external": false,
@@ -1129,10 +3600,185 @@
           "semanticId": "relaydock.security.ssrf"
         }
       ],
-      "outputHash": "80d04ead5c38bc173c1334cfff34f7fc892cb67cfbfb3d10139997dfbb5937ed"
+      "outputHash": "b5dc0d6e59df67af3755dc71154779fbb05651f327c763a445c43459654a95d2"
+    },
+    {
+      "edges": [
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.transport.json-api",
+          "id": "b955d917b958c0e7a479eeaa253565f2c1df4ad3265c6a12e7975b345a519edd",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "internal/transport/apiutil/api.go",
+            "source": "internal/transport/apiutil/api.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.core.error-contract"
+        }
+      ],
+      "inputHash": "c310e1f10eaa5c9857e44b7c22bbaae1723956c8fd112a3ed04bc635f603a5e0",
+      "key": "card:relaydock/relaydock.transport.json-api",
+      "nodes": [
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.core.error-contract",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.core.error-contract"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.transport.json-api",
+          "location": {
+            "declarationLine": null,
+            "endLine": 12,
+            "exported": null,
+            "kind": null,
+            "language": null,
+            "path": "internal/transport/apiutil/api.go",
+            "receiver": null,
+            "signature": null,
+            "startLine": 3,
+            "symbol": null,
+            "visibility": null
+          },
+          "repositoryId": "relaydock",
+          "role": "Enforce bounded single-value JSON requests and map RelayDock domain errors into no-store JSON responses.",
+          "semanticId": "relaydock.transport.json-api"
+        }
+      ],
+      "outputHash": "023d7da15552c1471687e56f3600b34c34b0900572a52e8fa2d8e1cfe04931e5"
+    },
+    {
+      "edges": [
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.transport.live-stream",
+          "id": "5652ea71d93f4a02c2d0b315df2265173ca7c4dc7cf25e82a12528c2eed3ac08",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "internal/transport/httpgateway/streaming.go",
+            "source": "internal/transport/httpgateway/streaming.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.core.error-contract"
+        },
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.transport.live-stream",
+          "id": "7ea5a0e40253a29780c5cdf04ec7ee6b593697211221fde8da9ba32db0ab43a9",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "internal/transport/httpgateway/streaming.go",
+            "source": "internal/transport/httpgateway/streaming.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.protocol.canonical-envelope"
+        },
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.transport.live-stream",
+          "id": "52a351f65128c26d662f27121fa4c91088f12d7a3d045a3a37c2fb4fb461cafd",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "internal/transport/httpgateway/streaming.go",
+            "source": "internal/transport/httpgateway/streaming.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.protocol.stream-state"
+        },
+        {
+          "confidence": 0.85,
+          "from": "relaydock/relaydock.transport.live-stream",
+          "id": "f7e34e4216c50118c9dfc9d5f8f7e1e2625cfdde2e381185f2afe831f02f869f",
+          "kind": "imports",
+          "provenance": {
+            "generator": "llmnav",
+            "line": null,
+            "path": "internal/transport/httpgateway/streaming.go",
+            "source": "internal/transport/httpgateway/streaming.go",
+            "type": "local-import"
+          },
+          "to": "relaydock/relaydock.provider.error-taxonomy"
+        }
+      ],
+      "inputHash": "5247772f6c1da0f8cd2d263d2112fcb0e035724a249c58d85df167ad1ebaf670",
+      "key": "card:relaydock/relaydock.transport.live-stream",
+      "nodes": [
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.core.error-contract",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.core.error-contract"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.protocol.canonical-envelope",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.protocol.canonical-envelope"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.protocol.stream-state",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.protocol.stream-state"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.provider.error-taxonomy",
+          "location": null,
+          "repositoryId": "relaydock",
+          "role": null,
+          "semanticId": "relaydock.provider.error-taxonomy"
+        },
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.transport.live-stream",
+          "location": {
+            "declarationLine": null,
+            "endLine": 12,
+            "exported": null,
+            "kind": null,
+            "language": null,
+            "path": "internal/transport/httpgateway/streaming.go",
+            "receiver": null,
+            "signature": null,
+            "startLine": 3,
+            "symbol": null,
+            "visibility": null
+          },
+          "repositoryId": "relaydock",
+          "role": "Commit provider metadata and translate canonical stream events into OpenAI-compatible live HTTP output without reopening retry eligibility.",
+          "semanticId": "relaydock.transport.live-stream"
+        }
+      ],
+      "outputHash": "be7334acbcb67c3806e38f76533d2d380428ea54c022d718ec51f13aa9139b98"
     }
   ],
   "repositoryId": "relaydock",
-  "resolutionHash": "33a250edc09e3ffaffe95091a82584ebd312ad5e20e52905a1b08d8f36119501",
+  "resolutionHash": "154bb8f0c5cba01e740a9586271d319f1f690a31e3a15eb69ec049a2150e2a11",
   "schemaVersion": 1
 }

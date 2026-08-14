@@ -1,5 +1,16 @@
 package webhandoff
 
+/* llmnav/1 module
+id=relaydock.expert.web-handoff
+role=Issue expiring read tokens for browser handoff consultations and accept only validated structured results before expiry.
+owns=web handoff token lifecycle|handoff expiry|web result import
+excludes=browser automation|consultation persistence
+search=expert browser handoff|resolve read token|import web result
+invariant=Only a digest of each read token is retained after issuance.
+invariant=Expired handoffs cannot resolve tokens or accept results.
+stability=contract
+*/
+
 import (
 	"context"
 	"crypto/sha256"

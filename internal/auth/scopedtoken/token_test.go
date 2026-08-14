@@ -1,5 +1,12 @@
 package scopedtoken
 
+/* llmnav/1 file
+id=relaydock.auth.scoped-token.contract
+role=Verify scoped-token rotation overlap, audience and expiry enforcement, tamper rejection, key-map normalization, and claim size bounds.
+search=scoped token tests|signing key rotation tests|reject malformed scoped token
+stability=contract
+*/
+
 import (
 	"context"
 	"encoding/base64"

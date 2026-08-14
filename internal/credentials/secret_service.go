@@ -1,5 +1,18 @@
 package credentials
 
+/* llmnav/1 module
+id=relaydock.credentials.secret-service
+role=Store opaque credential bytes in the Linux Secret Service through cancellable D-Bus sessions, unlock prompts, and bounded public errors.
+owns=Linux credential backend|Secret Service prompt lifecycle|credential byte zeroing
+excludes=credential namespace policy|provider credential interpretation
+search=Linux Secret Service credentials|D-Bus secret prompt|zero credential bytes
+invariant=Credential values are copied at ownership boundaries and cleared after transport use.
+invariant=Remote D-Bus error bodies never enter public errors.
+risk=privacy
+rel=test>relaydock.credentials.secret-service.contract
+stability=contract
+*/
+
 import (
 	"context"
 	"errors"

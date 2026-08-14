@@ -1,0 +1,8 @@
+llmnav-catalog/1 repository=relaydock catalog=relaydock.observability
+Read semantic cards before opening source. Resolve current paths and signatures with llmnav query or show.
+
+@relaydock.observability.tracing
+role Create process-local trace spans with parent propagation, exactly-once completion, and a replaceable exporter boundary.
+owns trace context propagation, span lifecycle, trace exporter registration
+excludes attribute redaction policy, remote exporter implementation
+invariant The completion closure exports a span at most once. Exporter failures never replace the application operation result.

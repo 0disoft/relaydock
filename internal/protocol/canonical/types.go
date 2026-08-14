@@ -1,5 +1,16 @@
 package canonical
 
+/* llmnav/1 module
+id=relaydock.protocol.canonical-envelope
+role=Define the provider-neutral request vocabulary that preserves messages, tools, reasoning, capabilities, metadata, and unknown extensions.
+owns=canonical request envelope|canonical item vocabulary|request structural validation
+excludes=provider wire conversion|stream event transitions
+search=canonical request envelope|protocol item types|preserve protocol extensions
+invariant=Unknown extension payloads remain available as raw JSON for compatible conversion.
+invariant=Every item kind must carry the fields required by its canonical meaning.
+stability=contract
+*/
+
 import (
 	"encoding/json"
 	"fmt"

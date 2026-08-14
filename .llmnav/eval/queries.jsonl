@@ -26,3 +26,30 @@
 {"query":"bootstrap or retrieve organization and project records in the control catalog","expected":["relaydock.command.projectctl"]}
 {"query":"build sign audit and verify RelayDock release bundles and update manifests","expected":["relaydock.command.releasepack"]}
 {"query":"run the bounded authenticated reference receiver for signed webhook events","expected":["relaydock.command.webhook-sink"]}
+{"query":"send a redacted ContextPack to the OpenAI expert under a maximum cost and output limit","expected":["relaydock.expert.openai-api"]}
+{"query":"claim PostgreSQL outbox rows with SKIP LOCKED and fence completion by worker lease","expected":["relaydock.outbox.postgres"]}
+{"query":"execute an authenticated provider HTTP request with a bounded response body","expected":["relaydock.provider.http-adapter"]}
+{"query":"issue an expiring browser handoff read token and import a validated expert result","expected":["relaydock.expert.web-handoff"]}
+{"query":"serialize PostgreSQL migration execution with an advisory lock and verify checksums","expected":["relaydock.persistence.migrations"]}
+{"query":"keep frontend desktop calls behind the Wails runtime adapter and preview a ContextPack","expected":["relaydock.frontend.runtime-adapter"]}
+{"query":"compose expert stores and compensate partial ContextPack or result persistence","expected":["relaydock.expert.application"]}
+{"query":"define the provider neutral request envelope and preserve unknown extension JSON","expected":["relaydock.protocol.canonical-envelope"]}
+{"query":"decide whether a stream can retry transparently before the first semantic event","expected":["relaydock.protocol.stream-state"]}
+{"query":"classify provider failures into retryable neutral error classes and parse Retry-After","expected":["relaydock.provider.error-taxonomy"]}
+{"query":"reject unknown fields trailing values and oversized JSON request bodies","expected":["relaydock.transport.json-api"]}
+{"query":"rotate scoped token signing keys while retaining verification-only overlap","expected":["relaydock.auth.scoped-token-keyring"]}
+{"query":"serve bounded framed JSON over local IPC with a connection concurrency limit","expected":["relaydock.local-ipc.server"]}
+{"query":"create parented trace spans and export each completion at most once","expected":["relaydock.observability.tracing"]}
+{"query":"deliver leased outbox events with fenced completion jitter retries and dead letters","expected":["relaydock.outbox.delivery"]}
+{"query":"commit provider stream metadata and encode canonical events as live SSE output","expected":["relaydock.transport.live-stream"]}
+{"query":"find the stable domain error identities used by transport and retry classification","expected":["relaydock.core.error-contract"]}
+{"query":"store opaque Linux credentials through Secret Service prompts and redact D-Bus errors","expected":["relaydock.credentials.secret-service"]}
+{"query":"replace a local state file atomically with fsync restrictive permissions and backup recovery","expected":["relaydock.persistence.atomic-file"]}
+{"query":"create the initial control runtime expert and outbox PostgreSQL schemas","expected":["relaydock.migration.initial.up"]}
+{"query":"fully roll back the initial RelayDock application schemas","expected":["relaydock.migration.initial.down"]}
+{"query":"add tenant scope worker leases and result provenance to expert consultations","expected":["relaydock.migration.expert-durability.up"]}
+{"query":"remove expert consultation lease and tenant durability columns","expected":["relaydock.migration.expert-durability.down"]}
+{"query":"expand the runtime journal with provider attempt provenance commit state and token totals","expected":["relaydock.migration.runtime-journal.up"]}
+{"query":"roll back runtime journal fields and conditionally restore provider connection NOT NULL","expected":["relaydock.migration.runtime-journal.down"]}
+{"query":"add outbox lease expiry dead-letter state and worker partial indexes","expected":["relaydock.migration.outbox-delivery.up"]}
+{"query":"remove outbox dead-letter delivery columns and restore the pending queue index","expected":["relaydock.migration.outbox-delivery.down"]}

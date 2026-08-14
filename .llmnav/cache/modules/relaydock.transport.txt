@@ -1,0 +1,14 @@
+llmnav-catalog/1 repository=relaydock catalog=relaydock.transport
+Read semantic cards before opening source. Resolve current paths and signatures with llmnav query or show.
+
+@relaydock.transport.json-api
+role Enforce bounded single-value JSON requests and map RelayDock domain errors into no-store JSON responses.
+owns HTTP JSON decoding boundary, HTTP error status mapping, JSON response headers
+excludes route authentication, domain error creation
+invariant Request decoding rejects unknown fields, oversized bodies, and more than one JSON value. Every JSON response is marked no-store.
+
+@relaydock.transport.live-stream
+role Commit provider metadata and translate canonical stream events into OpenAI-compatible live HTTP output without reopening retry eligibility.
+owns HTTP stream commit boundary, SSE response encoding, stream terminal emission
+excludes provider execution, canonical stream validation
+invariant Headers and the streaming status line are committed only once. No semantic event is emitted before the upstream route commit hook succeeds.

@@ -1803,76 +1803,840 @@
       "sourceBytes": 2911
     },
     {
-      "blocks": [],
-      "contentHash": "d29b3bad53ecce1c1829de0e06f1a0feaa765642b7d5dbbe08cff2631e3c4cea",
-      "declarations": [],
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [
+              "public migration ledger",
+              "database backup"
+            ],
+            "id": "relaydock.migration.initial.down",
+            "invariant": [
+              "Rollback removes outbox, expert, runtime, and control schemas as one ordered migration step.",
+              "The public schema and migration runner ledger remain outside this rollback file."
+            ],
+            "owns": [
+              "initial schema rollback",
+              "application schema removal"
+            ],
+            "rel": [],
+            "risk": [],
+            "role": "Remove every application schema created by the initial RelayDock migration during an explicit full rollback.",
+            "scope": "module",
+            "search": [
+              "rollback initial RelayDock schema",
+              "drop application schemas",
+              "initial migration down"
+            ],
+            "stability": "contract",
+            "unknown": []
+          },
+          "end": 578,
+          "endLine": 10,
+          "entries": [
+            {
+              "key": "id",
+              "line": 2,
+              "order": 0,
+              "value": "relaydock.migration.initial.down"
+            },
+            {
+              "key": "role",
+              "line": 3,
+              "order": 1,
+              "value": "Remove every application schema created by the initial RelayDock migration during an explicit full rollback."
+            },
+            {
+              "key": "owns",
+              "line": 4,
+              "order": 2,
+              "value": "initial schema rollback|application schema removal"
+            },
+            {
+              "key": "excludes",
+              "line": 5,
+              "order": 3,
+              "value": "public migration ledger|database backup"
+            },
+            {
+              "key": "search",
+              "line": 6,
+              "order": 4,
+              "value": "rollback initial RelayDock schema|drop application schemas|initial migration down"
+            },
+            {
+              "key": "invariant",
+              "line": 7,
+              "order": 5,
+              "value": "Rollback removes outbox, expert, runtime, and control schemas as one ordered migration step."
+            },
+            {
+              "key": "invariant",
+              "line": 8,
+              "order": 6,
+              "value": "The public schema and migration runner ledger remain outside this rollback file."
+            },
+            {
+              "key": "stability",
+              "line": 9,
+              "order": 7,
+              "value": "contract"
+            }
+          ],
+          "filePath": "db/migrations/000001_initial.down.sql",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.migration.initial.down\nrole=Remove every application schema created by the initial RelayDock migration during an explicit full rollback.\nowns=initial schema rollback|application schema removal\nexcludes=public migration ledger|database backup\nsearch=rollback initial RelayDock schema|drop application schemas|initial migration down\ninvariant=Rollback removes outbox, expert, runtime, and control schemas as one ordered migration step.\ninvariant=The public schema and migration runner ledger remain outside this rollback file.\nstability=contract\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 0,
+          "startLine": 1,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "3c6dab22e7fda81d9a5f484c6df96267159be93384ad9454138dccecb9debf0c",
+      "declarations": [
+        null
+      ],
       "imports": [],
       "path": "db/migrations/000001_initial.down.sql",
-      "semanticBytes": 0,
-      "sourceBytes": 154
+      "semanticBytes": 578,
+      "sourceBytes": 734
     },
     {
-      "blocks": [],
-      "contentHash": "307761f19a302e25a118ad61766c2502e9b79d9a996be599d60124f1f7f015e5",
-      "declarations": [],
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [
+              "later lease durability columns",
+              "migration execution"
+            ],
+            "id": "relaydock.migration.initial.up",
+            "invariant": [
+              "Usage events remain separate from request and provider-attempt records.",
+              "Consultation idempotency is unique within each project."
+            ],
+            "owns": [
+              "initial database schema",
+              "initial runtime ledgers",
+              "initial queue indexes"
+            ],
+            "rel": [],
+            "risk": [],
+            "role": "Create the initial control, runtime, expert, and outbox PostgreSQL schemas and their foundational integrity constraints.",
+            "scope": "module",
+            "search": [
+              "create initial RelayDock schema",
+              "bootstrap PostgreSQL tables",
+              "initial runtime database"
+            ],
+            "stability": "contract",
+            "unknown": []
+          },
+          "end": 575,
+          "endLine": 10,
+          "entries": [
+            {
+              "key": "id",
+              "line": 2,
+              "order": 0,
+              "value": "relaydock.migration.initial.up"
+            },
+            {
+              "key": "role",
+              "line": 3,
+              "order": 1,
+              "value": "Create the initial control, runtime, expert, and outbox PostgreSQL schemas and their foundational integrity constraints."
+            },
+            {
+              "key": "owns",
+              "line": 4,
+              "order": 2,
+              "value": "initial database schema|initial runtime ledgers|initial queue indexes"
+            },
+            {
+              "key": "excludes",
+              "line": 5,
+              "order": 3,
+              "value": "later lease durability columns|migration execution"
+            },
+            {
+              "key": "search",
+              "line": 6,
+              "order": 4,
+              "value": "create initial RelayDock schema|bootstrap PostgreSQL tables|initial runtime database"
+            },
+            {
+              "key": "invariant",
+              "line": 7,
+              "order": 5,
+              "value": "Usage events remain separate from request and provider-attempt records."
+            },
+            {
+              "key": "invariant",
+              "line": 8,
+              "order": 6,
+              "value": "Consultation idempotency is unique within each project."
+            },
+            {
+              "key": "stability",
+              "line": 9,
+              "order": 7,
+              "value": "contract"
+            }
+          ],
+          "filePath": "db/migrations/000001_initial.up.sql",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.migration.initial.up\nrole=Create the initial control, runtime, expert, and outbox PostgreSQL schemas and their foundational integrity constraints.\nowns=initial database schema|initial runtime ledgers|initial queue indexes\nexcludes=later lease durability columns|migration execution\nsearch=create initial RelayDock schema|bootstrap PostgreSQL tables|initial runtime database\ninvariant=Usage events remain separate from request and provider-attempt records.\ninvariant=Consultation idempotency is unique within each project.\nstability=contract\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 0,
+          "startLine": 1,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "904e9f178e0cbca7ffbd188f0ab3f1201c23c37fe1f623a67542609ec11bbf92",
+      "declarations": [
+        null
+      ],
       "imports": [],
       "path": "db/migrations/000001_initial.up.sql",
-      "semanticBytes": 0,
-      "sourceBytes": 6531
+      "semanticBytes": 575,
+      "sourceBytes": 7108
     },
     {
-      "blocks": [],
-      "contentHash": "24263378041013169628205cdf3fc2c72bce5f091f777c729bc33cc6af45121a",
-      "declarations": [],
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [
+              "initial expert tables",
+              "stored result payloads"
+            ],
+            "id": "relaydock.migration.expert-durability.down",
+            "invariant": [
+              "Foreign-key and check constraints are removed before their owned columns.",
+              "The initial consultation and ContextPack tables remain available after rollback."
+            ],
+            "owns": [
+              "expert durability rollback",
+              "consultation lease column removal"
+            ],
+            "rel": [],
+            "risk": [],
+            "role": "Remove expert durability indexes, lease metadata, tenant scope, and result linkage introduced by migration 000002.",
+            "scope": "module",
+            "search": [
+              "rollback expert durability",
+              "drop consultation lease columns",
+              "remove expert tenant scope"
+            ],
+            "stability": "contract",
+            "unknown": []
+          },
+          "end": 594,
+          "endLine": 10,
+          "entries": [
+            {
+              "key": "id",
+              "line": 2,
+              "order": 0,
+              "value": "relaydock.migration.expert-durability.down"
+            },
+            {
+              "key": "role",
+              "line": 3,
+              "order": 1,
+              "value": "Remove expert durability indexes, lease metadata, tenant scope, and result linkage introduced by migration 000002."
+            },
+            {
+              "key": "owns",
+              "line": 4,
+              "order": 2,
+              "value": "expert durability rollback|consultation lease column removal"
+            },
+            {
+              "key": "excludes",
+              "line": 5,
+              "order": 3,
+              "value": "initial expert tables|stored result payloads"
+            },
+            {
+              "key": "search",
+              "line": 6,
+              "order": 4,
+              "value": "rollback expert durability|drop consultation lease columns|remove expert tenant scope"
+            },
+            {
+              "key": "invariant",
+              "line": 7,
+              "order": 5,
+              "value": "Foreign-key and check constraints are removed before their owned columns."
+            },
+            {
+              "key": "invariant",
+              "line": 8,
+              "order": 6,
+              "value": "The initial consultation and ContextPack tables remain available after rollback."
+            },
+            {
+              "key": "stability",
+              "line": 9,
+              "order": 7,
+              "value": "contract"
+            }
+          ],
+          "filePath": "db/migrations/000002_expert_durability.down.sql",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.migration.expert-durability.down\nrole=Remove expert durability indexes, lease metadata, tenant scope, and result linkage introduced by migration 000002.\nowns=expert durability rollback|consultation lease column removal\nexcludes=initial expert tables|stored result payloads\nsearch=rollback expert durability|drop consultation lease columns|remove expert tenant scope\ninvariant=Foreign-key and check constraints are removed before their owned columns.\ninvariant=The initial consultation and ContextPack tables remain available after rollback.\nstability=contract\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 0,
+          "startLine": 1,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "d173a2c8481af027d638915ab63fb568a2ecdb442bb25d0fe4ec8d651a227e76",
+      "declarations": [
+        null
+      ],
       "imports": [],
       "path": "db/migrations/000002_expert_durability.down.sql",
-      "semanticBytes": 0,
-      "sourceBytes": 718
+      "semanticBytes": 594,
+      "sourceBytes": 1314
     },
     {
-      "blocks": [],
-      "contentHash": "541525916c927f90dcf10efe3c6be627d44fdca7e94e38c3ff278ec1ca8aa66a",
-      "declarations": [],
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [
+              "consultation transition code",
+              "worker retry policy"
+            ],
+            "id": "relaydock.migration.expert-durability.up",
+            "invariant": [
+              "Consultation attempt counts cannot become negative.",
+              "Queued and stale-running consultations have separate partial indexes for worker recovery."
+            ],
+            "owns": [
+              "expert lease schema",
+              "expert tenant scope",
+              "consultation result linkage"
+            ],
+            "rel": [],
+            "risk": [],
+            "role": "Add tenant scope, fenced worker lease state, result provenance, and claim indexes to durable expert consultations.",
+            "scope": "module",
+            "search": [
+              "add expert durability columns",
+              "consultation lease migration",
+              "expert tenant scope"
+            ],
+            "stability": "contract",
+            "unknown": []
+          },
+          "end": 583,
+          "endLine": 10,
+          "entries": [
+            {
+              "key": "id",
+              "line": 2,
+              "order": 0,
+              "value": "relaydock.migration.expert-durability.up"
+            },
+            {
+              "key": "role",
+              "line": 3,
+              "order": 1,
+              "value": "Add tenant scope, fenced worker lease state, result provenance, and claim indexes to durable expert consultations."
+            },
+            {
+              "key": "owns",
+              "line": 4,
+              "order": 2,
+              "value": "expert lease schema|expert tenant scope|consultation result linkage"
+            },
+            {
+              "key": "excludes",
+              "line": 5,
+              "order": 3,
+              "value": "consultation transition code|worker retry policy"
+            },
+            {
+              "key": "search",
+              "line": 6,
+              "order": 4,
+              "value": "add expert durability columns|consultation lease migration|expert tenant scope"
+            },
+            {
+              "key": "invariant",
+              "line": 7,
+              "order": 5,
+              "value": "Consultation attempt counts cannot become negative."
+            },
+            {
+              "key": "invariant",
+              "line": 8,
+              "order": 6,
+              "value": "Queued and stale-running consultations have separate partial indexes for worker recovery."
+            },
+            {
+              "key": "stability",
+              "line": 9,
+              "order": 7,
+              "value": "contract"
+            }
+          ],
+          "filePath": "db/migrations/000002_expert_durability.up.sql",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.migration.expert-durability.up\nrole=Add tenant scope, fenced worker lease state, result provenance, and claim indexes to durable expert consultations.\nowns=expert lease schema|expert tenant scope|consultation result linkage\nexcludes=consultation transition code|worker retry policy\nsearch=add expert durability columns|consultation lease migration|expert tenant scope\ninvariant=Consultation attempt counts cannot become negative.\ninvariant=Queued and stale-running consultations have separate partial indexes for worker recovery.\nstability=contract\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 0,
+          "startLine": 1,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "c30416b0cfad6b2a3a28518107c930ca27b8b9ad13c254fd51f5eff3c102bc93",
+      "declarations": [
+        null
+      ],
       "imports": [],
       "path": "db/migrations/000002_expert_durability.up.sql",
-      "semanticBytes": 0,
-      "sourceBytes": 1684
+      "semanticBytes": 583,
+      "sourceBytes": 2269
     },
     {
-      "blocks": [],
-      "contentHash": "8c7a6e129a68999bc986bcdd0608a13777cbe7c0132dbff98a3e215be525aca8",
-      "declarations": [],
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [
+              "request row deletion",
+              "usage event rollback"
+            ],
+            "id": "relaydock.migration.runtime-journal.down",
+            "invariant": [
+              "The NOT NULL provider connection constraint is restored only when no existing attempt contains NULL.",
+              "Base request and provider-attempt records survive the rollback."
+            ],
+            "owns": [
+              "runtime journal rollback",
+              "provider connection constraint restoration"
+            ],
+            "rel": [],
+            "risk": [],
+            "role": "Remove expanded request usage and provider-attempt journal fields while restoring the original connection requirement when data permits.",
+            "scope": "module",
+            "search": [
+              "rollback runtime journal",
+              "remove provider attempt provenance",
+              "restore provider connection constraint"
+            ],
+            "stability": "contract",
+            "unknown": []
+          },
+          "end": 641,
+          "endLine": 10,
+          "entries": [
+            {
+              "key": "id",
+              "line": 2,
+              "order": 0,
+              "value": "relaydock.migration.runtime-journal.down"
+            },
+            {
+              "key": "role",
+              "line": 3,
+              "order": 1,
+              "value": "Remove expanded request usage and provider-attempt journal fields while restoring the original connection requirement when data permits."
+            },
+            {
+              "key": "owns",
+              "line": 4,
+              "order": 2,
+              "value": "runtime journal rollback|provider connection constraint restoration"
+            },
+            {
+              "key": "excludes",
+              "line": 5,
+              "order": 3,
+              "value": "request row deletion|usage event rollback"
+            },
+            {
+              "key": "search",
+              "line": 6,
+              "order": 4,
+              "value": "rollback runtime journal|remove provider attempt provenance|restore provider connection constraint"
+            },
+            {
+              "key": "invariant",
+              "line": 7,
+              "order": 5,
+              "value": "The NOT NULL provider connection constraint is restored only when no existing attempt contains NULL."
+            },
+            {
+              "key": "invariant",
+              "line": 8,
+              "order": 6,
+              "value": "Base request and provider-attempt records survive the rollback."
+            },
+            {
+              "key": "stability",
+              "line": 9,
+              "order": 7,
+              "value": "contract"
+            }
+          ],
+          "filePath": "db/migrations/000003_runtime_journal.down.sql",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.migration.runtime-journal.down\nrole=Remove expanded request usage and provider-attempt journal fields while restoring the original connection requirement when data permits.\nowns=runtime journal rollback|provider connection constraint restoration\nexcludes=request row deletion|usage event rollback\nsearch=rollback runtime journal|remove provider attempt provenance|restore provider connection constraint\ninvariant=The NOT NULL provider connection constraint is restored only when no existing attempt contains NULL.\ninvariant=Base request and provider-attempt records survive the rollback.\nstability=contract\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 0,
+          "startLine": 1,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "bb5be7e9bef0ef0a8de852f28c122b304ff822e3e6380b991b32f290b46f7670",
+      "declarations": [
+        null
+      ],
       "imports": [],
       "path": "db/migrations/000003_runtime_journal.down.sql",
-      "semanticBytes": 0,
-      "sourceBytes": 1229
+      "semanticBytes": 641,
+      "sourceBytes": 1872
     },
     {
-      "blocks": [],
-      "contentHash": "0d397398ec4ed5da8172864005a7632ee6cea7c86f306ba6c642bf1ce6b5bc5f",
-      "declarations": [],
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [
+              "journal write sequencing",
+              "usage settlement"
+            ],
+            "id": "relaydock.migration.runtime-journal.up",
+            "invariant": [
+              "Attempt and token counters remain non-negative.",
+              "Provider attempts may omit a control-plane connection when signed snapshots supply the route."
+            ],
+            "owns": [
+              "runtime journal schema",
+              "provider attempt provenance",
+              "request usage totals"
+            ],
+            "rel": [],
+            "risk": [],
+            "role": "Expand the runtime journal with client identity, tenant scope, usage totals, provider attempt provenance, commit state, and bounded failure metadata.",
+            "scope": "module",
+            "search": [
+              "expand runtime journal",
+              "persist provider attempts",
+              "request usage migration"
+            ],
+            "stability": "contract",
+            "unknown": []
+          },
+          "end": 607,
+          "endLine": 10,
+          "entries": [
+            {
+              "key": "id",
+              "line": 2,
+              "order": 0,
+              "value": "relaydock.migration.runtime-journal.up"
+            },
+            {
+              "key": "role",
+              "line": 3,
+              "order": 1,
+              "value": "Expand the runtime journal with client identity, tenant scope, usage totals, provider attempt provenance, commit state, and bounded failure metadata."
+            },
+            {
+              "key": "owns",
+              "line": 4,
+              "order": 2,
+              "value": "runtime journal schema|provider attempt provenance|request usage totals"
+            },
+            {
+              "key": "excludes",
+              "line": 5,
+              "order": 3,
+              "value": "journal write sequencing|usage settlement"
+            },
+            {
+              "key": "search",
+              "line": 6,
+              "order": 4,
+              "value": "expand runtime journal|persist provider attempts|request usage migration"
+            },
+            {
+              "key": "invariant",
+              "line": 7,
+              "order": 5,
+              "value": "Attempt and token counters remain non-negative."
+            },
+            {
+              "key": "invariant",
+              "line": 8,
+              "order": 6,
+              "value": "Provider attempts may omit a control-plane connection when signed snapshots supply the route."
+            },
+            {
+              "key": "stability",
+              "line": 9,
+              "order": 7,
+              "value": "contract"
+            }
+          ],
+          "filePath": "db/migrations/000003_runtime_journal.up.sql",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.migration.runtime-journal.up\nrole=Expand the runtime journal with client identity, tenant scope, usage totals, provider attempt provenance, commit state, and bounded failure metadata.\nowns=runtime journal schema|provider attempt provenance|request usage totals\nexcludes=journal write sequencing|usage settlement\nsearch=expand runtime journal|persist provider attempts|request usage migration\ninvariant=Attempt and token counters remain non-negative.\ninvariant=Provider attempts may omit a control-plane connection when signed snapshots supply the route.\nstability=contract\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 0,
+          "startLine": 1,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "fcdc098763c1d3dd4e76e8ed74262833870112777e4a399267fe3b6d457912b0",
+      "declarations": [
+        null
+      ],
       "imports": [],
       "path": "db/migrations/000003_runtime_journal.up.sql",
-      "semanticBytes": 0,
-      "sourceBytes": 2202
+      "semanticBytes": 607,
+      "sourceBytes": 2811
     },
     {
-      "blocks": [],
-      "contentHash": "8624875251bbfb916351389536554ba83c155b70c5856f29e2172c7766fe064b",
-      "declarations": [],
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [
+              "outbox event deletion",
+              "published event cleanup"
+            ],
+            "id": "relaydock.migration.outbox-delivery.down",
+            "invariant": [
+              "Delivery-specific indexes are removed before their backing columns.",
+              "The restored queue index continues to exclude published events."
+            ],
+            "owns": [
+              "outbox delivery rollback",
+              "initial queue index restoration"
+            ],
+            "rel": [],
+            "risk": [],
+            "role": "Remove recoverable lease and dead-letter state while restoring the initial pending-event queue index.",
+            "scope": "module",
+            "search": [
+              "rollback outbox delivery",
+              "remove dead letter columns",
+              "restore outbox queue index"
+            ],
+            "stability": "contract",
+            "unknown": []
+          },
+          "end": 546,
+          "endLine": 10,
+          "entries": [
+            {
+              "key": "id",
+              "line": 2,
+              "order": 0,
+              "value": "relaydock.migration.outbox-delivery.down"
+            },
+            {
+              "key": "role",
+              "line": 3,
+              "order": 1,
+              "value": "Remove recoverable lease and dead-letter state while restoring the initial pending-event queue index."
+            },
+            {
+              "key": "owns",
+              "line": 4,
+              "order": 2,
+              "value": "outbox delivery rollback|initial queue index restoration"
+            },
+            {
+              "key": "excludes",
+              "line": 5,
+              "order": 3,
+              "value": "outbox event deletion|published event cleanup"
+            },
+            {
+              "key": "search",
+              "line": 6,
+              "order": 4,
+              "value": "rollback outbox delivery|remove dead letter columns|restore outbox queue index"
+            },
+            {
+              "key": "invariant",
+              "line": 7,
+              "order": 5,
+              "value": "Delivery-specific indexes are removed before their backing columns."
+            },
+            {
+              "key": "invariant",
+              "line": 8,
+              "order": 6,
+              "value": "The restored queue index continues to exclude published events."
+            },
+            {
+              "key": "stability",
+              "line": 9,
+              "order": 7,
+              "value": "contract"
+            }
+          ],
+          "filePath": "db/migrations/000004_outbox_delivery.down.sql",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.migration.outbox-delivery.down\nrole=Remove recoverable lease and dead-letter state while restoring the initial pending-event queue index.\nowns=outbox delivery rollback|initial queue index restoration\nexcludes=outbox event deletion|published event cleanup\nsearch=rollback outbox delivery|remove dead letter columns|restore outbox queue index\ninvariant=Delivery-specific indexes are removed before their backing columns.\ninvariant=The restored queue index continues to exclude published events.\nstability=contract\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 0,
+          "startLine": 1,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "af81348006a7362b1e47453fdf591aa4a1bfb4881381d1ceea5d682330bdf47f",
+      "declarations": [
+        null
+      ],
       "imports": [],
       "path": "db/migrations/000004_outbox_delivery.down.sql",
-      "semanticBytes": 0,
-      "sourceBytes": 588
+      "semanticBytes": 546,
+      "sourceBytes": 1136
     },
     {
-      "blocks": [],
-      "contentHash": "5dc7f6accb4eda28cd31843f7ea6f025fbf2575c4a62372ac1c2f490aa47982f",
-      "declarations": [],
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [
+              "delivery retry algorithm",
+              "event publisher"
+            ],
+            "id": "relaydock.migration.outbox-delivery.up",
+            "invariant": [
+              "An event cannot be both published and dead-lettered.",
+              "Claim and stale-lock indexes exclude terminal events."
+            ],
+            "owns": [
+              "outbox delivery schema",
+              "outbox lease recovery index",
+              "dead-letter persistence"
+            ],
+            "rel": [],
+            "risk": [],
+            "role": "Add recoverable outbox lease expiry, bounded failure state, dead-letter state, and worker-oriented partial indexes.",
+            "scope": "module",
+            "search": [
+              "add outbox lease expiry",
+              "dead letter migration",
+              "outbox worker indexes"
+            ],
+            "stability": "contract",
+            "unknown": []
+          },
+          "end": 535,
+          "endLine": 10,
+          "entries": [
+            {
+              "key": "id",
+              "line": 2,
+              "order": 0,
+              "value": "relaydock.migration.outbox-delivery.up"
+            },
+            {
+              "key": "role",
+              "line": 3,
+              "order": 1,
+              "value": "Add recoverable outbox lease expiry, bounded failure state, dead-letter state, and worker-oriented partial indexes."
+            },
+            {
+              "key": "owns",
+              "line": 4,
+              "order": 2,
+              "value": "outbox delivery schema|outbox lease recovery index|dead-letter persistence"
+            },
+            {
+              "key": "excludes",
+              "line": 5,
+              "order": 3,
+              "value": "delivery retry algorithm|event publisher"
+            },
+            {
+              "key": "search",
+              "line": 6,
+              "order": 4,
+              "value": "add outbox lease expiry|dead letter migration|outbox worker indexes"
+            },
+            {
+              "key": "invariant",
+              "line": 7,
+              "order": 5,
+              "value": "An event cannot be both published and dead-lettered."
+            },
+            {
+              "key": "invariant",
+              "line": 8,
+              "order": 6,
+              "value": "Claim and stale-lock indexes exclude terminal events."
+            },
+            {
+              "key": "stability",
+              "line": 9,
+              "order": 7,
+              "value": "contract"
+            }
+          ],
+          "filePath": "db/migrations/000004_outbox_delivery.up.sql",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.migration.outbox-delivery.up\nrole=Add recoverable outbox lease expiry, bounded failure state, dead-letter state, and worker-oriented partial indexes.\nowns=outbox delivery schema|outbox lease recovery index|dead-letter persistence\nexcludes=delivery retry algorithm|event publisher\nsearch=add outbox lease expiry|dead letter migration|outbox worker indexes\ninvariant=An event cannot be both published and dead-lettered.\ninvariant=Claim and stale-lock indexes exclude terminal events.\nstability=contract\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 0,
+          "startLine": 1,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "fdec053ae99aac222555d5312eb34b7f3a64266e5819e32571ed0ce6cfc1996f",
+      "declarations": [
+        null
+      ],
       "imports": [],
       "path": "db/migrations/000004_outbox_delivery.up.sql",
-      "semanticBytes": 0,
-      "sourceBytes": 1231
+      "semanticBytes": 535,
+      "sourceBytes": 1768
     },
     {
       "blocks": [],
@@ -1982,16 +2746,112 @@
       "sourceBytes": 1201
     },
     {
-      "blocks": [],
-      "contentHash": "5c3b389c3763ef9f28478499b2efda5c03774717cacdf59f0823034b3e3b321e",
-      "declarations": [],
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [
+              "Wails binding generation",
+              "backend authorization"
+            ],
+            "id": "relaydock.frontend.runtime-adapter",
+            "invariant": [
+              "UI modules consume this adapter instead of importing generated bindings directly.",
+              "ContextPack previews use an explicit byte ceiling and report redaction findings."
+            ],
+            "owns": [
+              "frontend runtime adapter",
+              "frontend consultation operations",
+              "ContextPack preview defaults"
+            ],
+            "rel": [],
+            "risk": [],
+            "role": "Keep desktop UI calls behind typed Wails service adapters and build privacy-aware ContextPack previews before consultation creation.",
+            "scope": "module",
+            "search": [
+              "frontend runtime calls",
+              "preview ContextPack UI",
+              "desktop consultation adapter"
+            ],
+            "stability": "architecture",
+            "unknown": []
+          },
+          "end": 633,
+          "endLine": 10,
+          "entries": [
+            {
+              "key": "id",
+              "line": 2,
+              "order": 0,
+              "value": "relaydock.frontend.runtime-adapter"
+            },
+            {
+              "key": "role",
+              "line": 3,
+              "order": 1,
+              "value": "Keep desktop UI calls behind typed Wails service adapters and build privacy-aware ContextPack previews before consultation creation."
+            },
+            {
+              "key": "owns",
+              "line": 4,
+              "order": 2,
+              "value": "frontend runtime adapter|frontend consultation operations|ContextPack preview defaults"
+            },
+            {
+              "key": "excludes",
+              "line": 5,
+              "order": 3,
+              "value": "Wails binding generation|backend authorization"
+            },
+            {
+              "key": "search",
+              "line": 6,
+              "order": 4,
+              "value": "frontend runtime calls|preview ContextPack UI|desktop consultation adapter"
+            },
+            {
+              "key": "invariant",
+              "line": 7,
+              "order": 5,
+              "value": "UI modules consume this adapter instead of importing generated bindings directly."
+            },
+            {
+              "key": "invariant",
+              "line": 8,
+              "order": 6,
+              "value": "ContextPack previews use an explicit byte ceiling and report redaction findings."
+            },
+            {
+              "key": "stability",
+              "line": 9,
+              "order": 7,
+              "value": "architecture"
+            }
+          ],
+          "filePath": "frontend/src/lib/runtime-adapter.ts",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.frontend.runtime-adapter\nrole=Keep desktop UI calls behind typed Wails service adapters and build privacy-aware ContextPack previews before consultation creation.\nowns=frontend runtime adapter|frontend consultation operations|ContextPack preview defaults\nexcludes=Wails binding generation|backend authorization\nsearch=frontend runtime calls|preview ContextPack UI|desktop consultation adapter\ninvariant=UI modules consume this adapter instead of importing generated bindings directly.\ninvariant=ContextPack previews use an explicit byte ceiling and report redaction findings.\nstability=architecture\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 0,
+          "startLine": 1,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "f516202ccfc2f5fa43c35178554bf9fa7f2f28c25523ff284220e45aa74810f1",
+      "declarations": [
+        null
+      ],
       "imports": [
         "./types",
         "./wails-services"
       ],
       "path": "frontend/src/lib/runtime-adapter.ts",
-      "semanticBytes": 0,
-      "sourceBytes": 2814
+      "semanticBytes": 633,
+      "sourceBytes": 3449
     },
     {
       "blocks": [],
@@ -2519,30 +3379,30 @@
             "stability": "contract",
             "unknown": []
           },
-          "end": 253,
-          "endLine": 6,
+          "end": 276,
+          "endLine": 8,
           "entries": [
             {
               "key": "id",
-              "line": 2,
+              "line": 4,
               "order": 0,
               "value": "relaydock.control.access.contract"
             },
             {
               "key": "role",
-              "line": 3,
+              "line": 5,
               "order": 1,
               "value": "Verify the deny-by-default Control Plane role matrix and reject project-scoped privilege roles."
             },
             {
               "key": "search",
-              "line": 4,
+              "line": 6,
               "order": 2,
               "value": "control authorization tests|deny role matrix|scoped control principal"
             },
             {
               "key": "stability",
-              "line": 5,
+              "line": 7,
               "order": 3,
               "value": "contract"
             }
@@ -2554,13 +3414,13 @@
           "raw": "/* llmnav/1 file\nid=relaydock.control.access.contract\nrole=Verify the deny-by-default Control Plane role matrix and reject project-scoped privilege roles.\nsearch=control authorization tests|deny role matrix|scoped control principal\nstability=contract\n*/",
           "scope": "file",
           "specVersion": "1",
-          "start": 0,
-          "startLine": 1,
+          "start": 23,
+          "startLine": 3,
           "style": "block",
           "syntaxErrors": []
         }
       ],
-      "contentHash": "6c7c97fe8f04b6d4a8201589cdd3e851873c61c13b2962dde8fbaba7c8774224",
+      "contentHash": "ec6dc3947f0247514151853e5086a0a139f7cab03a92666004ca93bcfe60a831",
       "declarations": [
         null
       ],
@@ -2569,7 +3429,7 @@
       ],
       "path": "internal/auth/controlaccess/policy_test.go",
       "semanticBytes": 253,
-      "sourceBytes": 2382
+      "sourceBytes": 2383
     },
     {
       "blocks": [],
@@ -2687,9 +3547,121 @@
       "sourceBytes": 578
     },
     {
-      "blocks": [],
-      "contentHash": "67c51fcb2c2cb0a9d868d54e269e7800bd4fdab95bc4df157008b75e6a26f5c1",
-      "declarations": [],
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [
+              "token claim encoding",
+              "scope authorization policy"
+            ],
+            "id": "relaydock.auth.scoped-token-keyring",
+            "invariant": [
+              "Only the active key signs new tokens while retained keys are verification-only.",
+              "A verification key cannot replace the active key with different secret material."
+            ],
+            "owns": [
+              "scoped-token key rotation",
+              "verification key overlap",
+              "legacy secret deduplication"
+            ],
+            "rel": [
+              "test>relaydock.auth.scoped-token.contract"
+            ],
+            "risk": [
+              "auth"
+            ],
+            "role": "Rotate scoped-token signing keys while retaining bounded verification overlap and constant-time secret comparisons.",
+            "scope": "module",
+            "search": [
+              "rotate scoped token key",
+              "verify retired signing key",
+              "constant time secret compare"
+            ],
+            "stability": "contract",
+            "unknown": []
+          },
+          "end": 686,
+          "endLine": 14,
+          "entries": [
+            {
+              "key": "id",
+              "line": 4,
+              "order": 0,
+              "value": "relaydock.auth.scoped-token-keyring"
+            },
+            {
+              "key": "role",
+              "line": 5,
+              "order": 1,
+              "value": "Rotate scoped-token signing keys while retaining bounded verification overlap and constant-time secret comparisons."
+            },
+            {
+              "key": "owns",
+              "line": 6,
+              "order": 2,
+              "value": "scoped-token key rotation|verification key overlap|legacy secret deduplication"
+            },
+            {
+              "key": "excludes",
+              "line": 7,
+              "order": 3,
+              "value": "token claim encoding|scope authorization policy"
+            },
+            {
+              "key": "search",
+              "line": 8,
+              "order": 4,
+              "value": "rotate scoped token key|verify retired signing key|constant time secret compare"
+            },
+            {
+              "key": "invariant",
+              "line": 9,
+              "order": 5,
+              "value": "Only the active key signs new tokens while retained keys are verification-only."
+            },
+            {
+              "key": "invariant",
+              "line": 10,
+              "order": 6,
+              "value": "A verification key cannot replace the active key with different secret material."
+            },
+            {
+              "key": "risk",
+              "line": 11,
+              "order": 7,
+              "value": "auth"
+            },
+            {
+              "key": "rel",
+              "line": 12,
+              "order": 8,
+              "value": "test>relaydock.auth.scoped-token.contract"
+            },
+            {
+              "key": "stability",
+              "line": 13,
+              "order": 9,
+              "value": "contract"
+            }
+          ],
+          "filePath": "internal/auth/scopedtoken/keyring.go",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.auth.scoped-token-keyring\nrole=Rotate scoped-token signing keys while retaining bounded verification overlap and constant-time secret comparisons.\nowns=scoped-token key rotation|verification key overlap|legacy secret deduplication\nexcludes=token claim encoding|scope authorization policy\nsearch=rotate scoped token key|verify retired signing key|constant time secret compare\ninvariant=Only the active key signs new tokens while retained keys are verification-only.\ninvariant=A verification key cannot replace the active key with different secret material.\nrisk=auth\nrel=test>relaydock.auth.scoped-token.contract\nstability=contract\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 21,
+          "startLine": 3,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "952a1c2701f6eb0093d11a1b3b5183920f1968c83946e397950a1a1278c7cd9b",
+      "declarations": [
+        null
+      ],
       "imports": [
         "crypto/sha256",
         "encoding/base64",
@@ -2701,8 +3673,8 @@
         "time"
       ],
       "path": "internal/auth/scopedtoken/keyring.go",
-      "semanticBytes": 0,
-      "sourceBytes": 4904
+      "semanticBytes": 665,
+      "sourceBytes": 5571
     },
     {
       "blocks": [],
@@ -2743,9 +3715,71 @@
       "sourceBytes": 5581
     },
     {
-      "blocks": [],
-      "contentHash": "205e0a5ef1afc07ba60248bdede268b3b4dff4f64dd2a4432a3e438f977e6cb2",
-      "declarations": [],
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [],
+            "id": "relaydock.auth.scoped-token.contract",
+            "invariant": [],
+            "owns": [],
+            "rel": [],
+            "risk": [],
+            "role": "Verify scoped-token rotation overlap, audience and expiry enforcement, tamper rejection, key-map normalization, and claim size bounds.",
+            "scope": "file",
+            "search": [
+              "scoped token tests",
+              "signing key rotation tests",
+              "reject malformed scoped token"
+            ],
+            "stability": "contract",
+            "unknown": []
+          },
+          "end": 322,
+          "endLine": 8,
+          "entries": [
+            {
+              "key": "id",
+              "line": 4,
+              "order": 0,
+              "value": "relaydock.auth.scoped-token.contract"
+            },
+            {
+              "key": "role",
+              "line": 5,
+              "order": 1,
+              "value": "Verify scoped-token rotation overlap, audience and expiry enforcement, tamper rejection, key-map normalization, and claim size bounds."
+            },
+            {
+              "key": "search",
+              "line": 6,
+              "order": 2,
+              "value": "scoped token tests|signing key rotation tests|reject malformed scoped token"
+            },
+            {
+              "key": "stability",
+              "line": 7,
+              "order": 3,
+              "value": "contract"
+            }
+          ],
+          "filePath": "internal/auth/scopedtoken/token_test.go",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 file\nid=relaydock.auth.scoped-token.contract\nrole=Verify scoped-token rotation overlap, audience and expiry enforcement, tamper rejection, key-map normalization, and claim size bounds.\nsearch=scoped token tests|signing key rotation tests|reject malformed scoped token\nstability=contract\n*/",
+          "scope": "file",
+          "specVersion": "1",
+          "start": 21,
+          "startLine": 3,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "7dd96c32f73c60043a808739b08d8a44482667453bd4d3c2fbf51a4c03720604",
+      "declarations": [
+        null
+      ],
       "imports": [
         "context",
         "encoding/base64",
@@ -2758,8 +3792,8 @@
         "time"
       ],
       "path": "internal/auth/scopedtoken/token_test.go",
-      "semanticBytes": 0,
-      "sourceBytes": 6532
+      "semanticBytes": 301,
+      "sourceBytes": 6835
     },
     {
       "blocks": [],
@@ -2852,30 +3886,30 @@
             "stability": "contract",
             "unknown": []
           },
-          "end": 252,
-          "endLine": 6,
+          "end": 272,
+          "endLine": 8,
           "entries": [
             {
               "key": "id",
-              "line": 2,
+              "line": 4,
               "order": 0,
               "value": "relaydock.auth.virtualkey.contract"
             },
             {
               "key": "role",
-              "line": 3,
+              "line": 5,
               "order": 1,
               "value": "Verify issued virtual keys round-trip through authentication and malformed key material is rejected."
             },
             {
               "key": "search",
-              "line": 4,
+              "line": 6,
               "order": 2,
               "value": "virtual key tests|authenticate issued key|reject malformed key"
             },
             {
               "key": "stability",
-              "line": 5,
+              "line": 7,
               "order": 3,
               "value": "contract"
             }
@@ -2887,13 +3921,13 @@
           "raw": "/* llmnav/1 file\nid=relaydock.auth.virtualkey.contract\nrole=Verify issued virtual keys round-trip through authentication and malformed key material is rejected.\nsearch=virtual key tests|authenticate issued key|reject malformed key\nstability=contract\n*/",
           "scope": "file",
           "specVersion": "1",
-          "start": 0,
-          "startLine": 1,
+          "start": 20,
+          "startLine": 3,
           "style": "block",
           "syntaxErrors": []
         }
       ],
-      "contentHash": "e4795fe852a0910f3449a419ad20666eef421e6786e2aad3bc41f26b7195a462",
+      "contentHash": "2d9cb7a1f20064a3674b0a7d06c82ce5c5061a98cefc8107eece50a8fe34c18d",
       "declarations": [
         null
       ],
@@ -2905,7 +3939,7 @@
       ],
       "path": "internal/auth/virtualkey/parser_test.go",
       "semanticBytes": 252,
-      "sourceBytes": 1810
+      "sourceBytes": 1811
     },
     {
       "blocks": [],
@@ -3731,30 +4765,30 @@
             "stability": "contract",
             "unknown": []
           },
-          "end": 261,
-          "endLine": 6,
+          "end": 279,
+          "endLine": 8,
           "entries": [
             {
               "key": "id",
-              "line": 2,
+              "line": 4,
               "order": 0,
               "value": "relaydock.control.snapshot.contract"
             },
             {
               "key": "role",
-              "line": 3,
+              "line": 5,
               "order": 1,
               "value": "Verify snapshot rollback, same-revision mutation, and last-known-good persistence failure handling."
             },
             {
               "key": "search",
-              "line": 4,
+              "line": 6,
               "order": 2,
               "value": "snapshot manager tests|older revision rejection|last known good failure"
             },
             {
               "key": "stability",
-              "line": 5,
+              "line": 7,
               "order": 3,
               "value": "contract"
             }
@@ -3766,13 +4800,13 @@
           "raw": "/* llmnav/1 file\nid=relaydock.control.snapshot.contract\nrole=Verify snapshot rollback, same-revision mutation, and last-known-good persistence failure handling.\nsearch=snapshot manager tests|older revision rejection|last known good failure\nstability=contract\n*/",
           "scope": "file",
           "specVersion": "1",
-          "start": 0,
-          "startLine": 1,
+          "start": 18,
+          "startLine": 3,
           "style": "block",
           "syntaxErrors": []
         }
       ],
-      "contentHash": "0b917dacc157267e63914dfb36d62741a7509e7ffb54cdf9df92f7f49db4e874",
+      "contentHash": "09f3cb73a2b84f9f52d85c20d3726bf4c0f872565b05e06bda5a74b3a95896c7",
       "declarations": [
         null
       ],
@@ -3787,7 +4821,7 @@
       ],
       "path": "internal/control/snapshot/manager_test.go",
       "semanticBytes": 261,
-      "sourceBytes": 7293
+      "sourceBytes": 7294
     },
     {
       "blocks": [],
@@ -3925,15 +4959,110 @@
       "sourceBytes": 3454
     },
     {
-      "blocks": [],
-      "contentHash": "54251a22d9496af97b0d28fda4f2b22e6d21cccd70ab6dbf831683396628b5e9",
-      "declarations": [],
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [
+              "provider error classification",
+              "user-facing message redaction"
+            ],
+            "id": "relaydock.core.error-contract",
+            "invariant": [
+              "Callers classify failures with errors.Is rather than matching message text.",
+              "New identities remain provider-neutral and preserve existing transport mappings."
+            ],
+            "owns": [
+              "domain error identities",
+              "cross-layer failure vocabulary"
+            ],
+            "rel": [],
+            "risk": [],
+            "role": "Define stable cross-layer error identities used for transport status mapping, retry decisions, and operator diagnostics.",
+            "scope": "module",
+            "search": [
+              "RelayDock domain errors",
+              "error identity mapping",
+              "shared failure codes"
+            ],
+            "stability": "contract",
+            "unknown": []
+          },
+          "end": 594,
+          "endLine": 12,
+          "entries": [
+            {
+              "key": "id",
+              "line": 4,
+              "order": 0,
+              "value": "relaydock.core.error-contract"
+            },
+            {
+              "key": "role",
+              "line": 5,
+              "order": 1,
+              "value": "Define stable cross-layer error identities used for transport status mapping, retry decisions, and operator diagnostics."
+            },
+            {
+              "key": "owns",
+              "line": 6,
+              "order": 2,
+              "value": "domain error identities|cross-layer failure vocabulary"
+            },
+            {
+              "key": "excludes",
+              "line": 7,
+              "order": 3,
+              "value": "provider error classification|user-facing message redaction"
+            },
+            {
+              "key": "search",
+              "line": 8,
+              "order": 4,
+              "value": "RelayDock domain errors|error identity mapping|shared failure codes"
+            },
+            {
+              "key": "invariant",
+              "line": 9,
+              "order": 5,
+              "value": "Callers classify failures with errors.Is rather than matching message text."
+            },
+            {
+              "key": "invariant",
+              "line": 10,
+              "order": 6,
+              "value": "New identities remain provider-neutral and preserve existing transport mappings."
+            },
+            {
+              "key": "stability",
+              "line": 11,
+              "order": 7,
+              "value": "contract"
+            }
+          ],
+          "filePath": "internal/core/errors.go",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.core.error-contract\nrole=Define stable cross-layer error identities used for transport status mapping, retry decisions, and operator diagnostics.\nowns=domain error identities|cross-layer failure vocabulary\nexcludes=provider error classification|user-facing message redaction\nsearch=RelayDock domain errors|error identity mapping|shared failure codes\ninvariant=Callers classify failures with errors.Is rather than matching message text.\ninvariant=New identities remain provider-neutral and preserve existing transport mappings.\nstability=contract\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 14,
+          "startLine": 3,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "39b7eb7c62f9d2c2c72efac7c3578de4271efc8fce86e126a9789f00e0d7f283",
+      "declarations": [
+        null
+      ],
       "imports": [
         "errors"
       ],
       "path": "internal/core/errors.go",
-      "semanticBytes": 0,
-      "sourceBytes": 1278
+      "semanticBytes": 580,
+      "sourceBytes": 1860
     },
     {
       "blocks": [],
@@ -3951,9 +5080,121 @@
       "sourceBytes": 1949
     },
     {
-      "blocks": [],
-      "contentHash": "0838913eb9694e3443a9b1f14eb07c29e9c90a0284130a3fed4eef3184f59fc7",
-      "declarations": [],
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [
+              "credential namespace policy",
+              "provider credential interpretation"
+            ],
+            "id": "relaydock.credentials.secret-service",
+            "invariant": [
+              "Credential values are copied at ownership boundaries and cleared after transport use.",
+              "Remote D-Bus error bodies never enter public errors."
+            ],
+            "owns": [
+              "Linux credential backend",
+              "Secret Service prompt lifecycle",
+              "credential byte zeroing"
+            ],
+            "rel": [
+              "test>relaydock.credentials.secret-service.contract"
+            ],
+            "risk": [
+              "privacy"
+            ],
+            "role": "Store opaque credential bytes in the Linux Secret Service through cancellable D-Bus sessions, unlock prompts, and bounded public errors.",
+            "scope": "module",
+            "search": [
+              "Linux Secret Service credentials",
+              "D-Bus secret prompt",
+              "zero credential bytes"
+            ],
+            "stability": "contract",
+            "unknown": []
+          },
+          "end": 710,
+          "endLine": 14,
+          "entries": [
+            {
+              "key": "id",
+              "line": 4,
+              "order": 0,
+              "value": "relaydock.credentials.secret-service"
+            },
+            {
+              "key": "role",
+              "line": 5,
+              "order": 1,
+              "value": "Store opaque credential bytes in the Linux Secret Service through cancellable D-Bus sessions, unlock prompts, and bounded public errors."
+            },
+            {
+              "key": "owns",
+              "line": 6,
+              "order": 2,
+              "value": "Linux credential backend|Secret Service prompt lifecycle|credential byte zeroing"
+            },
+            {
+              "key": "excludes",
+              "line": 7,
+              "order": 3,
+              "value": "credential namespace policy|provider credential interpretation"
+            },
+            {
+              "key": "search",
+              "line": 8,
+              "order": 4,
+              "value": "Linux Secret Service credentials|D-Bus secret prompt|zero credential bytes"
+            },
+            {
+              "key": "invariant",
+              "line": 9,
+              "order": 5,
+              "value": "Credential values are copied at ownership boundaries and cleared after transport use."
+            },
+            {
+              "key": "invariant",
+              "line": 10,
+              "order": 6,
+              "value": "Remote D-Bus error bodies never enter public errors."
+            },
+            {
+              "key": "risk",
+              "line": 11,
+              "order": 7,
+              "value": "privacy"
+            },
+            {
+              "key": "rel",
+              "line": 12,
+              "order": 8,
+              "value": "test>relaydock.credentials.secret-service.contract"
+            },
+            {
+              "key": "stability",
+              "line": 13,
+              "order": 9,
+              "value": "contract"
+            }
+          ],
+          "filePath": "internal/credentials/secret_service.go",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.credentials.secret-service\nrole=Store opaque credential bytes in the Linux Secret Service through cancellable D-Bus sessions, unlock prompts, and bounded public errors.\nowns=Linux credential backend|Secret Service prompt lifecycle|credential byte zeroing\nexcludes=credential namespace policy|provider credential interpretation\nsearch=Linux Secret Service credentials|D-Bus secret prompt|zero credential bytes\ninvariant=Credential values are copied at ownership boundaries and cleared after transport use.\ninvariant=Remote D-Bus error bodies never enter public errors.\nrisk=privacy\nrel=test>relaydock.credentials.secret-service.contract\nstability=contract\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 21,
+          "startLine": 3,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "dec639a4947e4f149052107fae77b0a0dbc28d2e4ed1aa0cfba89b1b4689bbc7",
+      "declarations": [
+        null
+      ],
       "imports": [
         "context",
         "errors",
@@ -3963,13 +5204,75 @@
         "org.freedesktop.DBus.Error.ServiceUnknown"
       ],
       "path": "internal/credentials/secret_service.go",
-      "semanticBytes": 0,
-      "sourceBytes": 13888
+      "semanticBytes": 689,
+      "sourceBytes": 14579
     },
     {
-      "blocks": [],
-      "contentHash": "2268206365b2f8675399c8d0d98029ad1f812ed5d3585275aa445b9085ce634c",
-      "declarations": [],
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [],
+            "id": "relaydock.credentials.secret-service.contract",
+            "invariant": [],
+            "owns": [],
+            "rel": [],
+            "risk": [],
+            "role": "Verify Linux Secret Service create, unlock, read, delete, cancellation, byte clearing, and remote error redaction behavior.",
+            "scope": "file",
+            "search": [
+              "Secret Service tests",
+              "zero credential transport value",
+              "redact D-Bus error"
+            ],
+            "stability": "contract",
+            "unknown": []
+          },
+          "end": 316,
+          "endLine": 8,
+          "entries": [
+            {
+              "key": "id",
+              "line": 4,
+              "order": 0,
+              "value": "relaydock.credentials.secret-service.contract"
+            },
+            {
+              "key": "role",
+              "line": 5,
+              "order": 1,
+              "value": "Verify Linux Secret Service create, unlock, read, delete, cancellation, byte clearing, and remote error redaction behavior."
+            },
+            {
+              "key": "search",
+              "line": 6,
+              "order": 2,
+              "value": "Secret Service tests|zero credential transport value|redact D-Bus error"
+            },
+            {
+              "key": "stability",
+              "line": 7,
+              "order": 3,
+              "value": "contract"
+            }
+          ],
+          "filePath": "internal/credentials/secret_service_test.go",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 file\nid=relaydock.credentials.secret-service.contract\nrole=Verify Linux Secret Service create, unlock, read, delete, cancellation, byte clearing, and remote error redaction behavior.\nsearch=Secret Service tests|zero credential transport value|redact D-Bus error\nstability=contract\n*/",
+          "scope": "file",
+          "specVersion": "1",
+          "start": 21,
+          "startLine": 3,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "2304043553114ee21c28d50731769db1e39542a8b48c06a3de20e715529ba036",
+      "declarations": [
+        null
+      ],
       "imports": [
         "bytes",
         "context",
@@ -3980,8 +5283,8 @@
         "testing"
       ],
       "path": "internal/credentials/secret_service_test.go",
-      "semanticBytes": 0,
-      "sourceBytes": 8103
+      "semanticBytes": 295,
+      "sourceBytes": 8400
     },
     {
       "blocks": [],
@@ -4231,9 +5534,105 @@
       "sourceBytes": 1699
     },
     {
-      "blocks": [],
-      "contentHash": "cc15c8088f91eadac98199861245e63b043bf4e718c2be145a3e719d6b2fa247",
-      "declarations": [],
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [
+              "consultation transition policy",
+              "ContextPack file selection"
+            ],
+            "id": "relaydock.expert.application",
+            "invariant": [
+              "Durable stores use their atomic aggregate operations when available.",
+              "Fallback writes compensate partial ContextPack or result persistence on later failure."
+            ],
+            "owns": [
+              "expert application composition",
+              "cross-store fallback cleanup",
+              "attested result commit"
+            ],
+            "rel": [],
+            "risk": [],
+            "role": "Compose expert consultation, ContextPack, and result stores while preserving atomic cross-aggregate creation and completion when supported.",
+            "scope": "module",
+            "search": [
+              "compose expert application",
+              "create consultation with context",
+              "commit attested result"
+            ],
+            "stability": "architecture",
+            "unknown": []
+          },
+          "end": 655,
+          "endLine": 12,
+          "entries": [
+            {
+              "key": "id",
+              "line": 4,
+              "order": 0,
+              "value": "relaydock.expert.application"
+            },
+            {
+              "key": "role",
+              "line": 5,
+              "order": 1,
+              "value": "Compose expert consultation, ContextPack, and result stores while preserving atomic cross-aggregate creation and completion when supported."
+            },
+            {
+              "key": "owns",
+              "line": 6,
+              "order": 2,
+              "value": "expert application composition|cross-store fallback cleanup|attested result commit"
+            },
+            {
+              "key": "excludes",
+              "line": 7,
+              "order": 3,
+              "value": "consultation transition policy|ContextPack file selection"
+            },
+            {
+              "key": "search",
+              "line": 8,
+              "order": 4,
+              "value": "compose expert application|create consultation with context|commit attested result"
+            },
+            {
+              "key": "invariant",
+              "line": 9,
+              "order": 5,
+              "value": "Durable stores use their atomic aggregate operations when available."
+            },
+            {
+              "key": "invariant",
+              "line": 10,
+              "order": 6,
+              "value": "Fallback writes compensate partial ContextPack or result persistence on later failure."
+            },
+            {
+              "key": "stability",
+              "line": 11,
+              "order": 7,
+              "value": "architecture"
+            }
+          ],
+          "filePath": "internal/expert/app/app.go",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.expert.application\nrole=Compose expert consultation, ContextPack, and result stores while preserving atomic cross-aggregate creation and completion when supported.\nowns=expert application composition|cross-store fallback cleanup|attested result commit\nexcludes=consultation transition policy|ContextPack file selection\nsearch=compose expert application|create consultation with context|commit attested result\ninvariant=Durable stores use their atomic aggregate operations when available.\ninvariant=Fallback writes compensate partial ContextPack or result persistence on later failure.\nstability=architecture\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 13,
+          "startLine": 3,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "0b9e7cf8b347330832f881c7e92b379092b6af996fd86931ba8e94999ac29f54",
+      "declarations": [
+        null
+      ],
       "imports": [
         "context",
         "database/sql",
@@ -4247,8 +5646,8 @@
         "github.com/0disoft/relaydock/internal/expert/resultcontract"
       ],
       "path": "internal/expert/app/app.go",
-      "semanticBytes": 0,
-      "sourceBytes": 9682
+      "semanticBytes": 642,
+      "sourceBytes": 10326
     },
     {
       "blocks": [],
@@ -5101,9 +6500,105 @@
       "sourceBytes": 752
     },
     {
-      "blocks": [],
-      "contentHash": "74e045736e75463506de3b7e8d4ea8fa7d1f5c348d23fde2e15300fced9d8ea5",
-      "declarations": [],
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [
+              "ContextPack redaction",
+              "consultation state transitions"
+            ],
+            "id": "relaydock.expert.openai-api",
+            "invariant": [
+              "A positive cost ceiling is enforced before network I/O using configured pricing.",
+              "Provider responses are bounded and must validate against the result contract."
+            ],
+            "owns": [
+              "OpenAI expert request",
+              "expert cost preflight",
+              "structured result decoding"
+            ],
+            "rel": [],
+            "risk": [],
+            "role": "Submit a redacted ContextPack to the OpenAI Responses API under explicit output and cost ceilings, then validate the structured expert result.",
+            "scope": "module",
+            "search": [
+              "run OpenAI expert",
+              "expert response budget",
+              "decode architecture review"
+            ],
+            "stability": "contract",
+            "unknown": []
+          },
+          "end": 630,
+          "endLine": 12,
+          "entries": [
+            {
+              "key": "id",
+              "line": 4,
+              "order": 0,
+              "value": "relaydock.expert.openai-api"
+            },
+            {
+              "key": "role",
+              "line": 5,
+              "order": 1,
+              "value": "Submit a redacted ContextPack to the OpenAI Responses API under explicit output and cost ceilings, then validate the structured expert result."
+            },
+            {
+              "key": "owns",
+              "line": 6,
+              "order": 2,
+              "value": "OpenAI expert request|expert cost preflight|structured result decoding"
+            },
+            {
+              "key": "excludes",
+              "line": 7,
+              "order": 3,
+              "value": "ContextPack redaction|consultation state transitions"
+            },
+            {
+              "key": "search",
+              "line": 8,
+              "order": 4,
+              "value": "run OpenAI expert|expert response budget|decode architecture review"
+            },
+            {
+              "key": "invariant",
+              "line": 9,
+              "order": 5,
+              "value": "A positive cost ceiling is enforced before network I/O using configured pricing."
+            },
+            {
+              "key": "invariant",
+              "line": 10,
+              "order": 6,
+              "value": "Provider responses are bounded and must validate against the result contract."
+            },
+            {
+              "key": "stability",
+              "line": 11,
+              "order": 7,
+              "value": "contract"
+            }
+          ],
+          "filePath": "internal/expert/routes/openaiapi/client.go",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.expert.openai-api\nrole=Submit a redacted ContextPack to the OpenAI Responses API under explicit output and cost ceilings, then validate the structured expert result.\nowns=OpenAI expert request|expert cost preflight|structured result decoding\nexcludes=ContextPack redaction|consultation state transitions\nsearch=run OpenAI expert|expert response budget|decode architecture review\ninvariant=A positive cost ceiling is enforced before network I/O using configured pricing.\ninvariant=Provider responses are bounded and must validate against the result contract.\nstability=contract\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 19,
+          "startLine": 3,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "e29f0c2239eb1c7e3ad5a9456ef3f52061012fdaaeaa074033df0cf097f30d08",
+      "declarations": [
+        null
+      ],
       "imports": [
         "bytes",
         "context",
@@ -5122,13 +6617,109 @@
         "time"
       ],
       "path": "internal/expert/routes/openaiapi/client.go",
-      "semanticBytes": 0,
-      "sourceBytes": 7608
+      "semanticBytes": 611,
+      "sourceBytes": 8221
     },
     {
-      "blocks": [],
-      "contentHash": "f94c1893826322548f5729b5c193b66aaf4c21a8ab66da4a41651e701700a686",
-      "declarations": [],
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [
+              "browser automation",
+              "consultation persistence"
+            ],
+            "id": "relaydock.expert.web-handoff",
+            "invariant": [
+              "Only a digest of each read token is retained after issuance.",
+              "Expired handoffs cannot resolve tokens or accept results."
+            ],
+            "owns": [
+              "web handoff token lifecycle",
+              "handoff expiry",
+              "web result import"
+            ],
+            "rel": [],
+            "risk": [],
+            "role": "Issue expiring read tokens for browser handoff consultations and accept only validated structured results before expiry.",
+            "scope": "module",
+            "search": [
+              "expert browser handoff",
+              "resolve read token",
+              "import web result"
+            ],
+            "stability": "contract",
+            "unknown": []
+          },
+          "end": 543,
+          "endLine": 12,
+          "entries": [
+            {
+              "key": "id",
+              "line": 4,
+              "order": 0,
+              "value": "relaydock.expert.web-handoff"
+            },
+            {
+              "key": "role",
+              "line": 5,
+              "order": 1,
+              "value": "Issue expiring read tokens for browser handoff consultations and accept only validated structured results before expiry."
+            },
+            {
+              "key": "owns",
+              "line": 6,
+              "order": 2,
+              "value": "web handoff token lifecycle|handoff expiry|web result import"
+            },
+            {
+              "key": "excludes",
+              "line": 7,
+              "order": 3,
+              "value": "browser automation|consultation persistence"
+            },
+            {
+              "key": "search",
+              "line": 8,
+              "order": 4,
+              "value": "expert browser handoff|resolve read token|import web result"
+            },
+            {
+              "key": "invariant",
+              "line": 9,
+              "order": 5,
+              "value": "Only a digest of each read token is retained after issuance."
+            },
+            {
+              "key": "invariant",
+              "line": 10,
+              "order": 6,
+              "value": "Expired handoffs cannot resolve tokens or accept results."
+            },
+            {
+              "key": "stability",
+              "line": 11,
+              "order": 7,
+              "value": "contract"
+            }
+          ],
+          "filePath": "internal/expert/routes/webhandoff/service.go",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.expert.web-handoff\nrole=Issue expiring read tokens for browser handoff consultations and accept only validated structured results before expiry.\nowns=web handoff token lifecycle|handoff expiry|web result import\nexcludes=browser automation|consultation persistence\nsearch=expert browser handoff|resolve read token|import web result\ninvariant=Only a digest of each read token is retained after issuance.\ninvariant=Expired handoffs cannot resolve tokens or accept results.\nstability=contract\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 20,
+          "startLine": 3,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "3419181d09d9dad38e50fb40506a53986185be5ec9e6be259f4c944809642dbf",
+      "declarations": [
+        null
+      ],
       "imports": [
         "context",
         "crypto/sha256",
@@ -5141,8 +6732,8 @@
         "time"
       ],
       "path": "internal/expert/routes/webhandoff/service.go",
-      "semanticBytes": 0,
-      "sourceBytes": 2357
+      "semanticBytes": 523,
+      "sourceBytes": 2882
     },
     {
       "blocks": [],
@@ -5286,9 +6877,105 @@
       "sourceBytes": 433
     },
     {
-      "blocks": [],
-      "contentHash": "8d72c97deeff4972f3e655c998da1e51d37ec822c7f8dc18f5761b5ade2d0f09",
-      "declarations": [],
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [
+              "method business logic",
+              "remote network exposure"
+            ],
+            "id": "relaydock.local-ipc.server",
+            "invariant": [
+              "Connections beyond the configured concurrency bound are closed instead of queued without limit.",
+              "Malformed or oversized frames terminate the connection after one bounded error response."
+            ],
+            "owns": [
+              "local IPC listener lifecycle",
+              "IPC frame boundary",
+              "local method dispatch"
+            ],
+            "rel": [],
+            "risk": [],
+            "role": "Serve bounded framed JSON requests over the local endpoint with explicit connection backpressure and method dispatch.",
+            "scope": "module",
+            "search": [
+              "local IPC server",
+              "bounded framed JSON",
+              "IPC connection limit"
+            ],
+            "stability": "architecture",
+            "unknown": []
+          },
+          "end": 615,
+          "endLine": 12,
+          "entries": [
+            {
+              "key": "id",
+              "line": 4,
+              "order": 0,
+              "value": "relaydock.local-ipc.server"
+            },
+            {
+              "key": "role",
+              "line": 5,
+              "order": 1,
+              "value": "Serve bounded framed JSON requests over the local endpoint with explicit connection backpressure and method dispatch."
+            },
+            {
+              "key": "owns",
+              "line": 6,
+              "order": 2,
+              "value": "local IPC listener lifecycle|IPC frame boundary|local method dispatch"
+            },
+            {
+              "key": "excludes",
+              "line": 7,
+              "order": 3,
+              "value": "method business logic|remote network exposure"
+            },
+            {
+              "key": "search",
+              "line": 8,
+              "order": 4,
+              "value": "local IPC server|bounded framed JSON|IPC connection limit"
+            },
+            {
+              "key": "invariant",
+              "line": 9,
+              "order": 5,
+              "value": "Connections beyond the configured concurrency bound are closed instead of queued without limit."
+            },
+            {
+              "key": "invariant",
+              "line": 10,
+              "order": 6,
+              "value": "Malformed or oversized frames terminate the connection after one bounded error response."
+            },
+            {
+              "key": "stability",
+              "line": 11,
+              "order": 7,
+              "value": "architecture"
+            }
+          ],
+          "filePath": "internal/localipc/server.go",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.local-ipc.server\nrole=Serve bounded framed JSON requests over the local endpoint with explicit connection backpressure and method dispatch.\nowns=local IPC listener lifecycle|IPC frame boundary|local method dispatch\nexcludes=method business logic|remote network exposure\nsearch=local IPC server|bounded framed JSON|IPC connection limit\ninvariant=Connections beyond the configured concurrency bound are closed instead of queued without limit.\ninvariant=Malformed or oversized frames terminate the connection after one bounded error response.\nstability=architecture\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 18,
+          "startLine": 3,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "46e826b4f739ab13ea1873636fc35a6a404e02a2070300901e2ca07c2b5bb9cf",
+      "declarations": [
+        null
+      ],
       "imports": [
         "budget_exceeded",
         "bufio",
@@ -5308,8 +6995,8 @@
         "unauthorized"
       ],
       "path": "internal/localipc/server.go",
-      "semanticBytes": 0,
-      "sourceBytes": 4992
+      "semanticBytes": 597,
+      "sourceBytes": 5591
     },
     {
       "blocks": [],
@@ -5699,9 +7386,105 @@
       "sourceBytes": 372
     },
     {
-      "blocks": [],
-      "contentHash": "27d5a096f33f637f4746343bb4390f8331a0f23f798f4f633218700f9101b48f",
-      "declarations": [],
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [
+              "attribute redaction policy",
+              "remote exporter implementation"
+            ],
+            "id": "relaydock.observability.tracing",
+            "invariant": [
+              "The completion closure exports a span at most once.",
+              "Exporter failures never replace the application operation result."
+            ],
+            "owns": [
+              "trace context propagation",
+              "span lifecycle",
+              "trace exporter registration"
+            ],
+            "rel": [],
+            "risk": [],
+            "role": "Create process-local trace spans with parent propagation, exactly-once completion, and a replaceable exporter boundary.",
+            "scope": "module",
+            "search": [
+              "start tracing span",
+              "propagate trace parent",
+              "configure trace exporter"
+            ],
+            "stability": "architecture",
+            "unknown": []
+          },
+          "end": 580,
+          "endLine": 12,
+          "entries": [
+            {
+              "key": "id",
+              "line": 4,
+              "order": 0,
+              "value": "relaydock.observability.tracing"
+            },
+            {
+              "key": "role",
+              "line": 5,
+              "order": 1,
+              "value": "Create process-local trace spans with parent propagation, exactly-once completion, and a replaceable exporter boundary."
+            },
+            {
+              "key": "owns",
+              "line": 6,
+              "order": 2,
+              "value": "trace context propagation|span lifecycle|trace exporter registration"
+            },
+            {
+              "key": "excludes",
+              "line": 7,
+              "order": 3,
+              "value": "attribute redaction policy|remote exporter implementation"
+            },
+            {
+              "key": "search",
+              "line": 8,
+              "order": 4,
+              "value": "start tracing span|propagate trace parent|configure trace exporter"
+            },
+            {
+              "key": "invariant",
+              "line": 9,
+              "order": 5,
+              "value": "The completion closure exports a span at most once."
+            },
+            {
+              "key": "invariant",
+              "line": 10,
+              "order": 6,
+              "value": "Exporter failures never replace the application operation result."
+            },
+            {
+              "key": "stability",
+              "line": 11,
+              "order": 7,
+              "value": "architecture"
+            }
+          ],
+          "filePath": "internal/observability/tracing.go",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.observability.tracing\nrole=Create process-local trace spans with parent propagation, exactly-once completion, and a replaceable exporter boundary.\nowns=trace context propagation|span lifecycle|trace exporter registration\nexcludes=attribute redaction policy|remote exporter implementation\nsearch=start tracing span|propagate trace parent|configure trace exporter\ninvariant=The completion closure exports a span at most once.\ninvariant=Exporter failures never replace the application operation result.\nstability=architecture\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 23,
+          "startLine": 3,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "dbd26291ecdf09a41fb5c690cef830c8fa754195d6a4d2b8dde9a368cfad7c8b",
+      "declarations": [
+        null
+      ],
       "imports": [
         "context",
         "crypto/rand",
@@ -5713,8 +7496,8 @@
         "time"
       ],
       "path": "internal/observability/tracing.go",
-      "semanticBytes": 0,
-      "sourceBytes": 3469
+      "semanticBytes": 557,
+      "sourceBytes": 4028
     },
     {
       "blocks": [],
@@ -5729,9 +7512,105 @@
       "sourceBytes": 952
     },
     {
-      "blocks": [],
-      "contentHash": "bd466c731073024fd691770e4888aea23f82306140ca3becff49d0557ee0094e",
-      "declarations": [],
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [
+              "outbox SQL persistence",
+              "event transport implementation"
+            ],
+            "id": "relaydock.outbox.delivery",
+            "invariant": [
+              "Lease TTL exceeds the combined publish and repository operation timeouts.",
+              "Every completion call includes the worker identity that owns the claim."
+            ],
+            "owns": [
+              "outbox worker lifecycle",
+              "delivery retry policy",
+              "dead-letter transition"
+            ],
+            "rel": [],
+            "risk": [],
+            "role": "Deliver leased outbox events with bounded concurrency, fenced completion, deterministic jitter, retry limits, and dead-letter handling.",
+            "scope": "module",
+            "search": [
+              "deliver outbox events",
+              "retry webhook delivery",
+              "dead letter worker"
+            ],
+            "stability": "contract",
+            "unknown": []
+          },
+          "end": 600,
+          "endLine": 12,
+          "entries": [
+            {
+              "key": "id",
+              "line": 4,
+              "order": 0,
+              "value": "relaydock.outbox.delivery"
+            },
+            {
+              "key": "role",
+              "line": 5,
+              "order": 1,
+              "value": "Deliver leased outbox events with bounded concurrency, fenced completion, deterministic jitter, retry limits, and dead-letter handling."
+            },
+            {
+              "key": "owns",
+              "line": 6,
+              "order": 2,
+              "value": "outbox worker lifecycle|delivery retry policy|dead-letter transition"
+            },
+            {
+              "key": "excludes",
+              "line": 7,
+              "order": 3,
+              "value": "outbox SQL persistence|event transport implementation"
+            },
+            {
+              "key": "search",
+              "line": 8,
+              "order": 4,
+              "value": "deliver outbox events|retry webhook delivery|dead letter worker"
+            },
+            {
+              "key": "invariant",
+              "line": 9,
+              "order": 5,
+              "value": "Lease TTL exceeds the combined publish and repository operation timeouts."
+            },
+            {
+              "key": "invariant",
+              "line": 10,
+              "order": 6,
+              "value": "Every completion call includes the worker identity that owns the claim."
+            },
+            {
+              "key": "stability",
+              "line": 11,
+              "order": 7,
+              "value": "contract"
+            }
+          ],
+          "filePath": "internal/outbox/delivery.go",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.outbox.delivery\nrole=Deliver leased outbox events with bounded concurrency, fenced completion, deterministic jitter, retry limits, and dead-letter handling.\nowns=outbox worker lifecycle|delivery retry policy|dead-letter transition\nexcludes=outbox SQL persistence|event transport implementation\nsearch=deliver outbox events|retry webhook delivery|dead letter worker\ninvariant=Lease TTL exceeds the combined publish and repository operation timeouts.\ninvariant=Every completion call includes the worker identity that owns the claim.\nstability=contract\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 16,
+          "startLine": 3,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "55da9ccea39d61fb2b468a538f83154bed3cf8252417e57098992e993a17ce39",
+      "declarations": [
+        null
+      ],
       "imports": [
         "%w: outbox lease TTL %s must exceed publish timeout %s plus repository timeout %s",
         "context",
@@ -5748,8 +7627,8 @@
         "time"
       ],
       "path": "internal/outbox/delivery.go",
-      "semanticBytes": 0,
-      "sourceBytes": 10221
+      "semanticBytes": 584,
+      "sourceBytes": 10807
     },
     {
       "blocks": [],
@@ -5917,9 +7796,105 @@
       "sourceBytes": 3881
     },
     {
-      "blocks": [],
-      "contentHash": "5384eb83d3030f2cc9cd6a8895ae67fb336f1166a0a7cc8349a057be76ae7b5d",
-      "declarations": [],
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [
+              "state serialization",
+              "multi-process locking"
+            ],
+            "id": "relaydock.persistence.atomic-file",
+            "invariant": [
+              "The previous complete file remains recoverable until the replacement is installed.",
+              "Reads reject files larger than the caller limit before returning bytes."
+            ],
+            "owns": [
+              "atomic file replacement",
+              "local state durability",
+              "bounded file reads"
+            ],
+            "rel": [],
+            "risk": [],
+            "role": "Persist bounded local state through a same-directory temporary file, durable flushes, restrictive permissions, and recoverable replacement.",
+            "scope": "module",
+            "search": [
+              "write atomic state file",
+              "fsync local persistence",
+              "restore backup file"
+            ],
+            "stability": "contract",
+            "unknown": []
+          },
+          "end": 614,
+          "endLine": 12,
+          "entries": [
+            {
+              "key": "id",
+              "line": 4,
+              "order": 0,
+              "value": "relaydock.persistence.atomic-file"
+            },
+            {
+              "key": "role",
+              "line": 5,
+              "order": 1,
+              "value": "Persist bounded local state through a same-directory temporary file, durable flushes, restrictive permissions, and recoverable replacement."
+            },
+            {
+              "key": "owns",
+              "line": 6,
+              "order": 2,
+              "value": "atomic file replacement|local state durability|bounded file reads"
+            },
+            {
+              "key": "excludes",
+              "line": 7,
+              "order": 3,
+              "value": "state serialization|multi-process locking"
+            },
+            {
+              "key": "search",
+              "line": 8,
+              "order": 4,
+              "value": "write atomic state file|fsync local persistence|restore backup file"
+            },
+            {
+              "key": "invariant",
+              "line": 9,
+              "order": 5,
+              "value": "The previous complete file remains recoverable until the replacement is installed."
+            },
+            {
+              "key": "invariant",
+              "line": 10,
+              "order": 6,
+              "value": "Reads reject files larger than the caller limit before returning bytes."
+            },
+            {
+              "key": "stability",
+              "line": 11,
+              "order": 7,
+              "value": "contract"
+            }
+          ],
+          "filePath": "internal/persistence/atomicfile/file.go",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.persistence.atomic-file\nrole=Persist bounded local state through a same-directory temporary file, durable flushes, restrictive permissions, and recoverable replacement.\nowns=atomic file replacement|local state durability|bounded file reads\nexcludes=state serialization|multi-process locking\nsearch=write atomic state file|fsync local persistence|restore backup file\ninvariant=The previous complete file remains recoverable until the replacement is installed.\ninvariant=Reads reject files larger than the caller limit before returning bytes.\nstability=contract\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 20,
+          "startLine": 3,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "31169f3e746c0f3ea5ae6a1a49890019167ea8894767d5618736866a587746c2",
+      "declarations": [
+        null
+      ],
       "imports": [
         "errors",
         "fmt",
@@ -5929,8 +7904,8 @@
         "path/filepath"
       ],
       "path": "internal/persistence/atomicfile/file.go",
-      "semanticBytes": 0,
-      "sourceBytes": 3650
+      "semanticBytes": 594,
+      "sourceBytes": 4246
     },
     {
       "blocks": [],
@@ -6019,9 +7994,105 @@
       "sourceBytes": 1358
     },
     {
-      "blocks": [],
-      "contentHash": "1d6aa75a2ada5f4b7df68e99d9cc3aac8b541ff6bee1f6da7c2e73a8df72faf6",
-      "declarations": [],
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [
+              "migration SQL definitions",
+              "database backup policy"
+            ],
+            "id": "relaydock.persistence.migrations",
+            "invariant": [
+              "Only one runner mutates the schema while the advisory lock is held.",
+              "Each migration step and its ledger update commit in the same transaction."
+            ],
+            "owns": [
+              "migration serialization",
+              "migration checksum ledger",
+              "transactional migration steps"
+            ],
+            "rel": [],
+            "risk": [],
+            "role": "Apply or roll back embedded PostgreSQL migrations in version order under one advisory lock with checksum validation.",
+            "scope": "module",
+            "search": [
+              "run PostgreSQL migrations",
+              "validate migration checksum",
+              "rollback migration steps"
+            ],
+            "stability": "contract",
+            "unknown": []
+          },
+          "end": 606,
+          "endLine": 12,
+          "entries": [
+            {
+              "key": "id",
+              "line": 4,
+              "order": 0,
+              "value": "relaydock.persistence.migrations"
+            },
+            {
+              "key": "role",
+              "line": 5,
+              "order": 1,
+              "value": "Apply or roll back embedded PostgreSQL migrations in version order under one advisory lock with checksum validation."
+            },
+            {
+              "key": "owns",
+              "line": 6,
+              "order": 2,
+              "value": "migration serialization|migration checksum ledger|transactional migration steps"
+            },
+            {
+              "key": "excludes",
+              "line": 7,
+              "order": 3,
+              "value": "migration SQL definitions|database backup policy"
+            },
+            {
+              "key": "search",
+              "line": 8,
+              "order": 4,
+              "value": "run PostgreSQL migrations|validate migration checksum|rollback migration steps"
+            },
+            {
+              "key": "invariant",
+              "line": 9,
+              "order": 5,
+              "value": "Only one runner mutates the schema while the advisory lock is held."
+            },
+            {
+              "key": "invariant",
+              "line": 10,
+              "order": 6,
+              "value": "Each migration step and its ledger update commit in the same transaction."
+            },
+            {
+              "key": "stability",
+              "line": 11,
+              "order": 7,
+              "value": "contract"
+            }
+          ],
+          "filePath": "internal/persistence/migrate/runner.go",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.persistence.migrations\nrole=Apply or roll back embedded PostgreSQL migrations in version order under one advisory lock with checksum validation.\nowns=migration serialization|migration checksum ledger|transactional migration steps\nexcludes=migration SQL definitions|database backup policy\nsearch=run PostgreSQL migrations|validate migration checksum|rollback migration steps\ninvariant=Only one runner mutates the schema while the advisory lock is held.\ninvariant=Each migration step and its ledger update commit in the same transaction.\nstability=contract\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 17,
+          "startLine": 3,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "f2fe95b647a31de6ded1e06cf945ef17084e7a11a3ad86a38848859781a8da35",
+      "declarations": [
+        null
+      ],
       "imports": [
         "context",
         "database/sql",
@@ -6030,8 +8101,8 @@
         "time"
       ],
       "path": "internal/persistence/migrate/runner.go",
-      "semanticBytes": 0,
-      "sourceBytes": 7845
+      "semanticBytes": 589,
+      "sourceBytes": 8436
     },
     {
       "blocks": [],
@@ -6081,9 +8152,105 @@
       "sourceBytes": 1273
     },
     {
-      "blocks": [],
-      "contentHash": "d052bdc40f1cc0eb2e8c3858e2ae1a62a60ea8964f5c345a23a5109a2af3839f",
-      "declarations": [],
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [
+              "event publishing",
+              "retry delay policy"
+            ],
+            "id": "relaydock.outbox.postgres",
+            "invariant": [
+              "Concurrent claims skip locked rows and preserve queue order among eligible events.",
+              "A stale or expired worker lease cannot complete an event."
+            ],
+            "owns": [
+              "outbox lease persistence",
+              "outbox completion fencing",
+              "dead-letter administration"
+            ],
+            "rel": [],
+            "risk": [],
+            "role": "Lease PostgreSQL outbox events to workers and fence publish, retry, release, and dead-letter completion by the active lease owner.",
+            "scope": "module",
+            "search": [
+              "claim PostgreSQL outbox",
+              "fence worker lease",
+              "requeue dead letter"
+            ],
+            "stability": "contract",
+            "unknown": []
+          },
+          "end": 582,
+          "endLine": 12,
+          "entries": [
+            {
+              "key": "id",
+              "line": 4,
+              "order": 0,
+              "value": "relaydock.outbox.postgres"
+            },
+            {
+              "key": "role",
+              "line": 5,
+              "order": 1,
+              "value": "Lease PostgreSQL outbox events to workers and fence publish, retry, release, and dead-letter completion by the active lease owner."
+            },
+            {
+              "key": "owns",
+              "line": 6,
+              "order": 2,
+              "value": "outbox lease persistence|outbox completion fencing|dead-letter administration"
+            },
+            {
+              "key": "excludes",
+              "line": 7,
+              "order": 3,
+              "value": "event publishing|retry delay policy"
+            },
+            {
+              "key": "search",
+              "line": 8,
+              "order": 4,
+              "value": "claim PostgreSQL outbox|fence worker lease|requeue dead letter"
+            },
+            {
+              "key": "invariant",
+              "line": 9,
+              "order": 5,
+              "value": "Concurrent claims skip locked rows and preserve queue order among eligible events."
+            },
+            {
+              "key": "invariant",
+              "line": 10,
+              "order": 6,
+              "value": "A stale or expired worker lease cannot complete an event."
+            },
+            {
+              "key": "stability",
+              "line": 11,
+              "order": 7,
+              "value": "contract"
+            }
+          ],
+          "filePath": "internal/persistence/postgres/outbox_repository.go",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.outbox.postgres\nrole=Lease PostgreSQL outbox events to workers and fence publish, retry, release, and dead-letter completion by the active lease owner.\nowns=outbox lease persistence|outbox completion fencing|dead-letter administration\nexcludes=event publishing|retry delay policy\nsearch=claim PostgreSQL outbox|fence worker lease|requeue dead letter\ninvariant=Concurrent claims skip locked rows and preserve queue order among eligible events.\ninvariant=A stale or expired worker lease cannot complete an event.\nstability=contract\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 18,
+          "startLine": 3,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "967c28617a97c331878be500d5c261f1b66c2d09a8e8cf9956c22d39703f12fd",
+      "declarations": [
+        null
+      ],
       "imports": [
         "context",
         "database/sql",
@@ -6095,8 +8262,8 @@
         "time"
       ],
       "path": "internal/persistence/postgres/outbox_repository.go",
-      "semanticBytes": 0,
-      "sourceBytes": 9771
+      "semanticBytes": 564,
+      "sourceBytes": 10337
     },
     {
       "blocks": [],
@@ -6285,9 +8452,105 @@
       "sourceBytes": 1307
     },
     {
-      "blocks": [],
-      "contentHash": "1a15ca0888c1aa2221a07412e4d2cf0f43688911c7a027916d36a3b9b626c5a9",
-      "declarations": [],
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [
+              "provider wire conversion",
+              "stream event transitions"
+            ],
+            "id": "relaydock.protocol.canonical-envelope",
+            "invariant": [
+              "Unknown extension payloads remain available as raw JSON for compatible conversion.",
+              "Every item kind must carry the fields required by its canonical meaning."
+            ],
+            "owns": [
+              "canonical request envelope",
+              "canonical item vocabulary",
+              "request structural validation"
+            ],
+            "rel": [],
+            "risk": [],
+            "role": "Define the provider-neutral request vocabulary that preserves messages, tools, reasoning, capabilities, metadata, and unknown extensions.",
+            "scope": "module",
+            "search": [
+              "canonical request envelope",
+              "protocol item types",
+              "preserve protocol extensions"
+            ],
+            "stability": "contract",
+            "unknown": []
+          },
+          "end": 649,
+          "endLine": 12,
+          "entries": [
+            {
+              "key": "id",
+              "line": 4,
+              "order": 0,
+              "value": "relaydock.protocol.canonical-envelope"
+            },
+            {
+              "key": "role",
+              "line": 5,
+              "order": 1,
+              "value": "Define the provider-neutral request vocabulary that preserves messages, tools, reasoning, capabilities, metadata, and unknown extensions."
+            },
+            {
+              "key": "owns",
+              "line": 6,
+              "order": 2,
+              "value": "canonical request envelope|canonical item vocabulary|request structural validation"
+            },
+            {
+              "key": "excludes",
+              "line": 7,
+              "order": 3,
+              "value": "provider wire conversion|stream event transitions"
+            },
+            {
+              "key": "search",
+              "line": 8,
+              "order": 4,
+              "value": "canonical request envelope|protocol item types|preserve protocol extensions"
+            },
+            {
+              "key": "invariant",
+              "line": 9,
+              "order": 5,
+              "value": "Unknown extension payloads remain available as raw JSON for compatible conversion."
+            },
+            {
+              "key": "invariant",
+              "line": 10,
+              "order": 6,
+              "value": "Every item kind must carry the fields required by its canonical meaning."
+            },
+            {
+              "key": "stability",
+              "line": 11,
+              "order": 7,
+              "value": "contract"
+            }
+          ],
+          "filePath": "internal/protocol/canonical/types.go",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.protocol.canonical-envelope\nrole=Define the provider-neutral request vocabulary that preserves messages, tools, reasoning, capabilities, metadata, and unknown extensions.\nowns=canonical request envelope|canonical item vocabulary|request structural validation\nexcludes=provider wire conversion|stream event transitions\nsearch=canonical request envelope|protocol item types|preserve protocol extensions\ninvariant=Unknown extension payloads remain available as raw JSON for compatible conversion.\ninvariant=Every item kind must carry the fields required by its canonical meaning.\nstability=contract\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 19,
+          "startLine": 3,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "5025a9e59fc8d8e95a00cf985ad6d41ea346a537b508c6b4018d863b7aed2beb",
+      "declarations": [
+        null
+      ],
       "imports": [
         "encoding/json",
         "fmt",
@@ -6295,8 +8558,8 @@
         "strings"
       ],
       "path": "internal/protocol/canonical/types.go",
-      "semanticBytes": 0,
-      "sourceBytes": 3472
+      "semanticBytes": 630,
+      "sourceBytes": 4104
     },
     {
       "blocks": [
@@ -6522,17 +8785,113 @@
       "sourceBytes": 1114
     },
     {
-      "blocks": [],
-      "contentHash": "4eff3833a55b99b3b2f49afa0046a3d609cb91f149e97815d3e4e0a8037e9f72",
-      "declarations": [],
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [
+              "wire encoding",
+              "provider retry selection"
+            ],
+            "id": "relaydock.protocol.stream-state",
+            "invariant": [
+              "Terminal streams reject every later event and cancellation.",
+              "Transparent retry becomes impossible after the first semantic event is accepted."
+            ],
+            "owns": [
+              "stream lifecycle state",
+              "semantic event commit flag",
+              "stream sequence monotonicity"
+            ],
+            "rel": [],
+            "risk": [],
+            "role": "Serialize canonical stream transitions and expose whether a failed attempt remains safe for transparent retry.",
+            "scope": "module",
+            "search": [
+              "stream state machine",
+              "transparent retry boundary",
+              "semantic event sequence"
+            ],
+            "stability": "contract",
+            "unknown": []
+          },
+          "end": 579,
+          "endLine": 12,
+          "entries": [
+            {
+              "key": "id",
+              "line": 4,
+              "order": 0,
+              "value": "relaydock.protocol.stream-state"
+            },
+            {
+              "key": "role",
+              "line": 5,
+              "order": 1,
+              "value": "Serialize canonical stream transitions and expose whether a failed attempt remains safe for transparent retry."
+            },
+            {
+              "key": "owns",
+              "line": 6,
+              "order": 2,
+              "value": "stream lifecycle state|semantic event commit flag|stream sequence monotonicity"
+            },
+            {
+              "key": "excludes",
+              "line": 7,
+              "order": 3,
+              "value": "wire encoding|provider retry selection"
+            },
+            {
+              "key": "search",
+              "line": 8,
+              "order": 4,
+              "value": "stream state machine|transparent retry boundary|semantic event sequence"
+            },
+            {
+              "key": "invariant",
+              "line": 9,
+              "order": 5,
+              "value": "Terminal streams reject every later event and cancellation."
+            },
+            {
+              "key": "invariant",
+              "line": 10,
+              "order": 6,
+              "value": "Transparent retry becomes impossible after the first semantic event is accepted."
+            },
+            {
+              "key": "stability",
+              "line": 11,
+              "order": 7,
+              "value": "contract"
+            }
+          ],
+          "filePath": "internal/protocol/stream/state_machine.go",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.protocol.stream-state\nrole=Serialize canonical stream transitions and expose whether a failed attempt remains safe for transparent retry.\nowns=stream lifecycle state|semantic event commit flag|stream sequence monotonicity\nexcludes=wire encoding|provider retry selection\nsearch=stream state machine|transparent retry boundary|semantic event sequence\ninvariant=Terminal streams reject every later event and cancellation.\ninvariant=Transparent retry becomes impossible after the first semantic event is accepted.\nstability=contract\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 16,
+          "startLine": 3,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "02f6fad10de8f32d2a189f422fdb9b380c1ae8062b383961f4f68327f02bdb9a",
+      "declarations": [
+        null
+      ],
       "imports": [
         "fmt",
         "github.com/0disoft/relaydock/internal/core",
         "sync"
       ],
       "path": "internal/protocol/stream/state_machine.go",
-      "semanticBytes": 0,
-      "sourceBytes": 2756
+      "semanticBytes": 563,
+      "sourceBytes": 3321
     },
     {
       "blocks": [],
@@ -6582,9 +8941,105 @@
       "sourceBytes": 1518
     },
     {
-      "blocks": [],
-      "contentHash": "40d8efaf475c091d7245ab984ada3735774073792ce340dca45c656413c53e3e",
-      "declarations": [],
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [
+              "retry scheduling",
+              "HTTP response writing"
+            ],
+            "id": "relaydock.provider.error-taxonomy",
+            "invariant": [
+              "Routing policy does not depend on provider-specific error strings.",
+              "Provider messages are sanitized and bounded before entering structured errors."
+            ],
+            "owns": [
+              "provider error classification",
+              "retryability classification",
+              "Retry-After parsing"
+            ],
+            "rel": [],
+            "risk": [],
+            "role": "Normalize HTTP and transport failures into provider-neutral classes used by retry, cooldown, metrics, and public error codes.",
+            "scope": "module",
+            "search": [
+              "classify provider error",
+              "provider retryable failure",
+              "parse Retry-After"
+            ],
+            "stability": "contract",
+            "unknown": []
+          },
+          "end": 599,
+          "endLine": 12,
+          "entries": [
+            {
+              "key": "id",
+              "line": 4,
+              "order": 0,
+              "value": "relaydock.provider.error-taxonomy"
+            },
+            {
+              "key": "role",
+              "line": 5,
+              "order": 1,
+              "value": "Normalize HTTP and transport failures into provider-neutral classes used by retry, cooldown, metrics, and public error codes."
+            },
+            {
+              "key": "owns",
+              "line": 6,
+              "order": 2,
+              "value": "provider error classification|retryability classification|Retry-After parsing"
+            },
+            {
+              "key": "excludes",
+              "line": 7,
+              "order": 3,
+              "value": "retry scheduling|HTTP response writing"
+            },
+            {
+              "key": "search",
+              "line": 8,
+              "order": 4,
+              "value": "classify provider error|provider retryable failure|parse Retry-After"
+            },
+            {
+              "key": "invariant",
+              "line": 9,
+              "order": 5,
+              "value": "Routing policy does not depend on provider-specific error strings."
+            },
+            {
+              "key": "invariant",
+              "line": 10,
+              "order": 6,
+              "value": "Provider messages are sanitized and bounded before entering structured errors."
+            },
+            {
+              "key": "stability",
+              "line": 11,
+              "order": 7,
+              "value": "contract"
+            }
+          ],
+          "filePath": "internal/provider/error.go",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.provider.error-taxonomy\nrole=Normalize HTTP and transport failures into provider-neutral classes used by retry, cooldown, metrics, and public error codes.\nowns=provider error classification|retryability classification|Retry-After parsing\nexcludes=retry scheduling|HTTP response writing\nsearch=classify provider error|provider retryable failure|parse Retry-After\ninvariant=Routing policy does not depend on provider-specific error strings.\ninvariant=Provider messages are sanitized and bounded before entering structured errors.\nstability=contract\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 18,
+          "startLine": 3,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "c3d71480d3c6980edb2aa8e0999dbb8c73a4e40ef9a267248a6cc30adf23b929",
+      "declarations": [
+        null
+      ],
       "imports": [
         "context",
         "errors",
@@ -6598,8 +9053,8 @@
         "time"
       ],
       "path": "internal/provider/error.go",
-      "semanticBytes": 0,
-      "sourceBytes": 7377
+      "semanticBytes": 581,
+      "sourceBytes": 7960
     },
     {
       "blocks": [],
@@ -6623,9 +9078,105 @@
       "sourceBytes": 2237
     },
     {
-      "blocks": [],
-      "contentHash": "1fce0d30e892c484d4defe9e0022051e223204bd7f2fec51c94790af2594496f",
-      "declarations": [],
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [
+              "route selection",
+              "canonical protocol compilation"
+            ],
+            "id": "relaydock.provider.http-adapter",
+            "invariant": [
+              "Anonymous access is rejected unless the adapter configuration explicitly permits it.",
+              "Successful and error response bodies are read through fixed upper bounds."
+            ],
+            "owns": [
+              "provider HTTP request boundary",
+              "provider authentication headers",
+              "response size enforcement"
+            ],
+            "rel": [],
+            "risk": [],
+            "role": "Execute provider-neutral HTTP attempts with configured authentication, protocol paths, bounded responses, and normalized upstream failures.",
+            "scope": "module",
+            "search": [
+              "HTTP provider adapter",
+              "provider API authentication",
+              "limit provider response"
+            ],
+            "stability": "architecture",
+            "unknown": []
+          },
+          "end": 655,
+          "endLine": 12,
+          "entries": [
+            {
+              "key": "id",
+              "line": 4,
+              "order": 0,
+              "value": "relaydock.provider.http-adapter"
+            },
+            {
+              "key": "role",
+              "line": 5,
+              "order": 1,
+              "value": "Execute provider-neutral HTTP attempts with configured authentication, protocol paths, bounded responses, and normalized upstream failures."
+            },
+            {
+              "key": "owns",
+              "line": 6,
+              "order": 2,
+              "value": "provider HTTP request boundary|provider authentication headers|response size enforcement"
+            },
+            {
+              "key": "excludes",
+              "line": 7,
+              "order": 3,
+              "value": "route selection|canonical protocol compilation"
+            },
+            {
+              "key": "search",
+              "line": 8,
+              "order": 4,
+              "value": "HTTP provider adapter|provider API authentication|limit provider response"
+            },
+            {
+              "key": "invariant",
+              "line": 9,
+              "order": 5,
+              "value": "Anonymous access is rejected unless the adapter configuration explicitly permits it."
+            },
+            {
+              "key": "invariant",
+              "line": 10,
+              "order": 6,
+              "value": "Successful and error response bodies are read through fixed upper bounds."
+            },
+            {
+              "key": "stability",
+              "line": 11,
+              "order": 7,
+              "value": "architecture"
+            }
+          ],
+          "filePath": "internal/provider/httpadapter/adapter.go",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.provider.http-adapter\nrole=Execute provider-neutral HTTP attempts with configured authentication, protocol paths, bounded responses, and normalized upstream failures.\nowns=provider HTTP request boundary|provider authentication headers|response size enforcement\nexcludes=route selection|canonical protocol compilation\nsearch=HTTP provider adapter|provider API authentication|limit provider response\ninvariant=Anonymous access is rejected unless the adapter configuration explicitly permits it.\ninvariant=Successful and error response bodies are read through fixed upper bounds.\nstability=architecture\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 21,
+          "startLine": 3,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "1cd81c1c9c59772d0627f4082d3cbe052f915c3e731c311abd3b2a8be6b9a65b",
+      "declarations": [
+        null
+      ],
       "imports": [
         "bytes",
         "context",
@@ -6641,8 +9192,8 @@
         "time"
       ],
       "path": "internal/provider/httpadapter/adapter.go",
-      "semanticBytes": 0,
-      "sourceBytes": 4518
+      "semanticBytes": 634,
+      "sourceBytes": 5154
     },
     {
       "blocks": [],
@@ -7650,9 +10201,105 @@
       "sourceBytes": 1024
     },
     {
-      "blocks": [],
-      "contentHash": "c4053c9d007d2dd9ecc4605e5bb92aad582e848e5033271d89d8679d7e40882e",
-      "declarations": [],
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [
+              "route authentication",
+              "domain error creation"
+            ],
+            "id": "relaydock.transport.json-api",
+            "invariant": [
+              "Request decoding rejects unknown fields, oversized bodies, and more than one JSON value.",
+              "Every JSON response is marked no-store."
+            ],
+            "owns": [
+              "HTTP JSON decoding boundary",
+              "HTTP error status mapping",
+              "JSON response headers"
+            ],
+            "rel": [],
+            "risk": [],
+            "role": "Enforce bounded single-value JSON requests and map RelayDock domain errors into no-store JSON responses.",
+            "scope": "module",
+            "search": [
+              "read bounded JSON",
+              "map API error status",
+              "reject trailing JSON"
+            ],
+            "stability": "contract",
+            "unknown": []
+          },
+          "end": 548,
+          "endLine": 12,
+          "entries": [
+            {
+              "key": "id",
+              "line": 4,
+              "order": 0,
+              "value": "relaydock.transport.json-api"
+            },
+            {
+              "key": "role",
+              "line": 5,
+              "order": 1,
+              "value": "Enforce bounded single-value JSON requests and map RelayDock domain errors into no-store JSON responses."
+            },
+            {
+              "key": "owns",
+              "line": 6,
+              "order": 2,
+              "value": "HTTP JSON decoding boundary|HTTP error status mapping|JSON response headers"
+            },
+            {
+              "key": "excludes",
+              "line": 7,
+              "order": 3,
+              "value": "route authentication|domain error creation"
+            },
+            {
+              "key": "search",
+              "line": 8,
+              "order": 4,
+              "value": "read bounded JSON|map API error status|reject trailing JSON"
+            },
+            {
+              "key": "invariant",
+              "line": 9,
+              "order": 5,
+              "value": "Request decoding rejects unknown fields, oversized bodies, and more than one JSON value."
+            },
+            {
+              "key": "invariant",
+              "line": 10,
+              "order": 6,
+              "value": "Every JSON response is marked no-store."
+            },
+            {
+              "key": "stability",
+              "line": 11,
+              "order": 7,
+              "value": "contract"
+            }
+          ],
+          "filePath": "internal/transport/apiutil/api.go",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.transport.json-api\nrole=Enforce bounded single-value JSON requests and map RelayDock domain errors into no-store JSON responses.\nowns=HTTP JSON decoding boundary|HTTP error status mapping|JSON response headers\nexcludes=route authentication|domain error creation\nsearch=read bounded JSON|map API error status|reject trailing JSON\ninvariant=Request decoding rejects unknown fields, oversized bodies, and more than one JSON value.\ninvariant=Every JSON response is marked no-store.\nstability=contract\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 17,
+          "startLine": 3,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "59f4f645e541d21397c1f4533978416719bc6e511e8131e655369ea5d52033c2",
+      "declarations": [
+        null
+      ],
       "imports": [
         "encoding/json",
         "errors",
@@ -7662,8 +10309,8 @@
         "net/http"
       ],
       "path": "internal/transport/apiutil/api.go",
-      "semanticBytes": 0,
-      "sourceBytes": 2595
+      "semanticBytes": 531,
+      "sourceBytes": 3128
     },
     {
       "blocks": [],
@@ -7958,9 +10605,105 @@
       "sourceBytes": 1276
     },
     {
-      "blocks": [],
-      "contentHash": "dc941489095427fe76f09cafd72325fd489e24f3ec3c68cec49480194ad999b9",
-      "declarations": [],
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [
+              "provider execution",
+              "canonical stream validation"
+            ],
+            "id": "relaydock.transport.live-stream",
+            "invariant": [
+              "Headers and the streaming status line are committed only once.",
+              "No semantic event is emitted before the upstream route commit hook succeeds."
+            ],
+            "owns": [
+              "HTTP stream commit boundary",
+              "SSE response encoding",
+              "stream terminal emission"
+            ],
+            "rel": [],
+            "risk": [],
+            "role": "Commit provider metadata and translate canonical stream events into OpenAI-compatible live HTTP output without reopening retry eligibility.",
+            "scope": "module",
+            "search": [
+              "write live SSE response",
+              "commit provider stream",
+              "encode OpenAI stream event"
+            ],
+            "stability": "contract",
+            "unknown": []
+          },
+          "end": 618,
+          "endLine": 12,
+          "entries": [
+            {
+              "key": "id",
+              "line": 4,
+              "order": 0,
+              "value": "relaydock.transport.live-stream"
+            },
+            {
+              "key": "role",
+              "line": 5,
+              "order": 1,
+              "value": "Commit provider metadata and translate canonical stream events into OpenAI-compatible live HTTP output without reopening retry eligibility."
+            },
+            {
+              "key": "owns",
+              "line": 6,
+              "order": 2,
+              "value": "HTTP stream commit boundary|SSE response encoding|stream terminal emission"
+            },
+            {
+              "key": "excludes",
+              "line": 7,
+              "order": 3,
+              "value": "provider execution|canonical stream validation"
+            },
+            {
+              "key": "search",
+              "line": 8,
+              "order": 4,
+              "value": "write live SSE response|commit provider stream|encode OpenAI stream event"
+            },
+            {
+              "key": "invariant",
+              "line": 9,
+              "order": 5,
+              "value": "Headers and the streaming status line are committed only once."
+            },
+            {
+              "key": "invariant",
+              "line": 10,
+              "order": 6,
+              "value": "No semantic event is emitted before the upstream route commit hook succeeds."
+            },
+            {
+              "key": "stability",
+              "line": 11,
+              "order": 7,
+              "value": "contract"
+            }
+          ],
+          "filePath": "internal/transport/httpgateway/streaming.go",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.transport.live-stream\nrole=Commit provider metadata and translate canonical stream events into OpenAI-compatible live HTTP output without reopening retry eligibility.\nowns=HTTP stream commit boundary|SSE response encoding|stream terminal emission\nexcludes=provider execution|canonical stream validation\nsearch=write live SSE response|commit provider stream|encode OpenAI stream event\ninvariant=Headers and the streaming status line are committed only once.\ninvariant=No semantic event is emitted before the upstream route commit hook succeeds.\nstability=contract\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 21,
+          "startLine": 3,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "8f4d9208a294c6e2a2724f8d9656c49f79c723bebe1a645c7e4844049b28ece1",
+      "declarations": [
+        null
+      ],
       "imports": [
         "bytes",
         "candidates",
@@ -7994,8 +10737,8 @@
         "usageMetadata"
       ],
       "path": "internal/transport/httpgateway/streaming.go",
-      "semanticBytes": 0,
-      "sourceBytes": 13288
+      "semanticBytes": 597,
+      "sourceBytes": 13887
     },
     {
       "blocks": [],

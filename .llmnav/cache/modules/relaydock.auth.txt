@@ -11,3 +11,14 @@ rel test>relaydock.auth.virtualkey.contract
 
 @relaydock.auth.virtualkey.contract
 role Verify issued virtual keys round-trip through authentication and malformed key material is rejected.
+
+@relaydock.auth.scoped-token-keyring
+role Rotate scoped-token signing keys while retaining bounded verification overlap and constant-time secret comparisons.
+owns scoped-token key rotation, verification key overlap, legacy secret deduplication
+excludes token claim encoding, scope authorization policy
+invariant Only the active key signs new tokens while retained keys are verification-only. A verification key cannot replace the active key with different secret material.
+risk auth
+rel test>relaydock.auth.scoped-token.contract
+
+@relaydock.auth.scoped-token.contract
+role Verify scoped-token rotation overlap, audience and expiry enforcement, tamper rejection, key-map normalization, and claim size bounds.

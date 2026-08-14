@@ -6,3 +6,21 @@ role Define allowed consultation state transitions from context request through 
 owns consultation state graph, consultation lifecycle events
 excludes state persistence, worker lease claims
 invariant Only declared state-event pairs can advance a consultation.
+
+@relaydock.expert.application
+role Compose expert consultation, ContextPack, and result stores while preserving atomic cross-aggregate creation and completion when supported.
+owns expert application composition, cross-store fallback cleanup, attested result commit
+excludes consultation transition policy, ContextPack file selection
+invariant Durable stores use their atomic aggregate operations when available. Fallback writes compensate partial ContextPack or result persistence on later failure.
+
+@relaydock.expert.openai-api
+role Submit a redacted ContextPack to the OpenAI Responses API under explicit output and cost ceilings, then validate the structured expert result.
+owns OpenAI expert request, expert cost preflight, structured result decoding
+excludes ContextPack redaction, consultation state transitions
+invariant A positive cost ceiling is enforced before network I/O using configured pricing. Provider responses are bounded and must validate against the result contract.
+
+@relaydock.expert.web-handoff
+role Issue expiring read tokens for browser handoff consultations and accept only validated structured results before expiry.
+owns web handoff token lifecycle, handoff expiry, web result import
+excludes browser automation, consultation persistence
+invariant Only a digest of each read token is retained after issuance. Expired handoffs cannot resolve tokens or accept results.

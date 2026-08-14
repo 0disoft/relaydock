@@ -1,5 +1,16 @@
 package provider
 
+/* llmnav/1 module
+id=relaydock.provider.error-taxonomy
+role=Normalize HTTP and transport failures into provider-neutral classes used by retry, cooldown, metrics, and public error codes.
+owns=provider error classification|retryability classification|Retry-After parsing
+excludes=retry scheduling|HTTP response writing
+search=classify provider error|provider retryable failure|parse Retry-After
+invariant=Routing policy does not depend on provider-specific error strings.
+invariant=Provider messages are sanitized and bounded before entering structured errors.
+stability=contract
+*/
+
 import (
 	"context"
 	"errors"

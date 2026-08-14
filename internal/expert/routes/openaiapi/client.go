@@ -1,5 +1,16 @@
 package openaiapi
 
+/* llmnav/1 module
+id=relaydock.expert.openai-api
+role=Submit a redacted ContextPack to the OpenAI Responses API under explicit output and cost ceilings, then validate the structured expert result.
+owns=OpenAI expert request|expert cost preflight|structured result decoding
+excludes=ContextPack redaction|consultation state transitions
+search=run OpenAI expert|expert response budget|decode architecture review
+invariant=A positive cost ceiling is enforced before network I/O using configured pricing.
+invariant=Provider responses are bounded and must validate against the result contract.
+stability=contract
+*/
+
 import (
 	"bytes"
 	"context"

@@ -1,5 +1,16 @@
 package httpadapter
 
+/* llmnav/1 module
+id=relaydock.provider.http-adapter
+role=Execute provider-neutral HTTP attempts with configured authentication, protocol paths, bounded responses, and normalized upstream failures.
+owns=provider HTTP request boundary|provider authentication headers|response size enforcement
+excludes=route selection|canonical protocol compilation
+search=HTTP provider adapter|provider API authentication|limit provider response
+invariant=Anonymous access is rejected unless the adapter configuration explicitly permits it.
+invariant=Successful and error response bodies are read through fixed upper bounds.
+stability=architecture
+*/
+
 import (
 	"bytes"
 	"context"

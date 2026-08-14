@@ -1,5 +1,16 @@
 package migrate
 
+/* llmnav/1 module
+id=relaydock.persistence.migrations
+role=Apply or roll back embedded PostgreSQL migrations in version order under one advisory lock with checksum validation.
+owns=migration serialization|migration checksum ledger|transactional migration steps
+excludes=migration SQL definitions|database backup policy
+search=run PostgreSQL migrations|validate migration checksum|rollback migration steps
+invariant=Only one runner mutates the schema while the advisory lock is held.
+invariant=Each migration step and its ledger update commit in the same transaction.
+stability=contract
+*/
+
 import (
 	"context"
 	"database/sql"

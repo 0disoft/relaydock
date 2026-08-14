@@ -1,5 +1,16 @@
 package apiutil
 
+/* llmnav/1 module
+id=relaydock.transport.json-api
+role=Enforce bounded single-value JSON requests and map RelayDock domain errors into no-store JSON responses.
+owns=HTTP JSON decoding boundary|HTTP error status mapping|JSON response headers
+excludes=route authentication|domain error creation
+search=read bounded JSON|map API error status|reject trailing JSON
+invariant=Request decoding rejects unknown fields, oversized bodies, and more than one JSON value.
+invariant=Every JSON response is marked no-store.
+stability=contract
+*/
+
 import (
 	"encoding/json"
 	"errors"

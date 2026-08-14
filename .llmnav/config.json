@@ -57,6 +57,43 @@
         "invariant"
       ],
       "scope": "module"
+    },
+    {
+      "match": [
+        "db/migrations/000001_initial.down.sql",
+        "db/migrations/000001_initial.up.sql",
+        "db/migrations/000002_expert_durability.down.sql",
+        "db/migrations/000002_expert_durability.up.sql",
+        "db/migrations/000003_runtime_journal.down.sql",
+        "db/migrations/000003_runtime_journal.up.sql",
+        "db/migrations/000004_outbox_delivery.down.sql",
+        "db/migrations/000004_outbox_delivery.up.sql",
+        "frontend/src/lib/runtime-adapter.ts",
+        "internal/auth/scopedtoken/keyring.go",
+        "internal/core/errors.go",
+        "internal/credentials/secret_service.go",
+        "internal/expert/app/app.go",
+        "internal/expert/routes/openaiapi/client.go",
+        "internal/expert/routes/webhandoff/service.go",
+        "internal/localipc/server.go",
+        "internal/observability/tracing.go",
+        "internal/outbox/delivery.go",
+        "internal/persistence/atomicfile/file.go",
+        "internal/persistence/migrate/runner.go",
+        "internal/persistence/postgres/outbox_repository.go",
+        "internal/protocol/canonical/types.go",
+        "internal/protocol/stream/state_machine.go",
+        "internal/provider/error.go",
+        "internal/provider/httpadapter/adapter.go",
+        "internal/transport/apiutil/api.go",
+        "internal/transport/httpgateway/streaming.go"
+      ],
+      "name": "RelayDock protocol persistence and transport boundaries",
+      "requiredFields": [
+        "owns",
+        "invariant"
+      ],
+      "scope": "module"
     }
   ],
   "evaluation": {
@@ -166,7 +203,7 @@
     "maxRelations": 6,
     "maxRoleLength": 180,
     "maxSearchTerms": 6,
-    "maxSemanticRatio": 0.015,
+    "maxSemanticRatio": 0.03,
     "minSearchTerms": 2,
     "minimumCardsForSaturation": 20,
     "minimumSourceBytesForRatio": 50000,

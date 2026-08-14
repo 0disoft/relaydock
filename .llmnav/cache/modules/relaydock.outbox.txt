@@ -1,0 +1,14 @@
+llmnav-catalog/1 repository=relaydock catalog=relaydock.outbox
+Read semantic cards before opening source. Resolve current paths and signatures with llmnav query or show.
+
+@relaydock.outbox.delivery
+role Deliver leased outbox events with bounded concurrency, fenced completion, deterministic jitter, retry limits, and dead-letter handling.
+owns outbox worker lifecycle, delivery retry policy, dead-letter transition
+excludes outbox SQL persistence, event transport implementation
+invariant Lease TTL exceeds the combined publish and repository operation timeouts. Every completion call includes the worker identity that owns the claim.
+
+@relaydock.outbox.postgres
+role Lease PostgreSQL outbox events to workers and fence publish, retry, release, and dead-letter completion by the active lease owner.
+owns outbox lease persistence, outbox completion fencing, dead-letter administration
+excludes event publishing, retry delay policy
+invariant Concurrent claims skip locked rows and preserve queue order among eligible events. A stale or expired worker lease cannot complete an event.

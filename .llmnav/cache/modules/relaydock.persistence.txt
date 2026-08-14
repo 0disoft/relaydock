@@ -1,0 +1,14 @@
+llmnav-catalog/1 repository=relaydock catalog=relaydock.persistence
+Read semantic cards before opening source. Resolve current paths and signatures with llmnav query or show.
+
+@relaydock.persistence.atomic-file
+role Persist bounded local state through a same-directory temporary file, durable flushes, restrictive permissions, and recoverable replacement.
+owns atomic file replacement, local state durability, bounded file reads
+excludes state serialization, multi-process locking
+invariant The previous complete file remains recoverable until the replacement is installed. Reads reject files larger than the caller limit before returning bytes.
+
+@relaydock.persistence.migrations
+role Apply or roll back embedded PostgreSQL migrations in version order under one advisory lock with checksum validation.
+owns migration serialization, migration checksum ledger, transactional migration steps
+excludes migration SQL definitions, database backup policy
+invariant Only one runner mutates the schema while the advisory lock is held. Each migration step and its ledger update commit in the same transaction.

@@ -1,5 +1,16 @@
 package stream
 
+/* llmnav/1 module
+id=relaydock.protocol.stream-state
+role=Serialize canonical stream transitions and expose whether a failed attempt remains safe for transparent retry.
+owns=stream lifecycle state|semantic event commit flag|stream sequence monotonicity
+excludes=wire encoding|provider retry selection
+search=stream state machine|transparent retry boundary|semantic event sequence
+invariant=Terminal streams reject every later event and cancellation.
+invariant=Transparent retry becomes impossible after the first semantic event is accepted.
+stability=contract
+*/
+
 import (
 	"fmt"
 	"sync"

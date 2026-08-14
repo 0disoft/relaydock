@@ -1,3 +1,14 @@
+/* llmnav/1 module
+id=relaydock.migration.runtime-journal.up
+role=Expand the runtime journal with client identity, tenant scope, usage totals, provider attempt provenance, commit state, and bounded failure metadata.
+owns=runtime journal schema|provider attempt provenance|request usage totals
+excludes=journal write sequencing|usage settlement
+search=expand runtime journal|persist provider attempts|request usage migration
+invariant=Attempt and token counters remain non-negative.
+invariant=Provider attempts may omit a control-plane connection when signed snapshots supply the route.
+stability=contract
+*/
+
 -- Persist the complete gateway request/attempt lifecycle and make provider
 -- attempts usable even when routes are supplied by a signed snapshot instead
 -- of a control.provider_connections row.

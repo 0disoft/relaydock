@@ -1,5 +1,16 @@
 package atomicfile
 
+/* llmnav/1 module
+id=relaydock.persistence.atomic-file
+role=Persist bounded local state through a same-directory temporary file, durable flushes, restrictive permissions, and recoverable replacement.
+owns=atomic file replacement|local state durability|bounded file reads
+excludes=state serialization|multi-process locking
+search=write atomic state file|fsync local persistence|restore backup file
+invariant=The previous complete file remains recoverable until the replacement is installed.
+invariant=Reads reject files larger than the caller limit before returning bytes.
+stability=contract
+*/
+
 import (
 	"errors"
 	"fmt"

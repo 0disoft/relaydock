@@ -1,5 +1,16 @@
 package localipc
 
+/* llmnav/1 module
+id=relaydock.local-ipc.server
+role=Serve bounded framed JSON requests over the local endpoint with explicit connection backpressure and method dispatch.
+owns=local IPC listener lifecycle|IPC frame boundary|local method dispatch
+excludes=method business logic|remote network exposure
+search=local IPC server|bounded framed JSON|IPC connection limit
+invariant=Connections beyond the configured concurrency bound are closed instead of queued without limit.
+invariant=Malformed or oversized frames terminate the connection after one bounded error response.
+stability=architecture
+*/
+
 import (
 	"bufio"
 	"context"

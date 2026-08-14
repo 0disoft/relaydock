@@ -1,5 +1,16 @@
 package postgres
 
+/* llmnav/1 module
+id=relaydock.outbox.postgres
+role=Lease PostgreSQL outbox events to workers and fence publish, retry, release, and dead-letter completion by the active lease owner.
+owns=outbox lease persistence|outbox completion fencing|dead-letter administration
+excludes=event publishing|retry delay policy
+search=claim PostgreSQL outbox|fence worker lease|requeue dead letter
+invariant=Concurrent claims skip locked rows and preserve queue order among eligible events.
+invariant=A stale or expired worker lease cannot complete an event.
+stability=contract
+*/
+
 import (
 	"context"
 	"database/sql"

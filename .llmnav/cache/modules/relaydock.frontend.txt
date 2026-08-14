@@ -1,0 +1,8 @@
+llmnav-catalog/1 repository=relaydock catalog=relaydock.frontend
+Read semantic cards before opening source. Resolve current paths and signatures with llmnav query or show.
+
+@relaydock.frontend.runtime-adapter
+role Keep desktop UI calls behind typed Wails service adapters and build privacy-aware ContextPack previews before consultation creation.
+owns frontend runtime adapter, frontend consultation operations, ContextPack preview defaults
+excludes Wails binding generation, backend authorization
+invariant UI modules consume this adapter instead of importing generated bindings directly. ContextPack previews use an explicit byte ceiling and report redaction findings.

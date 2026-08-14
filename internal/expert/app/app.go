@@ -1,5 +1,16 @@
 package app
 
+/* llmnav/1 module
+id=relaydock.expert.application
+role=Compose expert consultation, ContextPack, and result stores while preserving atomic cross-aggregate creation and completion when supported.
+owns=expert application composition|cross-store fallback cleanup|attested result commit
+excludes=consultation transition policy|ContextPack file selection
+search=compose expert application|create consultation with context|commit attested result
+invariant=Durable stores use their atomic aggregate operations when available.
+invariant=Fallback writes compensate partial ContextPack or result persistence on later failure.
+stability=architecture
+*/
+
 import (
 	"context"
 	"database/sql"

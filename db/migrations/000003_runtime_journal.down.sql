@@ -1,3 +1,14 @@
+/* llmnav/1 module
+id=relaydock.migration.runtime-journal.down
+role=Remove expanded request usage and provider-attempt journal fields while restoring the original connection requirement when data permits.
+owns=runtime journal rollback|provider connection constraint restoration
+excludes=request row deletion|usage event rollback
+search=rollback runtime journal|remove provider attempt provenance|restore provider connection constraint
+invariant=The NOT NULL provider connection constraint is restored only when no existing attempt contains NULL.
+invariant=Base request and provider-attempt records survive the rollback.
+stability=contract
+*/
+
 DROP INDEX IF EXISTS runtime.runtime_attempts_request_state_idx;
 DROP INDEX IF EXISTS runtime.runtime_requests_client_request_idx;
 

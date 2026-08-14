@@ -1,0 +1,8 @@
+llmnav-catalog/1 repository=relaydock catalog=relaydock.core
+Read semantic cards before opening source. Resolve current paths and signatures with llmnav query or show.
+
+@relaydock.core.error-contract
+role Define stable cross-layer error identities used for transport status mapping, retry decisions, and operator diagnostics.
+owns domain error identities, cross-layer failure vocabulary
+excludes provider error classification, user-facing message redaction
+invariant Callers classify failures with errors.Is rather than matching message text. New identities remain provider-neutral and preserve existing transport mappings.

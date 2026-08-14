@@ -1,5 +1,16 @@
 package core
 
+/* llmnav/1 module
+id=relaydock.core.error-contract
+role=Define stable cross-layer error identities used for transport status mapping, retry decisions, and operator diagnostics.
+owns=domain error identities|cross-layer failure vocabulary
+excludes=provider error classification|user-facing message redaction
+search=RelayDock domain errors|error identity mapping|shared failure codes
+invariant=Callers classify failures with errors.Is rather than matching message text.
+invariant=New identities remain provider-neutral and preserve existing transport mappings.
+stability=contract
+*/
+
 import "errors"
 
 var (
