@@ -1,0 +1,190 @@
+{
+  "edges": [],
+  "nodes": [
+    {
+      "definitions": [],
+      "external": false,
+      "key": "relaydock/relaydock.accounting.settlement",
+      "location": {
+        "declarationLine": null,
+        "endLine": 12,
+        "exported": null,
+        "kind": null,
+        "language": null,
+        "path": "internal/accounting/service.go",
+        "receiver": null,
+        "signature": null,
+        "startLine": 3,
+        "symbol": null,
+        "visibility": null
+      },
+      "repositoryId": "relaydock",
+      "role": "Quote a pinned price revision, authorize a bounded hold, capture provider usage once, and release the unused balance.",
+      "semanticId": "relaydock.accounting.settlement",
+      "unresolved": false
+    },
+    {
+      "definitions": [],
+      "external": false,
+      "key": "relaydock/relaydock.contextpack.compile",
+      "location": {
+        "declarationLine": null,
+        "endLine": 12,
+        "exported": null,
+        "kind": null,
+        "language": null,
+        "path": "internal/expert/contextpack/compiler.go",
+        "receiver": null,
+        "signature": null,
+        "startLine": 3,
+        "symbol": null,
+        "visibility": null
+      },
+      "repositoryId": "relaydock",
+      "role": "Select, redact, hash, and package repository evidence before expert consultation data leaves the local boundary.",
+      "semanticId": "relaydock.contextpack.compile",
+      "unresolved": false
+    },
+    {
+      "definitions": [],
+      "external": false,
+      "key": "relaydock/relaydock.expert.lifecycle",
+      "location": {
+        "declarationLine": null,
+        "endLine": 11,
+        "exported": null,
+        "kind": null,
+        "language": null,
+        "path": "internal/expert/consultation/state_machine.go",
+        "receiver": null,
+        "signature": null,
+        "startLine": 3,
+        "symbol": null,
+        "visibility": null
+      },
+      "repositoryId": "relaydock",
+      "role": "Define allowed consultation state transitions from context request through approval, execution, result, and terminal outcomes.",
+      "semanticId": "relaydock.expert.lifecycle",
+      "unresolved": false
+    },
+    {
+      "definitions": [],
+      "external": false,
+      "key": "relaydock/relaydock.mcp.remote",
+      "location": {
+        "declarationLine": null,
+        "endLine": 12,
+        "exported": null,
+        "kind": null,
+        "language": null,
+        "path": "internal/mcpremote/server.go",
+        "receiver": null,
+        "signature": null,
+        "startLine": 3,
+        "symbol": null,
+        "visibility": null
+      },
+      "repositoryId": "relaydock",
+      "role": "Expose tenant-scoped remote expert tools behind bearer authentication, host, origin, body-size, and per-tool scope checks.",
+      "semanticId": "relaydock.mcp.remote",
+      "unresolved": false
+    },
+    {
+      "definitions": [],
+      "external": false,
+      "key": "relaydock/relaydock.protocol.compiler",
+      "location": {
+        "declarationLine": null,
+        "endLine": 11,
+        "exported": null,
+        "kind": null,
+        "language": null,
+        "path": "internal/protocol/compiler/compiler.go",
+        "receiver": null,
+        "signature": null,
+        "startLine": 3,
+        "symbol": null,
+        "visibility": null
+      },
+      "repositoryId": "relaydock",
+      "role": "Decode provider ingress into canonical requests and encode canonical requests with explicit loss reports.",
+      "semanticId": "relaydock.protocol.compiler",
+      "unresolved": false
+    },
+    {
+      "definitions": [],
+      "external": false,
+      "key": "relaydock/relaydock.routing.candidates",
+      "location": {
+        "declarationLine": null,
+        "endLine": 12,
+        "exported": null,
+        "kind": null,
+        "language": null,
+        "path": "internal/composition/gateway/routes_source.go",
+        "receiver": null,
+        "signature": null,
+        "startLine": 3,
+        "symbol": null,
+        "visibility": null
+      },
+      "repositoryId": "relaydock",
+      "role": "Build and serve validated provider candidates for virtual and direct model routes under runtime availability state.",
+      "semanticId": "relaydock.routing.candidates",
+      "unresolved": false
+    },
+    {
+      "definitions": [],
+      "external": false,
+      "key": "relaydock/relaydock.runtime.gateway",
+      "location": {
+        "declarationLine": null,
+        "endLine": 12,
+        "exported": null,
+        "kind": null,
+        "language": null,
+        "path": "internal/runtime/run.go",
+        "receiver": null,
+        "signature": null,
+        "startLine": 3,
+        "symbol": null,
+        "visibility": null
+      },
+      "repositoryId": "relaydock",
+      "role": "Coordinate candidate selection, lease acquisition, provider attempts, commit hooks, and retry termination for one canonical request.",
+      "semanticId": "relaydock.runtime.gateway",
+      "unresolved": false
+    },
+    {
+      "definitions": [],
+      "external": false,
+      "key": "relaydock/relaydock.security.ssrf",
+      "location": {
+        "declarationLine": null,
+        "endLine": 11,
+        "exported": null,
+        "kind": null,
+        "language": null,
+        "path": "internal/security/ssrf/validator.go",
+        "receiver": null,
+        "signature": null,
+        "startLine": 3,
+        "symbol": null,
+        "visibility": null
+      },
+      "repositoryId": "relaydock",
+      "role": "Resolve provider and MCP destination hosts once and reject credentials, unsafe schemes, ports, and non-public addresses before dialing.",
+      "semanticId": "relaydock.security.ssrf",
+      "unresolved": false
+    }
+  ],
+  "repositoryId": "relaydock",
+  "schemaVersion": 1,
+  "sourceHash": "95b2622294debfa98481debc021e403ff3b3aaf15f58ff832a28476f5067015e",
+  "stats": {
+    "edgeCount": 0,
+    "importedIndexCount": 0,
+    "nodeCount": 8,
+    "unresolvedNodeCount": 0
+  }
+}

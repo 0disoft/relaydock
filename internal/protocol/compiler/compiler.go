@@ -1,5 +1,15 @@
 package compiler
 
+/* llmnav/1 module
+id=relaydock.protocol.compiler
+role=Decode provider ingress into canonical requests and encode canonical requests with explicit loss reports.
+owns=protocol decoder registry|canonical request validation|loss-mode enforcement
+excludes=provider network transport|routing decisions
+search=convert provider protocol|lossy transformation report|canonical request envelope
+invariant=Strict conversion rejects fatal information loss.
+stability=contract
+*/
+
 import (
 	"context"
 	"fmt"

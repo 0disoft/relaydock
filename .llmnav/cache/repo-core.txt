@@ -1,0 +1,26 @@
+llmnav-catalog/1 repository=relaydock catalog=repository
+Read semantic cards before opening source. Resolve current paths and signatures with llmnav query or show.
+
+@relaydock.contextpack.compile
+role Select, redact, hash, and package repository evidence before expert consultation data leaves the local boundary.
+owns ContextPack assembly, evidence redaction, content-addressed pack identity
+excludes expert model invocation, consultation persistence
+invariant Evidence content is redacted before its digest, size, and token estimate are recorded. Preview and build share the same selection and redaction path.
+
+@relaydock.mcp.remote
+role Expose tenant-scoped remote expert tools behind bearer authentication, host, origin, body-size, and per-tool scope checks.
+owns remote MCP tool registry, remote MCP authentication, MCP request exposure limits
+excludes consultation domain logic, token issuance
+invariant Reading and answering consultations require distinct explicit scopes. Untrusted requests are bounded before reaching MCP handlers.
+
+@relaydock.routing.candidates
+role Build and serve validated provider candidates for virtual and direct model routes under runtime availability state.
+owns virtual model candidate catalog, direct routing fallback, candidate runtime state projection
+excludes route scoring, provider request execution
+invariant Configured routes reference enabled providers and supported protocols. Expired signed runtime state prevents candidate selection.
+
+@relaydock.runtime.gateway
+role Coordinate candidate selection, lease acquisition, provider attempts, commit hooks, and retry termination for one canonical request.
+owns request attempt lifecycle, semantic commit boundary, retry candidate exclusion
+excludes protocol encoding, candidate configuration
+invariant No retry starts after an attempt has committed a semantic event. Each attempted candidate is excluded before another retry.

@@ -13,6 +13,14 @@
     "desktop:dev": "bun run --cwd frontend dev",
     "desktop:build": "bun run --cwd frontend build",
     "control:dev": "bun run --cwd web/control-console dev",
-    "control:build": "bun run --cwd web/control-console build"
+    "control:build": "bun run --cwd web/control-console build",
+    "llmnav:audit": "llmnav audit --fail-on high",
+    "llmnav:check": "llmnav check",
+    "llmnav:format": "llmnav format",
+    "llmnav:generate": "llmnav generate",
+    "llmnav:eval": "llmnav eval"
+  },
+  "devDependencies": {
+    "llmnav": "^0.7.2"
   }
 }

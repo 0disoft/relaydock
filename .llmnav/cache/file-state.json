@@ -1,0 +1,6128 @@
+{
+  "files": [
+    {
+      "blocks": [],
+      "contentHash": "b8850e54a8a8723e09236814300f19d3d9356caa9a96849579951d6909a6f178",
+      "declarations": [],
+      "imports": [
+        "bytes",
+        "context",
+        "encoding/json",
+        "errors",
+        "flag",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/persistence/atomicfile",
+        "io",
+        "models",
+        "net/http",
+        "net/url",
+        "os",
+        "publish",
+        "signing-key",
+        "snapshot",
+        "strings",
+        "time"
+      ],
+      "path": "cmd/controlctl/main.go",
+      "semanticBytes": 0,
+      "sourceBytes": 6380
+    },
+    {
+      "blocks": [],
+      "contentHash": "591ec46dbff9dd98c9c5516e6cba512194d78ea14f635332a9b576b26d3b9a58",
+      "declarations": [],
+      "imports": [
+        "0",
+        "1",
+        "accessCredentials",
+        "action",
+        "address",
+        "allowed",
+        "authentication",
+        "context",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/auth/controlaccess",
+        "github.com/0disoft/relaydock/internal/control/snapshot",
+        "github.com/0disoft/relaydock/internal/observability",
+        "github.com/0disoft/relaydock/internal/persistence/postgres",
+        "github.com/0disoft/relaydock/internal/security/serversecrets",
+        "github.com/0disoft/relaydock/internal/serverutil",
+        "github.com/0disoft/relaydock/internal/transport/controlhttp",
+        "local",
+        "log/slog",
+        "net/http",
+        "oidc",
+        "os",
+        "path/filepath",
+        "policyVersion",
+        "postgres",
+        "projectId",
+        "reason",
+        "role",
+        "signingKey",
+        "signingKeyId",
+        "snapshotStore",
+        "starting control plane",
+        "strings",
+        "subject",
+        "tenantId",
+        "time",
+        "trustedSigningKeyIds"
+      ],
+      "path": "cmd/controld/main.go",
+      "semanticBytes": 0,
+      "sourceBytes": 10951
+    },
+    {
+      "blocks": [],
+      "contentHash": "556f2bd5213281bc8152026f98d2167b10210eeeb54c5fac2c09547365171626",
+      "declarations": [],
+      "imports": [
+        "context",
+        "crypto/ed25519",
+        "encoding/base64",
+        "github.com/0disoft/relaydock/internal/auth/controlaccess",
+        "os",
+        "path/filepath",
+        "strings",
+        "testing"
+      ],
+      "path": "cmd/controld/main_test.go",
+      "semanticBytes": 0,
+      "sourceBytes": 5128
+    },
+    {
+      "blocks": [],
+      "contentHash": "d9feff819718f3a065b4df41046e6f085c7042e951dabf5615c0281e9b37c095",
+      "declarations": [],
+      "imports": [
+        "context",
+        "down",
+        "flag",
+        "fmt",
+        "github.com/0disoft/relaydock/db",
+        "github.com/0disoft/relaydock/internal/persistence/migrate",
+        "github.com/0disoft/relaydock/internal/persistence/postgres",
+        "os",
+        "status",
+        "strings",
+        "time",
+        "up"
+      ],
+      "path": "cmd/dbmigrate/main.go",
+      "semanticBytes": 0,
+      "sourceBytes": 2775
+    },
+    {
+      "blocks": [],
+      "contentHash": "d9fa68430fc74c6ec4860b62af8734f4729efb1e4bc4387f3aace9c5f9e2989a",
+      "declarations": [],
+      "imports": [
+        "EXPERT_MCP_TOKEN_MAX_LIFETIME",
+        "context",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/auth/mcpconfig",
+        "github.com/0disoft/relaydock/internal/auth/scopedtoken",
+        "github.com/0disoft/relaydock/internal/buildinfo",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/expert/app",
+        "github.com/0disoft/relaydock/internal/expert/routes/openaiapi",
+        "github.com/0disoft/relaydock/internal/expert/worker",
+        "github.com/0disoft/relaydock/internal/idgen",
+        "github.com/0disoft/relaydock/internal/mcpremote",
+        "github.com/0disoft/relaydock/internal/observability",
+        "github.com/0disoft/relaydock/internal/persistence/postgres",
+        "github.com/0disoft/relaydock/internal/serverutil",
+        "github.com/0disoft/relaydock/internal/transport/apiutil",
+        "github.com/0disoft/relaydock/internal/transport/experthttp",
+        "log/slog",
+        "net/http",
+        "os",
+        "os/signal",
+        "path/filepath",
+        "strconv",
+        "strings",
+        "syscall",
+        "time"
+      ],
+      "path": "cmd/expert-brokerd/main.go",
+      "semanticBytes": 0,
+      "sourceBytes": 12433
+    },
+    {
+      "blocks": [],
+      "contentHash": "0b1390fc7723d705230c6389fe4291b06ab392b03c68829a444e97487030da7d",
+      "declarations": [],
+      "imports": [
+        "compact",
+        "context",
+        "encoding/json",
+        "flag",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/appdirs",
+        "github.com/0disoft/relaydock/internal/expert/localstore",
+        "os",
+        "path/filepath",
+        "stats",
+        "strings",
+        "time",
+        "verify"
+      ],
+      "path": "cmd/expertstorectl/main.go",
+      "semanticBytes": 0,
+      "sourceBytes": 3454
+    },
+    {
+      "blocks": [],
+      "contentHash": "7c6602a10d4608d98afbacc63f0817c5c438050b6de965560df953cbdd71acd4",
+      "declarations": [],
+      "imports": [
+        "context",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/composition/gateway",
+        "github.com/0disoft/relaydock/internal/control/snapshot",
+        "log/slog",
+        "net/http",
+        "os",
+        "strings",
+        "time"
+      ],
+      "path": "cmd/gatewayd/control_snapshot.go",
+      "semanticBytes": 0,
+      "sourceBytes": 3042
+    },
+    {
+      "blocks": [],
+      "contentHash": "689ab93352f3df5b58d7a8ad58e0164c228b626164185716d4226b358deeb54e",
+      "declarations": [],
+      "imports": [
+        "fmt",
+        "github.com/0disoft/relaydock/internal/control/snapshot",
+        "os",
+        "strings"
+      ],
+      "path": "cmd/gatewayd/control_snapshot_keys.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1790
+    },
+    {
+      "blocks": [],
+      "contentHash": "16ee1ece8d90bc0de6b9ffbd30569479f77b1414eeeb3d4c84cbd552b7f0072e",
+      "declarations": [],
+      "imports": [
+        "address",
+        "authentication",
+        "context",
+        "database/sql",
+        "disabled",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/auth/virtualkey",
+        "github.com/0disoft/relaydock/internal/buildinfo",
+        "github.com/0disoft/relaydock/internal/composition/gateway",
+        "github.com/0disoft/relaydock/internal/identifier",
+        "github.com/0disoft/relaydock/internal/observability",
+        "github.com/0disoft/relaydock/internal/persistence/postgres",
+        "github.com/0disoft/relaydock/internal/persistence/valkey",
+        "github.com/0disoft/relaydock/internal/runtime",
+        "github.com/0disoft/relaydock/internal/security/serversecrets",
+        "github.com/0disoft/relaydock/internal/serverutil",
+        "github.com/0disoft/relaydock/internal/transport/apiutil",
+        "github.com/0disoft/relaydock/internal/transport/httpgateway",
+        "lease_ttl",
+        "log/slog",
+        "maximum_attempts",
+        "memory",
+        "models",
+        "os",
+        "os/signal",
+        "postgres",
+        "providerLeases",
+        "provider_leases",
+        "routeSnapshot",
+        "runtimeJournal",
+        "runtime_journal",
+        "runtime_routes",
+        "snapshot_revision",
+        "starting gateway",
+        "strconv",
+        "strings",
+        "syscall",
+        "time",
+        "valkey",
+        "version"
+      ],
+      "path": "cmd/gatewayd/main.go",
+      "semanticBytes": 0,
+      "sourceBytes": 11595
+    },
+    {
+      "blocks": [],
+      "contentHash": "f300e46aa3a1ecd974a116b1f1445bb94840eac55f94e4b935c34912db0f31dc",
+      "declarations": [],
+      "imports": [
+        "context",
+        "github.com/0disoft/relaydock/internal/localipc",
+        "github.com/0disoft/relaydock/internal/localruntime",
+        "log/slog",
+        "os",
+        "os/signal",
+        "syscall"
+      ],
+      "path": "cmd/headless/main.go",
+      "semanticBytes": 0,
+      "sourceBytes": 883
+    },
+    {
+      "blocks": [],
+      "contentHash": "e299fc8206c51d4fef4b6c65318d422054a37a49af09d6e27eedebca1c17bbdd",
+      "declarations": [],
+      "imports": [
+        "allowedModels",
+        "apiKey",
+        "context",
+        "encoding/json",
+        "expiresAt",
+        "flag",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/auth/virtualkey",
+        "github.com/0disoft/relaydock/internal/persistence/postgres",
+        "github.com/0disoft/relaydock/internal/security/serversecrets",
+        "issue",
+        "os",
+        "projectId",
+        "publicId",
+        "revoke",
+        "scopes",
+        "strings",
+        "tenantId",
+        "time",
+        "virtualKeyId"
+      ],
+      "path": "cmd/keyctl/main.go",
+      "semanticBytes": 0,
+      "sourceBytes": 4687
+    },
+    {
+      "blocks": [],
+      "contentHash": "79df7b00832fd72145b059bf1ede822d04bbe8e1ac7dd40561b3e2e5ccdacdb3",
+      "declarations": [],
+      "imports": [
+        "context",
+        "github.com/0disoft/relaydock/internal/buildinfo",
+        "github.com/0disoft/relaydock/internal/localipc",
+        "github.com/0disoft/relaydock/internal/mcpbridge",
+        "log/slog",
+        "os"
+      ],
+      "path": "cmd/mcp-bridge/main.go",
+      "semanticBytes": 0,
+      "sourceBytes": 621
+    },
+    {
+      "blocks": [],
+      "contentHash": "5749bb058c5c9172492b129f2ed1414c23b6cef548ae336d3a4bc47e0ef85d26",
+      "declarations": [],
+      "imports": [
+        "context",
+        "encoding/json",
+        "flag",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/auth/mcpscope",
+        "github.com/0disoft/relaydock/internal/auth/scopedtoken",
+        "os",
+        "strings",
+        "time"
+      ],
+      "path": "cmd/mcptokenctl/main.go",
+      "semanticBytes": 0,
+      "sourceBytes": 3441
+    },
+    {
+      "blocks": [],
+      "contentHash": "3b15c9cb0ce6135e8c79dd81a840f69efc68986388621568acf9c5195fcf171d",
+      "declarations": [],
+      "imports": [
+        "context",
+        "dead",
+        "encoding/json",
+        "flag",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/persistence/postgres",
+        "os",
+        "purge-published",
+        "requeue",
+        "status",
+        "strings",
+        "time"
+      ],
+      "path": "cmd/outboxctl/main.go",
+      "semanticBytes": 0,
+      "sourceBytes": 3581
+    },
+    {
+      "blocks": [],
+      "contentHash": "9f438239c29fb621112ec28a673a50ce41ad5d08dd52a023ad2c59c1247333cb",
+      "declarations": [],
+      "imports": [
+        "authentication",
+        "batchSize",
+        "concurrency",
+        "context",
+        "encoding/base64",
+        "encoding/json",
+        "errors",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/buildinfo",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/idgen",
+        "github.com/0disoft/relaydock/internal/observability",
+        "github.com/0disoft/relaydock/internal/outbox",
+        "github.com/0disoft/relaydock/internal/persistence/postgres",
+        "github.com/0disoft/relaydock/internal/serverutil",
+        "github.com/0disoft/relaydock/internal/transport/apiutil",
+        "healthAddress",
+        "log/slog",
+        "net/http",
+        "os",
+        "os/signal",
+        "starting transactional outbox delivery",
+        "status",
+        "strconv",
+        "strings",
+        "syscall",
+        "time",
+        "version",
+        "workerId"
+      ],
+      "path": "cmd/outboxd/main.go",
+      "semanticBytes": 0,
+      "sourceBytes": 11846
+    },
+    {
+      "blocks": [],
+      "contentHash": "d91ee8e590706ca61c96ccb2965e5eec8f47a9b653008e47f3a5bcf5f8b5b33c",
+      "declarations": [],
+      "imports": [
+        "context",
+        "database/sql",
+        "encoding/json",
+        "ensure",
+        "flag",
+        "fmt",
+        "get",
+        "github.com/0disoft/relaydock/internal/persistence/postgres",
+        "os",
+        "regexp",
+        "strings",
+        "time"
+      ],
+      "path": "cmd/projectctl/main.go",
+      "semanticBytes": 0,
+      "sourceBytes": 5915
+    },
+    {
+      "blocks": [],
+      "contentHash": "d5774dc1b9e517dbad7f85d99be0dbc12c88135a8478e4c9a09bd26b258557fd",
+      "declarations": [],
+      "imports": [
+        "audit",
+        "build",
+        "flag",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/releasepack",
+        "github.com/0disoft/relaydock/internal/updater",
+        "os",
+        "path/filepath",
+        "readiness",
+        "sign-checksums",
+        "sign-update-manifest",
+        "time",
+        "verify",
+        "verify-checksums",
+        "verify-update-manifest"
+      ],
+      "path": "cmd/releasepack/main.go",
+      "semanticBytes": 0,
+      "sourceBytes": 8298
+    },
+    {
+      "blocks": [],
+      "contentHash": "5cf4c2d1dfae7c26e6628d74631e707834e5552ff0455649f20d428697e2fb73",
+      "declarations": [],
+      "imports": [
+        "encoding/base64",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/buildinfo",
+        "github.com/0disoft/relaydock/internal/observability",
+        "github.com/0disoft/relaydock/internal/outbox/webhooksink",
+        "github.com/0disoft/relaydock/internal/serverutil",
+        "github.com/0disoft/relaydock/internal/transport/apiutil",
+        "log/slog",
+        "os",
+        "strconv",
+        "strings"
+      ],
+      "path": "cmd/webhook-sink/main.go",
+      "semanticBytes": 0,
+      "sourceBytes": 2364
+    },
+    {
+      "blocks": [],
+      "contentHash": "d29b3bad53ecce1c1829de0e06f1a0feaa765642b7d5dbbe08cff2631e3c4cea",
+      "declarations": [],
+      "imports": [],
+      "path": "db/migrations/000001_initial.down.sql",
+      "semanticBytes": 0,
+      "sourceBytes": 154
+    },
+    {
+      "blocks": [],
+      "contentHash": "307761f19a302e25a118ad61766c2502e9b79d9a996be599d60124f1f7f015e5",
+      "declarations": [],
+      "imports": [],
+      "path": "db/migrations/000001_initial.up.sql",
+      "semanticBytes": 0,
+      "sourceBytes": 6531
+    },
+    {
+      "blocks": [],
+      "contentHash": "24263378041013169628205cdf3fc2c72bce5f091f777c729bc33cc6af45121a",
+      "declarations": [],
+      "imports": [],
+      "path": "db/migrations/000002_expert_durability.down.sql",
+      "semanticBytes": 0,
+      "sourceBytes": 718
+    },
+    {
+      "blocks": [],
+      "contentHash": "541525916c927f90dcf10efe3c6be627d44fdca7e94e38c3ff278ec1ca8aa66a",
+      "declarations": [],
+      "imports": [],
+      "path": "db/migrations/000002_expert_durability.up.sql",
+      "semanticBytes": 0,
+      "sourceBytes": 1684
+    },
+    {
+      "blocks": [],
+      "contentHash": "8c7a6e129a68999bc986bcdd0608a13777cbe7c0132dbff98a3e215be525aca8",
+      "declarations": [],
+      "imports": [],
+      "path": "db/migrations/000003_runtime_journal.down.sql",
+      "semanticBytes": 0,
+      "sourceBytes": 1229
+    },
+    {
+      "blocks": [],
+      "contentHash": "0d397398ec4ed5da8172864005a7632ee6cea7c86f306ba6c642bf1ce6b5bc5f",
+      "declarations": [],
+      "imports": [],
+      "path": "db/migrations/000003_runtime_journal.up.sql",
+      "semanticBytes": 0,
+      "sourceBytes": 2202
+    },
+    {
+      "blocks": [],
+      "contentHash": "8624875251bbfb916351389536554ba83c155b70c5856f29e2172c7766fe064b",
+      "declarations": [],
+      "imports": [],
+      "path": "db/migrations/000004_outbox_delivery.down.sql",
+      "semanticBytes": 0,
+      "sourceBytes": 588
+    },
+    {
+      "blocks": [],
+      "contentHash": "5dc7f6accb4eda28cd31843f7ea6f025fbf2575c4a62372ac1c2f490aa47982f",
+      "declarations": [],
+      "imports": [],
+      "path": "db/migrations/000004_outbox_delivery.up.sql",
+      "semanticBytes": 0,
+      "sourceBytes": 1231
+    },
+    {
+      "blocks": [],
+      "contentHash": "d08cbb29213ae381058fe7350cb383a324c250e6b7804a3676aaf020f4d95ca7",
+      "declarations": [],
+      "imports": [
+        "./components/AppShell.svelte",
+        "./lib/runtime-adapter",
+        "./lib/types",
+        "./pages/Architect.svelte",
+        "./pages/MCP.svelte",
+        "./pages/Overview.svelte",
+        "./pages/Providers.svelte",
+        "./pages/Settings.svelte",
+        "svelte"
+      ],
+      "path": "frontend/src/App.svelte",
+      "semanticBytes": 0,
+      "sourceBytes": 2176
+    },
+    {
+      "blocks": [],
+      "contentHash": "bf15d63b9c9f2560a88e49140a727f9ec4871360053ba033194bf07c1413c791",
+      "declarations": [],
+      "imports": [
+        "../lib/types",
+        "./Sidebar.svelte"
+      ],
+      "path": "frontend/src/components/AppShell.svelte",
+      "semanticBytes": 0,
+      "sourceBytes": 332
+    },
+    {
+      "blocks": [],
+      "contentHash": "d68976464a05a32d98935ca50707c386266d663f280c85c8715ac4bc36379877",
+      "declarations": [],
+      "imports": [
+        "../lib/types"
+      ],
+      "path": "frontend/src/components/ConsultationCard.svelte",
+      "semanticBytes": 0,
+      "sourceBytes": 494
+    },
+    {
+      "blocks": [],
+      "contentHash": "c4a4d75dea5382612415af42af6b259d4f45a8b16fb8da707ad12c7615979484",
+      "declarations": [],
+      "imports": [
+        "../lib/types"
+      ],
+      "path": "frontend/src/components/ContextPreview.svelte",
+      "semanticBytes": 0,
+      "sourceBytes": 629
+    },
+    {
+      "blocks": [],
+      "contentHash": "60d4f35e3277b29c01139e3e72899a3fbe5ec9e0f1f298565115b2b76583847c",
+      "declarations": [],
+      "imports": [
+        "../lib/types",
+        "./StatusBadge.svelte"
+      ],
+      "path": "frontend/src/components/ProviderCard.svelte",
+      "semanticBytes": 0,
+      "sourceBytes": 3508
+    },
+    {
+      "blocks": [],
+      "contentHash": "b06e23f091ec634ebc2891fe7d68db61c45c28b6f11c1bdf45cbd538b1f73d19",
+      "declarations": [],
+      "imports": [
+        "../lib/types"
+      ],
+      "path": "frontend/src/components/Sidebar.svelte",
+      "semanticBytes": 0,
+      "sourceBytes": 1061
+    },
+    {
+      "blocks": [],
+      "contentHash": "3fe7700b962eeae614f595846bdc010e0d97bb7dffe7992976c69a8a6df7c2aa",
+      "declarations": [],
+      "imports": [],
+      "path": "frontend/src/components/StatusBadge.svelte",
+      "semanticBytes": 0,
+      "sourceBytes": 398
+    },
+    {
+      "blocks": [],
+      "contentHash": "28d42180b6021ff8211a0cc1d216c731dbcb7e419b69963d0d95254e7a54df16",
+      "declarations": [],
+      "imports": [
+        "./consultation-validation.ts",
+        "node:assert/strict",
+        "node:test"
+      ],
+      "path": "frontend/src/lib/consultation-validation.test.ts",
+      "semanticBytes": 0,
+      "sourceBytes": 1298
+    },
+    {
+      "blocks": [],
+      "contentHash": "b2df02000711ad114d7061860557c8297e531aa0b371b9cb448333ce2e10ec32",
+      "declarations": [],
+      "imports": [],
+      "path": "frontend/src/lib/consultation-validation.ts",
+      "semanticBytes": 0,
+      "sourceBytes": 1201
+    },
+    {
+      "blocks": [],
+      "contentHash": "5c3b389c3763ef9f28478499b2efda5c03774717cacdf59f0823034b3e3b321e",
+      "declarations": [],
+      "imports": [
+        "./types",
+        "./wails-services"
+      ],
+      "path": "frontend/src/lib/runtime-adapter.ts",
+      "semanticBytes": 0,
+      "sourceBytes": 2814
+    },
+    {
+      "blocks": [],
+      "contentHash": "37b69a20ebb09115db2a26182118a880c69442ec0374cda3afc748d1d72c7cad",
+      "declarations": [],
+      "imports": [],
+      "path": "frontend/src/lib/types.ts",
+      "semanticBytes": 0,
+      "sourceBytes": 1955
+    },
+    {
+      "blocks": [],
+      "contentHash": "c86d525af288f03590e5e180a685b5fe9389b59e2c64bc848086fbb5514ded22",
+      "declarations": [],
+      "imports": [
+        "./types",
+        "@wailsio/runtime"
+      ],
+      "path": "frontend/src/lib/wails-services.ts",
+      "semanticBytes": 0,
+      "sourceBytes": 2774
+    },
+    {
+      "blocks": [],
+      "contentHash": "8989d51f4c90a085a5bd2fe618cd232c3e153abcbef535e4e515b10987d30a78",
+      "declarations": [],
+      "imports": [
+        "./App.svelte",
+        "./styles.css",
+        "svelte",
+        "virtual:uno.css"
+      ],
+      "path": "frontend/src/main.ts",
+      "semanticBytes": 0,
+      "sourceBytes": 289
+    },
+    {
+      "blocks": [],
+      "contentHash": "20428ede88d4375d18c0c6718158ab9c41c330ef709c8d4d0504ff3641f1c66c",
+      "declarations": [],
+      "imports": [
+        "../components/ConsultationCard.svelte",
+        "../components/ContextPreview.svelte",
+        "../lib/consultation-validation",
+        "../lib/runtime-adapter",
+        "../lib/types"
+      ],
+      "path": "frontend/src/pages/Architect.svelte",
+      "semanticBytes": 0,
+      "sourceBytes": 6830
+    },
+    {
+      "blocks": [],
+      "contentHash": "d73a8a562bc2505338133928f5e1cda6b7ba3431e585ac9c02a95e051fb66527",
+      "declarations": [],
+      "imports": [
+        "../lib/runtime-adapter"
+      ],
+      "path": "frontend/src/pages/MCP.svelte",
+      "semanticBytes": 0,
+      "sourceBytes": 1428
+    },
+    {
+      "blocks": [],
+      "contentHash": "8ce5e79477afc36161cda2b348ff0cb99bbac911a3bcc31289b14f26620971e4",
+      "declarations": [],
+      "imports": [
+        "../components/StatusBadge.svelte",
+        "../lib/runtime-adapter",
+        "../lib/types"
+      ],
+      "path": "frontend/src/pages/Overview.svelte",
+      "semanticBytes": 0,
+      "sourceBytes": 2123
+    },
+    {
+      "blocks": [],
+      "contentHash": "f9598657ba23f101d369933439bbd1f4724c3be883d53284d70a7383bb27f95a",
+      "declarations": [],
+      "imports": [
+        "../components/ProviderCard.svelte",
+        "../lib/runtime-adapter",
+        "../lib/types"
+      ],
+      "path": "frontend/src/pages/Providers.svelte",
+      "semanticBytes": 0,
+      "sourceBytes": 1341
+    },
+    {
+      "blocks": [],
+      "contentHash": "f77d06441d5310abd2fa9047094fe0e5b922146cb261f02306da5e66b761f8e8",
+      "declarations": [],
+      "imports": [
+        "../lib/runtime-adapter",
+        "../lib/types",
+        "svelte"
+      ],
+      "path": "frontend/src/pages/Settings.svelte",
+      "semanticBytes": 0,
+      "sourceBytes": 2617
+    },
+    {
+      "blocks": [],
+      "contentHash": "65996936fbb042915f7b74a200fcdde7e410f32a669b1ab9597cfaa4b0faddb5",
+      "declarations": [],
+      "imports": [],
+      "path": "frontend/src/vite-env.d.ts",
+      "semanticBytes": 0,
+      "sourceBytes": 38
+    },
+    {
+      "blocks": [],
+      "contentHash": "1bb58c730ebabecaf49a13cb8dc795bc8675a89c88cf10d656569531498b71a5",
+      "declarations": [],
+      "imports": [
+        "context",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/idgen",
+        "sync",
+        "time"
+      ],
+      "path": "internal/accounting/memory.go",
+      "semanticBytes": 0,
+      "sourceBytes": 3289
+    },
+    {
+      "blocks": [],
+      "contentHash": "14075f7d11ee79fda6097cf57c2b98a40968d49e53680e99ba814fbf81d69d60",
+      "declarations": [],
+      "imports": [
+        "context"
+      ],
+      "path": "internal/accounting/money_client.go",
+      "semanticBytes": 0,
+      "sourceBytes": 319
+    },
+    {
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [
+              "price catalog persistence",
+              "customer ledger storage"
+            ],
+            "id": "relaydock.accounting.settlement",
+            "invariant": [
+              "Captured provider cost cannot exceed the authorized hold.",
+              "Every quote identifies the price revision used to calculate its maximum charge."
+            ],
+            "owns": [
+              "usage quote lifecycle",
+              "money authorization boundary",
+              "usage settlement"
+            ],
+            "rel": [],
+            "risk": [],
+            "role": "Quote a pinned price revision, authorize a bounded hold, capture provider usage once, and release the unused balance.",
+            "scope": "module",
+            "search": [
+              "authorize usage hold",
+              "settle provider cost",
+              "release remaining balance"
+            ],
+            "stability": "contract",
+            "unknown": []
+          },
+          "end": 583,
+          "endLine": 12,
+          "entries": [
+            {
+              "key": "id",
+              "line": 4,
+              "order": 0,
+              "value": "relaydock.accounting.settlement"
+            },
+            {
+              "key": "role",
+              "line": 5,
+              "order": 1,
+              "value": "Quote a pinned price revision, authorize a bounded hold, capture provider usage once, and release the unused balance."
+            },
+            {
+              "key": "owns",
+              "line": 6,
+              "order": 2,
+              "value": "usage quote lifecycle|money authorization boundary|usage settlement"
+            },
+            {
+              "key": "excludes",
+              "line": 7,
+              "order": 3,
+              "value": "price catalog persistence|customer ledger storage"
+            },
+            {
+              "key": "search",
+              "line": 8,
+              "order": 4,
+              "value": "authorize usage hold|settle provider cost|release remaining balance"
+            },
+            {
+              "key": "invariant",
+              "line": 9,
+              "order": 5,
+              "value": "Captured provider cost cannot exceed the authorized hold."
+            },
+            {
+              "key": "invariant",
+              "line": 10,
+              "order": 6,
+              "value": "Every quote identifies the price revision used to calculate its maximum charge."
+            },
+            {
+              "key": "stability",
+              "line": 11,
+              "order": 7,
+              "value": "contract"
+            }
+          ],
+          "filePath": "internal/accounting/service.go",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.accounting.settlement\nrole=Quote a pinned price revision, authorize a bounded hold, capture provider usage once, and release the unused balance.\nowns=usage quote lifecycle|money authorization boundary|usage settlement\nexcludes=price catalog persistence|customer ledger storage\nsearch=authorize usage hold|settle provider cost|release remaining balance\ninvariant=Captured provider cost cannot exceed the authorized hold.\ninvariant=Every quote identifies the price revision used to calculate its maximum charge.\nstability=contract\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 20,
+          "startLine": 3,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "c76ca3a519cd5ec5dd033687198ee7152cd8380cbe573c52f59ec300b28f09e7",
+      "declarations": [
+        null
+      ],
+      "imports": [
+        "context",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/idgen",
+        "time"
+      ],
+      "path": "internal/accounting/service.go",
+      "semanticBytes": 563,
+      "sourceBytes": 2735
+    },
+    {
+      "blocks": [],
+      "contentHash": "7344c7d7454181cde3f294f24b142e90cdaea01b24f9926b3cc6826e7179d226",
+      "declarations": [],
+      "imports": [
+        "time"
+      ],
+      "path": "internal/accounting/types.go",
+      "semanticBytes": 0,
+      "sourceBytes": 819
+    },
+    {
+      "blocks": [],
+      "contentHash": "dc9da9dbe499b6b91d2d1ffc0823b4cb8bcc6752321ff7864d9db0be4289773d",
+      "declarations": [],
+      "imports": [
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "os",
+        "path/filepath",
+        "strings"
+      ],
+      "path": "internal/appdirs/paths.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1822
+    },
+    {
+      "blocks": [],
+      "contentHash": "e20ade110a0dfd2d4a29f9811240d9653815ae19002146653df3621e23f2c326",
+      "declarations": [],
+      "imports": [
+        "os",
+        "path/filepath",
+        "testing"
+      ],
+      "path": "internal/appdirs/paths_test.go",
+      "semanticBytes": 0,
+      "sourceBytes": 810
+    },
+    {
+      "blocks": [],
+      "contentHash": "faea42916f22397fa91d5107c81defa75d3fd7494d867dd12a1170ea2bd900c0",
+      "declarations": [],
+      "imports": [],
+      "path": "internal/auth/authorization/scopes.go",
+      "semanticBytes": 0,
+      "sourceBytes": 330
+    },
+    {
+      "blocks": [],
+      "contentHash": "f13a197c2362f062bf3a582279d0039795fd3acfd7bd61f0f38cb784df9c435b",
+      "declarations": [],
+      "imports": [
+        "strings"
+      ],
+      "path": "internal/auth/authorization/set.go",
+      "semanticBytes": 0,
+      "sourceBytes": 495
+    },
+    {
+      "blocks": [],
+      "contentHash": "55260db388249d8a6b356562d1fb0f7733bc2fa482c269db8d27076c38b457b6",
+      "declarations": [],
+      "imports": [
+        "context",
+        "net/http"
+      ],
+      "path": "internal/auth/controlaccess/authenticator.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1626
+    },
+    {
+      "blocks": [],
+      "contentHash": "1c44dcecb44f8191770709197830ab83cdad7ef375637cc0009da8134f0be9a4",
+      "declarations": [],
+      "imports": [
+        "context",
+        "crypto/sha256",
+        "encoding/base64",
+        "encoding/json",
+        "errors",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/security/ssrf",
+        "github.com/coreos/go-oidc/v3/oidc",
+        "io",
+        "iss",
+        "net",
+        "net/http",
+        "net/url",
+        "oidc:",
+        "strings",
+        "time"
+      ],
+      "path": "internal/auth/controlaccess/oidc.go",
+      "semanticBytes": 0,
+      "sourceBytes": 10363
+    },
+    {
+      "blocks": [],
+      "contentHash": "48db44ec64522299c3b22a9a34ffd5dbf40f2d2d9af2a8f9373064464ae4b104",
+      "declarations": [],
+      "imports": [
+        "/.well-known/openid-configuration",
+        "/keys",
+        "authorization_endpoint",
+        "context",
+        "crypto",
+        "crypto/rand",
+        "crypto/rsa",
+        "crypto/sha256",
+        "e",
+        "encoding/base64",
+        "encoding/json",
+        "fmt",
+        "github.com/coreos/go-oidc/v3/oidc",
+        "iat",
+        "id_token_signing_alg_values_supported",
+        "iss",
+        "issuer",
+        "kty",
+        "math/big",
+        "n",
+        "net/http",
+        "net/http/httptest",
+        "strings",
+        "sync",
+        "testing",
+        "time"
+      ],
+      "path": "internal/auth/controlaccess/oidc_test.go",
+      "semanticBytes": 0,
+      "sourceBytes": 9080
+    },
+    {
+      "blocks": [],
+      "contentHash": "282756b26ea1dca99713996603ca1cc3c1e562c3be6cc547bc000e8d7c3545cb",
+      "declarations": [],
+      "imports": [
+        "context",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/identifier",
+        "strings"
+      ],
+      "path": "internal/auth/controlaccess/policy.go",
+      "semanticBytes": 0,
+      "sourceBytes": 4046
+    },
+    {
+      "blocks": [],
+      "contentHash": "6b774206cc32cf64e360b6a55788e1bbd6ad6af9eb726308ec3edf2d058e5e69",
+      "declarations": [],
+      "imports": [
+        "testing"
+      ],
+      "path": "internal/auth/controlaccess/policy_test.go",
+      "semanticBytes": 0,
+      "sourceBytes": 2128
+    },
+    {
+      "blocks": [],
+      "contentHash": "62c034beaa34fcd7be94839aee6d737136bea5b84f5f57898f2c3bd8f3a205a5",
+      "declarations": [],
+      "imports": [
+        "crypto/sha256",
+        "crypto/subtle",
+        "encoding/hex",
+        "encoding/json",
+        "errors",
+        "fmt",
+        "io",
+        "net/http",
+        "strings"
+      ],
+      "path": "internal/auth/controlaccess/static.go",
+      "semanticBytes": 0,
+      "sourceBytes": 5223
+    },
+    {
+      "blocks": [],
+      "contentHash": "af9d1de562771d035b91bcb0090048217c3985b70d82ab1dd2fe131adac21d5d",
+      "declarations": [],
+      "imports": [
+        "context",
+        "net/http",
+        "net/http/httptest",
+        "strings",
+        "testing"
+      ],
+      "path": "internal/auth/controlaccess/static_test.go",
+      "semanticBytes": 0,
+      "sourceBytes": 3896
+    },
+    {
+      "blocks": [],
+      "contentHash": "780fdee4e1d8568422a049c3b66afe738cbd6ed9bb34d73d5fcbec6301974346",
+      "declarations": [],
+      "imports": [
+        "EXPERT_MCP_ALLOW_BROKER_TOKEN",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "strconv",
+        "strings"
+      ],
+      "path": "internal/auth/mcpconfig/static_token.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1245
+    },
+    {
+      "blocks": [],
+      "contentHash": "ca191dda379ebfde1c13bc8d6d4b5144bb27096ae048a8698125efe499bd70f2",
+      "declarations": [],
+      "imports": [
+        "errors",
+        "github.com/0disoft/relaydock/internal/core",
+        "testing"
+      ],
+      "path": "internal/auth/mcpconfig/static_token_test.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1379
+    },
+    {
+      "blocks": [],
+      "contentHash": "282ca156198b6992b13fde1ae5e325e7a556fb3204860d174d3117b01fb509a4",
+      "declarations": [],
+      "imports": [
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "sort",
+        "strings"
+      ],
+      "path": "internal/auth/mcpscope/scope.go",
+      "semanticBytes": 0,
+      "sourceBytes": 2820
+    },
+    {
+      "blocks": [],
+      "contentHash": "6f28f4a2675ea22bfb3c09e3356724f9a5141e75a8a5c45cdfaf8e21fa2607e7",
+      "declarations": [],
+      "imports": [
+        "errors",
+        "github.com/0disoft/relaydock/internal/core",
+        "testing"
+      ],
+      "path": "internal/auth/mcpscope/scope_test.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1839
+    },
+    {
+      "blocks": [],
+      "contentHash": "17d620d9cb60578c4cdcd223aa331e94d50f02e368342f9329c7cc46848d402b",
+      "declarations": [],
+      "imports": [
+        "crypto/rand",
+        "encoding/base64",
+        "fmt",
+        "strings"
+      ],
+      "path": "internal/auth/scopedtoken/claims.go",
+      "semanticBytes": 0,
+      "sourceBytes": 881
+    },
+    {
+      "blocks": [],
+      "contentHash": "c98c3b9f288c63c5ce90804fb298ad842db0fb174ae163292d06823140dfe6a4",
+      "declarations": [],
+      "imports": [
+        "context",
+        "github.com/0disoft/relaydock/internal/core"
+      ],
+      "path": "internal/auth/scopedtoken/context.go",
+      "semanticBytes": 0,
+      "sourceBytes": 578
+    },
+    {
+      "blocks": [],
+      "contentHash": "67c51fcb2c2cb0a9d868d54e269e7800bd4fdab95bc4df157008b75e6a26f5c1",
+      "declarations": [],
+      "imports": [
+        "crypto/sha256",
+        "encoding/base64",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "hmac-",
+        "sort",
+        "strings",
+        "time"
+      ],
+      "path": "internal/auth/scopedtoken/keyring.go",
+      "semanticBytes": 0,
+      "sourceBytes": 4904
+    },
+    {
+      "blocks": [],
+      "contentHash": "bba89dfc681bd1f29f8c53b9208d8bab244d41b667fe27d9dda5ce15d756f663",
+      "declarations": [],
+      "imports": [
+        "encoding/base64",
+        "encoding/json",
+        "errors",
+        "fmt",
+        "io",
+        "strings"
+      ],
+      "path": "internal/auth/scopedtoken/secrets.go",
+      "semanticBytes": 0,
+      "sourceBytes": 2065
+    },
+    {
+      "blocks": [],
+      "contentHash": "3cc96b1b8e44543f65640e32682d2eef00b3dc6220a296ba82c5d8c040d92b86",
+      "declarations": [],
+      "imports": [
+        "context",
+        "crypto/hmac",
+        "crypto/sha256",
+        "crypto/subtle",
+        "encoding/base64",
+        "encoding/json",
+        "errors",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "io",
+        "strings",
+        "time"
+      ],
+      "path": "internal/auth/scopedtoken/service.go",
+      "semanticBytes": 0,
+      "sourceBytes": 5581
+    },
+    {
+      "blocks": [],
+      "contentHash": "205e0a5ef1afc07ba60248bdede268b3b4dff4f64dd2a4432a3e438f977e6cb2",
+      "declarations": [],
+      "imports": [
+        "context",
+        "encoding/base64",
+        "encoding/json",
+        "errors",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "strings",
+        "testing",
+        "time"
+      ],
+      "path": "internal/auth/scopedtoken/token_test.go",
+      "semanticBytes": 0,
+      "sourceBytes": 6532
+    },
+    {
+      "blocks": [],
+      "contentHash": "a55b2efd8fa8dc9da6acb55fafda49dc40ef5e072cf19dd93bd676959bb293f5",
+      "declarations": [],
+      "imports": [
+        "context",
+        "time"
+      ],
+      "path": "internal/auth/scopedtoken/types.go",
+      "semanticBytes": 0,
+      "sourceBytes": 986
+    },
+    {
+      "blocks": [],
+      "contentHash": "156691bc5bc1f27d206be86b4a4d3d8272473caf9d37257b90e8c2c1ea45edf9",
+      "declarations": [],
+      "imports": [
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "strings"
+      ],
+      "path": "internal/auth/scopedtoken/validation.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1318
+    },
+    {
+      "blocks": [],
+      "contentHash": "01321dab0f334be8e5098dad8935116a28b3bb6da9bef143203817c4d5828c8b",
+      "declarations": [],
+      "imports": [
+        "context"
+      ],
+      "path": "internal/auth/virtualkey/context.go",
+      "semanticBytes": 0,
+      "sourceBytes": 374
+    },
+    {
+      "blocks": [],
+      "contentHash": "2db0809913061990adc9df8435ef5c556ec49a25a30142406ba5a01d7124ee04",
+      "declarations": [],
+      "imports": [
+        "context",
+        "crypto/hmac",
+        "crypto/rand",
+        "crypto/sha256",
+        "crypto/subtle",
+        "encoding/base64",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/idgen",
+        "sync",
+        "time",
+        "zg_"
+      ],
+      "path": "internal/auth/virtualkey/memory.go",
+      "semanticBytes": 0,
+      "sourceBytes": 2810
+    },
+    {
+      "blocks": [],
+      "contentHash": "fe3641b0bb2aaf56860a2f9c979972de41c251978a9b8ac86e660cf2b5b0b907",
+      "declarations": [],
+      "imports": [
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "strings"
+      ],
+      "path": "internal/auth/virtualkey/parser.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1983
+    },
+    {
+      "blocks": [],
+      "contentHash": "f63baaa1006c5750db4acfd6e76543bbb9d54b5610a1fd70479a5a2a451198b4",
+      "declarations": [],
+      "imports": [
+        "context",
+        "strings",
+        "testing",
+        "time"
+      ],
+      "path": "internal/auth/virtualkey/parser_test.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1557
+    },
+    {
+      "blocks": [],
+      "contentHash": "3c8ec04ea3fe8030003d4775318350e0649209e68b1b97ecdf4b9f4f6ed30646",
+      "declarations": [],
+      "imports": [
+        "context",
+        "encoding/base64",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "strings"
+      ],
+      "path": "internal/auth/virtualkey/pepper.go",
+      "semanticBytes": 0,
+      "sourceBytes": 2324
+    },
+    {
+      "blocks": [],
+      "contentHash": "02a673e93bfdc1fa2ebc4f030b43e155d4468429b681a4cc469830b8eea45672",
+      "declarations": [],
+      "imports": [
+        "context",
+        "encoding/base64",
+        "errors",
+        "gcp-sm:projects/p/secrets/pepper/versions/latest",
+        "github.com/0disoft/relaydock/internal/core",
+        "strings",
+        "testing"
+      ],
+      "path": "internal/auth/virtualkey/pepper_test.go",
+      "semanticBytes": 0,
+      "sourceBytes": 3334
+    },
+    {
+      "blocks": [],
+      "contentHash": "55d255a335c39b8d1989238acac2f2d227fb11fab46994277fae1626022f4c8f",
+      "declarations": [],
+      "imports": [
+        "context",
+        "crypto/hmac",
+        "crypto/rand",
+        "crypto/sha256",
+        "crypto/subtle",
+        "database/sql",
+        "encoding/base64",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/idgen",
+        "strings",
+        "time",
+        "zg_"
+      ],
+      "path": "internal/auth/virtualkey/postgres.go",
+      "semanticBytes": 0,
+      "sourceBytes": 6541
+    },
+    {
+      "blocks": [],
+      "contentHash": "1f14f16d4bc0a79f25e635f021b4d52aeac85d8eadc63b062a917af766d2fc5d",
+      "declarations": [],
+      "imports": [
+        "context",
+        "github.com/0disoft/relaydock/internal/auth/authorization",
+        "github.com/0disoft/relaydock/internal/core",
+        "strings"
+      ],
+      "path": "internal/auth/virtualkey/service.go",
+      "semanticBytes": 0,
+      "sourceBytes": 784
+    },
+    {
+      "blocks": [],
+      "contentHash": "7bbb55a82ecf24452a3b838927e08dca49ae85b241124351958250df4fa0a621",
+      "declarations": [],
+      "imports": [
+        "context",
+        "sync"
+      ],
+      "path": "internal/autostart/memory.go",
+      "semanticBytes": 0,
+      "sourceBytes": 809
+    },
+    {
+      "blocks": [],
+      "contentHash": "a2f93d4b19eeb21f3bcf8120343fbfdaa88cc832af2f09df34edeec446de666a",
+      "declarations": [],
+      "imports": [
+        "context"
+      ],
+      "path": "internal/autostart/service.go",
+      "semanticBytes": 0,
+      "sourceBytes": 167
+    },
+    {
+      "blocks": [],
+      "contentHash": "3070359ca5800443edd48d0b81016ff9e514aa12a0a284cf7f61747aa159d16d",
+      "declarations": [],
+      "imports": [],
+      "path": "internal/buildinfo/info.go",
+      "semanticBytes": 0,
+      "sourceBytes": 321
+    },
+    {
+      "blocks": [],
+      "contentHash": "e278965721635a97462ed6b15d91a5d3e17083e183cfa271ab4d5f6ad8ffc1e6",
+      "declarations": [],
+      "imports": [
+        "context",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/credentials",
+        "github.com/0disoft/relaydock/internal/protocol/canonical",
+        "github.com/0disoft/relaydock/internal/protocol/compiler",
+        "github.com/0disoft/relaydock/internal/protocol/defaults",
+        "github.com/0disoft/relaydock/internal/provider",
+        "github.com/0disoft/relaydock/internal/provider/anthropic",
+        "github.com/0disoft/relaydock/internal/provider/deepseek",
+        "github.com/0disoft/relaydock/internal/provider/google",
+        "github.com/0disoft/relaydock/internal/provider/mock",
+        "github.com/0disoft/relaydock/internal/provider/openai",
+        "github.com/0disoft/relaydock/internal/provider/openaicompatible",
+        "github.com/0disoft/relaydock/internal/provider/openrouter",
+        "github.com/0disoft/relaydock/internal/routing",
+        "github.com/0disoft/relaydock/internal/runtime",
+        "github.com/0disoft/relaydock/internal/transport/httpgateway",
+        "os",
+        "strconv",
+        "strings"
+      ],
+      "path": "internal/composition/gateway/builder.go",
+      "semanticBytes": 0,
+      "sourceBytes": 6027
+    },
+    {
+      "blocks": [],
+      "contentHash": "6131f0b7f8e5e55d6a1b955f2e5bfb637d2d0b04bcf9f298f65987cd357968e9",
+      "declarations": [],
+      "imports": [
+        "DEEPSEEK_API_KEY",
+        "GATEWAY_DEEPSEEK_API_KEY_REF",
+        "GATEWAY_DEFAULT_PROVIDER",
+        "GATEWAY_ENABLE_LOCAL_ECHO",
+        "GATEWAY_OPENAI_API_KEY_REF",
+        "OPENAI_API_KEY",
+        "context",
+        "errors",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/credentials",
+        "github.com/0disoft/relaydock/internal/protocol/canonical",
+        "github.com/0disoft/relaydock/internal/protocol/compiler",
+        "github.com/0disoft/relaydock/internal/provider",
+        "net/http",
+        "net/http/httptest",
+        "testing"
+      ],
+      "path": "internal/composition/gateway/builder_test.go",
+      "semanticBytes": 0,
+      "sourceBytes": 6982
+    },
+    {
+      "blocks": [],
+      "contentHash": "f7473defde1c1533553c1238716d0380e895e8cc9dc089d5b54025286d8235e1",
+      "declarations": [],
+      "imports": [
+        "context",
+        "errors",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/credentials",
+        "os",
+        "strings"
+      ],
+      "path": "internal/composition/gateway/provider_credentials.go",
+      "semanticBytes": 0,
+      "sourceBytes": 4410
+    },
+    {
+      "blocks": [],
+      "contentHash": "75b385a7ceeabacf4ca96bb17ca370c7f0e9ad2f8f7b9ac67f22dc359f22566b",
+      "declarations": [],
+      "imports": [
+        "bytes",
+        "encoding/json",
+        "errors",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "io",
+        "os",
+        "strings"
+      ],
+      "path": "internal/composition/gateway/routes_config.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1609
+    },
+    {
+      "blocks": [],
+      "contentHash": "7e598aaf263c29e043fa3e1bf46cca779b0ab9691cfb647faeb16bf833a651cd",
+      "declarations": [],
+      "imports": [
+        "context",
+        "github.com/0disoft/relaydock/internal/provider",
+        "github.com/0disoft/relaydock/internal/routing",
+        "sort",
+        "strings",
+        "time"
+      ],
+      "path": "internal/composition/gateway/routes_health.go",
+      "semanticBytes": 0,
+      "sourceBytes": 4741
+    },
+    {
+      "blocks": [],
+      "contentHash": "178100737e41396870a96386695b0ac024996a369d62df56bcfaddb59b2c84a7",
+      "declarations": [],
+      "imports": [
+        "context",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/control/snapshot",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/protocol/canonical",
+        "mock",
+        "sort",
+        "strings",
+        "time"
+      ],
+      "path": "internal/composition/gateway/routes_snapshot.go",
+      "semanticBytes": 0,
+      "sourceBytes": 6209
+    },
+    {
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [
+              "route scoring",
+              "provider request execution"
+            ],
+            "id": "relaydock.routing.candidates",
+            "invariant": [
+              "Configured routes reference enabled providers and supported protocols.",
+              "Expired signed runtime state prevents candidate selection."
+            ],
+            "owns": [
+              "virtual model candidate catalog",
+              "direct routing fallback",
+              "candidate runtime state projection"
+            ],
+            "rel": [],
+            "risk": [],
+            "role": "Build and serve validated provider candidates for virtual and direct model routes under runtime availability state.",
+            "scope": "module",
+            "search": [
+              "resolve virtual model route",
+              "provider candidate source",
+              "direct model routing"
+            ],
+            "stability": "architecture",
+            "unknown": []
+          },
+          "end": 592,
+          "endLine": 12,
+          "entries": [
+            {
+              "key": "id",
+              "line": 4,
+              "order": 0,
+              "value": "relaydock.routing.candidates"
+            },
+            {
+              "key": "role",
+              "line": 5,
+              "order": 1,
+              "value": "Build and serve validated provider candidates for virtual and direct model routes under runtime availability state."
+            },
+            {
+              "key": "owns",
+              "line": 6,
+              "order": 2,
+              "value": "virtual model candidate catalog|direct routing fallback|candidate runtime state projection"
+            },
+            {
+              "key": "excludes",
+              "line": 7,
+              "order": 3,
+              "value": "route scoring|provider request execution"
+            },
+            {
+              "key": "search",
+              "line": 8,
+              "order": 4,
+              "value": "resolve virtual model route|provider candidate source|direct model routing"
+            },
+            {
+              "key": "invariant",
+              "line": 9,
+              "order": 5,
+              "value": "Configured routes reference enabled providers and supported protocols."
+            },
+            {
+              "key": "invariant",
+              "line": 10,
+              "order": 6,
+              "value": "Expired signed runtime state prevents candidate selection."
+            },
+            {
+              "key": "stability",
+              "line": 11,
+              "order": 7,
+              "value": "architecture"
+            }
+          ],
+          "filePath": "internal/composition/gateway/routes_source.go",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.routing.candidates\nrole=Build and serve validated provider candidates for virtual and direct model routes under runtime availability state.\nowns=virtual model candidate catalog|direct routing fallback|candidate runtime state projection\nexcludes=route scoring|provider request execution\nsearch=resolve virtual model route|provider candidate source|direct model routing\ninvariant=Configured routes reference enabled providers and supported protocols.\ninvariant=Expired signed runtime state prevents candidate selection.\nstability=architecture\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 17,
+          "startLine": 3,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "4526dba9d71fb0e6080389ecbf4959056887079cb198c3de193be7eb5ef78fda",
+      "declarations": [
+        null
+      ],
+      "imports": [
+        "context",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/protocol/canonical",
+        "github.com/0disoft/relaydock/internal/routing",
+        "strings",
+        "time"
+      ],
+      "path": "internal/composition/gateway/routes_source.go",
+      "semanticBytes": 575,
+      "sourceBytes": 6541
+    },
+    {
+      "blocks": [],
+      "contentHash": "f3b439a0d830bd6ebdb2b12c6f538203f9c39f636915b2ae6a0e2d79b7000c37",
+      "declarations": [],
+      "imports": [
+        "code-fast",
+        "context",
+        "errors",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/protocol/canonical",
+        "github.com/0disoft/relaydock/internal/provider",
+        "github.com/0disoft/relaydock/internal/provider/mock",
+        "github.com/0disoft/relaydock/internal/routing",
+        "mock",
+        "testing",
+        "time"
+      ],
+      "path": "internal/composition/gateway/routes_test.go",
+      "semanticBytes": 0,
+      "sourceBytes": 7503
+    },
+    {
+      "blocks": [],
+      "contentHash": "3d43d27d5d20d29061a044a4023454cc8277fb45dd9e1a7da90efd57bd144526",
+      "declarations": [],
+      "imports": [
+        "github.com/0disoft/relaydock/internal/protocol/canonical",
+        "github.com/0disoft/relaydock/internal/provider",
+        "github.com/0disoft/relaydock/internal/routing",
+        "sync",
+        "time"
+      ],
+      "path": "internal/composition/gateway/routes_types.go",
+      "semanticBytes": 0,
+      "sourceBytes": 2160
+    },
+    {
+      "blocks": [],
+      "contentHash": "418bc6a68680ca0722c31064341adc35a970d1e87976e4de819d52437dc48062",
+      "declarations": [],
+      "imports": [
+        "context",
+        "github.com/0disoft/relaydock/internal/control/snapshot",
+        "github.com/0disoft/relaydock/internal/protocol/canonical",
+        "github.com/0disoft/relaydock/internal/provider/mock",
+        "mock",
+        "testing",
+        "time"
+      ],
+      "path": "internal/composition/gateway/snapshot_test.go",
+      "semanticBytes": 0,
+      "sourceBytes": 4875
+    },
+    {
+      "blocks": [],
+      "contentHash": "006b3af4dfd542b13333549d456d774c28b245e7d05cafaeb1c46b8d82ea242a",
+      "declarations": [],
+      "imports": [
+        "context",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "os",
+        "strconv",
+        "strings",
+        "time"
+      ],
+      "path": "internal/config/config.go",
+      "semanticBytes": 0,
+      "sourceBytes": 5380
+    },
+    {
+      "blocks": [],
+      "contentHash": "899710027a26658eeb9b2092609141ccf8110ea75beb5f48c0e4675ed1a41ec3",
+      "declarations": [],
+      "imports": [
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "sort",
+        "strings",
+        "sync"
+      ],
+      "path": "internal/control/modelregistry/memory.go",
+      "semanticBytes": 0,
+      "sourceBytes": 2858
+    },
+    {
+      "blocks": [],
+      "contentHash": "b03e80bb2d2615945c5c3b6fe6223073412b6156d4a8e68f2480bd8f2177195a",
+      "declarations": [],
+      "imports": [
+        "github.com/0disoft/relaydock/internal/protocol/canonical"
+      ],
+      "path": "internal/control/modelregistry/model.go",
+      "semanticBytes": 0,
+      "sourceBytes": 502
+    },
+    {
+      "blocks": [],
+      "contentHash": "1ee8cd373b2a2624c6035e7e70daf8af238c884f080599463a9fd21d64de818a",
+      "declarations": [],
+      "imports": [],
+      "path": "internal/control/policy/types.go",
+      "semanticBytes": 0,
+      "sourceBytes": 235
+    },
+    {
+      "blocks": [],
+      "contentHash": "38631c69f1b6e2aeb8ed1d9a98aa7f1d24fbfe5cd9956406a561126a18de58f8",
+      "declarations": [],
+      "imports": [
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "none",
+        "strings"
+      ],
+      "path": "internal/control/policy/validate.go",
+      "semanticBytes": 0,
+      "sourceBytes": 2183
+    },
+    {
+      "blocks": [],
+      "contentHash": "abd1bbafeb7df26201bd0019198bc5bdfd4af5d7c24eeddae47e4a5bc0055d3b",
+      "declarations": [],
+      "imports": [
+        "crypto/ed25519",
+        "crypto/rand",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/persistence/atomicfile",
+        "strings"
+      ],
+      "path": "internal/control/snapshot/keyfile.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1351
+    },
+    {
+      "blocks": [],
+      "contentHash": "f3c7e8a59de0cd9414348fc0687d85bafd9a73c4ff782ba7ebfbbe6e0a42b261",
+      "declarations": [],
+      "imports": [
+        "crypto/ed25519",
+        "encoding/base64",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "strings"
+      ],
+      "path": "internal/control/snapshot/keyparse.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1706
+    },
+    {
+      "blocks": [],
+      "contentHash": "0f0db9022790eb95f4c7eb5c638da7f5e927a3ab8e3585590599832462806ea3",
+      "declarations": [],
+      "imports": [
+        "context",
+        "crypto/ed25519",
+        "encoding/base64",
+        "testing",
+        "time"
+      ],
+      "path": "internal/control/snapshot/keyparse_test.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1818
+    },
+    {
+      "blocks": [],
+      "contentHash": "d41006dd564a1a291f7a91989905b8b86871d1b82b93869356440a85f78f17f9",
+      "declarations": [],
+      "imports": [
+        "context",
+        "crypto/ed25519",
+        "encoding/json",
+        "errors",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "io",
+        "sort",
+        "strings"
+      ],
+      "path": "internal/control/snapshot/keyring.go",
+      "semanticBytes": 0,
+      "sourceBytes": 4619
+    },
+    {
+      "blocks": [],
+      "contentHash": "6d951b915a040ef0c2ef8c08f4baa75ed367d247dbd37a0b843c2fa4ac7b5082",
+      "declarations": [],
+      "imports": [
+        "context",
+        "crypto/ed25519",
+        "crypto/rand",
+        "encoding/base64",
+        "errors",
+        "github.com/0disoft/relaydock/internal/core",
+        "testing",
+        "time"
+      ],
+      "path": "internal/control/snapshot/keyring_test.go",
+      "semanticBytes": 0,
+      "sourceBytes": 3676
+    },
+    {
+      "blocks": [],
+      "contentHash": "7a5b6dfe8f42d47e4ccdaab058b4c1bd3f9699ba4f63dc3e755fdb7c692fcc02",
+      "declarations": [],
+      "imports": [
+        "context",
+        "encoding/json",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/persistence/atomicfile",
+        "strings",
+        "sync"
+      ],
+      "path": "internal/control/snapshot/local_store.go",
+      "semanticBytes": 0,
+      "sourceBytes": 2982
+    },
+    {
+      "blocks": [],
+      "contentHash": "992c59faad593aa77f8522fbec557b47b07789a84f8c28f6d228100a92768e18",
+      "declarations": [],
+      "imports": [
+        "bytes",
+        "context",
+        "errors",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "log/slog",
+        "strings",
+        "sync",
+        "time"
+      ],
+      "path": "internal/control/snapshot/manager.go",
+      "semanticBytes": 0,
+      "sourceBytes": 11108
+    },
+    {
+      "blocks": [],
+      "contentHash": "046ff8da0676157867b97c4ed50d2025ee6ba8f8dc7a48c011d74180628925c8",
+      "declarations": [],
+      "imports": [
+        "context",
+        "crypto/ed25519",
+        "crypto/rand",
+        "errors",
+        "github.com/0disoft/relaydock/internal/core",
+        "testing",
+        "time"
+      ],
+      "path": "internal/control/snapshot/manager_test.go",
+      "semanticBytes": 0,
+      "sourceBytes": 7031
+    },
+    {
+      "blocks": [],
+      "contentHash": "df525cd51a8f3c37b94422801fe349f5b4663fe590b6dcf2075047c42d51d26b",
+      "declarations": [],
+      "imports": [
+        "context",
+        "github.com/0disoft/relaydock/internal/core",
+        "sync"
+      ],
+      "path": "internal/control/snapshot/memory_store.go",
+      "semanticBytes": 0,
+      "sourceBytes": 2349
+    },
+    {
+      "blocks": [],
+      "contentHash": "4f12bae6ff55de6b037a815e798b8aafb02d2e7905578e9730c086154051e5d9",
+      "declarations": [],
+      "imports": [
+        "crypto/ed25519",
+        "encoding/base64",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "strings"
+      ],
+      "path": "internal/control/snapshot/public_key.go",
+      "semanticBytes": 0,
+      "sourceBytes": 924
+    },
+    {
+      "blocks": [],
+      "contentHash": "ee4de03515670e32bb732037ef6bd1d01dd927d6d62448811ffff81dd93170b4",
+      "declarations": [],
+      "imports": [
+        "bufio",
+        "bytes",
+        "context",
+        "crypto/ed25519",
+        "data",
+        "empty response",
+        "encoding/json",
+        "errors",
+        "event",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "id",
+        "io",
+        "net/http",
+        "net/url",
+        "strconv",
+        "strings",
+        "time"
+      ],
+      "path": "internal/control/snapshot/remote_client.go",
+      "semanticBytes": 0,
+      "sourceBytes": 8930
+    },
+    {
+      "blocks": [],
+      "contentHash": "42e746356a6b6cdfcad028c43ee72c0987c6d413329fbcb761bf4e5c773e0442",
+      "declarations": [],
+      "imports": [
+        "/v1/snapshot",
+        "/v1/snapshots/watch",
+        "context",
+        "crypto/ed25519",
+        "crypto/rand",
+        "encoding/json",
+        "errors",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "net/http",
+        "net/http/httptest",
+        "sync",
+        "testing",
+        "time"
+      ],
+      "path": "internal/control/snapshot/remote_client_test.go",
+      "semanticBytes": 0,
+      "sourceBytes": 6379
+    },
+    {
+      "blocks": [],
+      "contentHash": "08665e6859f2dd410c77a66cde87e28ce02253c8d94e604301a11869dc11764e",
+      "declarations": [],
+      "imports": [
+        "context",
+        "crypto/ed25519",
+        "crypto/sha256",
+        "ed25519-",
+        "encoding/base64",
+        "encoding/json",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "strings"
+      ],
+      "path": "internal/control/snapshot/signer.go",
+      "semanticBytes": 0,
+      "sourceBytes": 3114
+    },
+    {
+      "blocks": [],
+      "contentHash": "28e6dd8fbde14a5acb48bd91d9be52f14e087f543e07cc1136ef3cd7eabb2edc",
+      "declarations": [],
+      "imports": [
+        "context"
+      ],
+      "path": "internal/control/snapshot/store.go",
+      "semanticBytes": 0,
+      "sourceBytes": 203
+    },
+    {
+      "blocks": [],
+      "contentHash": "0968be3dfcf41e30f4d3070a58c1fc6b46f2b73062e5890e9ff5198da2500582",
+      "declarations": [],
+      "imports": [
+        "time"
+      ],
+      "path": "internal/control/snapshot/types.go",
+      "semanticBytes": 0,
+      "sourceBytes": 2463
+    },
+    {
+      "blocks": [],
+      "contentHash": "33c1cf49b8c04369f4ed20a56dba02810aa9997afe54850f61f42dfea934d61f",
+      "declarations": [],
+      "imports": [
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "strings",
+        "time"
+      ],
+      "path": "internal/control/snapshot/validate.go",
+      "semanticBytes": 0,
+      "sourceBytes": 3454
+    },
+    {
+      "blocks": [],
+      "contentHash": "54251a22d9496af97b0d28fda4f2b22e6d21cccd70ab6dbf831683396628b5e9",
+      "declarations": [],
+      "imports": [
+        "errors"
+      ],
+      "path": "internal/core/errors.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1278
+    },
+    {
+      "blocks": [],
+      "contentHash": "c95892c6969ad0b517bcd299fe8217ef28202b3e0aed99f1b561178f1f32af2c",
+      "declarations": [],
+      "imports": [
+        "context",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "strings",
+        "sync"
+      ],
+      "path": "internal/credentials/memory.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1949
+    },
+    {
+      "blocks": [],
+      "contentHash": "0838913eb9694e3443a9b1f14eb07c29e9c90a0284130a3fed4eef3184f59fc7",
+      "declarations": [],
+      "imports": [
+        "context",
+        "errors",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/godbus/dbus/v5",
+        "org.freedesktop.DBus.Error.ServiceUnknown"
+      ],
+      "path": "internal/credentials/secret_service.go",
+      "semanticBytes": 0,
+      "sourceBytes": 13888
+    },
+    {
+      "blocks": [],
+      "contentHash": "2268206365b2f8675399c8d0d98029ad1f812ed5d3585275aa445b9085ce634c",
+      "declarations": [],
+      "imports": [
+        "bytes",
+        "context",
+        "errors",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/godbus/dbus/v5",
+        "strings",
+        "testing"
+      ],
+      "path": "internal/credentials/secret_service_test.go",
+      "semanticBytes": 0,
+      "sourceBytes": 8103
+    },
+    {
+      "blocks": [],
+      "contentHash": "3fc4317938419d8021b7f6732e10666ddf09f0dacc7ba3cc57920a47663fbbe4",
+      "declarations": [],
+      "imports": [
+        "context"
+      ],
+      "path": "internal/credentials/store.go",
+      "semanticBytes": 0,
+      "sourceBytes": 280
+    },
+    {
+      "blocks": [],
+      "contentHash": "4385ea431c765fb7058f4fc380300a9c1881cc2e2252d9768e9a063cc388f708",
+      "declarations": [],
+      "imports": [
+        "context",
+        "crypto/sha256",
+        "encoding/base64",
+        "errors",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "strings"
+      ],
+      "path": "internal/credentials/system_store.go",
+      "semanticBytes": 0,
+      "sourceBytes": 4065
+    },
+    {
+      "blocks": [],
+      "contentHash": "086e0e924f1d32be5ce35a63d5159207fb1e4d91d73f34c63c12be44960125c3",
+      "declarations": [],
+      "imports": [
+        "C",
+        "context",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "unsafe"
+      ],
+      "path": "internal/credentials/system_store_darwin.go",
+      "semanticBytes": 0,
+      "sourceBytes": 6027
+    },
+    {
+      "blocks": [],
+      "contentHash": "287fd87c789d1920a5cc8ff8036da4eed1083e8a4b626ba8e5ef251f936b5d8c",
+      "declarations": [],
+      "imports": [],
+      "path": "internal/credentials/system_store_linux.go",
+      "semanticBytes": 0,
+      "sourceBytes": 179
+    },
+    {
+      "blocks": [],
+      "contentHash": "29cd392520083ded93e1acb9c616ac4d952c4f16df12a1e109dfe27d314f4f8c",
+      "declarations": [],
+      "imports": [
+        "bytes",
+        "context",
+        "errors",
+        "github.com/0disoft/relaydock/internal/core",
+        "strings",
+        "testing"
+      ],
+      "path": "internal/credentials/system_store_test.go",
+      "semanticBytes": 0,
+      "sourceBytes": 4247
+    },
+    {
+      "blocks": [],
+      "contentHash": "9755009459edaced0618e5c84d5920515b62683d88d4a9f2b845aff7948f545e",
+      "declarations": [],
+      "imports": [
+        "fmt"
+      ],
+      "path": "internal/credentials/system_store_unsupported.go",
+      "semanticBytes": 0,
+      "sourceBytes": 259
+    },
+    {
+      "blocks": [],
+      "contentHash": "2b8c5b1c6e85ea2814cff46e7390048c24203077918fec2234632e2c9d0810ad",
+      "declarations": [],
+      "imports": [
+        "context",
+        "errors",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "golang.org/x/sys/windows",
+        "runtime",
+        "unsafe"
+      ],
+      "path": "internal/credentials/system_store_windows.go",
+      "semanticBytes": 0,
+      "sourceBytes": 4267
+    },
+    {
+      "blocks": [],
+      "contentHash": "6d036935ddc85bb131ee5018cf10ae30e9795de6f7909287a42fe073816aca34",
+      "declarations": [],
+      "imports": [
+        "context",
+        "embed",
+        "fmt",
+        "github.com/wailsapp/wails/v3/pkg/application",
+        "os"
+      ],
+      "path": "internal/desktopwails/app.go",
+      "semanticBytes": 0,
+      "sourceBytes": 2087
+    },
+    {
+      "blocks": [],
+      "contentHash": "72ef8660947f869f1085842b1b631fae02ee2db188b10f820b5c1c79209357fe",
+      "declarations": [],
+      "imports": [
+        "context",
+        "encoding/json",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/expert/app",
+        "github.com/0disoft/relaydock/internal/expert/consultation",
+        "github.com/0disoft/relaydock/internal/expert/contextpack",
+        "github.com/0disoft/relaydock/internal/expert/resultcontract",
+        "github.com/0disoft/relaydock/internal/expert/routes/openaiapi",
+        "github.com/0disoft/relaydock/internal/expert/routes/webhandoff",
+        "os",
+        "strconv",
+        "strings",
+        "time"
+      ],
+      "path": "internal/desktopwails/consultation_service.go",
+      "semanticBytes": 0,
+      "sourceBytes": 10579
+    },
+    {
+      "blocks": [],
+      "contentHash": "43ec9aa6dde40efb4ae6ed5893a084fef7ef99d458a3f805b5f80fad31ac52bc",
+      "declarations": [],
+      "imports": [
+        "github.com/0disoft/relaydock/internal/appdirs",
+        "github.com/0disoft/relaydock/internal/credentials",
+        "github.com/0disoft/relaydock/internal/expert/app",
+        "github.com/0disoft/relaydock/internal/localruntime",
+        "os"
+      ],
+      "path": "internal/desktopwails/container.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1359
+    },
+    {
+      "blocks": [],
+      "contentHash": "99c7504b355026a797b36cfcfa37957afb4b43c9abf8ef05859e45ed596735b8",
+      "declarations": [],
+      "imports": [
+        "DEEPSEEK_API_KEY",
+        "OPENAI_API_KEY",
+        "encoding/json",
+        "errors",
+        "github.com/0disoft/relaydock/internal/composition/gateway",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/credentials",
+        "strings",
+        "testing"
+      ],
+      "path": "internal/desktopwails/provider_credentials_test.go",
+      "semanticBytes": 0,
+      "sourceBytes": 4727
+    },
+    {
+      "blocks": [],
+      "contentHash": "2edb62e00f7ebc378049f94af312027c3ff6d27da652c7d1e1128526c61387ba",
+      "declarations": [],
+      "imports": [
+        "context",
+        "errors",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/buildinfo",
+        "github.com/0disoft/relaydock/internal/composition/gateway",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/credentials",
+        "github.com/0disoft/relaydock/internal/localipc",
+        "github.com/0disoft/relaydock/internal/transport/httpgateway",
+        "net",
+        "net/http",
+        "os",
+        "path/filepath",
+        "runtime",
+        "strings",
+        "sync",
+        "time"
+      ],
+      "path": "internal/desktopwails/runtime_service.go",
+      "semanticBytes": 0,
+      "sourceBytes": 11560
+    },
+    {
+      "blocks": [],
+      "contentHash": "d29a51c9f89d2c305a9c29f19409c2932ad708859e02fdaf5a573e022e62baf9",
+      "declarations": [],
+      "imports": [
+        "context",
+        "encoding/json",
+        "errors",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/appdirs",
+        "github.com/0disoft/relaydock/internal/autostart",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/persistence/atomicfile",
+        "openai_api_pro",
+        "os",
+        "strings",
+        "sync"
+      ],
+      "path": "internal/desktopwails/settings_service.go",
+      "semanticBytes": 0,
+      "sourceBytes": 5595
+    },
+    {
+      "blocks": [],
+      "contentHash": "0bcb94e38b2df669c57d53a849e567c3e65687f9e407a025ffe0e0b71f161c0e",
+      "declarations": [],
+      "imports": [
+        "github.com/wailsapp/wails/v3/pkg/application",
+        "github.com/wailsapp/wails/v3/pkg/events",
+        "sync/atomic"
+      ],
+      "path": "internal/desktopwails/tray.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1148
+    },
+    {
+      "blocks": [],
+      "contentHash": "38f496fd9a55881cb04872a31ba1ad941b542d0c76689644772866f78235d547",
+      "declarations": [],
+      "imports": [
+        "context",
+        "errors",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/autostart",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/wailsapp/wails/v3/pkg/application"
+      ],
+      "path": "internal/desktopwails/wails_autostart.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1699
+    },
+    {
+      "blocks": [],
+      "contentHash": "cc15c8088f91eadac98199861245e63b043bf4e718c2be145a3e719d6b2fa247",
+      "declarations": [],
+      "imports": [
+        "context",
+        "database/sql",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/expert/consultation",
+        "github.com/0disoft/relaydock/internal/expert/contextpack",
+        "github.com/0disoft/relaydock/internal/expert/localstore",
+        "github.com/0disoft/relaydock/internal/expert/postgresstore",
+        "github.com/0disoft/relaydock/internal/expert/redaction",
+        "github.com/0disoft/relaydock/internal/expert/resultcontract"
+      ],
+      "path": "internal/expert/app/app.go",
+      "semanticBytes": 0,
+      "sourceBytes": 9682
+    },
+    {
+      "blocks": [],
+      "contentHash": "d0e82f6f6b0150d4020d2e761edac507599fefffb4663f7981ae1e089c8acd81",
+      "declarations": [],
+      "imports": [
+        "crypto/sha256",
+        "encoding/hex",
+        "encoding/json",
+        "strings"
+      ],
+      "path": "internal/expert/consultation/idempotency.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1466
+    },
+    {
+      "blocks": [],
+      "contentHash": "8155375e76e021c2f22cf5eb1264dfcb1d83efe7493f08b69ab2437a8a2f6073",
+      "declarations": [],
+      "imports": [
+        "context",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/idgen",
+        "sort",
+        "strings",
+        "sync",
+        "time"
+      ],
+      "path": "internal/expert/consultation/memory_repository.go",
+      "semanticBytes": 0,
+      "sourceBytes": 9621
+    },
+    {
+      "blocks": [],
+      "contentHash": "fd0cb8fbb70b100a7c1492b58deaa27ad7068834d035fc0f4629672b5564f886",
+      "declarations": [],
+      "imports": [
+        "context"
+      ],
+      "path": "internal/expert/consultation/repository.go",
+      "semanticBytes": 0,
+      "sourceBytes": 588
+    },
+    {
+      "blocks": [],
+      "contentHash": "8a4a81700a488f4bf7161a815a48ba4f34a9d11a92fc5c300058f8c5559dff12",
+      "declarations": [],
+      "imports": [
+        "context",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "strings"
+      ],
+      "path": "internal/expert/consultation/service.go",
+      "semanticBytes": 0,
+      "sourceBytes": 2593
+    },
+    {
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [
+              "state persistence",
+              "worker lease claims"
+            ],
+            "id": "relaydock.expert.lifecycle",
+            "invariant": [
+              "Only declared state-event pairs can advance a consultation."
+            ],
+            "owns": [
+              "consultation state graph",
+              "consultation lifecycle events"
+            ],
+            "rel": [],
+            "risk": [],
+            "role": "Define allowed consultation state transitions from context request through approval, execution, result, and terminal outcomes.",
+            "scope": "module",
+            "search": [
+              "consultation state machine",
+              "approve expert consultation",
+              "complete consultation lifecycle"
+            ],
+            "stability": "contract",
+            "unknown": []
+          },
+          "end": 495,
+          "endLine": 11,
+          "entries": [
+            {
+              "key": "id",
+              "line": 4,
+              "order": 0,
+              "value": "relaydock.expert.lifecycle"
+            },
+            {
+              "key": "role",
+              "line": 5,
+              "order": 1,
+              "value": "Define allowed consultation state transitions from context request through approval, execution, result, and terminal outcomes."
+            },
+            {
+              "key": "owns",
+              "line": 6,
+              "order": 2,
+              "value": "consultation state graph|consultation lifecycle events"
+            },
+            {
+              "key": "excludes",
+              "line": 7,
+              "order": 3,
+              "value": "state persistence|worker lease claims"
+            },
+            {
+              "key": "search",
+              "line": 8,
+              "order": 4,
+              "value": "consultation state machine|approve expert consultation|complete consultation lifecycle"
+            },
+            {
+              "key": "invariant",
+              "line": 9,
+              "order": 5,
+              "value": "Only declared state-event pairs can advance a consultation."
+            },
+            {
+              "key": "stability",
+              "line": 10,
+              "order": 6,
+              "value": "contract"
+            }
+          ],
+          "filePath": "internal/expert/consultation/state_machine.go",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.expert.lifecycle\nrole=Define allowed consultation state transitions from context request through approval, execution, result, and terminal outcomes.\nowns=consultation state graph|consultation lifecycle events\nexcludes=state persistence|worker lease claims\nsearch=consultation state machine|approve expert consultation|complete consultation lifecycle\ninvariant=Only declared state-event pairs can advance a consultation.\nstability=contract\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 22,
+          "startLine": 3,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "884185fb1a78a8ff8b8388ac2a19b52718786457201795ca252413be6e714923",
+      "declarations": [
+        null
+      ],
+      "imports": [
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core"
+      ],
+      "path": "internal/expert/consultation/state_machine.go",
+      "semanticBytes": 473,
+      "sourceBytes": 2183
+    },
+    {
+      "blocks": [],
+      "contentHash": "337b607f9bc764d8b010613f9acc685e18708251364d4cc5972607b97002d467",
+      "declarations": [],
+      "imports": [
+        "time"
+      ],
+      "path": "internal/expert/consultation/types.go",
+      "semanticBytes": 0,
+      "sourceBytes": 2325
+    },
+    {
+      "blocks": [],
+      "contentHash": "15be3b04dfa2b9b070b0f2c69f1afe8a279c8a3d4074e575fe1a6a8811fe28df",
+      "declarations": [],
+      "imports": [
+        "context",
+        "time"
+      ],
+      "path": "internal/expert/consultation/work.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1070
+    },
+    {
+      "blocks": [],
+      "contentHash": "ab3f0ba6d98da402057e3436d643719eef9b4f5f6239e5666cf57d7485d970d3",
+      "declarations": [],
+      "imports": [
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "strings",
+        "time"
+      ],
+      "path": "internal/expert/consultation/work_logic.go",
+      "semanticBytes": 0,
+      "sourceBytes": 4912
+    },
+    {
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [
+              "expert model invocation",
+              "consultation persistence"
+            ],
+            "id": "relaydock.contextpack.compile",
+            "invariant": [
+              "Evidence content is redacted before its digest, size, and token estimate are recorded.",
+              "Preview and build share the same selection and redaction path."
+            ],
+            "owns": [
+              "ContextPack assembly",
+              "evidence redaction",
+              "content-addressed pack identity"
+            ],
+            "rel": [],
+            "risk": [],
+            "role": "Select, redact, hash, and package repository evidence before expert consultation data leaves the local boundary.",
+            "scope": "module",
+            "search": [
+              "build redacted context pack",
+              "select repository evidence",
+              "context pack manifest"
+            ],
+            "stability": "architecture",
+            "unknown": []
+          },
+          "end": 605,
+          "endLine": 12,
+          "entries": [
+            {
+              "key": "id",
+              "line": 4,
+              "order": 0,
+              "value": "relaydock.contextpack.compile"
+            },
+            {
+              "key": "role",
+              "line": 5,
+              "order": 1,
+              "value": "Select, redact, hash, and package repository evidence before expert consultation data leaves the local boundary."
+            },
+            {
+              "key": "owns",
+              "line": 6,
+              "order": 2,
+              "value": "ContextPack assembly|evidence redaction|content-addressed pack identity"
+            },
+            {
+              "key": "excludes",
+              "line": 7,
+              "order": 3,
+              "value": "expert model invocation|consultation persistence"
+            },
+            {
+              "key": "search",
+              "line": 8,
+              "order": 4,
+              "value": "build redacted context pack|select repository evidence|context pack manifest"
+            },
+            {
+              "key": "invariant",
+              "line": 9,
+              "order": 5,
+              "value": "Evidence content is redacted before its digest, size, and token estimate are recorded."
+            },
+            {
+              "key": "invariant",
+              "line": 10,
+              "order": 6,
+              "value": "Preview and build share the same selection and redaction path."
+            },
+            {
+              "key": "stability",
+              "line": 11,
+              "order": 7,
+              "value": "architecture"
+            }
+          ],
+          "filePath": "internal/expert/contextpack/compiler.go",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.contextpack.compile\nrole=Select, redact, hash, and package repository evidence before expert consultation data leaves the local boundary.\nowns=ContextPack assembly|evidence redaction|content-addressed pack identity\nexcludes=expert model invocation|consultation persistence\nsearch=build redacted context pack|select repository evidence|context pack manifest\ninvariant=Evidence content is redacted before its digest, size, and token estimate are recorded.\ninvariant=Preview and build share the same selection and redaction path.\nstability=architecture\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 21,
+          "startLine": 3,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "40b7dd59cc49aec3ddd72be0e5d48386786ba149f9b717591b34490695fab748",
+      "declarations": [
+        null
+      ],
+      "imports": [
+        "context",
+        "encoding/json",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/expert/redaction",
+        "os/exec",
+        "path/filepath",
+        "sort",
+        "strings",
+        "time",
+        "unavailable"
+      ],
+      "path": "internal/expert/contextpack/compiler.go",
+      "semanticBytes": 584,
+      "sourceBytes": 3992
+    },
+    {
+      "blocks": [],
+      "contentHash": "7c053431166a9f48e9768a33c66743f297f98786c4372823b6a0f5b34ea5a470",
+      "declarations": [],
+      "imports": [
+        "crypto/sha256",
+        "encoding/hex",
+        "sha256:"
+      ],
+      "path": "internal/expert/contextpack/manifest.go",
+      "semanticBytes": 0,
+      "sourceBytes": 183
+    },
+    {
+      "blocks": [],
+      "contentHash": "b235815ce61da145c6af2b80627e81b44a76e36af81d83639ecfd278db8baf24",
+      "declarations": [],
+      "imports": [
+        "context",
+        "github.com/0disoft/relaydock/internal/core",
+        "sync"
+      ],
+      "path": "internal/expert/contextpack/memory_store.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1434
+    },
+    {
+      "blocks": [],
+      "contentHash": "d064dd017fb8e025136d8311232827c766e5deb26ea3f57868f6fce1a1b285ac",
+      "declarations": [],
+      "imports": [
+        ".git",
+        ".go",
+        "bytes",
+        "context",
+        "explicitly selected repository evidence",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "io/fs",
+        "os",
+        "path/filepath",
+        "sort",
+        "strings",
+        "unicode"
+      ],
+      "path": "internal/expert/contextpack/selector.go",
+      "semanticBytes": 0,
+      "sourceBytes": 6042
+    },
+    {
+      "blocks": [],
+      "contentHash": "ba0c36d94601173a2ef68ac2b105a9d08b2147ff01b8df28bf0fe40e957e9986",
+      "declarations": [],
+      "imports": [
+        "context"
+      ],
+      "path": "internal/expert/contextpack/store.go",
+      "semanticBytes": 0,
+      "sourceBytes": 181
+    },
+    {
+      "blocks": [],
+      "contentHash": "997b466b4c22435dbf5fbf5085400e60a575501159d1e4a66f05b8acf26a9749",
+      "declarations": [],
+      "imports": [
+        "time"
+      ],
+      "path": "internal/expert/contextpack/types.go",
+      "semanticBytes": 0,
+      "sourceBytes": 2533
+    },
+    {
+      "blocks": [],
+      "contentHash": "954fccd9fcfa1cd348d2cc47ef43fd2cc8c2fd79cba0ca258c44a7edccf0ee2b",
+      "declarations": [],
+      "imports": [
+        "context",
+        "github.com/0disoft/relaydock/internal/expert/contextpack",
+        "github.com/0disoft/relaydock/internal/expert/resultcontract"
+      ],
+      "path": "internal/expert/localstore/adapters.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1458
+    },
+    {
+      "blocks": [],
+      "contentHash": "67186bce72958225c91b4a8d6344346a9a1d869a9ba6e49dcd5ff40e9ef9d7f3",
+      "declarations": [],
+      "imports": [
+        "context",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/expert/consultation",
+        "github.com/0disoft/relaydock/internal/expert/contextpack"
+      ],
+      "path": "internal/expert/localstore/atomic_create.go",
+      "semanticBytes": 0,
+      "sourceBytes": 2216
+    },
+    {
+      "blocks": [],
+      "contentHash": "0b14d4022ce58c9ac95b218f173f78dd9630571daef51847f3c27fdc4cce117b",
+      "declarations": [],
+      "imports": [
+        "bytes",
+        "crypto/sha256",
+        "encoding/hex",
+        "errors",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/expert/contextpack",
+        "github.com/0disoft/relaydock/internal/persistence/atomicfile",
+        "io/fs",
+        "os",
+        "path/filepath",
+        "sort",
+        "strings",
+        "time"
+      ],
+      "path": "internal/expert/localstore/chunks.go",
+      "semanticBytes": 0,
+      "sourceBytes": 6974
+    },
+    {
+      "blocks": [],
+      "contentHash": "5e39b9c7385830810ec1832896adb748e121f5f98c280f19285ff97f42ea6a3c",
+      "declarations": [],
+      "imports": [
+        "encoding/json",
+        "github.com/0disoft/relaydock/internal/expert/consultation",
+        "github.com/0disoft/relaydock/internal/expert/contextpack",
+        "github.com/0disoft/relaydock/internal/expert/resultcontract"
+      ],
+      "path": "internal/expert/localstore/clone.go",
+      "semanticBytes": 0,
+      "sourceBytes": 848
+    },
+    {
+      "blocks": [],
+      "contentHash": "ae5f44d6f34af14e4141a3fa9cc32928a64275115016260c89863808c5a13aa5",
+      "declarations": [],
+      "imports": [
+        "context",
+        "fmt",
+        "os",
+        "time"
+      ],
+      "path": "internal/expert/localstore/compaction.go",
+      "semanticBytes": 0,
+      "sourceBytes": 4601
+    },
+    {
+      "blocks": [],
+      "contentHash": "8c5d0e96e5848b5b30d01f9a4971b59a7a17e6c90bcd1c97899db20d6bf51e25",
+      "declarations": [],
+      "imports": [
+        "context",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/expert/consultation",
+        "github.com/0disoft/relaydock/internal/idgen",
+        "sort",
+        "strings",
+        "time"
+      ],
+      "path": "internal/expert/localstore/consultations.go",
+      "semanticBytes": 0,
+      "sourceBytes": 5771
+    },
+    {
+      "blocks": [],
+      "contentHash": "dc75e4f99534681c223dd53059c7a65f2d90b4c0212409924ede7c09092fb70f",
+      "declarations": [],
+      "imports": [
+        "context",
+        "encoding/json",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/expert/contextpack",
+        "strings"
+      ],
+      "path": "internal/expert/localstore/contextpacks.go",
+      "semanticBytes": 0,
+      "sourceBytes": 4054
+    },
+    {
+      "blocks": [],
+      "contentHash": "a5e01169fda8e531542171326e2febe946e5201131202d6a8318ec749c534d0e",
+      "declarations": [],
+      "imports": [
+        "context",
+        "github.com/0disoft/relaydock/internal/expert/consultation",
+        "time"
+      ],
+      "path": "internal/expert/localstore/expiry.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1452
+    },
+    {
+      "blocks": [],
+      "contentHash": "0a1a0b4905a01ea2f9bc7119f8d22786f234df9d0049570f63dfeb3276d2fe6e",
+      "declarations": [],
+      "imports": [
+        "encoding/json",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/persistence/atomicfile",
+        "strings",
+        "time"
+      ],
+      "path": "internal/expert/localstore/open.go",
+      "semanticBytes": 0,
+      "sourceBytes": 2620
+    },
+    {
+      "blocks": [],
+      "contentHash": "d972ed814ad00f0943912094b5d54b6c69e704a10c3258c0c8935b97186ed8d0",
+      "declarations": [],
+      "imports": [
+        "context",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/expert/consultation",
+        "github.com/0disoft/relaydock/internal/expert/resultcontract",
+        "github.com/0disoft/relaydock/internal/idgen",
+        "strings",
+        "time"
+      ],
+      "path": "internal/expert/localstore/results.go",
+      "semanticBytes": 0,
+      "sourceBytes": 4914
+    },
+    {
+      "blocks": [],
+      "contentHash": "b780d64f8acb038568c207a1c0eeb77e5f597140ff4c1e4bbe8fffbe4329790c",
+      "declarations": [],
+      "imports": [
+        "encoding/json",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/expert/consultation",
+        "github.com/0disoft/relaydock/internal/expert/contextpack",
+        "github.com/0disoft/relaydock/internal/expert/resultcontract",
+        "strings"
+      ],
+      "path": "internal/expert/localstore/state.go",
+      "semanticBytes": 0,
+      "sourceBytes": 6924
+    },
+    {
+      "blocks": [],
+      "contentHash": "7e4812a3a8505d0b20ffd210162d155be7f36d71a1a13e1dc3fa5086ba5a79ba",
+      "declarations": [],
+      "imports": [
+        "context",
+        "encoding/json",
+        "errors",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/expert/consultation",
+        "github.com/0disoft/relaydock/internal/expert/contextpack",
+        "github.com/0disoft/relaydock/internal/expert/resultcontract",
+        "os",
+        "path/filepath",
+        "strings",
+        "sync",
+        "testing",
+        "time"
+      ],
+      "path": "internal/expert/localstore/store_test.go",
+      "semanticBytes": 0,
+      "sourceBytes": 8495
+    },
+    {
+      "blocks": [],
+      "contentHash": "f3297be5b93172b1550b2b7e83af54a6ba55fdb151dbd7d80efade632f98c4f6",
+      "declarations": [],
+      "imports": [
+        "context",
+        "encoding/json",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/persistence/atomicfile",
+        "time"
+      ],
+      "path": "internal/expert/localstore/transaction.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1071
+    },
+    {
+      "blocks": [],
+      "contentHash": "b58b52eb001cb369d072d763ca15ea0d46279ebbd5b9329f8c14b175b09d7122",
+      "declarations": [],
+      "imports": [
+        "github.com/0disoft/relaydock/internal/expert/consultation",
+        "github.com/0disoft/relaydock/internal/expert/contextpack",
+        "github.com/0disoft/relaydock/internal/expert/resultcontract",
+        "sync",
+        "time"
+      ],
+      "path": "internal/expert/localstore/types.go",
+      "semanticBytes": 0,
+      "sourceBytes": 2543
+    },
+    {
+      "blocks": [],
+      "contentHash": "15d727330e12aa74cd1b9720635ef0c15366e9cb34efa6c871a8dac5ebfda517",
+      "declarations": [],
+      "imports": [
+        "context",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/expert/consultation",
+        "sort",
+        "strings",
+        "time"
+      ],
+      "path": "internal/expert/localstore/work.go",
+      "semanticBytes": 0,
+      "sourceBytes": 5091
+    },
+    {
+      "blocks": [],
+      "contentHash": "7c997d25cbada4bdd125035391813327fb72ccd174f9fbb48de2d23672b8374a",
+      "declarations": [],
+      "imports": [
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core"
+      ],
+      "path": "internal/expert/policy/delegation.go",
+      "semanticBytes": 0,
+      "sourceBytes": 604
+    },
+    {
+      "blocks": [],
+      "contentHash": "7eae697f7c4397977511de085e056f7bf1976b42612bcb16acb1787654d84d10",
+      "declarations": [],
+      "imports": [
+        "context",
+        "database/sql",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/expert/consultation",
+        "strings",
+        "time"
+      ],
+      "path": "internal/expert/postgresstore/consultation.go",
+      "semanticBytes": 0,
+      "sourceBytes": 6102
+    },
+    {
+      "blocks": [],
+      "contentHash": "fe155b5eb20b2da918c36e629f1534c91d4a81e3446d3d9c09b56a3efe08931c",
+      "declarations": [],
+      "imports": [
+        "bytes",
+        "context",
+        "database/sql",
+        "encoding/hex",
+        "encoding/json",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/expert/consultation",
+        "github.com/0disoft/relaydock/internal/expert/contextpack",
+        "github.com/0disoft/relaydock/internal/idgen",
+        "strings",
+        "time"
+      ],
+      "path": "internal/expert/postgresstore/consultation_create.go",
+      "semanticBytes": 0,
+      "sourceBytes": 7281
+    },
+    {
+      "blocks": [],
+      "contentHash": "f75ea0c065d00af8efce5ab057f931457357de485748f7cb2f7fc8aab725466c",
+      "declarations": [],
+      "imports": [
+        "context",
+        "database/sql",
+        "encoding/json",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/expert/contextpack",
+        "strings",
+        "time"
+      ],
+      "path": "internal/expert/postgresstore/contextpack.go",
+      "semanticBytes": 0,
+      "sourceBytes": 4050
+    },
+    {
+      "blocks": [],
+      "contentHash": "0134b74c62591c43948ec35e8bedc9b95e66f8de2ec18fc9913138a90d071b80",
+      "declarations": [],
+      "imports": [
+        "bytes",
+        "context",
+        "database/sql",
+        "encoding/json",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/expert/consultation",
+        "github.com/0disoft/relaydock/internal/expert/resultcontract",
+        "github.com/0disoft/relaydock/internal/idgen",
+        "strings",
+        "time"
+      ],
+      "path": "internal/expert/postgresstore/result.go",
+      "semanticBytes": 0,
+      "sourceBytes": 6836
+    },
+    {
+      "blocks": [],
+      "contentHash": "76ced1fe600f46ac21d6daf3c28c2309513f49271ad06f6b983f59de7010fe9f",
+      "declarations": [],
+      "imports": [
+        "database/sql",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/expert/consultation"
+      ],
+      "path": "internal/expert/postgresstore/scan.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1583
+    },
+    {
+      "blocks": [],
+      "contentHash": "bb7fbb02a4e55858b6b04f237ba6731800f719e15ce65b72e7ffd3b64a92b2b4",
+      "declarations": [],
+      "imports": [
+        "context",
+        "database/sql",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/expert/contextpack",
+        "github.com/0disoft/relaydock/internal/expert/resultcontract",
+        "strings"
+      ],
+      "path": "internal/expert/postgresstore/store.go",
+      "semanticBytes": 0,
+      "sourceBytes": 3030
+    },
+    {
+      "blocks": [],
+      "contentHash": "a52d70fd2c7f1f5031db8abc783c6eba5738688323a82ed9284678bf06d78925",
+      "declarations": [],
+      "imports": [
+        "context",
+        "database/sql",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/expert/consultation",
+        "strings",
+        "time"
+      ],
+      "path": "internal/expert/postgresstore/work.go",
+      "semanticBytes": 0,
+      "sourceBytes": 5966
+    },
+    {
+      "blocks": [],
+      "contentHash": "02e91f7bfd9c2e3b9200ce37ea54f07b1dffcd49df3cf670ef659fe4dae17d18",
+      "declarations": [],
+      "imports": [
+        "regexp"
+      ],
+      "path": "internal/expert/redaction/rules.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1579
+    },
+    {
+      "blocks": [],
+      "contentHash": "2f75bd7bca433d67278629e1522a56fc387c6f2d43360e04550f0eb4bf95d6e1",
+      "declarations": [],
+      "imports": [
+        "context",
+        "math",
+        "path/filepath",
+        "regexp",
+        "strings"
+      ],
+      "path": "internal/expert/redaction/scanner.go",
+      "semanticBytes": 0,
+      "sourceBytes": 3097
+    },
+    {
+      "blocks": [],
+      "contentHash": "8f22006fe3551443cedd967df92945e9d8ed71f99ec4aa2e8ab1e6420c0ae081",
+      "declarations": [],
+      "imports": [
+        "encoding/json"
+      ],
+      "path": "internal/expert/resultcontract/clone.go",
+      "semanticBytes": 0,
+      "sourceBytes": 194
+    },
+    {
+      "blocks": [],
+      "contentHash": "ef958a122f5c0be2af88764b0d8a48efb8c3996ec0ba87087a5d82434c6c2f64",
+      "declarations": [],
+      "imports": [
+        "context",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/idgen",
+        "sync"
+      ],
+      "path": "internal/expert/resultcontract/memory_store.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1490
+    },
+    {
+      "blocks": [],
+      "contentHash": "d0a0a6320e35a48bf98e5e4026bd235464487a563fca64157b57853cc16943a4",
+      "declarations": [],
+      "imports": [
+        "context",
+        "strings",
+        "time"
+      ],
+      "path": "internal/expert/resultcontract/record.go",
+      "semanticBytes": 0,
+      "sourceBytes": 763
+    },
+    {
+      "blocks": [],
+      "contentHash": "501041880e4980869cdac9336da183623ed11e5bbcd69844aad85efd84be6198",
+      "declarations": [],
+      "imports": [],
+      "path": "internal/expert/resultcontract/types.go",
+      "semanticBytes": 0,
+      "sourceBytes": 986
+    },
+    {
+      "blocks": [],
+      "contentHash": "ae6a5b46957e3aca2e490a8f3445ff06b3072755acdb3014b64a557d4f745939",
+      "declarations": [],
+      "imports": [
+        "critical",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "strings"
+      ],
+      "path": "internal/expert/resultcontract/validator.go",
+      "semanticBytes": 0,
+      "sourceBytes": 752
+    },
+    {
+      "blocks": [],
+      "contentHash": "74e045736e75463506de3b7e8d4ea8fa7d1f5c348d23fde2e15300fced9d8ea5",
+      "declarations": [],
+      "imports": [
+        "bytes",
+        "context",
+        "encoding/json",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/expert/contextpack",
+        "github.com/0disoft/relaydock/internal/expert/resultcontract",
+        "github.com/0disoft/relaydock/internal/provider",
+        "input",
+        "io",
+        "max_output_tokens",
+        "model",
+        "net/http",
+        "strings",
+        "time"
+      ],
+      "path": "internal/expert/routes/openaiapi/client.go",
+      "semanticBytes": 0,
+      "sourceBytes": 7608
+    },
+    {
+      "blocks": [],
+      "contentHash": "f94c1893826322548f5729b5c193b66aaf4c21a8ab66da4a41651e701700a686",
+      "declarations": [],
+      "imports": [
+        "context",
+        "crypto/sha256",
+        "encoding/hex",
+        "encoding/json",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/expert/resultcontract",
+        "github.com/0disoft/relaydock/internal/idgen",
+        "sync",
+        "time"
+      ],
+      "path": "internal/expert/routes/webhandoff/service.go",
+      "semanticBytes": 0,
+      "sourceBytes": 2357
+    },
+    {
+      "blocks": [],
+      "contentHash": "dd490fe55c5b42139fe133b72cc70de75ddcedc1f7dbc66e46e254fb8eb425f0",
+      "declarations": [],
+      "imports": [
+        "context",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/expert/consultation",
+        "github.com/0disoft/relaydock/internal/expert/contextpack",
+        "github.com/0disoft/relaydock/internal/expert/resultcontract",
+        "github.com/0disoft/relaydock/internal/expert/routes/openaiapi",
+        "strings"
+      ],
+      "path": "internal/expert/worker/openai_executor.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1368
+    },
+    {
+      "blocks": [],
+      "contentHash": "c7f6d91c87a6f8841bbae568908745194bef6c092ba2ee8ecfc9d4035eeac493",
+      "declarations": [],
+      "imports": [
+        "context",
+        "errors",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/expert/app",
+        "github.com/0disoft/relaydock/internal/expert/consultation",
+        "github.com/0disoft/relaydock/internal/expert/contextpack",
+        "github.com/0disoft/relaydock/internal/expert/resultcontract",
+        "github.com/0disoft/relaydock/internal/idgen",
+        "github.com/0disoft/relaydock/internal/provider",
+        "log/slog",
+        "sync",
+        "time"
+      ],
+      "path": "internal/expert/worker/worker.go",
+      "semanticBytes": 0,
+      "sourceBytes": 7875
+    },
+    {
+      "blocks": [],
+      "contentHash": "dabd76c97e668967f4b73f07c6de0e64147e842abc7272356de9711ed0c981e0",
+      "declarations": [],
+      "imports": [
+        "connectrpc.com/connect",
+        "google.golang.org/protobuf/reflect/protoreflect"
+      ],
+      "path": "internal/generateddeps/deps.go",
+      "semanticBytes": 0,
+      "sourceBytes": 278
+    },
+    {
+      "blocks": [],
+      "contentHash": "38265542cc6fa8177db27fcc65979819542df17ccfa4301e518b8b0d7b76c2a7",
+      "declarations": [],
+      "imports": [
+        "strings"
+      ],
+      "path": "internal/identifier/uuid.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1005
+    },
+    {
+      "blocks": [],
+      "contentHash": "690fdec36069e784a9260c64968aab7d439a59abcc11e232cd19a516700eeef6",
+      "declarations": [],
+      "imports": [
+        "testing"
+      ],
+      "path": "internal/identifier/uuid_test.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1109
+    },
+    {
+      "blocks": [],
+      "contentHash": "64f2b4a07a0210ef086cfe5cf3bb86d2ea92dce7382751d64b95e178c50271cd",
+      "declarations": [],
+      "imports": [
+        "crypto/rand",
+        "encoding/base32",
+        "fmt",
+        "strings",
+        "time"
+      ],
+      "path": "internal/idgen/id.go",
+      "semanticBytes": 0,
+      "sourceBytes": 959
+    },
+    {
+      "blocks": [],
+      "contentHash": "48be1fcc746bd9bbd5f473f59c23af4f5e53cbea217baa73f86c4d738d78beef",
+      "declarations": [],
+      "imports": [
+        "bufio",
+        "context",
+        "encoding/binary",
+        "encoding/json",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/idgen",
+        "io"
+      ],
+      "path": "internal/localipc/client.go",
+      "semanticBytes": 0,
+      "sourceBytes": 2622
+    },
+    {
+      "blocks": [],
+      "contentHash": "ddb5a6a9ec74f662fd4546c428c6ca60b32bc38b3824a807640134df8610d4b1",
+      "declarations": [],
+      "imports": [
+        "os",
+        "path/filepath"
+      ],
+      "path": "internal/localipc/endpoint_unix.go",
+      "semanticBytes": 0,
+      "sourceBytes": 234
+    },
+    {
+      "blocks": [],
+      "contentHash": "3340f68c95cef79b6eb615adca5554107fc763442d3d16f7a448792ae6c45698",
+      "declarations": [],
+      "imports": [
+        "os/user"
+      ],
+      "path": "internal/localipc/endpoint_windows.go",
+      "semanticBytes": 0,
+      "sourceBytes": 216
+    },
+    {
+      "blocks": [],
+      "contentHash": "e85c747b295bb2793238d2953107833fde7cc739b09c0d2413fb764b1b0eb4d4",
+      "declarations": [],
+      "imports": [
+        "encoding/json"
+      ],
+      "path": "internal/localipc/protocol.go",
+      "semanticBytes": 0,
+      "sourceBytes": 433
+    },
+    {
+      "blocks": [],
+      "contentHash": "8d72c97deeff4972f3e655c998da1e51d37ec822c7f8dc18f5761b5ade2d0f09",
+      "declarations": [],
+      "imports": [
+        "budget_exceeded",
+        "bufio",
+        "conflict",
+        "context",
+        "encoding/json",
+        "errors",
+        "fmt",
+        "forbidden",
+        "github.com/0disoft/relaydock/internal/core",
+        "internal_error",
+        "invalid_argument",
+        "io",
+        "net",
+        "not_found",
+        "sync",
+        "unauthorized"
+      ],
+      "path": "internal/localipc/server.go",
+      "semanticBytes": 0,
+      "sourceBytes": 4992
+    },
+    {
+      "blocks": [],
+      "contentHash": "f9d5331f5eea3339a6eb3bcf6b91bc4994dd54fb8f0eb92eb6aa82f7acf6a96a",
+      "declarations": [],
+      "imports": [
+        "context",
+        "net",
+        "os",
+        "path/filepath"
+      ],
+      "path": "internal/localipc/transport_unix.go",
+      "semanticBytes": 0,
+      "sourceBytes": 678
+    },
+    {
+      "blocks": [],
+      "contentHash": "a5778b5449724ef7b9ccbaf5d79953edcbbf94843595c5747d42cd8c0b0743eb",
+      "declarations": [],
+      "imports": [
+        "context",
+        "github.com/Microsoft/go-winio",
+        "net"
+      ],
+      "path": "internal/localipc/transport_windows.go",
+      "semanticBytes": 0,
+      "sourceBytes": 425
+    },
+    {
+      "blocks": [],
+      "contentHash": "7d2c7652fd7872b9d619582dd52bf2ec3793ef5390694086f3dd461568b4144a",
+      "declarations": [],
+      "imports": [
+        "context",
+        "encoding/json",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/appdirs",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/expert/app",
+        "github.com/0disoft/relaydock/internal/expert/consultation",
+        "github.com/0disoft/relaydock/internal/expert/contextpack",
+        "github.com/0disoft/relaydock/internal/expert/policy",
+        "github.com/0disoft/relaydock/internal/localipc",
+        "github.com/0disoft/relaydock/internal/mcpcontract",
+        "os",
+        "path/filepath",
+        "strings"
+      ],
+      "path": "internal/localruntime/runtime.go",
+      "semanticBytes": 0,
+      "sourceBytes": 5549
+    },
+    {
+      "blocks": [],
+      "contentHash": "f0abd426f81e4fee4dbf4a8d0d9f4853ea5ab763ca7e96b8036e01f1b6518d39",
+      "declarations": [],
+      "imports": [
+        "context",
+        "github.com/0disoft/relaydock/internal/localipc"
+      ],
+      "path": "internal/mcpbridge/backend.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1221
+    },
+    {
+      "blocks": [],
+      "contentHash": "46395e1e34217fb1fefc34e19805e4c5b11fc7fa1508af315f2cb8a6ab42a732",
+      "declarations": [],
+      "imports": [
+        "context",
+        "github.com/modelcontextprotocol/go-sdk/mcp"
+      ],
+      "path": "internal/mcpbridge/server.go",
+      "semanticBytes": 0,
+      "sourceBytes": 2141
+    },
+    {
+      "blocks": [],
+      "contentHash": "f8ea57ec9ac29d8cef371e917aa3c13264a3f4e7095b312b53164840607782fe",
+      "declarations": [],
+      "imports": [
+        "context",
+        "github.com/0disoft/relaydock/internal/mcpcontract"
+      ],
+      "path": "internal/mcpbridge/tools.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1007
+    },
+    {
+      "blocks": [],
+      "contentHash": "64c5d5ec1a379a9a5c3b6d19d18bfdc8bf8e2e3f6a0eb32eed30bea03ee9de7d",
+      "declarations": [],
+      "imports": [
+        "github.com/0disoft/relaydock/internal/expert/resultcontract"
+      ],
+      "path": "internal/mcpcontract/types.go",
+      "semanticBytes": 0,
+      "sourceBytes": 2031
+    },
+    {
+      "blocks": [],
+      "contentHash": "29389cd101b0470e80f1554f69844c03484483eea6e1454ad85ae37c08502179",
+      "declarations": [],
+      "imports": [
+        "context",
+        "encoding/json",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/auth/scopedtoken",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/expert/app",
+        "github.com/0disoft/relaydock/internal/expert/consultation",
+        "github.com/0disoft/relaydock/internal/expert/contextpack",
+        "github.com/0disoft/relaydock/internal/expert/resultcontract",
+        "strings"
+      ],
+      "path": "internal/mcpremote/backend.go",
+      "semanticBytes": 0,
+      "sourceBytes": 4588
+    },
+    {
+      "blocks": [],
+      "contentHash": "71d16ab59bd25b5f800c107b74ab600da7d10f00532e96f0d31cef44fe8c5bdf",
+      "declarations": [],
+      "imports": [
+        "context",
+        "errors",
+        "github.com/0disoft/relaydock/internal/auth/scopedtoken",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/expert/app",
+        "github.com/0disoft/relaydock/internal/expert/consultation",
+        "github.com/0disoft/relaydock/internal/expert/contextpack",
+        "testing",
+        "time"
+      ],
+      "path": "internal/mcpremote/backend_test.go",
+      "semanticBytes": 0,
+      "sourceBytes": 5602
+    },
+    {
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [
+              "consultation domain logic",
+              "token issuance"
+            ],
+            "id": "relaydock.mcp.remote",
+            "invariant": [
+              "Reading and answering consultations require distinct explicit scopes.",
+              "Untrusted requests are bounded before reaching MCP handlers."
+            ],
+            "owns": [
+              "remote MCP tool registry",
+              "remote MCP authentication",
+              "MCP request exposure limits"
+            ],
+            "rel": [],
+            "risk": [],
+            "role": "Expose tenant-scoped remote expert tools behind bearer authentication, host, origin, body-size, and per-tool scope checks.",
+            "scope": "module",
+            "search": [
+              "remote MCP server",
+              "consultation tool scopes",
+              "authenticate MCP request"
+            ],
+            "stability": "architecture",
+            "unknown": []
+          },
+          "end": 575,
+          "endLine": 12,
+          "entries": [
+            {
+              "key": "id",
+              "line": 4,
+              "order": 0,
+              "value": "relaydock.mcp.remote"
+            },
+            {
+              "key": "role",
+              "line": 5,
+              "order": 1,
+              "value": "Expose tenant-scoped remote expert tools behind bearer authentication, host, origin, body-size, and per-tool scope checks."
+            },
+            {
+              "key": "owns",
+              "line": 6,
+              "order": 2,
+              "value": "remote MCP tool registry|remote MCP authentication|MCP request exposure limits"
+            },
+            {
+              "key": "excludes",
+              "line": 7,
+              "order": 3,
+              "value": "consultation domain logic|token issuance"
+            },
+            {
+              "key": "search",
+              "line": 8,
+              "order": 4,
+              "value": "remote MCP server|consultation tool scopes|authenticate MCP request"
+            },
+            {
+              "key": "invariant",
+              "line": 9,
+              "order": 5,
+              "value": "Reading and answering consultations require distinct explicit scopes."
+            },
+            {
+              "key": "invariant",
+              "line": 10,
+              "order": 6,
+              "value": "Untrusted requests are bounded before reaching MCP handlers."
+            },
+            {
+              "key": "stability",
+              "line": 11,
+              "order": 7,
+              "value": "architecture"
+            }
+          ],
+          "filePath": "internal/mcpremote/server.go",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.mcp.remote\nrole=Expose tenant-scoped remote expert tools behind bearer authentication, host, origin, body-size, and per-tool scope checks.\nowns=remote MCP tool registry|remote MCP authentication|MCP request exposure limits\nexcludes=consultation domain logic|token issuance\nsearch=remote MCP server|consultation tool scopes|authenticate MCP request\ninvariant=Reading and answering consultations require distinct explicit scopes.\ninvariant=Untrusted requests are bounded before reaching MCP handlers.\nstability=architecture\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 19,
+          "startLine": 3,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "f8ec8b5a7c6fd08e80621c18fcc49db2f14c93d027ce0d645fecb6341bdbddb5",
+      "declarations": [
+        null
+      ],
+      "imports": [
+        "context",
+        "crypto/subtle",
+        "github.com/0disoft/relaydock/internal/auth/mcpscope",
+        "github.com/0disoft/relaydock/internal/auth/scopedtoken",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/modelcontextprotocol/go-sdk/mcp",
+        "net",
+        "net/http",
+        "net/url",
+        "strings"
+      ],
+      "path": "internal/mcpremote/server.go",
+      "semanticBytes": 556,
+      "sourceBytes": 5690
+    },
+    {
+      "blocks": [],
+      "contentHash": "4c2e18bf4452d9d7e8cc4bfa2246bb6fc642d19b3afdc4b801107b57621e2c82",
+      "declarations": [],
+      "imports": [
+        "context",
+        "github.com/0disoft/relaydock/internal/auth/mcpscope",
+        "github.com/0disoft/relaydock/internal/auth/scopedtoken",
+        "github.com/0disoft/relaydock/internal/expert/contextpack",
+        "log/slog"
+      ],
+      "path": "internal/mcpremote/types.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1852
+    },
+    {
+      "blocks": [],
+      "contentHash": "ecde8b4c2b6ec06885c679600712819235a9d9f2e0cb1c3222340706a6d6b43f",
+      "declarations": [],
+      "imports": [
+        "io",
+        "log/slog"
+      ],
+      "path": "internal/observability/logger.go",
+      "semanticBytes": 0,
+      "sourceBytes": 203
+    },
+    {
+      "blocks": [],
+      "contentHash": "f76f3959faa97863327a0d7186c55d5c88092c3a36344e64ca0fdb6317d460b4",
+      "declarations": [],
+      "imports": [
+        "context"
+      ],
+      "path": "internal/observability/metrics.go",
+      "semanticBytes": 0,
+      "sourceBytes": 372
+    },
+    {
+      "blocks": [],
+      "contentHash": "27d5a096f33f637f4746343bb4390f8331a0f23f798f4f633218700f9101b48f",
+      "declarations": [],
+      "imports": [
+        "context",
+        "crypto/rand",
+        "encoding/hex",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "strings",
+        "sync/atomic",
+        "time"
+      ],
+      "path": "internal/observability/tracing.go",
+      "semanticBytes": 0,
+      "sourceBytes": 3469
+    },
+    {
+      "blocks": [],
+      "contentHash": "a5ed5a02f86aeb7a065c1f08c305c678b3dd6b8eaca965ca7fcfab1029b8e942",
+      "declarations": [],
+      "imports": [
+        "context",
+        "time"
+      ],
+      "path": "internal/outbox/admin.go",
+      "semanticBytes": 0,
+      "sourceBytes": 952
+    },
+    {
+      "blocks": [],
+      "contentHash": "bd466c731073024fd691770e4888aea23f82306140ca3becff49d0557ee0094e",
+      "declarations": [],
+      "imports": [
+        "%w: outbox lease TTL %s must exceed publish timeout %s plus repository timeout %s",
+        "context",
+        "errors",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "hash/fnv",
+        "log/slog",
+        "math",
+        "permanent outbox publish failure",
+        "retryable outbox publish failure",
+        "strings",
+        "sync",
+        "time"
+      ],
+      "path": "internal/outbox/delivery.go",
+      "semanticBytes": 0,
+      "sourceBytes": 10221
+    },
+    {
+      "blocks": [],
+      "contentHash": "ed7e7bed78f9e3302306b76902beb949be5c5fac945e4fc26e18b5b4b15b2bef",
+      "declarations": [],
+      "imports": [
+        "context",
+        "errors",
+        "github.com/0disoft/relaydock/internal/core",
+        "testing",
+        "time"
+      ],
+      "path": "internal/outbox/delivery_test.go",
+      "semanticBytes": 0,
+      "sourceBytes": 6958
+    },
+    {
+      "blocks": [],
+      "contentHash": "fcbf9d07b5ab494c76be70fc3d1b28ee86c8aa754e494c5b780f532a85f0f84e",
+      "declarations": [],
+      "imports": [
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/idgen",
+        "sort",
+        "strings",
+        "sync",
+        "time"
+      ],
+      "path": "internal/outbox/memory.go",
+      "semanticBytes": 0,
+      "sourceBytes": 2305
+    },
+    {
+      "blocks": [],
+      "contentHash": "d15b701efce0dc2a9f9464c01f98e390c1e5c5ea1d511e9cb07141b8ea74823c",
+      "declarations": [],
+      "imports": [
+        "context",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/idgen",
+        "sort",
+        "strings",
+        "sync",
+        "time"
+      ],
+      "path": "internal/outbox/memory_delivery.go",
+      "semanticBytes": 0,
+      "sourceBytes": 5882
+    },
+    {
+      "blocks": [],
+      "contentHash": "0a71990c17ce1c19039b49e5f5e63a7114a3edd712e34278d065549c575a2e1e",
+      "declarations": [],
+      "imports": [
+        "encoding/json",
+        "time"
+      ],
+      "path": "internal/outbox/types.go",
+      "semanticBytes": 0,
+      "sourceBytes": 257
+    },
+    {
+      "blocks": [],
+      "contentHash": "20fc8f542bad55416f386a04dac0af811fbd6c570aa32adf84eaaebf0ef42f39",
+      "declarations": [],
+      "imports": [
+        "bytes",
+        "content-length",
+        "content-type",
+        "context",
+        "crypto/hmac",
+        "crypto/sha256",
+        "empty response",
+        "encoding/hex",
+        "encoding/json",
+        "errors",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "http",
+        "https",
+        "io",
+        "net",
+        "net/http",
+        "net/url",
+        "strconv",
+        "strings",
+        "time",
+        "x-ai-runtime-event-id",
+        "x-ai-runtime-timestamp"
+      ],
+      "path": "internal/outbox/webhook.go",
+      "semanticBytes": 0,
+      "sourceBytes": 11045
+    },
+    {
+      "blocks": [],
+      "contentHash": "f4d84447bd9a56c09f91e18f6a263f76a5502457366c876d7036af747a10e8d6",
+      "declarations": [],
+      "imports": [
+        "context",
+        "crypto/hmac",
+        "crypto/sha256",
+        "encoding/hex",
+        "encoding/json",
+        "errors",
+        "github.com/0disoft/relaydock/internal/core",
+        "io",
+        "net/http",
+        "net/http/httptest",
+        "strconv",
+        "strings",
+        "testing",
+        "time"
+      ],
+      "path": "internal/outbox/webhook_test.go",
+      "semanticBytes": 0,
+      "sourceBytes": 9297
+    },
+    {
+      "blocks": [],
+      "contentHash": "bce4247bb6de78f2ec44fd2006e288f84de39a3273b9c579d2cd5f129c5626ce",
+      "declarations": [],
+      "imports": [
+        "bytes",
+        "crypto/sha256",
+        "encoding/hex",
+        "encoding/json",
+        "errors",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/outbox",
+        "io",
+        "log/slog",
+        "net/http",
+        "sort",
+        "strconv",
+        "strings",
+        "sync",
+        "time"
+      ],
+      "path": "internal/outbox/webhooksink/handler.go",
+      "semanticBytes": 0,
+      "sourceBytes": 7928
+    },
+    {
+      "blocks": [],
+      "contentHash": "bb9f3cc882da1647538bb5a8019bfae46a8b6f5fec91be3065c1b3fbcf669134",
+      "declarations": [],
+      "imports": [
+        "bytes",
+        "context",
+        "crypto/hmac",
+        "crypto/sha256",
+        "encoding/hex",
+        "encoding/json",
+        "github.com/0disoft/relaydock/internal/outbox",
+        "net/http",
+        "net/http/httptest",
+        "strconv",
+        "testing",
+        "time"
+      ],
+      "path": "internal/outbox/webhooksink/handler_test.go",
+      "semanticBytes": 0,
+      "sourceBytes": 3881
+    },
+    {
+      "blocks": [],
+      "contentHash": "5384eb83d3030f2cc9cd6a8895ae67fb336f1166a0a7cc8349a057be76ae7b5d",
+      "declarations": [],
+      "imports": [
+        "errors",
+        "fmt",
+        "io",
+        "io/fs",
+        "os",
+        "path/filepath"
+      ],
+      "path": "internal/persistence/atomicfile/file.go",
+      "semanticBytes": 0,
+      "sourceBytes": 3650
+    },
+    {
+      "blocks": [],
+      "contentHash": "8e98cf1098f31a8ac5b1ce7b330c1cedf72f87211a54779ffa6e4c72e71a169a",
+      "declarations": [],
+      "imports": [
+        "os"
+      ],
+      "path": "internal/persistence/atomicfile/permissions_unix.go",
+      "semanticBytes": 0,
+      "sourceBytes": 114
+    },
+    {
+      "blocks": [],
+      "contentHash": "a3d6f7384d5c877a7c15acbd27de50a60c792e310679f557f996e2d60c3784b8",
+      "declarations": [],
+      "imports": [
+        "D:P(A;;GA;;;%s)(A;;GA;;;SY)(A;;GA;;;BA)",
+        "fmt",
+        "golang.org/x/sys/windows",
+        "os"
+      ],
+      "path": "internal/persistence/atomicfile/permissions_windows.go",
+      "semanticBytes": 0,
+      "sourceBytes": 996
+    },
+    {
+      "blocks": [],
+      "contentHash": "64cac72d6b4d62ef9baff56728d287555bdc95ab1feb57c6b69d4e677f230232",
+      "declarations": [],
+      "imports": [
+        "os"
+      ],
+      "path": "internal/persistence/atomicfile/replace_unix.go",
+      "semanticBytes": 0,
+      "sourceBytes": 309
+    },
+    {
+      "blocks": [],
+      "contentHash": "7d8a99df1177a23fbe5035c73dae95325198c39f1c00d9977e40b2c021958bab",
+      "declarations": [],
+      "imports": [
+        "fmt",
+        "syscall",
+        "unsafe"
+      ],
+      "path": "internal/persistence/atomicfile/replace_windows.go",
+      "semanticBytes": 0,
+      "sourceBytes": 831
+    },
+    {
+      "blocks": [],
+      "contentHash": "96ba8af97634d4c5c3a2cba9cdc87f8ba903d238003c039eb2f69b8834b2249a",
+      "declarations": [],
+      "imports": [
+        "crypto/sha256",
+        "down",
+        "encoding/hex",
+        "fmt",
+        "io/fs",
+        "path/filepath",
+        "sort",
+        "strconv",
+        "strings",
+        "up"
+      ],
+      "path": "internal/persistence/migrate/migration.go",
+      "semanticBytes": 0,
+      "sourceBytes": 3066
+    },
+    {
+      "blocks": [],
+      "contentHash": "96ec4f88d6b4cd2a4245ece7c15b342137626c2e159b5466582c5d04d16d74dc",
+      "declarations": [],
+      "imports": [
+        "migrations/000001_different.down.sql",
+        "migrations/000001_first.down.sql",
+        "migrations/000001_first.up.sql",
+        "migrations/000002_second.up.sql",
+        "migrations/README.md",
+        "testing",
+        "testing/fstest"
+      ],
+      "path": "internal/persistence/migrate/migration_test.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1358
+    },
+    {
+      "blocks": [],
+      "contentHash": "1d6aa75a2ada5f4b7df68e99d9cc3aac8b541ff6bee1f6da7c2e73a8df72faf6",
+      "declarations": [],
+      "imports": [
+        "context",
+        "database/sql",
+        "fmt",
+        "sort",
+        "time"
+      ],
+      "path": "internal/persistence/migrate/runner.go",
+      "semanticBytes": 0,
+      "sourceBytes": 7845
+    },
+    {
+      "blocks": [],
+      "contentHash": "96c63d2ceeb2aa7ecf8c1c045736699b9ff563a5a7600cf3ca0cbcb5a3a8fbea",
+      "declarations": [],
+      "imports": [
+        "bytes",
+        "context",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "io",
+        "strings",
+        "sync",
+        "time"
+      ],
+      "path": "internal/persistence/objectstore/memory.go",
+      "semanticBytes": 0,
+      "sourceBytes": 2422
+    },
+    {
+      "blocks": [],
+      "contentHash": "860ca6fbf12c3ec44b7120373b231193afac62d210f66f799b72727b0297721f",
+      "declarations": [],
+      "imports": [
+        "context",
+        "io",
+        "time"
+      ],
+      "path": "internal/persistence/objectstore/store.go",
+      "semanticBytes": 0,
+      "sourceBytes": 336
+    },
+    {
+      "blocks": [],
+      "contentHash": "b7cc2be9d128aab82de9d35716d628f4c1069293aaae7d6120c7c8b70ee31b15",
+      "declarations": [],
+      "imports": [
+        "context",
+        "database/sql",
+        "fmt",
+        "github.com/jackc/pgx/v5/pgxpool",
+        "github.com/jackc/pgx/v5/stdlib",
+        "strings"
+      ],
+      "path": "internal/persistence/postgres/db.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1273
+    },
+    {
+      "blocks": [],
+      "contentHash": "d052bdc40f1cc0eb2e8c3858e2ae1a62a60ea8964f5c345a23a5109a2af3839f",
+      "declarations": [],
+      "imports": [
+        "context",
+        "database/sql",
+        "encoding/json",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/outbox",
+        "strings",
+        "time"
+      ],
+      "path": "internal/persistence/postgres/outbox_repository.go",
+      "semanticBytes": 0,
+      "sourceBytes": 9771
+    },
+    {
+      "blocks": [],
+      "contentHash": "5ebf989135a99be9c273d4eaed60d5424b1e82c7aa9a9d35366da9c28a496bf3",
+      "declarations": [],
+      "imports": [
+        "context",
+        "database/sql",
+        "encoding/json",
+        "errors",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/identifier",
+        "github.com/0disoft/relaydock/internal/protocol/stream",
+        "github.com/0disoft/relaydock/internal/runtime",
+        "strings",
+        "time"
+      ],
+      "path": "internal/persistence/postgres/runtime_journal.go",
+      "semanticBytes": 0,
+      "sourceBytes": 13421
+    },
+    {
+      "blocks": [],
+      "contentHash": "8eb7aaa2235d594ef717dda015bf16e6a06e40ec118102bfdd7680ecc1b7989f",
+      "declarations": [],
+      "imports": [
+        "bytes",
+        "context",
+        "crypto/ed25519",
+        "database/sql",
+        "encoding/json",
+        "errors",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/control/snapshot",
+        "github.com/0disoft/relaydock/internal/core",
+        "io",
+        "time"
+      ],
+      "path": "internal/persistence/postgres/snapshot_store.go",
+      "semanticBytes": 0,
+      "sourceBytes": 7346
+    },
+    {
+      "blocks": [],
+      "contentHash": "9fe97aeb7057ec5960d815d5e6a6c9c638968d75d4a5d759f0e0a21a05d95545",
+      "declarations": [],
+      "imports": [
+        "context",
+        "github.com/jackc/pgx/v5/pgtype"
+      ],
+      "path": "internal/persistence/postgres/sqlcgen/control.sql.go",
+      "semanticBytes": 0,
+      "sourceBytes": 2456
+    },
+    {
+      "blocks": [],
+      "contentHash": "c40f70c9870c43ddc88f743ec63627bc9af2d57fab48fdb0c055981d090b0cf8",
+      "declarations": [],
+      "imports": [
+        "context",
+        "github.com/jackc/pgx/v5",
+        "github.com/jackc/pgx/v5/pgconn"
+      ],
+      "path": "internal/persistence/postgres/sqlcgen/db.go",
+      "semanticBytes": 0,
+      "sourceBytes": 569
+    },
+    {
+      "blocks": [],
+      "contentHash": "82b032a47f85df31a1be1004d8c4da73a1042cd65dd7e0161f2d2bb9aadd785a",
+      "declarations": [],
+      "imports": [
+        "context",
+        "github.com/jackc/pgx/v5/pgtype"
+      ],
+      "path": "internal/persistence/postgres/sqlcgen/expert.sql.go",
+      "semanticBytes": 0,
+      "sourceBytes": 18552
+    },
+    {
+      "blocks": [],
+      "contentHash": "179ce4ab5ac8cb8d56762b4536b330418f340696937db2b7c3a106109b5913f7",
+      "declarations": [],
+      "imports": [
+        "github.com/jackc/pgx/v5/pgtype"
+      ],
+      "path": "internal/persistence/postgres/sqlcgen/models.go",
+      "semanticBytes": 0,
+      "sourceBytes": 8335
+    },
+    {
+      "blocks": [],
+      "contentHash": "a22a1020e733177d011d4c6f425ff37747dd3863108a98621c18b075684b0bb7",
+      "declarations": [],
+      "imports": [
+        "context",
+        "github.com/jackc/pgx/v5/pgtype"
+      ],
+      "path": "internal/persistence/postgres/sqlcgen/outbox.sql.go",
+      "semanticBytes": 0,
+      "sourceBytes": 5655
+    },
+    {
+      "blocks": [],
+      "contentHash": "bc100848f459bf058dc3dc355e54eb26f6e5dc09308c0bcafbb6f27b33c01374",
+      "declarations": [],
+      "imports": [
+        "context"
+      ],
+      "path": "internal/persistence/postgres/sqlcgen/querier.go",
+      "semanticBytes": 0,
+      "sourceBytes": 2966
+    },
+    {
+      "blocks": [],
+      "contentHash": "05d3074e293ce5df23090def8e5b599738cae723fb4c3193d225de0217461560",
+      "declarations": [],
+      "imports": [
+        "context",
+        "github.com/jackc/pgx/v5/pgtype"
+      ],
+      "path": "internal/persistence/postgres/sqlcgen/runtime.sql.go",
+      "semanticBytes": 0,
+      "sourceBytes": 6956
+    },
+    {
+      "blocks": [],
+      "contentHash": "5986ead6e45aae89cfb0c60efdbab89efdb01dba9bc01bc1f899ca6bae59fca8",
+      "declarations": [],
+      "imports": [
+        "context",
+        "fmt",
+        "github.com/valkey-io/valkey-go",
+        "strings"
+      ],
+      "path": "internal/persistence/valkey/client.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1580
+    },
+    {
+      "blocks": [],
+      "contentHash": "5d228d244cd42dc00e1056e9bf39c032fd4e4c70556221600648e2231ab66a31",
+      "declarations": [],
+      "imports": [
+        "context",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/routing/distributedlease",
+        "github.com/valkey-io/valkey-go"
+      ],
+      "path": "internal/persistence/valkey/lease_manager.go",
+      "semanticBytes": 0,
+      "sourceBytes": 828
+    },
+    {
+      "blocks": [],
+      "contentHash": "04b0993c03315c665286cf914a97fe418f56789c1d1cf1b04a5dfcc075952a00",
+      "declarations": [],
+      "imports": [
+        "bytes",
+        "encoding/json",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/idgen",
+        "github.com/0disoft/relaydock/internal/protocol/canonical",
+        "github.com/0disoft/relaydock/internal/protocol/compiler",
+        "image",
+        "text",
+        "thinking",
+        "tool_result",
+        "tool_use"
+      ],
+      "path": "internal/protocol/anthropic/messages/adapter.go",
+      "semanticBytes": 0,
+      "sourceBytes": 9084
+    },
+    {
+      "blocks": [],
+      "contentHash": "3ab87a68f7442d850cd445599e7bf052eeb1f6d73f52c7193d88616f9034f9a9",
+      "declarations": [],
+      "imports": [
+        "strings"
+      ],
+      "path": "internal/protocol/canonical/capabilities.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1307
+    },
+    {
+      "blocks": [],
+      "contentHash": "1a15ca0888c1aa2221a07412e4d2cf0f43688911c7a027916d36a3b9b626c5a9",
+      "declarations": [],
+      "imports": [
+        "encoding/json",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "strings"
+      ],
+      "path": "internal/protocol/canonical/types.go",
+      "semanticBytes": 0,
+      "sourceBytes": 3472
+    },
+    {
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [
+              "provider network transport",
+              "routing decisions"
+            ],
+            "id": "relaydock.protocol.compiler",
+            "invariant": [
+              "Strict conversion rejects fatal information loss."
+            ],
+            "owns": [
+              "protocol decoder registry",
+              "canonical request validation",
+              "loss-mode enforcement"
+            ],
+            "rel": [],
+            "risk": [],
+            "role": "Decode provider ingress into canonical requests and encode canonical requests with explicit loss reports.",
+            "scope": "module",
+            "search": [
+              "convert provider protocol",
+              "lossy transformation report",
+              "canonical request envelope"
+            ],
+            "stability": "contract",
+            "unknown": []
+          },
+          "end": 484,
+          "endLine": 11,
+          "entries": [
+            {
+              "key": "id",
+              "line": 4,
+              "order": 0,
+              "value": "relaydock.protocol.compiler"
+            },
+            {
+              "key": "role",
+              "line": 5,
+              "order": 1,
+              "value": "Decode provider ingress into canonical requests and encode canonical requests with explicit loss reports."
+            },
+            {
+              "key": "owns",
+              "line": 6,
+              "order": 2,
+              "value": "protocol decoder registry|canonical request validation|loss-mode enforcement"
+            },
+            {
+              "key": "excludes",
+              "line": 7,
+              "order": 3,
+              "value": "provider network transport|routing decisions"
+            },
+            {
+              "key": "search",
+              "line": 8,
+              "order": 4,
+              "value": "convert provider protocol|lossy transformation report|canonical request envelope"
+            },
+            {
+              "key": "invariant",
+              "line": 9,
+              "order": 5,
+              "value": "Strict conversion rejects fatal information loss."
+            },
+            {
+              "key": "stability",
+              "line": 10,
+              "order": 6,
+              "value": "contract"
+            }
+          ],
+          "filePath": "internal/protocol/compiler/compiler.go",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.protocol.compiler\nrole=Decode provider ingress into canonical requests and encode canonical requests with explicit loss reports.\nowns=protocol decoder registry|canonical request validation|loss-mode enforcement\nexcludes=provider network transport|routing decisions\nsearch=convert provider protocol|lossy transformation report|canonical request envelope\ninvariant=Strict conversion rejects fatal information loss.\nstability=contract\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 18,
+          "startLine": 3,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "dc84b0117bca2568244c2524d793f4547bee7590ef587b97cc7c67d8ea29b0ae",
+      "declarations": [
+        null
+      ],
+      "imports": [
+        "context",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/idgen",
+        "github.com/0disoft/relaydock/internal/protocol/canonical"
+      ],
+      "path": "internal/protocol/compiler/compiler.go",
+      "semanticBytes": 466,
+      "sourceBytes": 3050
+    },
+    {
+      "blocks": [],
+      "contentHash": "c152495f73c42e8094a31e888c946e5eee8aa1777046d4cf6b0a9594f973143a",
+      "declarations": [],
+      "imports": [
+        "github.com/0disoft/relaydock/internal/protocol/canonical"
+      ],
+      "path": "internal/protocol/compiler/loss.go",
+      "semanticBytes": 0,
+      "sourceBytes": 934
+    },
+    {
+      "blocks": [],
+      "contentHash": "d4a0785c84887fc51a3dc0fbb6f3b6b8509b4636e1fa9e0180afc21b6e89b6f3",
+      "declarations": [],
+      "imports": [
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/protocol/canonical",
+        "sync"
+      ],
+      "path": "internal/protocol/compiler/registry.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1393
+    },
+    {
+      "blocks": [],
+      "contentHash": "5da9407cb98131ba230e099a6c4c7cadf6403520f613bbedb43530e184c598ad",
+      "declarations": [],
+      "imports": [
+        "github.com/0disoft/relaydock/internal/protocol/anthropic/messages",
+        "github.com/0disoft/relaydock/internal/protocol/compiler",
+        "github.com/0disoft/relaydock/internal/protocol/gemini/generate",
+        "github.com/0disoft/relaydock/internal/protocol/openai/chat",
+        "github.com/0disoft/relaydock/internal/protocol/openai/responses"
+      ],
+      "path": "internal/protocol/defaults/registry.go",
+      "semanticBytes": 0,
+      "sourceBytes": 797
+    },
+    {
+      "blocks": [],
+      "contentHash": "72d4d605a65363f27b514c5defdd3f7e6886331c2bec315c9f14818a7c7eaeca",
+      "declarations": [],
+      "imports": [
+        "encoding/json",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/idgen",
+        "github.com/0disoft/relaydock/internal/protocol/canonical",
+        "github.com/0disoft/relaydock/internal/protocol/compiler",
+        "image",
+        "json",
+        "text"
+      ],
+      "path": "internal/protocol/gemini/generate/adapter.go",
+      "semanticBytes": 0,
+      "sourceBytes": 7752
+    },
+    {
+      "blocks": [],
+      "contentHash": "5a1768e6733b79348a9ae19b927db40a016a925eb888515de70ad2aec06cf9cc",
+      "declarations": [],
+      "imports": [
+        "bytes",
+        "encoding/json",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/idgen",
+        "github.com/0disoft/relaydock/internal/protocol/canonical",
+        "github.com/0disoft/relaydock/internal/protocol/compiler",
+        "image",
+        "image_url",
+        "strings",
+        "text",
+        "user"
+      ],
+      "path": "internal/protocol/openai/chat/adapter.go",
+      "semanticBytes": 0,
+      "sourceBytes": 8204
+    },
+    {
+      "blocks": [],
+      "contentHash": "7fdbd8a9724a7cb4f9c100ce22563f8d48e1b4ddf3e7cc7e39b4db837c42ff3e",
+      "declarations": [],
+      "imports": [
+        "bytes",
+        "encoding/json",
+        "file",
+        "fmt",
+        "function_call",
+        "function_call_output",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/idgen",
+        "github.com/0disoft/relaydock/internal/protocol/canonical",
+        "github.com/0disoft/relaydock/internal/protocol/compiler",
+        "image",
+        "input_file",
+        "input_image",
+        "input_text",
+        "message",
+        "reasoning",
+        "text"
+      ],
+      "path": "internal/protocol/openai/responses/adapter.go",
+      "semanticBytes": 0,
+      "sourceBytes": 9328
+    },
+    {
+      "blocks": [],
+      "contentHash": "396555d6b3c4377abdc10ab1dabf94480da74e99679115c5e1a3a514fcebbc9d",
+      "declarations": [],
+      "imports": [
+        "encoding/json"
+      ],
+      "path": "internal/protocol/stream/event.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1114
+    },
+    {
+      "blocks": [],
+      "contentHash": "4eff3833a55b99b3b2f49afa0046a3d609cb91f149e97815d3e4e0a8037e9f72",
+      "declarations": [],
+      "imports": [
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "sync"
+      ],
+      "path": "internal/protocol/stream/state_machine.go",
+      "semanticBytes": 0,
+      "sourceBytes": 2756
+    },
+    {
+      "blocks": [],
+      "contentHash": "ebe4229caa1369e6f08b821ed6194d8bf79efb89338072924e036836ea7469b4",
+      "declarations": [],
+      "imports": [
+        "context",
+        "github.com/0disoft/relaydock/internal/protocol/canonical",
+        "github.com/0disoft/relaydock/internal/protocol/compiler",
+        "github.com/0disoft/relaydock/internal/protocol/stream",
+        "io"
+      ],
+      "path": "internal/provider/adapter.go",
+      "semanticBytes": 0,
+      "sourceBytes": 749
+    },
+    {
+      "blocks": [],
+      "contentHash": "635805bdc532223ae74d15987f6d378489027c8c044f8df1dcb479dd16736a4e",
+      "declarations": [],
+      "imports": [
+        "context",
+        "github.com/0disoft/relaydock/internal/protocol/canonical",
+        "github.com/0disoft/relaydock/internal/protocol/stream",
+        "github.com/0disoft/relaydock/internal/provider",
+        "github.com/0disoft/relaydock/internal/provider/httpadapter",
+        "os"
+      ],
+      "path": "internal/provider/anthropic/adapter.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1615
+    },
+    {
+      "blocks": [],
+      "contentHash": "821b71978918b68776babf5005809a81325e28df22de4e2d781fefb304cc7daf",
+      "declarations": [],
+      "imports": [
+        "context",
+        "github.com/0disoft/relaydock/internal/protocol/canonical",
+        "github.com/0disoft/relaydock/internal/protocol/stream",
+        "github.com/0disoft/relaydock/internal/provider",
+        "github.com/0disoft/relaydock/internal/provider/httpadapter",
+        "os"
+      ],
+      "path": "internal/provider/deepseek/adapter.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1518
+    },
+    {
+      "blocks": [],
+      "contentHash": "40d8efaf475c091d7245ab984ada3735774073792ce340dca45c656413c53e3e",
+      "declarations": [],
+      "imports": [
+        "context",
+        "errors",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "net",
+        "net/http",
+        "provider error",
+        "strconv",
+        "strings",
+        "time"
+      ],
+      "path": "internal/provider/error.go",
+      "semanticBytes": 0,
+      "sourceBytes": 7377
+    },
+    {
+      "blocks": [],
+      "contentHash": "e4e3a117f5a69d3011a6cb09facfa1e988d60cf4a639fdcf2d6525784fac20ab",
+      "declarations": [],
+      "imports": [
+        "/v1beta/models/",
+        "context",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/protocol/canonical",
+        "github.com/0disoft/relaydock/internal/protocol/stream",
+        "github.com/0disoft/relaydock/internal/provider",
+        "github.com/0disoft/relaydock/internal/provider/httpadapter",
+        "net/url",
+        "os",
+        "strings"
+      ],
+      "path": "internal/provider/google/adapter.go",
+      "semanticBytes": 0,
+      "sourceBytes": 2237
+    },
+    {
+      "blocks": [],
+      "contentHash": "1fce0d30e892c484d4defe9e0022051e223204bd7f2fec51c94790af2594496f",
+      "declarations": [],
+      "imports": [
+        "bytes",
+        "context",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/protocol/canonical",
+        "github.com/0disoft/relaydock/internal/protocol/stream",
+        "github.com/0disoft/relaydock/internal/provider",
+        "io",
+        "net/http",
+        "net/url",
+        "strings",
+        "time"
+      ],
+      "path": "internal/provider/httpadapter/adapter.go",
+      "semanticBytes": 0,
+      "sourceBytes": 4518
+    },
+    {
+      "blocks": [],
+      "contentHash": "99e0c2159328e85d8cd086f10c5777d1175cbd3acd7de6f5e672cd296f492e2e",
+      "declarations": [],
+      "imports": [
+        "bytes",
+        "content_block_delta",
+        "encoding/json",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/protocol/canonical",
+        "github.com/0disoft/relaydock/internal/protocol/stream",
+        "input_json_delta",
+        "message_delta",
+        "provider",
+        "response.completed",
+        "response.created",
+        "response.failed",
+        "response.function_call_arguments.delta",
+        "response.output_text.delta",
+        "response.reasoning_summary_text.delta",
+        "strings",
+        "text_delta",
+        "thinking_delta",
+        "type"
+      ],
+      "path": "internal/provider/httpadapter/decode.go",
+      "semanticBytes": 0,
+      "sourceBytes": 6869
+    },
+    {
+      "blocks": [],
+      "contentHash": "0f2e7302f69fa556221412a568a133f73a1010b2e323492ca7227908c9463144",
+      "declarations": [],
+      "imports": [
+        "bufio",
+        "context",
+        "data",
+        "encoding/json",
+        "event",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/protocol/canonical",
+        "github.com/0disoft/relaydock/internal/protocol/stream",
+        "id",
+        "io",
+        "net/http",
+        "strings",
+        "sync"
+      ],
+      "path": "internal/provider/httpadapter/response_stream.go",
+      "semanticBytes": 0,
+      "sourceBytes": 4835
+    },
+    {
+      "blocks": [],
+      "contentHash": "62edee98287c101bfbc2077cf6e4de1de1c4ec2bdace44bc2fe76ef0ff9890fa",
+      "declarations": [],
+      "imports": [
+        "context",
+        "github.com/0disoft/relaydock/internal/protocol/canonical",
+        "github.com/0disoft/relaydock/internal/protocol/stream",
+        "github.com/0disoft/relaydock/internal/provider",
+        "io",
+        "strings",
+        "sync"
+      ],
+      "path": "internal/provider/mock/adapter.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1707
+    },
+    {
+      "blocks": [],
+      "contentHash": "97023178982376d83f46b8e9f3574b95e302ccffa41b69c5d9b9c204be5e3ff6",
+      "declarations": [],
+      "imports": [
+        "context",
+        "github.com/0disoft/relaydock/internal/protocol/canonical",
+        "github.com/0disoft/relaydock/internal/protocol/stream",
+        "github.com/0disoft/relaydock/internal/provider",
+        "github.com/0disoft/relaydock/internal/provider/httpadapter",
+        "os"
+      ],
+      "path": "internal/provider/openai/adapter.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1602
+    },
+    {
+      "blocks": [],
+      "contentHash": "dd34b66b5ee47e241f19d52bd3565bd425ea786b31251228df6316c521eccaf5",
+      "declarations": [],
+      "imports": [
+        "context",
+        "github.com/0disoft/relaydock/internal/protocol/canonical",
+        "github.com/0disoft/relaydock/internal/protocol/stream",
+        "github.com/0disoft/relaydock/internal/provider",
+        "github.com/0disoft/relaydock/internal/provider/httpadapter",
+        "os"
+      ],
+      "path": "internal/provider/openaicompatible/adapter.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1582
+    },
+    {
+      "blocks": [],
+      "contentHash": "55d9add8b26ef2712bb7bf83c263ca8aabc37a2a69cbfd4aaab442355da1b82f",
+      "declarations": [],
+      "imports": [
+        "context",
+        "github.com/0disoft/relaydock/internal/protocol/canonical",
+        "github.com/0disoft/relaydock/internal/protocol/stream",
+        "github.com/0disoft/relaydock/internal/provider",
+        "github.com/0disoft/relaydock/internal/provider/httpadapter",
+        "os"
+      ],
+      "path": "internal/provider/openrouter/adapter.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1797
+    },
+    {
+      "blocks": [],
+      "contentHash": "440ee4516a00e488eb963d0df72d8d1887774201a3414f8ad2151839fbf63156",
+      "declarations": [],
+      "imports": [
+        "sync"
+      ],
+      "path": "internal/provider/registry.go",
+      "semanticBytes": 0,
+      "sourceBytes": 466
+    },
+    {
+      "blocks": [],
+      "contentHash": "7174a3f3a2817e0382864eaf3690064276abf478a92395bf18d9e84dd3c0cb1d",
+      "declarations": [],
+      "imports": [
+        "archive/zip",
+        "crypto/sha256",
+        "encoding/hex",
+        "fmt",
+        "io",
+        "os",
+        "path/filepath",
+        "sort",
+        "strings",
+        "time"
+      ],
+      "path": "internal/releasepack/archive.go",
+      "semanticBytes": 0,
+      "sourceBytes": 6084
+    },
+    {
+      "blocks": [],
+      "contentHash": "741036d6d1898de1ad3eed046231d034129f2f07b22fb066d28edf4ff5f9806e",
+      "declarations": [],
+      "imports": [
+        "crypto/sha256",
+        "encoding/hex",
+        "fmt",
+        "io",
+        "os",
+        "path/filepath",
+        "sort",
+        "strconv"
+      ],
+      "path": "internal/releasepack/integrity.go",
+      "semanticBytes": 0,
+      "sourceBytes": 2519
+    },
+    {
+      "blocks": [],
+      "contentHash": "3bf047cabf3ba4143f7ef2132678d5b33e0ffa00764ce6e431466bac0ab0bbc8",
+      "declarations": [],
+      "imports": [
+        "bytes",
+        "encoding/json",
+        "errors",
+        "fmt",
+        "io"
+      ],
+      "path": "internal/releasepack/json.go",
+      "semanticBytes": 0,
+      "sourceBytes": 601
+    },
+    {
+      "blocks": [],
+      "contentHash": "10d55e934bb08099982f4494f3d4d1b58429bab2d4a19e6ca381ad82dda5a15a",
+      "declarations": [],
+      "imports": [
+        "bytes",
+        "crypto/sha256",
+        "encoding/hex",
+        "encoding/json",
+        "fmt",
+        "os",
+        "path/filepath",
+        "sort",
+        "time"
+      ],
+      "path": "internal/releasepack/manifest.go",
+      "semanticBytes": 0,
+      "sourceBytes": 4198
+    },
+    {
+      "blocks": [],
+      "contentHash": "aab7e182d8d4fefc9d6091462364fe6fbba66b1a5cc4ff554e3bf3afac55bf4e",
+      "declarations": [],
+      "imports": [
+        "fmt",
+        "os",
+        "path/filepath",
+        "sort",
+        "strings"
+      ],
+      "path": "internal/releasepack/policy.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1817
+    },
+    {
+      "blocks": [],
+      "contentHash": "251f0f675ab87c4dd3a5ef6894aafec2526765d42de502d7bc42867d542469b2",
+      "declarations": [],
+      "imports": [
+        "crypto/ed25519",
+        "crypto/sha256",
+        "encoding/base64",
+        "encoding/hex",
+        "encoding/json",
+        "fmt",
+        "os",
+        "path/filepath",
+        "strings"
+      ],
+      "path": "internal/releasepack/readiness.go",
+      "semanticBytes": 0,
+      "sourceBytes": 8429
+    },
+    {
+      "blocks": [],
+      "contentHash": "d76a08aaece3e0d7eb19aebd1f2d22390c2d2ad8c9137f311e6af56bbbaa5532",
+      "declarations": [],
+      "imports": [
+        "archive/zip",
+        "crypto/ed25519",
+        "crypto/rand",
+        "encoding/base64",
+        "frontend/.svelte-check/cache",
+        "frontend/bindings/desktop.js",
+        "frontend/dist/assets/app.js",
+        "gen/go/control/v1/control.pb.go",
+        "github.com/0disoft/relaydock/internal/updater",
+        "internal/persistence/postgres/sqlcgen/expert.sql.go",
+        "os",
+        "path/filepath",
+        "strings",
+        "testing",
+        "time",
+        "web/control-console/build/server/index.js"
+      ],
+      "path": "internal/releasepack/releasepack_test.go",
+      "semanticBytes": 0,
+      "sourceBytes": 15569
+    },
+    {
+      "blocks": [],
+      "contentHash": "c7d5f0ec8f5f18e4e3ddaea4c11c7966a59654fde4e3f0568a0a6de3d35da388",
+      "declarations": [],
+      "imports": [
+        "os"
+      ],
+      "path": "internal/releasepack/replace_unix.go",
+      "semanticBytes": 0,
+      "sourceBytes": 151
+    },
+    {
+      "blocks": [],
+      "contentHash": "d797b30027a460bc2ffb4e419208597e6100e01131d6dae9e5709f668cf63298",
+      "declarations": [],
+      "imports": [
+        "fmt",
+        "syscall",
+        "unsafe"
+      ],
+      "path": "internal/releasepack/replace_windows.go",
+      "semanticBytes": 0,
+      "sourceBytes": 783
+    },
+    {
+      "blocks": [],
+      "contentHash": "0249cf40745efeaa71150d33f9169d4d40cfc9b11f1082de85a8a879ae2d3ae6",
+      "declarations": [],
+      "imports": [
+        ".DS_Store",
+        ".git",
+        ".svelte-check",
+        "crypto/sha256",
+        "encoding/hex",
+        "fmt",
+        "frontend/bindings/",
+        "gen/go/",
+        "internal/persistence/postgres/sqlcgen/",
+        "io",
+        "io/fs",
+        "os",
+        "path/filepath",
+        "runtime",
+        "sort",
+        "strings"
+      ],
+      "path": "internal/releasepack/scan.go",
+      "semanticBytes": 0,
+      "sourceBytes": 4617
+    },
+    {
+      "blocks": [],
+      "contentHash": "7dd9c35919aec876090e956da065578feefde291ca70a4b8c39908a72e12cbd0",
+      "declarations": [],
+      "imports": [
+        "fmt",
+        "io/fs",
+        "os",
+        "path/filepath",
+        "sort",
+        "strings"
+      ],
+      "path": "internal/releasepack/tree.go",
+      "semanticBytes": 0,
+      "sourceBytes": 3542
+    },
+    {
+      "blocks": [],
+      "contentHash": "124c6fabb7bd830a7ec3b4a1317a78995aa47a8736cc1d0859abea60b36aa927",
+      "declarations": [],
+      "imports": [
+        "time"
+      ],
+      "path": "internal/releasepack/types.go",
+      "semanticBytes": 0,
+      "sourceBytes": 2274
+    },
+    {
+      "blocks": [],
+      "contentHash": "7909b20885a188ac437f727bae094b497ad0902b473275989aa45851a214c65a",
+      "declarations": [],
+      "imports": [
+        "crypto/sha256",
+        "encoding/hex",
+        "fmt",
+        "os",
+        "path/filepath",
+        "sort",
+        "strings"
+      ],
+      "path": "internal/releasepack/verify.go",
+      "semanticBytes": 0,
+      "sourceBytes": 5864
+    },
+    {
+      "blocks": [],
+      "contentHash": "c88a50060f62ffa3aed01254090b4ec17452752565402edea395c7b9574dc3e6",
+      "declarations": [],
+      "imports": [
+        "context",
+        "crypto/sha256",
+        "encoding/hex",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/idgen",
+        "github.com/0disoft/relaydock/internal/routing",
+        "strconv",
+        "strings",
+        "time"
+      ],
+      "path": "internal/routing/distributedlease/manager.go",
+      "semanticBytes": 0,
+      "sourceBytes": 5256
+    },
+    {
+      "blocks": [],
+      "contentHash": "6e9214cde80cf47afe6956b7d410af0366c7b7f088edabd40a0a3fde141e8c3c",
+      "declarations": [],
+      "imports": [
+        "context",
+        "errors",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/routing",
+        "strings",
+        "testing",
+        "time"
+      ],
+      "path": "internal/routing/distributedlease/manager_test.go",
+      "semanticBytes": 0,
+      "sourceBytes": 4393
+    },
+    {
+      "blocks": [],
+      "contentHash": "9f314a0f33045f7463e13ace1745fc25b9ad5e26666e725e6e262296d065c9eb",
+      "declarations": [],
+      "imports": [],
+      "path": "internal/routing/distributedlease/scripts.go",
+      "semanticBytes": 0,
+      "sourceBytes": 2226
+    },
+    {
+      "blocks": [],
+      "contentHash": "40dcecd2e62380132df784609a067b7df56857932eeb573d1fb51f6116c3e322",
+      "declarations": [],
+      "imports": [
+        "context",
+        "time"
+      ],
+      "path": "internal/routing/health.go",
+      "semanticBytes": 0,
+      "sourceBytes": 353
+    },
+    {
+      "blocks": [],
+      "contentHash": "30ceca4066e5fd68306988b626f9ecf601c7538ce840f6e3f185c9e1880854a3",
+      "declarations": [],
+      "imports": [
+        "context",
+        "time"
+      ],
+      "path": "internal/routing/lease.go",
+      "semanticBytes": 0,
+      "sourceBytes": 327
+    },
+    {
+      "blocks": [],
+      "contentHash": "5b9d572c37dc065544f3fad438590db863a4e2b9f810688fe2d2007e057a2b45",
+      "declarations": [],
+      "imports": [
+        "context",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/idgen",
+        "sync",
+        "time"
+      ],
+      "path": "internal/routing/memory.go",
+      "semanticBytes": 0,
+      "sourceBytes": 3574
+    },
+    {
+      "blocks": [],
+      "contentHash": "f772c6aef3bb10a605d47c71f9c0aa332186a6b98afc65139da66fb64d4b39e6",
+      "declarations": [],
+      "imports": [
+        "context",
+        "time"
+      ],
+      "path": "internal/routing/outcome.go",
+      "semanticBytes": 0,
+      "sourceBytes": 750
+    },
+    {
+      "blocks": [],
+      "contentHash": "eb9d0219a1223153181bd058c955e79b2846eb3d53fbd08f563bf86ff914b703",
+      "declarations": [],
+      "imports": [
+        "context",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "sort",
+        "strings",
+        "time"
+      ],
+      "path": "internal/routing/router.go",
+      "semanticBytes": 0,
+      "sourceBytes": 2122
+    },
+    {
+      "blocks": [],
+      "contentHash": "6b2be668942d53b881c2c05f7b3605d03f70fa990cddfd60b6de32c40ee98459",
+      "declarations": [],
+      "imports": [
+        "context",
+        "errors",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/protocol/canonical",
+        "testing"
+      ],
+      "path": "internal/routing/router_test.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1161
+    },
+    {
+      "blocks": [],
+      "contentHash": "ef3191c9ad786859622347fb04dd7d21acbe4859c528cfc9a861f97749d3f858",
+      "declarations": [],
+      "imports": [
+        "math"
+      ],
+      "path": "internal/routing/scorer.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1021
+    },
+    {
+      "blocks": [],
+      "contentHash": "478af5c5e3d374dc434f4b1cae47d806c2b1cef7fd87bc2a977f6697a0ba1fb1",
+      "declarations": [],
+      "imports": [
+        "github.com/0disoft/relaydock/internal/protocol/canonical",
+        "time"
+      ],
+      "path": "internal/routing/types.go",
+      "semanticBytes": 0,
+      "sourceBytes": 774
+    },
+    {
+      "blocks": [],
+      "contentHash": "da73d3d5bc5b464f9c17ac0b0ac04cf85893abfb88533e06483a652b8a95df14",
+      "declarations": [],
+      "imports": [
+        "context",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/protocol/canonical",
+        "github.com/0disoft/relaydock/internal/protocol/stream",
+        "github.com/0disoft/relaydock/internal/provider",
+        "github.com/0disoft/relaydock/internal/routing",
+        "io"
+      ],
+      "path": "internal/runtime/attempt.go",
+      "semanticBytes": 0,
+      "sourceBytes": 3798
+    },
+    {
+      "blocks": [],
+      "contentHash": "b03f20570c98643f945cd656cc8e4756bd7fb0fd0905996ab905dad203c5e592",
+      "declarations": [],
+      "imports": [
+        "context",
+        "github.com/0disoft/relaydock/internal/protocol/stream",
+        "time"
+      ],
+      "path": "internal/runtime/journal.go",
+      "semanticBytes": 0,
+      "sourceBytes": 3434
+    },
+    {
+      "blocks": [],
+      "contentHash": "c930bc7d7ab58aaf697ea766b19c6bf49bfa5662660f739ade363b0f14fa4c1a",
+      "declarations": [],
+      "imports": [
+        "context",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/routing",
+        "time"
+      ],
+      "path": "internal/runtime/lease.go",
+      "semanticBytes": 0,
+      "sourceBytes": 2069
+    },
+    {
+      "blocks": [],
+      "contentHash": "9e18a99f64ff3bb1f6147a22d3ecd2cd347b3453cc0649ba408fe17f2ebdf915",
+      "declarations": [],
+      "imports": [
+        "context",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "sync",
+        "time"
+      ],
+      "path": "internal/runtime/memory_journal.go",
+      "semanticBytes": 0,
+      "sourceBytes": 5342
+    },
+    {
+      "blocks": [],
+      "contentHash": "279279e30a618682185c998a27dda8323eacb655f7845bfce13d651e8affd69b",
+      "declarations": [],
+      "imports": [
+        "context",
+        "errors",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/protocol/stream",
+        "testing",
+        "time"
+      ],
+      "path": "internal/runtime/memory_journal_test.go",
+      "semanticBytes": 0,
+      "sourceBytes": 2681
+    },
+    {
+      "blocks": [],
+      "contentHash": "d52237d6be52df512d9d29b60bf232ac02c65875f9457c29336392e4f1540afd",
+      "declarations": [],
+      "imports": [
+        "context",
+        "github.com/0disoft/relaydock/internal/routing",
+        "sync"
+      ],
+      "path": "internal/runtime/memory_source.go",
+      "semanticBytes": 0,
+      "sourceBytes": 783
+    },
+    {
+      "blocks": [],
+      "contentHash": "e3bc68a78b91672ad0f051a27d8a85b62b934c22448e2ade0128cb954bd2fa60",
+      "declarations": [],
+      "imports": [
+        "time"
+      ],
+      "path": "internal/runtime/request.go",
+      "semanticBytes": 0,
+      "sourceBytes": 257
+    },
+    {
+      "blocks": [],
+      "contentHash": "b009e099e780a68be6a9f84eedb6f168ff9273b4fef68d16cba87e0972f43177",
+      "declarations": [],
+      "imports": [
+        "context",
+        "encoding/json",
+        "github.com/0disoft/relaydock/internal/protocol/stream",
+        "github.com/0disoft/relaydock/internal/provider",
+        "github.com/0disoft/relaydock/internal/routing",
+        "time"
+      ],
+      "path": "internal/runtime/retry.go",
+      "semanticBytes": 0,
+      "sourceBytes": 2626
+    },
+    {
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [
+              "protocol encoding",
+              "candidate configuration"
+            ],
+            "id": "relaydock.runtime.gateway",
+            "invariant": [
+              "No retry starts after an attempt has committed a semantic event.",
+              "Each attempted candidate is excluded before another retry."
+            ],
+            "owns": [
+              "request attempt lifecycle",
+              "semantic commit boundary",
+              "retry candidate exclusion"
+            ],
+            "rel": [],
+            "risk": [],
+            "role": "Coordinate candidate selection, lease acquisition, provider attempts, commit hooks, and retry termination for one canonical request.",
+            "scope": "module",
+            "search": [
+              "run gateway request",
+              "retry provider attempt",
+              "semantic event commit"
+            ],
+            "stability": "architecture",
+            "unknown": []
+          },
+          "end": 577,
+          "endLine": 12,
+          "entries": [
+            {
+              "key": "id",
+              "line": 4,
+              "order": 0,
+              "value": "relaydock.runtime.gateway"
+            },
+            {
+              "key": "role",
+              "line": 5,
+              "order": 1,
+              "value": "Coordinate candidate selection, lease acquisition, provider attempts, commit hooks, and retry termination for one canonical request."
+            },
+            {
+              "key": "owns",
+              "line": 6,
+              "order": 2,
+              "value": "request attempt lifecycle|semantic commit boundary|retry candidate exclusion"
+            },
+            {
+              "key": "excludes",
+              "line": 7,
+              "order": 3,
+              "value": "protocol encoding|candidate configuration"
+            },
+            {
+              "key": "search",
+              "line": 8,
+              "order": 4,
+              "value": "run gateway request|retry provider attempt|semantic event commit"
+            },
+            {
+              "key": "invariant",
+              "line": 9,
+              "order": 5,
+              "value": "No retry starts after an attempt has committed a semantic event."
+            },
+            {
+              "key": "invariant",
+              "line": 10,
+              "order": 6,
+              "value": "Each attempted candidate is excluded before another retry."
+            },
+            {
+              "key": "stability",
+              "line": 11,
+              "order": 7,
+              "value": "architecture"
+            }
+          ],
+          "filePath": "internal/runtime/run.go",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.runtime.gateway\nrole=Coordinate candidate selection, lease acquisition, provider attempts, commit hooks, and retry termination for one canonical request.\nowns=request attempt lifecycle|semantic commit boundary|retry candidate exclusion\nexcludes=protocol encoding|candidate configuration\nsearch=run gateway request|retry provider attempt|semantic event commit\ninvariant=No retry starts after an attempt has committed a semantic event.\ninvariant=Each attempted candidate is excluded before another retry.\nstability=architecture\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 17,
+          "startLine": 3,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "93f4c08fec074ee9151ca8b7e130d335b55771983c0e728a46e6790f54971b6f",
+      "declarations": [
+        null
+      ],
+      "imports": [
+        "context",
+        "errors",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/idgen",
+        "github.com/0disoft/relaydock/internal/protocol/canonical",
+        "github.com/0disoft/relaydock/internal/protocol/stream",
+        "github.com/0disoft/relaydock/internal/provider",
+        "github.com/0disoft/relaydock/internal/routing",
+        "time"
+      ],
+      "path": "internal/runtime/run.go",
+      "semanticBytes": 560,
+      "sourceBytes": 5243
+    },
+    {
+      "blocks": [],
+      "contentHash": "67537f8da723f9b2add60a66f6ff23987479bfd01f71dcbfe0811295c650f68b",
+      "declarations": [],
+      "imports": [
+        "context",
+        "github.com/0disoft/relaydock/internal/protocol/compiler",
+        "github.com/0disoft/relaydock/internal/protocol/stream",
+        "github.com/0disoft/relaydock/internal/provider",
+        "github.com/0disoft/relaydock/internal/routing",
+        "time"
+      ],
+      "path": "internal/runtime/types.go",
+      "semanticBytes": 0,
+      "sourceBytes": 2254
+    },
+    {
+      "blocks": [],
+      "contentHash": "243dd941dc95bc1d3688eab67691a07c3eb913fb44fae1aab48b5e98756afa43",
+      "declarations": [],
+      "imports": [
+        "context",
+        "crypto/aes",
+        "crypto/cipher",
+        "crypto/rand",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "io",
+        "strings",
+        "sync"
+      ],
+      "path": "internal/security/secrets/encrypted_memory.go",
+      "semanticBytes": 0,
+      "sourceBytes": 3355
+    },
+    {
+      "blocks": [],
+      "contentHash": "1fcefe5b38dea67207664a8da496b98c6afe8e61bf395c19e728e5a69a41d0f0",
+      "declarations": [],
+      "imports": [
+        "context"
+      ],
+      "path": "internal/security/secrets/store.go",
+      "semanticBytes": 0,
+      "sourceBytes": 280
+    },
+    {
+      "blocks": [],
+      "contentHash": "8c85bcc50e074be17e61dac57f61df8aceafbf6d394407acd88d6f9a5615cbe8",
+      "declarations": [],
+      "imports": [
+        "context",
+        "encoding/base64",
+        "encoding/json",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "hash/crc32",
+        "io",
+        "net/http",
+        "net/url",
+        "strconv",
+        "strings",
+        "time"
+      ],
+      "path": "internal/security/serversecrets/gcp_secret_manager.go",
+      "semanticBytes": 0,
+      "sourceBytes": 7104
+    },
+    {
+      "blocks": [],
+      "contentHash": "df611467acac8e79095ec7b22ce14bce2c5a118813750726e72c2a924da5ea1d",
+      "declarations": [],
+      "imports": [
+        "context",
+        "encoding/base64",
+        "fmt",
+        "hash/crc32",
+        "http://metadata.test/token",
+        "https://secret.test/v1/projects/project-1/secrets/openai-key/versions/latest:access",
+        "io",
+        "net/http",
+        "strings",
+        "testing"
+      ],
+      "path": "internal/security/serversecrets/gcp_secret_manager_test.go",
+      "semanticBytes": 0,
+      "sourceBytes": 4348
+    },
+    {
+      "blocks": [],
+      "contentHash": "c9cfee242700cbfa13b577bb5117f687e7818ec9051c853aaf9f54324b306bad",
+      "declarations": [],
+      "imports": [
+        "context",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "strings"
+      ],
+      "path": "internal/security/serversecrets/resolver.go",
+      "semanticBytes": 0,
+      "sourceBytes": 3247
+    },
+    {
+      "blocks": [],
+      "contentHash": "31e5b2abb49af9be606c6612adef4053066988fc37b5856616c16d67e7a76a80",
+      "declarations": [],
+      "imports": [
+        "context",
+        "errors",
+        "github.com/0disoft/relaydock/internal/core",
+        "strings",
+        "testing"
+      ],
+      "path": "internal/security/serversecrets/resolver_test.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1777
+    },
+    {
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [
+              "HTTP request execution",
+              "TLS certificate validation"
+            ],
+            "id": "relaydock.security.ssrf",
+            "invariant": [
+              "Callers dial one of the already validated resolved addresses instead of repeating DNS lookup."
+            ],
+            "owns": [
+              "outbound URL policy",
+              "DNS address validation",
+              "SSRF address allowlist"
+            ],
+            "rel": [],
+            "risk": [],
+            "role": "Resolve provider and MCP destination hosts once and reject credentials, unsafe schemes, ports, and non-public addresses before dialing.",
+            "scope": "module",
+            "search": [
+              "validate provider URL",
+              "prevent SSRF",
+              "resolve safe dial address"
+            ],
+            "stability": "contract",
+            "unknown": []
+          },
+          "end": 524,
+          "endLine": 11,
+          "entries": [
+            {
+              "key": "id",
+              "line": 4,
+              "order": 0,
+              "value": "relaydock.security.ssrf"
+            },
+            {
+              "key": "role",
+              "line": 5,
+              "order": 1,
+              "value": "Resolve provider and MCP destination hosts once and reject credentials, unsafe schemes, ports, and non-public addresses before dialing."
+            },
+            {
+              "key": "owns",
+              "line": 6,
+              "order": 2,
+              "value": "outbound URL policy|DNS address validation|SSRF address allowlist"
+            },
+            {
+              "key": "excludes",
+              "line": 7,
+              "order": 3,
+              "value": "HTTP request execution|TLS certificate validation"
+            },
+            {
+              "key": "search",
+              "line": 8,
+              "order": 4,
+              "value": "validate provider URL|prevent SSRF|resolve safe dial address"
+            },
+            {
+              "key": "invariant",
+              "line": 9,
+              "order": 5,
+              "value": "Callers dial one of the already validated resolved addresses instead of repeating DNS lookup."
+            },
+            {
+              "key": "stability",
+              "line": 10,
+              "order": 6,
+              "value": "contract"
+            }
+          ],
+          "filePath": "internal/security/ssrf/validator.go",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.security.ssrf\nrole=Resolve provider and MCP destination hosts once and reject credentials, unsafe schemes, ports, and non-public addresses before dialing.\nowns=outbound URL policy|DNS address validation|SSRF address allowlist\nexcludes=HTTP request execution|TLS certificate validation\nsearch=validate provider URL|prevent SSRF|resolve safe dial address\ninvariant=Callers dial one of the already validated resolved addresses instead of repeating DNS lookup.\nstability=contract\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 14,
+          "startLine": 3,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "da2efad9f2071473600bd44a73e7145f793eef5ca674e1cba5d782f90136856f",
+      "declarations": [
+        null
+      ],
+      "imports": [
+        "context",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "net",
+        "net/netip",
+        "net/url",
+        "strconv",
+        "strings"
+      ],
+      "path": "internal/security/ssrf/validator.go",
+      "semanticBytes": 510,
+      "sourceBytes": 4329
+    },
+    {
+      "blocks": [],
+      "contentHash": "cb57276eeecad9d947ab573b9cf37a01dbc36b4990a355faafb3ad153571bbb8",
+      "declarations": [],
+      "imports": [
+        "context",
+        "net",
+        "testing"
+      ],
+      "path": "internal/security/ssrf/validator_test.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1691
+    },
+    {
+      "blocks": [],
+      "contentHash": "f53b8a7a10ba104f4d25e6efa219b1e068348137c7ed40a09b8cad2377e84787",
+      "declarations": [],
+      "imports": [
+        "fmt",
+        "net",
+        "strings"
+      ],
+      "path": "internal/serverutil/exposure.go",
+      "semanticBytes": 0,
+      "sourceBytes": 747
+    },
+    {
+      "blocks": [],
+      "contentHash": "a2c0d78c44128c4a35d75a3f6f11c0fe70f3a021c406175d1ecc1bcbd63a7d89",
+      "declarations": [],
+      "imports": [
+        "context",
+        "errors",
+        "log/slog",
+        "net/http",
+        "os/signal",
+        "syscall",
+        "time"
+      ],
+      "path": "internal/serverutil/server.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1024
+    },
+    {
+      "blocks": [],
+      "contentHash": "c4053c9d007d2dd9ecc4605e5bb92aad582e848e5033271d89d8679d7e40882e",
+      "declarations": [],
+      "imports": [
+        "encoding/json",
+        "errors",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "io",
+        "net/http"
+      ],
+      "path": "internal/transport/apiutil/api.go",
+      "semanticBytes": 0,
+      "sourceBytes": 2595
+    },
+    {
+      "blocks": [],
+      "contentHash": "5da19209a3c6cf8c5319801a986ae966606916746efddc12fe52c9846fc61dd1",
+      "declarations": [],
+      "imports": [
+        "crypto/subtle",
+        "net/http",
+        "strings"
+      ],
+      "path": "internal/transport/apiutil/auth.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1144
+    },
+    {
+      "blocks": [],
+      "contentHash": "b5f679b398231220adccb873ee26165ff43e0e8b53edaf6f142bd5b4743e9207",
+      "declarations": [],
+      "imports": [
+        "context",
+        "github.com/0disoft/relaydock/internal/auth/authorization",
+        "github.com/0disoft/relaydock/internal/auth/virtualkey",
+        "net/http",
+        "strings"
+      ],
+      "path": "internal/transport/apiutil/gateway_auth.go",
+      "semanticBytes": 0,
+      "sourceBytes": 2309
+    },
+    {
+      "blocks": [],
+      "contentHash": "1c683df8cd8b8b952570d492d5be828ce55fa19d700ef1fd69312b398f76e1a2",
+      "declarations": [],
+      "imports": [
+        "bytes",
+        "context",
+        "crypto/ed25519",
+        "crypto/rand",
+        "encoding/json",
+        "github.com/0disoft/relaydock/internal/auth/controlaccess",
+        "github.com/0disoft/relaydock/internal/control/snapshot",
+        "net/http",
+        "net/http/httptest",
+        "testing",
+        "time"
+      ],
+      "path": "internal/transport/controlhttp/access_test.go",
+      "semanticBytes": 0,
+      "sourceBytes": 6209
+    },
+    {
+      "blocks": [],
+      "contentHash": "4aea18d07febcc62d676694d14680e1d60edb6c0fa040ef9d958dbc2133bc06d",
+      "declarations": [],
+      "imports": [
+        "context",
+        "crypto/ed25519",
+        "crypto/rand",
+        "github.com/0disoft/relaydock/internal/control/snapshot",
+        "testing",
+        "time"
+      ],
+      "path": "internal/transport/controlhttp/key_rotation_test.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1553
+    },
+    {
+      "blocks": [],
+      "contentHash": "17e21af8ef53385c5ea14d9459113e9065eb95c379a185ce0c05724a52f7f2ca",
+      "declarations": [],
+      "imports": [
+        "algorithm",
+        "context",
+        "crypto/ed25519",
+        "crypto/rand",
+        "encoding/base64",
+        "encoding/json",
+        "errors",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/auth/controlaccess",
+        "github.com/0disoft/relaydock/internal/control/snapshot",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/transport/apiutil",
+        "github.com/0disoft/relaydock/internal/transport/health",
+        "keyId",
+        "models",
+        "net/http",
+        "publicKey",
+        "strconv",
+        "strings",
+        "sync",
+        "time"
+      ],
+      "path": "internal/transport/controlhttp/server.go",
+      "semanticBytes": 0,
+      "sourceBytes": 13909
+    },
+    {
+      "blocks": [],
+      "contentHash": "c520394534684ef08d48b5e57b57029faa70438cfcea21f449a47f522368340a",
+      "declarations": [],
+      "imports": [
+        "context",
+        "crypto/ed25519",
+        "crypto/rand",
+        "github.com/0disoft/relaydock/internal/control/snapshot",
+        "github.com/0disoft/relaydock/internal/core",
+        "sync",
+        "testing",
+        "time"
+      ],
+      "path": "internal/transport/controlhttp/server_test.go",
+      "semanticBytes": 0,
+      "sourceBytes": 2925
+    },
+    {
+      "blocks": [],
+      "contentHash": "f529c87ccf024d3a8912c078deb8e3d717c38330bc0cdf578d09081e77c8d180",
+      "declarations": [],
+      "imports": [
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/expert/app",
+        "github.com/0disoft/relaydock/internal/expert/consultation",
+        "github.com/0disoft/relaydock/internal/expert/contextpack",
+        "github.com/0disoft/relaydock/internal/expert/policy",
+        "github.com/0disoft/relaydock/internal/expert/resultcontract",
+        "github.com/0disoft/relaydock/internal/transport/apiutil",
+        "github.com/0disoft/relaydock/internal/transport/health",
+        "net/http",
+        "strconv",
+        "strings",
+        "time"
+      ],
+      "path": "internal/transport/experthttp/server.go",
+      "semanticBytes": 0,
+      "sourceBytes": 8687
+    },
+    {
+      "blocks": [],
+      "contentHash": "2c2d8de7e2e0c24056a4a544679ace23eec319369a03a55f990dbc857582be93",
+      "declarations": [],
+      "imports": [
+        "encoding/json",
+        "net/http"
+      ],
+      "path": "internal/transport/health/handler.go",
+      "semanticBytes": 0,
+      "sourceBytes": 655
+    },
+    {
+      "blocks": [],
+      "contentHash": "5659b76883fcbf01558946727b04425f136260dacbc897de2efc71dabe7fd4d4",
+      "declarations": [],
+      "imports": [
+        "fmt",
+        "github.com/0disoft/relaydock/internal/auth/authorization",
+        "github.com/0disoft/relaydock/internal/auth/virtualkey",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/protocol/canonical",
+        "github.com/0disoft/relaydock/internal/protocol/defaults",
+        "github.com/0disoft/relaydock/internal/transport/apiutil",
+        "github.com/0disoft/relaydock/internal/transport/health",
+        "id",
+        "net/http",
+        "strings"
+      ],
+      "path": "internal/transport/httpgateway/handler.go",
+      "semanticBytes": 0,
+      "sourceBytes": 3797
+    },
+    {
+      "blocks": [],
+      "contentHash": "37fe87d1c2f40f1474bd5af39b9bfc0ad230a6ae4e85d067d004a94ea576bb49",
+      "declarations": [],
+      "imports": [
+        "encoding/json",
+        "errors",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/idgen",
+        "github.com/0disoft/relaydock/internal/transport/apiutil",
+        "io",
+        "net/http",
+        "strconv"
+      ],
+      "path": "internal/transport/httpgateway/middleware.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1646
+    },
+    {
+      "blocks": [],
+      "contentHash": "cd434c6a9f4192579d653479eb5c073221e74aa1fbcdeb4fa53f43c3e16cd797",
+      "declarations": [],
+      "imports": [
+        "context",
+        "github.com/0disoft/relaydock/internal/auth/authorization",
+        "github.com/0disoft/relaydock/internal/auth/virtualkey",
+        "github.com/0disoft/relaydock/internal/protocol/canonical",
+        "github.com/0disoft/relaydock/internal/protocol/stream",
+        "github.com/0disoft/relaydock/internal/transport/apiutil",
+        "net/http",
+        "strconv"
+      ],
+      "path": "internal/transport/httpgateway/process.go",
+      "semanticBytes": 0,
+      "sourceBytes": 3212
+    },
+    {
+      "blocks": [],
+      "contentHash": "11cc2388ddefad14fb063020307f6dbaff03af8573251c471da4fc4e958e19d4",
+      "declarations": [],
+      "imports": [
+        "candidates",
+        "choices",
+        "content",
+        "encoding/json",
+        "finishReason",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/protocol/canonical",
+        "github.com/0disoft/relaydock/internal/transport/apiutil",
+        "id",
+        "modelVersion",
+        "net/http",
+        "output",
+        "responseId",
+        "stop_reason",
+        "usage",
+        "usageMetadata"
+      ],
+      "path": "internal/transport/httpgateway/response.go",
+      "semanticBytes": 0,
+      "sourceBytes": 7359
+    },
+    {
+      "blocks": [],
+      "contentHash": "f2c9bf8a80cef476fad3f1ebb0353aee21aadb12496b50d0ff7a72cf9441dfe0",
+      "declarations": [],
+      "imports": [
+        "bytes",
+        "context",
+        "errors",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/auth/virtualkey",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/idgen",
+        "github.com/0disoft/relaydock/internal/protocol/canonical",
+        "github.com/0disoft/relaydock/internal/protocol/stream",
+        "github.com/0disoft/relaydock/internal/provider",
+        "github.com/0disoft/relaydock/internal/routing",
+        "github.com/0disoft/relaydock/internal/runtime",
+        "time"
+      ],
+      "path": "internal/transport/httpgateway/runtime_processor.go",
+      "semanticBytes": 0,
+      "sourceBytes": 9311
+    },
+    {
+      "blocks": [],
+      "contentHash": "45b8cf73a84fd07139dccfe08c12f5ca4adb0474f1805a01f5851819df8a4318",
+      "declarations": [],
+      "imports": [
+        "context",
+        "github.com/0disoft/relaydock/internal/auth/virtualkey",
+        "github.com/0disoft/relaydock/internal/protocol/canonical",
+        "github.com/0disoft/relaydock/internal/protocol/defaults",
+        "github.com/0disoft/relaydock/internal/provider",
+        "github.com/0disoft/relaydock/internal/provider/mock",
+        "github.com/0disoft/relaydock/internal/routing",
+        "github.com/0disoft/relaydock/internal/runtime",
+        "testing",
+        "time"
+      ],
+      "path": "internal/transport/httpgateway/runtime_processor_test.go",
+      "semanticBytes": 0,
+      "sourceBytes": 4786
+    },
+    {
+      "blocks": [],
+      "contentHash": "93384df9fed319f1d29f0724f1d2fb4c5f4344c9dbbb6e9a290470f9fb6a4c63",
+      "declarations": [],
+      "imports": [
+        "context",
+        "encoding/json",
+        "net/http",
+        "net/http/httptest",
+        "testing"
+      ],
+      "path": "internal/transport/httpgateway/status_test.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1276
+    },
+    {
+      "blocks": [],
+      "contentHash": "dc941489095427fe76f09cafd72325fd489e24f3ec3c68cec49480194ad999b9",
+      "declarations": [],
+      "imports": [
+        "bytes",
+        "candidates",
+        "choices",
+        "content",
+        "context",
+        "encoding/json",
+        "error",
+        "finishReason",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/protocol/canonical",
+        "github.com/0disoft/relaydock/internal/protocol/stream",
+        "github.com/0disoft/relaydock/internal/provider",
+        "id",
+        "index",
+        "modelVersion",
+        "net/http",
+        "output_index",
+        "promptTokenCount",
+        "prompt_tokens",
+        "resp_unknown",
+        "status",
+        "strings",
+        "time",
+        "totalTokenCount",
+        "total_tokens",
+        "type",
+        "upstream stream failed",
+        "usage",
+        "usageMetadata"
+      ],
+      "path": "internal/transport/httpgateway/streaming.go",
+      "semanticBytes": 0,
+      "sourceBytes": 13288
+    },
+    {
+      "blocks": [],
+      "contentHash": "608cc4c57e51966032882588664c2f0966a8b315d84fbde147e58a7028e14e8b",
+      "declarations": [],
+      "imports": [
+        "context",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/idgen",
+        "github.com/0disoft/relaydock/internal/protocol/canonical",
+        "github.com/0disoft/relaydock/internal/protocol/compiler",
+        "time"
+      ],
+      "path": "internal/transport/httpgateway/types.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1773
+    },
+    {
+      "blocks": [],
+      "contentHash": "ee21fd0144ae4545b82a0dd7af48fc55718bc3e152f74fc25c1c6b5d2e38e597",
+      "declarations": [],
+      "imports": [
+        "bytes",
+        "context",
+        "crypto/ed25519",
+        "crypto/sha256",
+        "encoding/base64",
+        "encoding/hex",
+        "encoding/json",
+        "errors",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "io",
+        "net/http",
+        "net/url",
+        "os",
+        "path/filepath",
+        "strings",
+        "sync",
+        "time",
+        "update"
+      ],
+      "path": "internal/updater/http_service.go",
+      "semanticBytes": 0,
+      "sourceBytes": 11421
+    },
+    {
+      "blocks": [],
+      "contentHash": "333c36b7ae4a13e421423da09955e7c2e9c196f7209a1460c7fc94a66b82fc2d",
+      "declarations": [],
+      "imports": [
+        "context"
+      ],
+      "path": "internal/updater/service.go",
+      "semanticBytes": 0,
+      "sourceBytes": 430
+    },
+    {
+      "blocks": [],
+      "contentHash": "a57c3f2b8b5d9d485a00d657d4c450d2a41a24acf9e45b1caccaef6f79ac36cc",
+      "declarations": [],
+      "imports": [
+        "$env/dynamic/private",
+        "./$types"
+      ],
+      "path": "web/control-console/src/routes/+page.server.ts",
+      "semanticBytes": 0,
+      "sourceBytes": 1921
+    },
+    {
+      "blocks": [],
+      "contentHash": "1988a81b3be3654f6b713d1b75b5293f0fbc9c9b018bea242b074b16b201d305",
+      "declarations": [],
+      "imports": [
+        "./$types"
+      ],
+      "path": "web/control-console/src/routes/+page.svelte",
+      "semanticBytes": 0,
+      "sourceBytes": 5743
+    }
+  ],
+  "indexerVersion": 6,
+  "schemaVersion": 1
+}

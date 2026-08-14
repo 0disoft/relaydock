@@ -1,0 +1,8 @@
+llmnav-catalog/1 repository=relaydock catalog=relaydock.expert
+Read semantic cards before opening source. Resolve current paths and signatures with llmnav query or show.
+
+@relaydock.expert.lifecycle
+role Define allowed consultation state transitions from context request through approval, execution, result, and terminal outcomes.
+owns consultation state graph, consultation lifecycle events
+excludes state persistence, worker lease claims
+invariant Only declared state-event pairs can advance a consultation.

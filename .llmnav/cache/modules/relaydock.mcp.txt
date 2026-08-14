@@ -1,0 +1,8 @@
+llmnav-catalog/1 repository=relaydock catalog=relaydock.mcp
+Read semantic cards before opening source. Resolve current paths and signatures with llmnav query or show.
+
+@relaydock.mcp.remote
+role Expose tenant-scoped remote expert tools behind bearer authentication, host, origin, body-size, and per-tool scope checks.
+owns remote MCP tool registry, remote MCP authentication, MCP request exposure limits
+excludes consultation domain logic, token issuance
+invariant Reading and answering consultations require distinct explicit scopes. Untrusted requests are bounded before reaching MCP handlers.

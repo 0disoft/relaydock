@@ -1,5 +1,16 @@
 package runtime
 
+/* llmnav/1 module
+id=relaydock.runtime.gateway
+role=Coordinate candidate selection, lease acquisition, provider attempts, commit hooks, and retry termination for one canonical request.
+owns=request attempt lifecycle|semantic commit boundary|retry candidate exclusion
+excludes=protocol encoding|candidate configuration
+search=run gateway request|retry provider attempt|semantic event commit
+invariant=No retry starts after an attempt has committed a semantic event.
+invariant=Each attempted candidate is excluded before another retry.
+stability=architecture
+*/
+
 import (
 	"context"
 	"errors"

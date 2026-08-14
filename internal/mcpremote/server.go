@@ -1,5 +1,16 @@
 package mcpremote
 
+/* llmnav/1 module
+id=relaydock.mcp.remote
+role=Expose tenant-scoped remote expert tools behind bearer authentication, host, origin, body-size, and per-tool scope checks.
+owns=remote MCP tool registry|remote MCP authentication|MCP request exposure limits
+excludes=consultation domain logic|token issuance
+search=remote MCP server|consultation tool scopes|authenticate MCP request
+invariant=Reading and answering consultations require distinct explicit scopes.
+invariant=Untrusted requests are bounded before reaching MCP handlers.
+stability=architecture
+*/
+
 import (
 	"context"
 	"crypto/subtle"

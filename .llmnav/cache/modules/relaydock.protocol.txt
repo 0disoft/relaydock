@@ -1,0 +1,8 @@
+llmnav-catalog/1 repository=relaydock catalog=relaydock.protocol
+Read semantic cards before opening source. Resolve current paths and signatures with llmnav query or show.
+
+@relaydock.protocol.compiler
+role Decode provider ingress into canonical requests and encode canonical requests with explicit loss reports.
+owns protocol decoder registry, canonical request validation, loss-mode enforcement
+excludes provider network transport, routing decisions
+invariant Strict conversion rejects fatal information loss.

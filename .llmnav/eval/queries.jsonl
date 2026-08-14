@@ -1,0 +1,9 @@
+# One JSON object per line: {"query":"...","expected":["domain.feature.action"]}
+{"query":"stop retrying providers after the first semantic event commits","expected":["relaydock.runtime.gateway"]}
+{"query":"convert an Anthropic or Gemini request through the canonical envelope and report loss","expected":["relaydock.protocol.compiler"]}
+{"query":"resolve a virtual model into available configured provider candidates","expected":["relaydock.routing.candidates"]}
+{"query":"define valid expert consultation approval running result and terminal transitions","expected":["relaydock.expert.lifecycle"]}
+{"query":"select and redact repository evidence before sending an expert ContextPack","expected":["relaydock.contextpack.compile"]}
+{"query":"block localhost private DNS and unsafe provider URLs before dialing","expected":["relaydock.security.ssrf"]}
+{"query":"authenticate the remote MCP endpoint and separate consultation read and answer scopes","expected":["relaydock.mcp.remote"]}
+{"query":"quote a pinned price authorize a hold capture usage and release unused money","expected":["relaydock.accounting.settlement"]}

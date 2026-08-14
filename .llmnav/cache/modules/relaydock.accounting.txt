@@ -1,0 +1,8 @@
+llmnav-catalog/1 repository=relaydock catalog=relaydock.accounting
+Read semantic cards before opening source. Resolve current paths and signatures with llmnav query or show.
+
+@relaydock.accounting.settlement
+role Quote a pinned price revision, authorize a bounded hold, capture provider usage once, and release the unused balance.
+owns usage quote lifecycle, money authorization boundary, usage settlement
+excludes price catalog persistence, customer ledger storage
+invariant Captured provider cost cannot exceed the authorized hold. Every quote identifies the price revision used to calculate its maximum charge.

@@ -1,5 +1,16 @@
 package contextpack
 
+/* llmnav/1 module
+id=relaydock.contextpack.compile
+role=Select, redact, hash, and package repository evidence before expert consultation data leaves the local boundary.
+owns=ContextPack assembly|evidence redaction|content-addressed pack identity
+excludes=expert model invocation|consultation persistence
+search=build redacted context pack|select repository evidence|context pack manifest
+invariant=Evidence content is redacted before its digest, size, and token estimate are recorded.
+invariant=Preview and build share the same selection and redaction path.
+stability=architecture
+*/
+
 import (
 	"context"
 	"encoding/json"

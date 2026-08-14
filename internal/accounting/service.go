@@ -1,5 +1,16 @@
 package accounting
 
+/* llmnav/1 module
+id=relaydock.accounting.settlement
+role=Quote a pinned price revision, authorize a bounded hold, capture provider usage once, and release the unused balance.
+owns=usage quote lifecycle|money authorization boundary|usage settlement
+excludes=price catalog persistence|customer ledger storage
+search=authorize usage hold|settle provider cost|release remaining balance
+invariant=Captured provider cost cannot exceed the authorized hold.
+invariant=Every quote identifies the price revision used to calculate its maximum charge.
+stability=contract
+*/
+
 import (
 	"context"
 	"fmt"

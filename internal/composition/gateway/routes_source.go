@@ -1,5 +1,16 @@
 package gateway
 
+/* llmnav/1 module
+id=relaydock.routing.candidates
+role=Build and serve validated provider candidates for virtual and direct model routes under runtime availability state.
+owns=virtual model candidate catalog|direct routing fallback|candidate runtime state projection
+excludes=route scoring|provider request execution
+search=resolve virtual model route|provider candidate source|direct model routing
+invariant=Configured routes reference enabled providers and supported protocols.
+invariant=Expired signed runtime state prevents candidate selection.
+stability=architecture
+*/
+
 import (
 	"context"
 	"fmt"

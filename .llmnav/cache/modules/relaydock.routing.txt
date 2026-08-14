@@ -1,0 +1,8 @@
+llmnav-catalog/1 repository=relaydock catalog=relaydock.routing
+Read semantic cards before opening source. Resolve current paths and signatures with llmnav query or show.
+
+@relaydock.routing.candidates
+role Build and serve validated provider candidates for virtual and direct model routes under runtime availability state.
+owns virtual model candidate catalog, direct routing fallback, candidate runtime state projection
+excludes route scoring, provider request execution
+invariant Configured routes reference enabled providers and supported protocols. Expired signed runtime state prevents candidate selection.

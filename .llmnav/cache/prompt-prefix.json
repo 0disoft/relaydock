@@ -1,0 +1,124 @@
+{
+  "assembly": {
+    "basePartitionIds": [
+      "package:tool-definitions",
+      "package:agent-protocol",
+      "repository:core"
+    ],
+    "modulePartitionIds": [
+      "module:relaydock.accounting",
+      "module:relaydock.contextpack",
+      "module:relaydock.expert",
+      "module:relaydock.mcp",
+      "module:relaydock.protocol",
+      "module:relaydock.routing",
+      "module:relaydock.runtime",
+      "module:relaydock.security"
+    ],
+    "volatileContextAfter": true
+  },
+  "bundleHash": "e65f4603cdee307148f4de9ffe71c2f8a802329769f35eee4e0c2deeb3280837",
+  "partitions": [
+    {
+      "cacheBoundaryAfter": true,
+      "cacheScope": "package",
+      "content": "[\n  {\n    \"description\": \"Find the most relevant semantic cards for a coding task.\",\n    \"inputSchema\": {\n      \"additionalProperties\": false,\n      \"properties\": {\n        \"task\": {\n          \"description\": \"Task language to search for.\",\n          \"minLength\": 1,\n          \"type\": \"string\"\n        },\n        \"top\": {\n          \"default\": 5,\n          \"description\": \"Maximum results.\",\n          \"maximum\": 100,\n          \"minimum\": 1,\n          \"type\": \"integer\"\n        }\n      },\n      \"required\": [\n        \"task\"\n      ],\n      \"type\": \"object\"\n    },\n    \"name\": \"llmnav_query\",\n    \"schemaVersion\": 1\n  },\n  {\n    \"description\": \"Resolve one local or qualified workspace semantic ID.\",\n    \"inputSchema\": {\n      \"additionalProperties\": false,\n      \"properties\": {\n        \"id\": {\n          \"description\": \"Semantic ID or repository-qualified semantic ID.\",\n          \"minLength\": 1,\n          \"type\": \"string\"\n        }\n      },\n      \"required\": [\n        \"id\"\n      ],\n      \"type\": \"object\"\n    },\n    \"name\": \"llmnav_show\",\n    \"schemaVersion\": 1\n  },\n  {\n    \"description\": \"Build bounded semantic and graph context around one ID.\",\n    \"inputSchema\": {\n      \"additionalProperties\": false,\n      \"properties\": {\n        \"budget\": {\n          \"default\": 2500,\n          \"description\": \"Approximate token budget.\",\n          \"maximum\": 100000,\n          \"minimum\": 128,\n          \"type\": \"integer\"\n        },\n        \"depth\": {\n          \"default\": 1,\n          \"description\": \"Maximum graph traversal depth.\",\n          \"maximum\": 8,\n          \"minimum\": 0,\n          \"type\": \"integer\"\n        },\n        \"id\": {\n          \"description\": \"Semantic ID or repository-qualified semantic ID.\",\n          \"minLength\": 1,\n          \"type\": \"string\"\n        },\n        \"maxEdges\": {\n          \"default\": 24,\n          \"description\": \"Maximum graph edges to inspect and pack.\",\n          \"maximum\": 1000,\n          \"minimum\": 0,\n          \"type\": \"integer\"\n        }\n      },\n      \"required\": [\n        \"id\"\n      ],\n      \"type\": \"object\"\n    },\n    \"name\": \"llmnav_context\",\n    \"schemaVersion\": 1\n  },\n  {\n    \"description\": \"Validate semantic cards and configured graph inputs without mutation.\",\n    \"inputSchema\": {\n      \"additionalProperties\": false,\n      \"properties\": {\n        \"paths\": {\n          \"default\": [],\n          \"description\": \"Optional repository-relative paths to validate.\",\n          \"items\": {\n            \"minLength\": 1,\n            \"type\": \"string\"\n          },\n          \"type\": \"array\"\n        }\n      },\n      \"required\": [],\n      \"type\": \"object\"\n    },\n    \"name\": \"llmnav_check\",\n    \"schemaVersion\": 1\n  }\n]\n",
+      "contentHash": "d0fb5a43b36f123589b217e0ebefaf4f81c43a9c333654b0f9e88e26a3ec7ce1",
+      "contentType": "application/json",
+      "estimatedTokens": 665,
+      "id": "package:tool-definitions"
+    },
+    {
+      "cacheBoundaryAfter": true,
+      "cacheScope": "package",
+      "content": "## LLMNav code navigation\n\n<!-- llmnav:start -->\nBefore broad grep, directory scans, or opening many source files, run `npm exec -- llmnav query \"<task>\" --top 5`.\n\nResolve the selected semantic ID with `npm exec -- llmnav show <id>`. Use `npm exec -- llmnav context <id> --depth 1 --budget 2500` when related policy, workflow, fallback, migration, or test cards are needed.\n\nWhen the host supports structured tools, load the provider-neutral definitions from `npm exec -- llmnav tools --json`. Keep the repository root bound by the host rather than accepting it from model-generated tool input.\n\nRead generated cards and signatures before opening full symbol bodies. Treat paths, line numbers, signatures, imports, and hashes as generated data rather than source-of-truth annotations.\n\nKeep an existing LLMNav ID when a symbol or file is renamed or moved. Change `role`, `invariant`, `effect`, `risk`, and semantic `rel` values only when behavior or contracts change.\n\nDo not add hand-maintained `calls`, `imports`, `references`, `implements`, `exports`, or `overrides` relations. Do not put paths, line numbers, commit hashes, timestamps, callers, or current signatures in LLMNav source comments.\n\nAfter initialization and whenever public entrypoints, commands, routes, schemas, migrations, or high fan-in modules change, run `npm exec -- llmnav audit`. Review high and medium candidates; never add cards automatically. Add a module card only after confirming a durable responsibility, then encode the accepted boundary in a path-specific `coverageRules` entry and add a representative retrieval query.\n\nAfter semantic changes, run `npm exec -- llmnav format`, `npm exec -- llmnav check`, and `npm exec -- llmnav generate`. Use broad text search only when LLMNav returns no credible candidate.\n<!-- llmnav:end -->",
+      "contentHash": "936d109e3437e794f84eaf4da4c7d4adf23fb47013464a494d8c984d147ca43a",
+      "contentType": "text/markdown",
+      "estimatedTokens": 454,
+      "id": "package:agent-protocol"
+    },
+    {
+      "cacheBoundaryAfter": true,
+      "cacheScope": "repository",
+      "content": "llmnav-catalog/1 repository=relaydock catalog=repository\nRead semantic cards before opening source. Resolve current paths and signatures with llmnav query or show.\n\n@relaydock.contextpack.compile\nrole Select, redact, hash, and package repository evidence before expert consultation data leaves the local boundary.\nowns ContextPack assembly, evidence redaction, content-addressed pack identity\nexcludes expert model invocation, consultation persistence\ninvariant Evidence content is redacted before its digest, size, and token estimate are recorded. Preview and build share the same selection and redaction path.\n\n@relaydock.mcp.remote\nrole Expose tenant-scoped remote expert tools behind bearer authentication, host, origin, body-size, and per-tool scope checks.\nowns remote MCP tool registry, remote MCP authentication, MCP request exposure limits\nexcludes consultation domain logic, token issuance\ninvariant Reading and answering consultations require distinct explicit scopes. Untrusted requests are bounded before reaching MCP handlers.\n\n@relaydock.routing.candidates\nrole Build and serve validated provider candidates for virtual and direct model routes under runtime availability state.\nowns virtual model candidate catalog, direct routing fallback, candidate runtime state projection\nexcludes route scoring, provider request execution\ninvariant Configured routes reference enabled providers and supported protocols. Expired signed runtime state prevents candidate selection.\n\n@relaydock.runtime.gateway\nrole Coordinate candidate selection, lease acquisition, provider attempts, commit hooks, and retry termination for one canonical request.\nowns request attempt lifecycle, semantic commit boundary, retry candidate exclusion\nexcludes protocol encoding, candidate configuration\ninvariant No retry starts after an attempt has committed a semantic event. Each attempted candidate is excluded before another retry.\n",
+      "contentHash": "01e67e185f10a8314bb42803ceebe7921b3947574089ffb7d0d6df5ba6542758",
+      "contentType": "text/plain",
+      "estimatedTokens": 480,
+      "id": "repository:core"
+    },
+    {
+      "cacheBoundaryAfter": true,
+      "cacheScope": "module",
+      "content": "llmnav-catalog/1 repository=relaydock catalog=relaydock.accounting\nRead semantic cards before opening source. Resolve current paths and signatures with llmnav query or show.\n\n@relaydock.accounting.settlement\nrole Quote a pinned price revision, authorize a bounded hold, capture provider usage once, and release the unused balance.\nowns usage quote lifecycle, money authorization boundary, usage settlement\nexcludes price catalog persistence, customer ledger storage\ninvariant Captured provider cost cannot exceed the authorized hold. Every quote identifies the price revision used to calculate its maximum charge.\n",
+      "contentHash": "5ee1b104e733095d0e6dd8982a9f180b7f4a6586873859a1aa73b47d9d7bfc31",
+      "contentType": "text/plain",
+      "estimatedTokens": 154,
+      "id": "module:relaydock.accounting"
+    },
+    {
+      "cacheBoundaryAfter": true,
+      "cacheScope": "module",
+      "content": "llmnav-catalog/1 repository=relaydock catalog=relaydock.contextpack\nRead semantic cards before opening source. Resolve current paths and signatures with llmnav query or show.\n\n@relaydock.contextpack.compile\nrole Select, redact, hash, and package repository evidence before expert consultation data leaves the local boundary.\nowns ContextPack assembly, evidence redaction, content-addressed pack identity\nexcludes expert model invocation, consultation persistence\ninvariant Evidence content is redacted before its digest, size, and token estimate are recorded. Preview and build share the same selection and redaction path.\n",
+      "contentHash": "4dbdf2e80109ffcba396229b21d6651751d0fa11897ae452ed256d1fe77b4431",
+      "contentType": "text/plain",
+      "estimatedTokens": 156,
+      "id": "module:relaydock.contextpack"
+    },
+    {
+      "cacheBoundaryAfter": true,
+      "cacheScope": "module",
+      "content": "llmnav-catalog/1 repository=relaydock catalog=relaydock.expert\nRead semantic cards before opening source. Resolve current paths and signatures with llmnav query or show.\n\n@relaydock.expert.lifecycle\nrole Define allowed consultation state transitions from context request through approval, execution, result, and terminal outcomes.\nowns consultation state graph, consultation lifecycle events\nexcludes state persistence, worker lease claims\ninvariant Only declared state-event pairs can advance a consultation.\n",
+      "contentHash": "be59f6fe9c1d643006a846623f28477d732f59fce45d8dc3d71c3fb0c656e06f",
+      "contentType": "text/plain",
+      "estimatedTokens": 128,
+      "id": "module:relaydock.expert"
+    },
+    {
+      "cacheBoundaryAfter": true,
+      "cacheScope": "module",
+      "content": "llmnav-catalog/1 repository=relaydock catalog=relaydock.mcp\nRead semantic cards before opening source. Resolve current paths and signatures with llmnav query or show.\n\n@relaydock.mcp.remote\nrole Expose tenant-scoped remote expert tools behind bearer authentication, host, origin, body-size, and per-tool scope checks.\nowns remote MCP tool registry, remote MCP authentication, MCP request exposure limits\nexcludes consultation domain logic, token issuance\ninvariant Reading and answering consultations require distinct explicit scopes. Untrusted requests are bounded before reaching MCP handlers.\n",
+      "contentHash": "f65fb0cda0f8500808b459decde076260cd0e34590ee94bd3340a1a3965577c0",
+      "contentType": "text/plain",
+      "estimatedTokens": 149,
+      "id": "module:relaydock.mcp"
+    },
+    {
+      "cacheBoundaryAfter": true,
+      "cacheScope": "module",
+      "content": "llmnav-catalog/1 repository=relaydock catalog=relaydock.protocol\nRead semantic cards before opening source. Resolve current paths and signatures with llmnav query or show.\n\n@relaydock.protocol.compiler\nrole Decode provider ingress into canonical requests and encode canonical requests with explicit loss reports.\nowns protocol decoder registry, canonical request validation, loss-mode enforcement\nexcludes provider network transport, routing decisions\ninvariant Strict conversion rejects fatal information loss.\n",
+      "contentHash": "ce153854d21a33b0cef68cab91325df59c0712810de8e3f38a23e33bd18929d6",
+      "contentType": "text/plain",
+      "estimatedTokens": 128,
+      "id": "module:relaydock.protocol"
+    },
+    {
+      "cacheBoundaryAfter": true,
+      "cacheScope": "module",
+      "content": "llmnav-catalog/1 repository=relaydock catalog=relaydock.routing\nRead semantic cards before opening source. Resolve current paths and signatures with llmnav query or show.\n\n@relaydock.routing.candidates\nrole Build and serve validated provider candidates for virtual and direct model routes under runtime availability state.\nowns virtual model candidate catalog, direct routing fallback, candidate runtime state projection\nexcludes route scoring, provider request execution\ninvariant Configured routes reference enabled providers and supported protocols. Expired signed runtime state prevents candidate selection.\n",
+      "contentHash": "c1cf74d81b6f9373cc8eb91306fff816b6e827002c36536159c43f1581bc592b",
+      "contentType": "text/plain",
+      "estimatedTokens": 153,
+      "id": "module:relaydock.routing"
+    },
+    {
+      "cacheBoundaryAfter": true,
+      "cacheScope": "module",
+      "content": "llmnav-catalog/1 repository=relaydock catalog=relaydock.runtime\nRead semantic cards before opening source. Resolve current paths and signatures with llmnav query or show.\n\n@relaydock.runtime.gateway\nrole Coordinate candidate selection, lease acquisition, provider attempts, commit hooks, and retry termination for one canonical request.\nowns request attempt lifecycle, semantic commit boundary, retry candidate exclusion\nexcludes protocol encoding, candidate configuration\ninvariant No retry starts after an attempt has committed a semantic event. Each attempted candidate is excluded before another retry.\n",
+      "contentHash": "162d2a0d0305752a87b59209ec8bae3535fff4e7894d20a176c7ce2891c38e7e",
+      "contentType": "text/plain",
+      "estimatedTokens": 152,
+      "id": "module:relaydock.runtime"
+    },
+    {
+      "cacheBoundaryAfter": true,
+      "cacheScope": "module",
+      "content": "llmnav-catalog/1 repository=relaydock catalog=relaydock.security\nRead semantic cards before opening source. Resolve current paths and signatures with llmnav query or show.\n\n@relaydock.security.ssrf\nrole Resolve provider and MCP destination hosts once and reject credentials, unsafe schemes, ports, and non-public addresses before dialing.\nowns outbound URL policy, DNS address validation, SSRF address allowlist\nexcludes HTTP request execution, TLS certificate validation\ninvariant Callers dial one of the already validated resolved addresses instead of repeating DNS lookup.\n",
+      "contentHash": "c76499b06d1832d948be7a3021a2899eb863d6fabc1db875773a0a672c1ebc0c",
+      "contentType": "text/plain",
+      "estimatedTokens": 144,
+      "id": "module:relaydock.security"
+    }
+  ],
+  "repositoryId": "relaydock",
+  "schemaVersion": 1
+}

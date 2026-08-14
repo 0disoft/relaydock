@@ -1,0 +1,239 @@
+{
+  "partitions": [
+    {
+      "edges": [],
+      "inputHash": "4d0377db77242f0822d1932bb5eb283d6af84600006a5e0a74a50f7bfae76255",
+      "key": "card:relaydock/relaydock.accounting.settlement",
+      "nodes": [
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.accounting.settlement",
+          "location": {
+            "declarationLine": null,
+            "endLine": 12,
+            "exported": null,
+            "kind": null,
+            "language": null,
+            "path": "internal/accounting/service.go",
+            "receiver": null,
+            "signature": null,
+            "startLine": 3,
+            "symbol": null,
+            "visibility": null
+          },
+          "repositoryId": "relaydock",
+          "role": "Quote a pinned price revision, authorize a bounded hold, capture provider usage once, and release the unused balance.",
+          "semanticId": "relaydock.accounting.settlement"
+        }
+      ],
+      "outputHash": "a6556ec7bc8909396f4e721e4d55ce5cea751f429653c918a656ed72b4479909"
+    },
+    {
+      "edges": [],
+      "inputHash": "075def10fe634416e5a94179b19ed76e4f4d2d928fb986e53ea82cb19747aca3",
+      "key": "card:relaydock/relaydock.contextpack.compile",
+      "nodes": [
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.contextpack.compile",
+          "location": {
+            "declarationLine": null,
+            "endLine": 12,
+            "exported": null,
+            "kind": null,
+            "language": null,
+            "path": "internal/expert/contextpack/compiler.go",
+            "receiver": null,
+            "signature": null,
+            "startLine": 3,
+            "symbol": null,
+            "visibility": null
+          },
+          "repositoryId": "relaydock",
+          "role": "Select, redact, hash, and package repository evidence before expert consultation data leaves the local boundary.",
+          "semanticId": "relaydock.contextpack.compile"
+        }
+      ],
+      "outputHash": "6924b62ceedcb06629313c557b7332a253f0578b98f413feda431a8dc76fe63b"
+    },
+    {
+      "edges": [],
+      "inputHash": "6d1175bbec4b6764c6afcd0cde066679eb715832b764a35455756a899fee25b1",
+      "key": "card:relaydock/relaydock.expert.lifecycle",
+      "nodes": [
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.expert.lifecycle",
+          "location": {
+            "declarationLine": null,
+            "endLine": 11,
+            "exported": null,
+            "kind": null,
+            "language": null,
+            "path": "internal/expert/consultation/state_machine.go",
+            "receiver": null,
+            "signature": null,
+            "startLine": 3,
+            "symbol": null,
+            "visibility": null
+          },
+          "repositoryId": "relaydock",
+          "role": "Define allowed consultation state transitions from context request through approval, execution, result, and terminal outcomes.",
+          "semanticId": "relaydock.expert.lifecycle"
+        }
+      ],
+      "outputHash": "c33d01f246df07c5276d8bc925e23216018b4ea089145f5230ad377325e0a613"
+    },
+    {
+      "edges": [],
+      "inputHash": "60bed6e7b98d68f23bea7b91ccb33974daa4b00daaaf7f03fdb2362fc988fb57",
+      "key": "card:relaydock/relaydock.mcp.remote",
+      "nodes": [
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.mcp.remote",
+          "location": {
+            "declarationLine": null,
+            "endLine": 12,
+            "exported": null,
+            "kind": null,
+            "language": null,
+            "path": "internal/mcpremote/server.go",
+            "receiver": null,
+            "signature": null,
+            "startLine": 3,
+            "symbol": null,
+            "visibility": null
+          },
+          "repositoryId": "relaydock",
+          "role": "Expose tenant-scoped remote expert tools behind bearer authentication, host, origin, body-size, and per-tool scope checks.",
+          "semanticId": "relaydock.mcp.remote"
+        }
+      ],
+      "outputHash": "39d11dc2565ab560ee83e750e50b3fbcb12815bb4ad6e836f1f70c5badac9f7f"
+    },
+    {
+      "edges": [],
+      "inputHash": "2df79b30074e3311459e926dccaa6770cd08ddf618dc951776968992449f6eb5",
+      "key": "card:relaydock/relaydock.protocol.compiler",
+      "nodes": [
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.protocol.compiler",
+          "location": {
+            "declarationLine": null,
+            "endLine": 11,
+            "exported": null,
+            "kind": null,
+            "language": null,
+            "path": "internal/protocol/compiler/compiler.go",
+            "receiver": null,
+            "signature": null,
+            "startLine": 3,
+            "symbol": null,
+            "visibility": null
+          },
+          "repositoryId": "relaydock",
+          "role": "Decode provider ingress into canonical requests and encode canonical requests with explicit loss reports.",
+          "semanticId": "relaydock.protocol.compiler"
+        }
+      ],
+      "outputHash": "d18a81f0c5bf01dc706466a9c42a659f3e1bddb006219f84bbcc3302827cf9b8"
+    },
+    {
+      "edges": [],
+      "inputHash": "54a4fcc030324b65a392698df40b09eca42accc1778c4ee242c74ebbf99636e3",
+      "key": "card:relaydock/relaydock.routing.candidates",
+      "nodes": [
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.routing.candidates",
+          "location": {
+            "declarationLine": null,
+            "endLine": 12,
+            "exported": null,
+            "kind": null,
+            "language": null,
+            "path": "internal/composition/gateway/routes_source.go",
+            "receiver": null,
+            "signature": null,
+            "startLine": 3,
+            "symbol": null,
+            "visibility": null
+          },
+          "repositoryId": "relaydock",
+          "role": "Build and serve validated provider candidates for virtual and direct model routes under runtime availability state.",
+          "semanticId": "relaydock.routing.candidates"
+        }
+      ],
+      "outputHash": "a22f333c5bb9ccaa2a2abeed8bc9c0278718f9c3378a498cc0c7781099a36553"
+    },
+    {
+      "edges": [],
+      "inputHash": "0a15069f054a6d715a26fdfad9384725e6048a9ca9db1da1ecb3d01cbb31633b",
+      "key": "card:relaydock/relaydock.runtime.gateway",
+      "nodes": [
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.runtime.gateway",
+          "location": {
+            "declarationLine": null,
+            "endLine": 12,
+            "exported": null,
+            "kind": null,
+            "language": null,
+            "path": "internal/runtime/run.go",
+            "receiver": null,
+            "signature": null,
+            "startLine": 3,
+            "symbol": null,
+            "visibility": null
+          },
+          "repositoryId": "relaydock",
+          "role": "Coordinate candidate selection, lease acquisition, provider attempts, commit hooks, and retry termination for one canonical request.",
+          "semanticId": "relaydock.runtime.gateway"
+        }
+      ],
+      "outputHash": "3b9d392420950ac738ffc56f629b63d85eacbe9749a1d698a364b94ec605ad4b"
+    },
+    {
+      "edges": [],
+      "inputHash": "2af68ea6d329826f4490d4dbf84721ed11240b7a477d3df9cd63aee50095a0b2",
+      "key": "card:relaydock/relaydock.security.ssrf",
+      "nodes": [
+        {
+          "definitions": [],
+          "external": false,
+          "key": "relaydock/relaydock.security.ssrf",
+          "location": {
+            "declarationLine": null,
+            "endLine": 11,
+            "exported": null,
+            "kind": null,
+            "language": null,
+            "path": "internal/security/ssrf/validator.go",
+            "receiver": null,
+            "signature": null,
+            "startLine": 3,
+            "symbol": null,
+            "visibility": null
+          },
+          "repositoryId": "relaydock",
+          "role": "Resolve provider and MCP destination hosts once and reject credentials, unsafe schemes, ports, and non-public addresses before dialing.",
+          "semanticId": "relaydock.security.ssrf"
+        }
+      ],
+      "outputHash": "80d04ead5c38bc173c1334cfff34f7fc892cb67cfbfb3d10139997dfbb5937ed"
+    }
+  ],
+  "repositoryId": "relaydock",
+  "resolutionHash": "aa94c197d1ea0b8b7c96be05ebe6db1a0af5a18dd8042d5b6c57a5a43825f03b",
+  "schemaVersion": 1
+}

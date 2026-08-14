@@ -1,5 +1,15 @@
 package ssrf
 
+/* llmnav/1 module
+id=relaydock.security.ssrf
+role=Resolve provider and MCP destination hosts once and reject credentials, unsafe schemes, ports, and non-public addresses before dialing.
+owns=outbound URL policy|DNS address validation|SSRF address allowlist
+excludes=HTTP request execution|TLS certificate validation
+search=validate provider URL|prevent SSRF|resolve safe dial address
+invariant=Callers dial one of the already validated resolved addresses instead of repeating DNS lookup.
+stability=contract
+*/
+
 import (
 	"context"
 	"fmt"

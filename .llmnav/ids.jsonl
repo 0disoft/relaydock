@@ -1,0 +1,8 @@
+{"id":"relaydock.accounting.settlement","state":"active"}
+{"id":"relaydock.routing.candidates","state":"active"}
+{"id":"relaydock.expert.lifecycle","state":"active"}
+{"id":"relaydock.contextpack.compile","state":"active"}
+{"id":"relaydock.mcp.remote","state":"active"}
+{"id":"relaydock.protocol.compiler","state":"active"}
+{"id":"relaydock.runtime.gateway","state":"active"}
+{"id":"relaydock.security.ssrf","state":"active"}
