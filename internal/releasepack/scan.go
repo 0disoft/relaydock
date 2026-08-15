@@ -15,7 +15,7 @@ import (
 
 var excludedDirectoryNames = map[string]struct{}{
 	".git": {}, ".idea": {}, ".vscode": {}, "node_modules": {}, ".svelte-kit": {},
-	".svelte-check": {}, "coverage": {}, ".cache": {}, "__pycache__": {},
+	".svelte-check": {}, "coverage": {}, ".cache": {}, ".bun-cache": {}, "__pycache__": {},
 }
 
 var excludedFileNames = map[string]struct{}{
@@ -23,6 +23,8 @@ var excludedFileNames = map[string]struct{}{
 }
 
 var generatedDirectoryPrefixes = []string{
+	".llmnav/cache/",
+	".llmnav/state/",
 	"frontend/bindings/",
 	"gen/go/",
 	"internal/persistence/postgres/sqlcgen/",

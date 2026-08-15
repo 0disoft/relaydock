@@ -244,8 +244,11 @@ func TestScanExcludesNestedFrontendOutputsButKeepsRootBuildSources(t *testing.T)
 	mustWrite(t, filepath.Join(root, "build", "windows", "Taskfile.yml"), "version: 3\n")
 	mustWrite(t, filepath.Join(root, "frontend", "dist", "assets", "app.js"), strings.Repeat("x", 50_000))
 	mustWrite(t, filepath.Join(root, "frontend", ".svelte-check", "cache"), strings.Repeat("x", 50_000))
+	mustWrite(t, filepath.Join(root, ".bun-cache", "package", "artifact"), strings.Repeat("x", 50_000))
 	mustWrite(t, filepath.Join(root, "web", "control-console", "build", "server", "index.js"), strings.Repeat("x", 50_000))
 	mustWrite(t, filepath.Join(root, "frontend", "bindings", "desktop.js"), strings.Repeat("x", 50_000))
+	mustWrite(t, filepath.Join(root, ".llmnav", "cache", "search-index.json"), strings.Repeat("x", 50_000))
+	mustWrite(t, filepath.Join(root, ".llmnav", "state", "stat-hints.json"), strings.Repeat("x", 50_000))
 	mustWrite(t, filepath.Join(root, "gen", "go", "README.md"), "generated contracts live here\n")
 	mustWrite(t, filepath.Join(root, "gen", "go", "control", "v1", "control.pb.go"), strings.Repeat("x", 50_000))
 	mustWrite(t, filepath.Join(root, "internal", "persistence", "postgres", "sqlcgen", "expert.sql.go"), strings.Repeat("x", 50_000))
@@ -264,6 +267,9 @@ func TestScanExcludesNestedFrontendOutputsButKeepsRootBuildSources(t *testing.T)
 		t.Fatal("generated-directory source guidance was excluded")
 	}
 	for _, generated := range []string{
+		".bun-cache/package/artifact",
+		".llmnav/cache/search-index.json",
+		".llmnav/state/stat-hints.json",
 		"frontend/dist/assets/app.js",
 		"frontend/.svelte-check/cache",
 		"web/control-console/build/server/index.js",
