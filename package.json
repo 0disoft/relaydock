@@ -21,6 +21,6 @@
     "llmnav:eval": "llmnav eval"
   },
   "devDependencies": {
-    "llmnav": "^0.8.0"
+    "llmnav": "^0.9.0"
   }
 }

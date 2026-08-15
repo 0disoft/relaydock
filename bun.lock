@@ -5,7 +5,7 @@
     "": {
       "name": "relaydock",
       "devDependencies": {
-        "llmnav": "^0.8.0",
+        "llmnav": "^0.9.0",
       },
     },
     "frontend": {
@@ -410,7 +410,7 @@
 
     "lightningcss-win32-x64-msvc": ["lightningcss-win32-x64-msvc@1.33.0", "", { "os": "win32", "cpu": "x64" }, "sha512-OlEICDx/Xl0FqSp4bry8zFnCvGpig3Gl4gCquvYwHuqJKEC1+n9NgDniFvqHGmMv1ZkqDJrDqKKSykTDX+ehuA=="],
 
-    "llmnav": ["llmnav@0.8.0", "", { "bin": { "llmnav": "bin/llmnav.js" } }, "sha512-z6+kDz5C/a0U/IZ3ueZ0/aOYEBdI6DR8hRKgBPT1bSB4BSN1ud7ejIMt5khYPHPCXPXnbQ/29b4isFvO1my0eg=="],
+    "llmnav": ["llmnav@0.9.0", "", { "bin": { "llmnav": "bin/llmnav.js" } }, "sha512-Rt5Fb6WrS36/GCGmquB6JzPDKBn96wN6FrpC1SgcrAkC/vwnTMFGQFuVPD9hQVGMjygbuTGiB95kX9fr8YIW7A=="],
 
     "locate-character": ["locate-character@3.0.0", "", {}, "sha512-SW13ws7BjaeJ6p7Q6CO2nchbYEc3X3J6WrmTTDto7yMPqVSZTUyY5Tjbid+Ab8gLnATtygYtiDIJGQRRn2ZOiA=="],
 
