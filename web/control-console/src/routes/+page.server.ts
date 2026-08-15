@@ -1,3 +1,15 @@
+/* llmnav/1 module
+id=relaydock.control.console-overview
+role=Load authenticated health, readiness, model-route, and signed-snapshot status for the server-rendered control overview.
+owns=control overview data loading|Control API probe aggregation|server-only bearer forwarding
+search=control console overview|probe Control API status|load model route snapshot
+invariant=The control bearer token is read only in the server loader and is never returned in page data.
+invariant=Probe failures degrade to explicit offline or empty status without aborting the complete overview.
+effect=net.call(control_api)
+risk=availability
+stability=architecture
+*/
+
 import { env } from '$env/dynamic/private';
 import type { PageServerLoad } from './$types';
 

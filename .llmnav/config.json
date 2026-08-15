@@ -94,6 +94,21 @@
         "invariant"
       ],
       "scope": "module"
+    },
+    {
+      "match": [
+        "internal/expert/resultcontract/memory_store.go",
+        "internal/idgen/id.go",
+        "internal/routing/memory.go",
+        "internal/serverutil/server.go",
+        "web/control-console/src/routes/+page.server.ts"
+      ],
+      "name": "RelayDock shared runtime and operational boundaries",
+      "requiredFields": [
+        "owns",
+        "invariant"
+      ],
+      "scope": "module"
     }
   ],
   "evaluation": {

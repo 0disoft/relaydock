@@ -53,3 +53,8 @@
 {"query":"roll back runtime journal fields and conditionally restore provider connection NOT NULL","expected":["relaydock.migration.runtime-journal.down"]}
 {"query":"add outbox lease expiry dead-letter state and worker partial indexes","expected":["relaydock.migration.outbox-delivery.up"]}
 {"query":"remove outbox dead-letter delivery columns and restore the pending queue index","expected":["relaydock.migration.outbox-delivery.down"]}
+{"query":"normalize validate clone and store an expert result with model attestation","expected":["relaydock.expert.result-contract"]}
+{"query":"generate a sortable URL-safe prefixed identifier for a durable record","expected":["relaydock.identifier.generate"]}
+{"query":"load authenticated health readiness model routes and snapshot status for the control console","expected":["relaydock.control.console-overview"]}
+{"query":"run an HTTP handler until SIGTERM then perform bounded graceful shutdown","expected":["relaydock.http.server-lifecycle"]}
+{"query":"enforce process-local account concurrency with expiring routing leases","expected":["relaydock.routing.memory-leases"]}

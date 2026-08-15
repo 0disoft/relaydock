@@ -57,3 +57,8 @@
 {"id":"relaydock.provider.http-adapter","state":"active"}
 {"id":"relaydock.transport.json-api","state":"active"}
 {"id":"relaydock.transport.live-stream","state":"active"}
+{"id":"relaydock.expert.result-contract","state":"active"}
+{"id":"relaydock.identifier.generate","state":"active"}
+{"id":"relaydock.routing.memory-leases","state":"active"}
+{"id":"relaydock.http.server-lifecycle","state":"active"}
+{"id":"relaydock.control.console-overview","state":"active"}

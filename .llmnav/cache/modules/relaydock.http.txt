@@ -1,0 +1,8 @@
+llmnav-catalog/1 repository=relaydock catalog=relaydock.http
+Read semantic cards before opening source. Resolve current paths and signatures with llmnav query or show.
+
+@relaydock.http.server-lifecycle
+role Run RelayDock HTTP handlers with bounded header reads, idle connections, signal cancellation, and graceful shutdown.
+owns HTTP server lifecycle, process signal shutdown, server timeout defaults
+invariant SIGINT or SIGTERM starts one graceful shutdown with a bounded fifteen-second budget. http.ErrServerClosed is treated as an expected terminal state rather than a runtime failure.
+risk availability, concurrency

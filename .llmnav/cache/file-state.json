@@ -6450,9 +6450,104 @@
       "sourceBytes": 194
     },
     {
-      "blocks": [],
-      "contentHash": "ef958a122f5c0be2af88764b0d8a48efb8c3996ec0ba87087a5d82434c6c2f64",
-      "declarations": [],
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [],
+            "id": "relaydock.expert.result-contract",
+            "invariant": [
+              "Invalid results are rejected before an identifier is allocated or a record is stored.",
+              "Stored and returned results are cloned so callers cannot mutate retained records through shared maps or slices."
+            ],
+            "owns": [
+              "expert result schema",
+              "result record normalization",
+              "process-local result storage"
+            ],
+            "rel": [],
+            "risk": [
+              "concurrency"
+            ],
+            "role": "Normalize, validate, clone, and store expert result records behind process-local Store and RecordStore contracts.",
+            "scope": "module",
+            "search": [
+              "expert result contract",
+              "store model attestation",
+              "validate expert result"
+            ],
+            "stability": "contract",
+            "unknown": []
+          },
+          "end": 614,
+          "endLine": 12,
+          "entries": [
+            {
+              "key": "id",
+              "line": 4,
+              "order": 0,
+              "value": "relaydock.expert.result-contract"
+            },
+            {
+              "key": "role",
+              "line": 5,
+              "order": 1,
+              "value": "Normalize, validate, clone, and store expert result records behind process-local Store and RecordStore contracts."
+            },
+            {
+              "key": "owns",
+              "line": 6,
+              "order": 2,
+              "value": "expert result schema|result record normalization|process-local result storage"
+            },
+            {
+              "key": "search",
+              "line": 7,
+              "order": 3,
+              "value": "expert result contract|store model attestation|validate expert result"
+            },
+            {
+              "key": "invariant",
+              "line": 8,
+              "order": 4,
+              "value": "Invalid results are rejected before an identifier is allocated or a record is stored."
+            },
+            {
+              "key": "invariant",
+              "line": 9,
+              "order": 5,
+              "value": "Stored and returned results are cloned so callers cannot mutate retained records through shared maps or slices."
+            },
+            {
+              "key": "risk",
+              "line": 10,
+              "order": 6,
+              "value": "concurrency"
+            },
+            {
+              "key": "stability",
+              "line": 11,
+              "order": 7,
+              "value": "contract"
+            }
+          ],
+          "filePath": "internal/expert/resultcontract/memory_store.go",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.expert.result-contract\nrole=Normalize, validate, clone, and store expert result records behind process-local Store and RecordStore contracts.\nowns=expert result schema|result record normalization|process-local result storage\nsearch=expert result contract|store model attestation|validate expert result\ninvariant=Invalid results are rejected before an identifier is allocated or a record is stored.\ninvariant=Stored and returned results are cloned so callers cannot mutate retained records through shared maps or slices.\nrisk=concurrency\nstability=contract\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 24,
+          "startLine": 3,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "29e38ce739737ea7f1500bd023bc80291295e6c1335d5b88b19cc786f13243c7",
+      "declarations": [
+        null
+      ],
       "imports": [
         "context",
         "github.com/0disoft/relaydock/internal/core",
@@ -6460,8 +6555,8 @@
         "sync"
       ],
       "path": "internal/expert/resultcontract/memory_store.go",
-      "semanticBytes": 0,
-      "sourceBytes": 1490
+      "semanticBytes": 590,
+      "sourceBytes": 2082
     },
     {
       "blocks": [],
@@ -6810,9 +6905,113 @@
       "sourceBytes": 1109
     },
     {
-      "blocks": [],
-      "contentHash": "64f2b4a07a0210ef086cfe5cf3bb86d2ea92dce7382751d64b95e178c50271cd",
-      "declarations": [],
+      "blocks": [
+        {
+          "card": {
+            "effect": [
+              "clock.read",
+              "random.read"
+            ],
+            "excludes": [],
+            "id": "relaydock.identifier.generate",
+            "invariant": [
+              "The encoded identifier contains no padding and remains safe in URLs and filenames.",
+              "A requested prefix is preserved before one underscore without changing the sortable timestamp portion."
+            ],
+            "owns": [
+              "identifier wire format",
+              "timestamp ordering prefix",
+              "random collision suffix"
+            ],
+            "rel": [],
+            "risk": [
+              "availability"
+            ],
+            "role": "Generate optional-prefixed, sortable, URL-safe identifiers for RelayDock records and leases.",
+            "scope": "module",
+            "search": [
+              "generate RelayDock ID",
+              "sortable prefixed identifier",
+              "random record ID"
+            ],
+            "stability": "contract",
+            "unknown": []
+          },
+          "end": 593,
+          "endLine": 13,
+          "entries": [
+            {
+              "key": "id",
+              "line": 4,
+              "order": 0,
+              "value": "relaydock.identifier.generate"
+            },
+            {
+              "key": "role",
+              "line": 5,
+              "order": 1,
+              "value": "Generate optional-prefixed, sortable, URL-safe identifiers for RelayDock records and leases."
+            },
+            {
+              "key": "owns",
+              "line": 6,
+              "order": 2,
+              "value": "identifier wire format|timestamp ordering prefix|random collision suffix"
+            },
+            {
+              "key": "search",
+              "line": 7,
+              "order": 3,
+              "value": "generate RelayDock ID|sortable prefixed identifier|random record ID"
+            },
+            {
+              "key": "invariant",
+              "line": 8,
+              "order": 4,
+              "value": "The encoded identifier contains no padding and remains safe in URLs and filenames."
+            },
+            {
+              "key": "invariant",
+              "line": 9,
+              "order": 5,
+              "value": "A requested prefix is preserved before one underscore without changing the sortable timestamp portion."
+            },
+            {
+              "key": "effect",
+              "line": 10,
+              "order": 6,
+              "value": "clock.read|random.read"
+            },
+            {
+              "key": "risk",
+              "line": 11,
+              "order": 7,
+              "value": "availability"
+            },
+            {
+              "key": "stability",
+              "line": 12,
+              "order": 8,
+              "value": "contract"
+            }
+          ],
+          "filePath": "internal/idgen/id.go",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.identifier.generate\nrole=Generate optional-prefixed, sortable, URL-safe identifiers for RelayDock records and leases.\nowns=identifier wire format|timestamp ordering prefix|random collision suffix\nsearch=generate RelayDock ID|sortable prefixed identifier|random record ID\ninvariant=The encoded identifier contains no padding and remains safe in URLs and filenames.\ninvariant=A requested prefix is preserved before one underscore without changing the sortable timestamp portion.\neffect=clock.read|random.read\nrisk=availability\nstability=contract\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 15,
+          "startLine": 3,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "73adddd5e50d888b4cb8ee9f2164731c847db4d322d0a438c6d78b88bf181a78",
+      "declarations": [
+        null
+      ],
       "imports": [
         "crypto/rand",
         "encoding/base32",
@@ -6821,8 +7020,8 @@
         "time"
       ],
       "path": "internal/idgen/id.go",
-      "semanticBytes": 0,
-      "sourceBytes": 959
+      "semanticBytes": 578,
+      "sourceBytes": 1539
     },
     {
       "blocks": [],
@@ -9431,9 +9630,12 @@
     },
     {
       "blocks": [],
-      "contentHash": "d76a08aaece3e0d7eb19aebd1f2d22390c2d2ad8c9137f311e6af56bbbaa5532",
+      "contentHash": "b8fc8d114e71c1189c50a154f7d871e42165319e23a64e0b665c84d18655a4e1",
       "declarations": [],
       "imports": [
+        ".bun-cache/package/artifact",
+        ".llmnav/cache/search-index.json",
+        ".llmnav/state/stat-hints.json",
         "archive/zip",
         "crypto/ed25519",
         "crypto/rand",
@@ -9453,7 +9655,7 @@
       ],
       "path": "internal/releasepack/releasepack_test.go",
       "semanticBytes": 0,
-      "sourceBytes": 15569
+      "sourceBytes": 15983
     },
     {
       "blocks": [],
@@ -9481,11 +9683,13 @@
     },
     {
       "blocks": [],
-      "contentHash": "0249cf40745efeaa71150d33f9169d4d40cfc9b11f1082de85a8a879ae2d3ae6",
+      "contentHash": "31b00a5496c33fdfbe569ae24aefb3a73886060572ba0fa1107fa76e39f7b38b",
       "declarations": [],
       "imports": [
         ".DS_Store",
         ".git",
+        ".llmnav/cache/",
+        ".llmnav/state/",
         ".svelte-check",
         "crypto/sha256",
         "encoding/hex",
@@ -9503,7 +9707,7 @@
       ],
       "path": "internal/releasepack/scan.go",
       "semanticBytes": 0,
-      "sourceBytes": 4617
+      "sourceBytes": 4673
     },
     {
       "blocks": [],
@@ -9620,9 +9824,105 @@
       "sourceBytes": 327
     },
     {
-      "blocks": [],
-      "contentHash": "5b9d572c37dc065544f3fad438590db863a4e2b9f810688fe2d2007e057a2b45",
-      "declarations": [],
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [],
+            "id": "relaydock.routing.memory-leases",
+            "invariant": [
+              "Candidate slices are copied at the store boundary so callers cannot mutate retained routing state.",
+              "Expired leases are pruned before capacity, renewal, release, or active-count decisions."
+            ],
+            "owns": [
+              "in-memory candidate health",
+              "account lease capacity",
+              "lease expiry pruning"
+            ],
+            "rel": [],
+            "risk": [
+              "concurrency",
+              "availability"
+            ],
+            "role": "Provide process-local health candidates and expiring account concurrency leases for single-runtime routing.",
+            "scope": "module",
+            "search": [
+              "memory routing leases",
+              "account concurrency limit",
+              "process local health store"
+            ],
+            "stability": "contract",
+            "unknown": []
+          },
+          "end": 600,
+          "endLine": 12,
+          "entries": [
+            {
+              "key": "id",
+              "line": 4,
+              "order": 0,
+              "value": "relaydock.routing.memory-leases"
+            },
+            {
+              "key": "role",
+              "line": 5,
+              "order": 1,
+              "value": "Provide process-local health candidates and expiring account concurrency leases for single-runtime routing."
+            },
+            {
+              "key": "owns",
+              "line": 6,
+              "order": 2,
+              "value": "in-memory candidate health|account lease capacity|lease expiry pruning"
+            },
+            {
+              "key": "search",
+              "line": 7,
+              "order": 3,
+              "value": "memory routing leases|account concurrency limit|process local health store"
+            },
+            {
+              "key": "invariant",
+              "line": 8,
+              "order": 4,
+              "value": "Candidate slices are copied at the store boundary so callers cannot mutate retained routing state."
+            },
+            {
+              "key": "invariant",
+              "line": 9,
+              "order": 5,
+              "value": "Expired leases are pruned before capacity, renewal, release, or active-count decisions."
+            },
+            {
+              "key": "risk",
+              "line": 10,
+              "order": 6,
+              "value": "concurrency|availability"
+            },
+            {
+              "key": "stability",
+              "line": 11,
+              "order": 7,
+              "value": "contract"
+            }
+          ],
+          "filePath": "internal/routing/memory.go",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.routing.memory-leases\nrole=Provide process-local health candidates and expiring account concurrency leases for single-runtime routing.\nowns=in-memory candidate health|account lease capacity|lease expiry pruning\nsearch=memory routing leases|account concurrency limit|process local health store\ninvariant=Candidate slices are copied at the store boundary so callers cannot mutate retained routing state.\ninvariant=Expired leases are pruned before capacity, renewal, release, or active-count decisions.\nrisk=concurrency|availability\nstability=contract\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 17,
+          "startLine": 3,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "6eb1244424f8a46cb1201c5b805ab9a37ea2bb95dc87dd121c2cb0bb74366342",
+      "declarations": [
+        null
+      ],
       "imports": [
         "context",
         "fmt",
@@ -9632,8 +9932,8 @@
         "time"
       ],
       "path": "internal/routing/memory.go",
-      "semanticBytes": 0,
-      "sourceBytes": 3574
+      "semanticBytes": 583,
+      "sourceBytes": 4159
     },
     {
       "blocks": [],
@@ -10184,9 +10484,105 @@
       "sourceBytes": 747
     },
     {
-      "blocks": [],
-      "contentHash": "a2c0d78c44128c4a35d75a3f6f11c0fe70f3a021c406175d1ecc1bcbd63a7d89",
-      "declarations": [],
+      "blocks": [
+        {
+          "card": {
+            "effect": [],
+            "excludes": [],
+            "id": "relaydock.http.server-lifecycle",
+            "invariant": [
+              "SIGINT or SIGTERM starts one graceful shutdown with a bounded fifteen-second budget.",
+              "http.ErrServerClosed is treated as an expected terminal state rather than a runtime failure."
+            ],
+            "owns": [
+              "HTTP server lifecycle",
+              "process signal shutdown",
+              "server timeout defaults"
+            ],
+            "rel": [],
+            "risk": [
+              "availability",
+              "concurrency"
+            ],
+            "role": "Run RelayDock HTTP handlers with bounded header reads, idle connections, signal cancellation, and graceful shutdown.",
+            "scope": "module",
+            "search": [
+              "run RelayDock HTTP server",
+              "graceful shutdown timeout",
+              "server signal lifecycle"
+            ],
+            "stability": "architecture",
+            "unknown": []
+          },
+          "end": 607,
+          "endLine": 12,
+          "entries": [
+            {
+              "key": "id",
+              "line": 4,
+              "order": 0,
+              "value": "relaydock.http.server-lifecycle"
+            },
+            {
+              "key": "role",
+              "line": 5,
+              "order": 1,
+              "value": "Run RelayDock HTTP handlers with bounded header reads, idle connections, signal cancellation, and graceful shutdown."
+            },
+            {
+              "key": "owns",
+              "line": 6,
+              "order": 2,
+              "value": "HTTP server lifecycle|process signal shutdown|server timeout defaults"
+            },
+            {
+              "key": "search",
+              "line": 7,
+              "order": 3,
+              "value": "run RelayDock HTTP server|graceful shutdown timeout|server signal lifecycle"
+            },
+            {
+              "key": "invariant",
+              "line": 8,
+              "order": 4,
+              "value": "SIGINT or SIGTERM starts one graceful shutdown with a bounded fifteen-second budget."
+            },
+            {
+              "key": "invariant",
+              "line": 9,
+              "order": 5,
+              "value": "http.ErrServerClosed is treated as an expected terminal state rather than a runtime failure."
+            },
+            {
+              "key": "risk",
+              "line": 10,
+              "order": 6,
+              "value": "availability|concurrency"
+            },
+            {
+              "key": "stability",
+              "line": 11,
+              "order": 7,
+              "value": "architecture"
+            }
+          ],
+          "filePath": "internal/serverutil/server.go",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.http.server-lifecycle\nrole=Run RelayDock HTTP handlers with bounded header reads, idle connections, signal cancellation, and graceful shutdown.\nowns=HTTP server lifecycle|process signal shutdown|server timeout defaults\nsearch=run RelayDock HTTP server|graceful shutdown timeout|server signal lifecycle\ninvariant=SIGINT or SIGTERM starts one graceful shutdown with a bounded fifteen-second budget.\ninvariant=http.ErrServerClosed is treated as an expected terminal state rather than a runtime failure.\nrisk=availability|concurrency\nstability=architecture\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 20,
+          "startLine": 3,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "be1a7764f4b74656e12383c7a01e97c030026ea2a8128b97a613e226564db823",
+      "declarations": [
+        null
+      ],
       "imports": [
         "context",
         "errors",
@@ -10197,8 +10593,8 @@
         "time"
       ],
       "path": "internal/serverutil/server.go",
-      "semanticBytes": 0,
-      "sourceBytes": 1024
+      "semanticBytes": 587,
+      "sourceBytes": 1613
     },
     {
       "blocks": [
@@ -10797,16 +11193,119 @@
       "sourceBytes": 430
     },
     {
-      "blocks": [],
-      "contentHash": "a57c3f2b8b5d9d485a00d657d4c450d2a41a24acf9e45b1caccaef6f79ac36cc",
-      "declarations": [],
+      "blocks": [
+        {
+          "card": {
+            "effect": [
+              "net.call(control_api)"
+            ],
+            "excludes": [],
+            "id": "relaydock.control.console-overview",
+            "invariant": [
+              "The control bearer token is read only in the server loader and is never returned in page data.",
+              "Probe failures degrade to explicit offline or empty status without aborting the complete overview."
+            ],
+            "owns": [
+              "control overview data loading",
+              "Control API probe aggregation",
+              "server-only bearer forwarding"
+            ],
+            "rel": [],
+            "risk": [
+              "availability"
+            ],
+            "role": "Load authenticated health, readiness, model-route, and signed-snapshot status for the server-rendered control overview.",
+            "scope": "module",
+            "search": [
+              "control console overview",
+              "probe Control API status",
+              "load model route snapshot"
+            ],
+            "stability": "architecture",
+            "unknown": []
+          },
+          "end": 646,
+          "endLine": 11,
+          "entries": [
+            {
+              "key": "id",
+              "line": 2,
+              "order": 0,
+              "value": "relaydock.control.console-overview"
+            },
+            {
+              "key": "role",
+              "line": 3,
+              "order": 1,
+              "value": "Load authenticated health, readiness, model-route, and signed-snapshot status for the server-rendered control overview."
+            },
+            {
+              "key": "owns",
+              "line": 4,
+              "order": 2,
+              "value": "control overview data loading|Control API probe aggregation|server-only bearer forwarding"
+            },
+            {
+              "key": "search",
+              "line": 5,
+              "order": 3,
+              "value": "control console overview|probe Control API status|load model route snapshot"
+            },
+            {
+              "key": "invariant",
+              "line": 6,
+              "order": 4,
+              "value": "The control bearer token is read only in the server loader and is never returned in page data."
+            },
+            {
+              "key": "invariant",
+              "line": 7,
+              "order": 5,
+              "value": "Probe failures degrade to explicit offline or empty status without aborting the complete overview."
+            },
+            {
+              "key": "effect",
+              "line": 8,
+              "order": 6,
+              "value": "net.call(control_api)"
+            },
+            {
+              "key": "risk",
+              "line": 9,
+              "order": 7,
+              "value": "availability"
+            },
+            {
+              "key": "stability",
+              "line": 10,
+              "order": 8,
+              "value": "architecture"
+            }
+          ],
+          "filePath": "web/control-console/src/routes/+page.server.ts",
+          "indent": "",
+          "newline": "\n",
+          "prefix": null,
+          "raw": "/* llmnav/1 module\nid=relaydock.control.console-overview\nrole=Load authenticated health, readiness, model-route, and signed-snapshot status for the server-rendered control overview.\nowns=control overview data loading|Control API probe aggregation|server-only bearer forwarding\nsearch=control console overview|probe Control API status|load model route snapshot\ninvariant=The control bearer token is read only in the server loader and is never returned in page data.\ninvariant=Probe failures degrade to explicit offline or empty status without aborting the complete overview.\neffect=net.call(control_api)\nrisk=availability\nstability=architecture\n*/",
+          "scope": "module",
+          "specVersion": "1",
+          "start": 0,
+          "startLine": 1,
+          "style": "block",
+          "syntaxErrors": []
+        }
+      ],
+      "contentHash": "9558671ab816bb474f663c9d2bf2e4d2078da90693e2983c49ccb294cd701697",
+      "declarations": [
+        null
+      ],
       "imports": [
         "$env/dynamic/private",
         "./$types"
       ],
       "path": "web/control-console/src/routes/+page.server.ts",
-      "semanticBytes": 0,
-      "sourceBytes": 1921
+      "semanticBytes": 646,
+      "sourceBytes": 2569
     },
     {
       "blocks": [],

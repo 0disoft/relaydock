@@ -116,3 +116,16 @@ role Execute provider-neutral HTTP attempts with configured authentication, prot
 owns provider HTTP request boundary, provider authentication headers, response size enforcement
 excludes route selection, canonical protocol compilation
 invariant Anonymous access is rejected unless the adapter configuration explicitly permits it. Successful and error response bodies are read through fixed upper bounds.
+
+@relaydock.control.console-overview
+role Load authenticated health, readiness, model-route, and signed-snapshot status for the server-rendered control overview.
+owns control overview data loading, Control API probe aggregation, server-only bearer forwarding
+invariant The control bearer token is read only in the server loader and is never returned in page data. Probe failures degrade to explicit offline or empty status without aborting the complete overview.
+effect net.call(control_api)
+risk availability
+
+@relaydock.http.server-lifecycle
+role Run RelayDock HTTP handlers with bounded header reads, idle connections, signal cancellation, and graceful shutdown.
+owns HTTP server lifecycle, process signal shutdown, server timeout defaults
+invariant SIGINT or SIGTERM starts one graceful shutdown with a bounded fifteen-second budget. http.ErrServerClosed is treated as an expected terminal state rather than a runtime failure.
+risk availability, concurrency

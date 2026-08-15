@@ -22,3 +22,10 @@ rel test>relaydock.control.snapshot.contract
 
 @relaydock.control.snapshot.contract
 role Verify snapshot rollback, same-revision mutation, and last-known-good persistence failure handling.
+
+@relaydock.control.console-overview
+role Load authenticated health, readiness, model-route, and signed-snapshot status for the server-rendered control overview.
+owns control overview data loading, Control API probe aggregation, server-only bearer forwarding
+invariant The control bearer token is read only in the server loader and is never returned in page data. Probe failures degrade to explicit offline or empty status without aborting the complete overview.
+effect net.call(control_api)
+risk availability

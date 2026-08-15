@@ -3347,11 +3347,272 @@
         "encode OpenAI stream event"
       ],
       "stability": "contract"
+    },
+    {
+      "boundaries": [
+        {
+          "confidence": "high",
+          "evidence": [
+            "path"
+          ],
+          "kind": "route"
+        }
+      ],
+      "effect": [
+        "net.call(control_api)"
+      ],
+      "hashes": {
+        "body": "9558671ab816bb474f663c9d2bf2e4d2078da90693e2983c49ccb294cd701697",
+        "semantic": "24fa9bb4a69820c60bff561c84d221c4e0a38d9109ea1f54edc6d4473504bfac",
+        "structure": "0adaefc203dc33a09f9b7de87c7c24923d81cf5ff4fd0e06edab03ef9c1839e6"
+      },
+      "id": "relaydock.control.console-overview",
+      "imports": [
+        "$env/dynamic/private",
+        "./$types"
+      ],
+      "invariant": [
+        "The control bearer token is read only in the server loader and is never returned in page data.",
+        "Probe failures degrade to explicit offline or empty status without aborting the complete overview."
+      ],
+      "location": {
+        "declarationLine": null,
+        "endLine": 11,
+        "exported": null,
+        "kind": null,
+        "language": null,
+        "path": "web/control-console/src/routes/+page.server.ts",
+        "receiver": null,
+        "signature": null,
+        "startLine": 1,
+        "symbol": null,
+        "visibility": null
+      },
+      "owns": [
+        "control overview data loading",
+        "Control API probe aggregation",
+        "server-only bearer forwarding"
+      ],
+      "risk": [
+        "availability"
+      ],
+      "role": "Load authenticated health, readiness, model-route, and signed-snapshot status for the server-rendered control overview.",
+      "scope": "module",
+      "search": [
+        "control console overview",
+        "probe Control API status",
+        "load model route snapshot"
+      ],
+      "stability": "architecture"
+    },
+    {
+      "boundaries": [],
+      "hashes": {
+        "body": "29e38ce739737ea7f1500bd023bc80291295e6c1335d5b88b19cc786f13243c7",
+        "semantic": "d557ae6b7cc2edd327752a319e3f57d4b772bcc1cfcd1770516f7081c96edeb7",
+        "structure": "ef8a40b7a5822ba64c1500a1dde5b5799aa0b00499cc0ccff1b85b7d8ba64a87"
+      },
+      "id": "relaydock.expert.result-contract",
+      "imports": [
+        "context",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/idgen",
+        "sync"
+      ],
+      "invariant": [
+        "Invalid results are rejected before an identifier is allocated or a record is stored.",
+        "Stored and returned results are cloned so callers cannot mutate retained records through shared maps or slices."
+      ],
+      "location": {
+        "declarationLine": null,
+        "endLine": 12,
+        "exported": null,
+        "kind": null,
+        "language": null,
+        "path": "internal/expert/resultcontract/memory_store.go",
+        "receiver": null,
+        "signature": null,
+        "startLine": 3,
+        "symbol": null,
+        "visibility": null
+      },
+      "owns": [
+        "expert result schema",
+        "result record normalization",
+        "process-local result storage"
+      ],
+      "risk": [
+        "concurrency"
+      ],
+      "role": "Normalize, validate, clone, and store expert result records behind process-local Store and RecordStore contracts.",
+      "scope": "module",
+      "search": [
+        "expert result contract",
+        "store model attestation",
+        "validate expert result"
+      ],
+      "stability": "contract"
+    },
+    {
+      "boundaries": [],
+      "hashes": {
+        "body": "be1a7764f4b74656e12383c7a01e97c030026ea2a8128b97a613e226564db823",
+        "semantic": "d5ce77df37ddc76016f1f896fa2913cbc5133c03812336dd8dd989ae9ec7fb19",
+        "structure": "abce58cf633856c73c38efb963279a8f54e979a6de2a519df0cde88b6004d589"
+      },
+      "id": "relaydock.http.server-lifecycle",
+      "imports": [
+        "context",
+        "errors",
+        "log/slog",
+        "net/http",
+        "os/signal",
+        "syscall",
+        "time"
+      ],
+      "invariant": [
+        "SIGINT or SIGTERM starts one graceful shutdown with a bounded fifteen-second budget.",
+        "http.ErrServerClosed is treated as an expected terminal state rather than a runtime failure."
+      ],
+      "location": {
+        "declarationLine": null,
+        "endLine": 12,
+        "exported": null,
+        "kind": null,
+        "language": null,
+        "path": "internal/serverutil/server.go",
+        "receiver": null,
+        "signature": null,
+        "startLine": 3,
+        "symbol": null,
+        "visibility": null
+      },
+      "owns": [
+        "HTTP server lifecycle",
+        "process signal shutdown",
+        "server timeout defaults"
+      ],
+      "risk": [
+        "availability",
+        "concurrency"
+      ],
+      "role": "Run RelayDock HTTP handlers with bounded header reads, idle connections, signal cancellation, and graceful shutdown.",
+      "scope": "module",
+      "search": [
+        "run RelayDock HTTP server",
+        "graceful shutdown timeout",
+        "server signal lifecycle"
+      ],
+      "stability": "architecture"
+    },
+    {
+      "boundaries": [],
+      "effect": [
+        "clock.read",
+        "random.read"
+      ],
+      "hashes": {
+        "body": "73adddd5e50d888b4cb8ee9f2164731c847db4d322d0a438c6d78b88bf181a78",
+        "semantic": "7291082a5ce5bc1bfb9b61aac916888e363bb30d4ffd67260f316f21cdc0006e",
+        "structure": "0899ebc4bd16b066c50718f4fe7aeb2252b31aa2ef5fec17d777395b1a84a193"
+      },
+      "id": "relaydock.identifier.generate",
+      "imports": [
+        "crypto/rand",
+        "encoding/base32",
+        "fmt",
+        "strings",
+        "time"
+      ],
+      "invariant": [
+        "The encoded identifier contains no padding and remains safe in URLs and filenames.",
+        "A requested prefix is preserved before one underscore without changing the sortable timestamp portion."
+      ],
+      "location": {
+        "declarationLine": null,
+        "endLine": 13,
+        "exported": null,
+        "kind": null,
+        "language": null,
+        "path": "internal/idgen/id.go",
+        "receiver": null,
+        "signature": null,
+        "startLine": 3,
+        "symbol": null,
+        "visibility": null
+      },
+      "owns": [
+        "identifier wire format",
+        "timestamp ordering prefix",
+        "random collision suffix"
+      ],
+      "risk": [
+        "availability"
+      ],
+      "role": "Generate optional-prefixed, sortable, URL-safe identifiers for RelayDock records and leases.",
+      "scope": "module",
+      "search": [
+        "generate RelayDock ID",
+        "sortable prefixed identifier",
+        "random record ID"
+      ],
+      "stability": "contract"
+    },
+    {
+      "boundaries": [],
+      "hashes": {
+        "body": "6eb1244424f8a46cb1201c5b805ab9a37ea2bb95dc87dd121c2cb0bb74366342",
+        "semantic": "ba9614ca9e84272e934ba20adb9ee8ed1aff0566e1d14138a76dc9dcdd0560a1",
+        "structure": "893b483a1df6b6532eae59337b565a7dd6adb6f17bd3be76e29ced3d4bf405db"
+      },
+      "id": "relaydock.routing.memory-leases",
+      "imports": [
+        "context",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/core",
+        "github.com/0disoft/relaydock/internal/idgen",
+        "sync",
+        "time"
+      ],
+      "invariant": [
+        "Candidate slices are copied at the store boundary so callers cannot mutate retained routing state.",
+        "Expired leases are pruned before capacity, renewal, release, or active-count decisions."
+      ],
+      "location": {
+        "declarationLine": null,
+        "endLine": 12,
+        "exported": null,
+        "kind": null,
+        "language": null,
+        "path": "internal/routing/memory.go",
+        "receiver": null,
+        "signature": null,
+        "startLine": 3,
+        "symbol": null,
+        "visibility": null
+      },
+      "owns": [
+        "in-memory candidate health",
+        "account lease capacity",
+        "lease expiry pruning"
+      ],
+      "risk": [
+        "concurrency",
+        "availability"
+      ],
+      "role": "Provide process-local health candidates and expiring account concurrency leases for single-runtime routing.",
+      "scope": "module",
+      "search": [
+        "memory routing leases",
+        "account concurrency limit",
+        "process local health store"
+      ],
+      "stability": "contract"
     }
   ],
   "contractFingerprints": {
     "configuration": {
-      "sha256": "157b2b669050cbc5a7074ec671363970e298ffba07c8c843b3cacb878007504f"
+      "sha256": "5bb9f5219eae8f5379b8df4afff42ac797108da5642d5f984cbe92021b0038f3"
     },
     "exportedApi": {
       "count": 0,
@@ -3362,6 +3623,6 @@
   "generatedBy": "llmnav@0.7.4",
   "repositoryId": "relaydock",
   "schemaVersion": 1,
-  "sourceHash": "56717b38dd51b7a64f4a641686922669c2b87ee685325cb31c1371276e160a60",
+  "sourceHash": "8b02ef85ecd8a57265351eceb6734ae559b931a04a5b3ffe4f7a0acfa805654c",
   "specVersion": "1"
 }

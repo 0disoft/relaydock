@@ -1,5 +1,16 @@
 package serverutil
 
+/* llmnav/1 module
+id=relaydock.http.server-lifecycle
+role=Run RelayDock HTTP handlers with bounded header reads, idle connections, signal cancellation, and graceful shutdown.
+owns=HTTP server lifecycle|process signal shutdown|server timeout defaults
+search=run RelayDock HTTP server|graceful shutdown timeout|server signal lifecycle
+invariant=SIGINT or SIGTERM starts one graceful shutdown with a bounded fifteen-second budget.
+invariant=http.ErrServerClosed is treated as an expected terminal state rather than a runtime failure.
+risk=availability|concurrency
+stability=architecture
+*/
+
 import (
 	"context"
 	"errors"

@@ -24,3 +24,9 @@ role Issue expiring read tokens for browser handoff consultations and accept onl
 owns web handoff token lifecycle, handoff expiry, web result import
 excludes browser automation, consultation persistence
 invariant Only a digest of each read token is retained after issuance. Expired handoffs cannot resolve tokens or accept results.
+
+@relaydock.expert.result-contract
+role Normalize, validate, clone, and store expert result records behind process-local Store and RecordStore contracts.
+owns expert result schema, result record normalization, process-local result storage
+invariant Invalid results are rejected before an identifier is allocated or a record is stored. Stored and returned results are cloned so callers cannot mutate retained records through shared maps or slices.
+risk concurrency

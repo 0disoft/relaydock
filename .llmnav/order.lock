@@ -57,3 +57,8 @@ relaydock.provider.error-taxonomy
 relaydock.provider.http-adapter
 relaydock.transport.json-api
 relaydock.transport.live-stream
+relaydock.control.console-overview
+relaydock.expert.result-contract
+relaydock.http.server-lifecycle
+relaydock.identifier.generate
+relaydock.routing.memory-leases

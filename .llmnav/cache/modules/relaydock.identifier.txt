@@ -1,0 +1,9 @@
+llmnav-catalog/1 repository=relaydock catalog=relaydock.identifier
+Read semantic cards before opening source. Resolve current paths and signatures with llmnav query or show.
+
+@relaydock.identifier.generate
+role Generate optional-prefixed, sortable, URL-safe identifiers for RelayDock records and leases.
+owns identifier wire format, timestamp ordering prefix, random collision suffix
+invariant The encoded identifier contains no padding and remains safe in URLs and filenames. A requested prefix is preserved before one underscore without changing the sortable timestamp portion.
+effect clock.read, random.read
+risk availability

@@ -6,3 +6,9 @@ role Build and serve validated provider candidates for virtual and direct model 
 owns virtual model candidate catalog, direct routing fallback, candidate runtime state projection
 excludes route scoring, provider request execution
 invariant Configured routes reference enabled providers and supported protocols. Expired signed runtime state prevents candidate selection.
+
+@relaydock.routing.memory-leases
+role Provide process-local health candidates and expiring account concurrency leases for single-runtime routing.
+owns in-memory candidate health, account lease capacity, lease expiry pruning
+invariant Candidate slices are copied at the store boundary so callers cannot mutate retained routing state. Expired leases are pruned before capacity, renewal, release, or active-count decisions.
+risk concurrency, availability

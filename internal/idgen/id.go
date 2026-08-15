@@ -1,5 +1,17 @@
 package idgen
 
+/* llmnav/1 module
+id=relaydock.identifier.generate
+role=Generate optional-prefixed, sortable, URL-safe identifiers for RelayDock records and leases.
+owns=identifier wire format|timestamp ordering prefix|random collision suffix
+search=generate RelayDock ID|sortable prefixed identifier|random record ID
+invariant=The encoded identifier contains no padding and remains safe in URLs and filenames.
+invariant=A requested prefix is preserved before one underscore without changing the sortable timestamp portion.
+effect=clock.read|random.read
+risk=availability
+stability=contract
+*/
+
 import (
 	"crypto/rand"
 	"encoding/base32"

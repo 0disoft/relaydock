@@ -1,5 +1,16 @@
 package routing
 
+/* llmnav/1 module
+id=relaydock.routing.memory-leases
+role=Provide process-local health candidates and expiring account concurrency leases for single-runtime routing.
+owns=in-memory candidate health|account lease capacity|lease expiry pruning
+search=memory routing leases|account concurrency limit|process local health store
+invariant=Candidate slices are copied at the store boundary so callers cannot mutate retained routing state.
+invariant=Expired leases are pruned before capacity, renewal, release, or active-count decisions.
+risk=concurrency|availability
+stability=contract
+*/
+
 import (
 	"context"
 	"fmt"
