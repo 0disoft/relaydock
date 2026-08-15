@@ -111,6 +111,26 @@
       "scope": "module"
     }
   ],
+  "audit": {
+    "dispositions": [
+      {
+        "path": "frontend/src/lib/types.ts",
+        "reason": "Centralizes compile-time DTO shapes but owns no runtime validation, side effects, or durable policy boundary."
+      },
+      {
+        "path": "internal/buildinfo/info.go",
+        "reason": "Exposes injected build metadata only; it does not own release policy or runtime behavior."
+      },
+      {
+        "path": "internal/expert/localstore/adapters.go",
+        "reason": "Provides storage adapter glue that delegates behavior to owned stores without defining an independent contract."
+      },
+      {
+        "path": "web/control-console/src/routes/+page.svelte",
+        "reason": "Renders server-provided overview data; authentication and Control API probing are owned by +page.server.ts."
+      }
+    ]
+  },
   "evaluation": {
     "minimumRecallAt1": 0.75,
     "minimumRecallAt5": 0.9,

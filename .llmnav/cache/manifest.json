@@ -7,7 +7,7 @@
     ".llmnav/cache/file-state.json": "02a5d8cdf642bb7e8005cbabb2a51187a414341f51f9d6cadc9770fd5f37111f",
     ".llmnav/cache/graph-state.json": "6069e44f80c78d8edd7747e80b132343cf6a05b135f1a80add5ef5231d6648e4",
     ".llmnav/cache/graph.json": "d2c7c20cdac7aa36c07518343d6c34c607980452a37f0e32aa3fc34c1618d704",
-    ".llmnav/cache/index.json": "6a3dfcacc2bb59cdbd97a8879bd7b2a52a11b741c4b308f8b5e7fddc1ea9ec5b",
+    ".llmnav/cache/index.json": "951741ff2a7e76a223708668a37ff45bc0869180b3c84c945c993f73bcc3100a",
     ".llmnav/cache/modules/relaydock.accounting.txt": "5ee1b104e733095d0e6dd8982a9f180b7f4a6586873859a1aa73b47d9d7bfc31",
     ".llmnav/cache/modules/relaydock.auth.txt": "4a2a38090cd8c929c454f794817f8967ca388d08eab2bdbf5b01439ec026e0f7",
     ".llmnav/cache/modules/relaydock.command.txt": "121b343c0182523a61ef1b635cc665c9cf1e7883c5344436d2612c232b9733c2",
@@ -31,7 +31,7 @@
     ".llmnav/cache/modules/relaydock.runtime.txt": "162d2a0d0305752a87b59209ec8bae3535fff4e7894d20a176c7ce2891c38e7e",
     ".llmnav/cache/modules/relaydock.security.txt": "c76499b06d1832d948be7a3021a2899eb863d6fabc1db875773a0a672c1ebc0c",
     ".llmnav/cache/modules/relaydock.transport.txt": "cf2a8b2829dbd246ea350975100d5d70a44ea6e829fa9a9b323cee88db40a5ae",
-    ".llmnav/cache/prompt-prefix.json": "2c3185d120a9e0a426a4b39e685ef4482b23c7c3d315a4ce55ddac7db8b7efa7",
+    ".llmnav/cache/prompt-prefix.json": "ddcca256b2d1aa42d7cd3f953578e06e4b1ffe34fbb1171523b246a1d6baa035",
     ".llmnav/cache/repo-core.txt": "0b6de4f4e74aedad81630fb2340214e7869e2328dc418dd55c141125dc7175b0",
     ".llmnav/cache/search-index.json": "67338aa3b3557258f31c7849b2242c5220866be0e29a343024ec986d1df50c67"
   },

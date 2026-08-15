@@ -3612,7 +3612,7 @@
   ],
   "contractFingerprints": {
     "configuration": {
-      "sha256": "5bb9f5219eae8f5379b8df4afff42ac797108da5642d5f984cbe92021b0038f3"
+      "sha256": "ea63707573334cbc53aa0f4873f5d43e84cf80ccba1fef3c7475ea624e2ccb37"
     },
     "exportedApi": {
       "count": 0,
@@ -3620,7 +3620,7 @@
     },
     "schemaVersion": 1
   },
-  "generatedBy": "llmnav@0.7.4",
+  "generatedBy": "llmnav@0.8.0",
   "repositoryId": "relaydock",
   "schemaVersion": 1,
   "sourceHash": "8b02ef85ecd8a57265351eceb6734ae559b931a04a5b3ffe4f7a0acfa805654c",
