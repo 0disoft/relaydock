@@ -171,6 +171,7 @@ func (s *RuntimeService) StartLocalGateway(port int) error {
 	address := fmt.Sprintf("127.0.0.1:%d", port)
 	listener, err := net.Listen("tcp", address)
 	if err != nil {
+		err = fmt.Errorf("cannot start local gateway at %s: choose an unused port in Settings, save, and retry (the port may already be in use): %w", address, err)
 		s.finishGatewayStart(nil, nil, nil, "", err)
 		return err
 	}

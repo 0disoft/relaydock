@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.12-dev -- Desktop Development Startup
+
+- Repaired the Wails watcher root, file filters, and build/frontend/run stages.
+- Forwarded the Wails-selected development port to Vite instead of using its standalone default.
+- Added actionable local gateway bind errors and a failed-start/retry regression test.
+- Preserved saved gateway ports and the 10100 initial default; no automatic endpoint migration.
+
 ## 0.5.11-dev -- Workload-Identity Control Signing Key
 
 - Added `CONTROL_SIGNING_PRIVATE_KEY_REF` for `controld` through the read-only server-secret resolver.

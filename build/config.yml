@@ -1,7 +1,7 @@
 info:
   productName: "RelayDock"
   productIdentifier: "com.0disoft.relaydock"
-  productVersion: "0.5.2"
+  productVersion: "0.5.12"
   companyName: "0disoft"
   productDescription: "Local AI routing and expert escalation runtime"
   copyright: "Copyright © 2026"
@@ -20,14 +20,26 @@ linux:
     - Utility
 
 dev_mode:
+  root_path: .
   debounce: 250
   ignore:
-    dirs:
+    dir:
       - .git
       - bin
       - data
       - gen
       - node_modules
-    extensions:
-      - .md
-      - .log
+      - frontend
+      - web
+    file:
+      - "*_test.go"
+    watched_extension:
+      - "*.go"
+    git_ignore: true
+  executes:
+    - cmd: wails3 task dev:build
+      type: blocking
+    - cmd: wails3 task dev:frontend
+      type: background
+    - cmd: wails3 task dev:run
+      type: primary

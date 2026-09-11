@@ -2,7 +2,7 @@
 
 RelayDock is a Go-first AI Runtime Gateway that connects coding agents such as Codex, Claude Code, and OpenCode with official AI APIs, self-hosted models, and an Expert Escalation MCP path for difficult architecture reviews.
 
-`0.5.11-dev` is a reference implementation that connects a Wails v3 local runtime, compatible API gateway, multi-provider router, OIDC-capable role-scoped Control Plane, signed Control snapshots, operating-system-backed desktop provider keys, optional Google Cloud workload-identity resolution for provider keys, the virtual-key pepper, and the Control signing private key, a durable request journal, transactional outbox, and scoped Remote MCP. The `local/echo` vertical slice runs without external infrastructure; PostgreSQL and Valkey enable managed paths.
+`0.5.12-dev` is a reference implementation that connects a Wails v3 local runtime, compatible API gateway, multi-provider router, OIDC-capable role-scoped Control Plane, signed Control snapshots, operating-system-backed desktop provider keys, optional Google Cloud workload-identity resolution for provider keys, the virtual-key pepper, and the Control signing private key, a durable request journal, transactional outbox, and scoped Remote MCP. The `local/echo` vertical slice runs without external infrastructure; PostgreSQL and Valkey enable managed paths.
 
 This is not full production certification. Real provider accounts, a complete Go 1.26 module build, live PostgreSQL and Valkey, native Wails packaging and code signing, and money-platform settlement still require target-environment validation. [`VALIDATION.md`](VALIDATION.md) is the source of truth for executed checks.
 
@@ -177,6 +177,23 @@ go run ./cmd/expert-brokerd
 Without PostgreSQL it uses `data/expert-broker/state.json`. Setting both `OPENAI_API_KEY` and `EXPERT_MODEL` enables the approved API consultation worker; otherwise web handoff and manual result import remain available.
 
 ## Development Stack
+
+### Desktop development
+
+After installing the toolchain and workspace dependencies, run `wails3 dev` from
+the repository root. The watcher builds a development binary, starts Vite, and
+runs the desktop app. Vite uses the port selected by Wails (9245 by default);
+`wails3 dev --port 9246` selects another frontend development port.
+
+The local API gateway is separate: its initial Settings value is 10100. Existing
+saved ports are preserved. If startup reports a bind failure, choose an unused
+port in Settings, save, then retry from Overview. RelayDock never stops another
+process or silently switches the API endpoint. Clients must use the gateway
+address shown by the running app, not the Vite development port.
+
+These are interactive developer commands, not unattended verification tasks.
+
+### Server stack
 
 ```powershell
 docker compose -f deploy/docker-compose.dev.yml up --build

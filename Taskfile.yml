@@ -64,6 +64,22 @@ tasks:
     cmds:
       - wails3 dev
 
+  dev:build:
+    desc: Build a development binary without production tags
+    cmds:
+      - wails3 generate bindings
+      - go build -buildvcs=false -o bin/relaydock-dev{{if eq OS "windows"}}.exe{{end}} .
+
+  dev:frontend:
+    desc: Serve the desktop frontend on the port selected by Wails
+    cmds:
+      - bun run --cwd frontend dev --host localhost --port {{.WAILS_VITE_PORT | default "9245"}}
+
+  dev:run:
+    desc: Run the development binary under the Wails watcher
+    cmds:
+      - ./bin/relaydock-dev{{if eq OS "windows"}}.exe{{end}}
+
   build:
     desc: Build the current-platform desktop application and MCP bridge
     cmds:

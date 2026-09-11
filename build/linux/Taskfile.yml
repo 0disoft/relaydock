@@ -3,7 +3,7 @@ version: "3"
 vars:
   APP_NAME: relaydock
   VERSION:
-    sh: tr -d '\r\n' < VERSION
+    sh: '{{if eq OS "windows"}}powershell -NoProfile -Command "(Get-Content VERSION -Raw).Trim()"{{else}}tr -d "\r\n" < VERSION{{end}}'
   ARCH:
     sh: go env GOARCH
 
