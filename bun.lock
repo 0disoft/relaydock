@@ -10,7 +10,7 @@
     },
     "frontend": {
       "name": "@0disoft/relaydock-desktop",
-      "version": "0.5.12-dev",
+      "version": "0.5.13-dev",
       "dependencies": {
         "@wailsio/runtime": "3.0.0-alpha2.117",
       },
@@ -27,7 +27,7 @@
     },
     "web/control-console": {
       "name": "@0disoft/relaydock-control-console",
-      "version": "0.5.12-dev",
+      "version": "0.5.13-dev",
       "devDependencies": {
         "@sveltejs/adapter-node": "5.5.7",
         "@sveltejs/kit": "2.70.2",

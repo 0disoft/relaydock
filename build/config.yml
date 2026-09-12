@@ -1,7 +1,7 @@
 info:
   productName: "RelayDock"
   productIdentifier: "com.0disoft.relaydock"
-  productVersion: "0.5.12"
+  productVersion: "0.5.13"
   companyName: "0disoft"
   productDescription: "Local AI routing and expert escalation runtime"
   copyright: "Copyright © 2026"

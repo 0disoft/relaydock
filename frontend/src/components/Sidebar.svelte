@@ -15,10 +15,10 @@
 
 <aside class="sidebar">
   <div class="brand">
-    <div class="brand-mark">AR</div>
+    <div class="brand-mark">RD</div>
     <div>
-      <strong>AI Runtime</strong>
-      <span>Local Agent</span>
+      <strong>RelayDock</strong>
+      <span>Local AI Gateway</span>
     </div>
   </div>
 

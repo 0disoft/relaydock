@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.13-dev -- Settings Form
+
+- Grouped desktop settings into startup, local connections, and expert preferences.
+- Corrected checkbox sizing and long-field layout, with explicit labels and keyboard focus.
+- Prevented saving before settings load or while a save is pending, and added dirty-state, reset, validation, and retry feedback.
+- Updated the desktop sidebar to RelayDock branding.
+
 ## 0.5.12-dev -- Desktop Development Startup
 
 - Repaired the Wails watcher root, file filters, and build/frontend/run stages.

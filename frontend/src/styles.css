@@ -23,7 +23,7 @@ button { color: inherit; }
 .button-secondary:hover:not(:disabled) { border-color: #454d62; background: #202635; }
 .button-primary:disabled, .button-secondary:disabled { cursor: not-allowed; opacity: 0.46; }
 
-.app-shell { display: grid; grid-template-columns: 220px 1fr; min-height: 100vh; }
+.app-shell { display: grid; grid-template-columns: 220px minmax(0, 1fr); min-height: 100vh; }
 .sidebar { position: sticky; top: 0; height: 100vh; padding: 24px 16px; border-right: 1px solid var(--border); background: #10131a; display: flex; flex-direction: column; }
 .brand { display: flex; gap: 12px; align-items: center; padding: 0 8px 28px; }
 .brand-mark { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 11px; background: var(--accent); font-weight: 800; }
@@ -93,7 +93,7 @@ button { color: inherit; }
 .form-message.error { background: #32191e; color: #ffabb2; }
 .form-message.success { background: #14291f; color: #80e4ad; }
 .inline-action { margin-top: 14px; }
-.composer input, .settings-form input { width: 100%; border: 1px solid var(--border); border-radius: 8px; background: #0f1218; color: #fff; padding: 10px 12px; outline: none; }
+.composer input, .settings-form input:not([type='checkbox']) { width: 100%; border: 1px solid var(--border); border-radius: 8px; background: #0f1218; color: #fff; padding: 10px 12px; outline: none; }
 .composer input { margin-bottom: 16px; }
 .settings-form label:not(:has(input[type='checkbox'])) { display: grid; gap: 8px; }
 
