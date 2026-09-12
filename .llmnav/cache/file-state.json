@@ -2705,14 +2705,14 @@
     },
     {
       "blocks": [],
-      "contentHash": "b06e23f091ec634ebc2891fe7d68db61c45c28b6f11c1bdf45cbd538b1f73d19",
+      "contentHash": "fe1814c531ecc59a0d8eea3d7480837ec54a78e31377a30e24438ebbda8e750c",
       "declarations": [],
       "imports": [
         "../lib/types"
       ],
       "path": "frontend/src/components/Sidebar.svelte",
       "semanticBytes": 0,
-      "sourceBytes": 1061
+      "sourceBytes": 1065
     },
     {
       "blocks": [],
@@ -2855,6 +2855,31 @@
     },
     {
       "blocks": [],
+      "contentHash": "895a1f0188078c7633787e3dd874a1e8b2e7e5e126fa4f112e6d92f078cda2c7",
+      "declarations": [],
+      "imports": [
+        "./settings-form.ts",
+        "./types",
+        "node:assert/strict",
+        "node:test"
+      ],
+      "path": "frontend/src/lib/settings-form.test.ts",
+      "semanticBytes": 0,
+      "sourceBytes": 1682
+    },
+    {
+      "blocks": [],
+      "contentHash": "da439b9412d3a1a8cf562d6fd20a60c4f263394fed952d42d5d0aff56b50c3ee",
+      "declarations": [],
+      "imports": [
+        "./types"
+      ],
+      "path": "frontend/src/lib/settings-form.ts",
+      "semanticBytes": 0,
+      "sourceBytes": 1060
+    },
+    {
+      "blocks": [],
       "contentHash": "37b69a20ebb09115db2a26182118a880c69442ec0374cda3afc748d1d72c7cad",
       "declarations": [],
       "imports": [],
@@ -2942,16 +2967,17 @@
     },
     {
       "blocks": [],
-      "contentHash": "f77d06441d5310abd2fa9047094fe0e5b922146cb261f02306da5e66b761f8e8",
+      "contentHash": "50c15b40e5812dadad44ad7dec9f9330b12fe519bf5e3d3d393cc42f5fef489a",
       "declarations": [],
       "imports": [
         "../lib/runtime-adapter",
+        "../lib/settings-form",
         "../lib/types",
         "svelte"
       ],
       "path": "frontend/src/pages/Settings.svelte",
       "semanticBytes": 0,
-      "sourceBytes": 2617
+      "sourceBytes": 6116
     },
     {
       "blocks": [],
@@ -4147,7 +4173,7 @@
     },
     {
       "blocks": [],
-      "contentHash": "3070359ca5800443edd48d0b81016ff9e514aa12a0a284cf7f61747aa159d16d",
+      "contentHash": "0968f268ef80a4bad4d910f4b1aea57bced1b812ac26afbc8eb49b0d6aae51fc",
       "declarations": [],
       "imports": [],
       "path": "internal/buildinfo/info.go",
@@ -5438,6 +5464,42 @@
     },
     {
       "blocks": [],
+      "contentHash": "53060c24bf4b11f1e415554d6400c6020b10f795199d67ed42ca8f79e2cd1daf",
+      "declarations": [],
+      "imports": [
+        "github.com/0disoft/relaydock/internal/credentials",
+        "net",
+        "strings",
+        "testing"
+      ],
+      "path": "internal/desktopwails/gateway_port_test.go",
+      "semanticBytes": 0,
+      "sourceBytes": 1348
+    },
+    {
+      "blocks": [],
+      "contentHash": "20185e28b085386ee70f198e1fd67bd7c7677abc0684cd290590ae3abf2b4e33",
+      "declarations": [],
+      "imports": [
+        "bufio",
+        "encoding/json",
+        "fmt",
+        "github.com/0disoft/relaydock/internal/credentials",
+        "io",
+        "net",
+        "net/http",
+        "net/http/httptest",
+        "os",
+        "strings",
+        "testing",
+        "time"
+      ],
+      "path": "internal/desktopwails/gateway_smoke_test.go",
+      "semanticBytes": 0,
+      "sourceBytes": 8053
+    },
+    {
+      "blocks": [],
       "contentHash": "99c7504b355026a797b36cfcfa37957afb4b43c9abf8ef05859e45ed596735b8",
       "declarations": [],
       "imports": [
@@ -5457,7 +5519,7 @@
     },
     {
       "blocks": [],
-      "contentHash": "2edb62e00f7ebc378049f94af312027c3ff6d27da652c7d1e1128526c61387ba",
+      "contentHash": "0113697abafc4da2ea5f9be977ef8cd8572cdc2fafab2d48686734098a79ac43",
       "declarations": [],
       "imports": [
         "context",
@@ -5480,7 +5542,7 @@
       ],
       "path": "internal/desktopwails/runtime_service.go",
       "semanticBytes": 0,
-      "sourceBytes": 11560
+      "sourceBytes": 11718
     },
     {
       "blocks": [],
@@ -9396,7 +9458,7 @@
     },
     {
       "blocks": [],
-      "contentHash": "99e0c2159328e85d8cd086f10c5777d1175cbd3acd7de6f5e672cd296f492e2e",
+      "contentHash": "511c4e8df336628abe58171680905ddb4bfac42029036135813664c507eb62b8",
       "declarations": [],
       "imports": [
         "bytes",
@@ -9421,7 +9483,7 @@
       ],
       "path": "internal/provider/httpadapter/decode.go",
       "semanticBytes": 0,
-      "sourceBytes": 6869
+      "sourceBytes": 8209
     },
     {
       "blocks": [],
@@ -10003,7 +10065,7 @@
     },
     {
       "blocks": [],
-      "contentHash": "da73d3d5bc5b464f9c17ac0b0ac04cf85893abfb88533e06483a652b8a95df14",
+      "contentHash": "46b0deaa5a662026cdb8968f7b1b1f10f0500b862201c65133b896c032cab067",
       "declarations": [],
       "imports": [
         "context",
@@ -10017,7 +10079,7 @@
       ],
       "path": "internal/runtime/attempt.go",
       "semanticBytes": 0,
-      "sourceBytes": 3798
+      "sourceBytes": 4039
     },
     {
       "blocks": [],
@@ -10944,7 +11006,7 @@
     },
     {
       "blocks": [],
-      "contentHash": "f2c9bf8a80cef476fad3f1ebb0353aee21aadb12496b50d0ff7a72cf9441dfe0",
+      "contentHash": "bb7f94b5a27e40b033d25a8b90a76b2d51766636562fe6dc8eaa5a1f5bc4d6a6",
       "declarations": [],
       "imports": [
         "bytes",
@@ -10963,7 +11025,7 @@
       ],
       "path": "internal/transport/httpgateway/runtime_processor.go",
       "semanticBytes": 0,
-      "sourceBytes": 9311
+      "sourceBytes": 9536
     },
     {
       "blocks": [],
@@ -11096,7 +11158,7 @@
           "syntaxErrors": []
         }
       ],
-      "contentHash": "8f4d9208a294c6e2a2724f8d9656c49f79c723bebe1a645c7e4844049b28ece1",
+      "contentHash": "89a004bf40557522da5af4d9cca6cf038607ddf995f0dff3ddaefe167cf1d229",
       "declarations": [
         null
       ],
@@ -11134,7 +11196,7 @@
       ],
       "path": "internal/transport/httpgateway/streaming.go",
       "semanticBytes": 597,
-      "sourceBytes": 13887
+      "sourceBytes": 14505
     },
     {
       "blocks": [],
