@@ -35,7 +35,11 @@ func (g *Gateway) executeAttempt(
 	if targetProtocol == "" {
 		targetProtocol = envelope.IngressProtocol
 	}
-	encoded, _, err := g.Compiler.Encode(ctx, envelope, targetProtocol, g.LossMode)
+	// Compile the selected upstream identity, not the public/virtual route.
+	// Keep the original envelope intact for accounting and subsequent attempts.
+	upstreamEnvelope := envelope
+	upstreamEnvelope.Model = decision.Candidate.Model
+	encoded, _, err := g.Compiler.Encode(ctx, upstreamEnvelope, targetProtocol, g.LossMode)
 	if err != nil {
 		return stream.Usage{}, false, err
 	}

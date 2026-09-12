@@ -129,7 +129,19 @@ func (s *liveStreamWriter) Event(event stream.Event) error {
 		}
 		_, _ = s.text.Write(event.Delta)
 		return s.writeContentDelta(string(event.Delta))
-	case stream.EventToolCallDelta, stream.EventReasoningDelta:
+	case stream.EventReasoningDelta:
+		// Preserve a same-protocol Chat extension under its original field;
+		// do not present private reasoning as assistant answer text.
+		var field string
+		_ = json.Unmarshal(event.Extension["openai.chat.reasoning_field"], &field)
+		if s.protocol == canonical.ProtocolOpenAIChat && (field == "reasoning_content" || field == "reasoning") {
+			if err := s.ensureStarted(); err != nil {
+				return err
+			}
+			return s.send("", s.chatChunk(map[string]any{field: string(event.Delta)}, nil, false))
+		}
+		return fmt.Errorf("%w: live compatibility egress cannot represent %s", core.ErrLossyTransformation, event.Kind)
+	case stream.EventToolCallDelta:
 		// The current canonical event does not yet carry enough cross-provider
 		// metadata to reconstruct a standards-compliant tool/reasoning block.
 		// Fail explicitly instead of silently converting it to visible text.

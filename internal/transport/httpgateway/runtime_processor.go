@@ -146,7 +146,12 @@ func (p RuntimeProcessor) run(ctx context.Context, request canonical.RequestEnve
 					return core.ErrFrameTooLarge
 				}
 				_, _ = text.Write(event.Delta)
-			case stream.EventToolCallDelta, stream.EventReasoningDelta:
+			case stream.EventReasoningDelta:
+				if hooks.OnEvent == nil {
+					return fmt.Errorf("%w: compatibility egress cannot represent %s", core.ErrLossyTransformation, event.Kind)
+				}
+				// The live writer validates the destination and original field.
+			case stream.EventToolCallDelta:
 				return fmt.Errorf("%w: compatibility egress cannot represent %s", core.ErrLossyTransformation, event.Kind)
 			case stream.EventResponseStarted, stream.EventUsage, stream.EventProviderRaw, stream.EventCompleted:
 				// Forwarded below when a live stream hook is present.

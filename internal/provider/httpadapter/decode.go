@@ -54,7 +54,25 @@ func DecodePayload(providerName string, protocol canonical.Protocol, raw []byte)
 	}
 	if choices, ok := root["choices"].([]any); ok && len(choices) > 0 {
 		if choice, ok := choices[0].(map[string]any); ok {
+			// A non-streaming completion carries message, not delta. Consume it
+			// before finish_reason prevents the generic fallback from running.
+			if message, ok := choice["message"].(map[string]any); ok {
+				if text := stringValue(message["content"]); text != "" {
+					events = append(events, stream.Event{Kind: stream.EventContentDelta, Delta: []byte(text)})
+				}
+			}
 			if delta, ok := choice["delta"].(map[string]any); ok {
+				if reasoning := stringValue(first(delta, "reasoning_content", "reasoning")); reasoning != "" {
+					field := "reasoning_content"
+					if _, exists := delta[field]; !exists {
+						field = "reasoning"
+					}
+					extension := map[string]json.RawMessage{}
+					if protocol == canonical.ProtocolOpenAIChat {
+						extension["openai.chat.reasoning_field"], _ = json.Marshal(field)
+					}
+					events = append(events, stream.Event{Kind: stream.EventReasoningDelta, Delta: []byte(reasoning), Extension: extension})
+				}
 				if text := stringValue(delta["content"]); text != "" {
 					events = append(events, stream.Event{Kind: stream.EventContentDelta, Delta: []byte(text)})
 				}
@@ -72,6 +90,14 @@ func DecodePayload(providerName string, protocol canonical.Protocol, raw []byte)
 				events = append(events, stream.Event{Kind: stream.EventCompleted})
 			}
 		}
+	}
+	if len(events) == 0 && stringValue(root["object"]) == "chat.completion.chunk" {
+		// Role-only, usage-only and extension chunks are not terminal events.
+		// Preserve unknown data rather than inventing a successful completion.
+		if usage := ExtractUsage(raw); !zeroUsage(usage) {
+			return []stream.Event{{Kind: stream.EventUsage, Usage: &usage}}
+		}
+		return []stream.Event{{Kind: stream.EventProviderRaw, Delta: append([]byte(nil), raw...)}}
 	}
 	if len(events) == 0 {
 		text := extractText(root)

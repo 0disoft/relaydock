@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.14-dev -- Upstream Model Routing
+
+- Encode the selected upstream model in provider requests instead of leaking the public route name into the wire payload.
+- Add loopback gateway completion, streaming, and stop checks, plus an opt-in bounded Entrim Qwen smoke test.
+- Preserve non-streaming Chat completion text, avoid completing on role-only stream chunks, and forward recognized same-protocol Chat reasoning fields separately from answer text. Unsupported cross-protocol reasoning remains rejected.
+
 ## 0.5.13-dev -- Settings Form
 
 - Grouped desktop settings into startup, local connections, and expert preferences.
