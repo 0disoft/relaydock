@@ -20,7 +20,7 @@ func TestDesktopDevConfigHasRunnableStages(t *testing.T) {
 		"Taskfile.yml": {
 			"  dev:build:", "  dev:frontend:", "  dev:run:",
 			"go build -buildvcs=false -o bin/relaydock-dev",
-			"--host localhost --port {{.WAILS_VITE_PORT",
+			"--host 127.0.0.1 --port {{.WAILS_VITE_PORT",
 			"./bin/relaydock-dev",
 		},
 	} {

@@ -73,11 +73,12 @@ tasks:
   dev:frontend:
     desc: Serve the desktop frontend on the port selected by Wails
     cmds:
-      - bun run --cwd frontend dev --host localhost --port {{.WAILS_VITE_PORT | default "9245"}}
+      - bun run --cwd frontend dev --host 127.0.0.1 --port {{.WAILS_VITE_PORT | default "9245"}}
 
   dev:run:
     desc: Run the development binary under the Wails watcher
     cmds:
+      - node scripts/wait-for-frontend.mjs
       - ./bin/relaydock-dev{{if eq OS "windows"}}.exe{{end}}
 
   build:

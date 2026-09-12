@@ -6,6 +6,8 @@
 - Corrected checkbox sizing and long-field layout, with explicit labels and keyboard focus.
 - Prevented saving before settings load or while a save is pending, and added dirty-state, reset, validation, and retry feedback.
 - Updated the desktop sidebar to RelayDock branding.
+- Wait for a successful loopback frontend response before launching the development binary, so cold Vite optimization cannot race Wails startup.
+- Bind Vite to IPv4 loopback to match the Wails asset proxy on Windows.
 
 ## 0.5.12-dev -- Desktop Development Startup
 
